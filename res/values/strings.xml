@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Visus</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_about">About</string>
+    
+    <!-- Menu options -->
+    <string name="title_activity_new_session">New Session</string>
+    <string name="title_activity_prev_sessions">Previous Sessions</string>
+    <string name="title_activity_view_settings">Settings</string>
+    
+    
+    <!-- New User -->
+    <string-array name="genders">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    
+    
+    <!-- New Session -->
+    <string name="title_new_session">New Session</string>
+	<string name="title_start_session">Start</string>
+	<string name="title_end_session">End</string>
+	
+	
+	<!-- Previous Session -->
+	<string name="prev_session">Prev Session</string>
+
+	<!-- Settings -->
+	
+
+</resources>

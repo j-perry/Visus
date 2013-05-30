@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="0dp"
+    android:background="#FFF"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <!-- new session button -->
+    <Button 
+        android:background="@drawable/menu_press_bg"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_weight="33.3"
+        android:text="@string/title_activity_new_session"
+        android:gravity="center"
+        android:textColor="@drawable/menu_press_txt"
+        android:textSize="42sp"
+        android:onClick="newSession"
+        />
+    
+    <!-- previous sessions button -->
+    <Button 
+        android:background="@drawable/menu_press_bg"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_weight="33.3"
+        android:text="@string/title_activity_prev_sessions"
+        android:gravity="center"
+        android:textColor="@drawable/menu_press_txt"
+        android:textSize="42sp"
+        android:onClick="prevSessions"
+        />
+    
+    <!-- settings button -->
+    <Button 
+        android:background="@drawable/menu_press_bg"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_weight="33.3"
+        android:text="@string/title_activity_view_settings"
+        android:gravity="center"
+        android:textColor="@drawable/menu_press_txt"
+        android:textSize="42sp"
+        android:onClick="viewSettings"
+        />
+
+</LinearLayout>
