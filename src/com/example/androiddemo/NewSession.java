@@ -6,7 +6,8 @@ import java.util.Date;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.view.Menu;
+import android.content.Intent;
+import android.view.*;
 import android.widget.TextView;
 
 /**
@@ -34,12 +35,21 @@ public class NewSession extends Activity {
 		time = (TextView) findViewById(R.id.clock_time);
 		time.setText(df.format(date));
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_new_view, menu);
 		return true;
+	}
+	
+	/**
+	 * Navigate's the user to their previous sessions
+	 * @param savedInstance
+	 */
+	public void onEnd(View view) {
+		Intent intent = new Intent(NewSession.this, PrevSessions.class);
+		startActivity(intent);
 	}
 
 }
