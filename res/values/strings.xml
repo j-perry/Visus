@@ -1,33 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- app name -->
     <string name="app_name">Visus</string>
-    <string name="hello_world">Hello world!</string>
+    
+    <!-- action bar sub-menu -->
     <string name="menu_about">About</string>
     
-    <!-- Menu options -->
+    <!-- menu options -->
     <string name="title_activity_new_session">New Session</string>
     <string name="title_activity_prev_sessions">Previous Sessions</string>
     <string name="title_activity_view_settings">Settings</string>
+        
+    <!-- ///////////////////////////
     
+    		Views
     
-    <!-- New User -->
+     -->
+    
+    <!-- new user view -->
+    <!-- genders (spinner) -->
     <string-array name="genders">
         <item>Male</item>
         <item>Female</item>
     </string-array>
     
     
-    <!-- New Session -->
-    <string name="title_new_session">New Session</string>
-	<string name="title_start_session">Start</string>
-	<string name="title_end_session">End</string>
+    <!-- new session view -->
+    <string name="new_session_header">New Session</string>
+	<string name="start_session_btn">Start</string>
+	<string name="title_end_btn">End</string>
+	<string name="session_default_time">00:00 am</string>
+	<string name="session_default_duration">30:00</string>
 	
 	
-	<!-- Previous Session -->
-	<string name="prev_session">Prev Session</string>
+	<!-- previous sessions view -->
+	<string name="prev_sessions_header">Prev Session</string>
 
-	<!-- Settings -->
+	
+	<!-- settings view -->
+	<string name="sessions_default_header">Session #</string>
+	<string name="themes_header">Themes</string>
+	<string name="theme_normal">Normal</string>
+	<string name="theme_weather">Weather</string>
+	
+	<string name="account_header">Account</string>
+	<string name="account_reset">Reset</string>
+	<string name="account_modify">Modify</string>
+	<string name="account_delete">Delete</string>
 	
 
 </resources>

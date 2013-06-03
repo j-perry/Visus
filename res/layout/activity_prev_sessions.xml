@@ -2,15 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white" 
     android:orientation="vertical"
-    android:padding="0dp"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context=".PrevSessions" >
+    tools:context=".PrevSessions" > <!-- view class interface -->
     
+    <!-- previous sessions adapter -->
     <LinearLayout
-        android:background="#FFF"
-        android:orientation="vertical"
-        android:layout_weight="80"        
+        android:background="@color/light_grey"
+        android:orientation="vertical"   
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         >

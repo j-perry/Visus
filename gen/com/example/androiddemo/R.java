@@ -9,37 +9,44 @@ package com.example.androiddemo;
 
 public final class R {
     public static final class array {
-        /**  New User 
+        /**  ///////////////////////////
+    
+    		Views
+    
+     
+ new user view 
+ genders (spinner) 
          */
         public static final int genders=0x7f060000;
     }
     public static final class attr {
     }
     public static final class color {
-        public static final int dark_blue=0x7f040002;
+        public static final int black=0x7f040007;
+        public static final int dark_blue=0x7f040003;
         public static final int dark_green=0x7f040001;
         public static final int dark_grey=0x7f040006;
         /**  our palette of colours :o) 
          */
         public static final int light_green=0x7f040000;
         public static final int light_grey=0x7f040005;
-        public static final int menu_grey=0x7f04000f;
+        public static final int menu_grey=0x7f040010;
         /**  menu 
          */
-        public static final int menu_white=0x7f04000e;
-        /**  New User 
+        public static final int menu_white=0x7f04000f;
+        /**  new user 
          */
-        public static final int new_user_white=0x7f040010;
-        public static final int nice_blue=0x7f040003;
-        public static final int pink_red=0x7f040008;
-        public static final int red=0x7f040009;
-        public static final int title_background=0x7f04000c;
+        public static final int new_user_white=0x7f040011;
+        public static final int nice_blue=0x7f040002;
+        public static final int pink_red=0x7f040009;
+        public static final int red=0x7f04000a;
+        public static final int title_background=0x7f04000d;
         /**  app 
          */
-        public static final int title_bar=0x7f04000a;
-        public static final int title_color=0x7f04000d;
-        public static final int titletextcolor=0x7f04000b;
-        public static final int white=0x7f040007;
+        public static final int title_bar=0x7f04000b;
+        public static final int title_color=0x7f04000e;
+        public static final int titletextcolor=0x7f04000c;
+        public static final int white=0x7f040008;
         public static final int yellow=0x7f040004;
     }
     public static final class drawable {
@@ -48,13 +55,15 @@ public final class R {
         public static final int menu_press_txt=0x7f020002;
     }
     public static final class id {
-        public static final int clock_time=0x7f090001;
-        public static final int menu_about=0x7f090006;
-        public static final int new_session=0x7f090000;
-        public static final int no_sessions=0x7f090005;
-        public static final int timer=0x7f090002;
-        public static final int timer_btn=0x7f090003;
-        public static final int timer_stop_btn=0x7f090004;
+        public static final int clock_time=0x7f090002;
+        public static final int display_components=0x7f090000;
+        public static final int menu_about=0x7f090008;
+        public static final int new_session=0x7f090001;
+        public static final int no_sessions=0x7f090007;
+        public static final int timer=0x7f090003;
+        public static final int timer_start_btn=0x7f090004;
+        public static final int timer_stop_btn=0x7f090005;
+        public static final int view=0x7f090006;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -69,22 +78,37 @@ public final class R {
         public static final int activity_view_settings=0x7f080003;
     }
     public static final class string {
+        public static final int account_delete=0x7f050012;
+        public static final int account_header=0x7f05000f;
+        public static final int account_modify=0x7f050011;
+        public static final int account_reset=0x7f050010;
+        /**  app name 
+         */
         public static final int app_name=0x7f050000;
-        public static final int hello_world=0x7f050001;
-        public static final int menu_about=0x7f050002;
-        /**  Previous Session 
+        /**  action bar sub-menu 
          */
-        public static final int prev_session=0x7f050009;
-        /**  Menu options 
+        public static final int menu_about=0x7f050001;
+        /**  new session view 
          */
-        public static final int title_activity_new_session=0x7f050003;
-        public static final int title_activity_prev_sessions=0x7f050004;
-        public static final int title_activity_view_settings=0x7f050005;
-        public static final int title_end_session=0x7f050008;
-        /**  New Session 
+        public static final int new_session_header=0x7f050005;
+        /**  previous sessions view 
          */
-        public static final int title_new_session=0x7f050006;
-        public static final int title_start_session=0x7f050007;
+        public static final int prev_sessions_header=0x7f05000a;
+        public static final int session_default_duration=0x7f050009;
+        public static final int session_default_time=0x7f050008;
+        /**  settings view 
+         */
+        public static final int sessions_default_header=0x7f05000b;
+        public static final int start_session_btn=0x7f050006;
+        public static final int theme_normal=0x7f05000d;
+        public static final int theme_weather=0x7f05000e;
+        public static final int themes_header=0x7f05000c;
+        /**  menu options 
+         */
+        public static final int title_activity_new_session=0x7f050002;
+        public static final int title_activity_prev_sessions=0x7f050003;
+        public static final int title_activity_view_settings=0x7f050004;
+        public static final int title_end_btn=0x7f050007;
     }
     public static final class style {
         /** 
