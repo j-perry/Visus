@@ -1,6 +1,6 @@
 package project.visus.main;
 
-import com.example.androiddemo.R;
+import project.visus.R;
 
 import android.os.Bundle;
 import android.app.Activity;

@@ -1,5 +1,5 @@
 /** Automatically generated file. DO NOT MODIFY */
-package projects.visus;
+package project.visus;
 
 public final class BuildConfig {
     public final static boolean DEBUG = true;

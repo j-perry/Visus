@@ -1,4 +1,4 @@
 Visus
 =====
 
-A simple healthcare/productivity app coming to Android designed to ensure computer users take regular breaks from their PC whilst at work!
+A simple healthcare and productivity app coming to Android. Visus is designed to ensure mobile and PC users take regular breaks from their PC whilst at work!

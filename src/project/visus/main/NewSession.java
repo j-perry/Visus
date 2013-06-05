@@ -3,7 +3,7 @@ package project.visus.main;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.example.androiddemo.R;
+import project.visus.R;
 
 import android.os.Bundle;
 import android.annotation.SuppressLint;
