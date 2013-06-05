@@ -29,23 +29,29 @@
             </intent-filter>
         </activity>
         
+        <!-- new user -->
+        <activity 
+            android:name="project.visus.main.NewUser"
+            android:label="@string/title_activity_new_user" 
+            />
+                
         <!-- new session -->
         <activity
             android:name="project.visus.main.NewSession"
-            android:label="@string/title_activity_new_session" >
-        </activity>
-        
+            android:label="@string/title_activity_new_session" 
+            />
+                
         <!-- previous sessions -->
         <activity
             android:name="project.visus.main.PrevSessions"
-            android:label="@string/title_activity_prev_sessions" >
-        </activity>
+            android:label="@string/title_activity_prev_sessions" 
+            />
         
         <!-- view settings -->
         <activity
             android:name="project.visus.main.ViewSettings"
-            android:label="@string/title_activity_view_settings" >
-        </activity>
+            android:label="@string/title_activity_view_settings"
+            />
         
     </application>
 

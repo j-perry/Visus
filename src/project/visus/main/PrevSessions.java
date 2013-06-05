@@ -14,6 +14,9 @@ public class PrevSessions extends Activity {
 		setContentView(R.layout.activity_prev_sessions);
 	}
 
+	/**
+	 * Creates a new options menu
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

@@ -8,6 +8,7 @@
     <string name="menu_about">About</string>
     
     <!-- menu options -->
+    <string name="title_activity_new_user">Register</string>
     <string name="title_activity_new_session">New Session</string>
     <string name="title_activity_prev_sessions">Previous Sessions</string>
     <string name="title_activity_view_settings">Settings</string>
@@ -24,6 +25,11 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+    
+    <string name="hint_firstname">First name</string>
+    <string name="hint_age">Age</string>
+    <string name="hint_gender">Gender</string>
+    <string name="submit">Submit</string>
     
     
     <!-- new session view -->

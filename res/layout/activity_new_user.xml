@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/light_grey"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".NewUser" 
+    >
+    
+    <!-- first name -->
+    <TextView 
+        android:id="@+id/first_name"
+        android:hint="@string/hint_firstname"
+        />
+    
+    <!-- age -->
+    <TextView 
+        android:id="@+id/age"
+        android:hint="@string/hint_age"
+        />
+    
+    <!-- gender -->
+    <Spinner 
+        android:id="@+id/gender"
+        android:entries="@array/genders"
+        android:prompt="@string/hint_gender"
+        />
+    
+    <!-- submit -->
+    <Button 
+        android:id="@+id/submit"
+        android:onClick="submit"
+        />
+
+</LinearLayout>
