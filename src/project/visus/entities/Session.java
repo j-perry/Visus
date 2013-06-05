@@ -1,4 +1,4 @@
-package com.example.androiddemo.entities;
+package project.visus.entities;
 
 import java.util.Date;
 

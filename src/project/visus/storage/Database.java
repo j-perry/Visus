@@ -1,9 +1,10 @@
-package com.example.androiddemo.storage;
+package project.visus.storage;
 
 import java.util.List;
 
-import com.example.androiddemo.entities.Session;
-import com.example.androiddemo.entities.User;
+import project.visus.entities.Session;
+import project.visus.entities.User;
+
 
 import android.content.ContentValues;
 import android.content.Context;

@@ -1,10 +1,11 @@
-package com.example.androiddemo;
+package project.visus.main;
+
+import com.example.androiddemo.R;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.view.Menu;
-import android.view.View;
+import android.view.*;
 
 public class MainActivity extends Activity {
 

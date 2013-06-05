@@ -1,4 +1,4 @@
-package com.example.androiddemo.entities;
+package project.visus.entities;
 
 public class User {
 
