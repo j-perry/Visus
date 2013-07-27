@@ -45,8 +45,10 @@ public final class R {
         public static final int ic_action_name=0x7f020000;
         public static final int ic_launcher=0x7f020001;
         public static final int ic_new_session=0x7f020002;
-        public static final int menu_press_bg=0x7f020003;
-        public static final int menu_press_txt=0x7f020004;
+        public static final int main_menu_profile_bg=0x7f020003;
+        public static final int main_menu_profile_txt=0x7f020004;
+        public static final int menu_press_bg=0x7f020005;
+        public static final int menu_press_txt=0x7f020006;
     }
     public static final class id {
         public static final int age=0x7f090005;
@@ -121,6 +123,7 @@ public final class R {
         public static final int weather_theme=0x7f050016;
     }
     public static final class style {
+        public static final int ActionBar=0x7f070003;
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.

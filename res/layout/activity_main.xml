@@ -11,18 +11,17 @@
         android:background="@color/white"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="50sp"
-        android:paddingRight="50sp"
-        android:paddingTop="30sp"
-        android:paddingBottom="30sp"
         >
     
         <!-- app name -->
 	    <TextView
             android:layout_width="fill_parent" 
 	        android:layout_height="wrap_content"
-	        android:layout_weight="1"
+	        android:layout_weight="4"
             android:layout_gravity="center_horizontal"
+        	android:paddingLeft="50sp"
+        	android:paddingTop="10sp"
+        	android:paddingBottom="0sp"
 	        android:text="@string/app_name"
 	        android:textAllCaps="true"
 	        android:textStyle="bold"
@@ -31,17 +30,21 @@
 	        />
 	    
 	    <!-- sessions duration (hours) -->
-	    <TextView
+	    <Button
+	        android:background="@drawable/main_menu_profile_bg"
             android:layout_width="fill_parent" 
 	        android:layout_height="wrap_content"
-	        android:layout_weight="2"
-            android:layout_gravity="center_horizontal"
-	        android:paddingTop="10sp"
-	        android:text="Total"
+	        android:layout_weight="6"
+            android:layout_gravity="left"  
+        	android:paddingTop="20sp"   
+        	android:paddingLeft="15sp"
+        	android:paddingBottom="25sp"
+            android:gravity="left"
+	        android:text="Total\n47.5 HRS"
 	        android:textAllCaps="true"
 	        android:textStyle="bold"
-	        android:textColor="@color/light_green"
-	        android:textSize="32sp"
+	        android:textColor="@drawable/main_menu_profile_txt"
+	        android:textSize="24sp"
 	        />
 	
 	</LinearLayout>
