@@ -1,109 +1,104 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/light_grey"
+    android:background="@color/white"
     android:orientation="vertical"
+    android:padding="0dp"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context=".NewView" > <!-- view class interface -->
+    tools:context=".NewView" >
 
-    <!-- new session display components -->
+    <!-- components -->
     <LinearLayout
-        android:id="@+id/display_components"
         android:orientation="vertical"
         android:layout_weight="85"        
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         >
         
-        <!-- header -->
+        <!-- header 
         <TextView
             android:id="@+id/new_session"
             android:layout_width="fill_parent" 
             android:layout_height="wrap_content"
             android:layout_marginTop="200dp"
             android:gravity="center_horizontal"
-            android:text="@string/new_session_header"
+            android:text="@string/title_new_session"
             android:textColor="@color/light_green"
             android:textSize="36sp"
             /> 
+    	-->
     
-        <!-- time started -->
+        <!-- time started
         <TextView
             android:id="@+id/clock_time"
             android:layout_width="fill_parent" 
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="215dp"
             android:gravity="center_horizontal"
-            android:text="@string/session_default_time"
             android:textColor="@color/light_green"
             android:textSize="24sp"
             /> 
+            -->
 
-        <!-- timer (30:00 mins) -->
+        <!-- timer 180sp
+        
+        	margin-top: 5dp
+         -->
         <TextView
             android:id="@+id/timer"
             android:layout_width="fill_parent" 
-            android:layout_height="wrap_content" 
-            android:text="@string/session_default_duration"
-            android:textSize="180sp"
+            android:layout_height="wrap_content"
+            android:text="30:00"
+            android:textSize="160sp"
             android:textColor="@color/light_green"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="250dp"
             android:gravity="center"
             />
             
     </LinearLayout>
     
     
-    <!-- new session buttons -->
-    <RelativeLayout
-        android:background="@color/light_green"
+    <!-- component buttons -->
+    <LinearLayout
+        android:background="@color/light_grey"
         android:layout_weight="15"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         >
         
-        <!-- start button -->
+        <!-- Timer Button -->
         <Button
-            android:id="@+id/timer_start_btn"
-	        android:background="@color/light_green"
-	        android:layout_width="wrap_content"
-	        android:layout_height="fill_parent"
-	        android:layout_alignParentLeft="true"
-	        android:layout_alignTop="@+id/timer_stop_btn"
-	        android:layout_toLeftOf="@+id/view"
+            android:id="@+id/timer_btn"
+            android:layout_width="fill_parent" 
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
             android:layout_gravity="center_horizontal"
-	        android:text="@string/start_session_btn"
-	        android:textColor="@color/white" 
-	        android:textSize="36sp"
-	        android:textStyle="bold"
+            android:background="@color/light_green"
+            android:text="@string/title_start_session"
+            android:textStyle="bold"
+            android:textSize="36sp"
             android:textAllCaps="true"
-	        />
-
-        <!-- divider -->
-	    <View
-	        android:id="@+id/view"
-	        android:layout_width="0dp"
-	        android:layout_height="1dp"
-	        android:layout_centerHorizontal="true" />
-	
-	    <!-- stop button -->
-	    <Button
+            android:textColor="@color/white"
+            android:onClick="onStart"
+            />
+        
+        <!-- Timer Button Stop -->
+        <Button
             android:id="@+id/timer_stop_btn"
-	        android:background="@color/light_green"
-	        android:layout_width="wrap_content"
-	        android:layout_height="fill_parent"
-	        android:layout_alignParentRight="true"
-	        android:layout_toRightOf="@+id/view"
+            android:layout_width="fill_parent" 
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
             android:layout_gravity="center_horizontal"
-	        android:text="@string/title_end_btn"
-	        android:textColor="@color/white"
-	        android:textSize="36sp"
-	        android:textStyle="bold"
+            android:background="@color/light_green"
+            android:text="@string/title_end_session"
+            android:textStyle="bold"
+            android:textSize="36sp"
+            android:textColor="@color/white"
             android:textAllCaps="true"
             android:onClick="onEnd"
-	        />
-                
-    </RelativeLayout>
+            />
+        
+    </LinearLayout>
 
 </LinearLayout>

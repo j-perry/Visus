@@ -1,36 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/light_grey"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="15dp"
     android:orientation="vertical"
-    tools:context=".NewUser" 
-    >
-    
+    tools:context=".NewUser">
+
     <!-- first name -->
-    <TextView 
+    <EditText
         android:id="@+id/first_name"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_marginBottom="30dp"
         android:hint="@string/hint_firstname"
-        />
-    
-    <!-- age -->
-    <TextView 
-        android:id="@+id/age"
-        android:hint="@string/hint_age"
+        android:textColor="@color/dark_grey"
+        android:textSize="36sp"
+        android:textColorHint="#EEE"
         />
     
     <!-- gender -->
-    <Spinner 
+    <Spinner
         android:id="@+id/gender"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_marginBottom="30dp"
+        android:prompt="@string/gender_prompt"
         android:entries="@array/genders"
-        android:prompt="@string/hint_gender"
+        android:textColor="@color/dark_grey"
+        android:textSize="36sp"
+        android:textColorHint="#EEE"
+        />
+    
+    <!-- age --> 
+    <EditText
+        android:id="@+id/age"
+        android:inputType="number"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_marginBottom="30dp"
+        android:hint="@string/hint_age"
+        android:textColor="@color/dark_grey"
+        android:textSize="36sp"
+        android:textColorHint="#EEE"
         />
     
     <!-- submit -->
-    <Button 
-        android:id="@+id/submit"
-        android:onClick="submit"
+    <Button
+        android:id="@+id/register"
+        android:onClick="registerUser"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:padding="5dp"
+        android:background="@color/dark_grey"
+        android:textColor="#FFF"
+        android:textSize="36sp"
+        android:text="@string/register"
+        android:gravity="center"
         />
 
 </LinearLayout>
