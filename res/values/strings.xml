@@ -3,7 +3,11 @@
 
     <string name="app_name">Visus</string>
     <string name="hello_world">Hello world!</string>
+    
+    <!-- Main Activity Menu -->
     <string name="menu_about">About</string>
+    <string name="menu_account">Account</string>
+    <string name="menu_sessions">Sessions</string>
 
     <!-- Menu options -->
     <string name="title_activity_new_user">Register</string>

@@ -46,14 +46,17 @@
 	
 	</LinearLayout>
 	    
-    <!-- new session button -->
+    <!-- new session button 
+    
+    	center
+    -->
     <Button 
         android:background="@drawable/menu_press_bg"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:layout_weight="33.3"
-        android:text="@string/title_activity_new_session"
         android:gravity="center"
+        android:text="@string/title_activity_new_session"
         android:textColor="@drawable/menu_press_txt"
         android:textSize="42sp"
         android:onClick="newSession"
