@@ -13,32 +13,55 @@
         android:layout_height="wrap_content"
         >
     
-        <!-- app name -->
-	    <TextView     
+        <!-- new session -->
+	    <Button
+	        android:onClick="newSession"
+	        android:background="@drawable/main_menu_profile_bg"
             android:layout_width="fill_parent" 
 	        android:layout_height="fill_parent"
 	        android:layout_weight="1"
             android:layout_gravity="center_horizontal"
-        	android:paddingLeft="50sp"
-        	android:paddingTop="35sp"
-			android:text="Hi Jon"
+        	android:gravity="center"
+        	android:paddingTop="25sp"
+        	android:paddingBottom="25sp"
+			android:text="@string/title_activity_new_session"
 	        android:textStyle="bold"
-	        android:textColor="@color/faint_green"
+	        android:textAllCaps="true"
+	        android:textColor="@drawable/main_menu_profile_txt"
 	        android:textSize="24sp"
 	        />
 	    
-	    <!-- sessions duration (hours) -->
+	    <!-- sessions -->
+	    <Button     
+	        android:onClick="prevSessions"
+	        android:background="@drawable/main_menu_profile_bg"
+            android:layout_width="fill_parent" 
+	        android:layout_height="fill_parent"
+	        android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+        	android:gravity="center"
+        	android:paddingTop="25sp"
+        	android:paddingBottom="25sp"
+			android:text="@string/title_activity_prev_sessions"
+	        android:textStyle="bold"
+	        android:textAllCaps="true"
+	        android:textColor="@drawable/main_menu_profile_txt"
+	        android:textSize="24sp"
+	        />
+	    
+	    <!-- settings -->
 	    <Button
+	        android:onClick="viewSettings"
 	        android:background="@drawable/main_menu_profile_bg"
             android:layout_width="fill_parent" 
 	        android:layout_height="wrap_content"
 	        android:layout_weight="1"
-            android:layout_gravity="left"  
-        	android:paddingTop="20sp"   
+            android:layout_gravity="center_horizontal"  
+        	android:gravity="center"
+        	android:paddingTop="25sp"   
         	android:paddingLeft="15sp"
         	android:paddingBottom="25sp"
-            android:gravity="left"
-	        android:text="Total\n47.5 HRS"
+	        android:text="@string/title_activity_view_settings"
 	        android:textAllCaps="true"
 	        android:textStyle="bold"
 	        android:textColor="@drawable/main_menu_profile_txt"
@@ -46,45 +69,61 @@
 	        />
 	
 	</LinearLayout>
+	
+    <TextView
+        android:background="@color/mid_grey"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:paddingLeft="75sp"
+        android:paddingTop="20sp"
+        android:paddingBottom="20sp"
+        android:gravity="left"
+        android:text="Last week"
+        android:textAllCaps="false"
+        android:textColor="#333"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:onClick="newSession"
+        />
 	    
     <!-- new session button 
     
     	center
     -->
     <Button 
-        android:background="@drawable/menu_press_bg"
+        android:background="@color/white"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:layout_weight="33.3"
         android:gravity="center"
         android:text="@string/title_activity_new_session"
-        android:textColor="@drawable/menu_press_txt"
+        android:textColor="@color/faint_green"
         android:textSize="42sp"
         android:onClick="newSession"
         />
     
     <!-- previous sessions button -->
     <Button 
-        android:background="@drawable/menu_press_bg"
+        android:background="@color/white"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:layout_weight="33.3"
         android:text="@string/title_activity_prev_sessions"
         android:gravity="center"
-        android:textColor="@drawable/menu_press_txt"
+        android:textColor="@color/faint_green"
         android:textSize="42sp"
         android:onClick="prevSessions"
         />
     
     <!-- settings button -->
     <Button 
-        android:background="@drawable/menu_press_bg"
+        android:background="@color/white"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:layout_weight="33.3"
         android:text="@string/title_activity_view_settings"
         android:gravity="center"
-        android:textColor="@drawable/menu_press_txt"
+        android:textColor="@color/faint_green"
         android:textSize="42sp"
         android:onClick="viewSettings"
         />

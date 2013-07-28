@@ -38,7 +38,7 @@
         <!-- new session -->
         <activity
             android:name="com.visus.main.NewSession"
-            android:label="@string/title_activity_new_session" 
+            android:label="@string/activity_new_session" 
             />
                 
         <!-- previous sessions -->
