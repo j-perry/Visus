@@ -23,7 +23,6 @@ public class MainActivity extends Activity {
 		dbUser = new UserHandler(this);
 		
 		ActionBar ab = getActionBar();
-		ab.setDisplayShowTitleEnabled(false);
 		ab.setDisplayShowHomeEnabled(false);
 		
 		setContentView(R.layout.activity_main);

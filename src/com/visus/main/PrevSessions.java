@@ -3,6 +3,7 @@ package com.visus.main;
 import com.visus.R;
 
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.view.Menu;
 
@@ -12,6 +13,9 @@ public class PrevSessions extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_prev_sessions);
+		
+		ActionBar ab = getActionBar();
+		ab.setDisplayShowHomeEnabled(false);
 	}
 
 	@Override

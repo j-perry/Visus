@@ -2,6 +2,7 @@
 <resources>
     
     <!-- our palette of colours :o) -->
+    <color name="faint_green">#61e69d</color>
     <color name="light_green">#2ecc71</color>
     <color name="dark_green">#27ae60</color>
     
