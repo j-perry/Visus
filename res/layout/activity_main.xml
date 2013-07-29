@@ -72,10 +72,10 @@
     <ScrollView
         android:background="@color/light_grey" 
 	    android:orientation="vertical"
-	    android:paddingLeft="15dp"
-	    android:paddingRight="15dp"
 	    android:layout_width="fill_parent"
 	    android:layout_height="fill_parent"
+	    android:paddingLeft="15dp"
+	    android:paddingRight="15dp"
         >
 	    
         <!-- scroll view must only have one child element! -->
@@ -92,6 +92,7 @@
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
 			    android:layout_marginTop="25sp"
+			    android:layout_marginBottom="25sp"
 	            >
 	
 	            <!-- header -->
@@ -142,6 +143,7 @@
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
 			    android:layout_marginTop="25sp"
+			    android:layout_marginBottom="50sp"
 	            >
 	        
 		        <!-- header -->
@@ -189,6 +191,30 @@
 			        android:padding="25sp"
 			        android:gravity="left"
 			        android:text="Gaming"
+			        android:textAllCaps="false"
+			        android:textColor="#333"
+			        android:textSize="24sp"
+			        />
+		        
+		        <TextView
+			        android:background="@color/white"
+			        android:layout_height="wrap_content"
+			        android:layout_width="fill_parent"
+			        android:padding="25sp"
+			        android:gravity="left"
+			        android:text="Email"
+			        android:textAllCaps="false"
+			        android:textColor="#333"
+			        android:textSize="24sp"
+			        />
+		        
+		        <TextView
+			        android:background="@color/white"
+			        android:layout_height="wrap_content"
+			        android:layout_width="fill_parent"
+			        android:padding="25sp"
+			        android:gravity="left"
+			        android:text="Book"
 			        android:textAllCaps="false"
 			        android:textColor="#333"
 			        android:textSize="24sp"
