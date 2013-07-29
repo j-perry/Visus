@@ -16,7 +16,7 @@
         android:hint="@string/hint_firstname"
         android:textColor="@color/dark_grey"
         android:textSize="36sp"
-        android:textColorHint="#EEE"
+        android:textColorHint="@color/faint_green"
         />
     
     <!-- gender -->
@@ -29,7 +29,7 @@
         android:entries="@array/genders"
         android:textColor="@color/dark_grey"
         android:textSize="36sp"
-        android:textColorHint="#EEE"
+        android:textColorHint="@color/faint_green"
         />
     
     <!-- age --> 
@@ -42,7 +42,7 @@
         android:hint="@string/hint_age"
         android:textColor="@color/dark_grey"
         android:textSize="36sp"
-        android:textColorHint="#EEE"
+        android:textColorHint="@color/faint_green"
         />
     
     <!-- submit -->
@@ -51,10 +51,12 @@
         android:onClick="registerUser"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:padding="5dp"
-        android:background="@color/dark_grey"
-        android:textColor="#FFF"
-        android:textSize="36sp"
+        android:paddingTop="15sp"
+        android:paddingBottom="15sp"
+        android:background="@drawable/new_user_submit_bg"
+        android:textColor="@drawable/new_user_submit_txt"
+        android:textSize="24sp"
+        android:textStyle="bold"
         android:text="@string/register"
         android:gravity="center"
         />

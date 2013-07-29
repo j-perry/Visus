@@ -54,6 +54,8 @@ public final class R {
         public static final int menu_press_txt=0x7f020006;
         public static final int new_session_controls_btn=0x7f020007;
         public static final int new_session_controls_txt=0x7f020008;
+        public static final int new_user_submit_bg=0x7f020009;
+        public static final int new_user_submit_txt=0x7f02000a;
     }
     public static final class id {
         public static final int age=0x7f090005;
