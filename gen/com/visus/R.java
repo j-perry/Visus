@@ -59,6 +59,7 @@ public final class R {
         public static final int new_user_submit_bg=0x7f02000b;
         public static final int new_user_submit_txt=0x7f02000c;
         public static final int test_bg=0x7f02000d;
+        public static final int visus_logo=0x7f02000e;
     }
     public static final class id {
         public static final int age=0x7f090005;

@@ -3,62 +3,99 @@
     android:background="@color/white"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:padding="15dp"
     android:orientation="vertical"
     tools:context=".NewUser">
+    
+    <LinearLayout 
+        android:background="@color/faint_green"
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="7"
+    	android:padding="15dp"
+        >
+        
+        <TextView  
+	    	android:paddingTop="25sp" 
+	    	android:paddingLeft="50sp"
+	    	android:paddingRight="50sp"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	android:gravity="center_horizontal"
+	    	android:layout_gravity="center"
+            android:text="Welcome to Visus"
+            android:textColor="@color/white"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            />
+        
+        <!-- ImageView goes here -->
+        
+    </LinearLayout>
+    
+    <LinearLayout         
+        android:background="@color/white"
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="3"       
+    	android:paddingTop="50sp" 
+    	android:paddingLeft="50sp"
+    	android:paddingRight="50sp"
+        >
 
-    <!-- first name -->
-    <EditText
-        android:id="@+id/first_name"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:layout_marginBottom="30dp"
-        android:hint="@string/hint_firstname"
-        android:textColor="@color/dark_grey"
-        android:textSize="36sp"
-        android:textColorHint="@color/faint_green"
-        />
-    
-    <!-- gender -->
-    <Spinner
-        android:id="@+id/gender"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:layout_marginBottom="30dp"
-        android:prompt="@string/gender_prompt"
-        android:entries="@array/genders"
-        android:textColor="@color/dark_grey"
-        android:textSize="36sp"
-        android:textColorHint="@color/faint_green"
-        />
-    
-    <!-- age --> 
-    <EditText
-        android:id="@+id/age"
-        android:inputType="number"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:layout_marginBottom="30dp"
-        android:hint="@string/hint_age"
-        android:textColor="@color/dark_grey"
-        android:textSize="36sp"
-        android:textColorHint="@color/faint_green"
-        />
-    
-    <!-- submit -->
-    <Button
-        android:id="@+id/register"
-        android:onClick="registerUser"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:paddingTop="15sp"
-        android:paddingBottom="15sp"
-        android:background="@drawable/new_user_submit_bg"
-        android:textColor="@drawable/new_user_submit_txt"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:text="@string/register"
-        android:gravity="center"
-        />
-
+	    <!-- first name -->
+	    <EditText
+	        android:id="@+id/first_name"
+	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:layout_marginBottom="30dp"
+	        android:hint="@string/hint_firstname"
+	        android:textColor="@color/dark_grey"
+	        android:textSize="36sp"
+	        android:textColorHint="@color/dark_grey"
+	        />
+	    
+	    <!-- gender -->
+	    <Spinner
+	        android:id="@+id/gender"
+	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:layout_marginBottom="30dp"
+	        android:prompt="@string/gender_prompt"
+	        android:entries="@array/genders"
+	        android:textColor="@color/dark_grey"
+	        android:textSize="36sp"
+	        />
+	    
+	    <!-- age --> 
+	    <EditText
+	        android:id="@+id/age"
+	        android:inputType="number"
+	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:layout_marginBottom="30dp"
+	        android:hint="@string/hint_age"
+	        android:textColor="@color/dark_grey"
+	        android:textSize="36sp"
+	        android:textColorHint="@color/dark_grey"
+	        />
+	    
+	    <!-- submit -->
+	    <Button
+	        android:id="@+id/register"
+	        android:onClick="registerUser"
+	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:paddingTop="15sp"
+	        android:paddingBottom="15sp"
+	        android:background="@drawable/new_user_submit_bg"
+	        android:textColor="@drawable/new_user_submit_txt"
+	        android:textSize="36sp"
+	        android:text="@string/register"
+	        android:gravity="center"
+	        />
+	    
+	</LinearLayout>
+	    
 </LinearLayout>

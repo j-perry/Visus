@@ -107,7 +107,6 @@
 			        android:textAllCaps="false"
 			        android:textColor="@drawable/main_menu_header_txt"
 			        android:textSize="24sp"
-			        android:onClick="newSession"
 			        />
 		        
 		        <TextView

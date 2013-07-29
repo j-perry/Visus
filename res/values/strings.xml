@@ -18,7 +18,7 @@
     </string-array>
 
     <!-- Menu options -->
-    <string name="title_activity_new_user">Register</string>
+    <string name="title_activity_new_user">Sign Up</string>
     <string name="title_activity_new_session">New</string>
     <string name="title_activity_prev_sessions">Sessions</string>
     <string name="title_activity_view_settings">Settings</string>
@@ -37,7 +37,7 @@
             
 	<string name="gender_prompt">Gender</string>	
 	<string name="hint_age">Age</string>
-	<string name="register">Register</string>
+	<string name="register">Sign Up</string>
     
 	
     <!-- New Session -->
