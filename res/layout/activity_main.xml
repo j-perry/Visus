@@ -69,22 +69,139 @@
 	
 	</LinearLayout>
 	
-    <TextView
-        android:background="@color/mid_grey"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:paddingLeft="75sp"
-        android:paddingTop="20sp"
-        android:paddingBottom="20sp"
-        android:gravity="left"
-        android:text="Last week"
-        android:textAllCaps="false"
-        android:textColor="#333"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        android:onClick="newSession"
-        />
+    <ScrollView
+        android:background="@color/light_grey" 
+	    android:orientation="vertical"
+	    android:paddingLeft="15dp"
+	    android:paddingRight="15dp"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+        >
 	    
+        <!-- scroll view must only have one child element! -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            >
+            
+            <!-- Latest activity -->
+            <LinearLayout
+                android:background="@color/white"
+	            android:orientation="vertical"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+			    android:layout_marginTop="25sp"
+	            >
+	
+	            <!-- header -->
+		        <Button
+			        android:background="@drawable/main_menu_header_bg"
+			        android:layout_height="wrap_content"
+			        android:layout_width="fill_parent"
+			        android:padding="25sp"
+			        android:gravity="left"
+			        android:text="Latest activity"
+		        	android:textStyle="bold"
+			        android:textAllCaps="false"
+			        android:textColor="@drawable/main_menu_header_txt"
+			        android:textSize="24sp"
+			        android:onClick="newSession"
+			        />
+		        
+		        <TextView
+			        android:background="@color/white"
+			        android:layout_height="wrap_content"
+			        android:layout_width="fill_parent"
+			        android:padding="25sp"
+			        android:gravity="left"
+			        android:text="Thursday - x2 Sessions (1 HR)"
+			        android:textAllCaps="false"
+			        android:textColor="#333"
+			        android:textSize="24sp"
+			        />
+		    
+		        <TextView
+			        android:background="@color/white"
+			        android:layout_height="wrap_content"
+			        android:layout_width="fill_parent"
+			        android:padding="25sp"
+			        android:gravity="left"
+			        android:text="Wednesday - x1 Session (30 MINS)"
+			        android:textAllCaps="false"
+			        android:textColor="#333"
+			        android:textSize="24sp"
+			        />
+		        
+		    </LinearLayout>
+		    
+            <!-- Activities -->
+            <LinearLayout
+                android:background="@color/white"
+	            android:orientation="vertical"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+			    android:layout_marginTop="25sp"
+	            >
+	        
+		        <!-- header -->
+		        <Button
+			        android:background="@drawable/main_menu_header_bg"
+			        android:layout_height="wrap_content"
+			        android:layout_width="fill_parent"
+			        android:padding="25sp"
+			        android:gravity="left"
+			        android:text="Activities"
+		        	android:textStyle="bold"
+			        android:textAllCaps="false"
+			        android:textColor="@drawable/main_menu_header_txt"
+			        android:textSize="24sp"
+			        />
+		        
+		        <TextView
+			        android:background="@color/white"
+			        android:layout_height="wrap_content"
+			        android:layout_width="fill_parent"
+			        android:padding="25sp"
+			        android:gravity="left"
+			        android:text="Music"
+			        android:textAllCaps="false"
+			        android:textColor="#333"
+			        android:textSize="24sp"
+			        />
+		        
+		        <TextView
+			        android:background="@color/white"
+			        android:layout_height="wrap_content"
+			        android:layout_width="fill_parent"
+			        android:padding="25sp"
+			        android:gravity="left"
+			        android:text="News"
+			        android:textAllCaps="false"
+			        android:textColor="#333"
+			        android:textSize="24sp"
+			        />
+		        
+		        <TextView
+			        android:background="@color/white"
+			        android:layout_height="wrap_content"
+			        android:layout_width="fill_parent"
+			        android:padding="25sp"
+			        android:gravity="left"
+			        android:text="Gaming"
+			        android:textAllCaps="false"
+			        android:textColor="#333"
+			        android:textSize="24sp"
+			        />
+		        
+			</LinearLayout>
+	        
+	
+		</LinearLayout>
+        
+    </ScrollView>
+	    
+    <!-- 
     <ScrollView
         android:background="@color/white" 
 	    android:orientation="vertical"
@@ -99,10 +216,10 @@
             android:layout_height="wrap_content"
             >
         
-	    <!-- new session button 
+	     new session button 
 	    
 	    	center
-	    -->
+	    
 	    <Button 
 	        android:background="@color/white"
 	        android:layout_height="wrap_content"
@@ -114,10 +231,9 @@
 	        android:textColor="@color/faint_green"
 		    android:textStyle="bold"
 	        android:textSize="48sp"
-	        android:onClick="newSession"
 	        />
 	    
-	    <!-- previous sessions button -->
+	     previous sessions button 
 	    <Button 
 	        android:background="@color/white"
 	        android:layout_height="wrap_content"
@@ -129,10 +245,9 @@
 	        android:textColor="@color/faint_green"
 	        android:textStyle="bold"
 	        android:textSize="48sp"
-	        android:onClick="prevSessions"
 	        />
 	    
-	    <!-- settings button -->
+	     settings button 
 	    <Button 
 	        android:background="@color/white"
 	        android:layout_height="wrap_content"
@@ -144,10 +259,11 @@
 	        android:textColor="@color/faint_green"
 		    android:textStyle="bold"
 	        android:textSize="48sp"
-	        android:onClick="viewSettings"
 	        />
 	    	</LinearLayout>
 	    
 		</ScrollView>
+		
+    	-->
 
 </LinearLayout>
