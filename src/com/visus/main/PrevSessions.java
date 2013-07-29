@@ -15,7 +15,6 @@ public class PrevSessions extends Activity {
 		setContentView(R.layout.activity_prev_sessions);
 		
 		ActionBar ab = getActionBar();
-		ab.setDisplayShowHomeEnabled(false);
 	}
 
 	@Override

@@ -63,7 +63,6 @@ public class NewSession extends Activity {
 		setContentView(R.layout.activity_new_session);
 		
 		ActionBar ab = getActionBar();
-		ab.setDisplayShowHomeEnabled(false);
 		
 		initUIComponents();
 		
