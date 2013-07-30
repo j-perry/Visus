@@ -47,6 +47,18 @@
             android:label="@string/title_activity_prev_sessions" 
             />
         
+        <!-- activities -->
+        <activity
+            android:name="com.visus.main.UserActivities"
+            android:label="@string/title_activities" 
+            />
+        
+        <!-- activity category -->
+        <activity
+            android:name="com.visus.main.UserActivity"
+            android:label="@string/title_activity" 
+            />
+        
         <!-- view settings -->
         <activity
             android:name="com.visus.main.ViewSettings"

@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity" >
     
+    <!-- menu -->
     <LinearLayout
         android:background="@color/white"
         android:layout_width="fill_parent"
@@ -69,6 +70,7 @@
 	
 	</LinearLayout>
 	
+    <!-- posted activity -->
     <ScrollView
         android:background="@color/light_grey" 
 	    android:orientation="vertical"
@@ -109,6 +111,7 @@
 			        android:textSize="24sp"
 			        />
 		        
+		        <!-- template -->
 		        <TextView
 			        android:background="@color/white"
 			        android:layout_height="wrap_content"
@@ -121,6 +124,7 @@
 			        android:textSize="24sp"
 			        />
 		    
+		        <!-- template -->
 		        <TextView
 			        android:background="@color/white"
 			        android:layout_height="wrap_content"
@@ -147,6 +151,7 @@
 	        
 		        <!-- header -->
 		        <Button
+		            android:onClick="viewUserActivities"
 			        android:background="@drawable/main_menu_header_bg"
 			        android:layout_height="wrap_content"
 			        android:layout_width="fill_parent"
@@ -159,7 +164,9 @@
 			        android:textSize="24sp"
 			        />
 		        
-		        <TextView
+		        <!-- template -->
+		        <Button
+		            android:onClick="viewUserActivity"
 			        android:background="@color/white"
 			        android:layout_height="wrap_content"
 			        android:layout_width="fill_parent"
@@ -171,6 +178,7 @@
 			        android:textSize="24sp"
 			        />
 		        
+		        <!-- template -->
 		        <TextView
 			        android:background="@color/white"
 			        android:layout_height="wrap_content"
@@ -183,6 +191,7 @@
 			        android:textSize="24sp"
 			        />
 		        
+		        <!-- template -->
 		        <TextView
 			        android:background="@color/white"
 			        android:layout_height="wrap_content"
@@ -195,6 +204,7 @@
 			        android:textSize="24sp"
 			        />
 		        
+		        <!-- template -->
 		        <TextView
 			        android:background="@color/white"
 			        android:layout_height="wrap_content"
@@ -207,6 +217,7 @@
 			        android:textSize="24sp"
 			        />
 		        
+		        <!-- template -->
 		        <TextView
 			        android:background="@color/white"
 			        android:layout_height="wrap_content"
@@ -225,70 +236,5 @@
 		</LinearLayout>
         
     </ScrollView>
-	    
-    <!-- 
-    <ScrollView
-        android:background="@color/white" 
-	    android:orientation="vertical"
-	    android:padding="0dp"
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-        >
-	    
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            >
-        
-	     new session button 
-	    
-	    	center
-	    
-	    <Button 
-	        android:background="@color/white"
-	        android:layout_height="wrap_content"
-	        android:layout_width="fill_parent"
-	        android:paddingTop="75sp"
-	        android:paddingLeft="75sp"
-	        android:gravity="left"
-	        android:text="4.5 HRS\nx7 SESSIONS"
-	        android:textColor="@color/faint_green"
-		    android:textStyle="bold"
-	        android:textSize="48sp"
-	        />
-	    
-	     previous sessions button 
-	    <Button 
-	        android:background="@color/white"
-	        android:layout_height="wrap_content"
-	        android:layout_width="fill_parent"
-	        android:paddingTop="75sp"
-	        android:paddingLeft="75sp"
-	        android:text="1 HR\nx2 SESSIONS"
-	        android:gravity="left"
-	        android:textColor="@color/faint_green"
-	        android:textStyle="bold"
-	        android:textSize="48sp"
-	        />
-	    
-	     settings button 
-	    <Button 
-	        android:background="@color/white"
-	        android:layout_height="wrap_content"
-	        android:layout_width="fill_parent"
-	        android:paddingTop="75sp"
-	        android:paddingLeft="75sp"
-	        android:text="2 HRS\nx4 SESSIONS"
-	        android:gravity="left"
-	        android:textColor="@color/faint_green"
-		    android:textStyle="bold"
-	        android:textSize="48sp"
-	        />
-	    	</LinearLayout>
-	    
-		</ScrollView>
-		
-    	-->
-
+	
 </LinearLayout>

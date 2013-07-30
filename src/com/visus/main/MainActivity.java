@@ -100,5 +100,23 @@ public class MainActivity extends Activity {
 		Intent intent = new Intent(MainActivity.this, ViewSettings.class);
 		startActivity(intent);
 	}
+	
+	/**
+	 * view latest user activity (category)
+	 * @param view
+	 */
+	public void viewUserActivity(View view) {
+		Intent intent = new Intent(MainActivity.this, UserActivity.class);
+		startActivity(intent);
+	}
+	
+	/**
+	 * view latest user activity (across all categories)
+	 * @param view
+	 */
+	public void viewUserActivities(View view) {
+		Intent intent = new Intent(MainActivity.this, UserActivities.class);
+		startActivity(intent);
+	}
 
 }
