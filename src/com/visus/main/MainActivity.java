@@ -102,14 +102,14 @@ public class MainActivity extends Activity {
 	}
 	
 	/**
-	 * view latest user activity (category)
+	 * view latest user activity (date-filtered)
 	 * @param view
 	 */
 	public void viewUserActivity(View view) {
 		Intent intent = new Intent(MainActivity.this, UserActivity.class);
 		startActivity(intent);
 	}
-	
+		
 	/**
 	 * view latest user activity (across all categories)
 	 * @param view
@@ -119,4 +119,13 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 
+	/**
+	 * view activity category selected
+	 * @param view
+	 */
+	public void viewUserActivityCategory(View view) {
+		Intent intent = new Intent(MainActivity.this, ActivityCategory.class);
+		startActivity(intent);
+	}
+	
 }

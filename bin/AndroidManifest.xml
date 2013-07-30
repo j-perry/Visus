@@ -53,6 +53,12 @@
             android:label="@string/title_activities" 
             />
         
+        <!--  -->
+        <activity
+            android:name="com.visus.main.ActivityCategory"
+            android:label="@string/title_activity_category" 
+            />
+        
         <!-- activity category -->
         <activity
             android:name="com.visus.main.UserActivity"
