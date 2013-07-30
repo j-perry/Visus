@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Visus</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="visus_welcome">Welcome to Visus</string>
     
     <string name="activity_new_session">New Session</string>
     
@@ -23,6 +23,21 @@
     <string name="title_activity_prev_sessions">Sessions</string>
     <string name="title_activity_view_settings">Settings</string>
     <string name="title_activity_user_accounts">User Accounts</string>
+    
+    <!-- Main menu scrollview -->
+    <string name="latest_activity">Latest activity</string>    
+    <!-- temporary -->
+    <string name="session_01">Thursday - x2 Sessions (1 HR)</string>
+    <string name="session_02">Wednesday - x1 Session (30 MINS)</string>
+    
+    
+    <string name="activities">Activities</string>  
+    <!-- temporary -->  
+    <string name="music">Music</string>    
+    <string name="news">News</string>
+    <string name="gaming">Gaming</string>
+    <string name="emails">Emails</string>
+    <string name="reading">Reading</string>
 	
     
     <!-- New User -->

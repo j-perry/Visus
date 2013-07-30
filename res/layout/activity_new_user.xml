@@ -11,22 +11,22 @@
 	    android:orientation="vertical"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:layout_weight="7"
+	    android:layout_weight="2"
     	android:padding="15dp"
         >
         
+        <!-- welcome to visus header -->
         <TextView  
-	    	android:paddingTop="25sp" 
-	    	android:paddingLeft="50sp"
-	    	android:paddingRight="50sp"
+	    	android:paddingTop="60dp" 
+	    	android:paddingLeft="50dp"
+	    	android:paddingRight="50dp"
 	    	android:layout_width="fill_parent"
 	    	android:layout_height="wrap_content"
 	    	android:gravity="center_horizontal"
 	    	android:layout_gravity="center"
-            android:text="Welcome to Visus"
+            android:text="@string/visus_welcome"
             android:textColor="@color/white"
             android:textSize="48sp"
-            android:textStyle="bold"
             />
         
         <!-- ImageView goes here -->
@@ -38,10 +38,10 @@
 	    android:orientation="vertical"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:layout_weight="3"       
-    	android:paddingTop="50sp" 
-    	android:paddingLeft="50sp"
-    	android:paddingRight="50sp"
+	    android:layout_weight="8"       
+    	android:paddingTop="50dp" 
+    	android:paddingLeft="50dp"
+    	android:paddingRight="50dp"
         >
 
 	    <!-- first name -->
@@ -87,8 +87,8 @@
 	        android:onClick="registerUser"
 	        android:layout_height="wrap_content"
 	        android:layout_width="fill_parent"
-	        android:paddingTop="15sp"
-	        android:paddingBottom="15sp"
+	        android:paddingTop="15dp"
+	        android:paddingBottom="15dp"
 	        android:background="@drawable/new_user_submit_bg"
 	        android:textColor="@drawable/new_user_submit_txt"
 	        android:textSize="36sp"
