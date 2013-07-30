@@ -18,6 +18,7 @@ import android.os.SystemClock;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -118,6 +119,24 @@ public class NewSession extends Activity {
 		//getMenuInflater().inflate(R.menu.activity_new_view, menu);
 		return true;
 	}
+	
+	/**
+	 * 
+	 * @param view
+	 */
+//	public void showMinutePickerDialog(View view) {
+//		DialogFragment dfMins = new TimePickerFragment();
+//		dfMins.show(getSupportFragmentManager(), "minutePicker");
+//	}
+	
+	/**
+	 * 
+	 * @param view
+	 */
+//	public void showSecondsPickerDialog(View view) {
+//		DialogFragment dfSeconds = new TimePickerFragment();
+//		dfSecs.show(getSupportFragmentManager(), "secondsPicker");
+//	}
 	
 	/**
 	 * Starts a new session
