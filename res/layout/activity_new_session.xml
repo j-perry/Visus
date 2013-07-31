@@ -14,33 +14,10 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         >
-        
-        <!-- header 
-        <TextView
-            android:id="@+id/new_session"
-            android:layout_width="fill_parent" 
-            android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
-            android:gravity="center_horizontal"
-            android:text="@string/title_new_session"
-            android:textColor="@color/light_green"
-            android:textSize="36sp"
-            /> 
-    	-->
-    
-        <!-- time started
-        <TextView
-            android:id="@+id/clock_time"
-            android:layout_width="fill_parent" 
-            android:layout_height="wrap_content"
-            android:layout_marginTop="215dp"
-            android:gravity="center_horizontal"
-            android:textColor="@color/light_green"
-            android:textSize="24sp"
-            /> 
-            -->
-            
+                   
+        <!-- set session duration -->
         <LinearLayout
+            android:id="@+id/set_session_duration"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="250dp"
@@ -48,6 +25,7 @@
             android:layout_gravity="center_horizontal"
             >
             
+            <!-- minutes -->
             <EditText 
                 android:id="@+id/timer_set_minutes"
                 android:layout_width="wrap_content"
@@ -62,8 +40,8 @@
                 android:textColor="@color/faint_green"
                 />
             
+            <!-- seperator -->
             <TextView
-	            android:id="@+id/t"
 	            android:layout_width="15dp" 
 	            android:layout_height="wrap_content"
 	            android:text=":"
@@ -73,8 +51,9 @@
 	            android:gravity="center"
 	        />
             
+            <!-- minutes -->
             <EditText 
-                android:id="@+id/timer_set_minutes"
+                android:id="@+id/timer_set_seconds"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
             	android:layout_gravity="center_horizontal"
@@ -86,35 +65,13 @@
                 android:textSize="120sp"
                 android:textColor="@color/faint_green"
                 />
-            
-            <!--  
-            <Text 
-                android:id="@+id/timer_set_minutes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="160sp"
-                android:textColor="@color/faint_green"
-                android:text=":"
-                />
-            
-            <EditText 
-                android:id="@+id/timer_set_minutes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="160sp"
-                android:textColor="@color/faint_green"
-                android:hint="ss"
-                />
-            -->
-            
+                                   
         </LinearLayout>    
         
         
         <!-- timer 180sp
         
-        	margin-top: 5dp
+        	 margin-top: 5dp
          -->
         <TextView
             android:id="@+id/timer"
@@ -143,6 +100,7 @@
         <!-- Timer Button -->
         <Button
             android:id="@+id/timer_btn"
+            android:onClick="onStart"
             android:layout_width="fill_parent" 
             android:layout_height="fill_parent"
             android:layout_weight="1"
@@ -153,7 +111,6 @@
             android:textSize="36sp"
             android:textAllCaps="true"
             android:textColor="@drawable/new_session_controls_txt"
-            android:onClick="onStart"
         />
         
         <!-- Timer Button Stop -->

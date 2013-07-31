@@ -9,6 +9,7 @@ import com.visus.R;
 import com.visus.database.SessionHandler;
 import com.visus.database.UserHandler;
 import com.visus.entities.Session;
+import com.visus.entities.TimerConvert;
 import com.visus.entities.User;
 
 import android.os.Bundle;
@@ -25,6 +26,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
@@ -69,7 +72,7 @@ public class NewSession extends Activity {
 		
 		// TODO we'll need to add user selection functionality later!
 		// TODO this is temporary code
-		setDuration();
+//		setDuration();
 										
 		session = new Session();
 		sessionHandler = new SessionHandler(this);
@@ -121,28 +124,45 @@ public class NewSession extends Activity {
 	}
 	
 	/**
+	 * Event handler 
 	 * 
-	 * @param view
-	 */
-//	public void showMinutePickerDialog(View view) {
-//		DialogFragment dfMins = new TimePickerFragment();
-//		dfMins.show(getSupportFragmentManager(), "minutePicker");
-//	}
-	
-	/**
-	 * 
-	 * @param view
-	 */
-//	public void showSecondsPickerDialog(View view) {
-//		DialogFragment dfSeconds = new TimePickerFragment();
-//		dfSecs.show(getSupportFragmentManager(), "secondsPicker");
-//	}
-	
-	/**
 	 * Starts a new session
 	 * @param view
 	 */
 	public void onStart(View view) {
+		// hide the session duration setter layout 
+		LinearLayout sessionDuration = (LinearLayout) findViewById(R.id.set_session_duration);
+		sessionDuration.setVisibility(View.GONE);
+		
+		// display the timer
+		TextView timer = (TextView) findViewById(R.id.timer);
+		timer.setVisibility(View.VISIBLE);
+		
+		EditText etMins = (EditText) findViewById(R.id.timer_set_minutes);
+		EditText etSecs = (EditText) findViewById(R.id.timer_set_seconds);
+		
+		// NB: 'i' denotes input
+		int iMins = 0;
+		int iSecs = 0;		
+		
+		// minutes
+		if(etMins.getText().toString() == null) {
+			
+		} else {
+			iMins = Integer.parseInt(etMins.getText().toString() );
+		}
+		
+		// seconds
+		if(etSecs.getText() == null) {
+			
+		} else {
+			iSecs = Integer.parseInt(etSecs.getText().toString() );
+		}
+		
+		// convert inputed session duration into milliseconds
+		setDuration(iMins, iSecs);
+		
+		
 		timerHandler = new Handler();
 		
 		String day = new SimpleDateFormat("EEEE").format(new Date() );
@@ -209,10 +229,21 @@ public class NewSession extends Activity {
 //		startActivity(intent);
 	}	
 	
-	private void setDuration() {
-		durationMilli = 1800000;
+	/**
+	 * Sets the session duration and converts inputed 
+	 * minutes and seconds into milliseconds
+	 */
+	private void setDuration(int minutes, int seconds) {
+		TimerConvert convert = new TimerConvert();
+		
+		//durationMilli = 1800000; // TODO 30 mins
+		this.durationMilli = convert.minutesAndSecondsToMilliseconds(minutes, seconds);
 	}
 	
+	/**
+	 * Gets the session duration
+	 * @return
+	 */
 	private int getDuration() {
 		return durationMilli;
 	}
@@ -281,9 +312,13 @@ public class NewSession extends Activity {
 		}
 	};
 	
+	/**
+	 * 
+	 */
 	private void updateTimer() {
+		// get milliseconds
 		int millisecs = getDuration();
-						
+		
 		sessionTimer = new CountDownTimer(millisecs, 1000) {
 			
 			private String minutes;
