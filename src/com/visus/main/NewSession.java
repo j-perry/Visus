@@ -143,21 +143,59 @@ public class NewSession extends Activity {
 		
 		// NB: 'i' denotes input
 		int iMins = 0;
-		int iSecs = 0;		
+		int iSecs = 0;
 		
-		// minutes
-		if(etMins.getText().toString() == null) {
+		// if both fields are empty
+		if( (etMins.getText().toString().isEmpty() ) && 
+		    (etSecs.getText().toString().isEmpty() )) {
 			
-		} else {
-			iMins = Integer.parseInt(etMins.getText().toString() );
 		}
-		
-		// seconds
-		if(etSecs.getText() == null) {
+		// if minutes field is empty
+		// and seconds field is not empty
+		else if( (etMins.getText().toString().isEmpty()) && 
+				 ( !etSecs.getText().toString().isEmpty() )) {
 			
-		} else {
-			iSecs = Integer.parseInt(etSecs.getText().toString() );
+			// append two noughts
+			iMins = 00;
+			iSecs = Integer.parseInt( etSecs.getText().toString() );
 		}
+		// if minutes field is not empty
+		// and seconds field is empty
+		else if( ( !etMins.getText().toString().isEmpty() ) &&
+				 (etSecs.getText().toString().isEmpty()) ) {
+			
+			iMins = Integer.parseInt( etMins.getText().toString() );
+			
+			// append two noughts
+			iSecs = 00;
+		}
+		// if both fields are not empty
+		else {
+			// if the length of the input is 1 - i.e., min = 1
+			if(etMins.getText().toString().length() == 1) {
+				// and the number is less than 10 mins
+				if(Integer.parseInt( etMins.getText().toString()) < 10) {
+					// append a nought to mins
+					iMins = 0;
+					iMins += Integer.parseInt(etMins.getText().toString() );
+				}
+			}
+			else {
+				iMins = Integer.parseInt(etMins.getText().toString() );
+			}
+			
+			// repeat (for seconds)...
+			if(etSecs.getText().toString().length() == 1) {
+				// and the number is less than 10 secs		
+				if(Integer.parseInt( etSecs.getText().toString()) < 10) {
+					iSecs = 0;
+					iSecs += Integer.parseInt(etSecs.getText().toString() );
+				}
+			} else {
+				iSecs = Integer.parseInt(etSecs.getText().toString() );
+			}
+		}
+			
 		
 		// convert inputed session duration into milliseconds
 		setDuration(iMins, iSecs);
@@ -236,7 +274,6 @@ public class NewSession extends Activity {
 	private void setDuration(int minutes, int seconds) {
 		TimerConvert convert = new TimerConvert();
 		
-		//durationMilli = 1800000; // TODO 30 mins
 		this.durationMilli = convert.minutesAndSecondsToMilliseconds(minutes, seconds);
 	}
 	
