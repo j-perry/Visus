@@ -29,6 +29,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Creates a new session
@@ -132,12 +133,19 @@ public class NewSession extends Activity {
 	public void onStart(View view) {
 		// hide the session duration setter layout 
 		LinearLayout sessionDuration = (LinearLayout) findViewById(R.id.set_session_duration);
-		sessionDuration.setVisibility(View.GONE);
+		sessionDuration.setVisibility(View.GONE);		
+
+		timerHandler = new Handler();
+		
+		String strFormatDay = "EEEE";
+		String strFormatMonth = "MMMM";
+		String strFormatYear = "yyyy";
 		
 		// display the timer
 		TextView timer = (TextView) findViewById(R.id.timer);
 		timer.setVisibility(View.VISIBLE);
 		
+		// find EditText fields for value retrieval
 		EditText etMins = (EditText) findViewById(R.id.timer_set_minutes);
 		EditText etSecs = (EditText) findViewById(R.id.timer_set_seconds);
 		
@@ -146,8 +154,18 @@ public class NewSession extends Activity {
 		int iSecs = 0;
 		
 		// if both fields are empty
-		if( (etMins.getText().toString().isEmpty() ) && 
+		if( (etMins.getText().toString().isEmpty() ) &&
 		    (etSecs.getText().toString().isEmpty() )) {
+			
+			String msg = "Enter at least one value\nin either of the input fields";
+			
+			// inform the user they are both empty ...
+			Toast.makeText(getApplicationContext(), 
+					       msg,
+					       Toast.LENGTH_SHORT).show();
+			
+			// ... and delay the start time
+			timerHandler.removeCallbacks(runUpdateTimer);
 			
 		}
 		// if minutes field is empty
@@ -173,9 +191,9 @@ public class NewSession extends Activity {
 		else {
 			// if the length of the input is 1 - i.e., min = 1
 			if(etMins.getText().toString().length() == 1) {
-				// and the number is less than 10 mins
+				// and the number is less than 10 minutes
 				if(Integer.parseInt( etMins.getText().toString()) < 10) {
-					// append a nought to mins
+					// append a nought to minutes
 					iMins = 0;
 					iMins += Integer.parseInt(etMins.getText().toString() );
 				}
@@ -186,7 +204,7 @@ public class NewSession extends Activity {
 			
 			// repeat (for seconds)...
 			if(etSecs.getText().toString().length() == 1) {
-				// and the number is less than 10 secs		
+				// and the number is less than 10 seconds		
 				if(Integer.parseInt( etSecs.getText().toString()) < 10) {
 					iSecs = 0;
 					iSecs += Integer.parseInt(etSecs.getText().toString() );
@@ -200,12 +218,10 @@ public class NewSession extends Activity {
 		// convert inputed session duration into milliseconds
 		setDuration(iMins, iSecs);
 		
-		
-		timerHandler = new Handler();
-		
-		String day = new SimpleDateFormat("EEEE").format(new Date() );
-		String month = new SimpleDateFormat("MMMM").format(new Date() );
-		String year = new SimpleDateFormat("yyyy").format(new Date() );
+		// 
+		String day = new SimpleDateFormat(strFormatDay).format(new Date() );
+		String month = new SimpleDateFormat(strFormatMonth).format(new Date() );
+		String year = new SimpleDateFormat(strFormatYear).format(new Date() );
 		
 		Log.e("Visus", day + " " + month + " " + year);
 		
@@ -356,6 +372,7 @@ public class NewSession extends Activity {
 		// get milliseconds
 		int millisecs = getDuration();
 		
+		// THE countdown timer
 		sessionTimer = new CountDownTimer(millisecs, 1000) {
 			
 			private String minutes;
@@ -365,13 +382,23 @@ public class NewSession extends Activity {
 				
 				minutes = String.valueOf( ((millisUntilFinished / (1000 * 60)) % 60) );
 				seconds = String.valueOf( (millisUntilFinished / 1000) % 60 );
-								
-				if(Integer.parseInt(seconds) < 10)
-					seconds = "0" + seconds;
 				
-				if(Integer.parseInt(minutes) < 10)
-					minutes = "0" + minutes;
-		
+				// if the timer has ended
+				if((Integer.parseInt(minutes) == 00) &&
+				   (Integer.parseInt(seconds) == 00)) {
+					
+					// go to the user's previous sessions
+					Intent intent = new Intent(NewSession.this, PrevSessions.class);
+					startActivity(intent);
+				}
+				else {
+					if(Integer.parseInt(minutes) < 10)
+						minutes = "0" + minutes;
+					
+					if(Integer.parseInt(seconds) < 10)
+						seconds = "0" + seconds;
+				}
+						
 			    timer.setText(minutes + ":" + seconds);
 		    }
 
