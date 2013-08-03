@@ -1,16 +1,20 @@
 package com.visus.main;
 
 import com.visus.R;
-import com.visus.database.UserHandler;
-import com.visus.entities.User;
+import com.visus.database.*;
+import com.visus.entities.*;
 
 import android.os.Bundle;
-import android.app.ActionBar;
-import android.app.Activity;
+import android.app.*;
 import android.content.Intent;
 import android.util.Log;
 import android.view.*;
 
+/**
+ * Main entry point of the app
+ * @author Jonathan Perry
+ *
+ */
 public class MainActivity extends Activity {
 	
 	private User user = null;
@@ -21,9 +25,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		dbUser = new UserHandler(this);
-		
-		ActionBar ab = getActionBar();
-		
+				
 		setContentView(R.layout.activity_main);
 	}
 

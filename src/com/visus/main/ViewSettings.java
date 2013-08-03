@@ -1,16 +1,20 @@
 package com.visus.main;
 
 import com.visus.R;
-import com.visus.database.UserHandler;
-import com.visus.entities.User;
+import com.visus.database.*;
+import com.visus.entities.*;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
-import android.view.Menu;
-import android.view.View;
+import android.view.*;
 
+/**
+ * Enables the user to configure the apps settings
+ * @author Jonathan Perry
+ *
+ */
 public class ViewSettings extends Activity {
 
 	private User user = null;
