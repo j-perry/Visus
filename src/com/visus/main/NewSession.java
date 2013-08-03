@@ -53,6 +53,8 @@ public class NewSession extends Activity {
 	
 	private int [] sessionDuration;
 	private int durationMilli;
+	
+	private String type;
 				
 	private long TIMER_DURATION; // minutes
 	
@@ -148,6 +150,14 @@ public class NewSession extends Activity {
 		// find EditText fields for value retrieval
 		EditText etMins = (EditText) findViewById(R.id.timer_set_minutes);
 		EditText etSecs = (EditText) findViewById(R.id.timer_set_seconds);
+		
+		// get the session type
+		EditText sessionType = (EditText) findViewById(R.id.session_type);
+		this.type = sessionType.getText().toString();
+		
+		// hide the session view
+		sessionType.setVisibility(View.GONE);
+		
 		
 		// NB: 'i' denotes input
 		int iMins = 0;
@@ -269,12 +279,13 @@ public class NewSession extends Activity {
 	 */
 	public void onEnd(View view) {
 		timerHandler.removeCallbacks(runUpdateTimer);
-				
+								
 //		sessionDuration[0] = ((getDuration() / (1000 * 60)) % 60);	// minutes
 //		sessionDuration[1] = ((getDuration() / 1000) % 60);			// seconds
 				
 		session.setUserId(activeUserId);
 		session.setDuration(30, 00); // TODO validation test
+		session.setType(type);
 		
 		// write session to db
 		sessionHandler.add(session);

@@ -24,6 +24,7 @@ public class SessionHandler extends SQLiteOpenHelper {
 	private final static String KEY_DATE = "Date";
 	private final static String KEY_TIME = "Time";
 	private final static String KEY_DURATION = "Duration";
+	private final static String KEY_TYPE = "Type";
 	
 	public SessionHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -38,6 +39,7 @@ public class SessionHandler extends SQLiteOpenHelper {
 				                     	KEY_DATE + " TEXT, " +
 				                        KEY_TIME + " TEXT, " +
 				                        KEY_DURATION + " TEXT" +
+				                        KEY_TYPE + " TEXT" +
 				                     " )";
 		db.execSQL(createSessionsTable);		
 	}
@@ -59,6 +61,7 @@ public class SessionHandler extends SQLiteOpenHelper {
 		sessionValues.put(KEY_DATE, session.getDate());
 		sessionValues.put(KEY_TIME, session.getTime());
 		sessionValues.put(KEY_DURATION, session.getDuration());
+		sessionValues.put(KEY_TYPE, session.getType());
 		
 		db.insert(TABLE_SESSIONS, null, sessionValues);
 		Log.e("Visus", "New session added");

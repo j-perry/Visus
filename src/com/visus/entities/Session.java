@@ -9,6 +9,7 @@ public class Session {
 	private StringBuilder duration;
 	private StringBuilder time;
 	private StringBuilder date;
+	private String type;
 	
 	private int userId;
 		
@@ -125,5 +126,21 @@ public class Session {
 	 */
 	public String getDate() {
 		return date.toString();
+	}
+	
+	/**
+	 * Set's the session type - e.g., Email, News, Gaming...
+	 * @param type
+	 */
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	/**
+	 * Gets the session type
+	 * @return
+	 */
+	public String getType() {
+		return type;
 	}
 }

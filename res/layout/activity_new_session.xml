@@ -20,7 +20,7 @@
             android:id="@+id/set_session_duration"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="250dp"
+            android:layout_marginTop="230dp"
             android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal"
             >
@@ -70,6 +70,21 @@
                                    
         </LinearLayout>    
         
+        <!-- Session type - e.g., Email, Gaming, etc. -->
+        <EditText 
+                android:id="@+id/session_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+            	android:layout_gravity="center_horizontal"
+            	android:gravity="center"
+                android:hint="#activity"
+                android:inputType="textCapSentences"
+            	android:maxLength="15"
+            	android:singleLine="true"
+                android:textColorHint="@color/faint_green"
+                android:textSize="30sp"
+                android:textColor="@color/faint_green"
+                />
         
         <!-- timer 180sp
         
