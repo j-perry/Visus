@@ -8,9 +8,14 @@ import android.content.Intent;
 import android.view.*;
 import android.widget.*;
 
-import com.visus.database.UserHandler;
+import com.visus.database.*;
 import com.visus.entities.*;
 
+/**
+ * Registers a new user
+ * @author Jonathan Perry
+ *
+ */
 public class NewUser extends Activity {
 
 	@Override

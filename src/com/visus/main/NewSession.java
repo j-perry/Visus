@@ -2,34 +2,19 @@ package com.visus.main;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Timer;
-import java.util.concurrent.TimeUnit;
 
 import com.visus.R;
-import com.visus.database.SessionHandler;
-import com.visus.database.UserHandler;
-import com.visus.entities.Session;
-import com.visus.entities.TimerConvert;
-import com.visus.entities.User;
+import com.visus.database.*;
+import com.visus.entities.*;
 
-import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.os.Handler;
-import android.os.SystemClock;
+import android.os.*;
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.app.Activity;
-import android.app.DialogFragment;
+import android.app.*;
 import android.content.Intent;
 import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.*;
+import android.widget.*;
 
 /**
  * Creates a new session
@@ -39,10 +24,18 @@ import android.widget.Toast;
 @SuppressLint("SimpleDateFormat")
 public class NewSession extends Activity {
 			
+	/*
+	 * Entities
+	 */
 	private Session session;
+	
+	/*
+	 * Controllers
+	 */
 	private SessionHandler sessionHandler;
 	private UserHandler userHandler;
 	
+	// stores the active user's id
 	private int activeUserId;
 	
 	private Handler timeHandler, 
@@ -50,15 +43,16 @@ public class NewSession extends Activity {
 	
 	private boolean terminateCount = false;
 	private int timerCount = 0;
-	
-	private int [] sessionDuration;
-	private int durationMilli;
-	
+		
+	// session type - i.e., Email, Gaming, News, etc.
 	private String type;
-				
-	private long TIMER_DURATION; // minutes
+
+	// used to store and manipulate the session duration
+	private int durationMilliseconds;			
+	private int durationMinutes;
+	private int durationSeconds;
 	
-	// ui components
+	// UI components
 	private TextView clockTime, timer;
 	private Button startTimerBtn, stopTimerBtn;
 	
@@ -68,9 +62,7 @@ public class NewSession extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_session);
-		
-		ActionBar ab = getActionBar();
-		
+				
 		initUIComponents();
 		
 		// TODO we'll need to add user selection functionality later!
@@ -133,16 +125,21 @@ public class NewSession extends Activity {
 	 * @param view
 	 */
 	public void onStart(View view) {
-		// hide the session duration setter layout 
-		LinearLayout sessionDuration = (LinearLayout) findViewById(R.id.set_session_duration);
-		sessionDuration.setVisibility(View.GONE);		
-
-		timerHandler = new Handler();
+		timerHandler = new Handler();	
 		
+		// date formats
 		String strFormatDay = "EEEE";
 		String strFormatMonth = "MMMM";
 		String strFormatYear = "yyyy";
 		
+		// used to store user input for setting session duration 
+		int iMins = 0;
+		int iSecs = 0;
+				
+		// hide the session duration setter layout 
+		LinearLayout sessionDuration = (LinearLayout) findViewById(R.id.set_session_duration);
+		sessionDuration.setVisibility(View.GONE);
+				
 		// display the timer
 		TextView timer = (TextView) findViewById(R.id.timer);
 		timer.setVisibility(View.VISIBLE);
@@ -157,12 +154,7 @@ public class NewSession extends Activity {
 		
 		// hide the session view
 		sessionType.setVisibility(View.GONE);
-		
-		
-		// NB: 'i' denotes input
-		int iMins = 0;
-		int iSecs = 0;
-		
+				
 		// if both fields are empty
 		if( (etMins.getText().toString().isEmpty() ) &&
 		    (etSecs.getText().toString().isEmpty() )) {
@@ -219,25 +211,32 @@ public class NewSession extends Activity {
 					iSecs = 0;
 					iSecs += Integer.parseInt(etSecs.getText().toString() );
 				}
-			} else {
+			} 
+			else {
 				iSecs = Integer.parseInt(etSecs.getText().toString() );
 			}
 		}
 			
 		
-		// convert inputed session duration into milliseconds
+		// convert inputted session duration into milliseconds
 		setDuration(iMins, iSecs);
 		
-		// 
+		// assign session duration to global variable
+		this.durationMinutes = iMins;
+		this.durationSeconds = iSecs;
+		
+		// get the session date
 		String day = new SimpleDateFormat(strFormatDay).format(new Date() );
 		String month = new SimpleDateFormat(strFormatMonth).format(new Date() );
 		String year = new SimpleDateFormat(strFormatYear).format(new Date() );
 		
 		Log.e("Visus", day + " " + month + " " + year);
 		
+		// remove callback to timer handler
 		timerHandler.removeCallbacks(runUpdateTimer);				
 		timerHandler.postDelayed(runUpdateTimer, 0);
 		
+		// initialise the session date
 		session.setDate(day,	// day - e.g., Thursday
 		                month,	// month - e.g., April
 		                year);	// year - e.g., 2013
@@ -245,17 +244,25 @@ public class NewSession extends Activity {
 		// calendar date
 		Log.e("Visus", "Set date: " + session.getDate());
 		
+		// get the session time
 		String hour = new SimpleDateFormat("hh").format(new Date() );
 		String minutes = new SimpleDateFormat("mm").format(new Date() );
 		String seconds =  new SimpleDateFormat("ss").format(new Date() );
 		
+		// validation for hour
 		if(Integer.parseInt(hour) < 10)
 			hour = "0" + hour;
+		
+		// .. minutes
 		if(Integer.parseInt(minutes) < 10)
 			minutes = "0" + minutes;
+		
+		// .. seconds
 		if(Integer.parseInt(seconds) < 10) 
 			seconds = "0" + seconds;		
 		
+		
+		// initialise the session time
 		session.setTime(Integer.parseInt(hour),		// hour
 						Integer.parseInt(minutes), 	// minutes
 						Integer.parseInt(seconds));	// seconds
@@ -265,11 +272,10 @@ public class NewSession extends Activity {
 	}
 	
 	/**
-	 * Pauses the session
+	 * Pauses the session timer
 	 * @param view
 	 */
 	public void onPause(View view) {
-		// pause the timer
 		timerHandler.removeCallbacks(runUpdateTimer);
 	}
 	
@@ -284,7 +290,7 @@ public class NewSession extends Activity {
 //		sessionDuration[1] = ((getDuration() / 1000) % 60);			// seconds
 				
 		session.setUserId(activeUserId);
-		session.setDuration(30, 00); // TODO validation test
+		session.setDuration(durationMinutes, durationSeconds); // TODO validation test
 		session.setType(type);
 		
 		// write session to db
@@ -301,7 +307,7 @@ public class NewSession extends Activity {
 	private void setDuration(int minutes, int seconds) {
 		TimerConvert convert = new TimerConvert();
 		
-		this.durationMilli = convert.minutesAndSecondsToMilliseconds(minutes, seconds);
+		this.durationMilliseconds = convert.minutesAndSecondsToMilliseconds(minutes, seconds);
 	}
 	
 	/**
@@ -309,7 +315,7 @@ public class NewSession extends Activity {
 	 * @return
 	 */
 	private int getDuration() {
-		return durationMilli;
+		return durationMilliseconds;
 	}
 	
 	/**
@@ -377,7 +383,7 @@ public class NewSession extends Activity {
 	};
 	
 	/**
-	 * 
+	 * Updates the timer TextView display from the timer handler
 	 */
 	private void updateTimer() {
 		// get milliseconds
@@ -410,14 +416,17 @@ public class NewSession extends Activity {
 						seconds = "0" + seconds;
 				}
 						
+				// display the updated timer
 			    timer.setText(minutes + ":" + seconds);
 		    }
 
 		    public void onFinish() {
+		    	// when the timer has finished...
 		        timer.setText("00:00");
 		    }
 		};
 		
+		// starts the timer
 		sessionTimer.start();		
 	}
 	
