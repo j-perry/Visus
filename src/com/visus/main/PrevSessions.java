@@ -7,11 +7,6 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.view.Menu;
 
-/**
- * Enables the user to view previous sessions
- * @author Jonathan Perry
- *
- */
 public class PrevSessions extends Activity {
 
 	@Override
