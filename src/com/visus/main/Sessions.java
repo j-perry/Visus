@@ -12,12 +12,12 @@ import android.view.Menu;
  * @author Jonathan Perry
  *
  */
-public class PrevSessions extends Activity {
+public class Sessions extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_prev_sessions);
+		setContentView(R.layout.activity_sessions);
 		
 		ActionBar ab = getActionBar();
 	}

@@ -10,7 +10,7 @@ import android.os.Bundle;
  * @author Jonathan Perry
  *
  */
-public class UserActivities extends Activity  {
+public class Activities extends Activity  {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

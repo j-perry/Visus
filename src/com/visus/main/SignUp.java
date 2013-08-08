@@ -16,12 +16,12 @@ import com.visus.entities.*;
  * @author Jonathan Perry
  *
  */
-public class NewUser extends Activity {
+public class SignUp extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_new_user);
+		setContentView(R.layout.activity_sign_up);
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class NewUser extends Activity {
 		dbUser.addUser(user);		
 		
 		// display the main menu
-		Intent intent = new Intent(NewUser.this, MainActivity.class);
+		Intent intent = new Intent(SignUp.this, MainActivity.class);
 		startActivity(intent);
 	}
 

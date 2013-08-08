@@ -31,7 +31,7 @@
         
         <!-- new user -->
         <activity 
-            android:name="com.visus.main.NewUser"
+            android:name="com.visus.main.SignUp"
             android:label="@string/title_activity_new_user" 
             />
                 
@@ -43,13 +43,13 @@
                 
         <!-- previous sessions -->
         <activity
-            android:name="com.visus.main.PrevSessions"
+            android:name="com.visus.main.Sessions"
             android:label="@string/title_activity_prev_sessions" 
             />
         
         <!-- activities -->
         <activity
-            android:name="com.visus.main.UserActivities"
+            android:name="com.visus.main.Activities"
             android:label="@string/title_activities" 
             />
         
@@ -67,7 +67,7 @@
         
         <!-- view settings -->
         <activity
-            android:name="com.visus.main.ViewSettings"
+            android:name="com.visus.main.Settings"
             android:label="@string/title_activity_view_settings"
             />
         

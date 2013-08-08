@@ -52,6 +52,9 @@ public class NewSession extends Activity {
 	private int durationMinutes;
 	private int durationSeconds;
 	
+	private int minutesRemaining;
+	private int secondsRemaining;
+	
 	// UI components
 	private TextView clockTime, timer;
 	private Button startTimerBtn, stopTimerBtn;
@@ -64,11 +67,7 @@ public class NewSession extends Activity {
 		setContentView(R.layout.activity_new_session);
 				
 		initUIComponents();
-		
-		// TODO we'll need to add user selection functionality later!
-		// TODO this is temporary code
-//		setDuration();
-										
+												
 		session = new Session();
 		sessionHandler = new SessionHandler(this);
 		
@@ -105,12 +104,14 @@ public class NewSession extends Activity {
 	 * Initialise all UI components
 	 */
 	private void initUIComponents() {
-		//clockTime = (TextView) findViewById(R.id.clock_time);
 		timer = (TextView) findViewById(R.id.timer);
 		startTimerBtn = (Button) findViewById(R.id.timer_btn);
 		stopTimerBtn = (Button) findViewById(R.id.timer_stop_btn);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -151,6 +152,7 @@ public class NewSession extends Activity {
 		// get the session type
 		EditText sessionType = (EditText) findViewById(R.id.session_type);
 		this.type = sessionType.getText().toString();
+		Log.e("Visus", this.type);
 		
 		// hide the session view
 		sessionType.setVisibility(View.GONE);
@@ -288,16 +290,51 @@ public class NewSession extends Activity {
 								
 //		sessionDuration[0] = ((getDuration() / (1000 * 60)) % 60);	// minutes
 //		sessionDuration[1] = ((getDuration() / 1000) % 60);			// seconds
+		
+//		TODO		
+		int remainingMins = getTimeRemainingMinutes();
+		int remainingSecs = getTimeRemainingSeconds();
+		
+		if((remainingMins == 0) && (remainingSecs == 0)) {
+			Log.e("Visus", "Empty time remaining fields");
+		}
+		else {
+			Log.e("Visus", "Time left: " + remainingMins + ":" + remainingSecs);
+		}
+		
+		int sessionMins = durationMinutes - remainingMins;
+		int sessionSecs;
+		
+		// TODO
+		// 30 secs is less than 50 secs
+		if(durationSeconds < remainingSecs) {
+			// store whatever's left over in seconds
+			int tempSecs = durationSeconds - remainingSecs;
+			remainingSecs = 0;
+			
+			// reduce no. of minutes
+			remainingMins -= -1;
+			sessionSecs = (60 - tempSecs);			
+		}
+		else {
+			sessionSecs = durationSeconds - remainingSecs;
+		}
 				
 		session.setUserId(activeUserId);
-		session.setDuration(durationMinutes, durationSeconds); // TODO validation test
+		session.setDuration(sessionMins, sessionSecs); // TODO validation test
 		session.setType(type);
+		
+		// output contents of the session to be written to the db
+		Log.e("Visus", "Session date: " + session.getDate());
+		Log.e("Visus", "Session duration: " + session.getDuration());
+		Log.e("Visus", "Session time: " + session.getTime());
+		Log.e("Visus", "Session type: " + session.getType()); // i.e., email
 		
 		// write session to db
 		sessionHandler.add(session);
 		
-//		Intent intent = new Intent(NewSession.this, PrevSessions.class);
-//		startActivity(intent);
+		Intent intent = new Intent(NewSession.this, Sessions.class);
+		startActivity(intent);
 	}	
 	
 	/**
@@ -381,6 +418,22 @@ public class NewSession extends Activity {
 	        updateTimer();
 		}
 	};
+			
+	private void setTimeRemainingMinutes(int minutes) {
+		this.minutesRemaining = minutes;
+	}
+	
+	private int getTimeRemainingMinutes() {
+		return minutesRemaining;
+	}
+	
+	private void setTimeRemainingSeconds(int seconds) {
+		this.secondsRemaining = seconds;
+	}
+	
+	private int getTimeRemainingSeconds() {
+		return secondsRemaining;
+	}
 	
 	/**
 	 * Updates the timer TextView display from the timer handler
@@ -405,7 +458,8 @@ public class NewSession extends Activity {
 				   (Integer.parseInt(seconds) == 00)) {
 					
 					// go to the user's previous sessions
-					Intent intent = new Intent(NewSession.this, PrevSessions.class);
+					// TODO
+					Intent intent = new Intent(NewSession.this, Sessions.class);
 					startActivity(intent);
 				}
 				else {
@@ -414,10 +468,13 @@ public class NewSession extends Activity {
 					
 					if(Integer.parseInt(seconds) < 10)
 						seconds = "0" + seconds;
-				}
-						
+				}										
 				// display the updated timer
-			    timer.setText(minutes + ":" + seconds);
+			    timer.setText(minutes + ":" + seconds);			    
+			    
+				// update in case the user stops the clock
+				setTimeRemainingMinutes( Integer.parseInt(minutes) );
+				setTimeRemainingSeconds( Integer.parseInt(seconds) );
 		    }
 
 		    public void onFinish() {
@@ -429,5 +486,5 @@ public class NewSession extends Activity {
 		// starts the timer
 		sessionTimer.start();		
 	}
-	
+		
 }

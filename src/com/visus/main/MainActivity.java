@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
 		
 		if(user == null) {
 			Log.e("Visus", "No user active");
-			Intent intent = new Intent(MainActivity.this, NewUser.class);
+			Intent intent = new Intent(MainActivity.this, SignUp.class);
 			startActivity(intent);
 		}		
 	}
@@ -90,7 +90,7 @@ public class MainActivity extends Activity {
 	 * @param view
 	 */
 	public void prevSessions(View view) {
-		Intent intent = new Intent(MainActivity.this, PrevSessions.class);
+		Intent intent = new Intent(MainActivity.this, Sessions.class);
 		startActivity(intent);
 	}
 	
@@ -99,7 +99,7 @@ public class MainActivity extends Activity {
 	 * @param view
 	 */
 	public void viewSettings(View view) {
-		Intent intent = new Intent(MainActivity.this, ViewSettings.class);
+		Intent intent = new Intent(MainActivity.this, Settings.class);
 		startActivity(intent);
 	}
 	
@@ -117,7 +117,7 @@ public class MainActivity extends Activity {
 	 * @param view
 	 */
 	public void viewUserActivities(View view) {
-		Intent intent = new Intent(MainActivity.this, UserActivities.class);
+		Intent intent = new Intent(MainActivity.this, Activities.class);
 		startActivity(intent);
 	}
 

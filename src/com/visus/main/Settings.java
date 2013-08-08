@@ -15,7 +15,7 @@ import android.view.*;
  * @author Jonathan Perry
  *
  */
-public class ViewSettings extends Activity {
+public class Settings extends Activity {
 
 	private User user = null;
 	private UserHandler dbUser;
@@ -23,7 +23,7 @@ public class ViewSettings extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_view_settings);
+		setContentView(R.layout.activity_settings);
 		
 		dbUser = new UserHandler(this);
 	}

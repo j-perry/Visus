@@ -61,17 +61,17 @@ public final class R {
         public static final int test_bg=0x7f02000d;
     }
     public static final class id {
-        public static final int age=0x7f090009;
-        public static final int delete_account=0x7f09000c;
-        public static final int first_name=0x7f090007;
-        public static final int gender=0x7f090008;
+        public static final int age=0x7f09000b;
+        public static final int delete_account=0x7f090008;
+        public static final int first_name=0x7f090009;
+        public static final int gender=0x7f09000a;
         public static final int menu_about=0x7f09000d;
         public static final int menu_account=0x7f09000f;
         public static final int menu_sessions=0x7f09000e;
         public static final int menu_settings=0x7f090010;
         public static final int new_session_menu=0x7f090011;
-        public static final int no_sessions=0x7f09000b;
-        public static final int register=0x7f09000a;
+        public static final int no_sessions=0x7f090007;
+        public static final int register=0x7f09000c;
         public static final int session_type=0x7f090003;
         public static final int set_session_duration=0x7f090000;
         public static final int timer=0x7f090004;
@@ -85,10 +85,10 @@ public final class R {
         public static final int activity_category=0x7f030001;
         public static final int activity_main=0x7f030002;
         public static final int activity_new_session=0x7f030003;
-        public static final int activity_new_user=0x7f030004;
-        public static final int activity_prev_sessions=0x7f030005;
-        public static final int activity_user_accounts=0x7f030006;
-        public static final int activity_view_settings=0x7f030007;
+        public static final int activity_sessions=0x7f030004;
+        public static final int activity_settings=0x7f030005;
+        public static final int activity_sign_up=0x7f030006;
+        public static final int activity_user_accounts=0x7f030007;
         public static final int latest_activity=0x7f030008;
     }
     public static final class menu {
