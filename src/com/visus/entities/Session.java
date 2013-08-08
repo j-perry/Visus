@@ -9,33 +9,37 @@ public class Session {
 	private StringBuilder duration;
 	private StringBuilder time;
 	private StringBuilder date;
+	private String dayNo;
+	private String day;
+	private String month;	
+	private String year;
 	private String type;
 	
 	private int userId;
 		
 	private final static String [] days = {
-		"Saturday", 
-	    "Sunday", 
-	    "Monday", 
-		"Tuesday", 
-		"Wednesday", 
-		"Thursday", 
-		"Friday" 
+		"Sat", 
+	    "Sun", 
+	    "Mon", 
+		"Tues", 
+		"Wed", 
+		"Thu", 
+		"Fri" 
 	};
 	
 	private final static String [] months = {
-		"January",
-		"February",
-		"March",
-		"April",
+		"Jan",
+		"Feb",
+		"Mar",
+		"Apr",
 		"May",
-		"June",
-		"July",
-		"August",
-		"September",
-		"October",
-		"November",
-		"December"
+		"Jun",
+		"Jul",
+		"Aug",
+		"Sept",
+		"Oct",
+		"Nov",
+		"Dec"
 	};
 	
 	
@@ -76,10 +80,10 @@ public class Session {
 	 * @param minutes
 	 * @param seconds
 	 */
-	public void setTime(int hour, int minutes, int seconds) {
-		this.time = new StringBuilder(String.valueOf(hour) + ":");
-		this.time.append(String.valueOf(minutes) + ":");
-		this.time.append(String.valueOf(seconds));		
+	public void setTime(String hour, String minutes, String dayPeriod) {
+		this.time = new StringBuilder(hour + ":");
+		this.time.append(minutes + " ");
+		this.time.append(dayPeriod);
 	}
 	
 	/**
@@ -90,34 +94,60 @@ public class Session {
 		return time.toString();
 	}
 	
+	public void setDayNo(String dayNo) {
+		this.dayNo = dayNo;
+	}
+	
+	public String getDayNo() {
+		return dayNo;
+	}
+	
+	public void setDay(String day) {
+		// day - e.g., Monday (EEE format)
+		for(String d : days)
+			if(d.equals(day))
+				this.day = day;
+	}
+	
+	public String getDay() {
+		return day;
+	}
+	
+	public void setMonth(String month) {
+		// month - e.g., January (MMM format)
+		for(String m : months)
+			if(m.equals(month))
+				this.month = month;
+	}
+	
+	public String getMonth() {
+		return month;
+	}
+	
 	/**
-	 * Set the session date format as EEEE MMMM yyyy
+	 * Set the session date format as EEE MMM yyyy
 	 * 
 	 * Validates whether day, month and year are in the right format
 	 * @param day
 	 * @param month
 	 * @param year
 	 */
-	public void setDate(String day, String month, String year) {		
+	public void setDate(String dayNo, String day, String month) {
+		this.date = new StringBuilder(dayNo);
+		this.date.append(" ");
+		
 		// day - e.g., Monday (EEEE format)
 		for(String d : days)
 			if(d.equals(day))
-				this.date = new StringBuilder(day);
+				this.date.append(day);
 		
-		// spacing - "[day]_"
+		// spacing - "[dayNo]_[day]_"
 		date.append(" ");
 		
 		// month - e.g., January (MMMM format)
 		for(String m : months)
 			if(m.equals(month))
-				this.date.append(month);
-		
-		// spacing - "[day]_[month]_"
-		date.append(" ");
-		
-		// year - e.g., 2013 (yyyy format)
-		if(year.length() == 4)
-			this.date.append(year);	
+				this.date.append(month);			
 	}
 	
 	/**
@@ -126,6 +156,16 @@ public class Session {
 	 */
 	public String getDate() {
 		return date.toString();
+	}
+	
+	public void setYear(String year) {
+		// year - e.g., 2013 (yyyy format)
+		if(year.length() == 4)
+			this.year = year;
+	}
+	
+	public String getYear() {
+		return year;
 	}
 	
 	/**

@@ -54,6 +54,12 @@ public class NewSession extends Activity {
 	
 	private int minutesRemaining;
 	private int secondsRemaining;
+		
+	// date formats
+	private static final String strFormatDayCalNo = "dd";
+	private static final String strFormatDay = "EEE";
+	private static final String strFormatMonth = "MMM";
+	private static final String strFormatYear = "yyyy";
 	
 	// UI components
 	private TextView clockTime, timer;
@@ -127,11 +133,6 @@ public class NewSession extends Activity {
 	 */
 	public void onStart(View view) {
 		timerHandler = new Handler();	
-		
-		// date formats
-		String strFormatDay = "EEEE";
-		String strFormatMonth = "MMMM";
-		String strFormatYear = "yyyy";
 		
 		// used to store user input for setting session duration 
 		int iMins = 0;
@@ -228,46 +229,46 @@ public class NewSession extends Activity {
 		this.durationSeconds = iSecs;
 		
 		// get the session date
+		String dayNo = new SimpleDateFormat(strFormatDayCalNo).format(new Date());
 		String day = new SimpleDateFormat(strFormatDay).format(new Date() );
 		String month = new SimpleDateFormat(strFormatMonth).format(new Date() );
 		String year = new SimpleDateFormat(strFormatYear).format(new Date() );
 		
-		Log.e("Visus", day + " " + month + " " + year);
+		Log.e("Visus", dayNo + " " + new SimpleDateFormat(strFormatDay).format(new Date() ) + " " + month + " " + year);
 		
 		// remove callback to timer handler
 		timerHandler.removeCallbacks(runUpdateTimer);				
 		timerHandler.postDelayed(runUpdateTimer, 0);
 		
 		// initialise the session date
-		session.setDate(day,	// day - e.g., Thursday
-		                month,	// month - e.g., April
-		                year);	// year - e.g., 2013
+		session.setDayNo(dayNo);
+		session.setDay(day);
+		session.setMonth(month);
+		
+//		session.setDate(dayNo,
+//				        day,	// day - e.g., Thursday
+//		                month);	// month - e.g., April
+		session.setYear(year);	// year - e.g., 2013
 		
 		// calendar date
-		Log.e("Visus", "Set date: " + session.getDate());
+		Log.e("Visus", "Set date: " + session.getDayNo() + " " +
+		                              session.getDay() + " " +
+				                      session.getMonth() +  " " +
+		                              session.getYear());
 		
 		// get the session time
 		String hour = new SimpleDateFormat("hh").format(new Date() );
 		String minutes = new SimpleDateFormat("mm").format(new Date() );
-		String seconds =  new SimpleDateFormat("ss").format(new Date() );
-		
-		// validation for hour
-		if(Integer.parseInt(hour) < 10)
-			hour = "0" + hour;
+		String dayPeriod = new SimpleDateFormat("a").format(new Date() );
 		
 		// .. minutes
 		if(Integer.parseInt(minutes) < 10)
-			minutes = "0" + minutes;
-		
-		// .. seconds
-		if(Integer.parseInt(seconds) < 10) 
-			seconds = "0" + seconds;		
-		
+			minutes = "0" + minutes;		
 		
 		// initialise the session time
-		session.setTime(Integer.parseInt(hour),		// hour
-						Integer.parseInt(minutes), 	// minutes
-						Integer.parseInt(seconds));	// seconds
+		session.setTime(hour,		// hour
+						minutes,    // minutes
+						dayPeriod);	// period of the day - AM/PM
 		
 		// clock time
 		Log.e("Visus", "Set time: " + session.getTime());		
@@ -294,11 +295,12 @@ public class NewSession extends Activity {
 //		TODO		
 		int remainingMins = getTimeRemainingMinutes();
 		int remainingSecs = getTimeRemainingSeconds();
-		
+				
 		if((remainingMins == 0) && (remainingSecs == 0)) {
 			Log.e("Visus", "Empty time remaining fields");
 		}
 		else {
+			Log.e("Visus", "----------------------------");
 			Log.e("Visus", "Time left: " + remainingMins + ":" + remainingSecs);
 		}
 		
@@ -325,7 +327,11 @@ public class NewSession extends Activity {
 		session.setType(type);
 		
 		// output contents of the session to be written to the db
-		Log.e("Visus", "Session date: " + session.getDate());
+		Log.e("Visus", "Session date: " + session.getDayNo() + " " +
+		                                  session.getDay() + " " +
+		                                  session.getMonth() + " " +
+		                                  session.getYear());
+		
 		Log.e("Visus", "Session duration: " + session.getDuration());
 		Log.e("Visus", "Session time: " + session.getTime());
 		Log.e("Visus", "Session type: " + session.getType()); // i.e., email

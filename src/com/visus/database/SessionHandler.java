@@ -21,7 +21,10 @@ public class SessionHandler extends SQLiteOpenHelper {
 	// columns
 	private final static String KEY_ID = "Id";
 	private final static String KEY_USER_ID = "UserId";
-	private final static String KEY_DATE = "Date";
+	private final static String KEY_DATE_DAY_NO = "DayNo";
+	private final static String KEY_DATE_DAY = "Day";
+	private final static String KEY_DATE_MONTH = "Month";
+	private final static String KEY_DATE_YEAR = "Year";
 	private final static String KEY_TIME = "Time";
 	private final static String KEY_DURATION = "Duration";
 	private final static String KEY_TYPE = "Type";
@@ -36,7 +39,10 @@ public class SessionHandler extends SQLiteOpenHelper {
 				                     " ( " +
 				                     	KEY_ID + " INTEGER PRIMARY KEY, " + 
 				                        KEY_USER_ID + " INTEGER, " +
-				                     	KEY_DATE + " TEXT, " +
+				                     	KEY_DATE_DAY_NO + " TEXT, " +
+				                     	KEY_DATE_DAY + " TEXT, " +
+				                     	KEY_DATE_MONTH + " TEXT, " +
+				                     	KEY_DATE_YEAR + " TEXT, " +
 				                        KEY_TIME + " TEXT, " +
 				                        KEY_DURATION + " TEXT" +
 				                        KEY_TYPE + " TEXT" +
@@ -58,13 +64,16 @@ public class SessionHandler extends SQLiteOpenHelper {
 		ContentValues sessionValues = new ContentValues();
 		
 		sessionValues.put(KEY_USER_ID, session.getUserId());
-		sessionValues.put(KEY_DATE, session.getDate());
+		sessionValues.put(KEY_DATE_DAY_NO, session.getDayNo());
+		sessionValues.put(KEY_DATE_DAY, session.getDay());
+		sessionValues.put(KEY_DATE_MONTH, session.getMonth());
+		sessionValues.put(KEY_DATE_YEAR, session.getYear());
 		sessionValues.put(KEY_TIME, session.getTime());
 		sessionValues.put(KEY_DURATION, session.getDuration());
 		sessionValues.put(KEY_TYPE, session.getType());
 		
 		db.insert(TABLE_SESSIONS, null, sessionValues);
-		Log.e("Visus", "New session added");
+		Log.e("Visus", "New Session Added");
 		db.close();
 	}
 	
