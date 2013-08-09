@@ -14,20 +14,20 @@ import android.util.Log;
 public class SessionHandler extends SQLiteOpenHelper {
 
 	// important database details 
-	private final static String DATABASE_NAME = "Visus";
+	private final static String DATABASE_NAME   = "Visus";
 	private final static int 	DATABASE_VERSION = 1;
-	private final static String TABLE_SESSIONS = "Sessions";
+	private final static String TABLE_SESSIONS  = "Sessions";
 	
 	// columns
-	private final static String KEY_ID = "Id";
-	private final static String KEY_USER_ID = "UserId";
+	private final static String KEY_ID          = "Id";
+	private final static String KEY_USER_ID     = "UserId";
 	private final static String KEY_DATE_DAY_NO = "DayNo";
-	private final static String KEY_DATE_DAY = "Day";
-	private final static String KEY_DATE_MONTH = "Month";
-	private final static String KEY_DATE_YEAR = "Year";
-	private final static String KEY_TIME = "Time";
-	private final static String KEY_DURATION = "Duration";
-	private final static String KEY_TYPE = "Type";
+	private final static String KEY_DATE_DAY    = "Day";
+	private final static String KEY_DATE_MONTH  = "Month";
+	private final static String KEY_DATE_YEAR   = "Year";
+	private final static String KEY_TIME        = "Time";
+	private final static String KEY_DURATION    = "Duration";
+	private final static String KEY_TYPE        = "Type";
 	
 	public SessionHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);

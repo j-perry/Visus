@@ -1,21 +1,48 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white" 
+    android:background="@color/light_grey" 
     android:orientation="vertical"
     android:padding="0dp"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context=".PrevSessions" >
     
-    <LinearLayout
-        android:background="@color/white"
-        android:orientation="vertical"      
+    <ScrollView
+	    android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
+        android:layout_height="fill_parent"
         >
         
         
+        <!-- overview -->
+        <LinearLayout
+            android:id="@+id/sessions_overview">
+            
+            <TextView 
+                android:text="Overview"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                />
+            
+            	
+            
+        </LinearLayout>
         
-    </LinearLayout>
-
+        
+        <!-- this week -->
+        <LinearLayout
+            android:id="@+id/sessions_weekly_activity">
+            
+            <TextView 
+                android:text="This week"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                />
+            
+            	
+            
+        </LinearLayout>
+        
+    </ScrollView>
+        
 </RelativeLayout>

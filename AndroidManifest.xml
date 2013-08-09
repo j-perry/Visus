@@ -47,6 +47,12 @@
             android:label="@string/title_activity_prev_sessions" 
             />
         
+        <!-- latest activity -->
+        <activity
+            android:name="com.visus.main.LatestActivity"
+            android:label="@string/title_latest_activity" 
+            />
+        
         <!-- activities -->
         <activity
             android:name="com.visus.main.Activities"
