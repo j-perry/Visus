@@ -9,20 +9,24 @@ public class Session {
 	private StringBuilder duration;
 	private StringBuilder time;
 	private StringBuilder date;
+	
+	// session date
 	private int dayNo;
 	private String day;
 	private String month;	
 	private int year;
-	private String type;
 	
+	// session time
 	private int hour;
 	private int minutes;	
 	private String dayPeriod;
 	
+	// session duration
 	private int durationMinutes;
 	private int durationSeconds;
 	
 	private int userId;
+	private String type;
 		
 	private final static String [] days = {
 		"Sat", 

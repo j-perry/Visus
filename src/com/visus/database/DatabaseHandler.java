@@ -245,24 +245,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues sessionValues = new ContentValues();
 				
-//		Log.e("Visus SessionHandler", "UserId " + String.valueOf(session.getUserId()) );
-		Log.e("Visus SessionHandler", "Date (day no): " + session.getDayNo() );
-		Log.e("Visus SessionHandler", "Date (day): " + session.getDay() );
-		Log.e("Visus SessionHandler", "Date (month): " + session.getMonth() );
-		Log.e("Visus SessionHandler", "Date (year): " + session.getYear() );
-		
-		// time
-		Log.e("Visus SessionHandler", "Time (hour): " + session.getTimeHour() );
-		Log.e("Visus SessionHandler", "Time (period): " + session.getDayPeriod() );
-		
-		// duration
-		Log.e("Visus SessionHandler", "Duration (mins): " + session.getDurationMinutes() );
-		Log.e("Visus SessionHandler", "Duration (secs): " + session.getDurationSeconds() );
-		
-		// type
-		Log.e("Visus SessionHandler", "Type: " + session.getType() );
-		
-		
 		// user id
 		sessionValues.put(KEY_USER_ID, session.getUserId());
 		
@@ -295,18 +277,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			}
 			else {
 				Log.e("Visus", "----------------");
-				Log.e("Visus", String.valueOf(result) + " | Written to db");
-				Log.e("Visus", "Written: " + session.getUserId() + "\n" 
-				                           + session.getDayNo() + "\n"
-				                           + session.getDay() + "\n"
-				                           + session.getMonth() + "\n"
-				                           + session.getYear() + "\n"
-				                           + session.getTimeHour() + "\n"
-				                           + session.getTimeMinutes() + "\n"
-				                           + session.getDayPeriod() + "\n"
-				                           + session.getDurationMinutes() + "\n"
-				                           + session.getDurationSeconds() + "\n"
-				                           + session.getType());
+				Log.e("Visus", "ID: " + String.valueOf(result) + " | Written to db");
+				Log.e("Visus", "Written: \n"
+										     + "o User ID: " + session.getUserId() + "\n" 
+				                             + "o Session date (day no): " + session.getDayNo() + "\n"
+				                             + "o Session date (day): " + session.getDay() + "\n"
+				                             + "o Session date (month): "+ session.getMonth() + "\n"
+				                             + "o Session date (year): " + session.getYear() + "\n"
+				                             + "o Session time (hour): " + session.getTimeHour() + "\n"
+				                             + "o Session time (minutes): " + session.getTimeMinutes() + "\n"
+				                             + "o Session timezone: " + session.getDayPeriod() + "\n"
+				                             + "o Session duration (mins): " + session.getDurationMinutes() + "\n"
+				                             + "o Session duration (secs): " + session.getDurationSeconds() + "\n"
+				                             + "o Session type: " + session.getType());
 				
 				Log.e("Visus", "----------------");
 			}

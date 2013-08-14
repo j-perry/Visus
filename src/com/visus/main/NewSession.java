@@ -111,9 +111,9 @@ public class NewSession extends Activity {
 	 * Initialise all UI components
 	 */
 	private void initUIComponents() {
-		timer = (TextView) findViewById(R.id.timer);
-		startTimerBtn = (Button) findViewById(R.id.timer_btn);
-		stopTimerBtn = (Button) findViewById(R.id.timer_stop_btn);
+		this.timer = (TextView) findViewById(R.id.timer);
+		this.startTimerBtn = (Button) findViewById(R.id.timer_btn);
+		this.stopTimerBtn = (Button) findViewById(R.id.timer_stop_btn);
 	}
 
 	/**
@@ -247,17 +247,6 @@ public class NewSession extends Activity {
 		session.setMonth(month);
 		session.setYear(year);
 		
-//		session.setDate(dayNo,
-//				        day,	// day - e.g., Thursday
-//		                month, // month - e.g., April
-//		                year);	
-//		session.setYear(year);	// year - e.g., 2013
-		
-		// calendar date
-//		Log.e("Visus", "Set date: " + session.getDayNo() + " " +
-//		                              session.getDay() + " " +
-//				                      session.getMonth() +  " " +
-//		                              session.getYear());
 		
 		// get the session time
 		int hour = Integer.parseInt(new SimpleDateFormat("hh").format(new Date() ));
@@ -332,22 +321,9 @@ public class NewSession extends Activity {
 		}
 				
 		session.setUserId(activeUserId);
-//		session.setDuration(sessionMins, sessionSecs); // TODO validation test
 		session.setDurationMinutes(sessionMins);
 		session.setDurationSeconds(sessionSecs);
 		session.setType(type);
-		
-		// output contents of the session to be written to the db
-//		Log.e("Visus", "Session date: " + session.getDayNo() + " " +
-//		                                  session.getDay() + " " +
-//		                                  session.getMonth() + " " +
-//		                                  session.getYear());
-		
-		Log.e("Visus", "Session date (day no): " + String.valueOf(session.getDayNo() ));
-//		Log.e("Visus", "Session time: " + session.getTimeHour());
-		Log.e("Visus", "Session duration (mins): " + session.getDurationMinutes());
-		Log.e("Visus", "Session duration (secs): " + session.getDurationSeconds());
-		Log.e("Visus", "Session type: " + session.getType()); // i.e., email
 		
 		// write session to db TODO
 		dbHandler.add(session);
