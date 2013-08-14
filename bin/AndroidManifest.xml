@@ -32,49 +32,65 @@
         <!-- new user -->
         <activity 
             android:name="com.visus.main.SignUp"
-            android:label="@string/title_activity_new_user" 
+            android:label="@string/title_activity_new_user"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" 
             />
                 
         <!-- new session -->
         <activity
             android:name="com.visus.main.NewSession"
-            android:label="@string/activity_new_session" 
+            android:label="@string/activity_new_session"            
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" 
             />
                 
         <!-- previous sessions -->
         <activity
             android:name="com.visus.main.Sessions"
             android:label="@string/title_activity_prev_sessions" 
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" 
             />
         
         <!-- latest activity -->
         <activity
             android:name="com.visus.main.LatestActivity"
             android:label="@string/title_latest_activity" 
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" 
             />
         
         <!-- activities -->
         <activity
             android:name="com.visus.main.Activities"
             android:label="@string/title_activities" 
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" 
             />
         
         <!--  -->
         <activity
             android:name="com.visus.main.ActivityCategory"
             android:label="@string/title_activity_category" 
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" 
             />
         
         <!-- activity category -->
         <activity
             android:name="com.visus.main.UserActivity"
             android:label="@string/title_activity" 
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" 
             />
         
         <!-- view settings -->
         <activity
             android:name="com.visus.main.Settings"
             android:label="@string/title_activity_view_settings"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" 
             />
         
     </application>

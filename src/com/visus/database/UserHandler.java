@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class UserHandler {
+public class UserHandler implements IDatabaseTable {
 			
 	private SQLiteDatabase db;
 	private DatabaseHandler dbHandler;
@@ -20,10 +20,12 @@ public class UserHandler {
 		dbHandler = new DatabaseHandler(context);
 	}
 	
+	@Override
 	public void open() throws SQLiteException {
 		db = dbHandler.getReadableDatabase(); // reads and writes
 	}
 	
+	@Override
 	public void close() throws SQLiteException {
 		db.close();
 	}

@@ -9,21 +9,22 @@ import android.database.*;
 import android.database.sqlite.*;
 import android.util.Log;
 
-public class SessionHandler {
+public class SessionHandler implements IDatabaseTable {
 		
 	private DatabaseHandler dbHandler;
 	private SQLiteDatabase db;
 	private Long result;
-	
-	
+		
 	public SessionHandler(Context context) {
 		dbHandler = new DatabaseHandler(context);
 	}
 	
+	@Override
 	public void open() throws SQLiteException {
 		db = dbHandler.getWritableDatabase(); // reads and writes
 	}
 	
+	@Override
 	public void close() throws SQLiteException {
 		dbHandler.close();
 	}
