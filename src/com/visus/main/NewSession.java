@@ -6,6 +6,7 @@ import java.util.Date;
 import com.visus.R;
 import com.visus.database.*;
 import com.visus.entities.*;
+import com.visus.entities.sessions.Session;
 
 import android.os.*;
 import android.annotation.SuppressLint;
@@ -32,7 +33,7 @@ public class NewSession extends Activity {
 	/*
 	 * Controllers
 	 */
-	private SessionHandler sessionHandler;
+	private DatabaseHandler dbHandler;
 	private UserHandler userHandler;
 	
 	// stores the active user's id
@@ -75,7 +76,7 @@ public class NewSession extends Activity {
 		initUIComponents();
 												
 		session = new Session();
-		sessionHandler = new SessionHandler(this);
+		dbHandler = new DatabaseHandler(this);
 		
 		// get the active user id
 		Bundle userId = getIntent().getExtras();
@@ -229,49 +230,56 @@ public class NewSession extends Activity {
 		this.durationSeconds = iSecs;
 		
 		// get the session date
-		String dayNo = new SimpleDateFormat(strFormatDayCalNo).format(new Date());
+		int dayNo = Integer.parseInt(new SimpleDateFormat(strFormatDayCalNo).format(new Date()) );
 		String day = new SimpleDateFormat(strFormatDay).format(new Date() );
 		String month = new SimpleDateFormat(strFormatMonth).format(new Date() );
-		String year = new SimpleDateFormat(strFormatYear).format(new Date() );
+		int year = Integer.parseInt(new SimpleDateFormat(strFormatYear).format(new Date()) );
 		
 		Log.e("Visus", dayNo + " " + new SimpleDateFormat(strFormatDay).format(new Date() ) + " " + month + " " + year);
 		
 		// remove callback to timer handler
-		timerHandler.removeCallbacks(runUpdateTimer);				
+		timerHandler.removeCallbacks(runUpdateTimer);
 		timerHandler.postDelayed(runUpdateTimer, 0);
 		
 		// initialise the session date
 		session.setDayNo(dayNo);
 		session.setDay(day);
 		session.setMonth(month);
+		session.setYear(year);
 		
 //		session.setDate(dayNo,
 //				        day,	// day - e.g., Thursday
-//		                month);	// month - e.g., April
-		session.setYear(year);	// year - e.g., 2013
+//		                month, // month - e.g., April
+//		                year);	
+//		session.setYear(year);	// year - e.g., 2013
 		
 		// calendar date
-		Log.e("Visus", "Set date: " + session.getDayNo() + " " +
-		                              session.getDay() + " " +
-				                      session.getMonth() +  " " +
-		                              session.getYear());
+//		Log.e("Visus", "Set date: " + session.getDayNo() + " " +
+//		                              session.getDay() + " " +
+//				                      session.getMonth() +  " " +
+//		                              session.getYear());
 		
 		// get the session time
-		String hour = new SimpleDateFormat("hh").format(new Date() );
-		String minutes = new SimpleDateFormat("mm").format(new Date() );
+		int hour = Integer.parseInt(new SimpleDateFormat("hh").format(new Date() ));
+		int minutes = Integer.parseInt(new SimpleDateFormat("mm").format(new Date() ));
 		String dayPeriod = new SimpleDateFormat("a").format(new Date() );
 		
-		// .. minutes
-		if(Integer.parseInt(minutes) < 10)
-			minutes = "0" + minutes;		
+		session.setTimeHour(hour);
+		session.setTimeMinutes(minutes);
 		
 		// initialise the session time
-		session.setTime(hour,		// hour
-						minutes,    // minutes
-						dayPeriod);	// period of the day - AM/PM
+//		session.setTime(hour,		// hour
+//						minutes,    // minutes
+//						dayPeriod);	// period of the day - AM/PM
+		
+		Log.e("Visus", "Set time: " + session.getTimeHour());
+		
+		session.setDayPeriod(dayPeriod);
+		
+		Log.e("Visus", "Set day period: " + session.getDayPeriod());	
 		
 		// clock time
-		Log.e("Visus", "Set time: " + session.getTime());		
+//		Log.e("Visus", "Set time: " + session.getTime());		
 	}
 	
 	/**
@@ -288,6 +296,8 @@ public class NewSession extends Activity {
 	 */
 	public void onEnd(View view) {
 		timerHandler.removeCallbacks(runUpdateTimer);
+		int sessionMins = 0;
+		int sessionSecs = 0;
 								
 //		sessionDuration[0] = ((getDuration() / (1000 * 60)) % 60);	// minutes
 //		sessionDuration[1] = ((getDuration() / 1000) % 60);			// seconds
@@ -304,8 +314,7 @@ public class NewSession extends Activity {
 			Log.e("Visus", "Time left: " + remainingMins + ":" + remainingSecs);
 		}
 		
-		int sessionMins = durationMinutes - remainingMins;
-		int sessionSecs;
+		sessionMins = durationMinutes - remainingMins;
 		
 		// TODO
 		// 30 secs is less than 50 secs
@@ -323,21 +332,25 @@ public class NewSession extends Activity {
 		}
 				
 		session.setUserId(activeUserId);
-		session.setDuration(sessionMins, sessionSecs); // TODO validation test
+//		session.setDuration(sessionMins, sessionSecs); // TODO validation test
+		session.setDurationMinutes(sessionMins);
+		session.setDurationSeconds(sessionSecs);
 		session.setType(type);
 		
 		// output contents of the session to be written to the db
-		Log.e("Visus", "Session date: " + session.getDayNo() + " " +
-		                                  session.getDay() + " " +
-		                                  session.getMonth() + " " +
-		                                  session.getYear());
+//		Log.e("Visus", "Session date: " + session.getDayNo() + " " +
+//		                                  session.getDay() + " " +
+//		                                  session.getMonth() + " " +
+//		                                  session.getYear());
 		
-		Log.e("Visus", "Session duration: " + session.getDuration());
-		Log.e("Visus", "Session time: " + session.getTime());
+		Log.e("Visus", "Session date (day no): " + String.valueOf(session.getDayNo() ));
+//		Log.e("Visus", "Session time: " + session.getTimeHour());
+		Log.e("Visus", "Session duration (mins): " + session.getDurationMinutes());
+		Log.e("Visus", "Session duration (secs): " + session.getDurationSeconds());
 		Log.e("Visus", "Session type: " + session.getType()); // i.e., email
 		
-		// write session to db
-		sessionHandler.add(session);
+		// write session to db TODO
+		dbHandler.add(session);
 		
 		Intent intent = new Intent(NewSession.this, Sessions.class);
 		startActivity(intent);
@@ -491,6 +504,5 @@ public class NewSession extends Activity {
 		
 		// starts the timer
 		sessionTimer.start();		
-	}
-		
+	}		
 }

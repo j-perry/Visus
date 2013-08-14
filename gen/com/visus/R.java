@@ -63,21 +63,20 @@ public final class R {
         public static final int test_bg=0x7f02000f;
     }
     public static final class id {
-        public static final int age=0x7f09000e;
-        public static final int delete_account=0x7f09000b;
-        public static final int first_name=0x7f09000c;
-        public static final int gender=0x7f09000d;
-        public static final int menu_about=0x7f090010;
-        public static final int menu_account=0x7f090012;
-        public static final int menu_sessions=0x7f090011;
-        public static final int menu_settings=0x7f090013;
-        public static final int new_session_menu=0x7f090014;
-        public static final int no_sessions=0x7f09000a;
-        public static final int register=0x7f09000f;
+        public static final int age=0x7f09000d;
+        public static final int delete_account=0x7f09000a;
+        public static final int first_name=0x7f09000b;
+        public static final int gender=0x7f09000c;
+        public static final int menu_about=0x7f09000f;
+        public static final int menu_account=0x7f090011;
+        public static final int menu_sessions=0x7f090010;
+        public static final int menu_settings=0x7f090012;
+        public static final int new_session_menu=0x7f090013;
+        public static final int no_sessions=0x7f090009;
+        public static final int register=0x7f09000e;
         public static final int session_type=0x7f090005;
         public static final int sessions_overview=0x7f090000;
         public static final int sessions_recent_activity=0x7f090001;
-        public static final int sessions_weekly_activity=0x7f090009;
         public static final int set_session_duration=0x7f090002;
         public static final int timer=0x7f090006;
         public static final int timer_btn=0x7f090007;

@@ -1,4 +1,4 @@
-package com.visus.entities;
+package com.visus.entities.sessions;
 
 import java.util.Date;
 
@@ -9,11 +9,18 @@ public class Session {
 	private StringBuilder duration;
 	private StringBuilder time;
 	private StringBuilder date;
-	private String dayNo;
+	private int dayNo;
 	private String day;
 	private String month;	
-	private String year;
+	private int year;
 	private String type;
+	
+	private int hour;
+	private int minutes;	
+	private String dayPeriod;
+	
+	private int durationMinutes;
+	private int durationSeconds;
 	
 	private int userId;
 		
@@ -21,7 +28,7 @@ public class Session {
 		"Sat", 
 	    "Sun", 
 	    "Mon", 
-		"Tues", 
+		"Tue", 
 		"Wed", 
 		"Thu", 
 		"Fri" 
@@ -41,8 +48,7 @@ public class Session {
 		"Nov",
 		"Dec"
 	};
-	
-	
+		
 	public Session() {
 		super();
 	}
@@ -74,6 +80,22 @@ public class Session {
 		return duration.toString();
 	}
 	
+	public void setDurationMinutes(int durationMinutes) {
+		this.durationMinutes = durationMinutes;
+	}
+	
+	public int getDurationMinutes() {
+		return durationMinutes;
+	}
+	
+	public void setDurationSeconds(int durationSeconds) {
+		this.durationSeconds = durationSeconds;
+	}
+	
+	public int getDurationSeconds() {
+		return durationSeconds;
+	}
+	
 	/**
 	 * Set the time of the session (i.e., 13:34pm) format as HH:mm:ss
 	 * @param hour
@@ -94,16 +116,40 @@ public class Session {
 		return time.toString();
 	}
 	
-	public void setDayNo(String dayNo) {
+	public void setTimeHour(int hour) {
+		this.hour = hour;
+	}
+
+	public int getTimeHour() {
+		return hour;
+	}
+	
+	public int getTimeMinutes() {
+		return minutes;
+	}
+	
+	public void setTimeMinutes(int minutes) {
+		this.minutes = minutes;
+	}
+	
+	public String getDayPeriod() {
+		return dayPeriod;
+	}
+	
+	public void setDayPeriod(String dayPeriod) {
+		this.dayPeriod = dayPeriod;
+	}
+	
+	public void setDayNo(int dayNo) {
 		this.dayNo = dayNo;
 	}
 	
-	public String getDayNo() {
+	public int getDayNo() {
 		return dayNo;
 	}
 	
 	public void setDay(String day) {
-		// day - e.g., Monday (EEE format)
+		// day - e.g., Mon (EEE format)
 		for(String d : days)
 			if(d.equals(day))
 				this.day = day;
@@ -132,7 +178,7 @@ public class Session {
 	 * @param month
 	 * @param year
 	 */
-	public void setDate(String dayNo, String day, String month) {
+	public void setDate(String dayNo, String day, String month, String year) {
 		this.date = new StringBuilder(dayNo);
 		this.date.append(" ");
 		
@@ -147,7 +193,13 @@ public class Session {
 		// month - e.g., January (MMMM format)
 		for(String m : months)
 			if(m.equals(month))
-				this.date.append(month);			
+				this.date.append(month);	
+		
+		date.append(" ");
+		
+		// year - e.g., 2013 (yyyy format)
+		if(year.length() == 4)
+			this.date.append(year);
 	}
 	
 	/**
@@ -158,13 +210,11 @@ public class Session {
 		return date.toString();
 	}
 	
-	public void setYear(String year) {
-		// year - e.g., 2013 (yyyy format)
-		if(year.length() == 4)
-			this.year = year;
+	public void setYear(int year) {
+		this.year = year;
 	}
 	
-	public String getYear() {
+	public int getYear() {
 		return year;
 	}
 	
@@ -183,4 +233,5 @@ public class Session {
 	public String getType() {
 		return type;
 	}
+
 }

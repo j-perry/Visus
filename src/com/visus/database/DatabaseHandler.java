@@ -1,26 +1,31 @@
 package com.visus.database;
 
+import java.util.Stack;
+
 import com.visus.entities.User;
+import com.visus.entities.sessions.*;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+public class DatabaseHandler extends SQLiteOpenHelper {
 
-
-public class UserHandler extends SQLiteOpenHelper {
-		
+	/* Generic properties for database */
 	private final static String DATABASE_NAME = "Visus";
 	private final static int    DATABASE_VERSION = 1;
 	
+	private final static String KEY_ID       = "Id"; // All DB tables will share this property!
+	
+	/**
+	 * Users table
+	 */
 	private final static String USERS_TABLE = "Users";
 	
-	private final static String KEY_ID       = "Id";
 	private final static String KEY_ACTIVE   = "Active";
 	private final static String KEY_NAME     = "Name";
 	private final static String KEY_AGE      = "Age";
@@ -29,8 +34,32 @@ public class UserHandler extends SQLiteOpenHelper {
 	private static final int ACTIVE_USER = 1;
 	private static final int NON_ACTIVE_USER = 0;
 	
+	
+	/**
+	 * Sessions table
+	 */
+	private final static String SESSIONS_TABLE    = "Sessions";
+	
+	// columns
+	private final static String KEY_USER_ID       = "UserId";
+	private final static String KEY_DAY_NO        = "DayNo";
+	private final static String KEY_DAY           = "Day";
+	private final static String KEY_MONTH         = "Month";
+	private final static String KEY_YEAR          = "Year";
+	private final static String KEY_TIME_HOUR     = "Hour";
+	private final static String KEY_TIME_MINS     = "Mins";
+	private final static String KEY_TIMEZONE      = "TimeZone";
+	private final static String KEY_DURATION_MINS = "DurationMinutes";
+	private final static String KEY_DURATION_SECS = "DurationSeconds";	
+	private final static String KEY_TYPE          = "Type";
+	
+	
+	// old fields - not suitable types	
+	private final static String KEY_DATE        = "Date";	
+	private final static String KEY_TIME        = "Time";
+	private final static String KEY_DURATION    = "Duration";
 		
-	public UserHandler(Context context) {
+	public DatabaseHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 		Log.e("Visus", "User Handler Init");
 	}
@@ -45,20 +74,44 @@ public class UserHandler extends SQLiteOpenHelper {
 				                  	 KEY_NAME + " TEXT, " +
 				                  	 KEY_AGE + " INTEGER, " +
 				                  	 KEY_GENDER + " TEXT " +
-				                  ")";
+				                  ");";
+		
+		String createSessionsTable = "CREATE TABLE " + SESSIONS_TABLE + 
+                                     " ( " +
+                	                 	KEY_ID + " INTEGER PRIMARY KEY, " + 
+                	                 	KEY_USER_ID + " INTEGER, " +
+                	                 	KEY_DAY_NO + " INTEGER, " +
+                	                 	KEY_DAY + " TEXT, " +
+                	                 	KEY_MONTH + " TEXT, " +
+                	                 	KEY_YEAR + " INTEGER, " +
+                	                 	KEY_TIME_HOUR + " TEXT, " +
+                	                 	KEY_TIME_MINS + " TEXT, " +
+                	                 	KEY_TIMEZONE + " TEXT, " +
+                	                 	KEY_DURATION_MINS + " INTEGER, " +
+                	                 	KEY_DURATION_SECS + " INTEGER, " +
+                	                 	KEY_TYPE + " TEXT " +
+                	                 ");";
+		
 		db.execSQL(createUsersTable);
 		Log.e("Visus", "Users table created");
+		
+		db.execSQL(createSessionsTable);
+		Log.e("Visus", "Sessions table created");
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + USERS_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + SESSIONS_TABLE);
  
         // Create tables again
         onCreate(db);		
 	}
 	
+	/**
+	 * 	User methods
+	 */
 	public void addUser(User user) throws SQLiteException {
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues userValues = new ContentValues();
@@ -183,5 +236,85 @@ public class UserHandler extends SQLiteOpenHelper {
 		db.close();
 		return user;
 	}
+	
+	
+	/**
+	 * 	Session methods
+	 */
+	public void add(Session session) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues sessionValues = new ContentValues();
+				
+//		Log.e("Visus SessionHandler", "UserId " + String.valueOf(session.getUserId()) );
+		Log.e("Visus SessionHandler", "Date (day no): " + session.getDayNo() );
+		Log.e("Visus SessionHandler", "Date (day): " + session.getDay() );
+		Log.e("Visus SessionHandler", "Date (month): " + session.getMonth() );
+		Log.e("Visus SessionHandler", "Date (year): " + session.getYear() );
+		
+		// time
+		Log.e("Visus SessionHandler", "Time (hour): " + session.getTimeHour() );
+		Log.e("Visus SessionHandler", "Time (period): " + session.getDayPeriod() );
+		
+		// duration
+		Log.e("Visus SessionHandler", "Duration (mins): " + session.getDurationMinutes() );
+		Log.e("Visus SessionHandler", "Duration (secs): " + session.getDurationSeconds() );
+		
+		// type
+		Log.e("Visus SessionHandler", "Type: " + session.getType() );
+		
+		
+		// user id
+		sessionValues.put(KEY_USER_ID, session.getUserId());
+		
+		// date
+		sessionValues.put(KEY_DAY_NO, session.getDayNo());
+		sessionValues.put(KEY_DAY, session.getDay());
+		sessionValues.put(KEY_MONTH, session.getMonth());
+		sessionValues.put(KEY_YEAR, session.getYear());
+		
+		// time
+		sessionValues.put(KEY_TIME_HOUR, session.getTimeHour());
+		sessionValues.put(KEY_TIME_MINS, session.getTimeMinutes());
+		sessionValues.put(KEY_TIMEZONE, session.getDayPeriod());
+		
+		// duration
+		sessionValues.put(KEY_DURATION_MINS, session.getDurationMinutes());
+		sessionValues.put(KEY_DURATION_SECS, session.getDurationSeconds());
+		
+		// type
+		sessionValues.put(KEY_TYPE, session.getType());
+		
+		try {
+			Long result = db.insert(SESSIONS_TABLE, null, sessionValues);
 			
+			// -1 denotes, unsuccessful. 0 and higher denotes no. of written items
+			if(result == -1) {
+				Log.e("Visus", "----------------");
+				Log.e("Visus", String.valueOf(result) + " | Failed to write to db");
+				Log.e("Visus", "----------------");
+			}
+			else {
+				Log.e("Visus", "----------------");
+				Log.e("Visus", String.valueOf(result) + " | Written to db");
+				Log.e("Visus", "Written: " + session.getUserId() + "\n" 
+				                           + session.getDayNo() + "\n"
+				                           + session.getDay() + "\n"
+				                           + session.getMonth() + "\n"
+				                           + session.getYear() + "\n"
+				                           + session.getTimeHour() + "\n"
+				                           + session.getTimeMinutes() + "\n"
+				                           + session.getDayPeriod() + "\n"
+				                           + session.getDurationMinutes() + "\n"
+				                           + session.getDurationSeconds() + "\n"
+				                           + session.getType());
+				
+				Log.e("Visus", "----------------");
+			}
+		}			
+		finally {			
+			db.close();
+		}
+		
+	}
+		
 }

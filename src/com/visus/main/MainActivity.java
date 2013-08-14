@@ -18,13 +18,13 @@ import android.view.*;
 public class MainActivity extends Activity {
 	
 	private User user = null;
-	private UserHandler dbUser;
-
+	private DatabaseHandler db;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		dbUser = new UserHandler(this);
+		db = new DatabaseHandler(this);
 				
 		setContentView(R.layout.activity_main);
 	}
@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
 		super.onResume();
 		
 		Log.e("Visus", "onResume()");
-		user = dbUser.getActiveUser();
+		user = db.getActiveUser();
 		
 		if(user == null) {
 			Log.e("Visus", "No user active");

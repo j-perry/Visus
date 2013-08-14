@@ -2,8 +2,8 @@ package com.visus.storage;
 
 import java.util.List;
 
-import com.visus.entities.Session;
 import com.visus.entities.User;
+import com.visus.entities.sessions.Session;
 
 import android.content.ContentValues;
 import android.content.Context;

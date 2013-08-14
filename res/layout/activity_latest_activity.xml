@@ -21,7 +21,6 @@
 	    	android:orientation="vertical"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-			android:layout_marginTop="25dp"
 			android:layout_marginBottom="25dp"
 	        >
     
@@ -47,7 +46,7 @@
 			        android:text="Overview"
 			    />
 			    
-			    <!-- overview -->
+			    <!-- sessions -->
 			    <TextView 
 			    	android:layout_width="fill_parent"
 			        android:layout_height="wrap_content"
@@ -58,7 +57,7 @@
 			        android:text="[sessions]"
 			    />
 			    
-			    <!-- overview -->
+			    <!-- hours -->
 			    <TextView 
 			    	android:layout_width="fill_parent"
 			        android:layout_height="wrap_content"
@@ -68,15 +67,27 @@
 				    android:textSize="24sp"
 			        android:text="[hours]"
 			    />
+			    
+			    <!-- activity categories -->
+			    <TextView 
+			    	android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:background="@color/white"
+				    android:padding="25sp"
+			        android:textColor="#333"
+				    android:textSize="24sp"
+			        android:text="[activities]"
+			    />
 		
 		</LinearLayout>
 		
 	    <!-- overview -->
 	    <LinearLayout
 	    	android:id="@+id/sessions_recent_activity"
+	    	android:background="@color/white"
 	    	android:orientation="vertical"
 	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
+	        android:layout_height="375dp"
 			android:layout_marginTop="25dp"
 			android:layout_marginBottom="25dp"
 	        >
