@@ -39,7 +39,7 @@ public class SignUp extends Activity {
 		
 		User user = new User();
 		//UserHandler dbUser = new UserHandler(this);
-		DatabaseHandler db = new DatabaseHandler(this);
+		UserHandler dbHandler = new UserHandler(this);
 		
 		// first name
 		EditText firstname = (EditText) findViewById(R.id.first_name);
@@ -53,7 +53,9 @@ public class SignUp extends Activity {
 		EditText age = (EditText) findViewById(R.id.age);
 		user.setAge(Integer.valueOf(age.getText().toString() ));
 		
-		db.addUser(user);		
+		dbHandler.open();
+		dbHandler.addUser(user);
+		dbHandler.close();
 		
 		// display the main menu
 		Intent intent = new Intent(SignUp.this, MainActivity.class);

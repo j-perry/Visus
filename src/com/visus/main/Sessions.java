@@ -40,13 +40,13 @@ public class Sessions extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sessions);
 		
-		SessionHandler sessionHandler = new SessionHandler(this);
-		UserHandler presentUser = new UserHandler(this);
-		User user = presentUser.getActiveUser();
+//		SessionHandler sessionHandler = new SessionHandler(this);
+//		UserHandler presentUser = new UserHandler(this);
+//		User user = presentUser.getActiveUser();
 
 		//ListView sessionsList = (ListView) findViewById(R.id.previous_sessions);
 		
-		Log.e("Visus", "sdfsdjfnh: " + String.valueOf(user.getUserId()) );
+//		Log.e("Visus", "sdfsdjfnh: " + String.valueOf(user.getUserId()) );
 		
 //		overview = sessionHandler.getOverview(user.getUserId() );
 //		resultsCurrentWeek = sessionHandler.getResultsFromThisWeek(user.getUserId() );

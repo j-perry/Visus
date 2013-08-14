@@ -33,7 +33,7 @@ public class NewSession extends Activity {
 	/*
 	 * Controllers
 	 */
-	private DatabaseHandler dbHandler;
+	private SessionHandler dbHandler;
 	private UserHandler userHandler;
 	
 	// stores the active user's id
@@ -76,7 +76,7 @@ public class NewSession extends Activity {
 		initUIComponents();
 												
 		session = new Session();
-		dbHandler = new DatabaseHandler(this);
+		dbHandler = new SessionHandler(this);
 		
 		// get the active user id
 		Bundle userId = getIntent().getExtras();
@@ -326,7 +326,9 @@ public class NewSession extends Activity {
 		session.setType(type);
 		
 		// write session to db TODO
+		dbHandler.open();
 		dbHandler.add(session);
+		dbHandler.close();
 		
 		Intent intent = new Intent(NewSession.this, Sessions.class);
 		startActivity(intent);

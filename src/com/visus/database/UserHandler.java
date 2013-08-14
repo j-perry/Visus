@@ -11,77 +11,43 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-
-
-public class UserHandler extends SQLiteOpenHelper {
-		
-	private final static String DATABASE_NAME = "Visus";
-	private final static int    DATABASE_VERSION = 1;
+public class UserHandler {
+			
+	private SQLiteDatabase db;
+	private DatabaseHandler dbHandler;
 	
-	private final static String USERS_TABLE = "Users";
-	
-	private final static String KEY_ID       = "Id";
-	private final static String KEY_ACTIVE   = "Active";
-	private final static String KEY_NAME     = "Name";
-	private final static String KEY_AGE      = "Age";
-	private final static String KEY_GENDER   = "Gender";
-		
-	private static final int ACTIVE_USER = 1;
-	private static final int NON_ACTIVE_USER = 0;
-	
-		
 	public UserHandler(Context context) {
-		super(context, DATABASE_NAME, null, DATABASE_VERSION);
-		Log.e("Visus", "User Handler Init");
-	}
-
-	@Override
-	public void onCreate(SQLiteDatabase db) {
-		// be very careful to include leave spaces between statements!!
-		String createUsersTable = "CREATE TABLE " + USERS_TABLE +
-				                  " ( " +
-				                  	 KEY_ID + " INTEGER PRIMARY KEY, " +
-				                  	 KEY_ACTIVE + " INTEGER, " +
-				                  	 KEY_NAME + " TEXT, " +
-				                  	 KEY_AGE + " INTEGER, " +
-				                  	 KEY_GENDER + " TEXT " +
-				                  ")";
-		db.execSQL(createUsersTable);
-		Log.e("Visus", "Users table created");
-	}
-
-	@Override
-	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		// Drop older table if existed
-        db.execSQL("DROP TABLE IF EXISTS " + USERS_TABLE);
- 
-        // Create tables again
-        onCreate(db);		
+		dbHandler = new DatabaseHandler(context);
 	}
 	
+	public void open() throws SQLiteException {
+		db = dbHandler.getReadableDatabase(); // reads and writes
+	}
+	
+	public void close() throws SQLiteException {
+		db.close();
+	}
+		
 	public void addUser(User user) throws SQLiteException {
-		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues userValues = new ContentValues();
 		
-		userValues.put(KEY_ACTIVE, ACTIVE_USER );
-		userValues.put(KEY_NAME, user.getFirstname() );
-		userValues.put(KEY_GENDER, user.getGender() );
-		userValues.put(KEY_AGE, user.getAge() );
+		userValues.put(DatabaseHandler.KEY_ACTIVE, DatabaseHandler.ACTIVE_USER );
+		userValues.put(DatabaseHandler.KEY_NAME, user.getFirstname() );
+		userValues.put(DatabaseHandler.KEY_GENDER, user.getGender() );
+		userValues.put(DatabaseHandler.KEY_AGE, user.getAge() );
 		
-		db.insert(USERS_TABLE, null, userValues);
+		db.insert(DatabaseHandler.USERS_TABLE, null, userValues);
 		Log.e("Visus", "New user added");
-		db.close();
 	}
 	
 	public void deleteUser() {
-		SQLiteDatabase db = this.getWritableDatabase();
 		User user = null;
 		user = getActiveUser();
 		
 		Log.e("Visus", "User ID = " + String.valueOf(user.getFirstname() ) );
 		
-		int id = db.delete(USERS_TABLE, 					
-				           KEY_ID + " = ?", 			
+		int id = db.delete(DatabaseHandler.USERS_TABLE, 					
+				           DatabaseHandler.KEY_ID + " = ?", 			
 				           new String[] { String.valueOf(user.getUserId()) } );	
 		
 		if(id == 1) {
@@ -90,37 +56,38 @@ public class UserHandler extends SQLiteOpenHelper {
 		else
 			Log.e("Visus", "Unsuccessful");
 		
-		db.close();
 		Log.e("Visus", "DB closed");
 	}
 	
 	public void updateUser(User user) throws SQLiteException {
-		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues userValues = new ContentValues();
 
-		userValues.put(KEY_ID, user.getUserId() );
-		userValues.put(KEY_ACTIVE, user.getActive() );
-		userValues.put(KEY_NAME, user.getFirstname() );
-		userValues.put(KEY_GENDER, user.getGender() );
-		userValues.put(KEY_AGE, user.getAge() );
+		userValues.put(DatabaseHandler.KEY_ID, user.getUserId() );
+		userValues.put(DatabaseHandler.KEY_ACTIVE, user.getActive() );
+		userValues.put(DatabaseHandler.KEY_NAME, user.getFirstname() );
+		userValues.put(DatabaseHandler.KEY_GENDER, user.getGender() );
+		userValues.put(DatabaseHandler.KEY_AGE, user.getAge() );
 		
-		db.update(USERS_TABLE, 											// table
-				  userValues, 											// values
-				  KEY_ID + " = " + String.valueOf(user.getUserId()), 	// query
-				  new String[] { String.valueOf(user.getUserId()) });	// arguments in query
+		db.update(DatabaseHandler.USERS_TABLE, 											// table
+				  userValues, 											                // values
+				  DatabaseHandler.KEY_ID + " = " + String.valueOf(user.getUserId()), 	// query
+				  new String[] { String.valueOf(user.getUserId()) });	                // arguments in query
 		
 		db.close();
 	}
 	
 	public User getActiveUser() {
-		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor;
-		String [] columns = { KEY_ID, KEY_ACTIVE, KEY_NAME, KEY_GENDER, KEY_AGE };
+		String [] columns = { DatabaseHandler.KEY_ID, 
+				              DatabaseHandler.KEY_ACTIVE, 
+				              DatabaseHandler.KEY_NAME, 
+				              DatabaseHandler.KEY_GENDER, 
+				              DatabaseHandler.KEY_AGE };
 		
-		cursor = db.query(USERS_TABLE, 										// db table
-				          columns,											// columns selected
-				          columns[1] + "=" + String.valueOf(ACTIVE_USER),   // WHERE query
-				          null, null, null, null, null);					// not required...
+		cursor = db.query(DatabaseHandler.USERS_TABLE, 										// db table
+				          columns,															// columns selected
+				          columns[1] + "=" + String.valueOf(DatabaseHandler.ACTIVE_USER),   // WHERE query
+				          null, null, null, null, null);									// not required...
 		
 		if(!cursor.moveToFirst() ) {
 			db.close();
@@ -145,7 +112,7 @@ public class UserHandler extends SQLiteOpenHelper {
 		// if a user is active
 		if(user != null) {
 			// set the user as active
-			user.setActive(ACTIVE_USER);
+			user.setActive(DatabaseHandler.ACTIVE_USER);
 			// update their activity status
 			updateUser(user);
 		}
@@ -153,21 +120,20 @@ public class UserHandler extends SQLiteOpenHelper {
 		// get the user's id
 		user = getUser(id);
 		// set the user as active
-		user.setActive(ACTIVE_USER);
+		user.setActive(DatabaseHandler.ACTIVE_USER);
 		// update their activity status
 		updateUser(user);
 	}
 	
 	public User getUser(int id) throws SQLiteException {
-		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = null;
 		User user = new User();
 		
-		cursor = db.query(USERS_TABLE, 							// db table
-				          new String[] { KEY_ID }, 				// columns
-				          KEY_ID + " = " + String.valueOf(id),  // query
-				          new String[] { String.valueOf(id) }, 	// return user id
-				          null, null, null);					// not required...
+		cursor = db.query(DatabaseHandler.USERS_TABLE, 							// db table
+				          new String[] { DatabaseHandler.KEY_ID }, 				// columns
+				          DatabaseHandler.KEY_ID + " = " + String.valueOf(id),  // query
+				          new String[] { String.valueOf(id) }, 					// return user id
+				          null, null, null);									// not required...
 		
 		if(cursor != null)
 			cursor.moveToFirst(); // move cursor to the first column
