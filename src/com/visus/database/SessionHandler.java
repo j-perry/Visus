@@ -122,14 +122,17 @@ public class SessionHandler implements IDatabaseTable {
 		int noMins = 0;
 		int noSecs = 0;
 				
+		// hours query
 		String qryNoHours = "SELECT * " +
 		                    "FROM " + DatabaseHandler.SESSIONS_TABLE + " " +
 		                    "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId;
 		
+		// sessions query
 		String qryNoSessions = "SELECT " + DatabaseHandler.KEY_USER_ID + " " +
 		                       "FROM " + DatabaseHandler.SESSIONS_TABLE + " " +
 		                       "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId;
 		
+		// activities query
 		String qryNoActivities = "SELECT " + DatabaseHandler.KEY_TYPE + " " + 
 								 "FROM " + DatabaseHandler.SESSIONS_TABLE + " " +
 								 "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId;
@@ -183,17 +186,12 @@ public class SessionHandler implements IDatabaseTable {
 		
 		// return no. of activity categories
 		noActivities = activities.size();
-			
+		
 		
 		// assign overview
-//	TODO	session.setOverviewHours(noHoursTotal);
+//		TODO	session.setOverviewHours(noHoursTotal);
 		session.setOverviewNoSessions(noSessions);
 		session.setOverviewNoActivities(noActivities);
-		
-		// logs
-//		Log.e("Visus", String.valueOf(session.getOverviewHours()) );
-//		Log.e("Visus", String.valueOf(session.getOverviewNoSessions() ));
-//		Log.e("Visus", String.valueOf(session.getOverviewNoActivities() ));
 		
 		return session;
 	}

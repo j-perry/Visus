@@ -1,4 +1,4 @@
-<LinearLayout 
+<RelativeLayout 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/light_grey" 
@@ -16,12 +16,12 @@
     			- This month
     			- Other months in the year
     			- Other years 
-    
-    <ListView 
-    	android:id="@+id/previous_sessions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
     -->
+    <ListView 
+    	android:id="@+id/list_previous_sessions"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    
         
-</LinearLayout>
+</RelativeLayout>

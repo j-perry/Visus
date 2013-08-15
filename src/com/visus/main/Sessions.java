@@ -41,7 +41,7 @@ public class Sessions extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sessions);
 		
-		Log.e("Visus", "Session onCreate");
+		Log.e("Visus", "Session onCreate()");
 		
 		SessionHandler dbSession = new SessionHandler(this);
 		dbSession.open();
@@ -52,7 +52,8 @@ public class Sessions extends Activity {
 
 		Log.e("Visus", "USER ID: " + activeUserId);
 		
-//		ListView sessionsList = (ListView) findViewById(R.id.previous_sessions);
+		
+		ListView sessionsList = (ListView) findViewById(R.id.list_previous_sessions);
 				
 		sessionOverview = dbSession.getOverview(activeUserId);
 		dbSession.close();
@@ -66,29 +67,37 @@ public class Sessions extends Activity {
 		else {
 			Log.e("Visus", "session overview is null");
 		}
+				
+//		resultsCurrentWeek = dbSession.getResultsFromThisWeek(user.getUserId() );
+//		resultsWeeksInMonth = dbSession.getResultsFromWeeksInMonth(user.getUserId() );
+//		resultsOtherMonths = dbSession.getResultsFromOtherMonths(user.getUserId() );
+//		resultsOtherYears = dbSession.getResultsFromOtherYears(user.getUserId() );
+				
+		// assign adapter items
+		List<HashMap<String, String>> adapterList = new ArrayList<HashMap<String, String>>();		
 		
-//		Log.e("Visus", "Session overview (hours): " + sessionOverview.getOverviewHours());
+		// createList(key, name)
+		// NB: param 'key' must co-ordinate with SimpleAdapters 'from' String array parameter (4th parameter) 
+		adapterList.add( createList("overview", "Overview (hours): " + String.valueOf(sessionOverview.getOverviewHours() ) ));
+		adapterList.add( createList("overview", "Overview (sessions): " + String.valueOf(sessionOverview.getOverviewNoSessions() ) ));
+		adapterList.add( createList("overview", "Overview (activities): " + String.valueOf(sessionOverview.getOverviewNoActivities() ) ));
+				
+		// binds our data together before being sent to the 
+		// ListView's adapter component for presentation
+		SimpleAdapter adapter = new SimpleAdapter(this, 
+												  adapterList,
+				                                  android.R.layout.simple_list_item_1,
+				                                  new String[] { "overview" },
+				                                  new int[] { android.R.id.text1 });		
+		// display the contents
+		sessionsList.setAdapter(adapter);
+	}
+	
+	private HashMap<String, String> createList(String key, String name) {
+		HashMap<String, String> items = new HashMap<String, String>();
+		items.put(key, name);
 		
-////		resultsCurrentWeek = dbSession.getResultsFromThisWeek(user.getUserId() );
-////		resultsWeeksInMonth = dbSession.getResultsFromWeeksInMonth(user.getUserId() );
-////		resultsOtherMonths = dbSession.getResultsFromOtherMonths(user.getUserId() );
-////		resultsOtherYears = dbSession.getResultsFromOtherYears(user.getUserId() );
-//				
-//		// assign adapter items
-//		List<HashMap<String, String>> adapterList = new ArrayList<HashMap<String, String>>();
-//		HashMap<String, String> map = new HashMap<String, String>();
-//		map.put("col2", String.valueOf(sessionOverview.getOverviewHours() ));
-//		map.put("col1", String.valueOf(sessionOverview.getOverviewNoSessions() ));
-//		map.put("col3", String.valueOf(sessionOverview.getOverviewNoActivities() ));
-//		
-//		adapterList.add(map);
-//		
-//		SimpleAdapter adapter = new SimpleAdapter(this, 
-//												  adapterList,
-//				                                  android.R.layout.simple_list_item_1,
-//				                                  new String[] { "overview" },
-//				                                  new int[] { android.R.id.text1 });		
-//		sessionsList.setAdapter(adapter);
+		return items;
 	}
 
 	@Override

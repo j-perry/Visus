@@ -85,6 +85,7 @@ public class NewSession extends Activity {
 		if(userId != null) {
 			// get the user id (int)
 			activeUserId = userId.getInt("ActiveUserId");
+			Log.e("Visus", "----------------------------------------");
 			Log.e("Visus", "New Session - User id is " + activeUserId);
 		}
 		else {
@@ -154,7 +155,7 @@ public class NewSession extends Activity {
 		// get the session type
 		EditText sessionType = (EditText) findViewById(R.id.session_type);
 		this.type = sessionType.getText().toString();
-		Log.e("Visus", this.type);
+		Log.e("Visus", "Type: " + this.type);
 		
 		// hide the session view
 		sessionType.setVisibility(View.GONE);
@@ -235,7 +236,7 @@ public class NewSession extends Activity {
 		String month = new SimpleDateFormat(strFormatMonth).format(new Date() );
 		int year = Integer.parseInt(new SimpleDateFormat(strFormatYear).format(new Date()) );
 		
-		Log.e("Visus", dayNo + " " + new SimpleDateFormat(strFormatDay).format(new Date() ) + " " + month + " " + year);
+		Log.e("Visus", day + " " + dayNo + " " + month + ", " + year);
 		
 		// remove callback to timer handler
 		timerHandler.removeCallbacks(runUpdateTimer);
@@ -261,7 +262,7 @@ public class NewSession extends Activity {
 //						minutes,    // minutes
 //						dayPeriod);	// period of the day - AM/PM
 		
-		Log.e("Visus", "Set time: " + session.getTimeHour());
+		Log.e("Visus", "Set time: " + session.getTimeHour() + ":" + session.getTimeMinutes());
 		
 		session.setDayPeriod(dayPeriod);
 		
