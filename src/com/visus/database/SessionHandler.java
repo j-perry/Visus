@@ -180,9 +180,9 @@ public class SessionHandler implements IDatabaseTable {
 			if(!activities.contains(cursor.getString(typeIndex) )) 
 				activities.add(cursor.getString(typeIndex) );			
 		}
-		
-		db.close();
+				
 		cursor.close();
+		db.close();
 		
 		// return no. of activity categories
 		noActivities = activities.size();
@@ -194,6 +194,79 @@ public class SessionHandler implements IDatabaseTable {
 		session.setOverviewNoActivities(noActivities);
 		
 		return session;
+	}
+	
+	/**
+	 * 
+	 * @param userId
+	 * @return
+	 */
+	public ArrayList<Session> getSessions(int userId) {
+		String qrySessions = "SELECT * " +
+                             "FROM " + DatabaseHandler.SESSIONS_TABLE + " " +
+                             "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		
+		ArrayList<Session> sessionsAll = new ArrayList<Session>();
+		Cursor cursor = null;
+		Session session;
+		
+		int dayNoIndex,
+		    dayIndex,
+		    monthIndex,
+		    yearIndex,
+		    timeHourIndex,
+		    timeMinutesIndex,
+		    timezoneIndex,
+		    durationMinutesIndex,
+		    durationSecondsIndex,
+		    typeIndex = 0;
+		
+		
+		cursor = db.rawQuery(qrySessions, null);
+		
+		// find each columns respective index
+		dayNoIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY_NO);
+		dayIndex   			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY);
+		monthIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_MONTH);
+		yearIndex  			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_YEAR);
+		timeHourIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_HOUR);
+		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_MINS);
+		timezoneIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIMEZONE);
+		durationMinutesIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_MINS);
+		durationSecondsIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_SECS);
+		typeIndex            = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		
+		
+		// retrieve sessions
+		while(cursor.moveToNext()) {
+			session = new Session();
+			
+			// date
+			session.setDayNo(cursor.getInt(dayNoIndex));
+//			session.setDay(cursor.getString(dayIndex));
+			session.setMonth(cursor.getString(monthIndex));
+//			session.setYear(cursor.getInt(yearIndex));
+			
+			// time
+//			session.setTimeHour(cursor.getInt(timeHourIndex));
+//			session.setTimeMinutes(cursor.getInt(timeMinutesIndex));
+//			session.setDayPeriod(cursor.getString(timezoneIndex));
+			
+			// duration
+//			session.setDurationMinutes(cursor.getInt(durationMinutesIndex));
+//			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
+			
+			// type
+//			session.setType(cursor.getString(typeIndex));
+			
+			// add the session
+			sessionsAll.add(session);
+		}
+		
+		cursor.close();
+		db.close();
+		
+		return sessionsAll;
 	}
 	
 }

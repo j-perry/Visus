@@ -30,10 +30,6 @@ public class Sessions extends Activity {
 	
 	private List<HashMap<String, String>> adapterItems;
 	private Session sessionOverview;
-	private ArrayList<Object> resultsCurrentWeek, 
-							  resultsWeeksInMonth, 
-							  resultsOtherMonths,
-							  resultsOtherYears;
 	private int activeUserId;
 	
 	@Override
@@ -44,7 +40,8 @@ public class Sessions extends Activity {
 		Log.e("Visus", "Session onCreate()");
 		
 		SessionHandler dbSession = new SessionHandler(this);
-		dbSession.open();
+		ArrayList<Session> allSessions = new ArrayList<Session>();
+		
 		
 		// get user id
 		Bundle bundle = getIntent().getExtras();
@@ -52,11 +49,18 @@ public class Sessions extends Activity {
 
 		Log.e("Visus", "USER ID: " + activeUserId);
 		
-		
-		ListView sessionsList = (ListView) findViewById(R.id.list_previous_sessions);
 				
+		ListView sessionsList = (ListView) findViewById(R.id.list_previous_sessions);
+			
+		dbSession.open();
 		sessionOverview = dbSession.getOverview(activeUserId);
 		dbSession.close();
+		
+		
+		dbSession.open();
+		allSessions = dbSession.getSessions(activeUserId);
+		dbSession.close();
+		
 		
 		if(sessionOverview != null) {
 			Log.e("Visus", "session overview is not null");
@@ -67,11 +71,7 @@ public class Sessions extends Activity {
 		else {
 			Log.e("Visus", "session overview is null");
 		}
-				
-//		resultsCurrentWeek = dbSession.getResultsFromThisWeek(user.getUserId() );
-//		resultsWeeksInMonth = dbSession.getResultsFromWeeksInMonth(user.getUserId() );
-//		resultsOtherMonths = dbSession.getResultsFromOtherMonths(user.getUserId() );
-//		resultsOtherYears = dbSession.getResultsFromOtherYears(user.getUserId() );
+		
 				
 		// assign adapter items
 		List<HashMap<String, String>> adapterList = new ArrayList<HashMap<String, String>>();		
@@ -81,7 +81,24 @@ public class Sessions extends Activity {
 		adapterList.add( createList("overview", "Overview (hours): " + String.valueOf(sessionOverview.getOverviewHours() ) ));
 		adapterList.add( createList("overview", "Overview (sessions): " + String.valueOf(sessionOverview.getOverviewNoSessions() ) ));
 		adapterList.add( createList("overview", "Overview (activities): " + String.valueOf(sessionOverview.getOverviewNoActivities() ) ));
-				
+		
+		
+		// TODO
+		// add each session to the adapter list
+		for(Session session : allSessions) {
+			adapterList.add( createList("overview",
+					                    session.getDayNo() + " " + 
+					                    session.getMonth() 
+//					                    session.getDurationMinutes() + " " +
+//					                    session.getDurationSeconds() + " - " +
+//					                    session.getType()
+						               ));
+		}
+		
+		
+		
+		
+		
 		// binds our data together before being sent to the 
 		// ListView's adapter component for presentation
 		SimpleAdapter adapter = new SimpleAdapter(this, 

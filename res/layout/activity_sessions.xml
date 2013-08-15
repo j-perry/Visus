@@ -1,7 +1,7 @@
 <RelativeLayout 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/light_grey" 
+    android:background="@color/white" 
     android:orientation="vertical"
     android:padding="0dp"
     android:layout_width="fill_parent"
