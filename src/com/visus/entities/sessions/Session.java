@@ -27,6 +27,11 @@ public class Session {
 	
 	private int userId;
 	private String type;
+	
+	// overview
+	private int overviewHours;
+	private int overviewSessions;
+	private int overviewActivities;
 		
 	private final static String [] days = {
 		"Sat", 
@@ -236,6 +241,30 @@ public class Session {
 	 */
 	public String getType() {
 		return type;
+	}
+	
+	public void setOverviewHours(int overviewHours) {
+		this.overviewHours = overviewHours;
+	}
+	
+	public int getOverviewHours() {
+		return overviewHours;
+	}
+	
+	public void setOverviewNoSessions(int overviewSessions) {
+		this.overviewSessions = overviewSessions;
+	}
+	
+	public int getOverviewNoSessions() {
+		return overviewSessions;
+	}
+	
+	public void setOverviewNoActivities(int overviewActivities) {
+		this.overviewActivities = overviewActivities;
+	}
+	
+	public int getOverviewNoActivities() {
+		return overviewActivities;
 	}
 
 }

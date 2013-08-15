@@ -29,37 +29,57 @@ import android.widget.SimpleAdapter;
 public class Sessions extends Activity {
 	
 	private List<HashMap<String, String>> adapterItems;
-	private Overview overview;
+	private Session sessionOverview;
 	private ArrayList<Object> resultsCurrentWeek, 
 							  resultsWeeksInMonth, 
 							  resultsOtherMonths,
 							  resultsOtherYears;
+	private int activeUserId;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sessions);
 		
-//		SessionHandler sessionHandler = new SessionHandler(this);
-//		UserHandler presentUser = new UserHandler(this);
-//		User user = presentUser.getActiveUser();
+		Log.e("Visus", "Session onCreate");
+		
+		SessionHandler dbSession = new SessionHandler(this);
+		dbSession.open();
+		
+		// get user id
+		Bundle bundle = getIntent().getExtras();
+		activeUserId = bundle.getInt("ActiveUserId");
 
-		//ListView sessionsList = (ListView) findViewById(R.id.previous_sessions);
+		Log.e("Visus", "USER ID: " + activeUserId);
 		
-//		Log.e("Visus", "sdfsdjfnh: " + String.valueOf(user.getUserId()) );
-		
-//		overview = sessionHandler.getOverview(user.getUserId() );
-//		resultsCurrentWeek = sessionHandler.getResultsFromThisWeek(user.getUserId() );
-//		resultsWeeksInMonth = sessionHandler.getResultsFromWeeksInMonth(user.getUserId() );
-//		resultsOtherMonths = sessionHandler.getResultsFromOtherMonths(user.getUserId() );
-//		resultsOtherYears = sessionHandler.getResultsFromOtherYears(user.getUserId() );
+//		ListView sessionsList = (ListView) findViewById(R.id.previous_sessions);
 				
-		// assign adapter items
+		sessionOverview = dbSession.getOverview(activeUserId);
+		dbSession.close();
+		
+		if(sessionOverview != null) {
+			Log.e("Visus", "session overview is not null");
+			Log.e("Visus", "Session overview (hours): " + String.valueOf(sessionOverview.getOverviewHours() ));
+			Log.e("Visus", "Session overview (sessions): " + String.valueOf(sessionOverview.getOverviewNoSessions() ));
+			Log.e("Visus", "Session overview (activities): " + String.valueOf(sessionOverview.getOverviewNoActivities() ));
+		}
+		else {
+			Log.e("Visus", "session overview is null");
+		}
+		
+//		Log.e("Visus", "Session overview (hours): " + sessionOverview.getOverviewHours());
+		
+////		resultsCurrentWeek = dbSession.getResultsFromThisWeek(user.getUserId() );
+////		resultsWeeksInMonth = dbSession.getResultsFromWeeksInMonth(user.getUserId() );
+////		resultsOtherMonths = dbSession.getResultsFromOtherMonths(user.getUserId() );
+////		resultsOtherYears = dbSession.getResultsFromOtherYears(user.getUserId() );
+//				
+//		// assign adapter items
 //		List<HashMap<String, String>> adapterList = new ArrayList<HashMap<String, String>>();
 //		HashMap<String, String> map = new HashMap<String, String>();
-//		map.put("col1", String.valueOf(overview.getSessionNos()));
-//		map.put("col2", String.valueOf(overview.getHours()));
-//		map.put("col3", String.valueOf(overview.getActivitiesNos()));
+//		map.put("col2", String.valueOf(sessionOverview.getOverviewHours() ));
+//		map.put("col1", String.valueOf(sessionOverview.getOverviewNoSessions() ));
+//		map.put("col3", String.valueOf(sessionOverview.getOverviewNoActivities() ));
 //		
 //		adapterList.add(map);
 //		

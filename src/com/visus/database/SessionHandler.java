@@ -2,6 +2,7 @@ package com.visus.database;
 
 import java.util.*;
 
+import com.visus.entities.User;
 import com.visus.entities.sessions.*;
 
 import android.content.*;
@@ -12,6 +13,7 @@ import android.util.Log;
 public class SessionHandler implements IDatabaseTable {
 		
 	private DatabaseHandler dbHandler;
+	private UserHandler dbUser;
 	private SQLiteDatabase db;
 	private Long result;
 		
@@ -30,7 +32,21 @@ public class SessionHandler implements IDatabaseTable {
 	}
 		
 	/**
-	 * 	Session methods
+	 * 	Adds a new session to the database
+	 * 	Method writes the following data:
+	 *  	o user ID
+	 * 		o dayNo
+	 *  	o day-of-the-week
+	 *  	o month
+	 *  	o year
+	 *  	o hour
+	 *  	o minutes
+	 *  	o timezone (AM/PM)
+	 *  	o duration minutes
+	 *  	o duration seconds
+	 *  	o type (e.g., Email)
+	 *  
+	 * @param session parses a session object derived from generated data from the NewSession class
 	 */
 	public void add(Session session) {
 		ContentValues sessionValues = new ContentValues();
@@ -91,67 +107,95 @@ public class SessionHandler implements IDatabaseTable {
 		
 	}
 	
-//	public Overview getOverview(int userId) {
-//		SQLiteDatabase db = this.getReadableDatabase();
-//		
-//		Overview overview = new Overview();
-//		
-//		String columns [] = { KEY_ID, 
-//				              KEY_USER_ID, 
-//				              KEY_DATE,
-////							  KEY_TIME,
-////				              KEY_DURATION, 
-////				              KEY_TYPE 
-//				            };
-//		
-//		// TODO
-//		// KEY_USER_ID + ", " + 
-//		final String qryOverview = "SELECT " + KEY_DURATION + ", " + KEY_TYPE +
-//		                           " FROM " + SESSIONS_TABLE +
-//		                           " WHERE " + KEY_USER_ID + " = ?";
-//		
-//		Cursor cursor = db.query(SESSIONS_TABLE,
-//				                 columns,
-//				                 columns[1] + "=" + String.valueOf(userId),
-//				                 null, null, null, null, null);
-//		
-////		if(!cursor.moveToFirst()) {
-////			Log.e("Visus", "query returned null");
-////		}
-////		else
-////			Log.e("Visus", "query returned not null");
-//		
-//
-//		int noSessions = 0;
-//		int noHours = 0;
-//		Stack<String> activities = new Stack<String>();
-//				
-////		Log.e("Visus", String.valueOf(cursor.getColumnCount() ));
-//		
-//		// get no of session hours
-////		while(cursor.moveToNext()) {
-////			// count no. of session results
-////			noSessions++;
-////			
-////			noHours += Integer.parseInt(cursor.getString(7)); // TODO get KEY_DURATION
-////			
-////			// get activity categories
-//////			if(!activities.contains(cursor.getString(8)) )
-//////				activities.add(cursor.getString(8));
-////		}
-//		
-////		cursor.close();
-//		
-//		// assign overview
-//		overview.setHours(20);
-//		overview.setNoOfSessions(30);
-////		overview.setActivitiesNos(activities.size());
-//		
-//		Log.e("Visus", String.valueOf(overview.getHours()) );
-//		Log.e("Visus", String.valueOf(overview.getSessionNos() ));
-////		Log.e("Visus", String.valueOf(overview.getActivitiesNos() ));
-//		
-//		return overview;
-//	}
+	/**
+	 * Returns an overview of the user's activity since inception
+	 * @param userId
+	 * @return
+	 */
+	public Session getOverview(int userId) {
+		Session session = new Session();
+		Cursor cursor = null;
+		Stack<String> activities = new Stack<String>();
+		int noSessions = 0;
+		int noActivities = 0;
+		int noHoursTotal = 0;
+		int noMins = 0;
+		int noSecs = 0;
+				
+		String qryNoHours = "SELECT * " +
+		                    "FROM " + DatabaseHandler.SESSIONS_TABLE + " " +
+		                    "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		
+		String qryNoSessions = "SELECT " + DatabaseHandler.KEY_USER_ID + " " +
+		                       "FROM " + DatabaseHandler.SESSIONS_TABLE + " " +
+		                       "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		
+		String qryNoActivities = "SELECT " + DatabaseHandler.KEY_TYPE + " " + 
+								 "FROM " + DatabaseHandler.SESSIONS_TABLE + " " +
+								 "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId;
+						
+		cursor = db.rawQuery(qryNoHours, null);
+				
+		// validation
+		if(cursor == null)
+			Log.e("Visus", "SQL Query Failed");
+		else
+			Log.e("Visus", "SQL Query Successful");
+		
+		
+		int minutesIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_MINS);
+		
+		// get no. of hours
+		while(cursor.moveToNext()) {
+			if(noMins > 60) {
+				noMins = noMins - 60;
+				noHoursTotal++;
+			}
+			else {
+				noMins += cursor.getInt(minutesIndex);
+			}
+		}
+		
+		if(noHoursTotal > 1) {
+			session.setOverviewHours(noHoursTotal);
+		}
+		else {
+			session.setOverviewHours(noMins);
+		}
+		
+		
+		// get no. of sessions
+		cursor = db.rawQuery(qryNoSessions, null);
+		noSessions = cursor.getCount();
+		
+				
+		// get no. of activities
+		cursor = db.rawQuery(qryNoActivities, null);
+		int typeIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		
+		while(cursor.moveToNext()) {
+			if(!activities.contains(cursor.getString(typeIndex) )) 
+				activities.add(cursor.getString(typeIndex) );			
+		}
+		
+		db.close();
+		cursor.close();
+		
+		// return no. of activity categories
+		noActivities = activities.size();
+			
+		
+		// assign overview
+//	TODO	session.setOverviewHours(noHoursTotal);
+		session.setOverviewNoSessions(noSessions);
+		session.setOverviewNoActivities(noActivities);
+		
+		// logs
+//		Log.e("Visus", String.valueOf(session.getOverviewHours()) );
+//		Log.e("Visus", String.valueOf(session.getOverviewNoSessions() ));
+//		Log.e("Visus", String.valueOf(session.getOverviewNoActivities() ));
+		
+		return session;
+	}
 	
 }

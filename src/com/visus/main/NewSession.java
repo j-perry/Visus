@@ -331,6 +331,7 @@ public class NewSession extends Activity {
 		dbHandler.close();
 		
 		Intent intent = new Intent(NewSession.this, Sessions.class);
+		intent.putExtra("ActiveUserId", activeUserId);
 		startActivity(intent);
 	}	
 	

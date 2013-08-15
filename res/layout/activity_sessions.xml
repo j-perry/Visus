@@ -1,11 +1,13 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/light_grey" 
     android:orientation="vertical"
     android:padding="0dp"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context=".Sessions" >
+    tools:context=".Sessions"
+    >
     
     <!-- 
     		Includes:
@@ -13,12 +15,13 @@
     			- This week
     			- This month
     			- Other months in the year
-    			- Other years
-     
+    			- Other years 
+    
     <ListView 
     	android:id="@+id/previous_sessions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
-        -->
-</RelativeLayout>
+    -->
+        
+</LinearLayout>
