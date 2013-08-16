@@ -149,11 +149,13 @@ public class SessionHandler implements IDatabaseTable {
 		Session session = new Session();
 		Cursor cursor = null;
 		Stack<String> activities = new Stack<String>();
+		final int MINS_PER_HOUR = 60;
 		int noSessions = 0;
 		int noActivities = 0;
 		int noHoursTotal = 0;
 		int noMins = 0;
 		int noSecs = 0;
+		
 				
 		// hours query
 		String qryNoHours = "SELECT *" + QRY_SPACING +
@@ -185,14 +187,12 @@ public class SessionHandler implements IDatabaseTable {
 		while(cursor.moveToNext()) {
 			noMins += cursor.getInt(minutesIndex);
 		}
-		
-		if(noMins > 60) {
-			noMins = noMins - 60;
-			noHoursTotal++;
-		}
-		else {
+
+		// convert minutes to no. of hours
+		if(noMins > MINS_PER_HOUR )
+			noHoursTotal = (int) noMins / MINS_PER_HOUR ; // i.e., 156mins / 60 mins in an hour = 2.6 hours ~ 2 hours
+		else
 			noMins += cursor.getInt(minutesIndex);
-		}
 		
 		if(noHoursTotal >= 1) {
 			// display no. of hours
