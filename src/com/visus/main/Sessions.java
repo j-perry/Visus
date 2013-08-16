@@ -87,11 +87,16 @@ public class Sessions extends Activity {
 		// add each session to the adapter list
 		for(Session session : allSessions) {
 			adapterList.add( createList("overview",
-					                    session.getDayNo() + " " + 
-					                    session.getMonth() 
-//					                    session.getDurationMinutes() + " " +
-//					                    session.getDurationSeconds() + " - " +
-//					                    session.getType()
+					                    session.getDay() + " " +
+		                    			session.getDayNo() + " " +  
+					                    session.getMonth() + ", " +
+					                    session.getYear() + " - " +
+					                    session.getTimeHour() + ":" +
+					                    session.getTimeMinutes() + " " +
+					                    session.getDayPeriod() + " - " +
+					                    session.getDurationMinutes() + ":" +
+					                    session.getDurationSeconds() + " - " +
+					                    session.getType()
 						               ));
 		}
 		
@@ -110,6 +115,13 @@ public class Sessions extends Activity {
 		sessionsList.setAdapter(adapter);
 	}
 	
+	/**
+	 * Creates a new item in the HashMap for insertion into an ArrayList 
+	 * initialised by a Session object
+	 * @param key
+	 * @param name
+	 * @return
+	 */
 	private HashMap<String, String> createList(String key, String name) {
 		HashMap<String, String> items = new HashMap<String, String>();
 		items.put(key, name);

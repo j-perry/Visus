@@ -159,10 +159,12 @@ public class SessionHandler implements IDatabaseTable {
 			}
 		}
 		
-		if(noHoursTotal > 1) {
+		if(noHoursTotal >= 1) {
+			// display no. of hours
 			session.setOverviewHours(noHoursTotal);
 		}
 		else {
+			// display no. of minutes
 			session.setOverviewHours(noMins);
 		}
 		
@@ -243,21 +245,29 @@ public class SessionHandler implements IDatabaseTable {
 			
 			// date
 			session.setDayNo(cursor.getInt(dayNoIndex));
-//			session.setDay(cursor.getString(dayIndex));
+			session.setDay(cursor.getString(dayIndex));
 			session.setMonth(cursor.getString(monthIndex));
-//			session.setYear(cursor.getInt(yearIndex));
+			session.setYear(cursor.getInt(yearIndex));
 			
 			// time
-//			session.setTimeHour(cursor.getInt(timeHourIndex));
-//			session.setTimeMinutes(cursor.getInt(timeMinutesIndex));
-//			session.setDayPeriod(cursor.getString(timezoneIndex));
+			session.setTimeHour(cursor.getInt(timeHourIndex));
+			session.setTimeMinutes(cursor.getInt(timeMinutesIndex));
+			session.setDayPeriod(cursor.getString(timezoneIndex));
 			
-			// duration
-//			session.setDurationMinutes(cursor.getInt(durationMinutesIndex));
-//			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
+			/* duration	*/
 			
+			// if no. of minutes is a minute or longer
+			if(cursor.getInt(durationMinutesIndex) >= 1)
+				// assign no. of minutes
+				session.setDurationMinutes(cursor.getInt(durationMinutesIndex));
+			else
+				// else, assign zero to indicate this
+				session.setDurationMinutes(0);
+						
+			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
+							
 			// type
-//			session.setType(cursor.getString(typeIndex));
+			session.setType(cursor.getString(typeIndex));
 			
 			// add the session
 			sessionsAll.add(session);
