@@ -93,6 +93,7 @@ public class MainActivity extends Activity {
 	 */
 	public void prevSessions(View view) {
 		Intent intent = new Intent(MainActivity.this, Sessions.class);
+		intent.putExtra("ActiveUserId", user.getUserId());
 		startActivity(intent);
 	}
 	
@@ -111,6 +112,7 @@ public class MainActivity extends Activity {
 	 */
 	public void viewUserActivity(View view) {
 		Intent intent = new Intent(MainActivity.this, UserActivity.class);
+		intent.putExtra("ActiveUserId", user.getUserId());
 		startActivity(intent);
 	}
 		
@@ -120,6 +122,7 @@ public class MainActivity extends Activity {
 	 */
 	public void viewUserActivities(View view) {
 		Intent intent = new Intent(MainActivity.this, Activities.class);
+		intent.putExtra("ActiveUserId", user.getUserId());
 		startActivity(intent);
 	}
 	
@@ -129,6 +132,7 @@ public class MainActivity extends Activity {
 	 */
 	public void viewLatestUserActivities(View view) {
 		Intent intent = new Intent(MainActivity.this, LatestActivity.class);
+		intent.putExtra("ActiveUserId", user.getUserId());
 		startActivity(intent);
 	}
 
@@ -138,6 +142,7 @@ public class MainActivity extends Activity {
 	 */
 	public void viewUserActivityCategory(View view) {
 		Intent intent = new Intent(MainActivity.this, ActivityCategory.class);
+		intent.putExtra("ActiveUserId", user.getUserId());
 		startActivity(intent);
 	}
 	
