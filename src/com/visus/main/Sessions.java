@@ -86,17 +86,16 @@ public class Sessions extends Activity {
 		// TODO
 		// add each session to the adapter list
 		for(Session session : allSessions) {
-			adapterList.add( createList("overview",
-					                    session.getDay() + " " +
-		                    			session.getDayNo() + " " +  
-					                    session.getMonth() + ", " +
-					                    session.getYear() + " - " +
-					                    session.getTimeHour() + ":" +
-					                    session.getTimeMinutes() + " " +
-					                    session.getDayPeriod() + " - " +
-					                    session.getDurationMinutes() + ":" +
-					                    session.getDurationSeconds() + " - " +
-					                    session.getType()
+			adapterList.add( createList("overview",	session.getDay() + " " +
+		                    						session.getDayNo() + " " +  
+		                    						session.getMonth() + ", " +
+		                    						session.getYear() + " - " +
+								                    session.getTimeHour() + ":" +
+								                    session.getTimeMinutes() + " " +
+								                    session.getDayPeriod() + " - " +
+								                    session.getDurationMinutes() + ":" +
+								                    session.getDurationSeconds() + " - " +
+								                    session.getType()
 						               ));
 		}
 		

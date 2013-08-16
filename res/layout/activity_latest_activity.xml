@@ -5,9 +5,21 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
+    android:padding="25dp"
     tools:context=".LatestActivity" 
     >    
     
+    <ListView 
+        android:id="@+id/list_latest_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    
+        
+    
+    
+    
+    <!-- 
     <ScrollView
     	android:background="@color/light_grey"
 	    android:orientation="vertical"
@@ -24,7 +36,7 @@
 			android:layout_marginBottom="25dp"
 	        >
     
-		    <!-- overview -->
+		     overview 
 		    <LinearLayout
 		    	android:id="@+id/sessions_overview"
 		    	android:orientation="vertical"
@@ -34,7 +46,7 @@
 				android:layout_marginBottom="25dp"
 		        >
 	                    
-		        <!-- overview -->
+		         overview 
 			    <TextView 
 			    	android:layout_width="fill_parent"
 			        android:layout_height="wrap_content"
@@ -46,7 +58,7 @@
 			        android:text="Overview"
 			    />
 			    
-			    <!-- sessions -->
+			     sessions 
 			    <TextView 
 			    	android:layout_width="fill_parent"
 			        android:layout_height="wrap_content"
@@ -57,7 +69,7 @@
 			        android:text="[sessions]"
 			    />
 			    
-			    <!-- hours -->
+			     hours 
 			    <TextView 
 			    	android:layout_width="fill_parent"
 			        android:layout_height="wrap_content"
@@ -68,7 +80,7 @@
 			        android:text="[hours]"
 			    />
 			    
-			    <!-- activity categories -->
+			     activity categories 
 			    <TextView 
 			    	android:layout_width="fill_parent"
 			        android:layout_height="wrap_content"
@@ -81,7 +93,7 @@
 		
 		</LinearLayout>
 		
-	    <!-- overview -->
+	     overview 
 	    <LinearLayout
 	    	android:id="@+id/sessions_recent_activity"
 	    	android:background="@color/white"
@@ -108,5 +120,6 @@
 	    </LinearLayout>
 	
     </ScrollView>
+     -->
     
 </LinearLayout>
