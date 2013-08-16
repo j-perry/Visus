@@ -60,11 +60,11 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait" 
             />
-        
-        <!-- activities -->
+                        
+        <!-- activity categories -->
         <activity
-            android:name="com.visus.main.Activities"
-            android:label="@string/title_activities" 
+            android:name="com.visus.main.ActivityCategories"
+            android:label="@string/title_activity_categories"
             android:configChanges="orientation"
             android:screenOrientation="portrait" 
             />

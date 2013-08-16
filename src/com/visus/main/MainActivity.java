@@ -111,7 +111,7 @@ public class MainActivity extends Activity {
 	 * @param view
 	 */
 	public void viewUserActivity(View view) {
-		Intent intent = new Intent(MainActivity.this, UserActivity.class);
+		Intent intent = new Intent(MainActivity.this, LatestActivity.class);
 		intent.putExtra("ActiveUserId", user.getUserId());
 		startActivity(intent);
 	}
@@ -121,7 +121,7 @@ public class MainActivity extends Activity {
 	 * @param view
 	 */
 	public void viewUserActivities(View view) {
-		Intent intent = new Intent(MainActivity.this, Activities.class);
+		Intent intent = new Intent(MainActivity.this, ActivityCategories.class);
 		intent.putExtra("ActiveUserId", user.getUserId());
 		startActivity(intent);
 	}

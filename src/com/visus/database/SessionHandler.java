@@ -112,22 +112,24 @@ public class SessionHandler implements IDatabaseTable {
 	 * @param userId
 	 * @return
 	 */
-	public ArrayList<Session> getSessionTypes(int userId) {
-		ArrayList<Session> sessionTypes = new ArrayList<Session>();
-		Session session = new Session();
+	public ArrayList<String> getSessionTypes(int userId) {
+		ArrayList<String> sessionTypes = new ArrayList<String>();
 		Cursor cursor = null;
-		String qrySessions = "SELECT " + DatabaseHandler.KEY_TYPE + " " +
-		                     "FROM " + DatabaseHandler.SESSIONS_TABLE + " " +
-				             "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId;
-		int typeIndex = 0;
+		String qrySessions = "SELECT " + DatabaseHandler.KEY_TYPE + " " + 
+				 			 "FROM " + DatabaseHandler.SESSIONS_TABLE + " " +
+				 			 "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId;
 		
 		cursor = db.rawQuery(qrySessions, null);
 		
-		typeIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		int typeIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		
+		Log.e("Visus", "-------------------");
 		
 		while(cursor.moveToNext()) {
-			session.setType(cursor.getString(typeIndex));
-			sessionTypes.add(session);
+			if(!sessionTypes.contains(cursor.getString(typeIndex) )) { 
+				sessionTypes.add(cursor.getString(typeIndex) );
+				Log.e("Visus", "Type: " + cursor.getString(typeIndex));
+			}
 		}
 		
 		cursor.close();

@@ -25,7 +25,9 @@
     <string name="title_activity">Latest activity</string>
     <string name="title_latest_activity">Latest activity</string>
     <string name="title_activity_category">Activity category</string>
+    <string name="title_activity_categories">Activities</string>
     <string name="title_activities">Activities</string>
+    
     
     <!-- Main menu scrollview -->
     <string name="latest_activity">Latest activity</string>    
