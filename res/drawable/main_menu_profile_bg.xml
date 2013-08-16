@@ -6,7 +6,7 @@
         
         <shape>
             
-            <solid android:color="@color/faint_green"/> 
+            <solid android:color="@color/white"/> 
                 <stroke android:width="0dp" android:height="0dp" android:color="@color/light_grey" />
                 <corners
                     android:radius="0px" />
@@ -25,7 +25,7 @@
         
         <shape>
             
-            <solid android:color="@color/white"/> 
+            <solid android:color="@color/faint_green"/> 
                 <stroke android:width="0dp" android:height="0dp" android:color="@color/white" />
                 <corners
                     android:radius="0px" />
