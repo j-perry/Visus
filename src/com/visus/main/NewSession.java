@@ -154,7 +154,14 @@ public class NewSession extends Activity {
 		
 		// get the session type
 		EditText sessionType = (EditText) findViewById(R.id.session_type);
-		this.type = sessionType.getText().toString();
+		
+		// if session type is empty
+		if(sessionType.getText().toString().length() == 0)
+			this.type = "Uncategoried";
+		else
+			this.type = sessionType.getText().toString();
+						
+		// output session type
 		Log.e("Visus", "Type: " + this.type);
 		
 		// hide the session view
