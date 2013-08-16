@@ -16,6 +16,8 @@ public class SessionHandler implements IDatabaseTable {
 	private UserHandler dbUser;
 	private SQLiteDatabase db;
 	private Long result;
+	
+	private static final String QRY_SPACING = " ";
 		
 	public SessionHandler(Context context) {
 		dbHandler = new DatabaseHandler(context);
@@ -115,9 +117,9 @@ public class SessionHandler implements IDatabaseTable {
 	public ArrayList<String> getSessionTypes(int userId) {
 		ArrayList<String> sessionTypes = new ArrayList<String>();
 		Cursor cursor = null;
-		String qrySessions = "SELECT " + DatabaseHandler.KEY_TYPE + " " + 
-				 			 "FROM " + DatabaseHandler.SESSIONS_TABLE + " " +
-				 			 "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		String qrySessions = "SELECT" + QRY_SPACING + DatabaseHandler.KEY_TYPE + QRY_SPACING + 
+				 			 "FROM"   + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+				 			 "WHERE"  + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId;
 		
 		cursor = db.rawQuery(qrySessions, null);
 		
@@ -154,19 +156,19 @@ public class SessionHandler implements IDatabaseTable {
 		int noSecs = 0;
 				
 		// hours query
-		String qryNoHours = "SELECT * " +
-		                    "FROM " + DatabaseHandler.SESSIONS_TABLE + " " +
-		                    "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		String qryNoHours = "SELECT *" + QRY_SPACING +
+		                    "FROM"     + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+		                    "WHERE"    + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId;
 		
 		// sessions query
-		String qryNoSessions = "SELECT " + DatabaseHandler.KEY_USER_ID + " " +
-		                       "FROM " + DatabaseHandler.SESSIONS_TABLE + " " +
-		                       "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		String qryNoSessions = "SELECT" + QRY_SPACING + DatabaseHandler.KEY_USER_ID + QRY_SPACING +
+		                       "FROM"   + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+		                       "WHERE " + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId;
 		
 		// activities query
-		String qryNoActivities = "SELECT " + DatabaseHandler.KEY_TYPE + " " + 
-								 "FROM " + DatabaseHandler.SESSIONS_TABLE + " " +
-								 "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		String qryNoActivities = "SELECT" + QRY_SPACING + DatabaseHandler.KEY_TYPE + QRY_SPACING + 
+								 "FROM"   + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+								 "WHERE"  + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId;
 						
 		cursor = db.rawQuery(qryNoHours, null);
 				
@@ -237,9 +239,9 @@ public class SessionHandler implements IDatabaseTable {
 	 * @return
 	 */
 	public ArrayList<Session> getSessions(int userId) {
-		String qrySessions = "SELECT * " +
-                             "FROM " + DatabaseHandler.SESSIONS_TABLE + " " +
-                             "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		String qrySessions = "SELECT *" + QRY_SPACING + 
+                             "FROM"     + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+                             "WHERE"    + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId;
 		
 		ArrayList<Session> sessionsAll = new ArrayList<Session>();
 		Cursor cursor = null;

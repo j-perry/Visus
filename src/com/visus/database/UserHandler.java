@@ -15,6 +15,7 @@ public class UserHandler implements IDatabaseTable {
 			
 	private SQLiteDatabase db;
 	private DatabaseHandler dbHandler;
+	private static final String QRY_SPACING = " ";
 	
 	public UserHandler(Context context) {
 		dbHandler = new DatabaseHandler(context);
