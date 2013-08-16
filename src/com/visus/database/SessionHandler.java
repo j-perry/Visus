@@ -108,6 +108,35 @@ public class SessionHandler implements IDatabaseTable {
 	}
 	
 	/**
+	 * Returns all session types (categories)
+	 * @param userId
+	 * @return
+	 */
+	public ArrayList<Session> getSessionTypes(int userId) {
+		ArrayList<Session> sessionTypes = new ArrayList<Session>();
+		Session session = new Session();
+		Cursor cursor = null;
+		String qrySessions = "SELECT " + DatabaseHandler.KEY_TYPE + " " +
+		                     "FROM " + DatabaseHandler.SESSIONS_TABLE + " " +
+				             "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		int typeIndex = 0;
+		
+		cursor = db.rawQuery(qrySessions, null);
+		
+		typeIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		
+		while(cursor.moveToNext()) {
+			session.setType(cursor.getString(typeIndex));
+			sessionTypes.add(session);
+		}
+		
+		cursor.close();
+		db.close();		
+		
+		return sessionTypes;
+	}
+	
+	/**
 	 * Returns an overview of the user's activity since inception
 	 * @param userId
 	 * @return
@@ -150,13 +179,15 @@ public class SessionHandler implements IDatabaseTable {
 		
 		// get no. of hours
 		while(cursor.moveToNext()) {
-			if(noMins > 60) {
-				noMins = noMins - 60;
-				noHoursTotal++;
-			}
-			else {
-				noMins += cursor.getInt(minutesIndex);
-			}
+			noMins += cursor.getInt(minutesIndex);
+		}
+		
+		if(noMins > 60) {
+			noMins = noMins - 60;
+			noHoursTotal++;
+		}
+		else {
+			noMins += cursor.getInt(minutesIndex);
 		}
 		
 		if(noHoursTotal >= 1) {
