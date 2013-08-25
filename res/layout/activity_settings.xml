@@ -1,4 +1,4 @@
-<ScrollView 
+<LinearLayout 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/light_grey" 
@@ -9,14 +9,11 @@
     tools:context=".ViewSettings"
     >
            
-        <LinearLayout
+        <ListView
+            android:id="@+id/settings_adapter"
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            >
-        
-            
-            
-        </LinearLayout>
-        
-</ScrollView>
+            android:layout_height="wrap_content"
+            />
+                
+</LinearLayout>
