@@ -1,9 +1,9 @@
 <ScrollView 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white" 
+    android:background="@color/light_grey" 
     android:orientation="vertical"
-    android:padding="0dp"
+    android:padding="25dp"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context=".ViewSettings"
@@ -12,156 +12,10 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             >
         
-            <!-- session no's. -->
-            <Button
-                android:id="@+id/no_sessions"
-                android:background="@color/white"
-                android:textColor="@color/faint_green"
-                android:text="@string/default_sessions_no"
-                android:lines="2"
-                android:textSize="60sp"
-                android:gravity="left"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:padding="50dp"
-                />
             
-            <!-- themes header -->
-            <TextView 
-                android:background="@color/faint_green"
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent"
-                android:gravity="left"
-                android:text="@string/themes_header"
-                android:textColor="@color/white"
-                android:textSize="28sp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:paddingLeft="50dp"
-                />
-            
-            <!-- normal theme -->
-            <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            >
-                                
-                <TextView 
-                    android:background="@color/white"
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:gravity="left"
-                    android:text="@string/normal_theme"
-                    android:textColor="@color/faint_green"
-                    android:textSize="28sp"
-                    android:paddingTop="25dp"
-                    android:paddingBottom="25dp"
-                    android:paddingLeft="50dp"
-                    />
-                
-            </LinearLayout>
-            
-            <!-- weather theme -->
-            <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            >
-
-                <TextView 
-                    android:background="@color/white"
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:gravity="left"
-                    android:text="@string/weather_theme"
-                    android:textColor="@color/faint_green"
-                    android:textSize="28sp"
-                    android:paddingTop="25dp"
-                    android:paddingBottom="25dp"
-                    android:paddingLeft="50dp"
-                    />
-                
-            </LinearLayout>
-            
-            <!-- account header -->
-            <TextView 
-                android:background="@color/faint_green"
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent"
-                android:gravity="left"
-                android:text="@string/account_header"
-                android:textColor="@color/white"
-                android:textSize="28sp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:paddingLeft="50dp"
-                />
-            
-            <!-- normal theme -->
-            <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            >
-                                
-                <TextView 
-                    android:background="@color/white"
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:gravity="left"
-                    android:text="@string/account_reset"
-                    android:textColor="@color/faint_green"
-                    android:textSize="28sp"
-                    android:paddingTop="25dp"
-                    android:paddingBottom="25dp"
-                    android:paddingLeft="50dp"
-                    />
-                
-            </LinearLayout>
-            
-            <!-- normal theme -->
-            <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            >
-                                
-                <TextView 
-                    android:background="@color/white"
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:gravity="left"
-                    android:text="@string/account_modify"
-                    android:textColor="@color/faint_green"
-                    android:textSize="28sp"
-                    android:paddingTop="25dp"
-                    android:paddingBottom="25dp"
-                    android:paddingLeft="50dp"
-                    />
-                
-            </LinearLayout>
-            
-            
-                                
-                <Button
-                    android:id="@+id/delete_account"
-                    android:onClick="deleteAccount"
-                    android:background="@color/white"
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:gravity="left"
-                    android:text="@string/account_delete"
-                    android:textColor="@color/faint_green"
-                    android:textSize="28sp"
-                    android:paddingTop="25dp"
-                    android:paddingBottom="25dp"
-                    android:paddingLeft="50dp"
-                    />
-                
             
         </LinearLayout>
         
