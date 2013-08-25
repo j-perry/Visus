@@ -100,14 +100,11 @@ public class Sessions extends Activity {
 		}
 		
 		
-		
-		
-		
 		// binds our data together before being sent to the 
 		// ListView's adapter component for presentation
 		SimpleAdapter adapter = new SimpleAdapter(this, 
 												  adapterList,
-				                                  android.R.layout.simple_list_item_1,
+				                                  android.R.layout.simple_list_item_1,	// this is where out custom ListView layout goes. I think...
 				                                  new String[] { "overview" },
 				                                  new int[] { android.R.id.text1 });		
 		// display the contents

@@ -16,6 +16,7 @@ public class SessionHandler implements IDatabaseTable {
 	private UserHandler dbUser;
 	private SQLiteDatabase db;
 	private Long result;
+	private Session session;
 	
 	private static final String QRY_SPACING = " ";
 		
@@ -245,7 +246,6 @@ public class SessionHandler implements IDatabaseTable {
 		
 		ArrayList<Session> sessionsAll = new ArrayList<Session>();
 		Cursor cursor = null;
-		Session session;
 		
 		int dayNoIndex,
 		    dayIndex,
@@ -312,6 +312,63 @@ public class SessionHandler implements IDatabaseTable {
 		db.close();
 		
 		return sessionsAll;
+	}
+	
+	public ArrayList<Session> getLatestSessions(int userId) {
+		ArrayList<Session> latestSessions = new ArrayList<Session>();
+		
+		String qrySessions = "SELECT *" + QRY_SPACING +
+				             "FROM " + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING + 
+				             "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId + QRY_SPACING +
+				             "ORDER BY " + DatabaseHandler.KEY_DAY_NO + " desc LIMIT 5";
+		
+		Cursor cursor = null;
+		
+		cursor = db.rawQuery(qrySessions, null);
+		
+		int dayNoIndex,
+	    	dayIndex,
+		    monthIndex,
+		    yearIndex,
+		    timeHourIndex,
+		    timeMinutesIndex,
+		    timezoneIndex,
+		    durationMinutesIndex,
+		    durationSecondsIndex,
+		    typeIndex = 0;
+		
+		dayNoIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY_NO);
+		dayIndex   			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY);
+		monthIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_MONTH);
+		yearIndex  			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_YEAR);
+		timeHourIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_HOUR);
+		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_MINS);
+		timezoneIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIMEZONE);
+		durationMinutesIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_MINS);
+		durationSecondsIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_SECS);
+		typeIndex            = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		
+		while(cursor.moveToNext()) {
+			session = new Session();
+
+			session.setDayNo(cursor.getInt(dayNoIndex));
+			session.setDay(cursor.getString(dayIndex));
+			session.setMonth(cursor.getString(monthIndex));
+			session.setYear(cursor.getInt(yearIndex));
+			session.setTimeHour(cursor.getInt(timeHourIndex));
+			session.setTimeMinutes(cursor.getInt(timeMinutesIndex));
+			session.setDayPeriod(cursor.getString(timezoneIndex));
+			session.setDurationMinutes(cursor.getInt(durationMinutesIndex));
+			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
+			session.setType(cursor.getString(typeIndex));
+			
+			latestSessions.add(session);
+		}
+		
+		cursor.close();
+		db.close();
+		
+		return latestSessions;
 	}
 	
 }

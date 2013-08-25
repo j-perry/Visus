@@ -24,11 +24,14 @@
         android:showAsAction="never"
         android:title="@string/menu_settings"/>
     
+    <!--
     <item
         android:id="@+id/new_session_menu"
         android:orderInCategory="100"
         android:showAsAction="always"
         android:icon="@drawable/ic_new_session"
-        android:title="New Session"/>
-
+        android:title="New Session"
+        />
+ 	-->
+ 	
 </menu>

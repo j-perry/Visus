@@ -1,14 +1,21 @@
 package com.visus.main;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import com.visus.R;
 import com.visus.database.*;
 import com.visus.entities.*;
+import com.visus.entities.sessions.Session;
+import com.visus.ui.MainMenuAdapter;
+import com.visus.ui.MainMenuListView;
 
 import android.os.Bundle;
 import android.app.*;
 import android.content.Intent;
 import android.util.Log;
 import android.view.*;
+import android.widget.ListView;
 
 /**
  * Main entry point of the app
@@ -19,14 +26,31 @@ public class MainActivity extends Activity {
 	
 	private User user = null;
 	private UserHandler dbHandler;
+	private SessionHandler dbSession;
+	private static int userId;
+	
+	private final String hdrLatestActivity = "Latest Activity";
+	
+	private ListView list;
+	private MainMenuAdapter adapter;		
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
+		super.onCreate(savedInstanceState);		
+		
 		dbHandler = new UserHandler(this);
+		dbSession = new SessionHandler(this);
 				
 		setContentView(R.layout.activity_main);
+				
+//		sessions = dbSession.getLatestSessions(user.getUserId());
+//		
+
+				
+					
+		
+		
+		
 	}
 
 	@Override
@@ -43,6 +67,63 @@ public class MainActivity extends Activity {
 			Intent intent = new Intent(MainActivity.this, SignUp.class);
 			startActivity(intent);
 		}		
+		else {
+			this.userId = user.getUserId();
+			ArrayList<Session> sessions = new ArrayList<Session>();
+			Log.e("Visus", "USER ID: " + userId);
+			
+			dbSession.open();
+			sessions = dbSession.getLatestSessions(user.getUserId());
+			dbSession.close();
+			
+			if(sessions.isEmpty()) {
+				Log.e("Visus", "Sessions is empty");
+			}
+			else {
+				Log.e("Visus", "Sessions is not empty");
+
+				
+				ArrayList<HashMap<String, String>> latestSessions = new ArrayList<HashMap<String, String>>();
+				
+				Log.e("Visus", "onCreate() - User ID is: " + userId);
+
+				String [] data = { "Hello", "Jon", "Today", "Sunday" };
+				
+				for(Session session : sessions) {
+					HashMap<String, String> map = new HashMap<String, String>();
+					map.put(MainMenuListView.SESSION, session.getDay() + " " +
+							    					  session.getDayNo() + " " +  
+							    					  session.getMonth() + ", " +
+							    					  session.getYear() + " - " +
+									                  session.getTimeHour() + ":" +
+									                  session.getTimeMinutes() + " " +
+									                  session.getDayPeriod() + " - " +
+									                  session.getDurationMinutes() + ":" +
+									                  session.getDurationSeconds() + " - " +
+									                  session.getType()
+					       );
+//					
+					latestSessions.add(map);
+					
+					
+				}
+				
+//				for(int i = 0; i < 4; i++) {
+//					HashMap<String, String> map = new HashMap<String, String>();
+//					map.put(MainMenuListView.SESSION, data[i]);
+//					
+//					latestSessions.add(map);
+//				}
+						
+				list = (ListView) findViewById(com.visus.R.id.overview_sessions_adapter);
+				adapter = new MainMenuAdapter(this, latestSessions);
+				
+				list.setAdapter(adapter);	
+				
+				
+			}
+		}			
+		
 	}
 	
 	@Override
@@ -50,6 +131,7 @@ public class MainActivity extends Activity {
 		super.onDestroy();
 	}
 	
+	/*
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()) {
@@ -64,6 +146,7 @@ public class MainActivity extends Activity {
 		
 		return true;
 	}
+	*/
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

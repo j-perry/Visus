@@ -4,11 +4,11 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:padding="0dp"
-    android:background="@color/white"
+    android:background="@color/light_grey"
     android:orientation="vertical"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity" 
+    >
     
-    <!-- menu -->
     <LinearLayout
         android:background="@color/white"
         android:layout_width="fill_parent"
@@ -68,171 +68,33 @@
 	
 	</LinearLayout>
 	
-    <!-- posted activity -->
-    <ScrollView
-        android:background="@color/light_grey" 
-	    android:orientation="vertical"
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-	    android:paddingLeft="15dp"
-	    android:paddingRight="15dp"
-        >
-	    
-        <!-- scroll view must only have one child element! -->
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            >
-            
-            <!-- Latest activity -->
-            <LinearLayout
-                android:background="@color/white"
-	            android:orientation="vertical"
-	            android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
-			    android:layout_marginTop="25dp"
-			    android:layout_marginBottom="25dp"
-	            >
-	
-	            <!-- header -->
-		        <Button
-		            android:onClick="viewLatestUserActivities"
-			        android:background="@drawable/main_menu_header_bg"
-			        android:layout_height="wrap_content"
-			        android:layout_width="fill_parent"
-			        android:padding="25sp"
-			        android:gravity="left"
-			        android:text="@string/latest_activity"
-		        	android:textStyle="bold"
-			        android:textAllCaps="false"
-			        android:textColor="@drawable/main_menu_header_txt"
-			        android:textSize="24sp"
-			        />
-		        
-		        <!-- template -->
-		        <TextView
-			        android:background="@color/white"
-			        android:layout_height="wrap_content"
-			        android:layout_width="fill_parent"
-			        android:padding="25sp"
-			        android:gravity="left"
-			        android:text="@string/session_01"
-			        android:textAllCaps="false"
-			        android:textColor="#333"
-			        android:textSize="24sp"
-			        />
-		    
-		        <!-- template -->
-		        <TextView
-			        android:background="@color/white"
-			        android:layout_height="wrap_content"
-			        android:layout_width="fill_parent"
-			        android:padding="25sp"
-			        android:gravity="left"
-			        android:text="@string/session_02"
-			        android:textAllCaps="false"
-			        android:textColor="#333"
-			        android:textSize="24sp"
-			        />
-		        
-		    </LinearLayout>
-		    
-            <!-- Activities -->
-            <LinearLayout
-                android:background="@color/white"
-	            android:orientation="vertical"
-	            android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
-			    android:layout_marginBottom="25sp"
-	            >
-	        
-		        <!-- header -->
-		        <Button
-		            android:onClick="viewUserActivities"
-			        android:background="@drawable/main_menu_header_bg"
-			        android:layout_height="wrap_content"
-			        android:layout_width="fill_parent"
-			        android:padding="25sp"
-			        android:gravity="left"
-			        android:text="@string/activities"
-		        	android:textStyle="bold"
-			        android:textAllCaps="false"
-			        android:textColor="@drawable/main_menu_header_txt"
-			        android:textSize="24sp"
-			        />
-		        
-		        <!-- template -->
-		        <Button
-		            android:onClick="viewUserActivityCategory"
-			        android:background="@color/white"
-			        android:layout_height="wrap_content"
-			        android:layout_width="fill_parent"
-			        android:padding="25sp"
-			        android:gravity="left"
-			        android:text="@string/music"
-			        android:textAllCaps="false"
-			        android:textColor="#333"
-			        android:textSize="24sp"
-			        />
-		        
-		        <!-- template -->
-		        <TextView
-			        android:background="@color/white"
-			        android:layout_height="wrap_content"
-			        android:layout_width="fill_parent"
-			        android:padding="25sp"
-			        android:gravity="left"
-			        android:text="@string/news"
-			        android:textAllCaps="false"
-			        android:textColor="#333"
-			        android:textSize="24sp"
-			        />
-		        
-		        <!-- template -->
-		        <TextView
-			        android:background="@color/white"
-			        android:layout_height="wrap_content"
-			        android:layout_width="fill_parent"
-			        android:padding="25sp"
-			        android:gravity="left"
-			        android:text="@string/gaming"
-			        android:textAllCaps="false"
-			        android:textColor="#333"
-			        android:textSize="24sp"
-			        />
-		        
-		        <!-- template -->
-		        <TextView
-			        android:background="@color/white"
-			        android:layout_height="wrap_content"
-			        android:layout_width="fill_parent"
-			        android:padding="25sp"
-			        android:gravity="left"
-			        android:text="@string/emails"
-			        android:textAllCaps="false"
-			        android:textColor="#333"
-			        android:textSize="24sp"
-			        />
-		        
-		        <!-- template -->
-		        <TextView
-			        android:background="@color/white"
-			        android:layout_height="wrap_content"
-			        android:layout_width="fill_parent"
-			        android:padding="25sp"
-			        android:gravity="left"
-			        android:text="@string/reading"
-			        android:textAllCaps="false"
-			        android:textColor="#333"
-			        android:textSize="24sp"
-			        />
-		        
-			</LinearLayout>
-	        
-	
-		</LinearLayout>
-        
-    </ScrollView>
+    
+    <TextView 
+        android:id="@+id/main_header"
+		android:onClick="viewLatestUserActivities"
+		android:background="@drawable/main_menu_header_bg"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="25dp"        
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+		android:padding="25sp"
+        android:textColor="@color/white"
+        android:text="Latest Activity"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        />
+    
+    <!-- sessions summary -->
+    <ListView 
+        android:id="@+id/overview_sessions_adapter"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:divider="@color/white"  
+        />
+    
+    
 	
 </LinearLayout>
