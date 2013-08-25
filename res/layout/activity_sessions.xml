@@ -1,13 +1,28 @@
-<RelativeLayout 
+<LinearLayout 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white" 
+    android:background="@color/light_grey"
     android:orientation="vertical"
-    android:padding="25dp"
+    android:paddingTop="25dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context=".Sessions"
     >
+    
+    
+    <TextView 
+        android:id="@+id/sessions_header"
+		android:background="@drawable/main_menu_header_bg"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+		android:padding="25sp"
+        android:textColor="@color/white"
+        android:text="This Week"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        />
     
     <!-- 
     		Includes:
@@ -21,8 +36,9 @@
     	android:id="@+id/list_previous_sessions"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@color/white"
+        android:divider="@color/light_grey"
+        android:dividerHeight="1dp"
         />
     
         
-</RelativeLayout>
+</LinearLayout>

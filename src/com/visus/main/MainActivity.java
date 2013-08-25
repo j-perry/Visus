@@ -44,11 +44,6 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 				
 //		sessions = dbSession.getLatestSessions(user.getUserId());
-//		
-
-				
-					
-		
 		
 		
 	}
@@ -70,12 +65,18 @@ public class MainActivity extends Activity {
 		else {
 			this.userId = user.getUserId();
 			ArrayList<Session> sessions = new ArrayList<Session>();
+			ArrayList<String> sessionTypes = new ArrayList<String>();
 			Log.e("Visus", "USER ID: " + userId);
 			
-			dbSession.open();
-			sessions = dbSession.getLatestSessions(user.getUserId());
-			dbSession.close();
-			
+			try {
+				dbSession.open();
+				sessions = dbSession.getLatestSessions(user.getUserId());
+//				sessionTypes = dbSession.getSessionTypes(user.getUserId());
+			}
+			finally {
+				dbSession.close();				
+			}
+						
 			if(sessions.isEmpty()) {
 				Log.e("Visus", "Sessions is empty");
 			}
@@ -107,20 +108,11 @@ public class MainActivity extends Activity {
 					
 					
 				}
-				
-//				for(int i = 0; i < 4; i++) {
-//					HashMap<String, String> map = new HashMap<String, String>();
-//					map.put(MainMenuListView.SESSION, data[i]);
-//					
-//					latestSessions.add(map);
-//				}
 						
 				list = (ListView) findViewById(com.visus.R.id.overview_sessions_adapter);
 				adapter = new MainMenuAdapter(this, latestSessions);
 				
-				list.setAdapter(adapter);	
-				
-				
+				list.setAdapter(adapter);				
 			}
 		}			
 		

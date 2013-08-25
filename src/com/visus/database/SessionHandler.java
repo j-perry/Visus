@@ -302,7 +302,12 @@ public class SessionHandler implements IDatabaseTable {
 			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
 							
 			// type
-			session.setType(cursor.getString(typeIndex));
+			if(!cursor.getString(typeIndex).isEmpty()) {
+				session.setType(cursor.getString(typeIndex));
+			}
+			else {
+				session.setType("Undefined");
+			}
 			
 			// add the session
 			sessionsAll.add(session);
@@ -360,7 +365,14 @@ public class SessionHandler implements IDatabaseTable {
 			session.setDayPeriod(cursor.getString(timezoneIndex));
 			session.setDurationMinutes(cursor.getInt(durationMinutesIndex));
 			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
-			session.setType(cursor.getString(typeIndex));
+			
+			if(!cursor.getString(typeIndex).isEmpty()) {
+				session.setType(cursor.getString(typeIndex));
+			}
+			else {
+				session.setType("Undefined");
+			}
+			
 			
 			latestSessions.add(session);
 		}
