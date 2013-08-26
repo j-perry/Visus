@@ -81,6 +81,7 @@ public final class R {
         public static final int main_header=0x7f090002;
         public static final int menu_about=0x7f09001e;
         public static final int menu_settings=0x7f09001f;
+        public static final int new_session_menu=0x7f090020;
         public static final int overview=0x7f090013;
         public static final int overview_sessions_adapter=0x7f090003;
         public static final int period=0x7f090012;
