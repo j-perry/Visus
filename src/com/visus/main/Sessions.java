@@ -60,9 +60,10 @@ public class Sessions extends Activity {
 				
 //		ListView sessionsList = (ListView) findViewById(R.id.list_previous_sessions);
 			
-		dbSession.open();
-		sessionOverview = dbSession.getOverview(activeUserId);
-		dbSession.close();
+		// TODO - 26/08/2013
+//		dbSession.open();
+//		sessionOverview = dbSession.getOverview(activeUserId);
+//		dbSession.close();
 		
 		
 		dbSession.open();
@@ -114,11 +115,45 @@ public class Sessions extends Activity {
 		for(Session session : allSessions) {
 			HashMap<String, String> map = new HashMap<String, String>();
 			
-			map.put(SessionsListView.DATE, new StringBuilder(session.getTimeHour() + ":" + session.getTimeMinutes() + session.getDayPeriod() + "\n" + session.getDayNo() + "\n" + session.getMonth()).toString());
-			map.put(SessionsListView.TIME, String.valueOf(session.getDurationMinutes()) + ":" + String.valueOf(session.getDurationSeconds()) );
+			// DATE
+			String timeHours = null;
+			String timeMins = null;
+			String dayPeriod = null;
+			
+			// TIME
+			String durationMins = null;
+			String durationSecs = null;
+			
+			
+			// Get the time (DATE)
+			timeHours = String.valueOf(session.getTimeHour());
+			
+			if(session.getTimeMinutes() < 10) {
+				timeMins = String.valueOf(0) + String.valueOf(session.getTimeMinutes());
+			}
+			else {
+				timeMins = String.valueOf(session.getTimeMinutes());
+			}
+			
+			dayPeriod = session.getDayPeriod();
+			
+			
+			// Get the time (TIME)
+			durationMins = String.valueOf(session.getDurationMinutes());
+			
+			if(session.getDurationSeconds() < 10) {
+				durationSecs = String.valueOf(0) + String.valueOf(session.getDurationSeconds());
+			}
+			else {
+				durationSecs = String.valueOf(session.getDurationSeconds());
+			}
+			
+			// map data to ListView
+			map.put(SessionsListView.DATE, new StringBuilder(timeHours + ":" + timeMins + dayPeriod + "\n" + session.getDayNo() + "\n" + session.getMonth()).toString());
+			map.put(SessionsListView.TIME, new StringBuilder(durationSecs + ":" + durationSecs).toString());
 			map.put(SessionsListView.ACTIVITY, session.getType());
 			
-			adapterList.add(map);			
+			adapterList.add(map);
 		}
 		
 		
@@ -158,13 +193,7 @@ public class Sessions extends Activity {
 		
 		return items;
 	}
-	
-//	@Override
-//	public boolean onOptionsItemSelected(MenuItem item) {
-//		switch(item.getItemId()) {
-//			case R.id.ho
-//		}
-//	}
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

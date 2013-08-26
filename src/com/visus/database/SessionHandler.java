@@ -286,20 +286,15 @@ public class SessionHandler implements IDatabaseTable {
 			
 			// time
 			session.setTimeHour(cursor.getInt(timeHourIndex));
-			
-			if(cursor.getInt(timeMinutesIndex) < 10) {
-				int zero = 0;
-				int tmp_mins = cursor.getInt(timeMinutesIndex);
-				int mins = zero + tmp_mins;
-				session.setTimeMinutes(mins);
-			}
-			else {
-				session.setTimeMinutes(cursor.getInt(timeMinutesIndex));
-			}
-			
+			session.setTimeMinutes(cursor.getInt(timeMinutesIndex));					
 			session.setDayPeriod(cursor.getString(timezoneIndex));
 			
-			/* duration	*/
+			
+			/********************
+			 * 
+			 * 		duration	
+			 * 
+			 ********************/
 			
 			// if no. of minutes is a minute or longer
 			if(cursor.getInt(durationMinutesIndex) >= 1)
@@ -308,7 +303,7 @@ public class SessionHandler implements IDatabaseTable {
 			else
 				// else, assign zero to indicate this
 				session.setDurationMinutes(0);
-						
+			
 			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
 							
 			// TODO
