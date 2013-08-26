@@ -125,9 +125,11 @@ public class Sessions extends Activity {
 			String durationSecs = null;
 			
 			
-			// Get the time (DATE)
+			// Get the time (DATE)...			
+			// ... hour
 			timeHours = String.valueOf(session.getTimeHour());
 			
+			// ... minutes
 			if(session.getTimeMinutes() < 10) {
 				timeMins = String.valueOf(0) + String.valueOf(session.getTimeMinutes());
 			}
@@ -150,7 +152,7 @@ public class Sessions extends Activity {
 			
 			// map data to ListView
 			map.put(SessionsListView.DATE, new StringBuilder(timeHours + ":" + timeMins + dayPeriod + "\n" + session.getDayNo() + "\n" + session.getMonth()).toString());
-			map.put(SessionsListView.TIME, new StringBuilder(durationSecs + ":" + durationSecs).toString());
+			map.put(SessionsListView.TIME, new StringBuilder(durationMins + ":" + durationSecs).toString());
 			map.put(SessionsListView.ACTIVITY, session.getType());
 			
 			adapterList.add(map);
