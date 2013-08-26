@@ -72,6 +72,9 @@ public class NewSession extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_session);
+		
+		ActionBar ab = getActionBar();
+		ab.setDisplayHomeAsUpEnabled(true);
 				
 		initUIComponents();
 		
@@ -275,8 +278,18 @@ public class NewSession extends Activity {
 		int minutes = Integer.parseInt(new SimpleDateFormat("mm").format(new Date() ));
 		String dayPeriod = new SimpleDateFormat("a").format(new Date() );
 		
+		// set the time (GMT) - hours
 		session.setTimeHour(hour);
-		session.setTimeMinutes(minutes);
+		
+		// set the time (GMT) - minutes
+		// before doing so, validate...
+		if(minutes < 10) {
+			session.setTimeMinutes(0 + minutes);
+		}
+		else {
+			session.setTimeMinutes(minutes);
+		}
+		
 		
 		// initialise the session time
 //		session.setTime(hour,		// hour

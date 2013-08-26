@@ -13,12 +13,14 @@ import com.visus.entities.sessions.Session;
 import com.visus.ui.SessionsAdapter;
 import com.visus.ui.SessionsListView;
 
+
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -38,6 +40,9 @@ public class Sessions extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sessions);
+		
+		ActionBar ab = getActionBar();
+		ab.setDisplayHomeAsUpEnabled(true);
 		
 		Log.e("Visus", "Session onCreate()");
 		
@@ -146,6 +151,13 @@ public class Sessions extends Activity {
 		
 		return items;
 	}
+	
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		switch(item.getItemId()) {
+//			case R.id.ho
+//		}
+//	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

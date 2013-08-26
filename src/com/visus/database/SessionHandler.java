@@ -319,9 +319,9 @@ public class SessionHandler implements IDatabaseTable {
 		ArrayList<Session> latestSessions = new ArrayList<Session>();
 		
 		String qrySessions = "SELECT *" + QRY_SPACING +
-				             "FROM " + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING + 
-				             "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId + QRY_SPACING +
-				             "ORDER BY " + DatabaseHandler.KEY_DAY_NO + " desc LIMIT 5";
+				             "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING + 
+				             "WHERE" + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId + QRY_SPACING +
+				             "ORDER BY" + QRY_SPACING + DatabaseHandler.KEY_DAY_NO + " desc LIMIT 5";
 		
 		Cursor cursor = null;
 		
