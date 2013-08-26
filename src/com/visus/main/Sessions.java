@@ -17,6 +17,7 @@ import com.visus.ui.SessionsListView;
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.view.Menu;
@@ -136,6 +137,12 @@ public class Sessions extends Activity {
 		
 		// display the contents
 		sessionsList.setAdapter(adapter);
+	}
+	
+	@Override
+	public void onBackPressed() {
+		Intent intent = new Intent(Sessions.this, MainActivity.class);
+		startActivity(intent);
 	}
 	
 	/**

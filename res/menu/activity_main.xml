@@ -5,7 +5,8 @@
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/menu_about"/>
-        
+       
+    <!-- 
     <item
         android:id="@+id/menu_sessions"
         android:orderInCategory="100"
@@ -17,12 +18,14 @@
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/menu_account"/>
+         
     
     <item
         android:id="@+id/menu_settings"
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/menu_settings"/>
+    -->
     
     <!--
     <item

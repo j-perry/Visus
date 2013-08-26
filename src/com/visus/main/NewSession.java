@@ -134,7 +134,7 @@ public class NewSession extends Activity {
 		//getMenuInflater().inflate(R.menu.activity_new_view, menu);
 		return true;
 	}
-	
+		
 	/**
 	 * Event handler 
 	 * 
@@ -281,15 +281,9 @@ public class NewSession extends Activity {
 		// set the time (GMT) - hours
 		session.setTimeHour(hour);
 		
-		// set the time (GMT) - minutes
-		// before doing so, validate...
-		if(minutes < 10) {
-			session.setTimeMinutes(0 + minutes);
-		}
-		else {
-			session.setTimeMinutes(minutes);
-		}
-		
+		// minutes...		
+		session.setTimeMinutes(minutes);
+				
 		
 		// initialise the session time
 //		session.setTime(hour,		// hour

@@ -286,7 +286,17 @@ public class SessionHandler implements IDatabaseTable {
 			
 			// time
 			session.setTimeHour(cursor.getInt(timeHourIndex));
-			session.setTimeMinutes(cursor.getInt(timeMinutesIndex));
+			
+			if(cursor.getInt(timeMinutesIndex) < 10) {
+				int zero = 0;
+				int tmp_mins = cursor.getInt(timeMinutesIndex);
+				int mins = zero + tmp_mins;
+				session.setTimeMinutes(mins);
+			}
+			else {
+				session.setTimeMinutes(cursor.getInt(timeMinutesIndex));
+			}
+			
 			session.setDayPeriod(cursor.getString(timezoneIndex));
 			
 			/* duration	*/
