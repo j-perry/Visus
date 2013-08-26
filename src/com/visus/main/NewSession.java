@@ -74,6 +74,11 @@ public class NewSession extends Activity {
 		setContentView(R.layout.activity_new_session);
 				
 		initUIComponents();
+		
+		// hide the stop button
+		stopTimerBtn = (Button) findViewById(R.id.timer_stop_btn);
+		stopTimerBtn.setVisibility(View.GONE);
+		
 												
 		session = new Session();
 		dbHandler = new SessionHandler(this);
@@ -139,6 +144,15 @@ public class NewSession extends Activity {
 		// used to store user input for setting session duration 
 		int iMins = 0;
 		int iSecs = 0;
+		
+		// hide the start button
+		startTimerBtn = (Button) findViewById(R.id.timer_btn);
+		startTimerBtn.setVisibility(View.GONE);
+		
+		// display the stop button
+		stopTimerBtn = (Button) findViewById(R.id.timer_stop_btn);
+		stopTimerBtn.setVisibility(View.VISIBLE);
+		
 				
 		// hide the session duration setter layout 
 		LinearLayout sessionDuration = (LinearLayout) findViewById(R.id.set_session_duration);
