@@ -301,13 +301,9 @@ public class SessionHandler implements IDatabaseTable {
 						
 			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
 							
-			// type
-			if(!cursor.getString(typeIndex).isEmpty()) {
-				session.setType(cursor.getString(typeIndex));
-			}
-			else {
-				session.setType("Undefined");
-			}
+			// TODO
+			session.setType(cursor.getString(typeIndex));
+			
 			
 			// add the session
 			sessionsAll.add(session);
