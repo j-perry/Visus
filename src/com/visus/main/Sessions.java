@@ -172,11 +172,16 @@ public class Sessions extends Activity {
 //				                                  new int[] { android.R.id.text1 });
 		
 		
-		ListView sessionsList = (ListView) findViewById(R.id.list_previous_sessions);
-		SessionsAdapter adapter = new SessionsAdapter(this, adapterList);
 		
-		// display the contents
-		sessionsList.setAdapter(adapter);
+		
+		
+//		TODO
+//
+//		ListView sessionsList = (ListView) findViewById(R.id.list_previous_sessions);
+//		SessionsAdapter adapter = new SessionsAdapter(this, adapterList);
+//		
+//		// display the contents
+//		sessionsList.setAdapter(adapter);
 	}
 	
 	@Override

@@ -11,34 +11,7 @@
     tools:context=".Sessions"
     >
     
-    
-    <TextView 
-        android:id="@+id/sessions_header"
-		android:background="@drawable/main_menu_header_bg"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-		android:padding="25sp"
-        android:textColor="@color/white"
-        android:text="This Week"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        />
-    
-    <!-- 
-    		Includes:
-    			- Overview
-    			- This week
-    			- This month
-    			- Other months in the year
-    			- Other years 
-    -->
-    <ListView 
-    	android:id="@+id/list_previous_sessions"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@color/light_grey"
-        android:dividerHeight="1dp"
-        />
+       
     
         
 </LinearLayout>
