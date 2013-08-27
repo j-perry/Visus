@@ -112,7 +112,10 @@ public class Sessions extends Activity {
 //						               ));
 //		}
 		
+		
+		// retrieve each returned Session entry and format them as required...
 		for(Session session : allSessions) {
+			// maps each session entry to HashMap for insertion into adapter
 			HashMap<String, String> map = new HashMap<String, String>();
 			
 			// DATE
