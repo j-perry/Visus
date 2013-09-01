@@ -1,21 +1,24 @@
 package com.visus.main;
 
+// core apis
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.visus.R;
-import com.visus.database.*;
-import com.visus.entities.*;
-import com.visus.entities.sessions.Session;
-import com.visus.ui.MainMenuAdapter;
-import com.visus.ui.MainMenuListView;
-
+// android apis
 import android.os.Bundle;
 import android.app.*;
 import android.content.Intent;
 import android.util.Log;
 import android.view.*;
 import android.widget.ListView;
+
+// core program packages
+import com.visus.R;
+import com.visus.database.*;
+import com.visus.entities.*;
+import com.visus.entities.sessions.Session;
+import com.visus.ui.MainMenuAdapter;
+import com.visus.ui.MainMenuListView;
 
 /**
  * Main entry point of the app

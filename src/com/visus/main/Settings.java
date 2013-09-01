@@ -1,15 +1,18 @@
 package com.visus.main;
 
-import com.visus.R;
-import com.visus.database.*;
-import com.visus.entities.*;
-
+// android apis
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.*;
+
+// core program packages
+import com.visus.R;
+import com.visus.database.*;
+import com.visus.entities.*;
+
 
 /**
  * Enables the user to configure the apps settings

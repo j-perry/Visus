@@ -1,18 +1,21 @@
 package com.visus.main;
 
+// core apis
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.visus.R;
-import com.visus.database.SessionHandler;
-import com.visus.entities.sessions.Session;
-
+// android apis
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+
+// core program packages
+import com.visus.R;
+import com.visus.database.SessionHandler;
+import com.visus.entities.sessions.Session;
 
 /**
  * Enables the user to view the activities (by all categories)

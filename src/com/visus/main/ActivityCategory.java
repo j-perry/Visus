@@ -1,9 +1,11 @@
 package com.visus.main;
 
-import com.visus.R;
-
+// android apis
 import android.app.Activity;
 import android.os.Bundle;
+
+// core program packages
+import com.visus.R;
 
 public class ActivityCategory extends Activity {
 

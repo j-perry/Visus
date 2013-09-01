@@ -1,15 +1,19 @@
 package com.visus.main;
 
+// core apis
 import java.util.*;
 
-import com.visus.R;
-import com.visus.database.SessionHandler;
-import com.visus.entities.sessions.Session;
-
+// android apis
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.*;
+
+// core program packages
+import com.visus.R;
+import com.visus.database.SessionHandler;
+import com.visus.entities.sessions.Session;
+
 
 public class LatestActivity extends Activity {
 

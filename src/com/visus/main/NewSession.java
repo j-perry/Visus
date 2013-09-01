@@ -1,13 +1,10 @@
 package com.visus.main;
 
+// core apis
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.visus.R;
-import com.visus.database.*;
-import com.visus.entities.*;
-import com.visus.entities.sessions.Session;
-
+// android apis
 import android.os.*;
 import android.annotation.SuppressLint;
 import android.app.*;
@@ -16,6 +13,13 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
+
+// core program packages
+import com.visus.R;
+import com.visus.database.*;
+import com.visus.entities.*;
+import com.visus.entities.sessions.Session;
+
 
 /**
  * Creates a new session

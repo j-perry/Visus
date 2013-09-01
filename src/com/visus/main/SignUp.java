@@ -1,13 +1,14 @@
 package com.visus.main;
 
-import com.visus.R;
-
+// android apis
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.*;
 import android.widget.*;
 
+// core program packages
+import com.visus.R;
 import com.visus.database.*;
 import com.visus.entities.*;
 
