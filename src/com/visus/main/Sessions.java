@@ -9,6 +9,7 @@ import java.util.List;
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.ActionBar.*;
+import android.app.ActionBar.Tab;
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -87,6 +88,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 			
 		});
 		
+				
 		// create our tabs
 		initTabs(ab);
         					
@@ -318,33 +320,40 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 	 */
 	public static class SessionsPagerAdapter extends FragmentPagerAdapter {
 		
-		private static final int NO_FRAGMENTS = 1; 
+		// no of pages!!
+		private static final int NO_FRAGMENTS = 4; 
 
 		public SessionsPagerAdapter(FragmentManager fm) {
 			super(fm);
 		}
 
+		/**
+		 * Get's the page item
+		 */
 		@Override
 		public Fragment getItem(int item) {
 			switch(item) {
 				case 0:
 					// displays sessions from today ... if there are any!
 					return new FragmentToday();
-//				case 1:
-//					// ... from this week
-//					return new FragmentThisWeek();
-//				case 2:
-//					// ... from this month
-//					return new FragmentThisMonth();
-//				case 3: 
-//					// ... from this year
-//					return new FragmentThisYear();
+				case 1:
+					// ... from this week
+					return new FragmentThisWeek();
+				case 2:
+					// ... from this month
+					return new FragmentThisMonth();
+				case 3: 
+					// ... from this year
+					return new FragmentThisYear();
 				default:
 					Fragment fragment = new Fragment();
 					return fragment;
 			}
 		}
 
+		/**
+		 * Return's no of pages
+		 */
 		@Override
 		public int getCount() {
 			return NO_FRAGMENTS;
