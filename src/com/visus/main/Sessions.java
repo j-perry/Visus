@@ -12,7 +12,11 @@ import com.visus.entities.sessions.Overview;
 import com.visus.entities.sessions.Session;
 import com.visus.ui.SessionsAdapter;
 import com.visus.ui.SessionsListView;
-import com.visus.ui.sessions.old.SessionsPagerAdapter;
+import com.visus.ui.s.old.SessionsPagerAdapter;
+import com.visus.ui.sessions.fragments.FragmentThisMonth;
+import com.visus.ui.sessions.fragments.FragmentThisWeek;
+import com.visus.ui.sessions.fragments.FragmentThisYear;
+import com.visus.ui.sessions.fragments.FragmentToday;
 
 
 import android.os.Bundle;
@@ -23,7 +27,10 @@ import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.view.ViewPager;
@@ -46,24 +53,19 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 	private Session sessionOverview;
 	private int activeUserId;
 	
+	private ViewPager sessionsPager;
+	private SessionsPagerAdapter sessionsPagerAdapter;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_sessions);
-		
-		final ActionBar ab = getActionBar();
-		ab.setDisplayHomeAsUpEnabled(true);
-				
-		initTabs(ab);
-		
-		
-        
-		Log.e("Visus", "Session onCreate()");
-				
 		SessionHandler dbSession = new SessionHandler(this);
 		ArrayList<Session> allSessions = new ArrayList<Session>();
 		
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_sessions);
+		
+		Log.e("Visus", "Session onCreate()");
 		
 		// get user id
 		Bundle bundle = getIntent().getExtras();
@@ -71,6 +73,29 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 
 		Log.e("Visus", "USER ID: " + activeUserId);
 		
+		
+		final ActionBar ab = getActionBar();
+		ab.setDisplayHomeAsUpEnabled(true);
+		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		
+		
+		sessionsPager = (ViewPager) findViewById(com.visus.R.id.sessions_pager);		
+		sessionsPagerAdapter = new SessionsPagerAdapter(getSupportFragmentManager() );
+		
+		// initialise the page view adapter
+		sessionsPager.setAdapter(sessionsPagerAdapter);
+		sessionsPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+			
+			@Override
+			public void onPageSelected(int position) {
+				ab.setSelectedNavigationItem(position);
+			}
+			
+		});
+		
+		// create our tabs
+		initTabs(ab);
+        					
 				
 //		ListView sessionsList = (ListView) findViewById(R.id.list_previous_sessions);
 			
@@ -172,7 +197,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 			map.put(SessionsListView.TIME, new StringBuilder(durationMins + ":" + durationSecs).toString());
 			map.put(SessionsListView.ACTIVITY, session.getType());
 			
-			adapterList.add(map);
+//			adapterList.add(map);
 		}
 		
 		
@@ -202,9 +227,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 	 * Initialises new tabs
 	 * @param ab
 	 */
-	private void initTabs(ActionBar ab) {
-		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		
+	private void initTabs(ActionBar ab) {		
 		ab.addTab(ab.newTab().setText("TODAY").setTabListener(this));
         ab.addTab(ab.newTab().setText("THIS WEEK").setTabListener(this));
         ab.addTab(ab.newTab().setText("THIS MONTH").setTabListener(this));
@@ -274,23 +297,59 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 
 
 	@Override
-	public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
-		// TODO Auto-generated method stub
+	public void onTabReselected(ActionBar.Tab tab, FragmentTransaction arg1) {
 		
 	}
 
 
 	@Override
-	public void onTabSelected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-		
+	public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+		sessionsPager.setCurrentItem(tab.getPosition());		
 	}
 
 
 	@Override
-	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-		
+	public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+		// TODO Auto-generated method stub		
 	}
+	
+	/**
+	 * Pager adapter launches and displays new fragments according to the tab selected
+	 * @author Jonathan Perry
+	 *
+	 */
+	public static class SessionsPagerAdapter extends FragmentPagerAdapter {
+		
+		private static final int NO_FRAGMENTS = 1; 
 
+		public SessionsPagerAdapter(FragmentManager fm) {
+			super(fm);
+		}
+
+		@Override
+		public Fragment getItem(int item) {
+			switch(item) {
+				case 0:
+					// displays sessions from today ... if there are any!
+					return new FragmentToday();
+//				case 1:
+//					// ... from this week
+//					return new FragmentThisWeek();
+//				case 2:
+//					// ... from this month
+//					return new FragmentThisMonth();
+//				case 3: 
+//					// ... from this year
+//					return new FragmentThisYear();
+				default:
+					Fragment fragment = new Fragment();
+					return fragment;
+			}
+		}
+
+		@Override
+		public int getCount() {
+			return NO_FRAGMENTS;
+		}
+	}
 }

@@ -1,4 +1,4 @@
-package com.visus.ui.sessions.old;
+package com.visus.ui.s.old;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
