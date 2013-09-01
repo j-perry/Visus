@@ -1,28 +1,14 @@
 package com.visus.main;
 
+// core apis
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.visus.R;
-import com.visus.database.SessionHandler;
-import com.visus.database.UserHandler;
-import com.visus.entities.User;
-import com.visus.entities.sessions.Overview;
-import com.visus.entities.sessions.Session;
-import com.visus.ui.SessionsAdapter;
-import com.visus.ui.SessionsListView;
-import com.visus.ui.s.old.SessionsPagerAdapter;
-import com.visus.ui.sessions.fragments.FragmentThisMonth;
-import com.visus.ui.sessions.fragments.FragmentThisWeek;
-import com.visus.ui.sessions.fragments.FragmentThisYear;
-import com.visus.ui.sessions.fragments.FragmentToday;
-
-
+// android apis
 import android.os.Bundle;
 import android.app.ActionBar;
-import android.app.ActionBar.Tab;
-import android.app.ActionBar.TabListener;
+import android.app.ActionBar.*;
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -40,6 +26,14 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+
+// core program packages
+import com.visus.R;
+import com.visus.database.*;
+import com.visus.entities.User;
+import com.visus.entities.sessions.*;
+import com.visus.ui.*;
+import com.visus.ui.sessions.fragments.*;
 
 /**
  * Enables the user to view previous sessions
@@ -263,26 +257,30 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		return true;
 	}
 	
+	/**
+	 * Action bar events
+	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()) {
-		case android.R.id.home:
-			Intent upIntent = new Intent(this, MainActivity.class);
-            if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
-                // This activity is not part of the application's task, so create a new task
-                // with a synthesized back stack.
-                TaskStackBuilder.from(this)
-                        // If there are ancestor activities, they should be added here.
-                        .addNextIntent(upIntent)
-                        .startActivities();
-                finish();
-            } else {
-                // This activity is part of the application's task, so simply
-                // navigate up to the hierarchical parent activity.
-                NavUtils.navigateUpTo(this, upIntent);
-            }
-            break;
-            
+			// app logo
+			case android.R.id.home:
+				Intent upIntent = new Intent(this, MainActivity.class);
+	            if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
+	                // This activity is not part of the application's task, so create a new task
+	                // with a synthesized back stack.
+	                TaskStackBuilder.from(this)
+	                        // If there are ancestor activities, they should be added here.
+	                        .addNextIntent(upIntent)
+	                        .startActivities();
+	                finish();
+	            } else {
+	                // This activity is part of the application's task, so simply
+	                // navigate up to the hierarchical parent activity.
+	                NavUtils.navigateUpTo(this, upIntent);
+	            }
+	            break;
+            // new session
 			case R.id.new_session_menu:
 				Intent intent = new Intent(Sessions.this, NewSession.class);
 				intent.putExtra("ActiveUserId", activeUserId);
