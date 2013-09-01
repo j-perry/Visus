@@ -12,13 +12,21 @@ import com.visus.entities.sessions.Overview;
 import com.visus.entities.sessions.Session;
 import com.visus.ui.SessionsAdapter;
 import com.visus.ui.SessionsListView;
+import com.visus.ui.sessions.old.SessionsPagerAdapter;
 
 
 import android.os.Bundle;
 import android.app.ActionBar;
+import android.app.ActionBar.Tab;
+import android.app.ActionBar.TabListener;
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.NavUtils;
+import android.support.v4.app.TaskStackBuilder;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,22 +39,28 @@ import android.widget.SimpleAdapter;
  * @author Jonathan Perry
  *
  */
-public class Sessions extends Activity {
+//public class Sessions extends FragmentActivity implements TabListener {
+public class Sessions extends FragmentActivity implements ActionBar.TabListener {
 	
 	private List<HashMap<String, String>> adapterItems;
 	private Session sessionOverview;
 	private int activeUserId;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sessions);
 		
-		ActionBar ab = getActionBar();
+		final ActionBar ab = getActionBar();
 		ab.setDisplayHomeAsUpEnabled(true);
+				
+		initTabs(ab);
 		
+		
+        
 		Log.e("Visus", "Session onCreate()");
-		
+				
 		SessionHandler dbSession = new SessionHandler(this);
 		ArrayList<Session> allSessions = new ArrayList<Session>();
 		
@@ -184,6 +198,20 @@ public class Sessions extends Activity {
 //		sessionsList.setAdapter(adapter);
 	}
 	
+	/**
+	 * Initialises new tabs
+	 * @param ab
+	 */
+	private void initTabs(ActionBar ab) {
+		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		
+		ab.addTab(ab.newTab().setText("TODAY").setTabListener(this));
+        ab.addTab(ab.newTab().setText("THIS WEEK").setTabListener(this));
+        ab.addTab(ab.newTab().setText("THIS MONTH").setTabListener(this));
+        ab.addTab(ab.newTab().setText("THIS YEAR").setTabListener(this));
+	}
+			
+	
 	@Override
 	public void onBackPressed() {
 		Intent intent = new Intent(Sessions.this, MainActivity.class);
@@ -215,6 +243,23 @@ public class Sessions extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()) {
+		case android.R.id.home:
+			Intent upIntent = new Intent(this, MainActivity.class);
+            if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
+                // This activity is not part of the application's task, so create a new task
+                // with a synthesized back stack.
+                TaskStackBuilder.from(this)
+                        // If there are ancestor activities, they should be added here.
+                        .addNextIntent(upIntent)
+                        .startActivities();
+                finish();
+            } else {
+                // This activity is part of the application's task, so simply
+                // navigate up to the hierarchical parent activity.
+                NavUtils.navigateUpTo(this, upIntent);
+            }
+            break;
+            
 			case R.id.new_session_menu:
 				Intent intent = new Intent(Sessions.this, NewSession.class);
 				intent.putExtra("ActiveUserId", activeUserId);
@@ -225,6 +270,27 @@ public class Sessions extends Activity {
 		}
 		
 		return true;
+	}
+
+
+	@Override
+	public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void onTabSelected(Tab tab, FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
