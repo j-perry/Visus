@@ -41,7 +41,6 @@ import com.visus.ui.sessions.fragments.*;
  * @author Jonathan Perry
  *
  */
-//public class Sessions extends FragmentActivity implements TabListener {
 public class Sessions extends FragmentActivity implements ActionBar.TabListener {
 	
 	private List<HashMap<String, String>> adapterItems;
