@@ -51,7 +51,7 @@ public class SessionHandler implements IDatabaseTable {
 	 *  
 	 * @param session parses a session object derived from generated data from the NewSession class
 	 */
-	public void add(Session session) {
+	public void add(Session session) throws SQLiteException {
 		ContentValues sessionValues = new ContentValues();
 				
 		// user id
@@ -115,7 +115,7 @@ public class SessionHandler implements IDatabaseTable {
 	 * @param userId
 	 * @return
 	 */
-	public ArrayList<String> getSessionTypes(int userId) {
+	public ArrayList<String> getSessionTypes(int userId) throws SQLiteException {
 		ArrayList<String> sessionTypes = new ArrayList<String>();
 		Cursor cursor = null;
 		String qrySessions = "SELECT" + QRY_SPACING + DatabaseHandler.KEY_TYPE + QRY_SPACING + 
@@ -146,7 +146,7 @@ public class SessionHandler implements IDatabaseTable {
 	 * @param userId
 	 * @return
 	 */
-	public Session getOverview(int userId) {
+	public Session getOverview(int userId) throws SQLiteException {
 		Session session = new Session();
 		Cursor cursor = null;
 		Stack<String> activities = new Stack<String>();
@@ -239,7 +239,7 @@ public class SessionHandler implements IDatabaseTable {
 	 * @param userId
 	 * @return
 	 */
-	public ArrayList<Session> getSessions(int userId) {
+	public ArrayList<Session> getSessions(int userId) throws SQLiteException {
 		String qrySessions = "SELECT *" + QRY_SPACING + 
                              "FROM"     + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
                              "WHERE"    + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId;
@@ -320,7 +320,7 @@ public class SessionHandler implements IDatabaseTable {
 		return sessionsAll;
 	}
 	
-	public ArrayList<Session> getLatestSessions(int userId) {
+	public ArrayList<Session> getLatestSessions(int userId) throws SQLiteException {
 		ArrayList<Session> latestSessions = new ArrayList<Session>();
 		
 		String qrySessions = "SELECT *" + QRY_SPACING +
