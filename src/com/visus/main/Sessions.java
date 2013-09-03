@@ -74,7 +74,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		
 		
 		sessionsPager = (ViewPager) findViewById(com.visus.R.id.sessions_pager);		
-		sessionsPagerAdapter = new SessionsPagerAdapter(getSupportFragmentManager() );
+		sessionsPagerAdapter = new SessionsPagerAdapter(getSupportFragmentManager(), activeUserId );
 		
 		// initialise the page view adapter
 		sessionsPager.setAdapter(sessionsPagerAdapter);
@@ -321,9 +321,11 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		
 		// no of pages!!
 		private static final int NO_FRAGMENTS = 4; 
+		private int userId;
 
-		public SessionsPagerAdapter(FragmentManager fm) {
+		public SessionsPagerAdapter(FragmentManager fm, int userId) {
 			super(fm);
+			this.userId = userId;
 		}
 
 		/**
@@ -334,7 +336,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 			switch(item) {
 				case 0:
 					// displays sessions from today ... if there are any!
-					return new FragmentToday();
+					return new FragmentToday(userId);
 				case 1:
 					// ... from this week
 					return new FragmentThisWeek();
