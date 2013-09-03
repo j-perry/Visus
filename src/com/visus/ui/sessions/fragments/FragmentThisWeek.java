@@ -37,7 +37,7 @@ public class FragmentThisWeek extends Fragment {
 		ArrayList<HashMap<String, String>> sessionsThisWeek = new ArrayList<HashMap<String, String>>();
 		MainMenuAdapter adapter;
 		
-		ListView lvToday = (ListView) rootView.findViewById(com.visus.R.id.listview_sessions_this_week);
+		ListView lvWeek = (ListView) rootView.findViewById(com.visus.R.id.listview_sessions_this_week);
 		
 		/*
 		 * bind and display our content from the database!
@@ -71,7 +71,7 @@ public class FragmentThisWeek extends Fragment {
 		
 		adapter = new MainMenuAdapter(getActivity(), sessionsThisWeek);
 		
-		lvToday.setAdapter(adapter);
+		lvWeek.setAdapter(adapter);
 		
 		return rootView;
 	}

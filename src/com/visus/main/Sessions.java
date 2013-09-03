@@ -342,10 +342,10 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 					return new FragmentThisWeek(userId);
 				case 2:
 					// ... from this month
-					return new FragmentThisMonth();
+					return new FragmentThisMonth(userId);
 				case 3: 
 					// ... from this year
-					return new FragmentThisYear();
+					return new FragmentThisYear(userId);
 				default:
 					Fragment fragment = new Fragment();
 					return fragment;
