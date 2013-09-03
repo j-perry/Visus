@@ -1,5 +1,6 @@
 package com.visus.database;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import com.visus.entities.User;
@@ -325,8 +326,10 @@ public class SessionHandler implements IDatabaseTable {
 		
 		String qrySessions = "SELECT *" + QRY_SPACING +
 				             "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING + 
-				             "WHERE" + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId + QRY_SPACING +
-				             "ORDER BY" + QRY_SPACING + DatabaseHandler.KEY_DAY_NO + " desc LIMIT 5";
+				             "WHERE" + QRY_SPACING + 
+				             	DatabaseHandler.KEY_USER_ID + " = " + userId + QRY_SPACING +
+				             "ORDER BY" + QRY_SPACING + 
+				             	DatabaseHandler.KEY_DAY_NO + " desc LIMIT 5";
 		
 		Cursor cursor = null;
 		
@@ -384,4 +387,301 @@ public class SessionHandler implements IDatabaseTable {
 		return latestSessions;
 	}
 	
+	/**
+	 * Returns any sessions made today
+	 * @param userId the current user id
+	 * @return sessions made today
+	 * @throws SQLiteException if the database cursor does not return any results or fails executing the query
+	 */
+	public ArrayList<Session> getSessionsToday(int userId) throws SQLiteException {
+		int dayNo = Integer.parseInt(new SimpleDateFormat("dd").format(new Date() ));
+		String month = new SimpleDateFormat("MMM").format(new Date() );
+		int year = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date() ));
+		ArrayList<Session> sessionsToday = new ArrayList<Session>();
+		
+		Log.e("Visus", "getSessionsToday() - Today: " + dayNo); 
+		
+		// filter by day no, month and year
+		String qrySessionsToday = "SELECT *" + QRY_SPACING +
+		                          "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+		                          "WHERE" + QRY_SPACING + 
+		                          	DatabaseHandler.KEY_DAY_NO + QRY_SPACING + " = '" + dayNo + "'" +	// day no
+		                          "AND" + QRY_SPACING +
+		                          	DatabaseHandler.KEY_MONTH + QRY_SPACING + " = '" + month + "'" +	// month
+		                          "AND" + QRY_SPACING +
+		                          	DatabaseHandler.KEY_YEAR + QRY_SPACING + " = '" + year + "'";		// year
+		
+		Cursor cursor = db.rawQuery(qrySessionsToday, null);
+		
+		int dayNoIndex,
+	    	dayIndex,
+		    monthIndex,
+		    yearIndex,
+		    timeHourIndex,
+		    timeMinutesIndex,
+		    timezoneIndex,
+		    durationMinutesIndex,
+		    durationSecondsIndex,
+		    typeIndex = 0;
+	
+		dayNoIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY_NO);
+		dayIndex   			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY);
+		monthIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_MONTH);
+		yearIndex  			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_YEAR);
+		timeHourIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_HOUR);
+		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_MINS);
+		timezoneIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIMEZONE);
+		durationMinutesIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_MINS);
+		durationSecondsIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_SECS);
+		typeIndex            = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		
+		while(cursor.moveToNext()) {
+			session = new Session();
+	
+			session.setDayNo(cursor.getInt(dayNoIndex));
+			session.setDay(cursor.getString(dayIndex));
+			session.setMonth(cursor.getString(monthIndex));
+			session.setYear(cursor.getInt(yearIndex));
+			session.setTimeHour(cursor.getInt(timeHourIndex));
+			session.setTimeMinutes(cursor.getInt(timeMinutesIndex));
+			session.setDayPeriod(cursor.getString(timezoneIndex));
+			session.setDurationMinutes(cursor.getInt(durationMinutesIndex));
+			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
+			
+			if(!cursor.getString(typeIndex).isEmpty()) {
+				session.setType(cursor.getString(typeIndex));
+			}
+			else {
+				session.setType("Undefined");
+			}
+			
+			
+			sessionsToday.add(session);
+		}
+		
+		cursor.close();
+		db.close();		
+		
+		return sessionsToday;
+	}
+	
+	/**
+	 * Returns any sessions made this week
+	 * @param userId
+	 * @return
+	 * @throws SQLiteException
+	 */
+	public ArrayList<Session> getSessionsThisWeek(int userId) throws SQLiteException {
+		String day = new SimpleDateFormat("EEE").format(new Date() );
+		String month = new SimpleDateFormat("MMM").format(new Date() );
+		int year = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date() ));
+
+		ArrayList<Session> sessionsThisWeek = new ArrayList<Session>();
+		
+		String qryThisWeek = "SELECT *" + QRY_SPACING +
+						     "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+						     "WHERE" + QRY_SPACING +
+						     	DatabaseHandler.KEY_DAY + "=" + day +		// day
+						     "AND" + QRY_SPACING +
+						     	DatabaseHandler.KEY_MONTH + "=" + month +	// month
+						     "AND" + QRY_SPACING +
+						     	DatabaseHandler.KEY_YEAR;					// year
+		
+		Cursor cursor = db.rawQuery(qryThisWeek, null);
+		
+		int dayNoIndex,
+	    	dayIndex,
+		    monthIndex,
+		    yearIndex,
+		    timeHourIndex,
+		    timeMinutesIndex,
+		    timezoneIndex,
+		    durationMinutesIndex,
+		    durationSecondsIndex,
+		    typeIndex = 0;
+
+		dayNoIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY_NO);
+		dayIndex   			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY);
+		monthIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_MONTH);
+		yearIndex  			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_YEAR);
+		timeHourIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_HOUR);
+		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_MINS);
+		timezoneIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIMEZONE);
+		durationMinutesIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_MINS);
+		durationSecondsIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_SECS);
+		typeIndex            = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		
+		while(cursor.moveToNext()) {
+			session = new Session();
+	
+			session.setDayNo(cursor.getInt(dayNoIndex));
+			session.setDay(cursor.getString(dayIndex));
+			session.setMonth(cursor.getString(monthIndex));
+			session.setYear(cursor.getInt(yearIndex));
+			session.setTimeHour(cursor.getInt(timeHourIndex));
+			session.setTimeMinutes(cursor.getInt(timeMinutesIndex));
+			session.setDayPeriod(cursor.getString(timezoneIndex));
+			session.setDurationMinutes(cursor.getInt(durationMinutesIndex));
+			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
+			
+			if(!cursor.getString(typeIndex).isEmpty()) {
+				session.setType(cursor.getString(typeIndex));
+			}
+			else {
+				session.setType("Undefined");
+			}
+						
+			sessionsThisWeek.add(session);
+		}
+		
+		cursor.close();
+		db.close();
+		
+		return sessionsThisWeek;
+	}
+	
+	/**
+	 * Returns any sessions made this month
+	 * @param userId
+	 * @return
+	 * @throws SQLiteException
+	 */
+	public ArrayList<Session> getSessionsThisMonth(int userId) throws SQLiteException {
+		String month = new SimpleDateFormat("MMM").format(new Date() );
+		int year = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date() ));
+		
+		Log.e("Visus", "Month " + month + ", " + "Year " + year);
+		
+		ArrayList<Session> sessionsThisMonth = new ArrayList<Session>();
+		
+		String qryThisMonth = "SELECT *" + QRY_SPACING +
+		                      "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+		                      "WHERE" + QRY_SPACING + 
+		                        DatabaseHandler.KEY_USER_ID + " = '" + userId + "'" + QRY_SPACING + // user id
+		                      "AND" + QRY_SPACING +
+		                      	DatabaseHandler.KEY_MONTH + " = '" + month + "'" + QRY_SPACING + 	// month
+		                      "AND" + QRY_SPACING +
+		                      	DatabaseHandler.KEY_YEAR + " = '" + year + "'";				  		// year
+		
+		Cursor cursor = db.rawQuery(qryThisMonth, null);
+		
+		int dayNoIndex,
+	    	dayIndex,
+		    monthIndex,
+		    yearIndex,
+		    timeHourIndex,
+		    timeMinutesIndex,
+		    timezoneIndex,
+		    durationMinutesIndex,
+		    durationSecondsIndex,
+		    typeIndex = 0;
+
+		dayNoIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY_NO);
+		dayIndex   			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY);
+		monthIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_MONTH);
+		yearIndex  			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_YEAR);
+		timeHourIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_HOUR);
+		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_MINS);
+		timezoneIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIMEZONE);
+		durationMinutesIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_MINS);
+		durationSecondsIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_SECS);
+		typeIndex            = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		
+		while(cursor.moveToNext()) {
+			session = new Session();
+	
+			session.setDayNo(cursor.getInt(dayNoIndex));
+			session.setDay(cursor.getString(dayIndex));
+			session.setMonth(cursor.getString(monthIndex));
+			session.setYear(cursor.getInt(yearIndex));
+			session.setTimeHour(cursor.getInt(timeHourIndex));
+			session.setTimeMinutes(cursor.getInt(timeMinutesIndex));
+			session.setDayPeriod(cursor.getString(timezoneIndex));
+			session.setDurationMinutes(cursor.getInt(durationMinutesIndex));
+			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
+			
+			if(!cursor.getString(typeIndex).isEmpty()) {
+				session.setType(cursor.getString(typeIndex));
+			}
+			else {
+				session.setType("Undefined");
+			}
+						
+			sessionsThisMonth.add(session);
+		}
+		
+		cursor.close();
+		db.close();
+		
+		return sessionsThisMonth;
+	}
+	
+	/**
+	 * Returns any sessions made this year
+	 * @param userId
+	 * @return
+	 * @throws SQLiteException
+	 */
+	public ArrayList<Session> getSessionsThisYear(int userId) throws SQLiteException {
+		int year = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date() ));
+		
+		ArrayList<Session> sessionsThisYear = new ArrayList<Session>();
+		
+		String qryThisYear = "SELECT *" + QRY_SPACING +
+				             "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+				             "WHERE" + QRY_SPACING + 
+				             	DatabaseHandler.KEY_YEAR + " = '" + year + "'";
+		
+		Cursor cursor = db.rawQuery(qryThisYear, null);
+		
+		int dayNoIndex,
+	    	dayIndex,
+		    monthIndex,
+		    yearIndex,
+		    timeHourIndex,
+		    timeMinutesIndex,
+		    timezoneIndex,
+		    durationMinutesIndex,
+		    durationSecondsIndex,
+		    typeIndex = 0;
+
+		dayNoIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY_NO);
+		dayIndex   			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY);
+		monthIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_MONTH);
+		yearIndex  			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_YEAR);
+		timeHourIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_HOUR);
+		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_MINS);
+		timezoneIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIMEZONE);
+		durationMinutesIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_MINS);
+		durationSecondsIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_SECS);
+		typeIndex            = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		
+		while(cursor.moveToNext()) {
+			session = new Session();
+	
+			session.setDayNo(cursor.getInt(dayNoIndex));
+			session.setDay(cursor.getString(dayIndex));
+			session.setMonth(cursor.getString(monthIndex));
+			session.setYear(cursor.getInt(yearIndex));
+			session.setTimeHour(cursor.getInt(timeHourIndex));
+			session.setTimeMinutes(cursor.getInt(timeMinutesIndex));
+			session.setDayPeriod(cursor.getString(timezoneIndex));
+			session.setDurationMinutes(cursor.getInt(durationMinutesIndex));
+			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
+			
+			if(!cursor.getString(typeIndex).isEmpty()) {
+				session.setType(cursor.getString(typeIndex));
+			}
+			else {
+				session.setType("Undefined");
+			}
+						
+			sessionsThisYear.add(session);
+		}
+		
+		cursor.close();
+		db.close();
+		
+		return sessionsThisYear;	
+	}
 }
