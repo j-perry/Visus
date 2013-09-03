@@ -50,7 +50,7 @@ public class FragmentToday extends Fragment {
 			dbSession.close();
 		}
 		
-		// parse sessions
+		// retrieve sessions
 		for(Session session : sessions) {
 			HashMap<String, String> map = new HashMap<String, String>();
 			map.put(MainMenuListView.SESSION, session.getDay() + " " +
