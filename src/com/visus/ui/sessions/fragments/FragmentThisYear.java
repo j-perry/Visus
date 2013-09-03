@@ -53,25 +53,33 @@ public class FragmentThisYear extends Fragment {
 			dbSession.close();
 		}
 		
-		// retrieve sessions
-		for(Session session : sessions) {
+		if(sessions.isEmpty()) {
 			HashMap<String, String> map = new HashMap<String, String>();
-			
-			map.put(MainMenuListView.SESSION, session.getDay() + " " +
-											  session.getDayNo() + " " +  
-											  session.getMonth() + ", " +
-											  session.getYear() + " - " +
-							                  session.getTimeHour() + ":" +
-							                  session.getTimeMinutes() + " " +
-							                  session.getDayPeriod() + " - " +
-							                  session.getDurationMinutes() + ":" +
-							                  session.getDurationSeconds() + " - " +
-							                  session.getType()
-					);
-
+			String msg = "None Created This Year";
+			map.put(MainMenuListView.SESSION, msg);
 			sessionsThisYear.add(map);
 		}
-		
+		else {
+			// retrieve sessions
+			for(Session session : sessions) {
+				HashMap<String, String> map = new HashMap<String, String>();
+				
+				map.put(MainMenuListView.SESSION, session.getDay() + " " +
+												  session.getDayNo() + " " +  
+												  session.getMonth() + ", " +
+												  session.getYear() + " - " +
+								                  session.getTimeHour() + ":" +
+								                  session.getTimeMinutes() + " " +
+								                  session.getDayPeriod() + " - " +
+								                  session.getDurationMinutes() + ":" +
+								                  session.getDurationSeconds() + " - " +
+								                  session.getType()
+						);
+
+				sessionsThisYear.add(map);
+			}
+		}
+				
 		adapter = new MainMenuAdapter(getActivity(), sessionsThisYear);
 		
 		lvYear.setAdapter(adapter);		
