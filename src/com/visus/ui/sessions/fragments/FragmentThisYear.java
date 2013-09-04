@@ -55,7 +55,7 @@ public class FragmentThisYear extends Fragment {
 		
 		if(sessions.isEmpty()) {
 			HashMap<String, String> map = new HashMap<String, String>();
-			String msg = "None Created This Year";
+			String msg = "None Created";
 			map.put(MainMenuListView.SESSION, msg);
 			sessionsThisYear.add(map);
 		}

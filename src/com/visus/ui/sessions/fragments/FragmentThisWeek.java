@@ -71,7 +71,7 @@ public class FragmentThisWeek extends Fragment {
 		
 		if(sessions.isEmpty()) {
 			HashMap<String, String> map = new HashMap<String, String>();
-			String msg = "None Created This Week";
+			String msg = "None Created";
 			map.put(MainMenuListView.SESSION, msg);
 			sessionsThisWeek.add(map);
 		}

@@ -55,7 +55,7 @@ public class FragmentThisMonth extends Fragment {
 		
 		if(sessions.isEmpty()) {
 			HashMap<String, String> map = new HashMap<String, String>();
-			String msg = "None Created This Month";
+			String msg = "None Created";
 			map.put(MainMenuListView.SESSION, msg);
 			sessionsThisMonth.add(map);
 		}
