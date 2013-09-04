@@ -1,9 +1,15 @@
 package com.visus.database;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import org.joda.time.DateTimeConstants;
+import org.joda.time.LocalDate;
+
 import com.visus.entities.User;
+import com.visus.entities.Week;
 import com.visus.entities.sessions.*;
 
 import android.content.*;
@@ -64,6 +70,8 @@ public class SessionHandler implements IDatabaseTable {
 		sessionValues.put(DatabaseHandler.KEY_MONTH, session.getMonth());
 		sessionValues.put(DatabaseHandler.KEY_YEAR, session.getYear());
 		
+		sessionValues.put(DatabaseHandler.KEY_DATE, session.getDate());			// NEW!
+		
 		// time
 		sessionValues.put(DatabaseHandler.KEY_TIME_HOUR, session.getTimeHour());
 		sessionValues.put(DatabaseHandler.KEY_TIME_MINS, session.getTimeMinutes());
@@ -98,6 +106,8 @@ public class SessionHandler implements IDatabaseTable {
 							                 + "o Session date (day): " + session.getDay() + "\n"
 							                 + "o Session date (month): "+ session.getMonth() + "\n"
 							                 + "o Session date (year): " + session.getYear() + "\n"
+							                 + "o Session date: " + session.getDate() + "\n"
+							                 
 							                 + "o Session time (hour): " + session.getTimeHour() + "\n"
 							                 + "o Session time (minutes): " + session.getTimeMinutes() + "\n"
 							                 + "o Session timezone: " + session.getDayPeriod() + "\n"
@@ -324,10 +334,15 @@ public class SessionHandler implements IDatabaseTable {
 	public ArrayList<Session> getLatestSessions(int userId) throws SQLiteException {
 		ArrayList<Session> latestSessions = new ArrayList<Session>();
 		
+		// this query works!!!
+		// using the date() function
+		// NB: specify Date column, then the value sought
 		String qrySessions = "SELECT *" + QRY_SPACING +
 				             "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING + 
 				             "WHERE" + QRY_SPACING + 
 				             	DatabaseHandler.KEY_USER_ID + " = " + userId + QRY_SPACING +
+				             "AND " +
+				             	"Date = date('2013-09-04') " +
 				             "ORDER BY" + QRY_SPACING + 
 				             	DatabaseHandler.KEY_DAY_NO + " desc LIMIT 5";
 		
@@ -339,6 +354,7 @@ public class SessionHandler implements IDatabaseTable {
 	    	dayIndex,
 		    monthIndex,
 		    yearIndex,
+	    	dateIndex,
 		    timeHourIndex,
 		    timeMinutesIndex,
 		    timezoneIndex,
@@ -350,6 +366,7 @@ public class SessionHandler implements IDatabaseTable {
 		dayIndex   			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY);
 		monthIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_MONTH);
 		yearIndex  			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_YEAR);
+		dateIndex			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DATE);
 		timeHourIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_HOUR);
 		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_MINS);
 		timezoneIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIMEZONE);
@@ -364,6 +381,7 @@ public class SessionHandler implements IDatabaseTable {
 			session.setDay(cursor.getString(dayIndex));
 			session.setMonth(cursor.getString(monthIndex));
 			session.setYear(cursor.getInt(yearIndex));
+			session.setDate(cursor.getString(dateIndex));
 			session.setTimeHour(cursor.getInt(timeHourIndex));
 			session.setTimeMinutes(cursor.getInt(timeMinutesIndex));
 			session.setDayPeriod(cursor.getString(timezoneIndex));
@@ -402,14 +420,19 @@ public class SessionHandler implements IDatabaseTable {
 		Log.e("Visus", "getSessionsToday() - Today: " + dayNo); 
 		
 		// filter by day no, month and year
+//		String qrySessionsToday = "SELECT *" + QRY_SPACING +
+//		                          "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+//		                          "WHERE" + QRY_SPACING + 
+//		                          	DatabaseHandler.KEY_DAY_NO + QRY_SPACING + " = '" + dayNo + "'" +	// day no
+//		                          "AND" + QRY_SPACING +
+//		                          	DatabaseHandler.KEY_MONTH + QRY_SPACING + " = '" + month + "'" +	// month
+//		                          "AND" + QRY_SPACING +
+//		                          	DatabaseHandler.KEY_YEAR + QRY_SPACING + " = '" + year + "'";		// year
+		
+		
 		String qrySessionsToday = "SELECT *" + QRY_SPACING +
-		                          "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
-		                          "WHERE" + QRY_SPACING + 
-		                          	DatabaseHandler.KEY_DAY_NO + QRY_SPACING + " = '" + dayNo + "'" +	// day no
-		                          "AND" + QRY_SPACING +
-		                          	DatabaseHandler.KEY_MONTH + QRY_SPACING + " = '" + month + "'" +	// month
-		                          "AND" + QRY_SPACING +
-		                          	DatabaseHandler.KEY_YEAR + QRY_SPACING + " = '" + year + "'";		// year
+                				  "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+                				  "WHERE" + QRY_SPACING + " Date = date('now')";
 		
 		Cursor cursor = db.rawQuery(qrySessionsToday, null);
 		
@@ -470,24 +493,104 @@ public class SessionHandler implements IDatabaseTable {
 	 * @param userId
 	 * @return
 	 * @throws SQLiteException
+	 * @throws ParseException 
 	 */
-	public ArrayList<Session> getSessionsThisWeek(int userId) throws SQLiteException {
-		String day = new SimpleDateFormat("EEE").format(new Date() );
-		String month = new SimpleDateFormat("MMM").format(new Date() );
-		int year = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date() ));
-
+	public ArrayList<Session> getSessionsThisWeek(int userId, Week beginning, Week end) throws SQLiteException {		
 		ArrayList<Session> sessionsThisWeek = new ArrayList<Session>();
+		Week wkBeginning = beginning;
+		Week wkEnd = end;
 		
-		String qryThisWeek = "SELECT *" + QRY_SPACING +
-						     "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
-						     "WHERE" + QRY_SPACING +
-						     	DatabaseHandler.KEY_DAY + "=" + day +		// day
-						     "AND" + QRY_SPACING +
-						     	DatabaseHandler.KEY_MONTH + "=" + month +	// month
-						     "AND" + QRY_SPACING +
-						     	DatabaseHandler.KEY_YEAR;					// year
+				
+		// week beginning (date)
+		int dayBeginning = wkBeginning.getDayNo();
+		int tmp_monthBeginning = wkBeginning.getMonth();
+		int yearBeginning = wkBeginning.getYear();
+				
+		// week end (date)... not to be confused with weekend!
+		int dayEnd = wkEnd.getDayNo();
+		int tmp_monthEnd = wkEnd.getMonth();
+		int yearEnd = wkEnd.getYear();
 		
+		String dBeginning = null;
+		String mBeginning = null;
+		String dEnd = null;
+		String mEnd = null;
+		
+		String strBeginning = null;
+		String strEnd = null;
+		
+		String qryThisWeek = null;
+		
+		
+		/**
+		 * Beginning
+		 */
+		
+		// day beginning
+		if(dayBeginning < 10) {
+			dBeginning = "0" + String.valueOf(dayBeginning);
+		}
+		else {
+			dBeginning = String.valueOf(dayBeginning);
+		}
+		
+		// month beginning
+		if(tmp_monthBeginning < 10) {
+			mBeginning = "0" + String.valueOf(tmp_monthBeginning);
+		}
+		else {
+			mBeginning = String.valueOf(tmp_monthBeginning);
+		}
+		
+		
+		/**
+		 * End
+		 */
+		
+		// day end
+		if(dayEnd < 10) {
+			dEnd = "0" + String.valueOf(dayEnd);
+		}
+		else {
+			dEnd = String.valueOf(dayEnd);
+		}
+		
+		// month end
+		if(tmp_monthEnd < 10) {
+			mEnd = "0" + String.valueOf(tmp_monthEnd);
+		}
+		else {
+			mEnd = String.valueOf(tmp_monthEnd);
+		}
+		
+		strBeginning = String.valueOf(yearBeginning) + "-" + mBeginning + "-" + dBeginning;
+		strEnd = String.valueOf(yearBeginning) + "-" + mEnd + "-" + dEnd;
+		
+		qryThisWeek = "SELECT * " +
+					  "FROM " + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+					  "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId + QRY_SPACING +
+					  "AND "
+					      	   + DatabaseHandler.KEY_DATE + QRY_SPACING +
+					  "BETWEEN date('" + strBeginning + "') " +
+					 "AND date('" + strEnd + "')";
+			
+		Log.e("Visus", qryThisWeek);
+				
+		
+		Log.e("Visus", "getSessionsThisWeek() " + yearBeginning + "-" + tmp_monthBeginning + "-" + dayBeginning);
+		Log.e("Visus", "getSessionsThisWeek() " + yearEnd + "-" + tmp_monthEnd + "-" + dayEnd);
+		
+//		String qryThisWeek = "SELECT * " +
+//							 "FROM " + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+//							 "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId + QRY_SPACING +
+//							 "AND "
+//							          + DatabaseHandler.KEY_DATE + QRY_SPACING +
+//							 "BETWEEN date('" + yearBeginning + "-" + tmp_monthBeginning + "-" + dayBeginning + "') " +
+//							 	"AND date('" + yearEnd + "-" + tmp_monthEnd + "-" + dayEnd + "')";
+				 
 		Cursor cursor = db.rawQuery(qryThisWeek, null);
+		
+		Log.e("Visus", "YES!");
 		
 		int dayNoIndex,
 	    	dayIndex,
@@ -510,6 +613,13 @@ public class SessionHandler implements IDatabaseTable {
 		durationMinutesIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_MINS);
 		durationSecondsIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_SECS);
 		typeIndex            = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		
+		if(cursor.getCount() == 0) {
+			Log.e("Visus", "No results :'(");
+		}
+		else {
+			Log.e("Visus", "There are results...");
+		}
 		
 		while(cursor.moveToNext()) {
 			session = new Session();
@@ -559,9 +669,8 @@ public class SessionHandler implements IDatabaseTable {
 		                      "WHERE" + QRY_SPACING + 
 		                        DatabaseHandler.KEY_USER_ID + " = '" + userId + "'" + QRY_SPACING + // user id
 		                      "AND" + QRY_SPACING +
-		                      	DatabaseHandler.KEY_MONTH + " = '" + month + "'" + QRY_SPACING + 	// month
-		                      "AND" + QRY_SPACING +
-		                      	DatabaseHandler.KEY_YEAR + " = '" + year + "'";				  		// year
+		                      	DatabaseHandler.KEY_DATE + " = strftime('%m-%Y', '" + month + "-" + year + "')";
+		                      
 		
 		Cursor cursor = db.rawQuery(qryThisMonth, null);
 		

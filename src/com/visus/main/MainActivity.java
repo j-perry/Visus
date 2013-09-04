@@ -1,8 +1,16 @@
 package com.visus.main;
 
 // core apis
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
+
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeConstants;
+import org.joda.time.LocalDate;
 
 // android apis
 import android.os.Bundle;
@@ -45,9 +53,6 @@ public class MainActivity extends Activity {
 		dbSession = new SessionHandler(this);
 				
 		setContentView(R.layout.activity_main);
-				
-//		sessions = dbSession.getLatestSessions(user.getUserId());
-		
 		
 	}
 
@@ -98,6 +103,7 @@ public class MainActivity extends Activity {
 					map.put(MainMenuListView.SESSION, session.getDay() + " " +
 							    					  session.getDayNo() + " " +  
 							    					  session.getMonth() + ", " +
+							    					  session.getDate() + ", " +
 							    					  session.getYear() + " - " +
 									                  session.getTimeHour() + ":" +
 									                  session.getTimeMinutes() + " " +
@@ -117,8 +123,8 @@ public class MainActivity extends Activity {
 				
 				list.setAdapter(adapter);				
 			}
-		}			
-		
+		}
+				
 	}
 	
 	@Override
@@ -222,6 +228,28 @@ public class MainActivity extends Activity {
 		Intent intent = new Intent(MainActivity.this, ActivityCategory.class);
 		intent.putExtra("ActiveUserId", user.getUserId());
 		startActivity(intent);
+	}
+	
+	private void test() {
+//		int dayNo = 0;
+//		
+//		String target = null;
+//		String day = null;
+//		int saturdayDayNo = 0;
+//
+//		
+//		while(!target.contains("Sun")) {
+//			dayNo = Integer.parseInt(new SimpleDateFormat("dd").format(new Date()) );
+//			day = new SimpleDateFormat("EEE").format(dayNo);
+//			
+//			if(day == target) {
+//				saturdayDayNo = dayNo;
+//				Log.e("Visus", "Day found");
+//			}
+//			else {
+//				dayNo--;
+//			}
+//		}
 	}
 	
 }

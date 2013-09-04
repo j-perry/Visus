@@ -1,9 +1,16 @@
 package com.visus.ui.sessions.fragments;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
+import org.joda.time.DateTime;
+
 import com.visus.database.SessionHandler;
+import com.visus.entities.Week;
 import com.visus.entities.sessions.Session;
 import com.visus.ui.MainMenuAdapter;
 import com.visus.ui.MainMenuListView;
@@ -22,13 +29,17 @@ import android.widget.ListView;
 public class FragmentThisWeek extends Fragment {
 	
 	private int userId;
+	private Week beginning;
+	private Week end;
 	
 	public FragmentThisWeek() {
 		super();
 	}
 	
-	public FragmentThisWeek(int userId) {
+	public FragmentThisWeek(int userId, Week beginning, Week end) {
 		this.userId = userId;
+		this.beginning = beginning;
+		this.end = end;
 	}
 	
 	@Override
@@ -51,7 +62,10 @@ public class FragmentThisWeek extends Fragment {
 			Log.e("Visus", "SQLite Exception Error", e);
 		}
 		finally {
-			sessions = dbSession.getLatestSessions(userId);
+			// return session results based on this week (between Saturday and Friday)
+			sessions = dbSession.getSessionsThisWeek(userId, beginning, end);
+			
+//			sessions = dbSession.getLatestSessions(userId);
 			dbSession.close();
 		}
 		
@@ -85,7 +99,7 @@ public class FragmentThisWeek extends Fragment {
 		adapter = new MainMenuAdapter(getActivity(), sessionsThisWeek);
 		
 		lvWeek.setAdapter(adapter);
-		
+				
 		return rootView;
 	}
 

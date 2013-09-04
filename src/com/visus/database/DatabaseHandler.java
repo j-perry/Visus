@@ -43,6 +43,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	// columns
 	public static final String KEY_USER_ID       = "UserId";
 	public static final String KEY_DAY_NO        = "DayNo";
+	public static final String KEY_DATE          = "Date";
 	public static final String KEY_DAY           = "Day";
 	public static final String KEY_MONTH         = "Month";
 	public static final String KEY_YEAR          = "Year";
@@ -76,7 +77,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 	                 	KEY_ID + " INTEGER PRIMARY KEY, " + 
                 	                 	KEY_USER_ID + " INTEGER, " +
                 	                 	KEY_DAY_NO + " INTEGER, " +
-                	                 	KEY_DAY + " TEXT, " +
+                	                 	KEY_DATE + " DATE DEFAULT CURRENT_TIMESTAMP, " +	// NEW!
+                 	                 	KEY_DAY + " TEXT, " +
                 	                 	KEY_MONTH + " TEXT, " +
                 	                 	KEY_YEAR + " INTEGER, " +
                 	                 	KEY_TIME_HOUR + " TEXT, " +

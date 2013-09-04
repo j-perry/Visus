@@ -57,7 +57,7 @@ public class FragmentToday extends Fragment {
 		
 		if(sessions.isEmpty()) {
 			HashMap<String, String> map = new HashMap<String, String>();
-			String msg = "None Created Today";
+			String msg = "None Created";
 			map.put(MainMenuListView.SESSION, msg);
 			sessionsToday.add(map);
 		}

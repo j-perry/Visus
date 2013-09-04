@@ -8,7 +8,7 @@ public class Session {
 
 	private StringBuilder duration;
 	private StringBuilder time;
-	private StringBuilder date;
+	private String date;
 	
 	// session date
 	private int dayNo;
@@ -52,7 +52,7 @@ public class Session {
 		"Jun",
 		"Jul",
 		"Aug",
-		"Sept",
+		"Sep",
 		"Oct",
 		"Nov",
 		"Dec"
@@ -180,43 +180,23 @@ public class Session {
 	}
 	
 	/**
-	 * Set the session date format as EEE MMM yyyy
+	 * Set the session date
 	 * 
 	 * Validates whether day, month and year are in the right format
 	 * @param day
 	 * @param month
 	 * @param year
 	 */
-	public void setDate(String dayNo, String day, String month, String year) {
-		this.date = new StringBuilder(dayNo);
-		this.date.append(" ");
-		
-		// day - e.g., Monday (EEEE format)
-		for(String d : days)
-			if(d.equals(day))
-				this.date.append(day);
-		
-		// spacing - "[dayNo]_[day]_"
-		date.append(" ");
-		
-		// month - e.g., January (MMMM format)
-		for(String m : months)
-			if(m.equals(month))
-				this.date.append(month);	
-		
-		date.append(" ");
-		
-		// year - e.g., 2013 (yyyy format)
-		if(year.length() == 4)
-			this.date.append(year);
+	public void setDate(String date) {
+		this.date = date;
 	}
 	
 	/**
 	 * Return's the date
-	 * @return day + " " + month + " " + year
+	 * @return date
 	 */
 	public String getDate() {
-		return date.toString();
+		return date;
 	}
 	
 	public void setYear(int year) {

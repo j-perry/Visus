@@ -276,6 +276,12 @@ public class NewSession extends Activity {
 		session.setMonth(month);
 		session.setYear(year);
 		
+		// set the date
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String date = sdf.format(new Date() );
+		session.setDate(date);
+		
+		Log.e("Visus", "Date set: " + session.getDate());
 		
 		// get the session time
 		int hour = Integer.parseInt(new SimpleDateFormat("hh").format(new Date() ));
