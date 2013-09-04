@@ -419,17 +419,6 @@ public class SessionHandler implements IDatabaseTable {
 		
 		Log.e("Visus", "getSessionsToday() - Today: " + dayNo); 
 		
-		// filter by day no, month and year
-//		String qrySessionsToday = "SELECT *" + QRY_SPACING +
-//		                          "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
-//		                          "WHERE" + QRY_SPACING + 
-//		                          	DatabaseHandler.KEY_DAY_NO + QRY_SPACING + " = '" + dayNo + "'" +	// day no
-//		                          "AND" + QRY_SPACING +
-//		                          	DatabaseHandler.KEY_MONTH + QRY_SPACING + " = '" + month + "'" +	// month
-//		                          "AND" + QRY_SPACING +
-//		                          	DatabaseHandler.KEY_YEAR + QRY_SPACING + " = '" + year + "'";		// year
-		
-		
 		String qrySessionsToday = "SELECT *" + QRY_SPACING +
                 				  "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
                 				  "WHERE" + QRY_SPACING + " Date = date('now')";
@@ -477,8 +466,7 @@ public class SessionHandler implements IDatabaseTable {
 			else {
 				session.setType("Undefined");
 			}
-			
-			
+						
 			sessionsToday.add(session);
 		}
 		
@@ -579,15 +567,7 @@ public class SessionHandler implements IDatabaseTable {
 		
 		Log.e("Visus", "getSessionsThisWeek() " + yearBeginning + "-" + tmp_monthBeginning + "-" + dayBeginning);
 		Log.e("Visus", "getSessionsThisWeek() " + yearEnd + "-" + tmp_monthEnd + "-" + dayEnd);
-		
-//		String qryThisWeek = "SELECT * " +
-//							 "FROM " + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
-//							 "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId + QRY_SPACING +
-//							 "AND "
-//							          + DatabaseHandler.KEY_DATE + QRY_SPACING +
-//							 "BETWEEN date('" + yearBeginning + "-" + tmp_monthBeginning + "-" + dayBeginning + "') " +
-//							 	"AND date('" + yearEnd + "-" + tmp_monthEnd + "-" + dayEnd + "')";
-				 
+			 
 		Cursor cursor = db.rawQuery(qryThisWeek, null);
 		
 		Log.e("Visus", "YES!");
