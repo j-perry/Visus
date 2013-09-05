@@ -409,13 +409,8 @@ public class SessionHandler implements IDatabaseTable {
 	 * @throws SQLiteException if the database cursor does not return any results or fails executing the query
 	 */
 	public ArrayList<Session> getSessionsToday(int userId) throws SQLiteException {
-		int dayNo = Integer.parseInt(new SimpleDateFormat("dd").format(new Date() ));
-		String month = new SimpleDateFormat("MMM").format(new Date() );
-		int year = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date() ));
 		ArrayList<Session> sessionsToday = new ArrayList<Session>();
-		
-		Log.e("Visus", "getSessionsToday() - Today: " + dayNo); 
-		
+				
 		String qrySessionsToday = "SELECT *" + QRY_SPACING +
                 				  "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
                 				  "WHERE" + QRY_SPACING + " Date = date('now')";
@@ -637,8 +632,6 @@ public class SessionHandler implements IDatabaseTable {
 	 * @throws SQLiteException
 	 */
 	public ArrayList<Session> getSessionsThisMonth(int userId) throws SQLiteException {
-//		String month = new SimpleDateFormat("MMM").format(new Date() );
-//		int year = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date() ));
 		int maxDays = 0;
 		int month = 0;
 		int year = 0;
@@ -646,8 +639,6 @@ public class SessionHandler implements IDatabaseTable {
 		String strMonth = null;
 		
 		Calendar cal = Calendar.getInstance();
-		DateFormat dfMonth = new SimpleDateFormat("MMM");
-		Date dt = cal.getTime(); 
 		month = cal.get(Calendar.MONTH);
 		month++;
 		year = cal.get(Calendar.YEAR);
@@ -668,7 +659,6 @@ public class SessionHandler implements IDatabaseTable {
 		
 		ArrayList<Session> sessionsThisMonth = new ArrayList<Session>();
 		
-		// TODO
 		String qryThisMonth = "SELECT *" + QRY_SPACING +
                 			  "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
                               "WHERE" + QRY_SPACING +
@@ -747,7 +737,6 @@ public class SessionHandler implements IDatabaseTable {
 	public ArrayList<Session> getSessionsThisYear(int userId) throws SQLiteException {
 		// get the current year
 		Calendar cal = Calendar.getInstance();
-		Date dt = cal.getTime(); 
 		int year = cal.get(Calendar.YEAR);
 		
 		String dateBeginning = String.valueOf(year) + "-01-01";
@@ -758,7 +747,6 @@ public class SessionHandler implements IDatabaseTable {
 		
 		ArrayList<Session> sessionsThisYear = new ArrayList<Session>();
 		
-		// TODO
 		String qryThisYear = "SELECT *" + QRY_SPACING +
 				             "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
 				             "WHERE" + QRY_SPACING + 
