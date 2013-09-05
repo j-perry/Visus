@@ -562,8 +562,11 @@ public class SessionHandler implements IDatabaseTable {
 					  "BETWEEN date('" + strBeginning + "') " +
 					 "AND date('" + strEnd + "')";
 			
+		Log.e("Visus", "---------------");
+		Log.e("Visus", "qryThisWeek: ");
 		Log.e("Visus", qryThisWeek);
-				
+		Log.e("Visus", "---------------");
+		
 		
 		Log.e("Visus", "getSessionsThisWeek() " + yearBeginning + "-" + tmp_monthBeginning + "-" + dayBeginning);
 		Log.e("Visus", "getSessionsThisWeek() " + yearEnd + "-" + tmp_monthEnd + "-" + dayEnd);
@@ -680,7 +683,10 @@ public class SessionHandler implements IDatabaseTable {
                               "AND" + QRY_SPACING +
                               		"date('" + year + "-" + strMonth + "-" + maxDays + "')";
 	
+		Log.e("Visus", "---------------");
+		Log.e("Visus", "qryThisMonth: ");
 		Log.e("Visus", qryThisMonth);
+		Log.e("Visus", "---------------");
 		
 		Cursor cursor = db.rawQuery(qryThisMonth, null);
 		
@@ -742,7 +748,16 @@ public class SessionHandler implements IDatabaseTable {
 	 * @throws SQLiteException
 	 */
 	public ArrayList<Session> getSessionsThisYear(int userId) throws SQLiteException {
-		int year = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date() ));
+		// get the current year
+		Calendar cal = Calendar.getInstance();
+		Date dt = cal.getTime(); 
+		int year = cal.get(Calendar.YEAR);
+		
+		String dateBeginning = String.valueOf(year) + "-01-01";
+		String dateEnding = String.valueOf(year) + "-12-31";
+		
+		Log.e("Visus", "Year beginning: " + dateBeginning);
+		Log.e("Visus", "Year ending: " + dateEnding);
 		
 		ArrayList<Session> sessionsThisYear = new ArrayList<Session>();
 		
@@ -752,7 +767,16 @@ public class SessionHandler implements IDatabaseTable {
 				             "WHERE" + QRY_SPACING + 
                            		DatabaseHandler.KEY_USER_ID + " = '" + userId + "'" + QRY_SPACING + 
                            	 "AND" + QRY_SPACING +
-                           		DatabaseHandler.KEY_DATE + " = date('YYYY')";
+                        		DatabaseHandler.KEY_DATE + QRY_SPACING +       
+							 "BETWEEN" + QRY_SPACING +                       	
+							 	"date('" + dateBeginning + "')" + QRY_SPACING +
+							 "AND" + QRY_SPACING +
+							 	"date('" + dateEnding + "')";
+		
+		Log.e("Visus", "---------------");
+		Log.e("Visus", "qryThisYear: ");
+		Log.e("Visus", qryThisYear);
+		Log.e("Visus", "---------------");
 		
 		Cursor cursor = db.rawQuery(qryThisYear, null);
 		
