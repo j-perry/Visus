@@ -637,20 +637,50 @@ public class SessionHandler implements IDatabaseTable {
 	 * @throws SQLiteException
 	 */
 	public ArrayList<Session> getSessionsThisMonth(int userId) throws SQLiteException {
-		String month = new SimpleDateFormat("MMM").format(new Date() );
-		int year = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date() ));
+//		String month = new SimpleDateFormat("MMM").format(new Date() );
+//		int year = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date() ));
+		int maxDays = 0;
+		int month = 0;
+		int year = 0;
 		
-		Log.e("Visus", "Month " + month + ", " + "Year " + year);
+		String strMonth = null;
+		
+		Calendar cal = Calendar.getInstance();
+		DateFormat dfMonth = new SimpleDateFormat("MMM");
+		Date dt = cal.getTime(); 
+		month = cal.get(Calendar.MONTH);
+		month++;
+		year = cal.get(Calendar.YEAR);
+		
+		cal = new GregorianCalendar(year, month, 1);
+		maxDays = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+		
+		if(month < 10) {
+			strMonth = "0" + String.valueOf(month);
+		}
+		else {
+			strMonth = String.valueOf(month);
+		}
+		
+		
+		Log.e("Visus", "Month " + strMonth + ", " + "Year " + year);
+		Log.e("Visus", "Max no. of days: " + maxDays);
 		
 		ArrayList<Session> sessionsThisMonth = new ArrayList<Session>();
 		
+		// TODO
 		String qryThisMonth = "SELECT *" + QRY_SPACING +
-		                      "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
-		                      "WHERE" + QRY_SPACING + 
-		                        DatabaseHandler.KEY_USER_ID + " = '" + userId + "'" + QRY_SPACING + // user id
-		                      "AND" + QRY_SPACING +
-		                      	DatabaseHandler.KEY_DATE + " = strftime('%m-%Y', '" + month + "-" + year + "')";
-		                      
+                			  "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+                              "WHERE" + QRY_SPACING +
+                              	DatabaseHandler.KEY_USER_ID + " = '" + userId + "'" + QRY_SPACING + 
+                              "AND" + QRY_SPACING + 
+                              	DatabaseHandler.KEY_DATE + QRY_SPACING +
+                              "BETWEEN" + QRY_SPACING +                              	
+                              	"date('" + year + "-" + strMonth + "-" + "01')" + QRY_SPACING +
+                              "AND" + QRY_SPACING +
+                              		"date('" + year + "-" + strMonth + "-" + maxDays + "')";
+	
+		Log.e("Visus", qryThisMonth);
 		
 		Cursor cursor = db.rawQuery(qryThisMonth, null);
 		
@@ -716,10 +746,13 @@ public class SessionHandler implements IDatabaseTable {
 		
 		ArrayList<Session> sessionsThisYear = new ArrayList<Session>();
 		
+		// TODO
 		String qryThisYear = "SELECT *" + QRY_SPACING +
 				             "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
 				             "WHERE" + QRY_SPACING + 
-				             	DatabaseHandler.KEY_YEAR + " = '" + year + "'";
+                           		DatabaseHandler.KEY_USER_ID + " = '" + userId + "'" + QRY_SPACING + 
+                           	 "AND" + QRY_SPACING +
+                           		DatabaseHandler.KEY_DATE + " = date('YYYY')";
 		
 		Cursor cursor = db.rawQuery(qryThisYear, null);
 		
