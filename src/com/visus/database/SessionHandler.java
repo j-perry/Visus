@@ -5,9 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import org.joda.time.DateTimeConstants;
-import org.joda.time.LocalDate;
-
 import com.visus.entities.User;
 import com.visus.entities.Week;
 import com.visus.entities.sessions.*;
