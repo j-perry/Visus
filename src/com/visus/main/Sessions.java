@@ -17,6 +17,7 @@ import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -54,8 +55,9 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 	private ViewPager sessionsPager;
 	private SessionsPagerAdapter sessionsPagerAdapter;
 	
-	private Week wkBeginning;
-	private Week wkEnd;
+	// TODO - delete tomorrow - 06/09 - if Weeks functionality works...
+//	private Week wkBeginning;
+//	private Week wkEnd;
 	
 	
 	@Override
@@ -79,12 +81,14 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		ab.setDisplayHomeAsUpEnabled(true);
 		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		
+		// TODO Delete this tomorrow - 07/09/2013 - if functionality in Weeks works...
 		// find the beginning and end of the present week
-		wkBeginning = findBeginningOfWeek();
-		wkEnd = findEndOfWeek();		
+//		wkBeginning = findBeginningOfWeek();
+//		wkEnd = findEndOfWeek();		
 		
 		sessionsPager = (ViewPager) findViewById(com.visus.R.id.sessions_pager);
-		sessionsPagerAdapter = new SessionsPagerAdapter(getSupportFragmentManager(), activeUserId, wkBeginning, wkEnd );
+//		sessionsPagerAdapter = new SessionsPagerAdapter(getSupportFragmentManager(), activeUserId, wkBeginning, wkEnd );
+		sessionsPagerAdapter = new SessionsPagerAdapter(getSupportFragmentManager(), activeUserId);
 		
 		// initialise the page view adapter
 		sessionsPager.setAdapter(sessionsPagerAdapter);
@@ -100,21 +104,19 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 				
 		// create our tabs
 		initTabs(ab);
-        					
-				
-//		ListView sessionsList = (ListView) findViewById(R.id.list_previous_sessions);
-			
-		// TODO - 26/08/2013
-//		dbSession.open();
-//		sessionOverview = dbSession.getOverview(activeUserId);
-//		dbSession.close();
+
+		try {
+			dbSession.open();
+		}
+		catch(SQLiteException e) {
+			Log.e("Visus", null, e);
+		}
+		finally {
+			allSessions = dbSession.getSessions(activeUserId);
+			dbSession.close();
+		}
 		
-		
-		dbSession.open();
-		allSessions = dbSession.getSessions(activeUserId);
-		dbSession.close();
-		
-		
+		// determine whether there are any results
 		if(sessionOverview != null) {
 			Log.e("Visus", "session overview is not null");
 			Log.e("Visus", "Session overview (hours): " + String.valueOf(sessionOverview.getOverviewHours() ));
@@ -228,156 +230,156 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 //		sessionsList.setAdapter(adapter);				
 	}
 	
-	/**
-	 * Find beginning of the week returning the day no. in the month it is associated with.
-	 * Returns the date
-	 */
-	private Week findBeginningOfWeek() {
-		Week wkBeginning = new Week();
-		String day = null;
-		int dayNoResult = 0;
-		int monthResult = 0;
-		int yearResult = 0;
-		String monthResultStr = null;
-		boolean firstDayFound = false;
-		
-		
-		// convert dayNo to day (String) rep
-		// first get the current month
-		
-		Log.e("Visus", "---------------------");
-		Log.e("Visus", "findBeginningOfWeek()");
-		Log.e("Visus", "---------------------");
-		
-		// get the current date
-		Calendar cal = Calendar.getInstance();
-		// set the time
-		cal.setTime(new Date() );
-				
-		do {				
-			// return today's day no. in the present month
-			DateFormat dfDayStr = new SimpleDateFormat("EEE");		// Sun, e.g.
-			Date dt = cal.getTime();								// get the time
-			
-			// then get the day based on the month		
-			day = dfDayStr.format(dt).toString();					// get day String (EEE)
-			
-			Log.e("Visus", "Day: " + day);
-			
-			// if it it not Sat-urday - the beginning of the week
-			if(!day.contains("Sat")) {
-				// go back a day (or month and/or year)
-				cal.add(Calendar.DATE, -1);		//
-			}
-			else {
-				DateFormat dfMonth = new SimpleDateFormat("MMM");
-				dt = cal.getTime();
-				
-				// assign results
-				dayNoResult = cal.get(Calendar.DAY_OF_MONTH);	// get day of month - i.e., 31st
-				monthResult = (cal.get(Calendar.MONTH) + 1);
-				monthResultStr = dfMonth.format(dt).toString();	// get month - i.e., Sep
-				yearResult = cal.get(Calendar.YEAR);			// get year - i.e., 2013
-				
-				wkBeginning.setDayNo(dayNoResult);
-				wkBeginning.setMonth(monthResult);
-				wkBeginning.setYear(yearResult);
-				
-				// output results to log
-				Log.e("Visus", "------------------");
-				Log.e("Visus", "Sat-day found!");
-				Log.e("Visus", "dayNoResult: " + dayNoResult);
-				Log.e("Visus", "monthResult: " + monthResult);
-				Log.e("Visus", "yearResult: " + yearResult);
-				
-				Log.e("Visus", "Month No. (Beginning): " + (cal.get(Calendar.MONTH) + 1) );
-				
-				Log.e("Visus", "Beginning of the week: " + dayNoResult + "-" + monthResult + "-" + yearResult);
-				
-				// terminate
-				firstDayFound = true;
-			}			
-		} while(firstDayFound != true);
-		
-		Log.e("Visus", "Loop terminated");
-		
-		return wkBeginning;
-	}
-	
-	/**
-	 * 
-	 */
-	private Week findEndOfWeek() {
-		Week wkEnd = new Week();		
-		String day = null;
-		int dayNoResult = 0;
-		int monthResult = 0;
-		int yearResult = 0;
-		String monthResultStr = null;
-		boolean lastDayFound = false;
-		
-		
-		// convert dayNo to day (String) rep
-		// first get the current month
-		
-		Log.e("Visus", "---------------------");
-		Log.e("Visus", "findEndOfWeek()");
-		Log.e("Visus", "---------------------");
-		
-		// get the current date
-		Calendar cal = Calendar.getInstance();
-		// set the time
-		cal.setTime(new Date() );
-				
-		do {				
-			// return today's day no. in the present month
-			DateFormat dfDayStr = new SimpleDateFormat("EEE");		// Sun, e.g.
-			Date dt = cal.getTime();								// get the time
-			
-			// then get the day based on the month		
-			day = dfDayStr.format(dt).toString();					// get day String (EEE)
-			
-			Log.e("Visus", "Day: " + day);
-			
-			// if it it not Sat-urday - the beginning of the week
-			if(!day.contains("Fri")) {
-				// go back a day (or month and/or year)
-				cal.add(Calendar.DATE, +1);		//
-			}
-			else {
-				DateFormat dfMonth = new SimpleDateFormat("MMM");
-				dt = cal.getTime();
-				
-				// assign results
-				dayNoResult = cal.get(Calendar.DAY_OF_MONTH);	// get day of month - i.e., 31st
-				monthResult = (cal.get(Calendar.MONTH) + 1);
-				monthResultStr = dfMonth.format(dt).toString();	// get month - i.e., Sep
-				yearResult = cal.get(Calendar.YEAR);			// get year - i.e., 2013
-				
-				wkEnd.setDayNo(dayNoResult);
-				wkEnd.setMonth(monthResult);
-				wkEnd.setYear(yearResult);
-				
-				// output results to log
-				Log.e("Visus", "------------------");
-				Log.e("Visus", "Fri-day found!");
-				Log.e("Visus", "dayNoResult: " + dayNoResult);
-				Log.e("Visus", "monthResult: " + monthResult);
-				Log.e("Visus", "yearResult: " + yearResult);
-				
-				Log.e("Visus", "Month No. (End): " + (cal.get(Calendar.MONTH) + 1 ));
-				
-				Log.e("Visus", "End of the week: " + dayNoResult + "-" + monthResult + "-" + yearResult);
-				
-				// terminate
-				lastDayFound = true;
-			}
-		} while(lastDayFound != true);
-		
-		Log.e("Visus", "Loop terminated");
-		
-		return wkEnd;
-	}
+//	/**
+//	 * Find beginning of the week returning the day no. in the month it is associated with.
+//	 * Returns the date
+//	 */
+//	private Week findBeginningOfWeek() {
+//		Week wkBeginning = new Week();
+//		String day = null;
+//		int dayNoResult = 0;
+//		int monthResult = 0;
+//		int yearResult = 0;
+//		String monthResultStr = null;
+//		boolean firstDayFound = false;
+//		
+//		
+//		// convert dayNo to day (String) rep
+//		// first get the current month
+//		
+//		Log.e("Visus", "---------------------");
+//		Log.e("Visus", "findBeginningOfWeek()");
+//		Log.e("Visus", "---------------------");
+//		
+//		// get the current date
+//		Calendar cal = Calendar.getInstance();
+//		// set the time
+//		cal.setTime(new Date() );
+//				
+//		do {				
+//			// return today's day no. in the present month
+//			DateFormat dfDayStr = new SimpleDateFormat("EEE");		// Sun, e.g.
+//			Date dt = cal.getTime();								// get the time
+//			
+//			// then get the day based on the month		
+//			day = dfDayStr.format(dt).toString();					// get day String (EEE)
+//			
+//			Log.e("Visus", "Day: " + day);
+//			
+//			// if it it not Sat-urday - the beginning of the week
+//			if(!day.contains("Sat")) {
+//				// go back a day (or month and/or year)
+//				cal.add(Calendar.DATE, -1);		//
+//			}
+//			else {
+//				DateFormat dfMonth = new SimpleDateFormat("MMM");
+//				dt = cal.getTime();
+//				
+//				// assign results
+//				dayNoResult = cal.get(Calendar.DAY_OF_MONTH);	// get day of month - i.e., 31st
+//				monthResult = (cal.get(Calendar.MONTH) + 1);
+//				monthResultStr = dfMonth.format(dt).toString();	// get month - i.e., Sep
+//				yearResult = cal.get(Calendar.YEAR);			// get year - i.e., 2013
+//				
+//				wkBeginning.setDayNo(dayNoResult);
+//				wkBeginning.setMonth(monthResult);
+//				wkBeginning.setYear(yearResult);
+//				
+//				// output results to log
+//				Log.e("Visus", "------------------");
+//				Log.e("Visus", "Sat-day found!");
+//				Log.e("Visus", "dayNoResult: " + dayNoResult);
+//				Log.e("Visus", "monthResult: " + monthResult);
+//				Log.e("Visus", "yearResult: " + yearResult);
+//				
+//				Log.e("Visus", "Month No. (Beginning): " + (cal.get(Calendar.MONTH) + 1) );
+//				
+//				Log.e("Visus", "Beginning of the week: " + dayNoResult + "-" + monthResult + "-" + yearResult);
+//				
+//				// terminate
+//				firstDayFound = true;
+//			}			
+//		} while(firstDayFound != true);
+//		
+//		Log.e("Visus", "Loop terminated");
+//		
+//		return wkBeginning;
+//	}
+//	
+//	/**
+//	 * 
+//	 */
+//	private Week findEndOfWeek() {
+//		Week wkEnd = new Week();		
+//		String day = null;
+//		int dayNoResult = 0;
+//		int monthResult = 0;
+//		int yearResult = 0;
+//		String monthResultStr = null;
+//		boolean lastDayFound = false;
+//		
+//		
+//		// convert dayNo to day (String) rep
+//		// first get the current month
+//		
+//		Log.e("Visus", "---------------------");
+//		Log.e("Visus", "findEndOfWeek()");
+//		Log.e("Visus", "---------------------");
+//		
+//		// get the current date
+//		Calendar cal = Calendar.getInstance();
+//		// set the time
+//		cal.setTime(new Date() );
+//				
+//		do {				
+//			// return today's day no. in the present month
+//			DateFormat dfDayStr = new SimpleDateFormat("EEE");		// Sun, e.g.
+//			Date dt = cal.getTime();								// get the time
+//			
+//			// then get the day based on the month		
+//			day = dfDayStr.format(dt).toString();					// get day String (EEE)
+//			
+//			Log.e("Visus", "Day: " + day);
+//			
+//			// if it it not Sat-urday - the beginning of the week
+//			if(!day.contains("Fri")) {
+//				// go back a day (or month and/or year)
+//				cal.add(Calendar.DATE, +1);		//
+//			}
+//			else {
+//				DateFormat dfMonth = new SimpleDateFormat("MMM");
+//				dt = cal.getTime();
+//				
+//				// assign results
+//				dayNoResult = cal.get(Calendar.DAY_OF_MONTH);	// get day of month - i.e., 31st
+//				monthResult = (cal.get(Calendar.MONTH) + 1);
+//				monthResultStr = dfMonth.format(dt).toString();	// get month - i.e., Sep
+//				yearResult = cal.get(Calendar.YEAR);			// get year - i.e., 2013
+//				
+//				wkEnd.setDayNo(dayNoResult);
+//				wkEnd.setMonth(monthResult);
+//				wkEnd.setYear(yearResult);
+//				
+//				// output results to log
+//				Log.e("Visus", "------------------");
+//				Log.e("Visus", "Fri-day found!");
+//				Log.e("Visus", "dayNoResult: " + dayNoResult);
+//				Log.e("Visus", "monthResult: " + monthResult);
+//				Log.e("Visus", "yearResult: " + yearResult);
+//				
+//				Log.e("Visus", "Month No. (End): " + (cal.get(Calendar.MONTH) + 1 ));
+//				
+//				Log.e("Visus", "End of the week: " + dayNoResult + "-" + monthResult + "-" + yearResult);
+//				
+//				// terminate
+//				lastDayFound = true;
+//			}
+//		} while(lastDayFound != true);
+//		
+//		Log.e("Visus", "Loop terminated");
+//		
+//		return wkEnd;
+//	}
 	
 	/**
 	 * Initialises new tabs
@@ -483,15 +485,25 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		// no of pages!!
 		private static final int NO_FRAGMENTS = 4; 
 		private int userId;
-		private Week wkBeginning;
-		private Week wkEnd;
+		// TODO - delete tomorrow - 06/09 - if Week functionality works...
+//		private Week wkBeginning;
+//		private Week wkEnd;
 
-		public SessionsPagerAdapter(FragmentManager fm, int userId, Week beginning, Week end) {
+		public SessionsPagerAdapter(FragmentManager fm, int userId) {
 			super(fm);
 			this.userId = userId;
-			this.wkBeginning = beginning;
-			this.wkEnd = end;
+			// TODO - delete tomorrow - 06/09 - if Week functionality works...
+//			this.wkBeginning = beginning;
+//			this.wkEnd = end;
 		}
+		
+		// TODO - delete tomorrow - 06/09 - if Week functionality works...
+//		public SessionsPagerAdapter(FragmentManager fm, int userId, Week beginning, Week end) {
+//			super(fm);
+//			this.userId = userId;
+//			this.wkBeginning = beginning;
+//			this.wkEnd = end;
+//		}
 
 		/**
 		 * Get's the page item
@@ -504,9 +516,11 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 					return new FragmentToday(userId);
 				case 1:
 					// ... from this week
-					return new FragmentThisWeek(userId, 
-												wkBeginning, // contains the date of the week beginning
-												wkEnd);		 // contains the date of the week ending
+					// TODO - delete tomorrow - 06/09 - if Week functionality works...
+//					return new FragmentThisWeek(userId, 
+//												wkBeginning, // contains the date of the week beginning
+//												wkEnd);		 // contains the date of the week ending
+					return new FragmentThisWeek(userId);
 				case 2:
 					// ... from this month
 					return new FragmentThisMonth(userId);

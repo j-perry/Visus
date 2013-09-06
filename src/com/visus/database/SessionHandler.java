@@ -510,21 +510,26 @@ public class SessionHandler implements IDatabaseTable {
 	 * @throws SQLiteException
 	 * @throws ParseException 
 	 */
-	public ArrayList<Session> getSessionsThisWeek(int userId, Week beginning, Week end) throws SQLiteException {		
+	// TODO - delete tomorrow - 06/09 - if Week functionality works...
+//	public ArrayList<Session> getSessionsThisWeek(int userId, Week beginning, Week end) throws SQLiteException {	
+	public ArrayList<Session> getSessionsThisWeek(int userId) throws SQLiteException {		
 		ArrayList<Session> sessionsThisWeek = new ArrayList<Session>();
-		Week wkBeginning = beginning;
-		Week wkEnd = end;
+		// TODO - delete tomorrow - 06/09 - if Week functionality works...
+//		Week wkBeginning = beginning;
+//		Week wkEnd = end;
 		
 				
+		// TODO - delete tomorrow - 06/09 - if Week functionality works...
 		// week beginning (date)
-		int dayBeginning = wkBeginning.getDayNo();
-		int tmp_monthBeginning = wkBeginning.getMonth();
-		int yearBeginning = wkBeginning.getYear();
+//		int dayBeginning = wkBeginning.getDayNo();
+//		int tmp_monthBeginning = wkBeginning.getMonth();
+//		int yearBeginning = wkBeginning.getYear();
 				
+		// TODO - delete tomorrow - 06/09 - if Week functionality works...
 		// week end (date)... not to be confused with weekend!
-		int dayEnd = wkEnd.getDayNo();
-		int tmp_monthEnd = wkEnd.getMonth();
-		int yearEnd = wkEnd.getYear();
+//		int dayEnd = wkEnd.getDayNo();
+//		int tmp_monthEnd = wkEnd.getMonth();
+//		int yearEnd = wkEnd.getYear();
 		
 		String dBeginning = null;
 		String mBeginning = null;
@@ -536,67 +541,74 @@ public class SessionHandler implements IDatabaseTable {
 		
 		String qryThisWeek = null;
 		
+		// test
+		Week thisWeek = new Week();
+		
 		
 		/**
 		 * Beginning
 		 */
-		
+		// TODO - delete tomorrow - 06/09 - if Week functionality works...
 		// day beginning
-		if(dayBeginning < 10) {
-			dBeginning = "0" + String.valueOf(dayBeginning);
-		}
-		else {
-			dBeginning = String.valueOf(dayBeginning);
-		}
-		
-		// month beginning
-		if(tmp_monthBeginning < 10) {
-			mBeginning = "0" + String.valueOf(tmp_monthBeginning);
-		}
-		else {
-			mBeginning = String.valueOf(tmp_monthBeginning);
-		}
+//		if(dayBeginning < 10) {
+//			dBeginning = "0" + String.valueOf(dayBeginning);
+//		}
+//		else {
+//			dBeginning = String.valueOf(dayBeginning);
+//		}
+//		
+//		// month beginning
+//		if(tmp_monthBeginning < 10) {
+//			mBeginning = "0" + String.valueOf(tmp_monthBeginning);
+//		}
+//		else {
+//			mBeginning = String.valueOf(tmp_monthBeginning);
+//		}
 		
 		
 		/**
 		 * End
 		 */
 		
+		// TODO - delete tomorrow - 06/09 - if Week functionality works...
 		// day end
-		if(dayEnd < 10) {
-			dEnd = "0" + String.valueOf(dayEnd);
-		}
-		else {
-			dEnd = String.valueOf(dayEnd);
-		}
-		
-		// month end
-		if(tmp_monthEnd < 10) {
-			mEnd = "0" + String.valueOf(tmp_monthEnd);
-		}
-		else {
-			mEnd = String.valueOf(tmp_monthEnd);
-		}
-		
-		strBeginning = String.valueOf(yearBeginning) + "-" + mBeginning + "-" + dBeginning;
-		strEnd = String.valueOf(yearBeginning) + "-" + mEnd + "-" + dEnd;
+//		if(dayEnd < 10) {
+//			dEnd = "0" + String.valueOf(dayEnd);
+//		}
+//		else {
+//			dEnd = String.valueOf(dayEnd);
+//		}
+//		
+//		// month end
+//		if(tmp_monthEnd < 10) {
+//			mEnd = "0" + String.valueOf(tmp_monthEnd);
+//		}
+//		else {
+//			mEnd = String.valueOf(tmp_monthEnd);
+//		}
+//		
+//		strBeginning = String.valueOf(yearBeginning) + "-" + mBeginning + "-" + dBeginning;
+//		strEnd = String.valueOf(yearBeginning) + "-" + mEnd + "-" + dEnd;
 		
 		qryThisWeek = "SELECT * " +
 					  "FROM " + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
 					  "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId + QRY_SPACING +
 					  "AND "
 					      	   + DatabaseHandler.KEY_DATE + QRY_SPACING +
-					  "BETWEEN date('" + strBeginning + "') " +
-					 "AND date('" + strEnd + "')";
+					  "BETWEEN date('" + thisWeek.beginning() + "') " +
+					 "AND date('" + thisWeek.ending() + "')";
 			
 		Log.e("Visus", "---------------");
 		Log.e("Visus", "qryThisWeek: ");
 		Log.e("Visus", qryThisWeek);
 		Log.e("Visus", "---------------");
 		
+		// TODO - delete tomorrow - 06/09 - if Week functionality works...
+//		Log.e("Visus", "getSessionsThisWeek() " + yearBeginning + "-" + tmp_monthBeginning + "-" + dayBeginning);
+//		Log.e("Visus", "getSessionsThisWeek() " + yearEnd + "-" + tmp_monthEnd + "-" + dayEnd);
 		
-		Log.e("Visus", "getSessionsThisWeek() " + yearBeginning + "-" + tmp_monthBeginning + "-" + dayBeginning);
-		Log.e("Visus", "getSessionsThisWeek() " + yearEnd + "-" + tmp_monthEnd + "-" + dayEnd);
+		Log.e("Visus", "getSessionsThisWeek() " + thisWeek.beginning() );
+		Log.e("Visus", "getSessionsThisWeek() " + thisWeek.ending() );
 			 
 		Cursor cursor = db.rawQuery(qryThisWeek, null);
 		

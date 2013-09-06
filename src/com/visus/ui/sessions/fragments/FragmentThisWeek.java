@@ -29,17 +29,23 @@ import android.widget.ListView;
 public class FragmentThisWeek extends Fragment {
 	
 	private int userId;
-	private Week beginning;
-	private Week end;
+	// TODO - delete tomorrow - 06/09 - if Week functionality works...
+//	private Week beginning;
+//	private Week end;
 	
 	public FragmentThisWeek() {
 		super();
 	}
 	
-	public FragmentThisWeek(int userId, Week beginning, Week end) {
+	public FragmentThisWeek(int userId) {
 		this.userId = userId;
-		this.beginning = beginning;
-		this.end = end;
+	}
+	
+	// TODO - delete tomorrow - 06/09 - if Week functionality works...
+	public FragmentThisWeek(int userId, Week beginning, Week end) {
+		this.userId = userId;		
+//		this.beginning = beginning;
+//		this.end = end;
 	}
 	
 	@Override
@@ -63,7 +69,10 @@ public class FragmentThisWeek extends Fragment {
 		}
 		finally {
 			// return session results based on this week (between Saturday and Friday)
-			sessions = dbSession.getSessionsThisWeek(userId, beginning, end);
+			
+			// TODO - delete tomorrow - 06/09 - if Week functionality works...
+//			sessions = dbSession.getSessionsThisWeek(userId, beginning, end);
+			sessions = dbSession.getSessionsThisWeek(userId);
 			
 //			sessions = dbSession.getLatestSessions(userId);
 			dbSession.close();
