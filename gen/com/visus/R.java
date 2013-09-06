@@ -116,14 +116,17 @@ public final class R {
         public static final int fragment_sessions_this_week=0x7f03000b;
         public static final int fragment_sessions_this_year=0x7f03000c;
         public static final int fragment_sessions_today=0x7f03000d;
-        public static final int layout_events_view=0x7f03000e;
-        public static final int layout_main_menu_header=0x7f03000f;
-        public static final int layout_main_menu_item=0x7f030010;
-        public static final int layout_overview_view=0x7f030011;
-        public static final int layout_sessions_header=0x7f030012;
-        public static final int layout_sessions_item=0x7f030013;
-        public static final int layout_sessions_items=0x7f030014;
-        public static final int layout_settings_group_item=0x7f030015;
+        public static final int fragment_settings_history=0x7f03000e;
+        public static final int fragment_settings_options=0x7f03000f;
+        public static final int fragment_settings_personal=0x7f030010;
+        public static final int layout_events_view=0x7f030011;
+        public static final int layout_main_menu_header=0x7f030012;
+        public static final int layout_main_menu_item=0x7f030013;
+        public static final int layout_overview_view=0x7f030014;
+        public static final int layout_sessions_header=0x7f030015;
+        public static final int layout_sessions_item=0x7f030016;
+        public static final int layout_sessions_items=0x7f030017;
+        public static final int layout_settings_group_item=0x7f030018;
     }
     public static final class menu {
         public static final int activity_main=0x7f080000;
