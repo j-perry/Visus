@@ -83,7 +83,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		wkBeginning = findBeginningOfWeek();
 		wkEnd = findEndOfWeek();		
 		
-		sessionsPager = (ViewPager) findViewById(com.visus.R.id.sessions_pager);		
+		sessionsPager = (ViewPager) findViewById(com.visus.R.id.sessions_pager);
 		sessionsPagerAdapter = new SessionsPagerAdapter(getSupportFragmentManager(), activeUserId, wkBeginning, wkEnd );
 		
 		// initialise the page view adapter
