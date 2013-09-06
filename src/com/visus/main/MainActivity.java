@@ -187,6 +187,7 @@ public class MainActivity extends Activity {
 	 */
 	public void viewSettings(View view) {
 		Intent intent = new Intent(MainActivity.this, Settings.class);
+		intent.putExtra("ActiveUserId", user.getUserId());
 		startActivity(intent);
 	}
 	

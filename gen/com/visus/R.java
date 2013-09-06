@@ -93,7 +93,7 @@ public final class R {
         public static final int sessions_overview=0x7f090018;
         public static final int sessions_pager=0x7f09000b;
         public static final int set_session_duration=0x7f090004;
-        public static final int settings_adapter=0x7f09000c;
+        public static final int settings_pager=0x7f09000c;
         public static final int time=0x7f09001e;
         public static final int timer=0x7f090008;
         public static final int timer_btn=0x7f090009;

@@ -9,11 +9,18 @@
     tools:context=".ViewSettings"
     >
            
-        <ListView
-            android:id="@+id/settings_adapter"
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            />
+        <!-- 
+    
+    	 View Pager 
+    
+    	 settings_pager    
+    
+    -->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/settings_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    
                 
 </LinearLayout>
