@@ -65,8 +65,7 @@ public class Week {
 				
 		
 		// convert dayNo to day (String) rep
-		// first get the current month
-		
+		// first get the current month		
 		Log.e("Visus", "---------------------");
 		Log.e("Visus", "findBeginningOfWeek()");
 		Log.e("Visus", "---------------------");
