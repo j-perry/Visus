@@ -78,7 +78,8 @@ public class MainActivity extends Activity {
 			
 			try {
 				dbSession.open();
-				sessions = dbSession.getLatestSessions(user.getUserId());
+				sessions = dbSession.getLatestSessions(userId);
+//				sessions = dbSession.getSessionsThisYear(userId);
 //				sessionTypes = dbSession.getSessionTypes(user.getUserId());
 			}
 			finally {
@@ -98,24 +99,32 @@ public class MainActivity extends Activity {
 
 				String [] data = { "Hello", "Jon", "Today", "Sunday" };
 				
+				int noItems = 0;
+				
+				// output the first five results
 				for(Session session : sessions) {
-					HashMap<String, String> map = new HashMap<String, String>();
-					map.put(MainMenuListView.SESSION, session.getDay() + " " +
-							    					  session.getDayNo() + " " +  
-							    					  session.getMonth() + ", " +
-							    					  session.getDate() + ", " +
-							    					  session.getYear() + " - " +
-									                  session.getTimeHour() + ":" +
-									                  session.getTimeMinutes() + " " +
-									                  session.getDayPeriod() + " - " +
-									                  session.getDurationMinutes() + ":" +
-									                  session.getDurationSeconds() + " - " +
-									                  session.getType()
-					       );
-//					
-					latestSessions.add(map);
-					
-					
+					if(noItems != 5) {				
+						HashMap<String, String> map = new HashMap<String, String>();
+						map.put(MainMenuListView.SESSION, session.getDay() + " " +
+								    					  session.getDayNo() + " " +  
+								    					  session.getMonth() + ", " +
+								    					  session.getDate() + ", " +
+								    					  session.getYear() + " - " +
+										                  session.getTimeHour() + ":" +
+										                  session.getTimeMinutes() + " " +
+										                  session.getDayPeriod() + " - " +
+										                  session.getDurationMinutes() + ":" +
+										                  session.getDurationSeconds() + " - " +
+										                  session.getType()
+						       );
+						
+						latestSessions.add(map);
+						
+						noItems++;
+					}
+					else {
+						break;
+					}
 				}
 						
 				list = (ListView) findViewById(com.visus.R.id.overview_sessions_adapter);

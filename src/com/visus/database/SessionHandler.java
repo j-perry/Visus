@@ -342,115 +342,90 @@ public class SessionHandler implements IDatabaseTable {
 	 * @throws SQLiteException
 	 */
 	public ArrayList<Session> getLatestSessions(int userId) throws SQLiteException {
-		int maxDays = 0;
-		int month = 0;
-		int year = 0;
-		
-		String strMonth = null;
-		
+		// get the current year
 		Calendar cal = Calendar.getInstance();
-		month = cal.get(Calendar.MONTH);
-		month++;
-		year = cal.get(Calendar.YEAR);
-		
-		cal = new GregorianCalendar(year, month, 1);
-		maxDays = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-		
-		if(month < 10) {
-			strMonth = "0" + String.valueOf(month);
-		}
-		else {
-			strMonth = String.valueOf(month);
-		}
-		
-		
-		Log.e("Visus", "Month " + strMonth + ", " + "Year " + year);
-		Log.e("Visus", "Max no. of days: " + maxDays);
-		
-		ArrayList<Session> latestSessions = new ArrayList<Session>();
-		
-		String qryThisMonth = "SELECT *" + QRY_SPACING +
-                			  "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
-                              "WHERE" + QRY_SPACING +
-                              	DatabaseHandler.KEY_USER_ID + " = '" + userId + "'" + QRY_SPACING + 
-                              "AND" + QRY_SPACING + 
-                              	DatabaseHandler.KEY_DATE + QRY_SPACING +
-                              "BETWEEN" + QRY_SPACING +                              	
-                              	"date('" + year + "-" + strMonth + "-" + "01')" + QRY_SPACING +
-                              "AND" + QRY_SPACING +
-                              		"date('" + year + "-" + strMonth + "-" + maxDays + "')";
-	
+		int year = cal.get(Calendar.YEAR);
+				
+		String dateBeginning = String.valueOf(year) + "-01-01";
+		String dateEnding = String.valueOf(year) + "-12-31";
+				
+		Log.e("Visus", "Year beginning: " + dateBeginning);
+		Log.e("Visus", "Year ending: " + dateEnding);
+				
+		ArrayList<Session> sessionsThisYear = new ArrayList<Session>();
+				
+		String qryThisYear = "SELECT *" + QRY_SPACING +
+						     "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+						     "WHERE" + QRY_SPACING + 
+		                     	DatabaseHandler.KEY_USER_ID + " = '" + userId + "'" + QRY_SPACING + 
+		                     "AND" + QRY_SPACING +
+		                        DatabaseHandler.KEY_DATE + QRY_SPACING +       
+							 "BETWEEN" + QRY_SPACING +                       	
+								"date('" + dateBeginning + "')" + QRY_SPACING +
+							 "AND" + QRY_SPACING +
+							 	"date('" + dateEnding + "')";
+				
 		Log.e("Visus", "---------------");
-		Log.e("Visus", "qryThisMonth: ");
-		Log.e("Visus", qryThisMonth);
+		Log.e("Visus", "qryThisYear: ");
+		Log.e("Visus", qryThisYear);
 		Log.e("Visus", "---------------");
-		
-		Cursor cursor = db.rawQuery(qryThisMonth, null);
-		
+				
+		Cursor cursor = db.rawQuery(qryThisYear, null);
+				
 		int dayNoIndex,
-	    	dayIndex,
-		    monthIndex,
-		    yearIndex,
-		    dateIndex,
-		    timeHourIndex,
-		    timeMinutesIndex,
-		    timezoneIndex,
-		    durationMinutesIndex,
-		    durationSecondsIndex,
-		    typeIndex = 0;
+			dayIndex,
+			monthIndex,
+			yearIndex,
+			timeHourIndex,
+			timeMinutesIndex,
+			timezoneIndex,
+			durationMinutesIndex,
+			durationSecondsIndex,
+			typeIndex = 0;
 
 		dayNoIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY_NO);
 		dayIndex   			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY);
 		monthIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_MONTH);
 		yearIndex  			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_YEAR);
-		dateIndex			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DATE);
 		timeHourIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_HOUR);
 		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_MINS);
 		timezoneIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIMEZONE);
 		durationMinutesIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_MINS);
 		durationSecondsIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_SECS);
 		typeIndex            = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
-		
-		int noItems = 0;
-		
+				
 		while(cursor.moveToNext()) {
-			if(noItems != 5) {
-				session = new Session();
-		
-				session.setDayNo(cursor.getInt(dayNoIndex));
-				session.setDay(cursor.getString(dayIndex));
-				session.setMonth(cursor.getString(monthIndex));
-				session.setYear(cursor.getInt(yearIndex));
-				session.setDate(cursor.getString(dateIndex));
-				session.setTimeHour(cursor.getInt(timeHourIndex));
-				session.setTimeMinutes(cursor.getInt(timeMinutesIndex));
-				session.setDayPeriod(cursor.getString(timezoneIndex));
-				session.setDurationMinutes(cursor.getInt(durationMinutesIndex));
-				session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
+					
+			session = new Session();
 				
-				if(!cursor.getString(typeIndex).isEmpty()) {
-					session.setType(cursor.getString(typeIndex));
-				}
-				else {
-					session.setType("Undefined");
-				}
-							
-				latestSessions.add(session);
-				
-				noItems++;
+			session.setDayNo(cursor.getInt(dayNoIndex));
+			session.setDay(cursor.getString(dayIndex));
+			session.setMonth(cursor.getString(monthIndex));
+			session.setYear(cursor.getInt(yearIndex));
+			session.setTimeHour(cursor.getInt(timeHourIndex));
+			session.setTimeMinutes(cursor.getInt(timeMinutesIndex));
+			session.setDayPeriod(cursor.getString(timezoneIndex));
+			session.setDurationMinutes(cursor.getInt(durationMinutesIndex));
+			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
+						
+			if(!cursor.getString(typeIndex).isEmpty()) {
+				session.setType(cursor.getString(typeIndex));
 			}
 			else {
-				break;
+				session.setType("Undefined");
 			}
+									
+			sessionsThisYear.add(session);
+					
 		}
-		
+				
 		// reverse the results (this is a substitute solution to the ORDER BY clause)
-		Collections.reverse(latestSessions);
+		Collections.reverse(sessionsThisYear);
 				
 		cursor.close();
 		db.close();
-		
-		return latestSessions;
+				
+		return sessionsThisYear;		
 	}
 	
 	/**
