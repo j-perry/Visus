@@ -148,7 +148,7 @@ public final class R {
         public static final int overview_sessions_adapter=0x7f090003;
         public static final int period=0x7f090015;
         public static final int register=0x7f090010;
-        public static final int session_type=0x7f090007;
+        public static final int session_auto_complete_type=0x7f090007;
         public static final int sessions_overview=0x7f090018;
         public static final int sessions_pager=0x7f09000b;
         public static final int set_session_duration=0x7f090004;

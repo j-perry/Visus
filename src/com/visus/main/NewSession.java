@@ -2,6 +2,7 @@ package com.visus.main;
 
 // core apis
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 // android apis
@@ -9,6 +10,7 @@ import android.os.*;
 import android.annotation.SuppressLint;
 import android.app.*;
 import android.content.Intent;
+import android.database.sqlite.SQLiteException;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.*;
@@ -72,10 +74,14 @@ public class NewSession extends Activity {
 	
 	private CountDownTimer sessionTimer;
 	
+	private AutoCompleteTextView sessionTypes;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_session);
+		
+		ArrayList<String> types = new ArrayList<String>();
 		
 		ActionBar ab = getActionBar();
 		ab.setDisplayHomeAsUpEnabled(true);
@@ -105,6 +111,33 @@ public class NewSession extends Activity {
 			User user = userHandler.getActiveUser();
 			activeUserId = user.getUserId();
 		}
+		
+		try {
+			dbHandler.open();			
+		}
+		catch(SQLiteException e) {
+			Log.e("Visus", "SQL Error", e);
+		}
+		finally {
+			sessionTypes = (AutoCompleteTextView) findViewById(com.visus.R.id.session_auto_complete_type);
+			types = dbHandler.getAllSessionTypes(activeUserId);
+			dbHandler.close();
+		}	
+		
+		if(types.size() == 0) {
+			Log.e("Visus", "NULL");
+		}
+		else {
+			Log.e("Visus", "Session Types Available");
+			
+			for(String type : types) {
+				Log.e("Visus", type);
+			}
+		}
+				
+		ArrayAdapter<String> adapterTypes = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, types); 
+		sessionTypes.setAdapter(adapterTypes);
+		
 		
 		// create a new instance of handler to manage the timer thread
 		//timeHandler = new Handler();
@@ -172,21 +205,21 @@ public class NewSession extends Activity {
 		// find EditText fields for value retrieval
 		EditText etMins = (EditText) findViewById(R.id.timer_set_minutes);
 		EditText etSecs = (EditText) findViewById(R.id.timer_set_seconds);
-		
-		// get the session type
-		EditText sessionType = (EditText) findViewById(R.id.session_type);
-		
+			
 		// if session type is empty
-		if(sessionType.getText().toString().length() == 0)
+		if(sessionTypes.getText().toString().length() == 0) {
 			this.type = "Uncategoried";
-		else
-			this.type = sessionType.getText().toString();
-						
+		}
+		else {
+			this.type = sessionTypes.getText().toString();
+		}
+		
+		
 		// output session type
 		Log.e("Visus", "Type: " + this.type);
 		
 		// hide the session view
-		sessionType.setVisibility(View.GONE);
+		sessionTypes.setVisibility(View.GONE);
 				
 		// if both fields are empty
 		if( (etMins.getText().toString().isEmpty() ) &&

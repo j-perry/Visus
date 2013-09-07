@@ -827,7 +827,7 @@ public class SessionHandler implements IDatabaseTable {
 	 * @param userId The present user's ID
 	 * @return Session types
 	 */
-	public ArrayList<String> getAllSessionTypes(int userId) {
+	public ArrayList<String> getAllSessionTypes(int userId) throws SQLiteException {
 		ArrayList<String> types = new ArrayList<String>();
 		String qryTypes = null;
 		int typesIndex = 0;
@@ -844,7 +844,10 @@ public class SessionHandler implements IDatabaseTable {
 		
 		while(cursor.moveToNext()) {
 			String type = cursor.getString(typesIndex);
-			types.add(type);
+			
+			if(!types.contains(type)) {
+				types.add(type);				
+			}
 		}
 		
 		cursor.close();
@@ -858,7 +861,7 @@ public class SessionHandler implements IDatabaseTable {
 	 * @param userId The present user's ID
 	 * @return Return's whether the result was successful
 	 */
-	public int deleteAllSessions(int userId) {
+	public int deleteAllSessions(int userId) throws SQLiteException {
 		int result = 0;
 		String qryDeleteSessions = null;
 		
