@@ -28,11 +28,17 @@ public class SessionHandler implements IDatabaseTable {
 		dbHandler = new DatabaseHandler(context);
 	}
 	
+	/**
+	 * Opens a new database connection
+	 */
 	@Override
 	public void open() throws SQLiteException {
 		db = dbHandler.getWritableDatabase(); // reads and writes
 	}
 	
+	/**
+	 * Closes the existing database connection
+	 */
 	@Override
 	public void close() throws SQLiteException {
 		dbHandler.close();
@@ -46,6 +52,7 @@ public class SessionHandler implements IDatabaseTable {
 	 *  	o day-of-the-week
 	 *  	o month
 	 *  	o year
+	 *  	o date (yyyy-mm-dd)
 	 *  	o hour
 	 *  	o minutes
 	 *  	o timezone (AM/PM)
@@ -120,7 +127,7 @@ public class SessionHandler implements IDatabaseTable {
 	
 	/**
 	 * Returns all session types (categories)
-	 * @param userId
+	 * @param userId The present user's ID
 	 * @return
 	 */
 	public ArrayList<String> getSessionTypes(int userId) throws SQLiteException {
@@ -151,8 +158,8 @@ public class SessionHandler implements IDatabaseTable {
 	
 	/**
 	 * Returns an overview of the user's activity since inception
-	 * @param userId
-	 * @return
+	 * @param userId The present user's ID
+	 * @return Overview of user's sessions made so far
 	 */
 	public Session getOverview(int userId) throws SQLiteException {
 		Session session = new Session();
@@ -328,6 +335,12 @@ public class SessionHandler implements IDatabaseTable {
 		return sessionsAll;
 	}
 	
+	/**
+	 * Return's the first five sessions recently conducted
+	 * @param userId The present user's ID
+	 * @return Latest sessions made (top 5)
+	 * @throws SQLiteException
+	 */
 	public ArrayList<Session> getLatestSessions(int userId) throws SQLiteException {
 		int maxDays = 0;
 		int month = 0;
@@ -439,7 +452,7 @@ public class SessionHandler implements IDatabaseTable {
 	
 	/**
 	 * Returns any sessions made today
-	 * @param userId the current user id
+	 * @param userId The present user's ID
 	 * @return sessions made today
 	 * @throws SQLiteException if the database cursor does not return any results or fails executing the query
 	 */
@@ -505,8 +518,8 @@ public class SessionHandler implements IDatabaseTable {
 	
 	/**
 	 * Returns any sessions made this week
-	 * @param userId
-	 * @return
+	 * @param userId The present user's ID
+	 * @return Sessions made this week
 	 * @throws SQLiteException
 	 * @throws ParseException 
 	 */	
@@ -605,8 +618,8 @@ public class SessionHandler implements IDatabaseTable {
 	
 	/**
 	 * Returns any sessions made this month
-	 * @param userId
-	 * @return
+	 * @param userId The present user's ID
+	 * @return Sessions made this month
 	 * @throws SQLiteException
 	 */
 	public ArrayList<Session> getSessionsThisMonth(int userId) throws SQLiteException {
@@ -708,8 +721,8 @@ public class SessionHandler implements IDatabaseTable {
 	
 	/**
 	 * Returns any sessions made this year
-	 * @param userId
-	 * @return
+	 * @param userId The present user's ID
+	 * @return Sessions made this year
 	 * @throws SQLiteException
 	 */
 	public ArrayList<Session> getSessionsThisYear(int userId) throws SQLiteException {
@@ -793,4 +806,17 @@ public class SessionHandler implements IDatabaseTable {
 		
 		return sessionsThisYear;	
 	}
+	
+	/**
+	 * Delete's all sessions made
+	 * @param userId The present user's ID
+	 * @return Return's whether the result was successful
+	 */
+	public int deleteAllSessions(int userId) {
+		int result = -1;
+		String qryDeleteSessions = null;
+		
+		return result;
+	}
+	
 }
