@@ -444,6 +444,9 @@ public class SessionHandler implements IDatabaseTable {
 			}
 		}
 		
+		// reverse the results (this is a substitute solution to the ORDER BY clause)
+		Collections.reverse(latestSessions);
+				
 		cursor.close();
 		db.close();
 		
@@ -509,6 +512,9 @@ public class SessionHandler implements IDatabaseTable {
 						
 			sessionsToday.add(session);
 		}
+		
+		// reverse the results (this is a substitute solution to the ORDER BY clause)
+		Collections.reverse(sessionsToday);
 		
 		cursor.close();
 		db.close();		
@@ -609,6 +615,9 @@ public class SessionHandler implements IDatabaseTable {
 						
 			sessionsThisWeek.add(session);
 		}
+		
+		// reverse the results (this is a substitute solution to the ORDER BY clause)
+		Collections.reverse(sessionsThisWeek);
 		
 		cursor.close();
 		db.close();
@@ -713,6 +722,9 @@ public class SessionHandler implements IDatabaseTable {
 			sessionsThisMonth.add(session);
 		}
 		
+		// reverse the results (this is a substitute solution to the ORDER BY clause)
+		Collections.reverse(sessionsThisMonth);
+		
 		cursor.close();
 		db.close();
 		
@@ -801,10 +813,44 @@ public class SessionHandler implements IDatabaseTable {
 			sessionsThisYear.add(session);
 		}
 		
+		// reverse the results (this is a substitute solution to the ORDER BY clause)
+		Collections.reverse(sessionsThisYear);
+		
 		cursor.close();
 		db.close();
 		
 		return sessionsThisYear;	
+	}
+	
+	/**
+	 * Returns all session types. Formulates part of auto-suggest field in NewSession
+	 * @param userId The present user's ID
+	 * @return Session types
+	 */
+	public ArrayList<String> getAllSessionTypes(int userId) {
+		ArrayList<String> types = new ArrayList<String>();
+		String qryTypes = null;
+		int typesIndex = 0;
+		
+		qryTypes = "SELECT" + QRY_SPACING + DatabaseHandler.KEY_TYPE + QRY_SPACING +
+				   "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+				   "WHERE" + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		
+		Log.e("Visus", qryTypes);
+		
+		Cursor cursor = db.rawQuery(qryTypes, null);
+		
+		typesIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		
+		while(cursor.moveToNext()) {
+			String type = cursor.getString(typesIndex);
+			types.add(type);
+		}
+		
+		cursor.close();
+		db.close();
+		
+		return types;
 	}
 	
 	/**
@@ -813,10 +859,16 @@ public class SessionHandler implements IDatabaseTable {
 	 * @return Return's whether the result was successful
 	 */
 	public int deleteAllSessions(int userId) {
-		int result = -1;
+		int result = 0;
 		String qryDeleteSessions = null;
+		
+		qryDeleteSessions = "WHERE" + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		
+		result = db.delete(DatabaseHandler.SESSIONS_TABLE, 
+				  		   qryDeleteSessions, 
+				           null);
+		db.close();
 		
 		return result;
 	}
-	
 }
