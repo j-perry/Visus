@@ -54,12 +54,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 	
 	private ViewPager sessionsPager;
 	private SessionsPagerAdapter sessionsPagerAdapter;
-	
-	// TODO - delete tomorrow - 06/09 - if Weeks functionality works...
-//	private Week wkBeginning;
-//	private Week wkEnd;
-	
-	
+		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		SessionHandler dbSession = new SessionHandler(this);
@@ -80,12 +75,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		final ActionBar ab = getActionBar();
 		ab.setDisplayHomeAsUpEnabled(true);
 		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		
-		// TODO Delete this tomorrow - 07/09/2013 - if functionality in Weeks works...
-		// find the beginning and end of the present week
-//		wkBeginning = findBeginningOfWeek();
-//		wkEnd = findEndOfWeek();		
-		
+						
 		sessionsPager = (ViewPager) findViewById(com.visus.R.id.sessions_pager);
 //		sessionsPagerAdapter = new SessionsPagerAdapter(getSupportFragmentManager(), activeUserId, wkBeginning, wkEnd );
 		sessionsPagerAdapter = new SessionsPagerAdapter(getSupportFragmentManager(), activeUserId);
@@ -485,26 +475,12 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		// no of pages!!
 		private static final int NO_FRAGMENTS = 4; 
 		private int userId;
-		// TODO - delete tomorrow - 06/09 - if Week functionality works...
-//		private Week wkBeginning;
-//		private Week wkEnd;
-
+		
 		public SessionsPagerAdapter(FragmentManager fm, int userId) {
 			super(fm);
 			this.userId = userId;
-			// TODO - delete tomorrow - 06/09 - if Week functionality works...
-//			this.wkBeginning = beginning;
-//			this.wkEnd = end;
 		}
-		
-		// TODO - delete tomorrow - 06/09 - if Week functionality works...
-//		public SessionsPagerAdapter(FragmentManager fm, int userId, Week beginning, Week end) {
-//			super(fm);
-//			this.userId = userId;
-//			this.wkBeginning = beginning;
-//			this.wkEnd = end;
-//		}
-
+				
 		/**
 		 * Get's the page item
 		 */
@@ -516,10 +492,6 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 					return new FragmentToday(userId);
 				case 1:
 					// ... from this week
-					// TODO - delete tomorrow - 06/09 - if Week functionality works...
-//					return new FragmentThisWeek(userId, 
-//												wkBeginning, // contains the date of the week beginning
-//												wkEnd);		 // contains the date of the week ending
 					return new FragmentThisWeek(userId);
 				case 2:
 					// ... from this month
