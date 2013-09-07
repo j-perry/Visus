@@ -16,11 +16,14 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
 		<item name="android:actionBarStyle">@style/ProjActionBar</item>
+		
     </style>
     
+    <!-- existing -->
     <style name="ProjActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
     	<item name="android:background">@color/light_green</item>
     	<item name="android:titleTextStyle">@style/ActionBar</item>
+        <item name="android:actionBarTabStyle">@style/MyActionBarTabs</item>
 	</style>
 	
     <style name="ActionBar" parent="@android:style/TextAppearance">
@@ -28,5 +31,9 @@
     	<item name="android:textSize">18sp</item>
     	<item name="android:textStyle">bold</item>
   	</style>
-
+  	
+    <style name="MyActionBarTabs" parent="@android:style/Widget.Holo.ActionBar.TabView">
+        <item name="android:background">@drawable/tab_indicator</item>
+    </style>
+            
 </resources>

@@ -34,6 +34,7 @@ public final class R {
         public static final int new_user_white=0x7f040013;
         public static final int nice_blue=0x7f040003;
         public static final int pink_red=0x7f04000b;
+        public static final int pressed_example=0x7f040014;
         public static final int red=0x7f04000c;
         public static final int title_background=0x7f04000f;
         /**  app 
@@ -45,23 +46,81 @@ public final class R {
         public static final int yellow=0x7f040005;
     }
     public static final class drawable {
-        public static final int ic_action_name=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int ic_launcher_2=0x7f020002;
-        public static final int ic_launcher_3=0x7f020003;
-        public static final int ic_launcher_4=0x7f020004;
-        public static final int ic_new_session=0x7f020005;
-        public static final int main_menu_header_bg=0x7f020006;
-        public static final int main_menu_header_txt=0x7f020007;
-        public static final int main_menu_profile_bg=0x7f020008;
-        public static final int main_menu_profile_txt=0x7f020009;
-        public static final int menu_press_bg=0x7f02000a;
-        public static final int menu_press_txt=0x7f02000b;
-        public static final int new_session_controls_btn=0x7f02000c;
-        public static final int new_session_controls_txt=0x7f02000d;
-        public static final int new_user_submit_bg=0x7f02000e;
-        public static final int new_user_submit_txt=0x7f02000f;
-        public static final int test_bg=0x7f020010;
+        public static final int ab_background_textured_example=0x7f020000;
+        public static final int ab_bottom_solid_example=0x7f020001;
+        public static final int ab_bottom_solid_style_name=0x7f020002;
+        public static final int ab_solid_example=0x7f020003;
+        public static final int ab_solid_style_name=0x7f020004;
+        public static final int ab_stacked_solid_example=0x7f020005;
+        public static final int ab_stacked_solid_style_name=0x7f020006;
+        public static final int ab_texture_tile_example=0x7f020007;
+        public static final int ab_texture_tile_style_name=0x7f020008;
+        public static final int ab_transparent_example=0x7f020009;
+        public static final int ab_transparent_style_name=0x7f02000a;
+        public static final int btn_cab_done_default_example=0x7f02000b;
+        public static final int btn_cab_done_default_style_name=0x7f02000c;
+        public static final int btn_cab_done_example=0x7f02000d;
+        public static final int btn_cab_done_focused_example=0x7f02000e;
+        public static final int btn_cab_done_focused_style_name=0x7f02000f;
+        public static final int btn_cab_done_pressed_example=0x7f020010;
+        public static final int btn_cab_done_pressed_style_name=0x7f020011;
+        public static final int cab_background_bottom_example=0x7f020012;
+        public static final int cab_background_bottom_style_name=0x7f020013;
+        public static final int cab_background_top_example=0x7f020014;
+        public static final int cab_background_top_style_name=0x7f020015;
+        public static final int ic_action_name=0x7f020016;
+        public static final int ic_launcher=0x7f020017;
+        public static final int ic_launcher_2=0x7f020018;
+        public static final int ic_launcher_3=0x7f020019;
+        public static final int ic_launcher_4=0x7f02001a;
+        public static final int ic_new_session=0x7f02001b;
+        public static final int list_focused_example=0x7f02001c;
+        public static final int list_focused_style_name=0x7f02001d;
+        public static final int main_menu_header_bg=0x7f02001e;
+        public static final int main_menu_header_txt=0x7f02001f;
+        public static final int main_menu_profile_bg=0x7f020020;
+        public static final int main_menu_profile_txt=0x7f020021;
+        public static final int menu_dropdown_panel_example=0x7f020022;
+        public static final int menu_dropdown_panel_style_name=0x7f020023;
+        public static final int menu_press_bg=0x7f020024;
+        public static final int menu_press_txt=0x7f020025;
+        public static final int new_session_controls_btn=0x7f020026;
+        public static final int new_session_controls_txt=0x7f020027;
+        public static final int new_user_submit_bg=0x7f020028;
+        public static final int new_user_submit_txt=0x7f020029;
+        public static final int pressed_background_example=0x7f02002a;
+        public static final int progress_bg_example=0x7f02002b;
+        public static final int progress_bg_style_name=0x7f02002c;
+        public static final int progress_horizontal_example=0x7f02002d;
+        public static final int progress_primary_example=0x7f02002e;
+        public static final int progress_primary_style_name=0x7f02002f;
+        public static final int progress_secondary_example=0x7f020030;
+        public static final int progress_secondary_style_name=0x7f020031;
+        public static final int selectable_background_example=0x7f020032;
+        public static final int spinner_ab_default_example=0x7f020033;
+        public static final int spinner_ab_default_style_name=0x7f020034;
+        public static final int spinner_ab_disabled_example=0x7f020035;
+        public static final int spinner_ab_disabled_style_name=0x7f020036;
+        public static final int spinner_ab_focused_example=0x7f020037;
+        public static final int spinner_ab_focused_style_name=0x7f020038;
+        public static final int spinner_ab_pressed_example=0x7f020039;
+        public static final int spinner_ab_pressed_style_name=0x7f02003a;
+        public static final int spinner_background_ab_example=0x7f02003b;
+        public static final int tab_indicator=0x7f02003c;
+        public static final int tab_indicator_ab_example=0x7f02003d;
+        public static final int tab_selected_example=0x7f02003e;
+        public static final int tab_selected_focused_example=0x7f02003f;
+        public static final int tab_selected_focused_style_name=0x7f020040;
+        public static final int tab_selected_pressed_example=0x7f020041;
+        public static final int tab_selected_pressed_style_name=0x7f020042;
+        public static final int tab_selected_style_name=0x7f020043;
+        public static final int tab_unselected_example=0x7f020044;
+        public static final int tab_unselected_focused_example=0x7f020045;
+        public static final int tab_unselected_focused_style_name=0x7f020046;
+        public static final int tab_unselected_pressed_example=0x7f020047;
+        public static final int tab_unselected_pressed_style_name=0x7f020048;
+        public static final int tab_unselected_style_name=0x7f020049;
+        public static final int test_bg=0x7f02004a;
     }
     public static final class id {
         public static final int activities_overview=0x7f09001a;
@@ -224,6 +283,9 @@ public final class R {
         /**  Application theme. 
          */
         public static final int AppTheme=0x7f070001;
+        public static final int MyActionBarTabs=0x7f070004;
+        /**  existing 
+         */
         public static final int ProjActionBar=0x7f070002;
     }
 }
