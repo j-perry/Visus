@@ -351,7 +351,7 @@ public class SessionHandler implements IDatabaseTable {
 				
 		Log.e("Visus", "Year beginning: " + dateBeginning);
 		Log.e("Visus", "Year ending: " + dateEnding);
-				
+		
 		ArrayList<Session> sessionsThisYear = new ArrayList<Session>();
 				
 		String qryThisYear = "SELECT *" + QRY_SPACING +
