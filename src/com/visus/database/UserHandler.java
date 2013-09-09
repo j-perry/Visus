@@ -44,6 +44,8 @@ public class UserHandler implements IDatabaseTable {
 		userValues.put(DatabaseHandler.KEY_NAME, user.getFirstname() );
 		userValues.put(DatabaseHandler.KEY_GENDER, user.getGender() );
 		userValues.put(DatabaseHandler.KEY_AGE, user.getAge() );
+		userValues.put(DatabaseHandler.KEY_TARGET_DAY, user.getTargetDay() );
+		userValues.put(DatabaseHandler.KEY_TARGET_MONTH, user.getTargetMonth() );
 		
 		db.insert(DatabaseHandler.USERS_TABLE, null, userValues);
 		Log.e("Visus", "New user added");
@@ -82,10 +84,17 @@ public class UserHandler implements IDatabaseTable {
 		updatedUserValues.put(DatabaseHandler.KEY_TARGET_DAY, user.getTargetDay() );
 		updatedUserValues.put(DatabaseHandler.KEY_TARGET_MONTH, user.getTargetMonth() );
 		
-		int result = db.update(DatabaseHandler.USERS_TABLE, 								// table
-				  updatedUserValues, 											        	// values
-				  DatabaseHandler.KEY_ID + " = " + String.valueOf(user.getUserId()), 		// query
-				  null);	                // arguments in query
+		Log.e("Visus", "updateUser()");
+		Log.e("Visus", "Firstname: " + user.getFirstname() );
+		Log.e("Visus", "Gender: " + user.getFirstname() );
+		Log.e("Visus", "Age: " + user.getAge() );
+		Log.e("Visus", "Target (Day): " + user.getTargetDay() );
+		Log.e("Visus", "Target (Month): " + user.getTargetMonth() );
+		
+		int result = db.update(DatabaseHandler.USERS_TABLE, 										// table
+				               updatedUserValues, 											        // values
+				               DatabaseHandler.KEY_ID + " = " + String.valueOf(user.getUserId()), 	// query
+				               null);	                											// arguments in query
 		
 		Log.e("Visus", "updateUser(): Result: " + result);
 	}
@@ -100,7 +109,10 @@ public class UserHandler implements IDatabaseTable {
 				              DatabaseHandler.KEY_ACTIVE, 
 				              DatabaseHandler.KEY_NAME, 
 				              DatabaseHandler.KEY_GENDER, 
-				              DatabaseHandler.KEY_AGE };
+				              DatabaseHandler.KEY_AGE,
+				              DatabaseHandler.KEY_TARGET_DAY,
+				              DatabaseHandler.KEY_TARGET_MONTH
+				            };
 		
 		cursor = db.query(DatabaseHandler.USERS_TABLE, 										// db table
 				          columns,															// columns selected
@@ -117,7 +129,9 @@ public class UserHandler implements IDatabaseTable {
 			                 Integer.parseInt(cursor.getString(1)),  	// Active?
 				             cursor.getString(2),						// First name
 		                     cursor.getString(3),                		// Gender
-		                     Integer.parseInt(cursor.getString(4)));	// Age				
+		                     cursor.getInt(4),							// Age
+		                     cursor.getInt(5),							// Target (Day)
+		                     cursor.getInt(6));							// Target (Month)
 		db.close();
 		
 		return user;		
@@ -153,16 +167,20 @@ public class UserHandler implements IDatabaseTable {
 				          new String[] { String.valueOf(id) }, 					// return user id
 				          null, null, null);									// not required...
 		
-		if(cursor != null)
+		if(cursor != null) {
 			cursor.moveToFirst(); // move cursor to the first column
-		else
+		}
+		else {
 			db.close();
+		}
 		
 		user = new User(Integer.parseInt(cursor.getString(0)),		// ID
-		                Integer.parseInt(cursor.getString(1)),  	// Active?
-		                cursor.getString(2),						// First name
-                        cursor.getString(3),                    	// Gender
-                        Integer.parseInt(cursor.getString(4)));		// Age
+                        Integer.parseInt(cursor.getString(1)),  	// Active?
+                        cursor.getString(2),						// First name
+                        cursor.getString(3),                		// Gender
+                        cursor.getInt(4),							// Age
+                        cursor.getInt(5),							// Target (Day)
+                        cursor.getInt(6));							// Target (Month)
 		
 		db.close();
 		return user;

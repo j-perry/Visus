@@ -54,6 +54,9 @@ public class SignUp extends Activity {
 		EditText age = (EditText) findViewById(R.id.age);
 		user.setAge(Integer.valueOf(age.getText().toString() ));
 		
+		user.setTargetDay(0);
+		user.setTargetMonth(0);
+		
 		dbHandler.open();
 		dbHandler.addUser(user);
 		dbHandler.close();
