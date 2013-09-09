@@ -55,6 +55,8 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 	private Session sessionOverview;
 	private int activeUserId;
 	
+	private int noItems;
+	
 	private ViewPager sessionsPager;
 	private SessionsPagerAdapter sessionsPagerAdapter;
 		
@@ -69,7 +71,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sessions);
 		
-		int noItems = 0;
+		 noItems = 0;
 		
 		Log.e("Visus", "Session onCreate()");
 		
@@ -83,29 +85,12 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		final ActionBar ab = getActionBar();
 		ab.setDisplayHomeAsUpEnabled(true);
 		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-						
-		sessionsPager = (ViewPager) findViewById(com.visus.R.id.sessions_pager);
-//		sessionsPagerAdapter = new SessionsPagerAdapter(getSupportFragmentManager(), activeUserId, wkBeginning, wkEnd );
-		sessionsPagerAdapter = new SessionsPagerAdapter(getSupportFragmentManager(), activeUserId);
 		
-		// initialise the page view adapter
-		sessionsPager.setAdapter(sessionsPagerAdapter);
-		sessionsPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-			
-			@Override
-			public void onPageSelected(int position) {
-				ab.setSelectedNavigationItem(position);
-			}
-			
-		});
 		
-				
-		// create our tabs
-		initTabs(ab);
-
 		try {
 			dbSessions.open();
-			noItems = dbSessions.getSessionsCountAll(activeUserId);
+			allSessions = dbSessions.getSessionsThisYear(activeUserId);
+			Log.e("Visus", "No items: " + allSessions.size());
 		}
 		catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);
@@ -117,19 +102,39 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		
 		// determine whether any sessions exist, if not display an AlertDialog asking the user if they wish
 		// to create a new session. Improves UX.
-		if(noItems == 0) {			
+		if(allSessions.isEmpty()) {
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 			alertDialogBuilder.setTitle("Create Session");
 			
 			alertDialogBuilder.setMessage("No sessions exist. Do you wish to create a new session now?"); 
 			alertDialogBuilder.setCancelable(false);
-			alertDialogBuilder.setPositiveButton("Yes Please", new OkOnClickListener());
+			alertDialogBuilder.setPositiveButton("Yes Please!", new OkOnClickListener());
 			alertDialogBuilder.setNegativeButton("No Thanks", new CancelOnClickListener());
 			alertDialog = alertDialogBuilder.create();
 			
 			// show it
 			alertDialog.show();
 		}
+		
+			sessionsPager = (ViewPager) findViewById(com.visus.R.id.sessions_pager);
+			sessionsPagerAdapter = new SessionsPagerAdapter(getSupportFragmentManager(), activeUserId);
+			
+			// initialise the page view adapter
+			sessionsPager.setAdapter(sessionsPagerAdapter);
+			sessionsPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+				
+				@Override
+				public void onPageSelected(int position) {
+					ab.setSelectedNavigationItem(position);
+				}
+				
+			});
+			
+			// create our tabs
+			initTabs(ab);
+		
+		
+		
 		
 				
 		// assign adapter items
@@ -235,20 +240,20 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 	}
 	
 	/**
-	 * 
+	 * AlertDialog event handler that displays a new session view
 	 * @author Jonathan Perry
 	 *
 	 */
 	private final class OkOnClickListener implements DialogInterface.OnClickListener {
 		public void onClick(DialogInterface dialog, int which) {
 			Intent intent = new Intent(getApplicationContext(), NewSession.class);
-			intent.putExtra("activeUserId", activeUserId);
+			intent.putExtra("ActiveUserId", activeUserId);
 			context.startActivity(intent);
 		}
 	}
 		
 	/**
-	 * 
+	 * AlertDialog event handler that dismisses itself
 	 * @author Jonathan Perry
 	 *
 	 */
@@ -271,6 +276,9 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 	}
 			
 	
+	/**
+	 * Returns to the root menu
+	 */
 	@Override
 	public void onBackPressed() {
 		Intent intent = new Intent(Sessions.this, MainActivity.class);
@@ -291,7 +299,9 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		return items;
 	}
 
-
+	/**
+	 * Inflates the options menu
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

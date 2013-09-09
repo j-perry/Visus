@@ -80,8 +80,6 @@ public class FragmentToday extends Fragment {
 				sessionsToday.add(map);
 			}
 		}
-		
-		
 			
 		adapter = new MainMenuAdapter(getActivity(), sessionsToday);
 		
@@ -90,6 +88,8 @@ public class FragmentToday extends Fragment {
 		return rootView;
 	}
 	
-	
+	public void onDestroyView() {
+		super.onDestroyView();
+	}
 
 }

@@ -87,6 +87,8 @@ public class FragmentThisYear extends Fragment {
 		return rootView;
 	}
 	
-	
+	public void onDestroyView() {
+		super.onDestroyView();
+	}
 	
 }

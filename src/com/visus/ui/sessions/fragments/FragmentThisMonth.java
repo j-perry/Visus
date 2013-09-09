@@ -87,4 +87,8 @@ public class FragmentThisMonth extends Fragment {
 		return rootView;
 	}
 	
+	public void onDestoryView() {
+		super.onDestroyView();
+	}
+	
 }
