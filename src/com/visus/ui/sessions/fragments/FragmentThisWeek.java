@@ -98,5 +98,9 @@ public class FragmentThisWeek extends Fragment {
 				
 		return rootView;
 	}
+	
+	public void onDestroyView() {
+		super.onDestroyView();
+	}
 
 }
