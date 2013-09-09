@@ -189,30 +189,38 @@ public class Settings extends Activity {
 	 */
 	public void onSave(View view) {
 		user = new User();
+		
+		/*
+		 * 'Personal'
+		 */
 		user.setUserId(activeUserId);
 		user.setFirstname(personalName.getText().toString() );				// first name
 		user.setGender(personalGender.getSelectedItem().toString() ) ;		// gender
 		user.setAge(Integer.parseInt(personalAge.getText().toString()) );	// age
 				
-//		// target year
-//		if(Integer.parseInt(historyTargetDay.getText().toString()) == 0) {
-//			user.setTargetDay(0);
-//		}
-//		else {
-//			user.setTargetDay(Integer.parseInt(historyTargetDay.getText().toString() ));			
-//		}
-//		
-//		// target month
-//		if(Integer.parseInt(historyTargetMonth.getText().toString()) == 0) {
-//			user.setTargetMonth(0);
-//		}
-//		else {
-//			user.setTargetMonth(Integer.parseInt(historyTargetMonth.getText().toString() ));			
-//		}
+		
+		/*
+		 * 'Sessions'
+		 */
+		// target year
+		if(historyTargetDay.getText().toString().isEmpty() ) {
+			user.setTargetDay(0);
+		}
+		else {
+			user.setTargetDay(Integer.parseInt(historyTargetDay.getText().toString() ));			
+		}
+		
+		// target month
+		if(historyTargetMonth.getText().toString().isEmpty() ) {
+			user.setTargetMonth(0);
+		}
+		else {
+			user.setTargetMonth(Integer.parseInt(historyTargetMonth.getText().toString() ));			
+		}
 
 		
 		/*
-		 * save (update) user details
+		 * update (save) user details
 		 */
 		try {
 			dbUser.open();

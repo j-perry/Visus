@@ -112,6 +112,7 @@
 		        <!-- target (day) -->
 		        <EditText
 		            android:id="@+id/settings_history_target_day"
+	        		android:inputType="number"
 		            android:background="@color/white"
 		            android:layout_height="wrap_content"
 		            android:layout_width="match_parent"
@@ -126,6 +127,7 @@
 		        <!-- target (month) -->
 		        <EditText
 		            android:id="@+id/settings_history_target_month"
+	        		android:inputType="number"
 		            android:background="@color/white"
 		            android:layout_height="wrap_content"
 		            android:layout_width="match_parent"
