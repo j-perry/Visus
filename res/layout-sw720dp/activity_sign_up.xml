@@ -1,0 +1,102 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".NewUser">
+    
+    <LinearLayout 
+        android:background="#E2E2E2"
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="2"
+    	android:padding="15dp"
+        >
+        
+        <!-- welcome to visus header -->
+        <TextView  
+	    	android:paddingTop="60dp" 
+	    	android:paddingLeft="50dp"
+	    	android:paddingRight="50dp"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	android:gravity="center_horizontal"
+	    	android:layout_gravity="center"
+            android:text="@string/visus_welcome"
+            android:textColor="@color/dark_grey"
+            android:textSize="24sp"
+            />
+        
+        <!-- ImageView goes here -->
+        
+    </LinearLayout>
+    
+    <LinearLayout         
+        android:background="@color/white"
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="8"       
+    	android:paddingTop="50dp" 
+    	android:paddingLeft="50dp"
+    	android:paddingRight="50dp"
+        >
+
+	    <!-- first name -->
+	    <EditText
+	        android:id="@+id/first_name"
+	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:layout_marginBottom="30dp"
+	        android:hint="@string/hint_firstname"
+	        android:inputType="textCapSentences"
+	        android:textColor="@color/dark_grey"
+	        android:textSize="16sp"
+	        android:textColorHint="@color/dark_grey"
+	        />
+	    
+	    <!-- gender -->
+	    <Spinner
+	        android:id="@+id/gender"
+	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:layout_marginBottom="30dp"
+	        android:prompt="@string/gender_prompt"
+	        android:entries="@array/genders"
+	        android:textColor="@color/dark_grey"
+	        android:textSize="16sp"
+	        />
+	    
+	    <!-- age --> 
+	    <EditText
+	        android:id="@+id/age"
+	        android:inputType="number"
+	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:layout_marginBottom="30dp"
+	        android:hint="@string/hint_age"
+	        android:textColor="@color/dark_grey"
+	        android:textSize="16sp"
+	        android:textColorHint="@color/dark_grey"
+	        />
+	    
+	    <!-- submit -->
+	    <Button
+	        android:id="@+id/register"
+	        android:onClick="registerUser"
+	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:paddingTop="15dp"
+	        android:paddingBottom="15dp"
+	        android:background="@drawable/new_user_submit_bg"
+	        android:textColor="@drawable/new_user_submit_txt"
+	        android:textSize="16sp"
+	        android:text="@string/register"
+	        android:gravity="center"
+	        />
+	    
+	</LinearLayout>
+	    
+</LinearLayout>
