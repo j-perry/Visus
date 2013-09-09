@@ -12,10 +12,7 @@ import android.support.v4.app.*;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.*;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.*;
 
 // core program packages
 import com.visus.R;
@@ -47,6 +44,10 @@ public class Settings extends Activity {
 	// history
 	private EditText historyTargetDay;
 	private EditText historyTargetMonth;
+	
+	private Button	 resetMonth,
+					 resetYear,
+					 resetAll;
 		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +86,57 @@ public class Settings extends Activity {
 		
 		historyTargetDay = (EditText) findViewById(com.visus.R.id.settings_history_target_day);
 		historyTargetMonth = (EditText) findViewById(com.visus.R.id.settings_history_target_month);
+		
+		resetMonth = (Button) findViewById(com.visus.R.id.settings_history_reset_month);
+		resetYear = (Button) findViewById(com.visus.R.id.settings_history_reset_year);
+		resetAll = (Button) findViewById(com.visus.R.id.settings_history_reset_all);
+		
+		/*
+		 * determine whether to display either of the reset buttons, based on existing Sessions data
+		 */
+		int itemsMonth = 0;
+		int itemsYear = 0;
+		int itemsAll = 0;
+		
+		try {
+			dbSession.open();
+			
+			// month btn
+			itemsMonth = dbSession.getSessionsCountThisMonth(activeUserId);
+			itemsYear = dbSession.getSessionsCountThisMonth(activeUserId);
+			itemsAll = dbSession.getSessionsCountAll(activeUserId);
+		}
+		catch(SQLiteException e) {
+			Log.e("Visus", "SQL Error", e);
+		}
+		finally {
+			dbSession.close();
+		}
+		
+		// month
+		if(itemsMonth == 0) {
+			resetMonth.setVisibility(View.GONE);
+		}
+		else {
+			resetMonth.setVisibility(View.VISIBLE);			
+		}
+		
+		// year
+		if(itemsYear == 0) {
+			resetYear.setVisibility(View.GONE);
+		}
+		else {
+			resetYear.setVisibility(View.VISIBLE);			
+		}
+		
+		// year
+		if(itemsAll == 0) {
+			resetAll.setVisibility(View.GONE);
+		}
+		else {
+			resetAll.setVisibility(View.VISIBLE);			
+		}
+		
 		
 		// spinner value
 		ArrayAdapter genderAdapter = (ArrayAdapter) personalGender.getAdapter();
