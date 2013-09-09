@@ -831,42 +831,87 @@ public class SessionHandler implements IDatabaseTable {
 		return types;
 	}
 	
+	/**
+	 * Delete's sessions made this month
+	 * @param userId
+	 * @return
+	 * @throws SQLiteException
+	 */
 	public int deleteSessionsThisMonth(int userId) throws SQLiteException {
 		int result = 0;
-		String qryDeleteMonth = "WHERE" + QRY_SPACING +
-				                	DatabaseHandler.KEY_USER_ID + " = " + userId +
+		int maxDays = 0;
+		int month = 0;
+		int year = 0;
+		
+		String strMonth = null;
+		
+		Calendar cal = Calendar.getInstance();
+		month = cal.get(Calendar.MONTH);
+		month++;
+		year = cal.get(Calendar.YEAR);
+		
+		cal = new GregorianCalendar(year, month, 1);
+		maxDays = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+		
+		if(month < 10) {
+			strMonth = "0" + String.valueOf(month);
+		}
+		else {
+			strMonth = String.valueOf(month);
+		}
+		
+		String qryDeleteMonth = DatabaseHandler.KEY_USER_ID + " = " + userId + QRY_SPACING +
 				                "AND" + QRY_SPACING +
+				                DatabaseHandler.KEY_DATE + QRY_SPACING +
 				                	"BETWEEN" + QRY_SPACING +
-				                		"date('yyyy-01-01')" + QRY_SPACING + 
-				                	"AND" + 
-				                		"date('yyyy-12-31')";
+				                		"date('" + year + "-" + strMonth + "-01')" + QRY_SPACING + 
+				                	"AND" + QRY_SPACING +
+				                		"date('" + year + "-" + strMonth + "-" + maxDays + "')";
+		
+		Log.e("Visus", qryDeleteMonth);
 		
 		result = db.delete(DatabaseHandler.SESSIONS_TABLE, 
 						   qryDeleteMonth,
 				           null);
 		
-		return result;
-	}
-	
-	public int deleteSessionsThisYear(int userId) throws SQLiteException {
-		int result = 0;				
-		String qryDeleteYear = "WHERE" + QRY_SPACING +
-            						DatabaseHandler.KEY_USER_ID + " = " + userId +
-            					"AND" + QRY_SPACING +
-            						"BETWEEN" + QRY_SPACING +
-            							"date('yyyy-01-01')" + QRY_SPACING + 
-            						"AND" + 
-            							"date('yyyy-12-31')";
-		
-		result = db.delete(DatabaseHandler.SESSIONS_TABLE, 
-						   qryDeleteYear, 
-				           null);
+		Log.e("Visus", "deleteSessionsThisMonth() - Result: " + result);
 		
 		return result;
 	}
 	
 	/**
-	 * Delete's all sessions made
+	 * Delete's sessions made this year
+	 * @param userId
+	 * @return
+	 * @throws SQLiteException
+	 */
+	public int deleteSessionsThisYear(int userId) throws SQLiteException {
+		int year = 0;
+		int result = 0;
+		Calendar cal = Calendar.getInstance();
+		year = cal.get(Calendar.YEAR);
+		
+		String qryDeleteYear = DatabaseHandler.KEY_USER_ID + " = " + userId + QRY_SPACING +
+				                "AND" + QRY_SPACING +
+				               DatabaseHandler.KEY_DATE + QRY_SPACING +
+				                	"BETWEEN" + QRY_SPACING +
+				                		"date('" + year + "-01-01')" + QRY_SPACING + 
+				                	"AND" + QRY_SPACING +
+				                		"date('" + year + "-12-31')";
+		
+		Log.e("Visus", qryDeleteYear);
+		
+		result = db.delete(DatabaseHandler.SESSIONS_TABLE, 
+						   "UserId = " + userId, 
+				           null);
+		
+		Log.e("Visus", "deleteSessionsThisYear() - Result: " + result);
+		
+		return result;
+	}
+	
+	/**
+	 * Delete's all sessions made... ever!
 	 * @param userId The present user's ID
 	 * @return Return's whether the result was successful
 	 */
@@ -874,7 +919,7 @@ public class SessionHandler implements IDatabaseTable {
 		int result = 0;
 		String qryDeleteSessions = null;
 		
-		qryDeleteSessions = "WHERE" + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		qryDeleteSessions = DatabaseHandler.KEY_USER_ID + " = " + userId;
 		
 		result = db.delete(DatabaseHandler.SESSIONS_TABLE, 
 				  		   qryDeleteSessions, 

@@ -102,15 +102,15 @@ public class Settings extends Activity {
 			historyTargetDay.setText("");
 		}
 		else {
-			historyTargetDay.setText(user.getTargetDay() );
+			historyTargetDay.setText(String.valueOf(user.getTargetDay()) );
 		}
 		
 		// target month
-		if(user.getTargetMonth() == 0) {
-			historyTargetMonth.setText("");
+		if(user.getTargetMonth() != 0) {
+			historyTargetMonth.setText(String.valueOf(user.getTargetMonth()) );
 		}
 		else {
-			historyTargetMonth.setText(user.getTargetMonth() );
+			historyTargetMonth.setText("");
 		}
 		
 	}
@@ -145,6 +145,10 @@ public class Settings extends Activity {
 			Log.e("Visus", "SQL Error", e);
 		}
 		finally {
+			final int LENGTH = 600; // ms
+			String msg = "Deleted";
+			Toast.makeText(this, msg, LENGTH).show();
+			
 			dbSession.close();
 		}
 	}
@@ -162,6 +166,10 @@ public class Settings extends Activity {
 			Log.e("Visus", "SQL Error", e);			
 		}
 		finally {
+			final int LENGTH = 600; // ms
+			String msg = "Deleted";
+			Toast.makeText(this, msg, LENGTH).show();
+			
 			dbSession.close();
 		}
 	}
@@ -179,6 +187,10 @@ public class Settings extends Activity {
 			Log.e("Visus", "SQL Error", e);	
 		}
 		finally {
+			final int LENGTH = 600; // ms
+			String msg = "Deleted";
+			Toast.makeText(this, msg, LENGTH).show();
+			
 			dbSession.close();
 		}
 	}
@@ -243,13 +255,5 @@ public class Settings extends Activity {
 			startActivity(intent);
 		}
 	}
-	
-	/**
-	 * Undo any changes and return the user to the root menu
-	 * @param view
-	 */
-	public void onCancel(View view) {
-		Intent intent = new Intent(Settings.this, MainActivity.class);
-		startActivity(intent);
-	}
+		
 }
