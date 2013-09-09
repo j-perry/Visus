@@ -927,4 +927,111 @@ public class SessionHandler implements IDatabaseTable {
 		
 		return result;
 	}
+	
+	/**
+	 * 
+	 * @param activeUserId
+	 * @return
+	 */
+	public int getSessionsCountThisMonth(int activeUserId) {
+		int noItems = 0;
+		int result = 0;
+		int maxDays = 0;
+		int month = 0;
+		int year = 0;
+		
+		String strMonth = null;
+		
+		Calendar cal = Calendar.getInstance();
+		month = cal.get(Calendar.MONTH);
+		month++;
+		year = cal.get(Calendar.YEAR);
+		
+		cal = new GregorianCalendar(year, month, 1);
+		maxDays = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+		
+		if(month < 10) {
+			strMonth = "0" + String.valueOf(month);
+		}
+		else {
+			strMonth = String.valueOf(month);
+		}
+		
+		
+		String qryCount = "SELECT *" + QRY_SPACING +
+						  "FROM" + QRY_SPACING +
+						  	DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+						  "WHERE" + QRY_SPACING +
+						  	DatabaseHandler.KEY_USER_ID + " = " + activeUserId + QRY_SPACING +
+						  "AND" + QRY_SPACING +
+						  	DatabaseHandler.KEY_DATE + QRY_SPACING +
+						  "BETWEEN" + QRY_SPACING +
+						  	"date('" + year + "-" + strMonth + "-" + "01')" + QRY_SPACING +
+						  "AND" + QRY_SPACING +
+						  	"date('" + year + "-" + strMonth + "-" + maxDays + "')";
+		
+		Log.e("Visus", qryCount);
+		
+		Cursor cursor = db.rawQuery(qryCount, null);
+		
+		noItems = cursor.getCount();
+		
+		return noItems;
+	}
+	
+	/**
+	 * 
+	 * @param activeUserId
+	 * @return
+	 */
+	public int getSessionsCountThisYear(int activeUserId) {
+		int noItems = 0;
+		int year = 0;
+		int result = 0;
+		Calendar cal = Calendar.getInstance();
+		year = cal.get(Calendar.YEAR);
+		
+		String qryCount = "SELECT *" + QRY_SPACING +
+				  "FROM" + QRY_SPACING +
+				  	DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+				  "WHERE" + QRY_SPACING +
+				  	DatabaseHandler.KEY_USER_ID + " = " + activeUserId + QRY_SPACING +
+				  "AND" + QRY_SPACING +
+				  	DatabaseHandler.KEY_DATE + QRY_SPACING +
+				  "BETWEEN" + QRY_SPACING +
+				    "date('" + year + "-01-01')" + QRY_SPACING + 
+				  "AND" + QRY_SPACING +
+				  	"date('" + year + "-12-31')";
+		
+		Log.e("Visus", "getSessionsCountThisYear()");
+		Log.e("Visus", qryCount);
+
+		Cursor cursor = db.rawQuery(qryCount, null);
+		
+		noItems = cursor.getCount();
+		
+		return noItems = 0;
+	}
+	
+	/**
+	 * 
+	 * @param activeUserId
+	 * @return
+	 */
+	public int getSessionsCountAll(int activeUserId) {
+		int noItems = 0;
+		
+		String qryCount = "SELECT *" + QRY_SPACING +
+				  "FROM" + QRY_SPACING +
+				  	DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+				  "WHERE" + QRY_SPACING +
+				  	DatabaseHandler.KEY_USER_ID + " = " + activeUserId;
+
+		Cursor cursor = db.rawQuery(qryCount, null);
+		
+		noItems = cursor.getCount();
+		
+		return noItems;
+	}
+	
 }
