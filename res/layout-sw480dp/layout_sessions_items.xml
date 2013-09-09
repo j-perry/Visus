@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="25dp"
+    android:orientation="vertical" >
+    
+    <!-- header -->
+    <!-- i.e., This Week 
+	<TextView
+		android:id="@+id/header_events"
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:textColor="@color/dark_grey"
+	    />
+	    -->
+	    
+	<!-- session entry -->
+	<RelativeLayout 
+		android:id="@+id/entry"
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+	    >
+	    
+	    <LinearLayout 
+	        android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+        	android:layout_alignParentLeft="true"
+	    	>
+	        
+			<!-- date -->
+			<TextView 
+				android:id="@+id/date"
+	    		android:layout_width="wrap_content"
+	    		android:layout_height="wrap_content"
+	    		android:textColor="@color/dark_grey"
+	    		android:textAllCaps="true"
+	    		android:textSize="32sp"
+			    />
+			
+		</LinearLayout>
+	        
+	    <RelativeLayout
+	        android:layout_width="250dp"
+    		android:layout_height="wrap_content"
+    		android:layout_alignParentRight="true"
+	    	>
+	    	
+	            
+		    	<!-- time (mm:ss) -->
+		        <TextView
+		        	android:id="@+id/time"
+	    			android:layout_width="wrap_content"
+	    			android:layout_height="wrap_content"
+	    			android:textColor="@color/dark_grey"
+	    			android:textSize="24sp"
+		        	/> 
+		        	
+		        <!-- category(ies) -->
+	        	<TextView
+		        	android:id="@+id/activity"
+		        	android:layout_below="@id/time"
+	    			android:layout_width="fill_parent"
+	    			android:layout_height="wrap_content"
+	    			android:textColor="@color/dark_grey"
+	    			android:textSize="24sp"
+		        	/>
+		    
+		    </RelativeLayout>
+	           
+	        
+	</RelativeLayout> 
+
+</LinearLayout>
