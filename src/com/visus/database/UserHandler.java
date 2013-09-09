@@ -21,11 +21,17 @@ public class UserHandler implements IDatabaseTable {
 		dbHandler = new DatabaseHandler(context);
 	}
 	
+	/**
+	 * Opens a new database connection
+	 */
 	@Override
 	public void open() throws SQLiteException {
 		db = dbHandler.getReadableDatabase(); // reads and writes
 	}
 	
+	/**
+	 * Closes the existing database connection
+	 */
 	@Override
 	public void close() throws SQLiteException {
 		db.close();
@@ -62,23 +68,33 @@ public class UserHandler implements IDatabaseTable {
 		Log.e("Visus", "DB closed");
 	}
 	
+	/**
+	 * 
+	 * @param user
+	 * @throws SQLiteException
+	 */
 	public void updateUser(User user) throws SQLiteException {
-		ContentValues userValues = new ContentValues();
-
-		userValues.put(DatabaseHandler.KEY_ID, user.getUserId() );
-		userValues.put(DatabaseHandler.KEY_ACTIVE, user.getActive() );
-		userValues.put(DatabaseHandler.KEY_NAME, user.getFirstname() );
-		userValues.put(DatabaseHandler.KEY_GENDER, user.getGender() );
-		userValues.put(DatabaseHandler.KEY_AGE, user.getAge() );
+		ContentValues updatedUserValues = new ContentValues();
 		
-		db.update(DatabaseHandler.USERS_TABLE, 											// table
-				  userValues, 											                // values
-				  DatabaseHandler.KEY_ID + " = " + String.valueOf(user.getUserId()), 	// query
-				  new String[] { String.valueOf(user.getUserId()) });	                // arguments in query
+		updatedUserValues.put(DatabaseHandler.KEY_NAME, user.getFirstname() );
+		updatedUserValues.put(DatabaseHandler.KEY_GENDER, user.getGender() );
+		updatedUserValues.put(DatabaseHandler.KEY_AGE, user.getAge() );
 		
-		db.close();
+		int result = db.update(DatabaseHandler.USERS_TABLE, 								// table
+				  updatedUserValues, 											        	// values
+				  DatabaseHandler.KEY_ID + " = " + String.valueOf(user.getUserId()), 		// query
+				  null);	                // arguments in query
+		// 		  new String[] { String.valueOf(user.getUserId()) }
+		
+		Log.e("Visus", "updateUser(): Result: " + result);
+		
+//		db.close();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public User getActiveUser() {
 		Cursor cursor;
 		String [] columns = { DatabaseHandler.KEY_ID, 

@@ -65,7 +65,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// be very careful to include leave spaces between statements!!
 		String createUsersTable = "CREATE TABLE " + USERS_TABLE +
 				                  " ( " +
-				                  	 KEY_ID + " INTEGER PRIMARY KEY, " +
+				                  	 KEY_ID + " INTEGER PRIMARY KEY, " +		// act's as our USER_ID
 				                  	 KEY_ACTIVE + " INTEGER, " +
 				                  	 KEY_NAME + " TEXT, " +
 				                  	 KEY_AGE + " INTEGER, " +
