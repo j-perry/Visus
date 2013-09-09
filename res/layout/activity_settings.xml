@@ -47,7 +47,8 @@
 		            android:layout_height="wrap_content"
 		            android:layout_width="match_parent"
 		            android:padding="25dp"
-		            android:hint="[name]"
+		            android:hint="(name)"
+	        		android:inputType="textCapSentences"
 		            android:textColorHint="@color/dark_grey"
 		            android:textSize="18sp"
 		            android:textColor="@color/dark_grey"
@@ -69,11 +70,12 @@
 		        <!-- age -->
 		        <EditText
 		            android:id="@+id/settings_personal_age"
+	        		android:inputType="number"
 		            android:background="@color/white"
 		            android:layout_height="wrap_content"
 		            android:layout_width="match_parent"
 		            android:padding="25dp"
-		            android:hint="[age]"
+		            android:hint="(age)"
 		            android:textColorHint="@color/dark_grey"
 		            android:textSize="18sp"
 		            android:textColor="@color/dark_grey"
@@ -114,7 +116,7 @@
 		            android:layout_height="wrap_content"
 		            android:layout_width="match_parent"
 		            android:padding="25dp"
-		            android:hint="Set target (day)"
+		            android:hint="(Set target (day))"
 		            android:textColorHint="@color/dark_grey"
 		            android:textSize="18sp"
 		            android:textColor="@color/dark_grey"
@@ -128,7 +130,7 @@
 		            android:layout_height="wrap_content"
 		            android:layout_width="match_parent"
 		            android:padding="25dp"
-		            android:hint="Set target (month)"
+		            android:hint="(Set target (month))"
 		            android:textColorHint="@color/dark_grey"
 		            android:textSize="18sp"
 		            android:textColor="@color/dark_grey"
@@ -138,6 +140,7 @@
 		        <!-- reset (month) -->
 		        <Button
 		            android:id="@+id/settings_history_reset_month"
+		            android:onClick="onResetMonth"
 			        android:background="@drawable/settings_history_btn_bg"
 		            android:layout_height="wrap_content"
 		            android:layout_width="match_parent"
@@ -154,6 +157,7 @@
 		        <!-- reset (year) -->
 		        <Button
 		            android:id="@+id/settings_history_reset_year"
+		            android:onClick="onResetYear"
 			        android:background="@drawable/settings_history_btn_bg"
 		            android:layout_height="wrap_content"
 		            android:layout_width="match_parent"
@@ -169,6 +173,7 @@
 		        <!-- reset (all) -->
 		        <Button
 		            android:id="@+id/settings_history_reset_all"
+		            android:onClick="onResetAll"
 			        android:background="@drawable/settings_history_btn_bg"
 		            android:layout_height="wrap_content"
 		            android:layout_width="match_parent"
@@ -191,9 +196,10 @@
 		    	android:orientation="vertical"
 		        >
 		        
-		        <!-- reset (month) -->
+		        <!-- save -->
 		        <Button
 		            android:id="@+id/settings_save_all"
+		            android:onClick="onSave"
 			        android:background="@drawable/settings_save_all_btn_bg"
 		            android:layout_height="wrap_content"
 		            android:layout_width="match_parent"
@@ -203,6 +209,32 @@
 		            android:textStyle="bold"
 		            android:textSize="18sp"
 		            android:textColor="@color/white"
+		            />
+		        
+		    </LinearLayout>
+		    
+		    <LinearLayout
+		        android:background="@color/white"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="10sp"
+		        android:layout_marginBottom="20sp"
+		    	android:orientation="vertical"
+		        >
+		        
+		        <!-- cancel -->
+		        <Button
+		            android:id="@+id/settings_cancel"
+		            android:onClick="onCancel"
+			        android:background="@drawable/settings_cancel_btn_bg"
+		            android:layout_height="wrap_content"
+		            android:layout_width="match_parent"
+		            android:padding="25dp"
+		            android:gravity="center"
+		            android:text="Cancel"
+		            android:textStyle="bold"
+		            android:textSize="18sp"
+		            android:textColor="@color/dark_grey"
 		            />
 		        
 		    </LinearLayout>

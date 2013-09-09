@@ -831,6 +831,40 @@ public class SessionHandler implements IDatabaseTable {
 		return types;
 	}
 	
+	public int deleteSessionsThisMonth(int userId) throws SQLiteException {
+		int result = 0;
+		String qryDeleteMonth = "WHERE" + QRY_SPACING +
+				                	DatabaseHandler.KEY_USER_ID + " = " + userId +
+				                "AND" + QRY_SPACING +
+				                	"BETWEEN" + QRY_SPACING +
+				                		"date('yyyy-01-01')" + QRY_SPACING + 
+				                	"AND" + 
+				                		"date('yyyy-12-31')";
+		
+		result = db.delete(DatabaseHandler.SESSIONS_TABLE, 
+						   qryDeleteMonth,
+				           null);
+		
+		return result;
+	}
+	
+	public int deleteSessionsThisYear(int userId) throws SQLiteException {
+		int result = 0;				
+		String qryDeleteYear = "WHERE" + QRY_SPACING +
+            						DatabaseHandler.KEY_USER_ID + " = " + userId +
+            					"AND" + QRY_SPACING +
+            						"BETWEEN" + QRY_SPACING +
+            							"date('yyyy-01-01')" + QRY_SPACING + 
+            						"AND" + 
+            							"date('yyyy-12-31')";
+		
+		result = db.delete(DatabaseHandler.SESSIONS_TABLE, 
+						   qryDeleteYear, 
+				           null);
+		
+		return result;
+	}
+	
 	/**
 	 * Delete's all sessions made
 	 * @param userId The present user's ID
@@ -845,7 +879,6 @@ public class SessionHandler implements IDatabaseTable {
 		result = db.delete(DatabaseHandler.SESSIONS_TABLE, 
 				  		   qryDeleteSessions, 
 				           null);
-		db.close();
 		
 		return result;
 	}

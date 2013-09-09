@@ -9,6 +9,9 @@ public class User {
 	private String gender;
 	private int age;
 	
+	private int targetDay;
+	private int targetMonth;
+	
 	public User() {
 		
 	}
@@ -67,6 +70,22 @@ public class User {
 	
 	public int getAge() {
 		return age;
+	}
+	
+	public void setTargetDay(int targetDay) {
+		this.targetDay = targetDay;
+	}
+	
+	public int getTargetDay() {
+		return targetDay;
+	}
+	
+	public void setTargetMonth(int targetMonth) {
+		this.targetMonth = targetMonth;
+	}
+	
+	public int getTargetMonth() {
+		return targetMonth;
 	}
 	
 }
