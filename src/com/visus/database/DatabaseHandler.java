@@ -30,6 +30,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public static final String KEY_NAME     = "Name";
 	public static final String KEY_AGE      = "Age";
 	public static final String KEY_GENDER   = "Gender";
+	
+	public static final String KEY_TARGET_DAY = "TargetDay";
+	public static final String KEY_TARGET_MONTH = "TargetMonth";
 		
 	public static final int ACTIVE_USER = 1;
 	public static final int NON_ACTIVE_USER = 0;
@@ -69,7 +72,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				                  	 KEY_ACTIVE + " INTEGER, " +
 				                  	 KEY_NAME + " TEXT, " +
 				                  	 KEY_AGE + " INTEGER, " +
-				                  	 KEY_GENDER + " TEXT " +
+				                  	 KEY_GENDER + " TEXT, " +
+				                  	 KEY_TARGET_DAY + " INTEGER, " +			// new!
+				                  	 KEY_TARGET_MONTH + " INTEGER " +			// new!
 				                  ");";
 		
 		String createSessionsTable = "CREATE TABLE " + SESSIONS_TABLE + 

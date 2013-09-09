@@ -79,16 +79,15 @@ public class UserHandler implements IDatabaseTable {
 		updatedUserValues.put(DatabaseHandler.KEY_NAME, user.getFirstname() );
 		updatedUserValues.put(DatabaseHandler.KEY_GENDER, user.getGender() );
 		updatedUserValues.put(DatabaseHandler.KEY_AGE, user.getAge() );
+		updatedUserValues.put(DatabaseHandler.KEY_TARGET_DAY, user.getTargetDay() );
+		updatedUserValues.put(DatabaseHandler.KEY_TARGET_MONTH, user.getTargetMonth() );
 		
 		int result = db.update(DatabaseHandler.USERS_TABLE, 								// table
 				  updatedUserValues, 											        	// values
 				  DatabaseHandler.KEY_ID + " = " + String.valueOf(user.getUserId()), 		// query
 				  null);	                // arguments in query
-		// 		  new String[] { String.valueOf(user.getUserId()) }
 		
 		Log.e("Visus", "updateUser(): Result: " + result);
-		
-//		db.close();
 	}
 	
 	/**
