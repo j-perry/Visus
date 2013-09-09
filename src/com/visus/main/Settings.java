@@ -103,7 +103,11 @@ public class Settings extends Activity {
 			
 			// month btn
 			itemsMonth = dbSession.getSessionsCountThisMonth(activeUserId);
+			
+			// year btn
 			itemsYear = dbSession.getSessionsCountThisMonth(activeUserId);
+			
+			// all sessions btn
 			itemsAll = dbSession.getSessionsCountAll(activeUserId);
 		}
 		catch(SQLiteException e) {

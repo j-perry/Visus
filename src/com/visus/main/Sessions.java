@@ -14,7 +14,10 @@ import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.ActionBar.*;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -55,13 +58,18 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 	private ViewPager sessionsPager;
 	private SessionsPagerAdapter sessionsPagerAdapter;
 		
+	private AlertDialog alertDialog;
+	private Context context = this;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		SessionHandler dbSession = new SessionHandler(this);
+		SessionHandler dbSessions = new SessionHandler(this);
 		ArrayList<Session> allSessions = new ArrayList<Session>();
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sessions);
+		
+		int noItems = 0;
 		
 		Log.e("Visus", "Session onCreate()");
 		
@@ -96,25 +104,31 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		initTabs(ab);
 
 		try {
-			dbSession.open();
+			dbSessions.open();
+			noItems = dbSessions.getSessionsCountAll(activeUserId);
 		}
 		catch(SQLiteException e) {
-			Log.e("Visus", null, e);
+			Log.e("Visus", "SQL Error", e);
 		}
 		finally {
-			allSessions = dbSession.getSessions(activeUserId);
-			dbSession.close();
+			dbSessions.close();
 		}
 		
-		// determine whether there are any results
-		if(sessionOverview != null) {
-			Log.e("Visus", "session overview is not null");
-			Log.e("Visus", "Session overview (hours): " + String.valueOf(sessionOverview.getOverviewHours() ));
-			Log.e("Visus", "Session overview (sessions): " + String.valueOf(sessionOverview.getOverviewNoSessions() ));
-			Log.e("Visus", "Session overview (activities): " + String.valueOf(sessionOverview.getOverviewNoActivities() ));
-		}
-		else {
-			Log.e("Visus", "session overview is null");
+		
+		// determine whether any sessions exist, if not display an AlertDialog asking the user if they wish
+		// to create a new session. Improves UX.
+		if(noItems == 0) {			
+			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+			alertDialogBuilder.setTitle("Create Session");
+			
+			alertDialogBuilder.setMessage("No sessions exist. Do you wish to create a new session now?"); 
+			alertDialogBuilder.setCancelable(false);
+			alertDialogBuilder.setPositiveButton("Yes Please", new OkOnClickListener());
+			alertDialogBuilder.setNegativeButton("No Thanks", new CancelOnClickListener());
+			alertDialog = alertDialogBuilder.create();
+			
+			// show it
+			alertDialog.show();
 		}
 		
 				
@@ -219,6 +233,31 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 //		// display the contents
 //		sessionsList.setAdapter(adapter);				
 	}
+	
+	/**
+	 * 
+	 * @author Jonathan Perry
+	 *
+	 */
+	private final class OkOnClickListener implements DialogInterface.OnClickListener {
+		public void onClick(DialogInterface dialog, int which) {
+			Intent intent = new Intent(getApplicationContext(), NewSession.class);
+			intent.putExtra("activeUserId", activeUserId);
+			context.startActivity(intent);
+		}
+	}
+		
+	/**
+	 * 
+	 * @author Jonathan Perry
+	 *
+	 */
+	private final class CancelOnClickListener implements DialogInterface.OnClickListener {
+		public void onClick(DialogInterface dialog, int which) {
+			alertDialog.dismiss();
+		}
+	}
+	
 	
 	/**
 	 * Initialises new tabs
