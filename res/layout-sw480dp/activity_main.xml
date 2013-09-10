@@ -76,13 +76,12 @@
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:layout_marginTop="25dp"        
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
 		android:padding="25sp"
         android:textColor="@color/white"
         android:text="Latest Activity"
-        android:textSize="18dp"
-        android:textStyle="bold"
+        android:textSize="18sp"
         />
     
     <!-- sessions summary -->
@@ -90,8 +89,8 @@
         android:id="@+id/overview_sessions_adapter"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
         android:divider="@color/white"
         />
     
