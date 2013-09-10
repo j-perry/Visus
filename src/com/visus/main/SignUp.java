@@ -23,6 +23,21 @@ public class SignUp extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sign_up);
+		
+		final String male = "Male";
+		final String female = "Female";
+		
+		String [] genders = { male, female };
+		
+		Spinner spinner = new Spinner(this);
+	    ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, 
+	    																	R.layout.sign_up_spinner_gender_layout, 
+	    																	genders);
+	    
+	    spinnerArrayAdapter.setDropDownViewResource( R.layout.sign_up_spinner_gender_list_layout );
+
+	    spinner = (Spinner) findViewById( R.id.gender );
+	    spinner.setAdapter(spinnerArrayAdapter);
 	}
 
 	@Override
