@@ -9,13 +9,14 @@
     tools:context=".MainActivity" 
     >
     
+    <!-- 
     <LinearLayout
         android:background="@color/white"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         >
     
-        <!-- new session -->
+        new session 
 	    <Button
 	        android:onClick="newSession"
 	        android:background="@drawable/main_menu_profile_bg"
@@ -32,7 +33,7 @@
 	        android:textSize="16sp"
 	        />
 	    
-	    <!-- sessions -->
+	     sessions 
 	    <Button     
 	        android:onClick="prevSessions"
 	        android:background="@drawable/main_menu_profile_bg"
@@ -49,7 +50,7 @@
 	        android:textSize="16sp"
 	        />
 	    
-	    <!-- settings -->
+	     settings 
 	    <Button
 	        android:onClick="viewSettings"
 	        android:background="@drawable/main_menu_profile_bg"
@@ -67,8 +68,9 @@
 	        />
 	
 	</LinearLayout>
+	-->
 	
-    
+    <!--
     <TextView 
         android:id="@+id/main_header"
 		android:onClick="viewLatestUserActivities"
@@ -85,7 +87,7 @@
         android:textStyle="bold"
         />
     
-    <!-- sessions summary -->
+    sessions summary 
     <ListView 
         android:id="@+id/overview_sessions_adapter"
         android:layout_height="wrap_content"
@@ -94,5 +96,6 @@
         android:layout_marginRight="50dp"
         android:divider="@color/white"
         />
+        -->
     
 </LinearLayout>

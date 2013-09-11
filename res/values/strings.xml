@@ -7,7 +7,7 @@
     <string name="activity_new_session">New Session</string>
     
     <!-- Main Activity Menu -->
-    <string name="menu_about">About</string>
+    <string name="menu_about">About Visus</string>
     <string name="menu_account">Account</string>
     <string name="menu_sessions">Sessions</string>
            
@@ -54,6 +54,13 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+    
+    
+    <string-array name="menu">
+        <item>Latest Activity</item>
+        <item>Activities</item>
+    </string-array>
+    
             
 	<string name="gender_prompt">Gender</string>	
 	<string name="hint_age">Age</string>
