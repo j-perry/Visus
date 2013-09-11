@@ -3,6 +3,7 @@ package com.visus.main;
 // android apis
 import android.os.Bundle;
 import android.app.ActionBar;
+import android.app.ActionBar.OnNavigationListener;
 import android.app.ActionBar.Tab;
 import android.app.Activity;
 import android.app.FragmentTransaction;
@@ -19,7 +20,10 @@ import com.visus.R;
 import com.visus.database.*;
 import com.visus.entities.*;
 import com.visus.entities.sessions.Session;
+import com.visus.main.MainActivity.MainMenuPagerAdapter;
 import com.visus.main.Sessions.SessionsPagerAdapter;
+import com.visus.ui.settings.fragments.AboutFragment;
+import com.visus.ui.settings.fragments.GeneralFragment;
 
 
 /**
@@ -27,9 +31,9 @@ import com.visus.main.Sessions.SessionsPagerAdapter;
  * @author Jonathan Perry
  *
  */
-public class Settings extends Activity {
+public class Settings extends FragmentActivity implements ActionBar.TabListener {
 
-	private int activeUserId;
+	private static int activeUserId;
 	
 	private User user = null;
 	private Session session;
@@ -48,6 +52,10 @@ public class Settings extends Activity {
 	private Button	 resetMonth,
 					 resetYear,
 					 resetAll;
+	
+	// pager
+	private ViewPager settingsViewPager;
+	private SettingsPagerAdapter settingsPagerAdapter;
 		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,118 +64,32 @@ public class Settings extends Activity {
 		
 		Bundle b = getIntent().getExtras();
 		activeUserId = b.getInt("ActiveUserId");
-		
-		user = new User();
-		session = new Session();
-		
+				
 		final ActionBar ab = getActionBar();
 		ab.setDisplayHomeAsUpEnabled(true);
-				
-		dbUser = new UserHandler(this);
-		dbSession = new SessionHandler(this);
+		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 		
-		// user
-		try {
-			dbUser.open();
-			user = dbUser.getActiveUser();
-		}
-		catch(SQLiteException e) {
-			Log.e("Visus", "SQL Error", e);
-		}
-		finally {
-			dbUser.close();
-		}
+		settingsViewPager = (ViewPager) findViewById(com.visus.R.id.settings_pager);
+		settingsPagerAdapter = new SettingsPagerAdapter(getSupportFragmentManager(), activeUserId);
+		settingsViewPager.setAdapter(settingsPagerAdapter);
+		
+		
+		ArrayAdapter<CharSequence> arAdapter = ArrayAdapter.createFromResource(this, R.array.settings_list, R.layout.action_bar_list);
+		
+		ab.setListNavigationCallbacks(arAdapter, new OnNavigationListener() {
+			public boolean onNavigationItemSelected(int itemPosition, long itemId) {
+				return true;
+			}
+		});				
+		
+		settingsViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 			
-		
-		// populate the setting components
-		personalName = (EditText) findViewById(com.visus.R.id.settings_personal_name);
-		personalGender = (Spinner) findViewById(com.visus.R.id.settings_personal_gender);
-		personalAge = (EditText) findViewById(com.visus.R.id.settings_personal_age);
-		
-		historyTargetDay = (EditText) findViewById(com.visus.R.id.settings_history_target_day);
-		historyTargetMonth = (EditText) findViewById(com.visus.R.id.settings_history_target_month);
-		
-		resetMonth = (Button) findViewById(com.visus.R.id.settings_history_reset_month);
-		resetYear = (Button) findViewById(com.visus.R.id.settings_history_reset_year);
-		resetAll = (Button) findViewById(com.visus.R.id.settings_history_reset_all);
-		
-		/*
-		 * determine whether to display either of the reset buttons, based on existing Sessions data
-		 */
-		int itemsMonth = 0;
-		int itemsYear = 0;
-		int itemsAll = 0;
-		
-		try {
-			dbSession.open();
+			@Override
+			public void onPageSelected(int position) {
+				ab.setSelectedNavigationItem(position);
+			}
 			
-			// month btn
-			itemsMonth = dbSession.getSessionsCountThisMonth(activeUserId);
-			
-			// year btn
-			itemsYear = dbSession.getSessionsCountThisMonth(activeUserId);
-			
-			// all sessions btn
-			itemsAll = dbSession.getSessionsCountAll(activeUserId);
-		}
-		catch(SQLiteException e) {
-			Log.e("Visus", "SQL Error", e);
-		}
-		finally {
-			dbSession.close();
-		}
-		
-		// month
-		if(itemsMonth == 0) {
-			resetMonth.setVisibility(View.GONE);
-		}
-		else {
-			resetMonth.setVisibility(View.VISIBLE);			
-		}
-		
-		// year
-		if(itemsYear == 0) {
-			resetYear.setVisibility(View.GONE);
-		}
-		else {
-			resetYear.setVisibility(View.VISIBLE);			
-		}
-		
-		// year
-		if(itemsAll == 0) {
-			resetAll.setVisibility(View.GONE);
-		}
-		else {
-			resetAll.setVisibility(View.VISIBLE);			
-		}
-		
-		
-		// spinner value
-		ArrayAdapter genderAdapter = (ArrayAdapter) personalGender.getAdapter();
-		
-		// NB: If they are null, it will simply display whatever is initialised in the hint property
-		personalName.setText(user.getFirstname() );
-		
-		int valuePosition = genderAdapter.getPosition(user.getGender());
-		personalGender.setSelection(valuePosition);
-		
-		personalAge.setText(String.valueOf(user.getAge()) );
-				
-		// target day
-		if(user.getTargetDay() == 0) {
-			historyTargetDay.setText("");
-		}
-		else {
-			historyTargetDay.setText(String.valueOf(user.getTargetDay()) );
-		}
-		
-		// target month
-		if(user.getTargetMonth() != 0) {
-			historyTargetMonth.setText(String.valueOf(user.getTargetMonth()) );
-		}
-		else {
-			historyTargetMonth.setText("");
-		}
+		});
 		
 	}
 			
@@ -188,128 +110,50 @@ public class Settings extends Activity {
 		return true;
 	}
 	
-	/**
-	 * Reset all sessions made this month
-	 * @param view
-	 */
-	public void onResetMonth(View view) {
-		try {
-			dbSession.open();
-			dbSession.deleteSessionsThisMonth(activeUserId);
-		}
-		catch(SQLiteException e) {
-			Log.e("Visus", "SQL Error", e);
-		}
-		finally {
-			final int LENGTH = 600; // ms
-			String msg = "Deleted";
-			Toast.makeText(this, msg, LENGTH).show();
-			
-			dbSession.close();
-		}
+	@Override
+	public void onTabReselected(Tab tab, FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onTabSelected(Tab tab, FragmentTransaction ft) {
+		settingsViewPager.setCurrentItem(tab.getPosition());		
+	}
+
+	@Override
+	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+		
 	}
 	
-	/**
-	 * Reset all sessions made this year
-	 * @param view
-	 */
-	public void onResetYear(View view) {
-		try {
-			dbSession.open();
-			dbSession.deleteSessionsThisYear(activeUserId);
-		}
-		catch(SQLiteException e) {
-			Log.e("Visus", "SQL Error", e);			
-		}
-		finally {
-			final int LENGTH = 600; // ms
-			String msg = "Deleted";
-			Toast.makeText(this, msg, LENGTH).show();
-			
-			dbSession.close();
-		}
-	}
-	
-	/**
-	 * Reset all sessions made
-	 * @param view
-	 */
-	public void onResetAll(View view) {
-		try {
-			dbSession.open();
-			dbSession.deleteAllSessions(activeUserId);
-		}
-		catch(SQLiteException e) {
-			Log.e("Visus", "SQL Error", e);	
-		}
-		finally {
-			final int LENGTH = 600; // ms
-			String msg = "Deleted";
-			Toast.makeText(this, msg, LENGTH).show();
-			
-			dbSession.close();
-		}
-	}
-	
-	/**
-	 * Saves the user's modified - or created - settings
-	 * @param view
-	 */
-	public void onSave(View view) {
-		user = new User();
+	public static final class SettingsPagerAdapter extends FragmentPagerAdapter {
+
+		private int userId;
+		private int NO_FRAGMENTS = 2;
 		
-		/*
-		 * 'Personal'
-		 */
-		user.setUserId(activeUserId);
-		user.setFirstname(personalName.getText().toString() );				// first name
-		user.setGender(personalGender.getSelectedItem().toString() ) ;		// gender
-		user.setAge(Integer.parseInt(personalAge.getText().toString()) );	// age
-				
-		
-		/*
-		 * 'Sessions'
-		 */
-		// target year
-		if(historyTargetDay.getText().toString().isEmpty() ) {
-			user.setTargetDay(0);
-		}
-		else {
-			user.setTargetDay(Integer.parseInt(historyTargetDay.getText().toString() ));			
-		}
-		
-		// target month
-		if(historyTargetMonth.getText().toString().isEmpty() ) {
-			user.setTargetMonth(0);
-		}
-		else {
-			user.setTargetMonth(Integer.parseInt(historyTargetMonth.getText().toString() ));			
+		public SettingsPagerAdapter(FragmentManager fm, int userId) {
+			super(fm);
+			this.userId = userId;
 		}
 
-		
-		/*
-		 * update (save) user details
-		 */
-		try {
-			dbUser.open();
-			dbUser.updateUser(user);
+		@Override
+		public Fragment getItem(int item) {
+			switch(item) {
+				case 0:
+					return new GeneralFragment(activeUserId);
+				case 1:
+					return new AboutFragment();
+				default:
+					Fragment f = new Fragment();
+					return f;
+			}
 		}
-		catch(SQLiteException e) {
-			Log.e("Visus", "SQL Error", e);
-		}
-		finally {
-			// inform the user their profile has been saved (updated)
-			final int LENGTH = 600; // ms
-			String msg = "Profile Updated";
-			Toast.makeText(this, msg, LENGTH).show();
 
-			// close database connection
-			dbUser.close();
-			
-			// return to the root menu
-			Intent intent = new Intent(Settings.this, MainActivity.class);
-			startActivity(intent);
+		@Override
+		public int getCount() {
+			return NO_FRAGMENTS;
 		}
 	}
-		
+			
 }

@@ -61,6 +61,11 @@
         <item>Activities</item>
     </string-array>
     
+    <string-array name="settings_list">
+        <item>General</item>
+        <item>About</item>
+    </string-array>
+    
             
 	<string name="gender_prompt">Gender</string>	
 	<string name="hint_age">Age</string>

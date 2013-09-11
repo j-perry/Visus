@@ -12,6 +12,7 @@ public final class R {
         public static final int account_options=0x7f060000;
         public static final int genders=0x7f060001;
         public static final int menu=0x7f060002;
+        public static final int settings_list=0x7f060003;
     }
     public static final class attr {
     }
@@ -131,40 +132,40 @@ public final class R {
         public static final int test_bg=0x7f020051;
     }
     public static final class id {
-        public static final int TextView01=0x7f09002f;
-        public static final int TextView02=0x7f090030;
+        public static final int TextView01=0x7f090030;
+        public static final int TextView02=0x7f090031;
         public static final int actionBarList=0x7f090000;
-        public static final int activities_overview=0x7f090028;
-        public static final int activity=0x7f09002d;
-        public static final int age=0x7f09001d;
-        public static final int date=0x7f09002b;
-        public static final int entry=0x7f09002a;
-        public static final int first_name=0x7f09001b;
-        public static final int gender=0x7f09001c;
-        public static final int header=0x7f090025;
-        public static final int header_events=0x7f090029;
-        public static final int header_overview=0x7f09002e;
-        public static final int hours_overview=0x7f090027;
+        public static final int activities_overview=0x7f090029;
+        public static final int activity=0x7f09002e;
+        public static final int age=0x7f09001e;
+        public static final int date=0x7f09002c;
+        public static final int entry=0x7f09002b;
+        public static final int first_name=0x7f09001c;
+        public static final int gender=0x7f09001d;
+        public static final int header=0x7f090026;
+        public static final int header_events=0x7f09002a;
+        public static final int header_overview=0x7f09002f;
+        public static final int hours_overview=0x7f090028;
         public static final int linear_layout_settings_history=0x7f090013;
         public static final int linear_layout_settings_personal=0x7f09000e;
         public static final int list_activity_types=0x7f090001;
         public static final int list_latest_activity=0x7f090002;
-        public static final int listview_sessions_this_month=0x7f09001f;
-        public static final int listview_sessions_this_week=0x7f090020;
-        public static final int listview_sessions_this_year=0x7f090021;
-        public static final int listview_sessions_today=0x7f090022;
+        public static final int listview_sessions_this_month=0x7f090020;
+        public static final int listview_sessions_this_week=0x7f090021;
+        public static final int listview_sessions_this_year=0x7f090022;
+        public static final int listview_sessions_today=0x7f090023;
         public static final int main_header=0x7f090004;
         public static final int main_menu_pager=0x7f090003;
-        public static final int menu_about=0x7f090033;
-        public static final int menu_sessions=0x7f090031;
-        public static final int menu_settings=0x7f090032;
-        public static final int new_session_menu=0x7f090034;
-        public static final int overview=0x7f090024;
+        public static final int menu_about=0x7f090034;
+        public static final int menu_sessions=0x7f090032;
+        public static final int menu_settings=0x7f090033;
+        public static final int new_session_menu=0x7f090035;
+        public static final int overview=0x7f090025;
         public static final int overview_sessions_adapter=0x7f090005;
-        public static final int period=0x7f090023;
-        public static final int register=0x7f09001e;
+        public static final int period=0x7f090024;
+        public static final int register=0x7f09001f;
         public static final int session_auto_complete_type=0x7f090009;
-        public static final int sessions_overview=0x7f090026;
+        public static final int sessions_overview=0x7f090027;
         public static final int sessions_pager=0x7f09000d;
         public static final int set_session_duration=0x7f090006;
         public static final int settings_history_header=0x7f090014;
@@ -173,12 +174,13 @@ public final class R {
         public static final int settings_history_reset_year=0x7f090018;
         public static final int settings_history_target_day=0x7f090015;
         public static final int settings_history_target_month=0x7f090016;
+        public static final int settings_pager=0x7f09001b;
         public static final int settings_personal_age=0x7f090012;
         public static final int settings_personal_gender=0x7f090011;
         public static final int settings_personal_header=0x7f09000f;
         public static final int settings_personal_name=0x7f090010;
         public static final int settings_save_all=0x7f09001a;
-        public static final int time=0x7f09002c;
+        public static final int time=0x7f09002d;
         public static final int timer=0x7f09000a;
         public static final int timer_btn=0x7f09000b;
         public static final int timer_set_minutes=0x7f090007;
@@ -203,16 +205,18 @@ public final class R {
         public static final int fragment_sessions_this_week=0x7f03000e;
         public static final int fragment_sessions_this_year=0x7f03000f;
         public static final int fragment_sessions_today=0x7f030010;
-        public static final int layout_events_view=0x7f030011;
-        public static final int layout_main_menu_header=0x7f030012;
-        public static final int layout_main_menu_item=0x7f030013;
-        public static final int layout_overview_view=0x7f030014;
-        public static final int layout_sessions_header=0x7f030015;
-        public static final int layout_sessions_item=0x7f030016;
-        public static final int layout_sessions_items=0x7f030017;
-        public static final int layout_settings_group_item=0x7f030018;
-        public static final int sign_up_spinner_gender_layout=0x7f030019;
-        public static final int sign_up_spinner_gender_list_layout=0x7f03001a;
+        public static final int fragment_settings_about=0x7f030011;
+        public static final int fragment_settings_general=0x7f030012;
+        public static final int layout_events_view=0x7f030013;
+        public static final int layout_main_menu_header=0x7f030014;
+        public static final int layout_main_menu_item=0x7f030015;
+        public static final int layout_overview_view=0x7f030016;
+        public static final int layout_sessions_header=0x7f030017;
+        public static final int layout_sessions_item=0x7f030018;
+        public static final int layout_sessions_items=0x7f030019;
+        public static final int layout_settings_group_item=0x7f03001a;
+        public static final int sign_up_spinner_gender_layout=0x7f03001b;
+        public static final int sign_up_spinner_gender_list_layout=0x7f03001c;
     }
     public static final class menu {
         public static final int activity_main=0x7f080000;
