@@ -79,19 +79,21 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		
 		ArrayAdapter<CharSequence> arAdapter = ArrayAdapter.createFromResource(this, R.array.menu, R.layout.action_bar_list);
 		
+		/**
+		 * The following two methods are crucial. Do not delete them.
+		 */
 		ab.setListNavigationCallbacks(arAdapter, new OnNavigationListener() {
 			public boolean onNavigationItemSelected(int itemPosition, long itemId) {
+				mainMenuPager.setCurrentItem(itemPosition);
 				return true;
 			}
 		});
 		
-		mainMenuPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-			
+		mainMenuPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {			
 			@Override
 			public void onPageSelected(int position) {
 				ab.setSelectedNavigationItem(position);
-			}
-			
+			}			
 		});
 	}
 	
