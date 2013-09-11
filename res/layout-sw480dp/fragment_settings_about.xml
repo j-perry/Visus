@@ -65,7 +65,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_width="fill_parent"
 	        android:textColor="@color/dark_grey"
-	        android:text="Designed and produced by Jon Perry (2013)."
+	        android:text="Designed and produced by Jon Perry."
 	        android:textSize="24sp"
 	        />
         

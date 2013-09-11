@@ -72,24 +72,25 @@ public class Settings extends FragmentActivity implements ActionBar.TabListener 
 		settingsViewPager = (ViewPager) findViewById(com.visus.R.id.settings_pager);
 		settingsPagerAdapter = new SettingsPagerAdapter(getSupportFragmentManager(), activeUserId);
 		settingsViewPager.setAdapter(settingsPagerAdapter);
-		
-		
+				
 		ArrayAdapter<CharSequence> arAdapter = ArrayAdapter.createFromResource(this, R.array.settings_list, R.layout.action_bar_list);
 		
+		/**
+		 * The following two methods are crucial. Do not delete them.
+		 */
 		ab.setListNavigationCallbacks(arAdapter, new OnNavigationListener() {
 			public boolean onNavigationItemSelected(int itemPosition, long itemId) {
+				settingsViewPager.setCurrentItem(itemPosition);
 				return true;
 			}
-		});				
+		});
 		
-		settingsViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-			
+		settingsViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {			
 			@Override
 			public void onPageSelected(int position) {
 				ab.setSelectedNavigationItem(position);
-			}
-			
-		});
+			}			
+		});		
 		
 	}
 			
