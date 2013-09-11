@@ -4,7 +4,10 @@
     android:layout_height="match_parent"
     android:background="@color/light_grey"
     android:orientation="vertical"
-    android:padding="10dp" >
+    android:paddingTop="25sp"
+    android:paddingLeft="25sp"
+    android:paddingRight="25sp" 
+    >
     
     <ScrollView 
         android:layout_height="wrap_content"
@@ -36,7 +39,6 @@
 		            android:padding="25dp"
 		            android:text="Personal"
 		            android:textSize="18sp"
-		            android:textStyle="bold"
 		            android:textColor="@color/white"
 		            />
 		        
@@ -105,7 +107,6 @@
 		            android:padding="25dp"
 		            android:text="Sessions"
 		            android:textSize="18sp"
-		            android:textStyle="bold"
 		            android:textColor="@color/white"
 		            />
 		        

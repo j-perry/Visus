@@ -15,9 +15,19 @@ import org.joda.time.LocalDate;
 // android apis
 import android.os.Bundle;
 import android.app.*;
+import android.app.ActionBar.OnNavigationListener;
+import android.app.ActionBar.Tab;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.NavUtils;
+import android.support.v4.app.TaskStackBuilder;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.*;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 // core program packages
@@ -27,13 +37,15 @@ import com.visus.entities.*;
 import com.visus.entities.sessions.Session;
 import com.visus.ui.MainMenuAdapter;
 import com.visus.ui.MainMenuListView;
+import com.visus.ui.main.fragments.ActivitiesFragment;
+import com.visus.ui.main.fragments.LatestActivityFragment;
 
 /**
  * Main entry point of the app
  * @author Jonathan Perry
  *
  */
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 	
 	private User user = null;
 	private UserHandler dbHandler;
@@ -43,7 +55,10 @@ public class MainActivity extends Activity {
 	private final String hdrLatestActivity = "Latest Activity";
 	
 	private ListView list;
-	private MainMenuAdapter adapter;		
+	private MainMenuAdapter adapter;
+	
+	private ViewPager mainMenuPager;
+	private MainMenuPagerAdapter mainMenuPagerAdapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +69,32 @@ public class MainActivity extends Activity {
 				
 		setContentView(R.layout.activity_main);
 		
+		final ActionBar ab = getActionBar();
+		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+		
+		mainMenuPager = (ViewPager) findViewById(com.visus.R.id.main_menu_pager);
+		mainMenuPagerAdapter = new MainMenuPagerAdapter(getSupportFragmentManager(), userId);
+		mainMenuPager.setAdapter(mainMenuPagerAdapter);
+		
+		
+		ArrayAdapter<CharSequence> arAdapter = ArrayAdapter.createFromResource(this, R.array.menu, R.layout.action_bar_list);
+		
+		ab.setListNavigationCallbacks(arAdapter, new OnNavigationListener() {
+			public boolean onNavigationItemSelected(int itemPosition, long itemId) {
+				return true;
+			}
+		});
+		
+		mainMenuPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+			
+			@Override
+			public void onPageSelected(int position) {
+				ab.setSelectedNavigationItem(position);
+			}
+			
+		});
 	}
-
+	
 	@Override
 	public void onResume() {
 		super.onResume();
@@ -127,10 +166,10 @@ public class MainActivity extends Activity {
 					}
 				}
 						
-				list = (ListView) findViewById(com.visus.R.id.overview_sessions_adapter);
-				adapter = new MainMenuAdapter(this, latestSessions);
-				
-				list.setAdapter(adapter);				
+//				list = (ListView) findViewById(com.visus.R.id.overview_sessions_adapter);
+//				adapter = new MainMenuAdapter(this, latestSessions);
+//				
+//				list.setAdapter(adapter);
 			}
 		}
 				
@@ -139,6 +178,54 @@ public class MainActivity extends Activity {
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
+	}
+	
+	/**
+	 * Action bar events
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		Intent intent;
+		
+		switch(item.getItemId()) {
+			// app logo
+			case android.R.id.home:
+				Intent upIntent = new Intent(this, MainActivity.class);
+	            if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
+	                // This activity is not part of the application's task, so create a new task
+	                // with a synthesized back stack.
+	                TaskStackBuilder.from(this)
+	                        // If there are ancestor activities, they should be added here.
+	                        .addNextIntent(upIntent)
+	                        .startActivities();
+	                finish();
+	            } else {
+	                // This activity is part of the application's task, so simply
+	                // navigate up to the hierarchical parent activity.
+	                NavUtils.navigateUpTo(this, upIntent);
+	            }
+	            break;
+            // new session
+			case R.id.new_session_menu:
+				intent = new Intent(MainActivity.this, NewSession.class);
+				intent.putExtra("ActiveUserId", user.getUserId());
+				startActivity(intent);
+				break;
+			case R.id.menu_sessions:
+				intent = new Intent(MainActivity.this, Sessions.class);
+				intent.putExtra("ActiveUserId", user.getUserId());
+				startActivity(intent);
+				break;
+			case R.id.menu_settings:
+				intent = new Intent(MainActivity.this, Settings.class);
+				intent.putExtra("ActiveUserId", user.getUserId());
+				startActivity(intent);
+				break;
+			default:
+				break;		
+		}
+		
+		return true;
 	}
 	
 	/*
@@ -169,6 +256,31 @@ public class MainActivity extends Activity {
 		
 		return true;
 	}
+	
+	
+	@Override
+	public void onTabReselected(Tab tab, FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onTabSelected(Tab tab, FragmentTransaction ft) {
+		mainMenuPager.setCurrentItem(tab.getPosition());
+		
+	}
+
+	@Override
+	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	/*************************************************************************
+	 * 
+	 * 								Event Handlers
+	 * 
+	 */
 			
 	/**
 	 * creates a new session
@@ -240,26 +352,39 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 	
-	private void test() {
-//		int dayNo = 0;
-//		
-//		String target = null;
-//		String day = null;
-//		int saturdayDayNo = 0;
-//
-//		
-//		while(!target.contains("Sun")) {
-//			dayNo = Integer.parseInt(new SimpleDateFormat("dd").format(new Date()) );
-//			day = new SimpleDateFormat("EEE").format(dayNo);
-//			
-//			if(day == target) {
-//				saturdayDayNo = dayNo;
-//				Log.e("Visus", "Day found");
-//			}
-//			else {
-//				dayNo--;
-//			}
-//		}
+	public static final class MainMenuPagerAdapter extends FragmentPagerAdapter {
+
+		private static final int NO_FRAGMENTS = 2;
+		private int userId;
+		
+		public MainMenuPagerAdapter(FragmentManager fm, int userId) {
+			super(fm);
+			this.userId = userId;
+		}
+
+		@Override
+		public Fragment getItem(int item) {
+			switch(item) {
+				case 0:
+					// display latest sessions made
+					return new LatestActivityFragment(userId);
+				case 1:
+					// display session activity types (no. of for each type)
+					return new ActivitiesFragment(userId);
+				default:
+					Fragment f = new Fragment();
+					return f;
+			}
+		}
+
+		/**
+		 * No of fragment views
+		 */
+		@Override
+		public int getCount() {
+			return NO_FRAGMENTS;
+		}
+		
 	}
-	
+
 }
