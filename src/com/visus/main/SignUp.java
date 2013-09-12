@@ -3,7 +3,11 @@ package com.visus.main;
 // android apis
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.Intent;
+import android.app.AlertDialog;
+import android.content.*;
+import android.database.sqlite.SQLiteException;
+import android.text.Html;
+import android.util.Log;
 import android.view.*;
 import android.widget.*;
 
@@ -18,6 +22,13 @@ import com.visus.entities.*;
  *
  */
 public class SignUp extends Activity {
+	
+	private Context context = null;
+	private EditText firstname;
+	private EditText age;
+	private Spinner genderSpinner;
+	
+	private AlertDialog alertDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,17 +38,20 @@ public class SignUp extends Activity {
 		final String male = "Male";
 		final String female = "Female";
 		
-		String [] genders = { male, female };
+		String [] genders = { "Gender", male, female };
 		
-		Spinner spinner = new Spinner(this);
+		genderSpinner = new Spinner(this);
 	    ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, 
 	    																	R.layout.sign_up_spinner_gender_layout, 
 	    																	genders);
 	    
 	    spinnerArrayAdapter.setDropDownViewResource( R.layout.sign_up_spinner_gender_list_layout );
 
-	    spinner = (Spinner) findViewById( R.id.gender );
-	    spinner.setAdapter(spinnerArrayAdapter);
+	    genderSpinner = (Spinner) findViewById(R.id.gender);
+	    genderSpinner.setAdapter(spinnerArrayAdapter);	    
+
+		firstname = (EditText) findViewById(R.id.first_name);
+		age = (EditText) findViewById(R.id.age);
 	}
 
 	@Override
@@ -51,34 +65,85 @@ public class SignUp extends Activity {
 	 * registers a new user
 	 * @param view
 	 */
-	public void registerUser(View view) {
-		
+	public void registerUser(View view) {		
 		User user = new User();
-		//UserHandler dbUser = new UserHandler(this);
 		UserHandler dbHandler = new UserHandler(this);
+		StringBuilder emptyFields = new StringBuilder();
+		String strAge = null;
+		int tmpAge = 0;
 		
-		// first name
-		EditText firstname = (EditText) findViewById(R.id.first_name);
-		user.setFirstname(firstname.getText().toString() );
+		
+		// firstname
+		if(firstname.getText().toString().isEmpty() ) {
+			emptyFields.append("\n");
+			emptyFields.append(Html.fromHtml("&#149;"));
+			emptyFields.append(" Firstname");
+		}
+		else {
+			user.setFirstname( firstname.getText().toString() );
+		}
 		
 		// gender
-		Spinner gender = (Spinner) findViewById(R.id.gender);
-		user.setGender(gender.getSelectedItem().toString() );
-		
+		if(genderSpinner.getSelectedItem().toString().equals("Gender")) {
+			emptyFields.append("\n");
+			emptyFields.append(Html.fromHtml("&#149;"));
+			emptyFields.append(" Gender");
+		} 
+		else {
+			user.setGender(genderSpinner.getSelectedItem().toString() );
+		}
+			
+				
 		// age
-		EditText age = (EditText) findViewById(R.id.age);
-		user.setAge(Integer.valueOf(age.getText().toString() ));
+		if(age.getText().toString().isEmpty()) {
+			emptyFields.append("\n");
+			emptyFields.append(Html.fromHtml("&#149;"));
+			emptyFields.append(" Age");
+		}
+		else {
+			strAge = age.getText().toString();
+			tmpAge = Integer.parseInt(strAge);
+			user.setAge(tmpAge);
+		}
 		
 		user.setTargetDay(0);
 		user.setTargetMonth(0);
 		
-		dbHandler.open();
-		dbHandler.addUser(user);
-		dbHandler.close();
 		
-		// display the main menu
-		Intent intent = new Intent(SignUp.this, MainActivity.class);
-		startActivity(intent);
+		if(!emptyFields.toString().isEmpty()) {
+			// display an AlertDialog
+			String title = "Required Fields Missing";
+			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SignUp.this);
+			alertDialogBuilder.setTitle(title);
+			
+			alertDialogBuilder.setMessage("The following fields are missing. Please fill them in:\n" + emptyFields.toString() );
+			alertDialogBuilder.setCancelable(false);
+			alertDialogBuilder.setPositiveButton("OK", new OkOnClickListener() );
+			alertDialog = alertDialogBuilder.create();
+			
+			// display it
+			alertDialog.show();
+		}
+		else {
+			try {
+				dbHandler.open();
+			}
+			catch(SQLiteException e) {
+				Log.e("Visus", "SQL Error", e);
+			}
+			finally {
+				dbHandler.addUser(user);
+				dbHandler.close();		
+				Intent intent = new Intent(SignUp.this, MainActivity.class);
+				startActivity(intent);	
+			}
+		}
+	}
+	
+	private final class OkOnClickListener implements DialogInterface.OnClickListener {
+		public void onClick(DialogInterface dialog, int which) {
+			alertDialog.dismiss();
+		}
 	}
 
 }
