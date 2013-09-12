@@ -239,6 +239,8 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 //		sessionsList.setAdapter(adapter);				
 	}
 	
+	
+	
 	/**
 	 * AlertDialog event handler that displays a new session view
 	 * @author Jonathan Perry
@@ -333,8 +335,8 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 	            }
 	            break;
             // new session
-			case R.id.new_session_menu:
-				Intent intent = new Intent(Sessions.this, NewSession.class);
+			case R.id.menu_settings:
+				Intent intent = new Intent(Sessions.this, Settings.class);
 				intent.putExtra("ActiveUserId", activeUserId);
 				startActivity(intent);
 				break;
