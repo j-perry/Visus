@@ -268,8 +268,12 @@ public final class R {
         public static final int session_01=0x7f050010;
         public static final int session_02=0x7f050011;
         public static final int settings_about_blurb=0x7f050024;
+        /**  About 
+         */
         public static final int settings_about_header=0x7f050023;
         public static final int settings_credit_blurb=0x7f050026;
+        /**  Credits 
+         */
         public static final int settings_credit_header=0x7f050025;
         public static final int title_activities=0x7f05000e;
         public static final int title_activity=0x7f05000a;

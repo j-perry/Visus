@@ -75,13 +75,14 @@ public class SignUp extends Activity {
 		StringBuilder emptyFields = new StringBuilder();
 		String strAge = null;
 		int tmpAge = 0;
+		int missingFieldItems = 0;
 		
-		
-		// firstname
+		// first name
 		if(firstname.getText().toString().isEmpty() ) {
 			emptyFields.append("\n");
 			emptyFields.append(Html.fromHtml("&#149;"));
 			emptyFields.append(" Firstname");
+			missingFieldItems++;
 		}
 		else {
 			user.setFirstname( firstname.getText().toString() );
@@ -92,6 +93,7 @@ public class SignUp extends Activity {
 			emptyFields.append("\n");
 			emptyFields.append(Html.fromHtml("&#149;"));
 			emptyFields.append(" Gender");
+			missingFieldItems++;
 		} 
 		else {
 			user.setGender(genderSpinner.getSelectedItem().toString() );
@@ -103,6 +105,7 @@ public class SignUp extends Activity {
 			emptyFields.append("\n");
 			emptyFields.append(Html.fromHtml("&#149;"));
 			emptyFields.append(" Age");
+			missingFieldItems++;
 		}
 		else {
 			strAge = age.getText().toString();
@@ -115,18 +118,35 @@ public class SignUp extends Activity {
 		
 		
 		if(!emptyFields.toString().isEmpty()) {
-			// display an AlertDialog
-			String title = "Required Fields Missing";
-			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SignUp.this);
-			alertDialogBuilder.setTitle(title);
+			if(missingFieldItems == 1) {
+				// display an AlertDialog
+				String title = "Required Field Missing";
+				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SignUp.this);
+				alertDialogBuilder.setTitle(title);
+				
+				alertDialogBuilder.setMessage("The following field is missing. Please fill it in:\n" + emptyFields.toString() );
+				alertDialogBuilder.setCancelable(false);
+				alertDialogBuilder.setPositiveButton("OK", new OkOnClickListener() );
+				alertDialog = alertDialogBuilder.create();
+				
+				// display it
+				alertDialog.show();
+			}
+			else {
+				// display an AlertDialog
+				String title = "Required Fields Missing";
+				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SignUp.this);
+				alertDialogBuilder.setTitle(title);
+				
+				alertDialogBuilder.setMessage("The following fields are missing. Please fill them in:\n" + emptyFields.toString() );
+				alertDialogBuilder.setCancelable(false);
+				alertDialogBuilder.setPositiveButton("OK", new OkOnClickListener() );
+				alertDialog = alertDialogBuilder.create();
+				
+				// display it
+				alertDialog.show();
+			}
 			
-			alertDialogBuilder.setMessage("The following fields are missing. Please fill them in:\n" + emptyFields.toString() );
-			alertDialogBuilder.setCancelable(false);
-			alertDialogBuilder.setPositiveButton("OK", new OkOnClickListener() );
-			alertDialog = alertDialogBuilder.create();
-			
-			// display it
-			alertDialog.show();
 		}
 		else {
 			try {
