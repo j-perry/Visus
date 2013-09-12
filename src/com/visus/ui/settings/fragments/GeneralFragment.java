@@ -210,6 +210,11 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		try {
 			dbSession.open();
 			dbSession.deleteSessionsThisMonth(userId);
+			
+			// hide the reset buttons
+			resetMonth.setVisibility(View.GONE);
+			resetYear.setVisibility(View.GONE);
+			resetAll.setVisibility(View.GONE);
 		}
 		catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);
@@ -231,6 +236,11 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		try {
 			dbSession.open();
 			dbSession.deleteSessionsThisYear(userId);
+			
+			// hide the reset buttons
+			resetMonth.setVisibility(View.GONE);
+			resetYear.setVisibility(View.GONE);
+			resetAll.setVisibility(View.GONE);
 		}
 		catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);			
@@ -252,6 +262,11 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		try {
 			dbSession.open();
 			dbSession.deleteAllSessions(userId);
+			
+			// hide the reset buttons
+			resetMonth.setVisibility(View.GONE);
+			resetYear.setVisibility(View.GONE);
+			resetAll.setVisibility(View.GONE);
 		}
 		catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);	
