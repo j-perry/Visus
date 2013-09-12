@@ -208,21 +208,21 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	            }
 	            break;
             // new session
-			case R.id.new_session_menu:
-				intent = new Intent(MainActivity.this, NewSession.class);
-				intent.putExtra("ActiveUserId", user.getUserId());
-				startActivity(intent);
-				break;
-			case R.id.menu_sessions:
-				intent = new Intent(MainActivity.this, Sessions.class);
-				intent.putExtra("ActiveUserId", user.getUserId());
-				startActivity(intent);
-				break;
-			case R.id.menu_settings:
-				intent = new Intent(MainActivity.this, Settings.class);
-				intent.putExtra("ActiveUserId", user.getUserId());
-				startActivity(intent);
-				break;
+//			case R.id.new_session_menu:
+//				intent = new Intent(MainActivity.this, NewSession.class);
+//				intent.putExtra("ActiveUserId", user.getUserId());
+//				startActivity(intent);
+//				break;
+//			case R.id.menu_sessions:
+//				intent = new Intent(MainActivity.this, Sessions.class);
+//				intent.putExtra("ActiveUserId", user.getUserId());
+//				startActivity(intent);
+//				break;
+//			case R.id.menu_settings:
+//				intent = new Intent(MainActivity.this, Settings.class);
+//				intent.putExtra("ActiveUserId", user.getUserId());
+//				startActivity(intent);
+//				break;
 			default:
 				break;		
 		}
@@ -358,6 +358,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
 		private static final int NO_FRAGMENTS = 2;
 		private int userId;
+		private int userId2;
 		
 		public MainMenuPagerAdapter(FragmentManager fm, int userId) {
 			super(fm);
