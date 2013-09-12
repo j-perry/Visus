@@ -1034,4 +1034,37 @@ public class SessionHandler implements IDatabaseTable {
 		return noItems;
 	}
 	
+	/**
+	 * 
+	 * @param userId
+	 * @return
+	 * @throws SQLiteException
+	 */
+	public ArrayList<String> getActivities(int userId) throws SQLiteException {
+		ArrayList<String> activities = new ArrayList<String>();
+		String qryActivities = null;
+
+		qryActivities = "SELECT *" + QRY_SPACING +
+						"FROM" + QRY_SPACING +
+				        	DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+				        "WHERE" + QRY_SPACING +
+				        	DatabaseHandler.KEY_USER_ID + " = " + userId;
+		
+		Log.e("Visus", "qryActivities: " + qryActivities);
+		
+		Cursor cursor = db.rawQuery(qryActivities, null);
+		
+		int typeIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		
+		while(cursor.moveToNext()) {
+			if(!activities.contains(cursor.getString(typeIndex)) ) {
+				activities.add(cursor.getString(typeIndex) );
+			}
+		}
+		
+		db.close();
+		cursor.close();
+		
+		return activities;
+	}	
 }

@@ -22,5 +22,15 @@
         android:text="Activities"
         android:textSize="18sp"
         />
+    
+    <!-- sessions summary --> 
+	    <ListView 
+	        android:id="@+id/main_activity_activity_types"
+	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:paddingLeft="25dp"
+	        android:paddingRight="25dp"
+	        android:divider="@color/white"
+	        />
 
 </LinearLayout>
