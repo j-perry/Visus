@@ -51,6 +51,7 @@
     <string name="username">Hi Jon</string>
     
     <string-array name="genders">
+        <item>Gender</item>
         <item>Male</item>
         <item>Female</item>
     </string-array>
