@@ -35,6 +35,9 @@ public class SignUp extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sign_up);
 		
+		// hide the on-screen keyboard (set focus off)
+		this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+		
 		final String male = "Male";
 		final String female = "Female";
 		
