@@ -6,6 +6,7 @@ import com.visus.entities.User;
 import com.visus.main.MainActivity;
 import com.visus.main.Settings;
 
+import android.R;
 import android.content.Intent;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -20,7 +22,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class GeneralFragment extends Fragment {
+public class GeneralFragment extends Fragment implements OnClickListener {
 
 	private int userId;
 	private SessionHandler dbSession;
@@ -40,6 +42,8 @@ public class GeneralFragment extends Fragment {
 						 resetYear,
 						 resetAll;
 	
+		private Button	 save;
+		
 	public GeneralFragment() {
 		super();
 	}
@@ -77,6 +81,13 @@ public class GeneralFragment extends Fragment {
 				resetMonth = (Button) rootView.findViewById(com.visus.R.id.settings_history_reset_month);
 				resetYear = (Button) rootView.findViewById(com.visus.R.id.settings_history_reset_year);
 				resetAll = (Button) rootView.findViewById(com.visus.R.id.settings_history_reset_all);
+				
+				save = (Button) rootView.findViewById(com.visus.R.id.settings_save_all);
+				
+				resetMonth.setOnClickListener(this);
+				resetYear.setOnClickListener(this);
+				resetAll.setOnClickListener(this);
+				save.setOnClickListener(this);
 				
 				/*
 				 * determine whether to display either of the reset buttons, based on existing Sessions data
@@ -156,8 +167,26 @@ public class GeneralFragment extends Fragment {
 					historyTargetMonth.setText("");
 				}
 		
-		
 		return rootView;
+	}
+	
+	@Override
+	public void onClick(View view) {
+		switch(view.getId()) {
+			case com.visus.R.id.settings_history_reset_month:
+				onResetMonth(view);
+				break;
+			case com.visus.R.id.settings_history_reset_year:
+				onResetYear(view);
+				break;
+			case com.visus.R.id.settings_history_reset_all:
+				onResetAll(view);
+				break;
+			case com.visus.R.id.settings_save_all:
+				onSave(view);
+			default:
+				break;
+		}
 	}
 	
 	/**
@@ -283,5 +312,4 @@ public class GeneralFragment extends Fragment {
 			startActivity(intent);
 		}
 	}
-
 }

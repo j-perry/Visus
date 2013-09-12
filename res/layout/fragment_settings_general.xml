@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+    
+    <LinearLayout
+	    xmlns:android="http://schemas.android.com/apk/res/android"
+	    xmlns:tools="http://schemas.android.com/tools"
+	    android:paddingTop="25sp"
+	    android:paddingLeft="25sp"
+	    android:paddingRight="25sp" 
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        >
+        
+	    
+		<ScrollView 
+	        android:layout_height="wrap_content"
+	        android:layout_width="match_parent"
+	        >
+        
+        <LinearLayout
+	        android:layout_height="wrap_content"
+	        android:layout_width="match_parent"
+	        android:orientation="vertical"
+	        >
+
+        	<!-- personal -->
+		    <LinearLayout
+		        android:id="@+id/linear_layout_settings_personal"
+		        android:background="@color/white"
+		        android:layout_height="wrap_content"
+		        android:layout_width="match_parent"
+		        android:layout_marginBottom="10dp"
+		    	android:orientation="vertical"
+		        >
+
+		        <!-- header -->
+		        <TextView 
+		            android:id="@+id/settings_personal_header"
+		            android:background="@color/light_green"
+		            android:layout_height="wrap_content"
+		            android:layout_width="match_parent"
+		            android:padding="25dp"
+		            android:text="Personal"
+		            android:textSize="18sp"
+		            android:textColor="@color/white"
+		            />
+
+		        <!-- name -->
+		        <EditText
+		            android:id="@+id/settings_personal_name"
+		            android:background="@color/white"
+		            android:layout_height="wrap_content"
+		            android:layout_width="match_parent"
+		            android:padding="25dp"
+		            android:hint="(name)"
+	        		android:inputType="textCapSentences"
+		            android:textColorHint="@color/dark_grey"
+		            android:textSize="18sp"
+		            android:textColor="@color/dark_grey"
+		            android:singleLine="true"
+		            />
+
+		        <!-- gender -->
+			    <Spinner
+			        android:id="@+id/settings_personal_gender"
+			        android:layout_height="wrap_content"
+			        android:layout_width="fill_parent"
+		            android:padding="25dp"
+			        android:prompt="@string/gender_prompt"
+			        android:entries="@array/genders"
+			        android:textColor="@color/dark_grey"
+			        android:textSize="18sp"
+			        />
+
+		        <!-- age -->
+		        <EditText
+		            android:id="@+id/settings_personal_age"
+	        		android:inputType="number"
+		            android:background="@color/white"
+		            android:layout_height="wrap_content"
+		            android:layout_width="match_parent"
+		            android:padding="25dp"
+		            android:hint="(age)"
+		            android:textColorHint="@color/dark_grey"
+		            android:textSize="18sp"
+		            android:textColor="@color/dark_grey"
+		            android:singleLine="true"
+		            />
+
+		    </LinearLayout><!-- end of personal -->
+
+
+
+		    <!-- history -->
+		    <LinearLayout
+		        android:id="@+id/linear_layout_settings_history"
+		        android:background="@color/white"
+		        android:layout_height="wrap_content"
+		        android:layout_width="match_parent"
+		        android:layout_marginBottom="20dp"
+		    	android:orientation="vertical"
+		        >
+
+		        <!-- header -->
+		        <TextView 
+		            android:id="@+id/settings_history_header"
+		            android:background="@color/light_green"
+		            android:layout_height="wrap_content"
+		            android:layout_width="match_parent"
+		            android:padding="25dp"
+		            android:text="Sessions"
+		            android:textSize="18sp"
+		            android:textColor="@color/white"
+		            />
+
+		        <!-- target (day) -->
+		        <EditText
+		            android:id="@+id/settings_history_target_day"
+	        		android:inputType="number"
+		            android:background="@color/white"
+		            android:layout_height="wrap_content"
+		            android:layout_width="match_parent"
+		            android:padding="25dp"
+		            android:hint="(Set target (day))"
+		            android:textColorHint="@color/light_green"
+		            android:textSize="18sp"
+		            android:textColor="@color/dark_grey"
+		            android:singleLine="true"
+		            />
+
+		        <!-- target (month) -->
+		        <EditText
+		            android:id="@+id/settings_history_target_month"
+	        		android:inputType="number"
+		            android:background="@color/white"
+		            android:layout_height="wrap_content"
+		            android:layout_width="match_parent"
+		            android:padding="25dp"
+		            android:hint="(Set target (month))"
+		            android:textColorHint="@color/light_green"
+		            android:textSize="18sp"
+		            android:textColor="@color/dark_grey"
+		            android:singleLine="true"
+		            />
+
+		        <!-- reset (month) -->
+		        <Button
+		            android:id="@+id/settings_history_reset_month"
+		            android:onClick="onResetMonth"
+			        android:background="@drawable/settings_history_btn_bg"
+		            android:layout_height="wrap_content"
+		            android:layout_width="match_parent"
+		            android:layout_marginTop="2sp"
+		            android:layout_marginLeft="2sp"
+		            android:layout_marginRight="2sp"
+		            android:padding="25dp"
+		            android:text="Reset (Month)"
+		            android:gravity="center"
+		            android:textSize="18sp"
+		            android:textColor="@color/white"
+		            />
+
+		        <!-- reset (year) -->
+		        <Button
+		            android:id="@+id/settings_history_reset_year"
+		            android:onClick="onResetYear"
+			        android:background="@drawable/settings_history_btn_bg"
+		            android:layout_height="wrap_content"
+		            android:layout_width="match_parent"
+		            android:layout_marginRight="2sp"
+		            android:layout_marginLeft="2sp"
+		            android:padding="25dp"
+		            android:text="Reset (Year)"
+		            android:gravity="center"
+		            android:textSize="18sp"
+		            android:textColor="@color/white"
+		            />
+
+		        <!-- reset (all) -->
+		        <Button
+		            android:id="@+id/settings_history_reset_all"
+		            android:onClick="onResetAll"
+			        android:background="@drawable/settings_history_btn_bg"
+		            android:layout_height="wrap_content"
+		            android:layout_width="match_parent"
+		            android:layout_marginLeft="2sp"
+		            android:layout_marginRight="2sp"
+		            android:layout_marginBottom="2sp"
+		            android:padding="25dp"
+		            android:text="Reset (All)"
+		            android:gravity="center"
+		            android:textSize="18sp"
+		            android:textColor="@color/white"
+		            />
+
+		    </LinearLayout><!-- end of history -->
+
+		    <LinearLayout
+		        android:background="@color/white"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginBottom="20dp"
+		    	android:orientation="vertical"
+		        >
+
+		        <!-- save -->
+		        <Button
+		            android:id="@+id/settings_save_all"
+		            android:onClick="onSave"
+			        android:background="@drawable/settings_save_all_btn_bg"
+		            android:layout_height="wrap_content"
+		            android:layout_width="match_parent"
+		            android:padding="25dp"
+		            android:gravity="center"
+		            android:text="Save"
+		            android:textStyle="bold"
+		            android:textSize="18sp"
+		            android:textColor="@color/white"
+		            />
+
+		    </LinearLayout>
+
+        </LinearLayout><!-- end of wrapper -->
+        
+    </ScrollView>
+        
+	    
+	    
+	    
+	</LinearLayout>	    

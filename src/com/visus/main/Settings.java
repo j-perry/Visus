@@ -62,6 +62,9 @@ public class Settings extends FragmentActivity implements ActionBar.TabListener 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
 		
+		// hide the on-screen keyboard (set focus off)
+		this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+		
 		Bundle b = getIntent().getExtras();
 		activeUserId = b.getInt("ActiveUserId");
 				
