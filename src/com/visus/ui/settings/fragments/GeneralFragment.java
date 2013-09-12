@@ -70,102 +70,115 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 			dbUser.close();
 		}
 				
-				// populate the setting components
-				personalName = (EditText) rootView.findViewById(com.visus.R.id.settings_personal_name);
-				personalGender = (Spinner) rootView.findViewById(com.visus.R.id.settings_personal_gender);
-				personalAge = (EditText) rootView.findViewById(com.visus.R.id.settings_personal_age);
+		// populate the setting components
+		personalName = (EditText) rootView.findViewById(com.visus.R.id.settings_personal_name);
+		personalGender = (Spinner) rootView.findViewById(com.visus.R.id.settings_personal_gender);
+		personalAge = (EditText) rootView.findViewById(com.visus.R.id.settings_personal_age);
 				
-				historyTargetDay = (EditText) rootView.findViewById(com.visus.R.id.settings_history_target_day);
-				historyTargetMonth = (EditText) rootView.findViewById(com.visus.R.id.settings_history_target_month);
+		historyTargetDay = (EditText) rootView.findViewById(com.visus.R.id.settings_history_target_day);
+		historyTargetMonth = (EditText) rootView.findViewById(com.visus.R.id.settings_history_target_month);
 				
-				resetMonth = (Button) rootView.findViewById(com.visus.R.id.settings_history_reset_month);
-				resetYear = (Button) rootView.findViewById(com.visus.R.id.settings_history_reset_year);
-				resetAll = (Button) rootView.findViewById(com.visus.R.id.settings_history_reset_all);
+		resetMonth = (Button) rootView.findViewById(com.visus.R.id.settings_history_reset_month);
+		resetYear = (Button) rootView.findViewById(com.visus.R.id.settings_history_reset_year);
+		resetAll = (Button) rootView.findViewById(com.visus.R.id.settings_history_reset_all);
 				
-				save = (Button) rootView.findViewById(com.visus.R.id.settings_save_all);
+		save = (Button) rootView.findViewById(com.visus.R.id.settings_save_all);
 				
-				resetMonth.setOnClickListener(this);
-				resetYear.setOnClickListener(this);
-				resetAll.setOnClickListener(this);
-				save.setOnClickListener(this);
+		// set event handlers for the reset and save all buttons
+		resetMonth.setOnClickListener(this);
+		resetYear.setOnClickListener(this);
+		resetAll.setOnClickListener(this);
+		save.setOnClickListener(this);
 				
-				/*
-				 * determine whether to display either of the reset buttons, based on existing Sessions data
-				 */
-				int itemsMonth = 0;
-				int itemsYear = 0;
-				int itemsAll = 0;
+		/*
+		* determine whether to display either of the reset buttons, based on existing Sessions data
+		*/
+		int itemsMonth = 0;
+		int itemsYear = 0;
+		int itemsAll = 0;
 				
-				try {
-					dbSession.open();
+		try {
+			dbSession.open();
 					
-					// month btn
-					itemsMonth = dbSession.getSessionsCountThisMonth(userId);
+			// month btn
+			itemsMonth = dbSession.getSessionsCountThisMonth(userId);
 					
-					// year btn
-					itemsYear = dbSession.getSessionsCountThisMonth(userId);
+			// year btn
+			itemsYear = dbSession.getSessionsCountThisMonth(userId);
 					
-					// all sessions btn
-					itemsAll = dbSession.getSessionsCountAll(userId);
-				}
-				catch(SQLiteException e) {
-					Log.e("Visus", "SQL Error", e);
-				}
-				finally {
-					dbSession.close();
-				}
+			// all sessions btn
+			itemsAll = dbSession.getSessionsCountAll(userId);
+		}
+		catch(SQLiteException e) {
+			Log.e("Visus", "SQL Error", e);
+		}
+		finally {
+			dbSession.close();
+		}
 				
-				// month
-				if(itemsMonth == 0) {
-					resetMonth.setVisibility(View.GONE);
-				}
-				else {
-					resetMonth.setVisibility(View.VISIBLE);			
-				}
+		// month
+		if(itemsMonth == 0) {
+			resetMonth.setVisibility(View.GONE);
+		}
+		else {
+			resetMonth.setVisibility(View.VISIBLE);			
+		}
 				
-				// year
-				if(itemsYear == 0) {
-					resetYear.setVisibility(View.GONE);
-				}
-				else {
-					resetYear.setVisibility(View.VISIBLE);			
-				}
+		// year
+		if(itemsYear == 0) {
+			resetYear.setVisibility(View.GONE);
+		}
+		else {
+			resetYear.setVisibility(View.VISIBLE);			
+		}
 				
-				// year
-				if(itemsAll == 0) {
-					resetAll.setVisibility(View.GONE);
-				}
-				else {
-					resetAll.setVisibility(View.VISIBLE);			
-				}
+		// year
+		if(itemsAll == 0) {
+			resetAll.setVisibility(View.GONE);
+		}
+		else {
+			resetAll.setVisibility(View.VISIBLE);			
+		}
+		
+		final String male = "Male";
+		final String female = "Female";
+		
+		String [] genders = { male, female };
 				
 				
-				// spinner value
-				ArrayAdapter genderAdapter = (ArrayAdapter) personalGender.getAdapter();
+		// spinner value
+		ArrayAdapter<String>  genderAdapter = new ArrayAdapter<String>(getActivity(),
+																	   com.visus.R.layout.settings_spinner_gender_layout, 
+																	   genders);
+		
+		genderAdapter.setDropDownViewResource(com.visus.R.layout.settings_spinner_gender_list_layout );
+		personalGender.setAdapter(genderAdapter);	
+		
+		genderAdapter = (ArrayAdapter) personalGender.getAdapter();
+				  		
+		// NB: If they are null, it will simply display whatever is initialised in the hint property
+		personalName.setText(user.getFirstname() );
 				
-				// NB: If they are null, it will simply display whatever is initialised in the hint property
-				personalName.setText(user.getFirstname() );
+		int valuePosition = genderAdapter.getPosition(user.getGender());
+		personalGender.setSelection(valuePosition);
 				
-				int valuePosition = genderAdapter.getPosition(user.getGender());
-				personalGender.setSelection(valuePosition);
-				
-				personalAge.setText(String.valueOf(user.getAge()) );
+		personalAge.setText(String.valueOf(user.getAge()) );
 						
-				// target day
-				if(user.getTargetDay() == 0) {
-					historyTargetDay.setText("");
-				}
-				else {
-					historyTargetDay.setText(String.valueOf(user.getTargetDay()) );
-				}
+		// target day
+		if(user.getTargetDay() == 0) {
+			historyTargetDay.setText("");
+		}
+		else {
+			historyTargetDay.setText(String.valueOf(user.getTargetDay()) );
+		}
 				
-				// target month
-				if(user.getTargetMonth() != 0) {
-					historyTargetMonth.setText(String.valueOf(user.getTargetMonth()) );
-				}
-				else {
-					historyTargetMonth.setText("");
-				}
+		// target month
+		if(user.getTargetMonth() != 0) {
+			historyTargetMonth.setText(String.valueOf(user.getTargetMonth()) );
+		}
+		else {
+			historyTargetMonth.setText("");
+		}
 		
 		return rootView;
 	}
