@@ -132,20 +132,20 @@ public final class R {
         public static final int test_bg=0x7f020051;
     }
     public static final class id {
-        public static final int TextView01=0x7f090031;
-        public static final int TextView02=0x7f090032;
+        public static final int TextView01=0x7f090035;
+        public static final int TextView02=0x7f090036;
         public static final int actionBarList=0x7f090000;
-        public static final int activities_overview=0x7f09002a;
-        public static final int activity=0x7f09002f;
+        public static final int activities_overview=0x7f09002e;
+        public static final int activity=0x7f090033;
         public static final int age=0x7f09001e;
-        public static final int date=0x7f09002d;
-        public static final int entry=0x7f09002c;
+        public static final int date=0x7f090031;
+        public static final int entry=0x7f090030;
         public static final int first_name=0x7f09001c;
         public static final int gender=0x7f09001d;
-        public static final int header=0x7f090027;
-        public static final int header_events=0x7f09002b;
-        public static final int header_overview=0x7f090030;
-        public static final int hours_overview=0x7f090029;
+        public static final int header=0x7f09002b;
+        public static final int header_events=0x7f09002f;
+        public static final int header_overview=0x7f090034;
+        public static final int hours_overview=0x7f09002d;
         public static final int linear_layout_settings_history=0x7f090014;
         public static final int linear_layout_settings_personal=0x7f09000f;
         public static final int list_activity_types=0x7f090001;
@@ -157,17 +157,21 @@ public final class R {
         public static final int main_activity_activity_types=0x7f090020;
         public static final int main_header=0x7f090004;
         public static final int main_menu_pager=0x7f090003;
-        public static final int menu_about=0x7f090034;
-        public static final int menu_settings=0x7f090033;
-        public static final int new_session_menu=0x7f090035;
-        public static final int overview=0x7f090026;
+        public static final int menu_about=0x7f090038;
+        public static final int menu_settings=0x7f090037;
+        public static final int new_session_menu=0x7f090039;
+        public static final int overview=0x7f09002a;
         public static final int overview_sessions_adapter=0x7f090005;
-        public static final int period=0x7f090025;
+        public static final int period=0x7f090029;
         public static final int register=0x7f09001f;
         public static final int session_auto_complete_type=0x7f090009;
-        public static final int sessions_overview=0x7f090028;
+        public static final int sessions_overview=0x7f09002c;
         public static final int sessions_pager=0x7f09000d;
         public static final int set_session_duration=0x7f090006;
+        public static final int settings_about_blurb=0x7f090026;
+        public static final int settings_about_header=0x7f090025;
+        public static final int settings_credit_blurb=0x7f090028;
+        public static final int settings_credit_header=0x7f090027;
         public static final int settings_history_header=0x7f090015;
         public static final int settings_history_reset_all=0x7f09001a;
         public static final int settings_history_reset_month=0x7f090018;
@@ -180,7 +184,7 @@ public final class R {
         public static final int settings_personal_header=0x7f090010;
         public static final int settings_personal_name=0x7f090011;
         public static final int settings_save_all=0x7f09001b;
-        public static final int time=0x7f09002e;
+        public static final int time=0x7f090032;
         public static final int timer=0x7f09000a;
         public static final int timer_btn=0x7f09000b;
         public static final int timer_set_minutes=0x7f090007;
@@ -228,10 +232,6 @@ public final class R {
         public static final int activity_view_settings=0x7f080004;
     }
     public static final class string {
-        public static final int account_delete=0x7f050029;
-        public static final int account_header=0x7f050026;
-        public static final int account_modify=0x7f050028;
-        public static final int account_reset=0x7f050027;
         public static final int activities=0x7f050012;
         public static final int activity_new_session=0x7f050002;
         public static final int app_name=0x7f050000;
@@ -258,7 +258,6 @@ public final class R {
          */
         public static final int music=0x7f050013;
         public static final int news=0x7f050014;
-        public static final int normal_theme=0x7f050024;
         /**  Previous Session 
          */
         public static final int prev_session=0x7f050020;
@@ -268,7 +267,10 @@ public final class R {
          */
         public static final int session_01=0x7f050010;
         public static final int session_02=0x7f050011;
-        public static final int themes_header=0x7f050023;
+        public static final int settings_about_blurb=0x7f050024;
+        public static final int settings_about_header=0x7f050023;
+        public static final int settings_credit_blurb=0x7f050026;
+        public static final int settings_credit_header=0x7f050025;
         public static final int title_activities=0x7f05000e;
         public static final int title_activity=0x7f05000a;
         public static final int title_activity_categories=0x7f05000d;
@@ -287,7 +289,6 @@ public final class R {
         public static final int title_start_session=0x7f05001e;
         public static final int username=0x7f050019;
         public static final int visus_welcome=0x7f050001;
-        public static final int weather_theme=0x7f050025;
     }
     public static final class style {
         public static final int ActionBar=0x7f070003;

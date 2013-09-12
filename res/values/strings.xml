@@ -88,13 +88,15 @@
     
     <string name="default_sessions_no">Sessions</string>
     
-    <string name="themes_header">Themes</string>
-    <string name="normal_theme">Normal</string>
-    <string name="weather_theme">Weather</string>
-    
-    <string name="account_header">Account</string>
-    <string name="account_reset">Reset</string>
-    <string name="account_modify">Modify</string>
-    <string name="account_delete">Delete</string>
+    	<!-- About -->
+	    <string name="settings_about_header">About</string>
+	    <string name="settings_about_blurb">Visus is a simple healthcare and productivity app, designed to optimise you’re experience using you’re PC, tablet or smartphone.\n\nAfter excessive hours staring at displays, whether in the office, at home, or on the bus, it’s hard to think constructively, whilst developing dry eyes, impacting productivity on day-to-day tasks.\n\nVisus aims to address these issues, and enable users to overcome these constraints.</string>
+	    
+	    <!-- Credits -->
+	    <string name="settings_credit_header">Credits</string>
+	    <string name="settings_credit_blurb">Designed and produced by Jon Perry.\nMade in Britain.</string>
+	    
+	<!-- End of Settings -->
+	
 
 </resources>

@@ -10,67 +10,69 @@
     android:orientation="vertical"
     >
     
+    <!-- about -->
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25sp"
         android:paddingLeft="25sp"
         android:paddingRight="25sp"
         android:orientation="vertical"
         >
                 
+        <!-- header -->
 	    <TextView 
-	        android:id="@+id/main_header"
+	        android:id="@+id/settings_about_header"
 	        android:layout_height="wrap_content"
 	        android:layout_width="fill_parent"   
 			android:paddingBottom="25sp"
 	        android:textColor="@color/dark_grey"
-	        android:text="About"
+	        android:text="@string/settings_about_header"
 	        android:textStyle="bold"
 	        android:textSize="42sp"
 	        />
 	    
+	    <!-- blurb -->
 	    <TextView 
-	        android:id="@+id/main_header"
+	        android:id="@+id/settings_about_blurb"
 	        android:layout_height="wrap_content"
 	        android:layout_width="fill_parent"
 	        android:textColor="@color/dark_grey"
-	        android:text="Visus is a simple healthcare and productivity app, designed to optimise you’re experience using you’re PC, tablet or smartphone.\n\nAfter excessive hours staring at displays, whether in the office, at home, or on the bus, it’s hard to think constructively, whilst developing dry eyes, impacting productivity on day-to-day tasks.\n\nVisus aims to address these issues, and enable users to overcome these constraints."
+	        android:text="@string/settings_about_blurb"
 	        android:textSize="24sp"
 	        />
         
     </LinearLayout>
     
+    <!-- credits -->
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="25sp"
         android:orientation="vertical"
-        >
+        >        
         
-        
+        <!-- header -->
 	    <TextView 
-	        android:id="@+id/main_header"
+	        android:id="@+id/settings_credit_header"
 	        android:layout_height="wrap_content"
 	        android:layout_width="fill_parent"
 			android:paddingBottom="25sp"
-	        android:textColor="@color/dark_grey"
-	        android:text="Credits"
+	        android:textColor="@color/dark_grey"	        
+	        android:text="@string/settings_credit_header"
 	        android:textStyle="bold"
 	        android:textSize="42sp"
 	        />
 	    
+	    <!-- credits blurb -->
 	    <TextView 
-	        android:id="@+id/main_header"
+	        android:id="@+id/settings_credit_blurb"
 	        android:layout_height="wrap_content"
 	        android:layout_width="fill_parent"
 	        android:textColor="@color/dark_grey"
-	        android:text="Designed and produced by Jon Perry.\nMade in the UK."
+	        android:text="@string/settings_credit_blurb"
 	        android:textSize="24sp"
 	        />
         
     </LinearLayout>
     
-    
-
 </LinearLayout>
