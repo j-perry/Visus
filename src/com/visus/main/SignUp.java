@@ -38,10 +38,11 @@ public class SignUp extends Activity {
 		// hide the on-screen keyboard (set focus off)
 		this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		
+		final String gender = "Gender";
 		final String male = "Male";
 		final String female = "Female";
 		
-		String [] genders = { "Gender", male, female };
+		String [] genders = { gender, male, female };
 		
 		genderSpinner = new Spinner(this);
 	    ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, 

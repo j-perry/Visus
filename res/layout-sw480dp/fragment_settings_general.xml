@@ -59,8 +59,18 @@
 		            android:textColor="@color/dark_grey"
 		            android:singleLine="true"
 		            />
-
+		        
 		        <!-- gender -->
+			    <Spinner
+			        android:id="@+id/settings_personal_gender"
+			        android:background="@color/white"
+			        android:layout_height="wrap_content"
+			        android:layout_width="match_parent"
+			        android:layout_marginBottom="0dp"
+			        android:textColor="@color/dark_grey"
+			        />
+
+		        <!-- gender 
 			    <Spinner
 			        android:id="@+id/settings_personal_gender"
 			        android:layout_height="wrap_content"
@@ -71,6 +81,7 @@
 			        android:textColor="@color/dark_grey"
 			        android:textSize="18sp"
 			        />
+			        -->
 
 		        <!-- age -->
 		        <EditText
