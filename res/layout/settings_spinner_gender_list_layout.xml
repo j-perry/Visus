@@ -8,7 +8,7 @@
 	    android:id="@+id/TextView02"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:textSize="24sp"
+	    android:textSize="14sp"
 	    android:padding="15sp"
 	    android:textColor="@drawable/sign_up_gender_txt"
 	    />

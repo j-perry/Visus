@@ -18,6 +18,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+/**
+ * Displays any sessions made today
+ * @author Jonathan Perry
+ */
 public class FragmentToday extends Fragment {
 	
 	private int userId;

@@ -22,6 +22,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+/**
+ * Display's content used to manipulate the UX
+ * @author Jonathan Perry
+ */
 public class GeneralFragment extends Fragment implements OnClickListener {
 
 	private int userId;
@@ -29,20 +33,21 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 	private UserHandler dbUser;
 	private User user;
 	
-	// personal
-		private EditText personalName;
-		private Spinner  personalGender;
-		private EditText personalAge;
+	// 'personal'
+	private EditText personalName;
+	private Spinner  personalGender;
+	private EditText personalAge;
 		
-		// history
-		private EditText historyTargetDay;
-		private EditText historyTargetMonth;
+	// 'sessions'
+	private EditText historyTargetDay;
+	private EditText historyTargetMonth;
 		
-		private Button	 resetMonth,
-						 resetYear,
-						 resetAll;
+	private Button	 resetMonth,
+					 resetYear,
+					 resetAll;
 	
-		private Button	 save;
+	// 'save'
+	private Button	 save;
 		
 	public GeneralFragment() {
 		super();

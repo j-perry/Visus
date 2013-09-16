@@ -26,6 +26,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+/**
+ * Displays any sessions made this week
+ * @author Jonathan Perry
+ */
 public class FragmentThisWeek extends Fragment {
 	
 	private int userId;
@@ -60,8 +64,6 @@ public class FragmentThisWeek extends Fragment {
 		finally {
 			// return session results based on this week (between Saturday and Friday)		
 			sessions = dbSession.getSessionsThisWeek(userId);
-			
-//			sessions = dbSession.getLatestSessions(userId);
 			dbSession.close();
 		}
 		

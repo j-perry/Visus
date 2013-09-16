@@ -316,27 +316,35 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		Intent intent = null;
+		
 		switch(item.getItemId()) {
 			// app logo
 			case android.R.id.home:
-				Intent upIntent = new Intent(this, MainActivity.class);
-	            if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
+				intent = new Intent(this, MainActivity.class);
+	            if (NavUtils.shouldUpRecreateTask(this, intent)) {
 	                // This activity is not part of the application's task, so create a new task
 	                // with a synthesized back stack.
 	                TaskStackBuilder.from(this)
 	                        // If there are ancestor activities, they should be added here.
-	                        .addNextIntent(upIntent)
+	                        .addNextIntent(intent)
 	                        .startActivities();
 	                finish();
 	            } else {
 	                // This activity is part of the application's task, so simply
 	                // navigate up to the hierarchical parent activity.
-	                NavUtils.navigateUpTo(this, upIntent);
+	                NavUtils.navigateUpTo(this, intent);
 	            }
 	            break;
             // new session
+			case R.id.new_session_menu:
+				intent = new Intent(this, NewSession.class);
+				intent.putExtra("ActiveUserId", activeUserId);
+	            startActivity(intent);
+	            break;
+	        // settings
 			case R.id.menu_settings:
-				Intent intent = new Intent(Sessions.this, Settings.class);
+				intent = new Intent(Sessions.this, Settings.class);
 				intent.putExtra("ActiveUserId", activeUserId);
 				startActivity(intent);
 				break;

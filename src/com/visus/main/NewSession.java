@@ -11,6 +11,8 @@ import android.annotation.SuppressLint;
 import android.app.*;
 import android.content.Intent;
 import android.database.sqlite.SQLiteException;
+import android.support.v4.app.NavUtils;
+import android.support.v4.app.TaskStackBuilder;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.*;
@@ -169,6 +171,35 @@ public class NewSession extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		//getMenuInflater().inflate(R.menu.activity_new_view, menu);
+		return true;
+	}
+	
+	/**
+	 * Action bar events
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()) {
+			// app logo
+			case android.R.id.home:
+				Intent upIntent = new Intent(this, MainActivity.class);
+	            if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
+	                // This activity is not part of the application's task, so create a new task
+	                // with a synthesized back stack.
+	                TaskStackBuilder.from(this)
+	                        // If there are ancestor activities, they should be added here.
+	                        .addNextIntent(upIntent)
+	                        .startActivities();
+	                finish();
+	            } else {
+	                // This activity is part of the application's task, so simply
+	                // navigate up to the hierarchical parent activity.
+	                NavUtils.navigateUpTo(this, upIntent);
+	            }
+	            break;
+	        default:
+	        	break;
+		}
 		return true;
 	}
 		

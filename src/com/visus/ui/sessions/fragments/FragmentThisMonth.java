@@ -17,6 +17,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+/**
+ * Displays any sessions made this month
+ * @author Jonathan Perry
+ */
 public class FragmentThisMonth extends Fragment {
 	
 	private int userId;

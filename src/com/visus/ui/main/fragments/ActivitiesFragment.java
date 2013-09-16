@@ -16,10 +16,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class ActivitiesFragment extends Fragment {
 	
 	private int userId;
+	private int noActivities;
+	private Session firstSession;
+	private ArrayList<HashMap<String, String>> activities;
 	
 	private ListView list;
 	private MainMenuAdapter adapter;
@@ -28,46 +32,71 @@ public class ActivitiesFragment extends Fragment {
 		super();
 	}
 	
-	public ActivitiesFragment(int userId) {
+	public ActivitiesFragment(int userId, 
+							  int noActivities, 
+							  ArrayList<HashMap<String, String>> activities,
+							  Session firstSession) {
 		super();
 		this.userId = userId;
+		this.noActivities = noActivities;
+		this.activities = activities;
+		this.firstSession = firstSession;
 	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(com.visus.R.layout.fragment_main_menu_activities, container, false);
-		ArrayList<String> activitiesResult = new ArrayList<String>();
-		SessionHandler dbSession = new SessionHandler(getActivity() ); // getActivity() should do the trick!
-		ArrayList<HashMap<String, String>> activities = new ArrayList<HashMap<String, String>>();
 		
-		Log.e("Visus", "ActivitiesFragment: " + userId);
+		// display no. of sessions - total
+		TextView txtVwTotalSessions = (TextView) rootView.findViewById(com.visus.R.id.main_menu_no_activities);
+		String tmpTotalActivities = " Activities";
 		
-		try {
-			dbSession.open();
-			activitiesResult = dbSession.getActivities(userId);
+		if(noActivities == 0) {
+			txtVwTotalSessions.setText(String.valueOf(0) + tmpTotalActivities);			
 		}
-		finally {
-			dbSession.close();
-		}
-		
-		if(activitiesResult.isEmpty()) {
-			HashMap<String, String> map = new HashMap<String, String>();
-			map.put(MainMenuListView.SESSION, "None Created");			
-			
-			activities.add(map);
+		else if(noActivities == 1) {
+			txtVwTotalSessions.setText(String.valueOf(noActivities) + " Activity" );			
 		}
 		else {
-			for(String activity : activitiesResult) {
-				HashMap<String, String> map = new HashMap<String, String>();
-				map.put(MainMenuListView.SESSION, activity);			
-				
-				activities.add(map);
-			}
+			txtVwTotalSessions.setText(String.valueOf(noActivities) + tmpTotalActivities );
+		}		
+		
+		
+		/*
+		 * Get the date of the first session (activity)
+		 */
+		TextView txtVwFirstSession = (TextView) rootView.findViewById(com.visus.R.id.main_menu_activities_date_account_created);
+		StringBuilder strFirstSessionActivity = new StringBuilder();
+		
+		if(firstSession == null) {
+			strFirstSessionActivity.append("Created");
 		}
-						
+		else {
+			strFirstSessionActivity.append("Created since ");
+
+			// day
+			strFirstSessionActivity.append(firstSession.getDay() + " ");
+			
+			// day no (dd)
+			strFirstSessionActivity.append(String.valueOf(firstSession.getDayNo()) );
+			strFirstSessionActivity.append(" ");
+			
+			// month (MMM)
+			strFirstSessionActivity.append(firstSession.getMonth() );
+			strFirstSessionActivity.append(", ");
+			
+			// year (YYYY)
+			strFirstSessionActivity.append(firstSession.getYear() );
+		}
+				
+		// display
+		txtVwFirstSession.setText(strFirstSessionActivity.toString() );
+		
+		
+		// display activity categories
 		list = (ListView) rootView.findViewById(com.visus.R.id.main_activity_activity_types);
 		adapter = new MainMenuAdapter(getActivity(), activities);
-		
+				
 		list.setAdapter(adapter);
 						
 		return rootView;
@@ -75,6 +104,5 @@ public class ActivitiesFragment extends Fragment {
 	
 	public void onDestoryView() {
 		super.onDestroyView();
-	}
-	
+	}	
 }

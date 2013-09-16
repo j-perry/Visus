@@ -15,6 +15,16 @@
         android:theme="@style/AppTheme" 
         >
         
+        
+        
+        <!--////////////////////////////////////////////////
+        
+        		Activities (excluding fragmented views!)
+        		
+        ////////////////////////////////////////////////////-->
+        
+        
+        <!-- Main Menu -->
         <activity
             android:name="com.visus.main.MainActivity"
             android:label="@string/app_name"
@@ -24,20 +34,21 @@
             
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         
-        <!-- new user -->
+        
+        <!-- 'Sign up' -->
         <activity 
             android:name="com.visus.main.SignUp"
-            android:label="@string/title_activity_new_user"
+            android:label="@string/activity_sign_up"
             android:configChanges="orientation"
             android:screenOrientation="portrait" 
             />
-                
-        <!-- new session -->
+               
+        
+        <!-- 'New Session' -->
         <activity
             android:name="com.visus.main.NewSession"
             android:label="@string/activity_new_session"            
@@ -53,10 +64,11 @@
             
         </activity>
                 
-        <!-- previous sessions -->
+        
+        <!-- 'Sessions' -->
         <activity
             android:name="com.visus.main.Sessions"
-            android:label="@string/title_activity_prev_sessions" 
+            android:label="@string/activity_sessions" 
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:parentActivityName="com.visus.main.MainActivity"
@@ -68,43 +80,12 @@
                 />
             
         </activity>
+                
         
-        <!-- latest activity -->
-        <activity
-            android:name="com.visus.main.LatestActivity"
-            android:label="@string/title_latest_activity" 
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"            
-            />
-                        
-        <!-- activity categories -->
-        <activity
-            android:name="com.visus.main.ActivityCategories"
-            android:label="@string/title_activity_categories"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait" 
-            />
-        
-        <!-- activity category -->
-        <activity
-            android:name="com.visus.main.ActivityCategory"
-            android:label="@string/title_activity_category"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait" 
-            />
-        
-        <!-- activity category -->
-        <activity
-            android:name="com.visus.main.UserActivity"
-            android:label="@string/title_activity" 
-            android:configChanges="orientation"
-            android:screenOrientation="portrait" 
-            />
-        
-        <!-- view settings -->
+        <!-- 'Settings' -->
         <activity
             android:name="com.visus.main.Settings"
-            android:label="@string/title_activity_view_settings"
+            android:label="@string/activity_settings"
             android:configChanges="orientation"
             android:screenOrientation="portrait" 
             android:parentActivityName="com.visus.main.MainActivity"
@@ -115,6 +96,13 @@
                 android:value="com.visus.main.MainActivity"
                 />
         </activity>
+        
+        
+        <!--///////////////////////////
+        
+        		End of Activities        
+        		
+        ///////////////////////////////-->
         
     </application>
 

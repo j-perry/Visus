@@ -3,12 +3,53 @@
     <LinearLayout
 	    xmlns:android="http://schemas.android.com/apk/res/android"
 	    xmlns:tools="http://schemas.android.com/tools"
-	    android:padding="10dp"
+	    android:padding="0dp"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="vertical"
         >
         
+        <LinearLayout
+	        android:background="@color/white"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="25sp"
+	        android:layout_marginBottom="0sp"
+	        android:layout_marginLeft="25sp"
+	        android:layout_marginRight="25sp"
+	        android:orientation="vertical"
+	        >
+        
+	        <TextView 
+	            android:id="@+id/main_menu_latest_activities_no_sessions_total"
+	        	android:layout_width="fill_parent"
+	        	android:layout_height="wrap_content"
+				android:background="@color/white"
+		        android:paddingLeft="25sp"
+		        android:paddingRight="25sp"
+		        android:paddingTop="25sp"
+		        android:paddingBottom="25sp"
+	        	android:text="24 Sessions"
+	        	android:textAllCaps="true"
+	        	android:textColor="@color/dark_grey"
+	        	android:textSize="24sp"
+	            />
+        
+	        <TextView 
+	            android:id="@+id/main_menu_latest_activities_no_sessions_date"
+	        	android:layout_width="fill_parent"
+	        	android:layout_height="wrap_content"
+		        android:paddingLeft="25sp"
+		        android:paddingRight="25sp"
+		        android:paddingTop="25sp"
+		        android:paddingBottom="25sp"
+	        	android:text="Since 14-09-2013"
+	        	android:textColor="@color/dark_grey"
+	        	android:textSize="18sp"
+	            />
+    
+    	</LinearLayout>
+                
 	    <TextView 
 	        android:id="@+id/main_header"
 			android:onClick="viewLatestUserActivities"
@@ -19,9 +60,10 @@
 	        android:layout_marginLeft="25dp"
 	        android:layout_marginRight="25dp"
 			android:padding="25sp"
-	        android:textColor="@color/white"
-	        android:text="Latest Activity"
-	        android:textSize="18sp"
+	        android:textColor="@color/dark_grey"
+	        android:text="@string/main_menu_latest_activity"
+	        android:textAllCaps="true"
+	        android:textSize="24sp"
 	        />
 	    
 	    <!-- sessions summary --> 

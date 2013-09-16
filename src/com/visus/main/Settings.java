@@ -5,23 +5,15 @@ import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.ActionBar.OnNavigationListener;
 import android.app.ActionBar.Tab;
-import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.database.sqlite.SQLiteException;
 import android.support.v4.app.*;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.*;
 import android.widget.*;
 
 // core program packages
 import com.visus.R;
-import com.visus.database.*;
-import com.visus.entities.*;
-import com.visus.entities.sessions.Session;
-import com.visus.main.MainActivity.MainMenuPagerAdapter;
-import com.visus.main.Sessions.SessionsPagerAdapter;
 import com.visus.ui.settings.fragments.AboutFragment;
 import com.visus.ui.settings.fragments.GeneralFragment;
 
@@ -29,30 +21,11 @@ import com.visus.ui.settings.fragments.GeneralFragment;
 /**
  * Enables the user to configure the apps settings
  * @author Jonathan Perry
- *
  */
 public class Settings extends FragmentActivity implements ActionBar.TabListener {
 
 	private static int activeUserId;
-	
-	private User user = null;
-	private Session session;
-	private UserHandler dbUser;
-	private SessionHandler dbSession;
-	
-	// personal
-	private EditText personalName;
-	private Spinner  personalGender;
-	private EditText personalAge;
-	
-	// history
-	private EditText historyTargetDay;
-	private EditText historyTargetMonth;
-	
-	private Button	 resetMonth,
-					 resetYear,
-					 resetAll;
-	
+		
 	// pager
 	private ViewPager settingsViewPager;
 	private SettingsPagerAdapter settingsPagerAdapter;
@@ -106,6 +79,32 @@ public class Settings extends FragmentActivity implements ActionBar.TabListener 
 	public void onDestroy() {
 		super.onDestroy();
 	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {		
+		switch(item.getItemId()) {
+			// app logo
+			case android.R.id.home:
+				Intent upIntent = new Intent(this, MainActivity.class);
+	            if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
+	                // This activity is not part of the application's task, so create a new task
+	                // with a synthesized back stack.
+	                TaskStackBuilder.from(this)
+	                        // If there are ancestor activities, they should be added here.
+	                        .addNextIntent(upIntent)
+	                        .startActivities();
+	                finish();
+	            } else {
+	                // This activity is part of the application's task, so simply
+	                // navigate up to the hierarchical parent activity.
+	                NavUtils.navigateUpTo(this, upIntent);
+	            }
+	            break;
+	        default:
+	        	break;
+		}
+		return true;
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -158,6 +157,5 @@ public class Settings extends FragmentActivity implements ActionBar.TabListener 
 		public int getCount() {
 			return NO_FRAGMENTS;
 		}
-	}
-			
+	}			
 }

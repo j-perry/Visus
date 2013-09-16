@@ -5,6 +5,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.*;
 
+/**
+ * Display's content about the app
+ * @author Jonathan Perry
+ */
 public class AboutFragment extends Fragment {
 	
 	public AboutFragment() {
@@ -17,5 +21,4 @@ public class AboutFragment extends Fragment {
 
 		return rootView;
 	}
-
 }

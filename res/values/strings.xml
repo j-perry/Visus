@@ -4,7 +4,12 @@
     <string name="app_name">Visus</string>
     <string name="visus_welcome">Welcome to Visus</string>
     
+    
+    <!-- Activities -->    
     <string name="activity_new_session">New Session</string>
+    <string name="activity_sign_up">Sign Up</string>
+    <string name="activity_sessions">Sessions</string>
+    <string name="activity_settings">Settings</string>
     
     <!-- Main Activity Menu -->
     <string name="menu_about">About Visus</string>
@@ -30,26 +35,19 @@
     
     
     <!-- Main menu scrollview -->
-    <string name="latest_activity">Latest activity</string>    
-    <!-- temporary -->
-    <string name="session_01">Thursday - x2 Sessions (1 HR)</string>
-    <string name="session_02">Wednesday - x1 Session (30 MINS)</string>
+    <string name="main_menu_latest_activity">Latest Activity</string>    
+    <string name="main_menu_activities">Activities</string>
     
     
-    <string name="activities">Activities</string>  
-    <!-- temporary -->  
-    <string name="music">Music</string>    
-    <string name="news">News</string>
-    <string name="gaming">Gaming</string>
-    <string name="emails">Emails</string>
-    <string name="reading">Reading</string>
+    <string name="activities">Activities</string>
 	
     
-    <!-- New User -->
-    <string name="hint_firstname">Firstname</string>
-    
-    <string name="username">Hi Jon</string>
-    
+    <!-- Sign-up -->
+    <string name="hint_firstname">Firstname</string>    
+    <string name="gender_prompt">Gender</string>	
+	<string name="hint_age">Age</string>
+	<string name="register">Sign Up</string>
+	
     <string-array name="genders">
         <item>Gender</item>
         <item>Male</item>
@@ -57,21 +55,20 @@
     </string-array>
     
     
+    <!-- Main Menu -->
     <string-array name="menu">
         <item>Latest Activity</item>
         <item>Activities</item>
     </string-array>
     
+    
+    <!-- Settings -->
     <string-array name="settings_list">
         <item>General</item>
         <item>About</item>
     </string-array>
-    
-            
-	<string name="gender_prompt">Gender</string>	
-	<string name="hint_age">Age</string>
-	<string name="register">Sign Up</string>
-    
+    <!-- End of settings -->
+        
 	
     <!-- New Session -->
     <string name="title_new_session">New Session</string>
@@ -79,14 +76,30 @@
     <string name="title_end_session">End</string>
 
     
-    <!-- Previous Session -->
-    <string name="prev_session">Prev Session</string>
-
-    
     <!-- Settings -->
-    <string name="menu_settings">Settings</string>
-    
+    <string name="menu_settings">Settings</string>    
     <string name="default_sessions_no">Sessions</string>
+    
+    	<!-- 'General' tab -->
+    	
+	    	<!-- 'Personal' -->
+	    	<string name="settings_general_personal_header">Personal</string>
+	    	<string name="settings_general_hint_name">Firstname</string>
+	    	<string name="settings_general_hint_age">Age</string>
+    	
+    		<!-- 'Sessions' -->    		
+	    	<string name="settings_general_sessions_header">Sessions</string>
+	    	<string name="settings_general_sessions_target_day">[Set daily target]</string>
+	    	<string name="settings_general_sessions_target_month">[Set monthly target]</string>
+    		<string name="settings_general_sessions_reset_month">Reset (Month)</string>
+    		<string name="settings_general_sessions_reset_year">Reset (Year)</string>
+    		<string name="settings_general_sessions_reset_all">Reset (All)</string>
+    		
+    		<!-- Save (all) -->
+    		<string name="settings_general_save_all">Save</string>
+	    	
+    	<!-- End of 'General' tab -->
+    	
     
     	<!-- About -->
 	    <string name="settings_about_header">About</string>
@@ -98,5 +111,4 @@
 	    
 	<!-- End of Settings -->
 	
-
 </resources>

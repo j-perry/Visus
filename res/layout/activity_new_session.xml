@@ -22,7 +22,7 @@
             android:id="@+id/set_session_duration"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="230dp"
+            android:layout_marginTop="125dp"
             android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal"
             >
@@ -39,7 +39,7 @@
               	android:inputType="numberDecimal"
                 android:hint="00"
                 android:textColorHint="@color/light_green"
-                android:textSize="120sp"
+                android:textSize="72sp"
                 android:textColor="@color/light_green"
                 />
             
@@ -48,7 +48,7 @@
 	            android:layout_width="15dp"
 	            android:layout_height="wrap_content"
 	            android:text=":"
-	            android:textSize="120sp"
+	            android:textSize="72sp"
 	            android:textColor="@color/light_green"
 	            android:layout_gravity="center_horizontal"
 	            android:gravity="center"
@@ -66,7 +66,7 @@
             	android:singleLine="true"
               	android:inputType="numberDecimal"
                 android:textColorHint="@color/light_green"
-                android:textSize="120sp"
+                android:textSize="72sp"
                 android:textColor="@color/light_green"
                 />
                                    
@@ -85,7 +85,7 @@
             android:completionThreshold="1"
             android:singleLine="true"
             android:textColorHint="@color/light_green"
-            android:textSize="30sp"
+            android:textSize="24sp"
             android:textColor="@color/light_green"
             />
         
@@ -99,10 +99,10 @@
             android:layout_width="fill_parent" 
             android:layout_height="wrap_content"
             android:text="30:00"
-            android:textSize="160sp"
+            android:textSize="60sp"
             android:textColor="@color/light_green"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="250dp"
+            android:layout_marginTop="100dp"
             android:gravity="center"
         />
             
@@ -127,7 +127,7 @@
             android:background="@drawable/new_session_controls_btn"
             android:text="@string/title_start_session"
             android:textStyle="bold"
-            android:textSize="36sp"
+            android:textSize="20sp"
             android:textAllCaps="true"
             android:textColor="@drawable/new_session_controls_txt"
         />
@@ -141,7 +141,7 @@
             android:background="@drawable/new_session_controls_btn"
             android:text="@string/title_end_session"
             android:textStyle="bold"
-            android:textSize="36sp"
+            android:textSize="20sp"
             android:textColor="@drawable/new_session_controls_txt"
             android:textAllCaps="true"
             android:onClick="onEnd"

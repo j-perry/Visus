@@ -17,6 +17,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+/**
+ * Displays any sessions made this year
+ * @author Jonathan Perry
+ */
 public class FragmentThisYear extends Fragment {
 	
 	private int userId;

@@ -6,7 +6,7 @@
         
         <shape>
             
-            <solid android:color="@color/light_green"/> 
+            <solid android:color="@color/white"/> 
                 <stroke android:width="0dp" android:height="0dp" android:color="@color/white" />
                 <corners
                     android:radius="0px" />

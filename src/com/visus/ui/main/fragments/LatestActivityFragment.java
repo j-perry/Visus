@@ -16,10 +16,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class LatestActivityFragment extends Fragment {
 	
 	private int userId;
+	private int totalSessions;
+	private ArrayList<HashMap<String, String>> latestSessions;
+	private Session firstSession;
 	private SessionHandler dbSession;
 	
 	private ListView list;
@@ -28,84 +32,77 @@ public class LatestActivityFragment extends Fragment {
 	public LatestActivityFragment() {
 		super();
 	}
-	
-	public LatestActivityFragment(int userId) {
+		
+	public LatestActivityFragment(int userId, 
+								  int totalSessions, 
+								  ArrayList<HashMap<String, String>> latestSessions,
+								  Session firstSession) {
 		this.userId = userId;
+		this.totalSessions = totalSessions;
+		this.latestSessions = latestSessions;
+		this.firstSession = firstSession;
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(com.visus.R.layout.fragment_main_menu_latest_activity, container, false);
 		dbSession = new SessionHandler(getActivity() ); // getActivity() should do the trick!
-			
-		ArrayList<Session> sessions = new ArrayList<Session>();
-		ArrayList<String> sessionTypes = new ArrayList<String>();
-		ArrayList<HashMap<String, String>> latestSessions = new ArrayList<HashMap<String, String>>();
 		
-		Log.e("Visus", "USER ID: " + userId);
+		/*
+		 * No. sessions
+		 */
+		TextView txtVwTotalSessions = (TextView) rootView.findViewById(com.visus.R.id.main_menu_latest_activities_no_sessions_total);
 		
-		try {
-			dbSession.open();
-			sessions = dbSession.getLatestSessions(userId);
-//			sessions = dbSession.getSessionsThisYear(userId);
-//			sessionTypes = dbSession.getSessionTypes(user.getUserId());
+		if(totalSessions == 0) {
+			txtVwTotalSessions.setText(String.valueOf(0) + " Sessions");
 		}
-		finally {
-			dbSession.close();				
-		}
-					
-		if(sessions.isEmpty()) {
-			HashMap<String, String> emptyMsg = new HashMap<String, String>();
-			String msg = "None Created";
-			emptyMsg.put(MainMenuListView.SESSION, msg);
-			
-			latestSessions.add(emptyMsg);			
-			
-			Log.e("Visus", "Sessions is empty");
+		else if(totalSessions == 1) {
+			txtVwTotalSessions.setText(String.valueOf(totalSessions) + " Session");			
 		}
 		else {
-			Log.e("Visus", "Sessions is not empty");
-
-			
-			
-			Log.e("Visus", "onCreate() - User ID is: " + userId);
-
-			String [] data = { "Hello", "Jon", "Today", "Sunday" };
-			
-			int noItems = 0;
-			
-			// output the first five results
-			for(Session session : sessions) {
-				if(noItems != 5) {				
-					HashMap<String, String> map = new HashMap<String, String>();
-					map.put(MainMenuListView.SESSION, session.getDay() + " " +
-							    					  session.getDayNo() + " " +  
-							    					  session.getMonth() + ", " +
-							    					  session.getDate() + ", " +
-							    					  session.getYear() + " - " +
-									                  session.getTimeHour() + ":" +
-									                  session.getTimeMinutes() + " " +
-									                  session.getDayPeriod() + " - " +
-									                  session.getDurationMinutes() + ":" +
-									                  session.getDurationSeconds() + " - " +
-									                  session.getType()
-					       );
-					
-					latestSessions.add(map);
-					
-					noItems++;
-				}
-				else {
-					break;
-				}
-			}		
+			txtVwTotalSessions.setText(String.valueOf(totalSessions) + " Sessions");
 		}	
 		
+		
+		/*
+		 * Get the date of the first session
+		 */
+		TextView txtVwFirstSession = (TextView) rootView.findViewById(com.visus.R.id.main_menu_latest_activities_no_sessions_date);
+		StringBuilder strFirstSession = new StringBuilder();
+				
+		if(firstSession == null) {
+			strFirstSession.append("Created");
+		}
+		else {
+			strFirstSession.append("Created since ");
+
+			// day
+			strFirstSession.append(firstSession.getDay() + " ");
+			
+			// day no (dd)
+			strFirstSession.append(String.valueOf(firstSession.getDayNo()) );
+			strFirstSession.append(" ");
+			
+			// month (MMM)
+			strFirstSession.append(firstSession.getMonth() );
+			strFirstSession.append(", ");
+			
+			// year (YYYY)
+			strFirstSession.append(firstSession.getYear() );
+		}
+	
+		// display
+		txtVwFirstSession.setText(strFirstSession.toString() );
+		
+		
+		/*
+		 * Latest sessions
+		 */
 		list = (ListView) rootView.findViewById(com.visus.R.id.overview_sessions_adapter);
 		adapter = new MainMenuAdapter(getActivity(), latestSessions);
 		
 		list.setAdapter(adapter);
-		
+				
 		return rootView;
 	}
 	
