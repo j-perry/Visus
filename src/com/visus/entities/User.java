@@ -16,7 +16,13 @@ public class User {
 		
 	}
 	
-	public User(int id, int active, String firstname, String gender, int age, int targetDay, int targetMonth) {
+	public User(int id, 
+			    int active, 
+			    String firstname, 
+			    String gender,
+			    int age, 
+			    int targetDay, 
+			    int targetMonth) {
 		this.id = id;
 		this.active = active;
 		this.firstname = firstname;

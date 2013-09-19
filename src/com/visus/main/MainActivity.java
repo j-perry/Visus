@@ -74,44 +74,50 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		finally {
 			dbHandler.close();			
 		}
-		
+			
+
 		// action bar
 		final ActionBar ab = getActionBar();
 		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-		
-		
-		mainMenuPager = (ViewPager) findViewById(com.visus.R.id.main_menu_pager);
-		mainMenuPagerAdapter = new MainMenuPagerAdapter(getSupportFragmentManager(), 
-				                                        userId,									// user 
-				                                        getSessionsCount(user.getUserId() ),	// total no. sessions
-				                                        getLatestSessions(user.getUserId() ),	// latest sessions
-				                                        getActivitiesCount(user.getUserId() ),	// no activities
-				                                        getActivities(user.getUserId() ),		// activities
-				                                        getFirstSession());						// first session
-		
-		mainMenuPager.setAdapter(mainMenuPagerAdapter);
-		
-		
-		ArrayAdapter<CharSequence> arAdapter = ArrayAdapter.createFromResource(this, R.array.menu, R.layout.action_bar_list);
-		
-		/**
-		 * The following two methods are crucial. Do not delete them.
-		 */
-		ab.setListNavigationCallbacks(arAdapter, new OnNavigationListener() {
-			public boolean onNavigationItemSelected(int itemPosition, long itemId) {
-				mainMenuPager.setCurrentItem(itemPosition);
-				return true;
-			}
-		});
-		
-		mainMenuPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {			
-			@Override
-			public void onPageSelected(int position) {
-				ab.setSelectedNavigationItem(position);
-			}			
-		});
-		
-		
+			
+		if(user != null) {
+			
+			
+			Log.e("Visus", "USER ID: " + userId);
+			
+			
+			mainMenuPager = (ViewPager) findViewById(com.visus.R.id.main_menu_pager);
+			mainMenuPagerAdapter = new MainMenuPagerAdapter(getSupportFragmentManager(), 
+					                                        user.getUserId(),						// user 
+					                                        getSessionsCount(),						// total no. sessions
+					                                        getLatestSessions(user.getUserId() ),	// latest sessions
+					                                        getActivitiesCount(user.getUserId() ),	// no activities
+					                                        getActivities(user.getUserId() ),		// activities
+					                                        getFirstSession() );					// first session
+			
+			mainMenuPager.setAdapter(mainMenuPagerAdapter);
+			
+			
+			ArrayAdapter<CharSequence> arAdapter = ArrayAdapter.createFromResource(this, R.array.menu, R.layout.action_bar_list);
+			
+			/**
+			 * The following two methods are crucial. Do not delete them.
+			 */
+			ab.setListNavigationCallbacks(arAdapter, new OnNavigationListener() {
+				public boolean onNavigationItemSelected(int itemPosition, long itemId) {
+					mainMenuPager.setCurrentItem(itemPosition);
+					return true;
+				}
+			});
+			
+			mainMenuPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {			
+				@Override
+				public void onPageSelected(int position) {
+					ab.setSelectedNavigationItem(position);
+				}			
+			});
+			
+		}
 	}
 	
 	@Override
@@ -140,8 +146,29 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			}
 			else {
 				Log.e("Visus", "Sessions is not empty");
-
 				
+				
+				/*
+				 * check whether the user has met their targets
+				 */
+				Target target = new Target(this, user.getUserId() );
+				
+				boolean targetDay = target.checkTargetDay();
+				boolean targetMonth = target.checkTargetMonth();
+				
+				// if met
+				if(targetDay == true) {
+					// notify the user they have met their target...
+					// but only display it for 1 hour
+					// on the latest activities fragment
+				}
+
+				if(targetMonth == true) {
+					// notify the user they have met their target...
+					// but only display it for 1 hour
+					// on the latest activities fragment
+				}
+							
 				ArrayList<HashMap<String, String>> latestSessions = new ArrayList<HashMap<String, String>>();
 				
 				Log.e("Visus", "onCreate() - User ID is: " + userId);
@@ -273,10 +300,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	 * @return
 	 * @throws SQLiteException
 	 */
-	private int getSessionsCount(int userId) throws SQLiteException {
+	private int getSessionsCount() throws SQLiteException {
 		// return no. of sessions - total
 		int totalSessions = 0;
-		String tmpTotalSessions = " Sessions";
 		
 		try {
 			dbSession.open();
@@ -289,7 +315,14 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			dbSession.close();
 		}
 		
-		return totalSessions;
+		if(totalSessions == 0) {
+			totalSessions = 0;
+			
+			return totalSessions;
+		}
+		else {
+			return totalSessions;			
+		}		
 	}
 	
 	/**
@@ -541,8 +574,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		private ArrayList<HashMap<String, String>> activities;
 		private Session firstSession;
 		
-		public MainMenuPagerAdapter(FragmentManager fm, 
-									int userId, 
+		public MainMenuPagerAdapter(FragmentManager fm,
+									int userId,
 									int totalSessions,
 									ArrayList<HashMap<String, String>> latestSessions,
 									int noActivities,
@@ -565,10 +598,16 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			switch(item) {
 				case 0:
 					// display latest sessions made
-					return new LatestActivityFragment(userId, totalSessions, latestSessions, firstSession);
+					return new LatestActivityFragment(userId,
+													  totalSessions, 
+													  latestSessions, 
+													  firstSession);
 				case 1:
 					// display session activity types (no. of for each type)
-					return new ActivitiesFragment(userId, noActivities, activities, firstSession);
+					return new ActivitiesFragment(userId,
+												  noActivities, 
+												  activities, 
+												  firstSession);
 				default:
 					Fragment f = new Fragment();
 					return f;

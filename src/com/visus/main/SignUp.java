@@ -113,6 +113,7 @@ public class SignUp extends Activity {
 			user.setAge(tmpAge);
 		}
 		
+		// default targets
 		user.setTargetDay(0);
 		user.setTargetMonth(0);
 		

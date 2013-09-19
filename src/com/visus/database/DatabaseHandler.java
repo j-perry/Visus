@@ -33,6 +33,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	
 	public static final String KEY_TARGET_DAY = "TargetDay";
 	public static final String KEY_TARGET_MONTH = "TargetMonth";
+	
+	public static final String KEY_DURATION = "DurationToday";
+	public static final String KEY_DURATION_MONTH = "DurationMonth";
 		
 	public static final int ACTIVE_USER = 1;
 	public static final int NON_ACTIVE_USER = 0;
@@ -89,8 +92,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 	                 	KEY_TIME_HOUR + " TEXT, " +
                 	                 	KEY_TIME_MINS + " TEXT, " +
                 	                 	KEY_TIMEZONE + " TEXT, " +
-                	                 	KEY_DURATION_MINS + " INTEGER, " +
-                	                 	KEY_DURATION_SECS + " INTEGER, " +
+                	                 	KEY_DURATION_MINS + " REAL, " +
+                	                 	KEY_DURATION_SECS + " REAL, " +
                 	                 	KEY_TYPE + " TEXT " +
                 	                 ");";
 		

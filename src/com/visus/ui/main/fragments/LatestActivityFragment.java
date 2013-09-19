@@ -53,6 +53,8 @@ public class LatestActivityFragment extends Fragment {
 		 */
 		TextView txtVwTotalSessions = (TextView) rootView.findViewById(com.visus.R.id.main_menu_latest_activities_no_sessions_total);
 		
+//		totalSessions = 0; // TODO temp
+		
 		if(totalSessions == 0) {
 			txtVwTotalSessions.setText(String.valueOf(0) + " Sessions");
 		}

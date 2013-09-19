@@ -185,5 +185,54 @@ public class UserHandler implements IDatabaseTable {
 		db.close();
 		return user;
 	}
-			
+	
+	/**
+	 * Return's the user's daily target (usage)
+	 * @param userId
+	 * @return their daily target (hours)
+	 * @throws SQLiteException
+	 */
+	public int getDailyTarget(int userId) throws SQLiteException {
+		int dailyTarget = 0;
+		String qryDailyTarget = "SELECT" + QRY_SPACING + DatabaseHandler.KEY_TARGET_DAY + QRY_SPACING + 
+				                "FROM" + QRY_SPACING + DatabaseHandler.USERS_TABLE + QRY_SPACING +
+				                "WHERE" + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		
+		Log.e("Visus", "getDailyTarget(): " + qryDailyTarget);
+		
+		Cursor cursor = db.rawQuery(qryDailyTarget, null);
+		int targetDayIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TARGET_DAY);
+
+		dailyTarget = cursor.getInt(targetDayIndex);
+		
+		db.close();
+		cursor.close();
+				
+		return dailyTarget;
+	}
+		
+	/**
+	 * Return's the user's monthly target (usage)
+	 * @param userId
+	 * @return their monthly target (hours)
+	 * @throws SQLiteException
+	 */
+	public int getMonthlyTarget(int userId) throws SQLiteException {
+		int monthlyTarget = 0;
+		String qryDailyTarget = "SELECT" + QRY_SPACING + DatabaseHandler.KEY_TARGET_MONTH + QRY_SPACING + 
+                				"FROM" + QRY_SPACING + DatabaseHandler.USERS_TABLE + QRY_SPACING +
+                				"WHERE" + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		
+		Log.e("Visus", "getMonthlyTarget: " + qryDailyTarget);
+		
+		Cursor cursor = db.rawQuery(qryDailyTarget, null);
+		int targetMonthIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TARGET_MONTH);
+
+		monthlyTarget = cursor.getInt(targetMonthIndex);
+		
+		db.close();
+		cursor.close();
+				
+		return monthlyTarget;
+	}	
 }
