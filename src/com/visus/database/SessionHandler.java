@@ -66,30 +66,30 @@ public class SessionHandler implements IDatabaseTable {
 		ContentValues sessionValues = new ContentValues();
 				
 		// user id
-		sessionValues.put(DatabaseHandler.KEY_USER_ID, session.getUserId());
+		sessionValues.put(ISessionTable.KEY_USER_ID, session.getUserId());
 		
 		// date
-		sessionValues.put(DatabaseHandler.KEY_DAY_NO, session.getDayNo());
-		sessionValues.put(DatabaseHandler.KEY_DAY, session.getDay());
-		sessionValues.put(DatabaseHandler.KEY_MONTH, session.getMonth());
-		sessionValues.put(DatabaseHandler.KEY_YEAR, session.getYear());
+		sessionValues.put(ISessionTable.KEY_DAY_NO, session.getDayNo());
+		sessionValues.put(ISessionTable.KEY_DAY, session.getDay());
+		sessionValues.put(ISessionTable.KEY_MONTH, session.getMonth());
+		sessionValues.put(ISessionTable.KEY_YEAR, session.getYear());
 		
-		sessionValues.put(DatabaseHandler.KEY_DATE, session.getDate());			// NEW!
+		sessionValues.put(ISessionTable.KEY_DATE, session.getDate());			// NEW!
 		
 		// time
-		sessionValues.put(DatabaseHandler.KEY_TIME_HOUR, session.getTimeHour());
-		sessionValues.put(DatabaseHandler.KEY_TIME_MINS, session.getTimeMinutes());
-		sessionValues.put(DatabaseHandler.KEY_TIMEZONE, session.getDayPeriod());
+		sessionValues.put(ISessionTable.KEY_TIME_HOUR, session.getTimeHour());
+		sessionValues.put(ISessionTable.KEY_TIME_MINS, session.getTimeMinutes());
+		sessionValues.put(ISessionTable.KEY_TIMEZONE, session.getDayPeriod());
 		
 		// duration
-		sessionValues.put(DatabaseHandler.KEY_DURATION_MINS, session.getDurationMinutes());
-		sessionValues.put(DatabaseHandler.KEY_DURATION_SECS, session.getDurationSeconds());
+		sessionValues.put(ISessionTable.KEY_DURATION_MINS, session.getDurationMinutes());
+		sessionValues.put(ISessionTable.KEY_DURATION_SECS, session.getDurationSeconds());
 		
 		// type
-		sessionValues.put(DatabaseHandler.KEY_TYPE, session.getType());
+		sessionValues.put(ISessionTable.KEY_TYPE, session.getType());
 		
 		try {
-			result = db.insert(DatabaseHandler.SESSIONS_TABLE, null, sessionValues);
+			result = db.insert(ISessionTable.TABLE_NAME, null, sessionValues);
 		}
 		catch(SQLiteException e) {
 			Log.e("Visus", "Error writing to database Sessions", e);
@@ -133,13 +133,13 @@ public class SessionHandler implements IDatabaseTable {
 	public ArrayList<String> getSessionTypes(int userId) throws SQLiteException {
 		ArrayList<String> sessionTypes = new ArrayList<String>();
 		Cursor cursor = null;
-		String qrySessions = "SELECT" + QRY_SPACING + DatabaseHandler.KEY_TYPE + QRY_SPACING + 
-				 			 "FROM"   + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
-				 			 "WHERE"  + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		String qrySessions = "SELECT" + QRY_SPACING + ISessionTable.KEY_TYPE + QRY_SPACING + 
+				 			 "FROM"   + QRY_SPACING + ISessionTable.TABLE_NAME + QRY_SPACING +
+				 			 "WHERE"  + QRY_SPACING + ISessionTable.KEY_USER_ID + " = " + userId;
 		
 		cursor = db.rawQuery(qrySessions, null);
 		
-		int typeIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		int typeIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TYPE);
 		
 		Log.e("Visus", "-------------------");
 		
@@ -175,18 +175,18 @@ public class SessionHandler implements IDatabaseTable {
 				
 		// hours query
 		String qryNoHours = "SELECT *" + QRY_SPACING +
-		                    "FROM"     + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
-		                    "WHERE"    + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		                    "FROM"     + QRY_SPACING + ISessionTable.TABLE_NAME + QRY_SPACING +
+		                    "WHERE"    + QRY_SPACING + ISessionTable.KEY_USER_ID + " = " + userId;
 		
 		// sessions query
-		String qryNoSessions = "SELECT" + QRY_SPACING + DatabaseHandler.KEY_USER_ID + QRY_SPACING +
-		                       "FROM"   + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
-		                       "WHERE " + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		String qryNoSessions = "SELECT" + QRY_SPACING + ISessionTable.KEY_USER_ID + QRY_SPACING +
+		                       "FROM"   + QRY_SPACING + ISessionTable.TABLE_NAME + QRY_SPACING +
+		                       "WHERE " + QRY_SPACING + ISessionTable.KEY_USER_ID + " = " + userId;
 		
 		// activities query
-		String qryNoActivities = "SELECT" + QRY_SPACING + DatabaseHandler.KEY_TYPE + QRY_SPACING + 
-								 "FROM"   + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
-								 "WHERE"  + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		String qryNoActivities = "SELECT" + QRY_SPACING + ISessionTable.KEY_TYPE + QRY_SPACING + 
+								 "FROM"   + QRY_SPACING + ISessionTable.TABLE_NAME + QRY_SPACING +
+								 "WHERE"  + QRY_SPACING + ISessionTable.KEY_USER_ID + " = " + userId;
 						
 		cursor = db.rawQuery(qryNoHours, null);
 				
@@ -197,7 +197,7 @@ public class SessionHandler implements IDatabaseTable {
 			Log.e("Visus", "SQL Query Successful");
 		
 		
-		int minutesIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_MINS);
+		int minutesIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_MINS);
 		
 		// get no. of hours
 		while(cursor.moveToNext()) {
@@ -227,7 +227,7 @@ public class SessionHandler implements IDatabaseTable {
 				
 		// get no. of activities
 		cursor = db.rawQuery(qryNoActivities, null);
-		int typeIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		int typeIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TYPE);
 		
 		while(cursor.moveToNext()) {
 			if(!activities.contains(cursor.getString(typeIndex) )) 
@@ -256,8 +256,8 @@ public class SessionHandler implements IDatabaseTable {
 	 */
 	public ArrayList<Session> getSessions(int userId) throws SQLiteException {
 		String qrySessions = "SELECT *" + QRY_SPACING + 
-                             "FROM"     + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
-                             "WHERE"    + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId;
+                             "FROM"     + QRY_SPACING + ISessionTable.TABLE_NAME + QRY_SPACING +
+                             "WHERE"    + QRY_SPACING + ISessionTable.KEY_USER_ID + " = " + userId;
 		
 		ArrayList<Session> sessionsAll = new ArrayList<Session>();
 		Cursor cursor = null;
@@ -277,16 +277,16 @@ public class SessionHandler implements IDatabaseTable {
 		cursor = db.rawQuery(qrySessions, null);
 		
 		// find each columns respective index
-		dayNoIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY_NO);
-		dayIndex   			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY);
-		monthIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_MONTH);
-		yearIndex  			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_YEAR);
-		timeHourIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_HOUR);
-		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_MINS);
-		timezoneIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIMEZONE);
-		durationMinutesIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_MINS);
-		durationSecondsIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_SECS);
-		typeIndex            = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		dayNoIndex 			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DAY_NO);
+		dayIndex   			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DAY);
+		monthIndex 			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_MONTH);
+		yearIndex  			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_YEAR);
+		timeHourIndex 		 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIME_HOUR);
+		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIME_MINS);
+		timezoneIndex 		 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIMEZONE);
+		durationMinutesIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_MINS);
+		durationSecondsIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_SECS);
+		typeIndex            = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TYPE);
 		
 		
 		// retrieve sessions
@@ -355,11 +355,11 @@ public class SessionHandler implements IDatabaseTable {
 		ArrayList<Session> sessionsThisYear = new ArrayList<Session>();
 				
 		String qryThisYear = "SELECT *" + QRY_SPACING +
-						     "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+						     "FROM" + QRY_SPACING + ISessionTable.TABLE_NAME + QRY_SPACING +
 						     "WHERE" + QRY_SPACING + 
-		                     	DatabaseHandler.KEY_USER_ID + " = '" + userId + "'" + QRY_SPACING + 
+		                     	ISessionTable.KEY_USER_ID + " = '" + userId + "'" + QRY_SPACING + 
 		                     "AND" + QRY_SPACING +
-		                        DatabaseHandler.KEY_DATE + QRY_SPACING +       
+		                        ISessionTable.KEY_DATE + QRY_SPACING +       
 							 "BETWEEN" + QRY_SPACING +                       	
 								"date('" + dateBeginning + "')" + QRY_SPACING +
 							 "AND" + QRY_SPACING +
@@ -383,16 +383,16 @@ public class SessionHandler implements IDatabaseTable {
 			durationSecondsIndex,
 			typeIndex = 0;
 
-		dayNoIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY_NO);
-		dayIndex   			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY);
-		monthIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_MONTH);
-		yearIndex  			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_YEAR);
-		timeHourIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_HOUR);
-		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_MINS);
-		timezoneIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIMEZONE);
-		durationMinutesIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_MINS);
-		durationSecondsIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_SECS);
-		typeIndex            = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		dayNoIndex 			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DAY_NO);
+		dayIndex   			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DAY);
+		monthIndex 			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_MONTH);
+		yearIndex  			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_YEAR);
+		timeHourIndex 		 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIME_HOUR);
+		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIME_MINS);
+		timezoneIndex 		 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIMEZONE);
+		durationMinutesIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_MINS);
+		durationSecondsIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_SECS);
+		typeIndex            = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TYPE);
 				
 		while(cursor.moveToNext()) {
 					
@@ -438,7 +438,7 @@ public class SessionHandler implements IDatabaseTable {
 		ArrayList<Session> sessionsToday = new ArrayList<Session>();
 		
 		String qrySessionsToday = "SELECT *" + QRY_SPACING +
-                				  "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+                				  "FROM" + QRY_SPACING + ISessionTable.TABLE_NAME + QRY_SPACING +
                 				  "WHERE" + QRY_SPACING + " Date = date('now')";
 		
 		Cursor cursor = db.rawQuery(qrySessionsToday, null);
@@ -454,16 +454,16 @@ public class SessionHandler implements IDatabaseTable {
 		    durationSecondsIndex,
 		    typeIndex = 0;
 	
-		dayNoIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY_NO);
-		dayIndex   			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY);
-		monthIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_MONTH);
-		yearIndex  			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_YEAR);
-		timeHourIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_HOUR);
-		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_MINS);
-		timezoneIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIMEZONE);
-		durationMinutesIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_MINS);
-		durationSecondsIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_SECS);
-		typeIndex            = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		dayNoIndex 			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DAY_NO);
+		dayIndex   			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DAY);
+		monthIndex 			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_MONTH);
+		yearIndex  			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_YEAR);
+		timeHourIndex 		 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIME_HOUR);
+		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIME_MINS);
+		timezoneIndex 		 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIMEZONE);
+		durationMinutesIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_MINS);
+		durationSecondsIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_SECS);
+		typeIndex            = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TYPE);
 		
 		while(cursor.moveToNext()) {
 			session = new Session();
@@ -523,10 +523,10 @@ public class SessionHandler implements IDatabaseTable {
 		String qryThisWeek = null;
 		
 		qryThisWeek = "SELECT * " +
-					  "FROM " + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
-					  "WHERE " + DatabaseHandler.KEY_USER_ID + " = " + userId + QRY_SPACING +
+					  "FROM " + ISessionTable.TABLE_NAME + QRY_SPACING +
+					  "WHERE " + ISessionTable.KEY_USER_ID + " = " + userId + QRY_SPACING +
 					  "AND "
-					      	   + DatabaseHandler.KEY_DATE + QRY_SPACING +
+					      	   + ISessionTable.KEY_DATE + QRY_SPACING +
 					  "BETWEEN date('" + thisWeek.beginning() + "') " +
 					 "AND date('" + thisWeek.ending() + "')";
 			
@@ -550,16 +550,16 @@ public class SessionHandler implements IDatabaseTable {
 		    durationSecondsIndex,
 		    typeIndex = 0;
 
-		dayNoIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY_NO);
-		dayIndex   			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY);
-		monthIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_MONTH);
-		yearIndex  			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_YEAR);
-		timeHourIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_HOUR);
-		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_MINS);
-		timezoneIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIMEZONE);
-		durationMinutesIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_MINS);
-		durationSecondsIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_SECS);
-		typeIndex            = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		dayNoIndex 			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DAY_NO);
+		dayIndex   			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DAY);
+		monthIndex 			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_MONTH);
+		yearIndex  			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_YEAR);
+		timeHourIndex 		 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIME_HOUR);
+		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIME_MINS);
+		timezoneIndex 		 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIMEZONE);
+		durationMinutesIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_MINS);
+		durationSecondsIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_SECS);
+		typeIndex            = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TYPE);
 		
 		if(cursor.getCount() == 0) {
 			Log.e("Visus", "No results :'(");
@@ -635,11 +635,11 @@ public class SessionHandler implements IDatabaseTable {
 		ArrayList<Session> sessionsThisMonth = new ArrayList<Session>();
 		
 		String qryThisMonth = "SELECT *" + QRY_SPACING +
-                			  "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+                			  "FROM" + QRY_SPACING + ISessionTable.TABLE_NAME + QRY_SPACING +
                               "WHERE" + QRY_SPACING +
-                              	DatabaseHandler.KEY_USER_ID + " = '" + userId + "'" + QRY_SPACING + 
+                              	ISessionTable.KEY_USER_ID + " = '" + userId + "'" + QRY_SPACING + 
                               "AND" + QRY_SPACING + 
-                              	DatabaseHandler.KEY_DATE + QRY_SPACING +
+                              	ISessionTable.KEY_DATE + QRY_SPACING +
                               "BETWEEN" + QRY_SPACING +                              	
                               	"date('" + year + "-" + strMonth + "-" + "01')" + QRY_SPACING +
                               "AND" + QRY_SPACING +
@@ -663,16 +663,16 @@ public class SessionHandler implements IDatabaseTable {
 		    durationSecondsIndex,
 		    typeIndex = 0;
 
-		dayNoIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY_NO);
-		dayIndex   			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY);
-		monthIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_MONTH);
-		yearIndex  			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_YEAR);
-		timeHourIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_HOUR);
-		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_MINS);
-		timezoneIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIMEZONE);
-		durationMinutesIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_MINS);
-		durationSecondsIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_SECS);
-		typeIndex            = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		dayNoIndex 			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DAY_NO);
+		dayIndex   			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DAY);
+		monthIndex 			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_MONTH);
+		yearIndex  			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_YEAR);
+		timeHourIndex 		 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIME_HOUR);
+		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIME_MINS);
+		timezoneIndex 		 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIMEZONE);
+		durationMinutesIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_MINS);
+		durationSecondsIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_SECS);
+		typeIndex            = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TYPE);
 		
 		while(cursor.moveToNext()) {
 			session = new Session();
@@ -726,11 +726,11 @@ public class SessionHandler implements IDatabaseTable {
 		ArrayList<Session> sessionsThisYear = new ArrayList<Session>();
 		
 		String qryThisYear = "SELECT *" + QRY_SPACING +
-				             "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+				             "FROM" + QRY_SPACING + ISessionTable.TABLE_NAME + QRY_SPACING +
 				             "WHERE" + QRY_SPACING + 
-                           		DatabaseHandler.KEY_USER_ID + " = '" + userId + "'" + QRY_SPACING + 
+                           		ISessionTable.KEY_USER_ID + " = '" + userId + "'" + QRY_SPACING + 
                            	 "AND" + QRY_SPACING +
-                        		DatabaseHandler.KEY_DATE + QRY_SPACING +       
+                        		ISessionTable.KEY_DATE + QRY_SPACING +       
 							 "BETWEEN" + QRY_SPACING +                       	
 							 	"date('" + dateBeginning + "')" + QRY_SPACING +
 							 "AND" + QRY_SPACING +
@@ -754,16 +754,16 @@ public class SessionHandler implements IDatabaseTable {
 		    durationSecondsIndex,
 		    typeIndex = 0;
 
-		dayNoIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY_NO);
-		dayIndex   			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DAY);
-		monthIndex 			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_MONTH);
-		yearIndex  			 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_YEAR);
-		timeHourIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_HOUR);
-		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIME_MINS);
-		timezoneIndex 		 = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TIMEZONE);
-		durationMinutesIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_MINS);
-		durationSecondsIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_SECS);
-		typeIndex            = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		dayNoIndex 			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DAY_NO);
+		dayIndex   			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DAY);
+		monthIndex 			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_MONTH);
+		yearIndex  			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_YEAR);
+		timeHourIndex 		 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIME_HOUR);
+		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIME_MINS);
+		timezoneIndex 		 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIMEZONE);
+		durationMinutesIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_MINS);
+		durationSecondsIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_SECS);
+		typeIndex            = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TYPE);
 		
 		while(cursor.moveToNext()) {
 			session = new Session();
@@ -807,15 +807,15 @@ public class SessionHandler implements IDatabaseTable {
 		String qryTypes = null;
 		int typesIndex = 0;
 		
-		qryTypes = "SELECT" + QRY_SPACING + DatabaseHandler.KEY_TYPE + QRY_SPACING +
-				   "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
-				   "WHERE" + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		qryTypes = "SELECT" + QRY_SPACING + ISessionTable.KEY_TYPE + QRY_SPACING +
+				   "FROM" + QRY_SPACING + ISessionTable.TABLE_NAME + QRY_SPACING +
+				   "WHERE" + QRY_SPACING + ISessionTable.KEY_USER_ID + " = " + userId;
 		
 		Log.e("Visus", qryTypes);
 		
 		Cursor cursor = db.rawQuery(qryTypes, null);
 		
-		typesIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		typesIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TYPE);
 		
 		while(cursor.moveToNext()) {
 			String type = cursor.getString(typesIndex);
@@ -860,9 +860,9 @@ public class SessionHandler implements IDatabaseTable {
 			strMonth = String.valueOf(month);
 		}
 		
-		String qryDeleteMonth = DatabaseHandler.KEY_USER_ID + " = " + userId + QRY_SPACING +
+		String qryDeleteMonth = ISessionTable.KEY_USER_ID + " = " + userId + QRY_SPACING +
 				                "AND" + QRY_SPACING +
-				                DatabaseHandler.KEY_DATE + QRY_SPACING +
+				                ISessionTable.KEY_DATE + QRY_SPACING +
 				                	"BETWEEN" + QRY_SPACING +
 				                		"date('" + year + "-" + strMonth + "-01')" + QRY_SPACING + 
 				                	"AND" + QRY_SPACING +
@@ -870,18 +870,18 @@ public class SessionHandler implements IDatabaseTable {
 		
 		Log.e("Visus", qryDeleteMonth);
 		
-		result = db.delete(DatabaseHandler.SESSIONS_TABLE, 
+		result = db.delete(ISessionTable.TABLE_NAME, 
 						   qryDeleteMonth,
 				           null);
 		
 		/* reset targets set */
 		ContentValues targetDay = new ContentValues();
 		float resetTarget = 0.0f;
-		targetDay.put(DatabaseHandler.KEY_TARGET_DAY, resetTarget);
+		targetDay.put(IUserTable.KEY_TARGET_DAY, resetTarget);
 		
-		db.update(DatabaseHandler.USERS_TABLE, 
+		db.update(IUserTable.TABLE_NAME, 
 				  targetDay, 
-				  DatabaseHandler.KEY_ID + " = " + userId, 
+				  ISessionTable.KEY_ID + " = " + userId, 
 				  null);
 		
 		Log.e("Visus", "deleteSessionsThisMonth() - Result: " + result);
@@ -901,9 +901,9 @@ public class SessionHandler implements IDatabaseTable {
 		Calendar cal = Calendar.getInstance();
 		year = cal.get(Calendar.YEAR);
 		
-		String qryDeleteYear = DatabaseHandler.KEY_USER_ID + " = " + userId + QRY_SPACING +
+		String qryDeleteYear = ISessionTable.KEY_USER_ID + " = " + userId + QRY_SPACING +
 				                "AND" + QRY_SPACING +
-				               DatabaseHandler.KEY_DATE + QRY_SPACING +
+				               ISessionTable.KEY_DATE + QRY_SPACING +
 				                	"BETWEEN" + QRY_SPACING +
 				                		"date('" + year + "-01-01')" + QRY_SPACING + 
 				                	"AND" + QRY_SPACING +
@@ -911,7 +911,7 @@ public class SessionHandler implements IDatabaseTable {
 		
 		Log.e("Visus", qryDeleteYear);
 		
-		result = db.delete(DatabaseHandler.SESSIONS_TABLE, 
+		result = db.delete(ISessionTable.TABLE_NAME, 
 						   "UserId = " + userId, 
 				           null);
 		
@@ -920,11 +920,11 @@ public class SessionHandler implements IDatabaseTable {
 		/* reset targets set */
 		ContentValues targetDay = new ContentValues();
 		float resetTarget = 0.0f;
-		targetDay.put(DatabaseHandler.KEY_TARGET_DAY, resetTarget);
+		targetDay.put(IUserTable.KEY_TARGET_DAY, resetTarget);
 		
-		db.update(DatabaseHandler.USERS_TABLE, 
+		db.update(IUserTable.TABLE_NAME, 
 				  targetDay, 
-				  DatabaseHandler.KEY_ID + " = " + userId, 
+				  ISessionTable.KEY_ID + " = " + userId, 
 				  null);
 		
 		return result;
@@ -939,20 +939,20 @@ public class SessionHandler implements IDatabaseTable {
 		int result = 0;
 		String qryDeleteSessions = null;
 		
-		qryDeleteSessions = DatabaseHandler.KEY_USER_ID + " = " + userId;
+		qryDeleteSessions = ISessionTable.KEY_USER_ID + " = " + userId;
 		
-		result = db.delete(DatabaseHandler.SESSIONS_TABLE, 
+		result = db.delete(ISessionTable.TABLE_NAME, 
 				  		   qryDeleteSessions, 
 				           null);
 		
 		/* reset targets set */
 		ContentValues targetDay = new ContentValues();
 		float resetTarget = 0.0f;
-		targetDay.put(DatabaseHandler.KEY_DURATION_TODAY, resetTarget);
+		targetDay.put(IUserTable.KEY_DURATION_TODAY, resetTarget);
 						
-		db.update(DatabaseHandler.USERS_TABLE, 
+		db.update(IUserTable.TABLE_NAME,
 				  targetDay, 
-				  DatabaseHandler.KEY_ID + " = " + userId, 
+				  ISessionTable.KEY_ID + " = " + userId, 
 				  null);
 		
 		return result;
@@ -990,11 +990,11 @@ public class SessionHandler implements IDatabaseTable {
 		
 		String qryCount = "SELECT *" + QRY_SPACING +
 						  "FROM" + QRY_SPACING +
-						  	DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+						  	ISessionTable.TABLE_NAME + QRY_SPACING +
 						  "WHERE" + QRY_SPACING +
-						  	DatabaseHandler.KEY_USER_ID + " = " + activeUserId + QRY_SPACING +
+						  	ISessionTable.KEY_USER_ID + " = " + activeUserId + QRY_SPACING +
 						  "AND" + QRY_SPACING +
-						  	DatabaseHandler.KEY_DATE + QRY_SPACING +
+						  	ISessionTable.KEY_DATE + QRY_SPACING +
 						  "BETWEEN" + QRY_SPACING +
 						  	"date('" + year + "-" + strMonth + "-" + "01')" + QRY_SPACING +
 						  "AND" + QRY_SPACING +
@@ -1023,11 +1023,11 @@ public class SessionHandler implements IDatabaseTable {
 		
 		String qryCount = "SELECT *" + QRY_SPACING +
 				  "FROM" + QRY_SPACING +
-				  	DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+				  	ISessionTable.TABLE_NAME + QRY_SPACING +
 				  "WHERE" + QRY_SPACING +
-				  	DatabaseHandler.KEY_USER_ID + " = " + activeUserId + QRY_SPACING +
+				  	ISessionTable.KEY_USER_ID + " = " + activeUserId + QRY_SPACING +
 				  "AND" + QRY_SPACING +
-				  	DatabaseHandler.KEY_DATE + QRY_SPACING +
+				  	ISessionTable.KEY_DATE + QRY_SPACING +
 				  "BETWEEN" + QRY_SPACING +
 				    "date('" + year + "-01-01')" + QRY_SPACING + 
 				  "AND" + QRY_SPACING +
@@ -1053,9 +1053,9 @@ public class SessionHandler implements IDatabaseTable {
 		
 		String qryCount = "SELECT *" + QRY_SPACING +
 				  "FROM" + QRY_SPACING +
-				  	DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+				  	ISessionTable.TABLE_NAME + QRY_SPACING +
 				  "WHERE" + QRY_SPACING +
-				  	DatabaseHandler.KEY_USER_ID + " = " + activeUserId;
+				  	ISessionTable.KEY_USER_ID + " = " + activeUserId;
 
 		Cursor cursor = db.rawQuery(qryCount, null);
 		
@@ -1076,15 +1076,15 @@ public class SessionHandler implements IDatabaseTable {
 
 		qryActivities = "SELECT *" + QRY_SPACING +
 						"FROM" + QRY_SPACING +
-				        	DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+				        	ISessionTable.TABLE_NAME + QRY_SPACING +
 				        "WHERE" + QRY_SPACING +
-				        	DatabaseHandler.KEY_USER_ID + " = " + userId;
+				        	ISessionTable.KEY_USER_ID + " = " + userId;
 		
 		Log.e("Visus", "qryActivities: " + qryActivities);
 		
 		Cursor cursor = db.rawQuery(qryActivities, null);
 		
-		int typeIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		int typeIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TYPE);
 		
 		while(cursor.moveToNext()) {
 			if(!activities.contains(cursor.getString(typeIndex)) ) {
@@ -1111,15 +1111,15 @@ public class SessionHandler implements IDatabaseTable {
 
 		qryActivities = "SELECT *" + QRY_SPACING +
 						"FROM" + QRY_SPACING +
-				        	DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
+				        	ISessionTable.TABLE_NAME + QRY_SPACING +
 				        "WHERE" + QRY_SPACING +
-				        	DatabaseHandler.KEY_USER_ID + " = " + userId;
+				        	ISessionTable.KEY_USER_ID + " = " + userId;
 		
 		Log.e("Visus", "qryActivities: " + qryActivities);
 		
 		Cursor cursor = db.rawQuery(qryActivities, null);
 		
-		int typeIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TYPE);
+		int typeIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TYPE);
 		
 		while(cursor.moveToNext()) {
 			if(!activities.contains(cursor.getString(typeIndex)) ) {

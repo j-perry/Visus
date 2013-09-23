@@ -40,14 +40,14 @@ public class UserHandler implements IDatabaseTable {
 	public void addUser(User user) throws SQLiteException {
 		ContentValues userValues = new ContentValues();
 		
-		userValues.put(DatabaseHandler.KEY_ACTIVE, DatabaseHandler.ACTIVE_USER );
-		userValues.put(DatabaseHandler.KEY_NAME, user.getFirstname() );
-		userValues.put(DatabaseHandler.KEY_GENDER, user.getGender() );
-		userValues.put(DatabaseHandler.KEY_AGE, user.getAge() );
-		userValues.put(DatabaseHandler.KEY_TARGET_DAY, user.getTargetDay() );
-		userValues.put(DatabaseHandler.KEY_TARGET_MONTH, user.getTargetMonth() );
+		userValues.put(IUserTable.KEY_ACTIVE, IUserTable.ACTIVE_USER );
+		userValues.put(IUserTable.KEY_NAME, user.getFirstname() );
+		userValues.put(IUserTable.KEY_GENDER, user.getGender() );
+		userValues.put(IUserTable.KEY_AGE, user.getAge() );
+		userValues.put(IUserTable.KEY_TARGET_DAY, user.getTargetDay() );
+		userValues.put(IUserTable.KEY_TARGET_MONTH, user.getTargetMonth() );
 		
-		db.insert(DatabaseHandler.USERS_TABLE, null, userValues);
+		db.insert(IUserTable.TABLE_NAME, null, userValues);
 		Log.e("Visus", "New user added");
 	}
 	
@@ -57,8 +57,8 @@ public class UserHandler implements IDatabaseTable {
 		
 		Log.e("Visus", "User ID = " + String.valueOf(user.getFirstname() ) );
 		
-		int id = db.delete(DatabaseHandler.USERS_TABLE, 					
-				           DatabaseHandler.KEY_ID + " = ?", 			
+		int id = db.delete(IUserTable.TABLE_NAME, 					
+				           ISessionTable.KEY_ID + " = ?", 			
 				           new String[] { String.valueOf(user.getUserId()) } );	
 		
 		if(id == 1) {
@@ -78,11 +78,11 @@ public class UserHandler implements IDatabaseTable {
 	public void updateUser(User user) throws SQLiteException {
 		ContentValues updatedUserValues = new ContentValues();
 		
-		updatedUserValues.put(DatabaseHandler.KEY_NAME, user.getFirstname() );
-		updatedUserValues.put(DatabaseHandler.KEY_GENDER, user.getGender() );
-		updatedUserValues.put(DatabaseHandler.KEY_AGE, user.getAge() );
-		updatedUserValues.put(DatabaseHandler.KEY_TARGET_DAY, user.getTargetDay() );
-		updatedUserValues.put(DatabaseHandler.KEY_TARGET_MONTH, user.getTargetMonth() );
+		updatedUserValues.put(IUserTable.KEY_NAME, user.getFirstname() );
+		updatedUserValues.put(IUserTable.KEY_GENDER, user.getGender() );
+		updatedUserValues.put(IUserTable.KEY_AGE, user.getAge() );
+		updatedUserValues.put(IUserTable.KEY_TARGET_DAY, user.getTargetDay() );
+		updatedUserValues.put(IUserTable.KEY_TARGET_MONTH, user.getTargetMonth() );
 		
 		Log.e("Visus", "updateUser()");
 		Log.e("Visus", "Firstname: " + user.getFirstname() );
@@ -91,9 +91,9 @@ public class UserHandler implements IDatabaseTable {
 		Log.e("Visus", "Target (Day): " + user.getTargetDay() );
 		Log.e("Visus", "Target (Month): " + user.getTargetMonth() );
 		
-		int result = db.update(DatabaseHandler.USERS_TABLE, 										// table
+		int result = db.update(IUserTable.TABLE_NAME, 											    // table
 				               updatedUserValues, 											        // values
-				               DatabaseHandler.KEY_ID + " = " + String.valueOf(user.getUserId()), 	// query
+				               ISessionTable.KEY_ID + " = " + String.valueOf(user.getUserId()), 	// query
 				               null);	                											// arguments in query
 		
 		Log.e("Visus", "updateUser(): Result: " + result);
@@ -105,18 +105,18 @@ public class UserHandler implements IDatabaseTable {
 	 */
 	public User getActiveUser() {
 		Cursor cursor;
-		String [] columns = { DatabaseHandler.KEY_ID, 
-				              DatabaseHandler.KEY_ACTIVE, 
-				              DatabaseHandler.KEY_NAME, 
-				              DatabaseHandler.KEY_GENDER, 
-				              DatabaseHandler.KEY_AGE,
-				              DatabaseHandler.KEY_TARGET_DAY,
-				              DatabaseHandler.KEY_TARGET_MONTH
+		String [] columns = { ISessionTable.KEY_ID, 
+							  IUserTable.KEY_ACTIVE, 
+							  IUserTable.KEY_NAME, 
+							  IUserTable.KEY_GENDER, 
+							  IUserTable.KEY_AGE,
+							  IUserTable.KEY_TARGET_DAY,
+							  IUserTable.KEY_TARGET_MONTH
 				            };
 		
-		cursor = db.query(DatabaseHandler.USERS_TABLE, 										// db table
+		cursor = db.query(IUserTable.TABLE_NAME, 											// db table
 				          columns,															// columns selected
-				          columns[1] + "=" + String.valueOf(DatabaseHandler.ACTIVE_USER),   // WHERE query
+				          columns[1] + "=" + String.valueOf(IUserTable.ACTIVE_USER),   		// WHERE query
 				          null, null, null, null, null);									// not required...
 		
 		if(!cursor.moveToFirst() ) {
@@ -144,7 +144,7 @@ public class UserHandler implements IDatabaseTable {
 		// if a user is active
 		if(user != null) {
 			// set the user as active
-			user.setActive(DatabaseHandler.ACTIVE_USER);
+			user.setActive(IUserTable.ACTIVE_USER);
 			// update their activity status
 			updateUser(user);
 		}
@@ -152,7 +152,7 @@ public class UserHandler implements IDatabaseTable {
 		// get the user's id
 		user = getUser(id);
 		// set the user as active
-		user.setActive(DatabaseHandler.ACTIVE_USER);
+		user.setActive(IUserTable.ACTIVE_USER);
 		// update their activity status
 		updateUser(user);
 	}
@@ -161,9 +161,9 @@ public class UserHandler implements IDatabaseTable {
 		Cursor cursor = null;
 		User user = new User();
 		
-		cursor = db.query(DatabaseHandler.USERS_TABLE, 							// db table
-				          new String[] { DatabaseHandler.KEY_ID }, 				// columns
-				          DatabaseHandler.KEY_ID + " = " + String.valueOf(id),  // query
+		cursor = db.query(IUserTable.TABLE_NAME, 								// db table
+				          new String[] { ISessionTable.KEY_ID }, 				// columns
+				          ISessionTable.KEY_ID + " = " + String.valueOf(id),  // query
 				          new String[] { String.valueOf(id) }, 					// return user id
 				          null, null, null);									// not required...
 		
@@ -194,13 +194,13 @@ public class UserHandler implements IDatabaseTable {
 	 */
 	public void setDurationToday(int userId, float duration) throws SQLiteException {
 		ContentValues durationTodayVal = new ContentValues();
-		durationTodayVal.put(DatabaseHandler.KEY_DURATION_TODAY, duration);
+		durationTodayVal.put(IUserTable.KEY_DURATION_TODAY, duration);
 		
 		Log.e("Visus", "setDurationToday(): " + duration);
 		
-		int result = db.update(DatabaseHandler.USERS_TABLE, 
-				  			   durationTodayVal, 
-				  			   DatabaseHandler.KEY_ID + "=" + userId,
+		int result = db.update(IUserTable.TABLE_NAME, 
+				  			   durationTodayVal,
+				  			   ISessionTable.KEY_ID + "=" + userId,
 				               null);
 		
 		Log.e("Visus", "setDurationToday(): written result succcessfully: " + result);
@@ -216,9 +216,9 @@ public class UserHandler implements IDatabaseTable {
 	 */
 	public float getDurationToday(int userId) throws SQLiteException {
 		float duration = 0.0f;
-		String qry = "SELECT " + DatabaseHandler.KEY_DURATION_TODAY + QRY_SPACING +
-			     	 "FROM " + DatabaseHandler.USERS_TABLE + QRY_SPACING +
-			     	 "WHERE " + DatabaseHandler.KEY_ID + " = " + userId;
+		String qry = "SELECT " + IUserTable.KEY_DURATION_TODAY + QRY_SPACING +
+			     	 "FROM " + IUserTable.TABLE_NAME + QRY_SPACING +
+			     	 "WHERE " + IUserTable.KEY_ID + " = " + userId;
 		
 		Log.e("Visus", "UserHandler.getDurationToday()");
 		Log.e("Visus", qry);
@@ -259,11 +259,11 @@ public class UserHandler implements IDatabaseTable {
 	public float getDurationMonth(int userId) throws SQLiteException {
 		float duration = 0.0f;
 		String qry = "SELECT date('now')" + QRY_SPACING +
-			     	 "FROM" + QRY_SPACING + DatabaseHandler.USERS_TABLE + QRY_SPACING +
+			     	 "FROM" + QRY_SPACING + IUserTable.TABLE_NAME + QRY_SPACING +
 			     	 "WHERE" + QRY_SPACING + 
-			     	 	DatabaseHandler.KEY_USER_ID + "=" + QRY_SPACING + userId +
+			     	 	ISessionTable.KEY_USER_ID + "=" + QRY_SPACING + userId +
 			     	 "AND" + QRY_SPACING +
-			     	 	DatabaseHandler.KEY_DATE + QRY_SPACING + "BETWEEN" + QRY_SPACING + 
+			     	 	ISessionTable.KEY_DATE + QRY_SPACING + "BETWEEN" + QRY_SPACING + 
 			     	 		"date('date')" + QRY_SPACING + "AND" + QRY_SPACING +
 			     	 		"date('date')";
 	
@@ -271,7 +271,7 @@ public class UserHandler implements IDatabaseTable {
 		Log.e("Visus", qry);
 	
 		Cursor cursor = db.rawQuery(qry, null);
-		int durationIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_MONTH); // TODO
+		int durationIndex = cursor.getColumnIndexOrThrow(IUserTable.KEY_DURATION_MONTH); // TODO
 		
 		duration = cursor.getFloat(durationIndex);
 		
@@ -289,14 +289,14 @@ public class UserHandler implements IDatabaseTable {
 	 */
 	public int getDailyTarget(int userId) throws SQLiteException {
 		int dailyTarget = 0;
-		String qryDailyTarget = "SELECT" + QRY_SPACING + DatabaseHandler.KEY_TARGET_DAY + QRY_SPACING + 
-				                "FROM" + QRY_SPACING + DatabaseHandler.USERS_TABLE + QRY_SPACING +
-				                "WHERE" + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		String qryDailyTarget = "SELECT" + QRY_SPACING + IUserTable.KEY_TARGET_DAY + QRY_SPACING + 
+				                "FROM" + QRY_SPACING + IUserTable.TABLE_NAME + QRY_SPACING +
+				                "WHERE" + QRY_SPACING + ISessionTable.KEY_USER_ID + " = " + userId;
 		
 		Log.e("Visus", "getDailyTarget(): " + qryDailyTarget);
 		
 		Cursor cursor = db.rawQuery(qryDailyTarget, null);
-		int targetDayIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TARGET_DAY);
+		int targetDayIndex = cursor.getColumnIndexOrThrow(IUserTable.KEY_TARGET_DAY);
 
 		dailyTarget = cursor.getInt(targetDayIndex);
 		
@@ -314,14 +314,14 @@ public class UserHandler implements IDatabaseTable {
 	 */
 	public int getMonthlyTarget(int userId) throws SQLiteException {
 		int monthlyTarget = 0;
-		String qryDailyTarget = "SELECT" + QRY_SPACING + DatabaseHandler.KEY_TARGET_MONTH + QRY_SPACING + 
-                				"FROM" + QRY_SPACING + DatabaseHandler.USERS_TABLE + QRY_SPACING +
-                				"WHERE" + QRY_SPACING + DatabaseHandler.KEY_USER_ID + " = " + userId;
+		String qryDailyTarget = "SELECT" + QRY_SPACING + IUserTable.KEY_TARGET_MONTH + QRY_SPACING + 
+                				"FROM" + QRY_SPACING + IUserTable.TABLE_NAME + QRY_SPACING +
+                				"WHERE" + QRY_SPACING + ISessionTable.KEY_USER_ID + " = " + userId;
 		
 		Log.e("Visus", "getMonthlyTarget: " + qryDailyTarget);
 		
 		Cursor cursor = db.rawQuery(qryDailyTarget, null);
-		int targetMonthIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_TARGET_MONTH);
+		int targetMonthIndex = cursor.getColumnIndexOrThrow(IUserTable.KEY_TARGET_MONTH);
 
 		monthlyTarget = cursor.getInt(targetMonthIndex);
 		
