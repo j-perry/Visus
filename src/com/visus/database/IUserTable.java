@@ -1,5 +1,8 @@
 package com.visus.database;
 
+/***************************************
+ * 				Users table
+ */
 public interface IUserTable {
 
 	public static final String TABLE_NAME  	  	  = "Users";

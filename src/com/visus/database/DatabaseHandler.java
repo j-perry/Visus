@@ -18,47 +18,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	/* Generic properties for database */
 	private final static String DATABASE_NAME = "Visus";
 	private final static int    DATABASE_VERSION = 1;
-	
-//	public final static String KEY_ID       = "Id"; 	// All DB tables will share this property!
-	
-	/**
-	 * 				Users table
-	 */
-//	public static final String USERS_TABLE  = "Users";
-//	
-//	public static final String KEY_ACTIVE   = "Active";
-//	public static final String KEY_NAME     = "Name";
-//	public static final String KEY_AGE      = "Age";
-//	public static final String KEY_GENDER   = "Gender";
-//	
-//	public static final String KEY_TARGET_DAY = "TargetDay";
-//	public static final String KEY_TARGET_MONTH = "TargetMonth";
-//	
-//	public static final String KEY_DURATION_TODAY = "DurationToday";
-//	public static final String KEY_DURATION_MONTH = "DurationMonth";
-//		
-//	public static final int ACTIVE_USER = 1;
-//	public static final int NON_ACTIVE_USER = 0;
-	
-	
-	/**
-	 * 				Sessions table
-	 */
-//	public static final String SESSIONS_TABLE    = "Sessions";
-//	
-//	// columns
-//	public static final String KEY_USER_ID       = "UserId";
-//	public static final String KEY_DAY_NO        = "DayNo";
-//	public static final String KEY_DATE          = "Date";
-//	public static final String KEY_DAY           = "Day";
-//	public static final String KEY_MONTH         = "Month";
-//	public static final String KEY_YEAR          = "Year";
-//	public static final String KEY_TIME_HOUR     = "Hour";
-//	public static final String KEY_TIME_MINS     = "Mins";
-//	public static final String KEY_TIMEZONE      = "TimeZone";
-//	public static final String KEY_DURATION_MINS = "DurationMinutes";
-//	public static final String KEY_DURATION_SECS = "DurationSeconds";	
-//	public static final String KEY_TYPE          = "Type";
 		
 	public DatabaseHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);

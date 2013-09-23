@@ -1,5 +1,8 @@
 package com.visus.database;
 
+/*********************************************
+ * 				Sessions table
+ */
 public interface ISessionTable {
 
 	public final static String KEY_ID       	 = "Id"; 	// All DB tables will share this property!
