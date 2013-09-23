@@ -1,6 +1,9 @@
 package com.visus.main;
 
 // core apis
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -42,7 +45,7 @@ public class NewSession extends Activity {
 	 * Controllers
 	 */
 	private SessionHandler dbHandler;
-	private UserHandler userHandler;
+	private UserHandler dbUser;
 	
 	// stores the active user's id
 	private int activeUserId;
@@ -97,6 +100,7 @@ public class NewSession extends Activity {
 												
 		session = new Session();
 		dbHandler = new SessionHandler(this);
+		dbUser = new UserHandler(this);
 		
 		// get the active user id
 		Bundle userId = getIntent().getExtras();
@@ -110,7 +114,7 @@ public class NewSession extends Activity {
 		}
 		else {
 			// find the active user
-			User user = userHandler.getActiveUser();
+			User user = dbUser.getActiveUser();
 			activeUserId = user.getUserId();
 		}
 		
@@ -428,15 +432,163 @@ public class NewSession extends Activity {
 		session.setDurationSeconds(sessionSecs);
 		session.setType(type);
 		
-		// write session to db TODO
-		dbHandler.open();
-		dbHandler.add(session);
-		dbHandler.close();
+		Log.e("Visus", "SessionMins: " + sessionMins);
+		Log.e("Visus", "SessionSecs: " + sessionSecs);
 		
+		
+		/**
+		 * write session to db
+		 */		
+		try {
+			dbHandler.open();
+			dbHandler.add(session);
+			updateTargetDuration(sessionMins, sessionSecs, activeUserId);
+		}
+		catch(SQLiteException e) {
+			Log.e("Visus", "SQL Error", e);
+		}
+		finally {
+			dbHandler.close();
+		}
+						
+		// go to previously made sessions
 		Intent intent = new Intent(NewSession.this, Sessions.class);
 		intent.putExtra("ActiveUserId", activeUserId);
 		startActivity(intent);
 	}	
+	
+	/**
+	 * 
+	 * @param sessionSecs
+	 * @param sessionMins
+	 * @param userId
+	 * @return
+	 */
+	private void updateTargetDuration(int sessionMins, int sessionSecs, int userId) {		
+		/**
+		 * compute targets and write equally to db
+		 */
+		
+		// today (incl. newly created session)
+		float existingDurationToday = 0.0f;
+		float existingDurationMonth = 0.0f;
+		float durationToday = 0.0f;
+		float durationMonth = 0.0f;
+		
+		// get our values
+		try {
+			dbUser.open();
+			existingDurationToday = dbUser.getDurationToday(activeUserId);
+			
+			Log.e("Visus", "existingDurationToday: " + existingDurationToday);
+			
+			// today
+			if(existingDurationToday == 0.0f) {
+				existingDurationToday = 0.0f;
+			}
+						
+//			existingDurationMonth = dbUser.getDurationMonth(activeUserId);
+			
+			// month
+//			if(existingDurationMonth == 0) {
+//				existingDurationMonth = 0.0f;
+//			}
+		}
+		catch(SQLiteException e) {
+			Log.e("Visus", "SQL Error", e);
+		}
+		finally {
+			dbUser.close();
+		}
+		
+		// convert newly created session mins + secs to a float
+		float tmpSessionSecs = (float) sessionSecs / 100.0f;
+				
+		Log.e("Visus", "tmpSessionSecs");
+		Log.e("Visus", String.valueOf(tmpSessionSecs) );	// output 10 secs (0.1)
+		
+//		if(tmpSessionSecs > 0.6f) {
+//			sessionMins += 1.0f;
+//			tmpSessionSecs = (0.6f - tmpSessionSecs);
+//		}
+				
+		float product = (float) sessionMins + tmpSessionSecs;
+		Log.e("Visus", "product");
+		Log.e("Visus", String.valueOf(product) );
+				
+		// compute existing and new products (today)
+		durationToday = existingDurationToday + product;
+		
+		// calculate secs (decimal place)
+		//    - 1.7 % 1 = 0.7
+		//
+		// if(secs is greater than 0.6) increment no. of minutes
+		// subtract 0.7 (e.g.,) by 0.6
+		// add to no of secs
+		//
+		// we want 1.7 mins to be
+		// 2.1 mins
+		
+		/*************************************************************************************
+		 * Format the time according to generic time conventions (i.e., 60 secs in 1 minute)
+		 */
+		
+		// take a copy of session time (just created) - mm:ss
+		float durationTodayCpy = durationToday;
+		
+		// find decimal product derived from mm:ss
+		float durationTodaySecs = durationToday % 1;
+		
+		// calculate no. of minutes accumulated - i.e., 2.5 - 0.5 = 2 mins
+		durationTodayCpy = durationTodayCpy - durationTodaySecs;
+		
+		// if over 60 seconds
+		if(durationTodaySecs > 0.6f) {
+			float incrMins = 1.0f;
+			
+			// copy number of seconds accumulated
+			float durationTodaySecsCpy = durationTodaySecs;
+			durationTodaySecs = 0.0f;
+			
+			// calculate no. of seconds left over 60 seconds (0.6)
+			durationTodaySecs = (durationTodaySecsCpy - 0.6f);
+			
+			// initialise no. of mins + secs - i.e., 3.1, appending an additional minute for accumulated seconds over 60 seconds
+			durationToday = durationTodayCpy + incrMins + durationTodaySecs; 
+			
+			Log.e("Visus", "Before BIGDECIMAL: " + durationToday);
+			
+			// format the duration to 2 decimal places - e.g., X.XX
+			BigDecimal durationTodayReformatted = new BigDecimal(durationToday).setScale(2, BigDecimal.ROUND_HALF_UP);
+			durationToday = durationTodayReformatted.floatValue();
+		}
+		else {
+			Log.e("Visus", "Before BIGDECIMAL: " + durationToday);
+			
+			BigDecimal durationTodayReformatted = new BigDecimal(durationToday).setScale(2, BigDecimal.ROUND_HALF_UP);
+			durationToday = durationTodayReformatted.floatValue();
+		}
+									
+		Log.e("Visus", "durationToday");
+		Log.e("Visus", String.valueOf(durationToday) );
+			
+				
+		// compute existing and new products (this month)
+//		durationMonth = existingDurationMonth + durationToday;
+				
+		// write to the database duration accumulated both today and this month
+		try {
+			dbUser.open();
+			dbUser.setDurationToday(activeUserId, durationToday);	// duration accumulated today
+//			dbUser.setDurationMonth(activeUserId, durationMonth);	// duration accumulated this month
+		}
+		catch(SQLiteException e) {
+			Log.e("Visus", "SQL Error", e);
+		}
+		finally {
+			dbUser.close();
+		}
+	}
 	
 	/**
 	 * Sets the session duration and converts inputed 

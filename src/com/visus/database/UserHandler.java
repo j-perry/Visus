@@ -187,6 +187,101 @@ public class UserHandler implements IDatabaseTable {
 	}
 	
 	/**
+	 * 
+	 * @param userId
+	 * @param duration
+	 * @throws SQLiteException
+	 */
+	public void setDurationToday(int userId, float duration) throws SQLiteException {
+		ContentValues durationTodayVal = new ContentValues();
+		durationTodayVal.put(DatabaseHandler.KEY_DURATION_TODAY, duration);
+		
+		Log.e("Visus", "setDurationToday(): " + duration);
+		
+		int result = db.update(DatabaseHandler.USERS_TABLE, 
+				  			   durationTodayVal, 
+				  			   DatabaseHandler.KEY_ID + "=" + userId,
+				               null);
+		
+		Log.e("Visus", "setDurationToday(): written result succcessfully: " + result);
+		
+		db.close();
+	}
+	
+	/**
+	 * 
+	 * @param userId
+	 * @return
+	 * @throws SQLiteException
+	 */
+	public float getDurationToday(int userId) throws SQLiteException {
+		float duration = 0.0f;
+		String qry = "SELECT " + DatabaseHandler.KEY_DURATION_TODAY + QRY_SPACING +
+			     	 "FROM " + DatabaseHandler.USERS_TABLE + QRY_SPACING +
+			     	 "WHERE " + DatabaseHandler.KEY_ID + " = " + userId;
+		
+		Log.e("Visus", "UserHandler.getDurationToday()");
+		Log.e("Visus", qry);
+		
+		Cursor cursor = db.rawQuery(qry, null);
+		
+		while(cursor.moveToNext()) {
+			duration += cursor.getFloat(0);
+		}
+		
+		if(duration == 0.0f) {
+			duration = 0.0f;
+		}
+		
+		cursor.close();
+		db.close();
+		
+		return duration;
+	}
+	
+	/**
+	 * 
+	 * @param userId
+	 * @param duration
+	 * @throws SQLiteException
+	 */
+	public void setDurationMonth(int userId, float duration) throws SQLiteException {
+			
+		
+	}
+	
+	/**
+	 * 
+	 * @param userId
+	 * @return
+	 * @throws SQLiteException
+	 */
+	public float getDurationMonth(int userId) throws SQLiteException {
+		float duration = 0.0f;
+		String qry = "SELECT date('now')" + QRY_SPACING +
+			     	 "FROM" + QRY_SPACING + DatabaseHandler.USERS_TABLE + QRY_SPACING +
+			     	 "WHERE" + QRY_SPACING + 
+			     	 	DatabaseHandler.KEY_USER_ID + "=" + QRY_SPACING + userId +
+			     	 "AND" + QRY_SPACING +
+			     	 	DatabaseHandler.KEY_DATE + QRY_SPACING + "BETWEEN" + QRY_SPACING + 
+			     	 		"date('date')" + QRY_SPACING + "AND" + QRY_SPACING +
+			     	 		"date('date')";
+	
+		Log.e("Visus", "UserHandler.getDurationMonth()");
+		Log.e("Visus", qry);
+	
+		Cursor cursor = db.rawQuery(qry, null);
+		int durationIndex = cursor.getColumnIndexOrThrow(DatabaseHandler.KEY_DURATION_MONTH); // TODO
+		
+		duration = cursor.getFloat(durationIndex);
+		
+		db.close();
+		cursor.close();
+		
+		return duration;
+	}
+	
+	/**
 	 * Return's the user's daily target (usage)
 	 * @param userId
 	 * @return their daily target (hours)

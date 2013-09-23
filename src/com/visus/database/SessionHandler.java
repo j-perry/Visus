@@ -436,7 +436,7 @@ public class SessionHandler implements IDatabaseTable {
 	 */
 	public ArrayList<Session> getSessionsToday(int userId) throws SQLiteException {
 		ArrayList<Session> sessionsToday = new ArrayList<Session>();
-				
+		
 		String qrySessionsToday = "SELECT *" + QRY_SPACING +
                 				  "FROM" + QRY_SPACING + DatabaseHandler.SESSIONS_TABLE + QRY_SPACING +
                 				  "WHERE" + QRY_SPACING + " Date = date('now')";
@@ -874,8 +874,18 @@ public class SessionHandler implements IDatabaseTable {
 						   qryDeleteMonth,
 				           null);
 		
-		Log.e("Visus", "deleteSessionsThisMonth() - Result: " + result);
+		/* reset targets set */
+		ContentValues targetDay = new ContentValues();
+		float resetTarget = 0.0f;
+		targetDay.put(DatabaseHandler.KEY_TARGET_DAY, resetTarget);
 		
+		db.update(DatabaseHandler.USERS_TABLE, 
+				  targetDay, 
+				  DatabaseHandler.KEY_ID + " = " + userId, 
+				  null);
+		
+		Log.e("Visus", "deleteSessionsThisMonth() - Result: " + result);
+				
 		return result;
 	}
 	
@@ -907,6 +917,16 @@ public class SessionHandler implements IDatabaseTable {
 		
 		Log.e("Visus", "deleteSessionsThisYear() - Result: " + result);
 		
+		/* reset targets set */
+		ContentValues targetDay = new ContentValues();
+		float resetTarget = 0.0f;
+		targetDay.put(DatabaseHandler.KEY_TARGET_DAY, resetTarget);
+		
+		db.update(DatabaseHandler.USERS_TABLE, 
+				  targetDay, 
+				  DatabaseHandler.KEY_ID + " = " + userId, 
+				  null);
+		
 		return result;
 	}
 	
@@ -924,6 +944,16 @@ public class SessionHandler implements IDatabaseTable {
 		result = db.delete(DatabaseHandler.SESSIONS_TABLE, 
 				  		   qryDeleteSessions, 
 				           null);
+		
+		/* reset targets set */
+		ContentValues targetDay = new ContentValues();
+		float resetTarget = 0.0f;
+		targetDay.put(DatabaseHandler.KEY_DURATION_TODAY, resetTarget);
+						
+		db.update(DatabaseHandler.USERS_TABLE, 
+				  targetDay, 
+				  DatabaseHandler.KEY_ID + " = " + userId, 
+				  null);
 		
 		return result;
 	}

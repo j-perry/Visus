@@ -22,7 +22,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public final static String KEY_ID       = "Id"; 	// All DB tables will share this property!
 	
 	/**
-	 * Users table
+	 * 				Users table
 	 */
 	public static final String USERS_TABLE  = "Users";
 	
@@ -34,7 +34,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public static final String KEY_TARGET_DAY = "TargetDay";
 	public static final String KEY_TARGET_MONTH = "TargetMonth";
 	
-	public static final String KEY_DURATION = "DurationToday";
+	public static final String KEY_DURATION_TODAY = "DurationToday";
 	public static final String KEY_DURATION_MONTH = "DurationMonth";
 		
 	public static final int ACTIVE_USER = 1;
@@ -42,7 +42,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	
 	
 	/**
-	 * Sessions table
+	 * 				Sessions table
 	 */
 	public static final String SESSIONS_TABLE    = "Sessions";
 	
@@ -77,7 +77,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				                  	 KEY_AGE + " INTEGER, " +
 				                  	 KEY_GENDER + " TEXT, " +
 				                  	 KEY_TARGET_DAY + " INTEGER, " +			// new!
-				                  	 KEY_TARGET_MONTH + " INTEGER " +			// new!
+				                  	 KEY_TARGET_MONTH + " INTEGER, " +			// new!
+				                  	 KEY_DURATION_TODAY + " INTEGER, " +		// new!
+				                  	 KEY_DURATION_MONTH + " INTEGER" +			// new!
 				                  ");";
 		
 		String createSessionsTable = "CREATE TABLE " + SESSIONS_TABLE + 
