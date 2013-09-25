@@ -114,7 +114,7 @@ public class SignUp extends Activity {
 		}
 		
 		// default targets
-		user.setTargetDay(0);
+		user.setTargetDay(1);
 		user.setTargetMonth(0);
 		
 		

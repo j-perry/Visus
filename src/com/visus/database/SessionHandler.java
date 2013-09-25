@@ -1,5 +1,6 @@
 package com.visus.database;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -832,6 +833,105 @@ public class SessionHandler implements IDatabaseTable {
 	}
 	
 	/**
+	 * 
+	 * @param userId
+	 * @return
+	 */
+	public float getTimeAccumulatedToday(int userId) {
+		float duration = 0.0f;
+		String qry = "SELECT *" + QRY_SPACING +
+					 "FROM" + QRY_SPACING + ISessionTable.TABLE_NAME + QRY_SPACING +
+					 "WHERE" + QRY_SPACING + 
+					 	ISessionTable.KEY_USER_ID + QRY_SPACING + "=" + QRY_SPACING + userId + QRY_SPACING +
+					 "AND" + QRY_SPACING +
+				
+					 ISessionTable.KEY_DATE + " = " + "date('now')";
+				
+		Log.e("Visus", "------------------------------");
+		Log.e("Visus", "getTimeAccumulatedToday()" );
+		Log.e("Visus", qry);
+		
+		int durationMinutesIndex,
+		    durationSecondsIndex = 0;
+		
+		Cursor cursor = db.rawQuery(qry, null);
+		
+		// if empty
+		if(cursor.getCount() == 0) {
+			Log.e("Visus", "Cursor is empty");
+			cursor.close();
+			duration = 0.0f;
+		}
+		else {
+			durationMinutesIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_MINS);
+			durationSecondsIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_SECS);
+			
+			int elapsedMinutes = 0;
+		    int elapsedSeconds = 0;
+			
+			while(cursor.moveToNext()) {
+				int tmpMinute = cursor.getInt(durationMinutesIndex);
+				int tmpSecond = cursor.getInt(durationSecondsIndex);
+												
+				elapsedMinutes += tmpMinute;
+				elapsedSeconds += tmpSecond;			
+			}			
+			
+			// convert seconds to decimal places
+			float tmpElapsedSeconds = (float) elapsedSeconds / 100.0f;		
+			
+			float product = elapsedMinutes + tmpElapsedSeconds;
+			
+			// assign current duration (mm:ss)
+			duration = product;
+			
+			/*****************************************************************************************
+			 * 		Calculate overlap in seconds and true representation of accumulated duration
+			 */
+			// take a copy of session time (just created) - mm:ss
+			float productCpy = product;
+			
+			// find decimal product derived from mm:ss
+			float durationSecondsToday = product % 1;
+			
+			// calculate no. of minutes accumulated - i.e., 2.5 - 0.5 = 2 mins
+			productCpy = productCpy - durationSecondsToday;
+			
+			// if over 60 seconds
+			if(durationSecondsToday > 0.6f) {
+				// reset the duration
+				duration = 0.0f;
+				float incrMin = 1.0f;
+				
+				// copy number of seconds accumulated
+				float durationSecsTodayCpy = durationSecondsToday;
+				durationSecondsToday = 0.0f;
+				
+				// calculate no. of seconds left over 60 seconds (0.6)
+				durationSecondsToday = (durationSecsTodayCpy - 0.6f);
+				
+				// initialise no. of mins + secs - i.e., 3.1, appending an additional minute for accumulated seconds over 60 seconds
+				duration = productCpy + incrMin + durationSecondsToday;
+				
+				// format the duration to 2 decimal places - e.g., X.XX
+				BigDecimal durationTodayReformatted = new BigDecimal(duration).setScale(2, BigDecimal.ROUND_HALF_UP);
+				duration = durationTodayReformatted.floatValue();
+				
+				Log.e("Visus", "getTimeAccumulatedToday(): " + duration);
+			}
+			else {				
+				// format the duration to 2 decimal places - e.g., X.XX
+				BigDecimal durationTodayReformatted = new BigDecimal(duration).setScale(2, BigDecimal.ROUND_HALF_UP);
+				duration = durationTodayReformatted.floatValue();
+				
+				Log.e("Visus", "getTimeAccumulatedToday(): " + duration);
+			}
+		}
+							
+		return duration;
+	}
+	
+	/**
 	 * Delete's sessions made this month
 	 * @param userId
 	 * @return
@@ -964,8 +1064,6 @@ public class SessionHandler implements IDatabaseTable {
 	 * @return
 	 */
 	public int getSessionsCountThisMonth(int activeUserId) {
-		int noItems = 0;
-		int result = 0;
 		int maxDays = 0;
 		int month = 0;
 		int year = 0;
@@ -1004,9 +1102,8 @@ public class SessionHandler implements IDatabaseTable {
 		
 		Cursor cursor = db.rawQuery(qryCount, null);
 		
-		noItems = cursor.getCount();
-		
-		return noItems;
+		// return no. of items
+		return cursor.getCount();
 	}
 	
 	/**
@@ -1015,9 +1112,7 @@ public class SessionHandler implements IDatabaseTable {
 	 * @return
 	 */
 	public int getSessionsCountThisYear(int activeUserId) {
-		int noItems = 0;
 		int year = 0;
-		int result = 0;
 		Calendar cal = Calendar.getInstance();
 		year = cal.get(Calendar.YEAR);
 		
@@ -1037,10 +1132,9 @@ public class SessionHandler implements IDatabaseTable {
 		Log.e("Visus", qryCount);
 
 		Cursor cursor = db.rawQuery(qryCount, null);
-		
-		noItems = cursor.getCount();
-		
-		return noItems = 0;
+				
+		// return no. of items
+		return cursor.getCount();
 	}
 	
 	/**

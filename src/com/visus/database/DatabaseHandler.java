@@ -21,7 +21,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		
 	public DatabaseHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
-		Log.e("Visus", "User Handler Init");
+		Log.e("Visus", "DatabaseHandler()");
 	}
 
 	@Override

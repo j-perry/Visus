@@ -40,6 +40,15 @@ public class UserHandler implements IDatabaseTable {
 	public void addUser(User user) throws SQLiteException {
 		ContentValues userValues = new ContentValues();
 		
+		Log.e("Visus", "---------------------------");
+		Log.e("Visus", "New User\n");
+		Log.e("Visus", "Firstname: " + user.getFirstname() );
+		Log.e("Visus", "Gender: " + user.getGender() );
+		Log.e("Visus", "Age: " + String.valueOf(user.getAge() ));
+		Log.e("Visus", "Target (Day): " + String.valueOf(user.getTargetDay() ));
+		Log.e("Visus", "Target (Month): " + String.valueOf(user.getTargetMonth() ));
+		Log.e("Visus", "---------------------------");
+		
 		userValues.put(IUserTable.KEY_ACTIVE, IUserTable.ACTIVE_USER );
 		userValues.put(IUserTable.KEY_NAME, user.getFirstname() );
 		userValues.put(IUserTable.KEY_GENDER, user.getGender() );
@@ -261,7 +270,7 @@ public class UserHandler implements IDatabaseTable {
 		String qry = "SELECT date('now')" + QRY_SPACING +
 			     	 "FROM" + QRY_SPACING + IUserTable.TABLE_NAME + QRY_SPACING +
 			     	 "WHERE" + QRY_SPACING + 
-			     	 	ISessionTable.KEY_USER_ID + "=" + QRY_SPACING + userId +
+			     	 	ISessionTable.KEY_ID + "=" + QRY_SPACING + userId +
 			     	 "AND" + QRY_SPACING +
 			     	 	ISessionTable.KEY_DATE + QRY_SPACING + "BETWEEN" + QRY_SPACING + 
 			     	 		"date('date')" + QRY_SPACING + "AND" + QRY_SPACING +
@@ -291,14 +300,28 @@ public class UserHandler implements IDatabaseTable {
 		int dailyTarget = 0;
 		String qryDailyTarget = "SELECT" + QRY_SPACING + IUserTable.KEY_TARGET_DAY + QRY_SPACING + 
 				                "FROM" + QRY_SPACING + IUserTable.TABLE_NAME + QRY_SPACING +
-				                "WHERE" + QRY_SPACING + ISessionTable.KEY_USER_ID + " = " + userId;
+				                "WHERE" + QRY_SPACING + IUserTable.KEY_ID + " = " + userId;
 		
+		Log.e("Visus", "--------------------------");
 		Log.e("Visus", "getDailyTarget(): " + qryDailyTarget);
 		
 		Cursor cursor = db.rawQuery(qryDailyTarget, null);
+//		Cursor cursor = db.query(IUserTable.TABLE_NAME, 
+//				                 IUserTable.KEY_TARGET_DAY, 
+//				                 selection, 
+//				                 selectionArgs, 
+//				                 null, null, null);
+		
 		int targetDayIndex = cursor.getColumnIndexOrThrow(IUserTable.KEY_TARGET_DAY);
+		
+		if(cursor.getCount() == 0) {
+			dailyTarget = 0;
+		}
+		else {
+			dailyTarget = cursor.getInt(targetDayIndex);
+		}
 
-		dailyTarget = cursor.getInt(targetDayIndex);
+//		dailyTarget = 0;
 		
 		db.close();
 		cursor.close();
@@ -316,7 +339,7 @@ public class UserHandler implements IDatabaseTable {
 		int monthlyTarget = 0;
 		String qryDailyTarget = "SELECT" + QRY_SPACING + IUserTable.KEY_TARGET_MONTH + QRY_SPACING + 
                 				"FROM" + QRY_SPACING + IUserTable.TABLE_NAME + QRY_SPACING +
-                				"WHERE" + QRY_SPACING + ISessionTable.KEY_USER_ID + " = " + userId;
+                				"WHERE" + QRY_SPACING + ISessionTable.KEY_ID + " = " + userId;
 		
 		Log.e("Visus", "getMonthlyTarget: " + qryDailyTarget);
 		

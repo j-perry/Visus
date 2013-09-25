@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.visus.database.SessionHandler;
+import com.visus.database.UserHandler;
+import com.visus.entities.User;
 import com.visus.entities.sessions.Session;
 import com.visus.ui.MainMenuAdapter;
 import com.visus.ui.MainMenuListView;
@@ -25,6 +27,7 @@ public class LatestActivityFragment extends Fragment {
 	private ArrayList<HashMap<String, String>> latestSessions;
 	private Session firstSession;
 	private SessionHandler dbSession;
+	private UserHandler dbUser;
 	
 	private ListView list;
 	private MainMenuAdapter adapter;
@@ -47,6 +50,7 @@ public class LatestActivityFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(com.visus.R.layout.fragment_main_menu_latest_activity, container, false);
 		dbSession = new SessionHandler(getActivity() ); // getActivity() should do the trick!
+		dbUser = new UserHandler(getActivity() );
 		
 		/*
 		 * No. sessions
@@ -96,9 +100,22 @@ public class LatestActivityFragment extends Fragment {
 		// display
 		txtVwFirstSession.setText(strFirstSession.toString() );
 		
+		/*********************************************************************
+		 * 		Check whether the user has met their daily usage target
+		 */
+		boolean targetMet = checkUserTargetToday();
 		
-		/*
-		 * Latest sessions
+		if(targetMet == true) {
+			// display message (not just a Log file message!)
+			Log.e("Visus", "Target Met");
+		}
+		else {
+			// don't do anything additional - just display what is seen normally
+			Log.e("Visus", "Target Not Met");
+		}
+		
+		/*************************************************
+		 * 		Display the user's latest sessions
 		 */
 		list = (ListView) rootView.findViewById(com.visus.R.id.overview_sessions_adapter);
 		adapter = new MainMenuAdapter(getActivity(), latestSessions);
@@ -110,6 +127,55 @@ public class LatestActivityFragment extends Fragment {
 	
 	public void onDestoryView() {
 		super.onDestroyView();
+	}
+	
+	/**
+	 * Checks to see whether the user's daily target has been met, each time they
+	 * visit the latest activity fragment (MainActivity).
+	 * @param userid
+	 */
+	private boolean checkUserTargetToday() {
+		boolean targetMet = false;
+		float dailyTarget = 0.0f;
+		float accumulatedDurationToday = 0.0f;
+		
+		try {
+			// get user's daily target
+			dbUser.open();
+			User user = dbUser.getActiveUser();
+			dailyTarget = user.getTargetDay();
+									
+			// get accumulated time made today
+			dbSession.open();
+			accumulatedDurationToday = dbSession.getTimeAccumulatedToday(userId);
+		}
+		catch(SQLiteException e) {
+			Log.e("Visus", "SQL Error", e);
+		}
+		finally {
+			dbUser.close();
+			dbSession.close();
+		}
+		
+		Log.e("Visus", "accumulatedDurationToday = " + accumulatedDurationToday);
+		Log.e("Visus", "dailyTarget = " + dailyTarget);
+		
+		// if daily target is empty
+		if(dailyTarget != 0.0f) {
+			Log.e("Visus", "dailyTarget is not empty");
+			
+			if(accumulatedDurationToday >= dailyTarget) {
+				targetMet = true;
+			}
+			else {
+				targetMet = false;
+			}
+		}
+		else {
+			targetMet = false;
+		}
+		
+		return targetMet;
 	}
 	
 }
