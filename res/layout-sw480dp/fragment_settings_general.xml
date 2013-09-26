@@ -44,21 +44,44 @@
 			            android:textAllCaps="true"
 			            android:textColor="@color/dark_grey"
 			            />
-	
+			        
 			        <!-- name -->
-			        <EditText
-			            android:id="@+id/settings_personal_name"
-			            android:background="@color/white"
-			            android:layout_height="wrap_content"
-			            android:layout_width="match_parent"
-			            android:padding="25dp"
-			            android:hint="@string/settings_general_hint_name"
-		        		android:inputType="textCapSentences"
-			            android:textColorHint="@color/dark_grey"
-			            android:textSize="18sp"
-			            android:textColor="@color/dark_grey"
-			            android:singleLine="true"
-			            />
+			        <LinearLayout
+			            android:layout_width="fill_parent"
+    					android:layout_height="wrap_content"
+				        android:padding="25dp"
+				        android:orientation="horizontal"
+				        android:weightSum="4"
+			            >
+			            
+			            <!-- header -->
+			            <TextView 
+			                android:layout_width="0dp"
+			                android:layout_height="wrap_content"
+			                android:text="@string/settings_general_personal_name_header"
+			                android:textColor="@color/dark_grey"
+				            android:textSize="18sp"
+				            android:layout_weight="1"
+			                />
+			            
+			            <!-- name -->
+				        <EditText
+				            android:id="@+id/settings_personal_name"
+				            android:background="@color/white"
+				            android:layout_height="wrap_content"
+				            android:layout_width="0dp"
+				            android:hint="@string/settings_general_hint_name"
+			        		android:inputType="textCapSentences"
+				            android:textColorHint="@color/dark_grey"
+				            android:textSize="18sp"
+				            android:textColor="@color/dark_grey"
+				            android:singleLine="true"
+				            android:layout_weight="3"
+				            />
+			            
+			        </LinearLayout>
+	
+			        
 			        
 			        <!-- gender -->
 				    <Spinner
@@ -69,21 +92,42 @@
 				        android:layout_marginBottom="0dp"
 				        android:textColor="@color/dark_grey"
 				        />
+				    
+				    <!-- age -->
+			        <LinearLayout
+			            android:layout_width="fill_parent"
+    					android:layout_height="wrap_content"
+				        android:padding="25dp"
+				        android:orientation="horizontal"
+				        android:weightSum="4"
+				        >
+				        
+				        <!-- header -->
+			            <TextView 
+			                android:layout_width="0dp"
+			                android:layout_height="wrap_content"
+			                android:text="@string/settings_general_personal_age_header"
+			                android:textColor="@color/dark_grey"
+				            android:textSize="18sp"
+				            android:layout_weight="1"
+			                />
 	
-			        <!-- age -->
-			        <EditText
-			            android:id="@+id/settings_personal_age"
-		        		android:inputType="number"
-			            android:background="@color/white"
-			            android:layout_height="wrap_content"
-			            android:layout_width="match_parent"
-			            android:padding="25dp"
-			            android:hint="@string/settings_general_hint_age"
-			            android:textColorHint="@color/dark_grey"
-			            android:textSize="18sp"
-			            android:textColor="@color/dark_grey"
-			            android:singleLine="true"
-			            />
+				        <!-- age -->
+				        <EditText
+				            android:id="@+id/settings_personal_age"
+			        		android:inputType="number"
+				            android:background="@color/white"
+				            android:layout_height="wrap_content"
+				            android:layout_width="0dp"
+				            android:hint="@string/settings_general_hint_age"
+				            android:textColorHint="@color/dark_grey"
+				            android:textSize="18sp"
+				            android:textColor="@color/dark_grey"
+				            android:singleLine="true"
+				            android:layout_weight="3"
+				            />
+				        
+					</LinearLayout>
 
 		    	</LinearLayout><!-- end of personal -->
 
@@ -109,36 +153,78 @@
 			            android:textColor="@color/dark_grey"
 			            android:textAllCaps="true"
 			            />
-	
+			        
 			        <!-- target (day) -->
-			        <EditText
-			            android:id="@+id/settings_history_target_day"
-		        		android:inputType="number"
-			            android:background="@color/white"
-			            android:layout_height="wrap_content"
-			            android:layout_width="match_parent"
-			            android:padding="25dp"
-			            android:hint="@string/settings_general_sessions_target_day"
-			            android:textColorHint="@color/dark_grey"
-			            android:textSize="18sp"
-			            android:textColor="@color/dark_grey"
-			            android:singleLine="true"
-			            />
+			        <LinearLayout
+			            android:layout_width="fill_parent"
+    					android:layout_height="wrap_content"
+				        android:padding="25dp"
+				        android:orientation="horizontal"
+				        android:weightSum="2"
+			            >
+				        
+			            <!-- header -->
+			            <TextView 
+			                android:layout_width="0dp"
+			                android:layout_height="wrap_content"
+			                android:text="@string/settings_general_sessions_daily_target_header"
+			                android:textColor="@color/dark_grey"
+				            android:textSize="18sp"
+				            android:layout_weight="1"
+			                />
 	
+				        <!-- target (day) -->
+				        <EditText
+				            android:id="@+id/settings_history_target_day"
+			        		android:inputType="number"
+				            android:background="@color/white"
+				            android:layout_height="wrap_content"
+				            android:layout_width="0dp"
+				            android:hint="@string/settings_general_sessions_target_day"
+				            android:textColorHint="@color/dark_grey"
+				            android:textSize="18sp"
+				            android:textColor="@color/dark_grey"
+				            android:singleLine="true"
+				            android:layout_weight="1"
+				            />
+				        
+				    </LinearLayout>
+				    
 			        <!-- target (month) -->
-			        <EditText
-			            android:id="@+id/settings_history_target_month"
-		        		android:inputType="number"
-			            android:background="@color/white"
-			            android:layout_height="wrap_content"
-			            android:layout_width="match_parent"
-			            android:padding="25dp"
-			            android:hint="@string/settings_general_sessions_target_month"
-			            android:textColorHint="@color/dark_grey"
-			            android:textSize="18sp"
-			            android:textColor="@color/dark_grey"
-			            android:singleLine="true"
-			            />
+			        <LinearLayout
+			            android:layout_width="fill_parent"
+    					android:layout_height="wrap_content"
+				        android:padding="25dp"
+				        android:orientation="horizontal"
+				        android:weightSum="2"
+			            >
+				        
+			            <!-- header -->
+			            <TextView 
+			                android:layout_width="0dp"
+			                android:layout_height="wrap_content"
+			                android:text="@string/settings_general_sessions_monthly_target_header"
+			                android:textColor="@color/dark_grey"
+				            android:textSize="18sp"
+				            android:layout_weight="1"
+			                />
+	
+				        <!-- target (month) -->
+				        <EditText
+				            android:id="@+id/settings_history_target_month"
+			        		android:inputType="number"
+				            android:background="@color/white"
+				            android:layout_height="wrap_content"
+				            android:layout_width="0dp"
+				            android:hint="@string/settings_general_sessions_target_month"
+				            android:textColorHint="@color/dark_grey"
+				            android:textSize="18sp"
+				            android:textColor="@color/dark_grey"
+				            android:singleLine="true"
+				            android:layout_weight="1"
+				            />
+				        
+				    </LinearLayout>
 	
 			        <!-- reset (month) -->
 			        <Button

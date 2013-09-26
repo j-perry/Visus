@@ -275,32 +275,36 @@ public final class R {
          */
         public static final int menu_settings=0x7f05001e;
         public static final int register=0x7f050018;
-        public static final int settings_about_blurb=0x7f05002b;
+        public static final int settings_about_blurb=0x7f05002f;
         /**  End of 'General' tab 
  About 
          */
-        public static final int settings_about_header=0x7f05002a;
-        public static final int settings_credit_blurb=0x7f05002d;
+        public static final int settings_about_header=0x7f05002e;
+        public static final int settings_credit_blurb=0x7f050031;
         /**  Credits 
          */
-        public static final int settings_credit_header=0x7f05002c;
-        public static final int settings_general_hint_age=0x7f050022;
-        public static final int settings_general_hint_name=0x7f050021;
+        public static final int settings_credit_header=0x7f050030;
+        public static final int settings_general_hint_age=0x7f050024;
+        public static final int settings_general_hint_name=0x7f050023;
+        public static final int settings_general_personal_age_header=0x7f050022;
         /**  'General' tab 
  'Personal' 
          */
         public static final int settings_general_personal_header=0x7f050020;
+        public static final int settings_general_personal_name_header=0x7f050021;
         /**  Save (all) 
          */
-        public static final int settings_general_save_all=0x7f050029;
+        public static final int settings_general_save_all=0x7f05002d;
+        public static final int settings_general_sessions_daily_target_header=0x7f050026;
         /**  'Sessions' 
          */
-        public static final int settings_general_sessions_header=0x7f050023;
-        public static final int settings_general_sessions_reset_all=0x7f050028;
-        public static final int settings_general_sessions_reset_month=0x7f050026;
-        public static final int settings_general_sessions_reset_year=0x7f050027;
-        public static final int settings_general_sessions_target_day=0x7f050024;
-        public static final int settings_general_sessions_target_month=0x7f050025;
+        public static final int settings_general_sessions_header=0x7f050025;
+        public static final int settings_general_sessions_monthly_target_header=0x7f050027;
+        public static final int settings_general_sessions_reset_all=0x7f05002c;
+        public static final int settings_general_sessions_reset_month=0x7f05002a;
+        public static final int settings_general_sessions_reset_year=0x7f05002b;
+        public static final int settings_general_sessions_target_day=0x7f050028;
+        public static final int settings_general_sessions_target_month=0x7f050029;
         public static final int title_activities=0x7f050011;
         public static final int title_activity=0x7f05000d;
         public static final int title_activity_categories=0x7f050010;

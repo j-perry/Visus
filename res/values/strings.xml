@@ -89,11 +89,17 @@
     	
 	    	<!-- 'Personal' -->
 	    	<string name="settings_general_personal_header">Personal</string>
+	    	<string name="settings_general_personal_name_header">Firstname</string>
+	    	<string name="settings_general_personal_age_header">Age</string>
+	    	
 	    	<string name="settings_general_hint_name">Firstname</string>
 	    	<string name="settings_general_hint_age">Age</string>
     	
-    		<!-- 'Sessions' -->    		
+    		<!-- 'Sessions' -->
 	    	<string name="settings_general_sessions_header">Sessions</string>
+	    	<string name="settings_general_sessions_daily_target_header">Daily Target (mins)</string>
+	    	<string name="settings_general_sessions_monthly_target_header">Monthly Target (mins)</string>
+	    	
 	    	<string name="settings_general_sessions_target_day">[Set daily target]</string>
 	    	<string name="settings_general_sessions_target_month">[Set monthly target]</string>
     		<string name="settings_general_sessions_reset_month">Reset (Month)</string>
