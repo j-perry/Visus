@@ -833,11 +833,11 @@ public class SessionHandler implements IDatabaseTable {
 	}
 	
 	/**
-	 * 
-	 * @param userId
-	 * @return
+	 * Retrieves and computes total accumulated time made today (hh:mm)
+	 * @param userId the user's id
+	 * @return Return's the duration in mm:ss
 	 */
-	public float getTimeAccumulatedToday(int userId) {
+	public float getTimeAccumulatedToday(int userId) throws SQLiteException {
 		float duration = 0.0f;
 		String qry = "SELECT *" + QRY_SPACING +
 					 "FROM" + QRY_SPACING + ISessionTable.TABLE_NAME + QRY_SPACING +
@@ -925,6 +925,132 @@ public class SessionHandler implements IDatabaseTable {
 				duration = durationTodayReformatted.floatValue();
 				
 				Log.e("Visus", "getTimeAccumulatedToday(): " + duration);
+			}
+		}
+							
+		return duration;
+	}
+	
+	/**
+	 * Retrieves and computes total accumulated time made this month (hh:mm)
+	 * @param userId the user's id
+	 * @return Return's the duration in mm:ss
+	 */
+	public float getTimeAccumulatedThisMonth(int userId) throws SQLiteException {
+		float duration = 0.0f;
+		String qry = "";
+		
+		int maxDays = 0;
+		int month = 0;
+		int year = 0;
+		
+		String strMonth = null;
+		
+		Calendar cal = Calendar.getInstance();
+		month = cal.get(Calendar.MONTH);
+		month++;
+		year = cal.get(Calendar.YEAR);
+		
+		cal = new GregorianCalendar(year, month, 1);
+		maxDays = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+		
+		if(month < 10) {
+			strMonth = "0" + String.valueOf(month);
+		}
+		else {
+			strMonth = String.valueOf(month);
+		}		
+		
+		Log.e("Visus", "Month " + strMonth + ", " + "Year " + year);
+		Log.e("Visus", "Max no. of days: " + maxDays);
+		
+		// query selects all sessions made this month
+		qry = "SELECT *" + QRY_SPACING +
+              "FROM" + QRY_SPACING + ISessionTable.TABLE_NAME + QRY_SPACING +
+              "WHERE" + QRY_SPACING +
+              	ISessionTable.KEY_USER_ID + " = '" + userId + "'" + QRY_SPACING + 
+               "AND" + QRY_SPACING + 
+               	ISessionTable.KEY_DATE + QRY_SPACING +
+               "BETWEEN" + QRY_SPACING +                              	
+               	"date('" + year + "-" + strMonth + "-" + "01')" + QRY_SPACING +
+               "AND" + QRY_SPACING +
+               	"date('" + year + "-" + strMonth + "-" + maxDays + "')";
+			
+		Log.e("Visus", "------------------------------");
+		Log.e("Visus", "getTimeAccumulatedThisMonth()" );
+		Log.e("Visus", qry);
+						
+		Cursor cursor = db.rawQuery(qry, null);
+		
+		// if empty
+		if(cursor.getCount() == 0) {
+			Log.e("Visus", "Cursor is empty");
+			cursor.close();
+			duration = 0.0f;
+		}
+		else {		
+			int durationMinutesIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_MINS);
+			int durationSecondsIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_SECS);
+			
+			int elapsedMinutes = 0;
+		    int elapsedSeconds = 0;
+			
+			while(cursor.moveToNext()) {
+				int tmpMinute = cursor.getInt(durationMinutesIndex);
+				int tmpSecond = cursor.getInt(durationSecondsIndex);
+												
+				elapsedMinutes += tmpMinute;
+				elapsedSeconds += tmpSecond;			
+			}			
+			
+			// convert seconds to decimal places
+			float tmpElapsedSeconds = (float) elapsedSeconds / 100.0f;		
+			
+			float product = elapsedMinutes + tmpElapsedSeconds;
+			
+			// assign current duration (mm:ss)
+			duration = product;
+			
+			/*****************************************************************************************
+			 * 		Calculate overlap in seconds and true representation of accumulated duration
+			 */
+			// take a copy of session time (just created) - mm:ss
+			float productCpy = product;
+			
+			// find decimal product derived from mm:ss
+			float durationSecondsToday = product % 1;
+			
+			// calculate no. of minutes accumulated - i.e., 2.5 - 0.5 = 2 mins
+			productCpy = productCpy - durationSecondsToday;
+			
+			// if over 60 seconds
+			if(durationSecondsToday > 0.6f) {
+				// reset the duration
+				duration = 0.0f;
+				float incrMin = 1.0f;
+				
+				// copy number of seconds accumulated
+				float durationSecsTodayCpy = durationSecondsToday;
+				durationSecondsToday = 0.0f;
+				
+				// calculate no. of seconds left over 60 seconds (0.6)
+				durationSecondsToday = (durationSecsTodayCpy - 0.6f);
+				
+				// initialise no. of mins + secs - i.e., 3.1, appending an additional minute for accumulated seconds over 60 seconds
+				duration = productCpy + incrMin + durationSecondsToday;
+				
+				// format the duration to 2 decimal places - e.g., X.XX
+				BigDecimal durationTodayReformatted = new BigDecimal(duration).setScale(2, BigDecimal.ROUND_HALF_UP);
+				duration = durationTodayReformatted.floatValue();
+				
+				Log.e("Visus", "getTimeAccumulatedThisMonth(): " + duration);
+			}
+			else {				
+				// format the duration to 2 decimal places - e.g., X.XX
+				BigDecimal durationTodayReformatted = new BigDecimal(duration).setScale(2, BigDecimal.ROUND_HALF_UP);
+				duration = durationTodayReformatted.floatValue();
+				
+				Log.e("Visus", "getTimeAccumulatedThisMonth(): " + duration);
 			}
 		}
 							

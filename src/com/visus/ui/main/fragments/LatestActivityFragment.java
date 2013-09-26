@@ -100,19 +100,39 @@ public class LatestActivityFragment extends Fragment {
 		// display
 		txtVwFirstSession.setText(strFirstSession.toString() );
 		
+		
+		
 		/*********************************************************************
 		 * 		Check whether the user has met their daily usage target
 		 */
-		boolean targetMet = checkUserTargetToday();
+		boolean dailyTargetMet = checkUserTargetToday();
 		
-		if(targetMet == true) {
+		if(dailyTargetMet == true) {
 			// display message (not just a Log file message!)
-			Log.e("Visus", "Target Met");
+			Log.e("Visus", "Daily target met");
 		}
 		else {
 			// don't do anything additional - just display what is seen normally
-			Log.e("Visus", "Target Not Met");
+			Log.e("Visus", "Daily target not met");
 		}
+		
+		
+		
+		/*********************************************************************
+		 * 		Check whether the user has met their monthly usage target
+		 */
+		boolean monthlyTargetMet = checkUserTargetMonth();
+		
+		if(monthlyTargetMet == true) {
+			// display message (not just a Log file message!)
+			Log.e("Visus", "Monthly target met");
+		}
+		else {
+			// don't do anything additional - just display what is seen normally
+			Log.e("Visus", "Monthly target not met");
+		}
+		
+		
 		
 		/*************************************************
 		 * 		Display the user's latest sessions
@@ -128,11 +148,10 @@ public class LatestActivityFragment extends Fragment {
 	public void onDestoryView() {
 		super.onDestroyView();
 	}
-	
+			
 	/**
-	 * Checks to see whether the user's daily target has been met, each time they
-	 * visit the latest activity fragment (MainActivity).
-	 * @param userid
+	 * Method checks whether the user has met their monthly target
+	 * @return Whether the user's target has been met
 	 */
 	private boolean checkUserTargetToday() {
 		boolean targetMet = false;
@@ -165,6 +184,54 @@ public class LatestActivityFragment extends Fragment {
 			Log.e("Visus", "dailyTarget is not empty");
 			
 			if(accumulatedDurationToday >= dailyTarget) {
+				targetMet = true;
+			}
+			else {
+				targetMet = false;
+			}
+		}
+		else {
+			targetMet = false;
+		}
+		
+		return targetMet;
+	}
+	
+	/**
+	 * Method checks whether the user has met their monthly target
+	 * @return Whether the user's target has been met
+	 */
+	private boolean checkUserTargetMonth() { 
+		boolean targetMet = false;
+		float monthlyTarget = 0.0f;
+		float accumulatedDurationMonth = 0.0f;
+		
+		try {
+			// get user's daily target
+			dbUser.open();
+			User user = dbUser.getActiveUser();
+			monthlyTarget = user.getTargetMonth();
+			
+			// get accumulated time made today
+			dbSession.open();
+			accumulatedDurationMonth = dbSession.getTimeAccumulatedThisMonth(userId);
+		}
+		catch(SQLiteException e) {
+			Log.e("Visus", "SQL Error", e);
+		}
+		finally {
+			dbUser.close();
+			dbSession.close();
+		}
+		
+		Log.e("Visus", "accumulatedDurationMonth = " + accumulatedDurationMonth);
+		Log.e("Visus", "monthlyTarget = " + monthlyTarget);
+		
+		// if daily target is empty
+		if(monthlyTarget != 0.0f) {
+			Log.e("Visus", "monthlyTarget is not empty");
+					
+			if(accumulatedDurationMonth >= monthlyTarget) {
 				targetMet = true;
 			}
 			else {
