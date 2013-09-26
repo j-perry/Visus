@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -51,6 +52,15 @@ public class LatestActivityFragment extends Fragment {
 		View rootView = inflater.inflate(com.visus.R.layout.fragment_main_menu_latest_activity, container, false);
 		dbSession = new SessionHandler(getActivity() ); // getActivity() should do the trick!
 		dbUser = new UserHandler(getActivity() );
+		
+		// hide by default
+		View dailyTargetLayout = rootView.findViewById(com.visus.R.id.fragment_main_menu_layout_target_met_daily);
+		dailyTargetLayout.setVisibility(View.GONE);
+		
+		// hide by default
+		View monthlyTargetLayout = rootView.findViewById(com.visus.R.id.fragment_main_menu_layout_target_met_monthly);
+		monthlyTargetLayout.setVisibility(View.GONE);
+		
 		
 		/*
 		 * No. sessions
@@ -110,6 +120,10 @@ public class LatestActivityFragment extends Fragment {
 		if(dailyTargetMet == true) {
 			// display message (not just a Log file message!)
 			Log.e("Visus", "Daily target met");
+			dailyTargetLayout.setVisibility(View.VISIBLE);
+			
+//			TextView dailyTargetTxt = (TextView) rootView.findViewById(com.visus.R.id.main_menu_latest_activities_daily_target_met_message);
+//			dailyTargetTxt.
 		}
 		else {
 			// don't do anything additional - just display what is seen normally
@@ -126,6 +140,7 @@ public class LatestActivityFragment extends Fragment {
 		if(monthlyTargetMet == true) {
 			// display message (not just a Log file message!)
 			Log.e("Visus", "Monthly target met");
+			monthlyTargetLayout.setVisibility(View.VISIBLE);		
 		}
 		else {
 			// don't do anything additional - just display what is seen normally

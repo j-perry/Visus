@@ -61,6 +61,11 @@
         <item>Activities</item>
     </string-array>
     
+    <string name="latest_activity_daily_target_met">Update: Daily target met!</string>
+    <string name="latest_activity_monthly_target_met">Update: Monthly target met!</string>
+    
+    <!-- End of Main Menu -->
+    
     
     <!-- Settings -->
     <string-array name="settings_list">
