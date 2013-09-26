@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.app.*;
 import android.app.ActionBar.OnNavigationListener;
 import android.app.ActionBar.Tab;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteException;
 import android.support.v4.app.Fragment;
@@ -51,6 +53,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	private ListView list;
 	private MainMenuAdapter adapter;
 	
+	private Context context = this;
+	private AlertDialog alertDialog;
+	
 	private ViewPager mainMenuPager;
 	private MainMenuPagerAdapter mainMenuPagerAdapter;
 	
@@ -80,12 +85,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		final ActionBar ab = getActionBar();
 		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 			
-		if(user != null) {
-			
-			
+		if(user != null) {						
 			Log.e("Visus", "USER ID: " + userId);
-			
-			
+						
 			mainMenuPager = (ViewPager) findViewById(com.visus.R.id.main_menu_pager);
 			mainMenuPagerAdapter = new MainMenuPagerAdapter(getSupportFragmentManager(), 
 					                                        user.getUserId(),						// user 
@@ -99,6 +101,25 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			
 			
 			ArrayAdapter<CharSequence> arAdapter = ArrayAdapter.createFromResource(this, R.array.menu, R.layout.action_bar_list);
+				
+			
+			/*************************************************************************************
+			 * 		If no user target have been created, ask the user if they would like to
+			 */
+			if(user.getTargetDay() == 0 && user.getTargetMonth() == 0) {
+				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+				alertDialogBuilder.setTitle("User Targets");
+				
+				alertDialogBuilder.setMessage("No usage targets have been created. They help you stay fresh and productive. Do you wish to create a target or two now?"); 
+				alertDialogBuilder.setCancelable(false);
+				alertDialogBuilder.setPositiveButton("Yes Please!", new OkOnClickListener());
+				alertDialogBuilder.setNegativeButton("Nope. Go Away!", new CancelOnClickListener());
+				alertDialog = alertDialogBuilder.create();
+				
+				// show it
+				alertDialog.show();
+			}
+			
 			
 			/**
 			 * The following two methods are crucial. Do not delete them.
@@ -394,6 +415,30 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		}
 		
 		return latestSessions;
+	}
+	
+	/**
+	 * AlertDialog event handler that displays a new session view
+	 * @author Jonathan Perry
+	 *
+	 */
+	private final class OkOnClickListener implements DialogInterface.OnClickListener {
+		public void onClick(DialogInterface dialog, int which) {
+			Intent intent = new Intent(getApplicationContext(), Settings.class);
+			intent.putExtra("ActiveUserId", user.getUserId());
+			context.startActivity(intent);
+		}
+	}
+		
+	/**
+	 * AlertDialog event handler that dismisses itself
+	 * @author Jonathan Perry
+	 *
+	 */
+	private final class CancelOnClickListener implements DialogInterface.OnClickListener {
+		public void onClick(DialogInterface dialog, int which) {
+			alertDialog.dismiss();
+		}
 	}
 	
 	/**

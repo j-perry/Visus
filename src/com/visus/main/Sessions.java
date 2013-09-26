@@ -71,7 +71,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sessions);
 		
-		 noItems = 0;
+		noItems = 0;
 		
 		Log.e("Visus", "Session onCreate()");
 		
@@ -116,22 +116,22 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 			alertDialog.show();
 		}
 		
-			sessionsPager = (ViewPager) findViewById(com.visus.R.id.sessions_pager);
-			sessionsPagerAdapter = new SessionsPagerAdapter(getSupportFragmentManager(), activeUserId);
+		sessionsPager = (ViewPager) findViewById(com.visus.R.id.sessions_pager);
+		sessionsPagerAdapter = new SessionsPagerAdapter(getSupportFragmentManager(), activeUserId);
 			
-			// initialise the page view adapter
-			sessionsPager.setAdapter(sessionsPagerAdapter);
-			sessionsPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+		// initialise the page view adapter
+		sessionsPager.setAdapter(sessionsPagerAdapter);
+		sessionsPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 				
-				@Override
-				public void onPageSelected(int position) {
-					ab.setSelectedNavigationItem(position);
-				}
+			@Override
+			public void onPageSelected(int position) {
+				ab.setSelectedNavigationItem(position);
+			}
 				
-			});
+		});
 			
-			// create our tabs
-			initTabs(ab);
+		// create our tabs
+		initTabs(ab);
 		
 		
 		
