@@ -214,168 +214,293 @@ public class NewSession extends Activity {
 	 * @param view
 	 */
 	public void onStart(View view) {
-		timerHandler = new Handler();	
+		timerHandler = new Handler();
+		
+		startTimerBtn = (Button) findViewById(R.id.timer_btn);
+		stopTimerBtn = (Button) findViewById(R.id.timer_stop_btn);
+		
+		// session duration setter layout 
+		LinearLayout sessionDuration = (LinearLayout) findViewById(R.id.set_session_duration);
+		
+		// find EditText fields for value retrieval
+		EditText etMins = (EditText) findViewById(R.id.timer_set_minutes);
+		EditText etSecs = (EditText) findViewById(R.id.timer_set_seconds);
+		
+		TextView timer = (TextView) findViewById(R.id.timer);
 		
 		// used to store user input for setting session duration 
 		int iMins = 0;
 		int iSecs = 0;
 		
-		// hide the start button
-		startTimerBtn = (Button) findViewById(R.id.timer_btn);
-		startTimerBtn.setVisibility(View.GONE);
-		
-		// display the stop button
-		stopTimerBtn = (Button) findViewById(R.id.timer_stop_btn);
-		stopTimerBtn.setVisibility(View.VISIBLE);
-		
-				
-		// hide the session duration setter layout 
-		LinearLayout sessionDuration = (LinearLayout) findViewById(R.id.set_session_duration);
-		sessionDuration.setVisibility(View.GONE);
-				
-		// display the timer
-		TextView timer = (TextView) findViewById(R.id.timer);
-		timer.setVisibility(View.VISIBLE);
-		
-		// find EditText fields for value retrieval
-		EditText etMins = (EditText) findViewById(R.id.timer_set_minutes);
-		EditText etSecs = (EditText) findViewById(R.id.timer_set_seconds);
-			
-		// if session type is empty
-		if(sessionTypes.getText().toString().length() == 0) {
-			this.type = "Uncategoried";
-		}
-		else {
-			this.type = sessionTypes.getText().toString();
-		}
+		int MINS_LIMIT = 60;
+		int SECS_LIMIT = 60;
 		
 		
-		// output session type
-		Log.e("Visus", "Type: " + this.type);
-		
-		// hide the session view
-		sessionTypes.setVisibility(View.GONE);
-				
-		// if both fields are empty
-		if( (etMins.getText().toString().isEmpty() ) &&
-		    (etSecs.getText().toString().isEmpty() )) {
-			
-			String msg = "Enter at least one value\nin either of the input fields";
+		/******************************************************************
+		 * 			If both minutes and seconds fields are empty
+		 */
+		if( (etMins.getText().toString().isEmpty() ) && 
+			(etSecs.getText().toString().isEmpty() )) {
+			String toastMsg = "Enter at least one value in either of the number fields";
 			
 			// inform the user they are both empty ...
-			Toast.makeText(getApplicationContext(), 
-					       msg,
-					       Toast.LENGTH_SHORT).show();
+			Toast toast = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_LONG);
+			toast.setGravity(Gravity.CENTER, 0, 250);
+			toast.show();
 			
 			// ... and delay the start time
-			timerHandler.removeCallbacks(runUpdateTimer);
-			
+			timerHandler.removeCallbacks(runUpdateTimer);			
 		}
-		// if minutes field is empty
-		// and seconds field is not empty
-		else if( (etMins.getText().toString().isEmpty()) && 
-				 ( !etSecs.getText().toString().isEmpty() )) {
+		/**********************************************************************
+		 * 		If minutes field is empty and seconds field is NOT empty
+		 */
+		else if( (etMins.getText().toString().isEmpty()) &&
+				 (!etSecs.getText().toString().isEmpty() )) {
 			
-			// append two noughts
-			iMins = 00;
-			iSecs = Integer.parseInt( etSecs.getText().toString() );
+			// if seconds set are above 59
+			if(Integer.parseInt(etSecs.getText().toString() ) > SECS_LIMIT) {
+				// inform the user it must be between 0 - 59
+				String toastMsg = "Invalid range. Please enter seconds between 0 - 59";
+				
+				// display a message
+				Toast toast = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_LONG);
+				toast.setGravity(Gravity.CENTER, 0, 250);
+				toast.show();
+			}
+			else {
+				// append two noughts
+				iMins = 00;
+				iSecs = Integer.parseInt( etSecs.getText().toString() );
+				
+				// if session type is empty
+				if(sessionTypes.getText().toString().length() == 0) {
+					this.type = "Uncategorised";
+					// output session type
+					Log.e("Visus", "Type: " + "Uncategorised");
+				}
+				else {
+					this.type = sessionTypes.getText().toString();
+					// output session type
+					Log.e("Visus", "Type: " + this.type);
+				}
+					
+				// hide the session view
+				sessionTypes.setVisibility(View.GONE);
+				
+				// hide the start button
+				startTimerBtn.setVisibility(View.GONE);
+				
+				// display the stop button
+				stopTimerBtn.setVisibility(View.VISIBLE);
+								
+				// hide the session duration setter layout
+				sessionDuration.setVisibility(View.GONE);
+						
+				// display the timer
+				timer.setVisibility(View.VISIBLE);
+				
+				// initialise a new session
+				initSession(iMins, iSecs);
+			}		
 		}
-		// if minutes field is not empty
-		// and seconds field is empty
-		else if( ( !etMins.getText().toString().isEmpty() ) &&
+		/******************************************************************************
+		 * 		If the minutes field is NOT empty and the seconds field is empty
+		 */
+		else if( (!etMins.getText().toString().isEmpty() ) &&
 				 (etSecs.getText().toString().isEmpty()) ) {
 			
-			iMins = Integer.parseInt( etMins.getText().toString() );
+			// if minutes set are above 60
+			if(Integer.parseInt(etMins.getText().toString() ) > MINS_LIMIT) {
+				// inform the user it must be between 0 - 59
+				String toastMsg = "Invalid range. Please enter minutes between 0 - 60";
+				
+				// display a message
+				Toast toast = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_LONG);
+				toast.setGravity(Gravity.CENTER, 0, 250);
+				toast.show();
+			}
+			else {
+				iMins = Integer.parseInt( etMins.getText().toString() );
 			
-			// append two noughts
-			iSecs = 00;
-		}
-		// if both fields are not empty
+				// append two noughts
+				iSecs = 00;
+				
+				
+				// if session type is empty
+				if(sessionTypes.getText().toString().length() == 0) {
+					this.type = "Uncategorised";
+					// output session type
+					Log.e("Visus", "Type: " + "Uncategorised");
+				}
+				else {
+					this.type = sessionTypes.getText().toString();
+					// output session type
+					Log.e("Visus", "Type: " + this.type);
+				}
+				
+				// hide the session view
+				sessionTypes.setVisibility(View.GONE);
+							
+				// hide the start button
+				startTimerBtn.setVisibility(View.GONE);
+				
+				// display the stop button
+				stopTimerBtn.setVisibility(View.VISIBLE);
+								
+				// hide the session duration setter layout
+				sessionDuration.setVisibility(View.GONE);
+						
+				// display the timer
+				timer.setVisibility(View.VISIBLE);
+				
+				// initialise a new session
+				initSession(iMins, iSecs);
+			}		
+		}		
+		/****************************************************************
+		 * 		If both fields are NOT empty, do some formatting...
+		 */
 		else {
-			// if the length of the input is 1 - i.e., min = 1
-			if(etMins.getText().toString().length() == 1) {
-				// and the number is less than 10 minutes
-				if(Integer.parseInt( etMins.getText().toString()) < 10) {
-					// append a nought to minutes
-					iMins = 0;
-					iMins += Integer.parseInt(etMins.getText().toString() );
-				}
+			/****************************************************************
+			 * 		...before doing that...
+			 */
+			// if minutes set are above 60 AND seconds set are above 59
+			if((Integer.parseInt(etMins.getText().toString() ) > MINS_LIMIT) && 
+				(Integer.parseInt(etSecs.getText().toString()) > SECS_LIMIT) ) {
+				
+				// inform the user it must be between 0 - 59
+				String toastMsg = "Invalid range. Please enter minutes between 0 - 60";
+							
+				// display a message
+				Toast toast = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_LONG);
+				toast.setGravity(Gravity.CENTER, 0, 250);
+				toast.show();
 			}
 			else {
-				iMins = Integer.parseInt(etMins.getText().toString() );
-			}
-			
-			// repeat (for seconds)...
-			if(etSecs.getText().toString().length() == 1) {
-				// and the number is less than 10 seconds		
-				if(Integer.parseInt( etSecs.getText().toString()) < 10) {
-					iSecs = 0;
-					iSecs += Integer.parseInt(etSecs.getText().toString() );
+				/****************************************************
+				 * 		Otherwise, get on with some formatting!
+				 */
+				
+				// if the length of the input is 1 - i.e., min = 1
+				if(etMins.getText().toString().length() == 1) {
+					// and the number is less than 10 minutes
+					if(Integer.parseInt( etMins.getText().toString()) < 10) {
+						// append a nought to minutes
+						iMins = 0;
+						iMins += Integer.parseInt(etMins.getText().toString() );
+					}
 				}
-			} 
-			else {
-				iSecs = Integer.parseInt(etSecs.getText().toString() );
-			}
-		}
-			
-		
+				else {
+					iMins = Integer.parseInt(etMins.getText().toString() );
+				}
+				
+				// repeat (for seconds)...
+				if(etSecs.getText().toString().length() == 1) {
+					// and the number is less than 10 seconds		
+					if(Integer.parseInt( etSecs.getText().toString()) < 10) {
+						iSecs = 0;
+						iSecs += Integer.parseInt(etSecs.getText().toString() );
+					}
+				} 
+				else {
+					iSecs = Integer.parseInt(etSecs.getText().toString() );
+				}
+				
+				
+				/***************************************
+				 * 		If session type is empty
+				 */ 
+				if(sessionTypes.getText().toString().length() == 0) {
+					this.type = "Uncategorised";
+					
+					// output session type
+					Log.e("Visus", "Type: " + "Uncategorised");
+				}
+				else {
+					this.type = sessionTypes.getText().toString();
+					
+					// output session type
+					Log.e("Visus", "Type: " + this.type);
+				}
+						
+				// hide the session view
+				sessionTypes.setVisibility(View.GONE);
+								
+				// hide the start button
+				startTimerBtn.setVisibility(View.GONE);
+				
+				// display the stop button
+				stopTimerBtn.setVisibility(View.VISIBLE);
+								
+				// hide the session duration setter layout
+				sessionDuration.setVisibility(View.GONE);
+						
+				// display the timer
+				timer.setVisibility(View.VISIBLE);
+				
+				// initialise a new session
+				initSession(iMins, iSecs);			
+			}			
+		}				
+	}
+	
+	/**
+	 * Initialises a new session
+	 * @param iMins minutes set
+	 * @param iSecs seconds set
+	 */
+	private void initSession(int iMins, int iSecs) {
 		// convert inputted session duration into milliseconds
 		setDuration(iMins, iSecs);
-		
+				
 		// assign session duration to global variable
 		this.durationMinutes = iMins;
 		this.durationSeconds = iSecs;
-		
+				
 		// get the session date
 		int dayNo = Integer.parseInt(new SimpleDateFormat(strFormatDayCalNo).format(new Date()) );
 		String day = new SimpleDateFormat(strFormatDay).format(new Date() );
 		String month = new SimpleDateFormat(strFormatMonth).format(new Date() );
 		int year = Integer.parseInt(new SimpleDateFormat(strFormatYear).format(new Date()) );
-		
+				
 		Log.e("Visus", day + " " + dayNo + " " + month + ", " + year);
-		
+				
 		// remove callback to timer handler
 		timerHandler.removeCallbacks(runUpdateTimer);
 		timerHandler.postDelayed(runUpdateTimer, 0);
-		
+				
 		// initialise the session date
 		session.setDayNo(dayNo);
 		session.setDay(day);
 		session.setMonth(month);
 		session.setYear(year);
-		
+				
 		// set the date
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String date = sdf.format(new Date() );
 		session.setDate(date);
-		
+				
 		Log.e("Visus", "Date set: " + session.getDate());
-		
+				
 		// get the session time
 		int hour = Integer.parseInt(new SimpleDateFormat("hh").format(new Date() ));
 		int minutes = Integer.parseInt(new SimpleDateFormat("mm").format(new Date() ));
 		String dayPeriod = new SimpleDateFormat("a").format(new Date() );
-		
+				
 		// set the time (GMT) - hours
 		session.setTimeHour(hour);
-		
+				
 		// minutes...		
 		session.setTimeMinutes(minutes);
-				
-		
-		// initialise the session time
-//		session.setTime(hour,		// hour
-//						minutes,    // minutes
-//						dayPeriod);	// period of the day - AM/PM
-		
-		Log.e("Visus", "Set time: " + session.getTimeHour() + ":" + session.getTimeMinutes());
-		
+
+		// day period
 		session.setDayPeriod(dayPeriod);
 		
-		Log.e("Visus", "Set day period: " + session.getDayPeriod());	
-		
-		// clock time
-//		Log.e("Visus", "Set time: " + session.getTime());		
+		Log.e("Visus", "Set time: " + session.getTimeHour() 
+						            + ":" 
+				                    + session.getTimeMinutes());
+						
+		Log.e("Visus", "Set day period: " + session.getDayPeriod());
 	}
 	
 	/**
@@ -392,13 +517,10 @@ public class NewSession extends Activity {
 	 */
 	public void onEnd(View view) {
 		timerHandler.removeCallbacks(runUpdateTimer);
+		
 		int sessionMins = 0;
 		int sessionSecs = 0;
-								
-//		sessionDuration[0] = ((getDuration() / (1000 * 60)) % 60);	// minutes
-//		sessionDuration[1] = ((getDuration() / 1000) % 60);			// seconds
 		
-//		TODO		
 		int remainingMins = getTimeRemainingMinutes();
 		int remainingSecs = getTimeRemainingSeconds();
 				
@@ -442,7 +564,6 @@ public class NewSession extends Activity {
 		try {
 			dbHandler.open();
 			dbHandler.add(session);
-			updateTargetDuration(sessionMins, sessionSecs, activeUserId);
 		}
 		catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);
@@ -456,139 +577,6 @@ public class NewSession extends Activity {
 		intent.putExtra("ActiveUserId", activeUserId);
 		startActivity(intent);
 	}	
-	
-	/**
-	 * 
-	 * @param sessionSecs
-	 * @param sessionMins
-	 * @param userId
-	 * @return
-	 */
-	private void updateTargetDuration(int sessionMins, int sessionSecs, int userId) {		
-		/**
-		 * compute targets and write equally to db
-		 */
-		
-		// today (incl. newly created session)
-		float existingDurationToday = 0.0f;
-		float existingDurationMonth = 0.0f;
-		float durationToday = 0.0f;
-		float durationMonth = 0.0f;
-		
-		// get our values
-		try {
-			dbUser.open();
-			existingDurationToday = dbUser.getDurationToday(activeUserId);
-			
-			Log.e("Visus", "existingDurationToday: " + existingDurationToday);
-			
-			// today
-			if(existingDurationToday == 0.0f) {
-				existingDurationToday = 0.0f;
-			}
-						
-//			existingDurationMonth = dbUser.getDurationMonth(activeUserId);
-			
-			// month
-//			if(existingDurationMonth == 0) {
-//				existingDurationMonth = 0.0f;
-//			}
-		}
-		catch(SQLiteException e) {
-			Log.e("Visus", "SQL Error", e);
-		}
-		finally {
-			dbUser.close();
-		}
-		
-		// convert newly created session mins + secs to a float
-		float tmpSessionSecs = (float) sessionSecs / 100.0f;
-				
-		Log.e("Visus", "tmpSessionSecs");
-		Log.e("Visus", String.valueOf(tmpSessionSecs) );	// output 10 secs (0.1)
-		
-//		if(tmpSessionSecs > 0.6f) {
-//			sessionMins += 1.0f;
-//			tmpSessionSecs = (0.6f - tmpSessionSecs);
-//		}
-				
-		float product = (float) sessionMins + tmpSessionSecs;
-		Log.e("Visus", "product");
-		Log.e("Visus", String.valueOf(product) );
-				
-		// compute existing and new products (today)
-		durationToday = existingDurationToday + product;
-		
-		// calculate secs (decimal place)
-		//    - 1.7 % 1 = 0.7
-		//
-		// if(secs is greater than 0.6) increment no. of minutes
-		// subtract 0.7 (e.g.,) by 0.6
-		// add to no of secs
-		//
-		// we want 1.7 mins to be
-		// 2.1 mins
-		
-		/*************************************************************************************
-		 * Format the time according to generic time conventions (i.e., 60 secs in 1 minute)
-		 */
-		
-		// take a copy of session time (just created) - mm:ss
-		float durationTodayCpy = durationToday;
-		
-		// find decimal product derived from mm:ss
-		float durationTodaySecs = durationToday % 1;
-		
-		// calculate no. of minutes accumulated - i.e., 2.5 - 0.5 = 2 mins
-		durationTodayCpy = durationTodayCpy - durationTodaySecs;
-		
-		// if over 60 seconds
-		if(durationTodaySecs > 0.6f) {
-			float incrMins = 1.0f;
-			
-			// copy number of seconds accumulated
-			float durationTodaySecsCpy = durationTodaySecs;
-			durationTodaySecs = 0.0f;
-			
-			// calculate no. of seconds left over 60 seconds (0.6)
-			durationTodaySecs = (durationTodaySecsCpy - 0.6f);
-			
-			// initialise no. of mins + secs - i.e., 3.1, appending an additional minute for accumulated seconds over 60 seconds
-			durationToday = durationTodayCpy + incrMins + durationTodaySecs; 
-			
-			Log.e("Visus", "Before BIGDECIMAL: " + durationToday);
-			
-			// format the duration to 2 decimal places - e.g., X.XX
-			BigDecimal durationTodayReformatted = new BigDecimal(durationToday).setScale(2, BigDecimal.ROUND_HALF_UP);
-			durationToday = durationTodayReformatted.floatValue();
-		}
-		else {
-			Log.e("Visus", "Before BIGDECIMAL: " + durationToday);
-			
-			BigDecimal durationTodayReformatted = new BigDecimal(durationToday).setScale(2, BigDecimal.ROUND_HALF_UP);
-			durationToday = durationTodayReformatted.floatValue();
-		}
-									
-		Log.e("Visus", "durationToday");
-		Log.e("Visus", String.valueOf(durationToday) );
-			
-				
-		// compute existing and new products (this month)
-//		durationMonth = existingDurationMonth + durationToday;
-				
-		// write to the database duration accumulated both today and this month
-		try {
-			dbUser.open();
-			dbUser.setDurationToday(activeUserId, durationToday);	// duration accumulated today
-//			dbUser.setDurationMonth(activeUserId, durationMonth);	// duration accumulated this month
-		}
-		catch(SQLiteException e) {
-			Log.e("Visus", "SQL Error", e);
-		}
-		finally {
-			dbUser.close();
-		}
-	}
 	
 	/**
 	 * Sets the session duration and converts inputed 
@@ -706,12 +694,14 @@ public class NewSession extends Activity {
 				minutes = String.valueOf( ((millisUntilFinished / (1000 * 60)) % 60) );
 				seconds = String.valueOf( (millisUntilFinished / 1000) % 60 );
 				
+				Log.e("Visus", "Minutes: " + minutes);
+				Log.e("Visus", "Seconds: " + seconds);
+				
 				// if the timer has ended
 				if((Integer.parseInt(minutes) == 00) &&
 				   (Integer.parseInt(seconds) == 00)) {
 					
 					// go to the user's previous sessions
-					// TODO
 					Intent intent = new Intent(NewSession.this, Sessions.class);
 					startActivity(intent);
 				}
