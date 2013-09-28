@@ -768,7 +768,7 @@ public class SessionHandler implements IDatabaseTable {
 		
 		while(cursor.moveToNext()) {
 			session = new Session();
-	
+		
 			session.setDayNo(cursor.getInt(dayNoIndex));
 			session.setDay(cursor.getString(dayIndex));
 			session.setMonth(cursor.getString(monthIndex));
@@ -778,20 +778,20 @@ public class SessionHandler implements IDatabaseTable {
 			session.setDayPeriod(cursor.getString(timezoneIndex));
 			session.setDurationMinutes(cursor.getInt(durationMinutesIndex));
 			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
-			
+				
 			if(!cursor.getString(typeIndex).isEmpty()) {
 				session.setType(cursor.getString(typeIndex));
 			}
 			else {
 				session.setType("Undefined");
 			}
-						
+							
 			sessionsThisYear.add(session);
 		}
 		
 		// reverse the results (this is a substitute solution to the ORDER BY clause)
 		Collections.reverse(sessionsThisYear);
-		
+			
 		cursor.close();
 		db.close();
 		
