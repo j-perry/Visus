@@ -781,6 +781,10 @@ public class NewSession extends Activity {
 	 * @param view
 	 */
 	public void onEnd(View view) {
+		finishSession();
+	}	
+	
+	private void finishSession() {
 		sessionTimer.cancel();
 		timerHandler.removeCallbacks(runUpdateTimer);
 		
@@ -842,7 +846,7 @@ public class NewSession extends Activity {
 		Intent intent = new Intent(NewSession.this, Sessions.class);
 		intent.putExtra("ActiveUserId", activeUserId);
 		startActivity(intent);
-	}	
+	}
 	
 	/**
 	 * Sets the session duration and converts inputed 
@@ -1004,7 +1008,7 @@ public class NewSession extends Activity {
 		};
 		
 		// starts the timer
-		sessionTimer.start();		
+		sessionTimer.start();
 	}	
 	
 	/**
@@ -1033,5 +1037,7 @@ public class NewSession extends Activity {
 		
 		// display it!
 		notManager.notify(0, notBuilder.build() );
+		
+		finishSession();
 	}
 }
