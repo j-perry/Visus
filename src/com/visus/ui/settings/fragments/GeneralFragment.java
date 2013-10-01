@@ -7,6 +7,7 @@ import com.visus.main.MainActivity;
 import com.visus.main.Settings;
 
 import android.R;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -48,7 +49,7 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 	
 	// 'save'
 	private Button	 save;
-		
+			
 	public GeneralFragment() {
 		super();
 	}
@@ -62,7 +63,7 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		View rootView = inflater.inflate(com.visus.R.layout.fragment_settings_general, container, false);
 		dbSession = new SessionHandler(getActivity() ); // getActivity() should do the trick!
 		dbUser = new UserHandler(getActivity() );
-		
+				
 		// user
 		try {
 			dbUser.open();

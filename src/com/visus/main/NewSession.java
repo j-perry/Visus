@@ -1019,7 +1019,7 @@ public class NewSession extends Activity {
 		notBuilder.setContentTitle("Session Ended");
 		notBuilder.setContentText("You're session has finished");
 		
-		Intent intent = new Intent(this, Sessions.class);
+		Intent intent = new Intent(NewSession.this, Sessions.class);
 		intent.putExtra("ActiveUserId", activeUserId);
 		
 		TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
@@ -1028,6 +1028,8 @@ public class NewSession extends Activity {
 		
 		notBuilder.setContentIntent(pendingIntent);
 		NotificationManager notManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+		
+		notBuilder.setAutoCancel(true);
 		
 		// display it!
 		notManager.notify(0, notBuilder.build() );

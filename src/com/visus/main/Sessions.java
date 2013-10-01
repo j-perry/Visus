@@ -16,6 +16,7 @@ import android.app.ActionBar.*;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.FragmentTransaction;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -70,7 +71,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sessions);
-		
+				
 		noItems = 0;
 		
 		Log.e("Visus", "Session onCreate()");
@@ -321,20 +322,22 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		switch(item.getItemId()) {
 			// app logo
 			case android.R.id.home:
+				Log.e("Visus", "HOME BUTTON PRESSED");
 				intent = new Intent(this, MainActivity.class);
-	            if (NavUtils.shouldUpRecreateTask(this, intent)) {
-	                // This activity is not part of the application's task, so create a new task
-	                // with a synthesized back stack.
-	                TaskStackBuilder.from(this)
-	                        // If there are ancestor activities, they should be added here.
-	                        .addNextIntent(intent)
-	                        .startActivities();
-	                finish();
-	            } else {
-	                // This activity is part of the application's task, so simply
-	                // navigate up to the hierarchical parent activity.
-	                NavUtils.navigateUpTo(this, intent);
-	            }
+				startActivity(intent);
+//	            if (NavUtils.shouldUpRecreateTask(this, intent)) {
+//	                // This activity is not part of the application's task, so create a new task
+//	                // with a synthesized back stack.
+//	                TaskStackBuilder.from(this)
+//	                        // If there are ancestor activities, they should be added here.
+//	                        .addNextIntent(intent)
+//	                        .startActivities();
+//	                finish();
+//	            } else {
+//	                // This activity is part of the application's task, so simply
+//	                // navigate up to the hierarchical parent activity.
+//	                NavUtils.navigateUpTo(this, intent);
+//	            }
 	            break;
             // new session
 			case R.id.new_session_menu:
