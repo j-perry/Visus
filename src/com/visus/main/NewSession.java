@@ -12,9 +12,13 @@ import java.util.Date;
 import android.os.*;
 import android.annotation.SuppressLint;
 import android.app.*;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteException;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.NavUtils;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -305,11 +309,11 @@ public class NewSession extends Activity {
 				initSession(iMins, iSecs);
 			}		
 		}
+		// TODO
 		/******************************************************************************
 		 * 		If the minutes field is NOT empty and the seconds field is empty
 		 */
-		else if( (!etMins.getText().toString().isEmpty() ) &&
-				 (etSecs.getText().toString().isEmpty()) ) {
+		else if( (!etMins.getText().toString().isEmpty() ) && (etSecs.getText().toString().isEmpty()) ) {
 			
 			// if minutes set are above 60
 			if(Integer.parseInt(etMins.getText().toString() ) > MINS_LIMIT) {
@@ -323,11 +327,12 @@ public class NewSession extends Activity {
 				toast.setGravity(Gravity.CENTER, 0, 250);
 				toast.show();
 			}
+			// else, if minutes equals 60
 			else if( Integer.parseInt(etMins.getText().toString() ) == MINS_LIMIT) {				
 				iMins = Integer.parseInt( etMins.getText().toString() );
 				
 				// append two noughts
-				iSecs = 00;
+				iSecs = 0;
 				
 				// if session type is empty
 				if(sessionTypes.getText().toString().length() == 0) {
@@ -359,6 +364,7 @@ public class NewSession extends Activity {
 				// initialise a new session
 				initSession(iMins, iSecs);
 			}
+			// else, if minutes is less than 60
 			else if ( Integer.parseInt(etMins.getText().toString() ) < MINS_LIMIT ) {
 //				iMins = 59;
 				iSecs = 59;
@@ -366,7 +372,11 @@ public class NewSession extends Activity {
 				iMins = Integer.parseInt( etMins.getText().toString() );
 			
 				// append two noughts
-				iSecs = 00;
+				iSecs = 0;
+				
+				Log.e("Visus", "iMins = " + iMins);
+				Log.e("Visus", "iSecs = " + iSecs);
+				
 				
 				// if session type is empty
 				if(sessionTypes.getText().toString().length() == 0) {
@@ -416,10 +426,16 @@ public class NewSession extends Activity {
 			// else if minutes equals 60 minutes
 			else if( (Integer.parseInt(etMins.getText().toString() ) == MINS_LIMIT) ) {
 				
-				// and, if minutes is set to 60, and seconds is greater than zero
-				if( (Integer.parseInt(etSecs.getText().toString() ) > 0 )) {
+				// and if seconds is greater than zero
+				if( !(Integer.parseInt(etSecs.getText().toString() ) == 0 )) {
 					// inform the user it must be up to 60:00 minutes (1 hour)
 					String toastMsg = "Invalid range. Please enter a duration up to 60:00 minutes";
+					
+					etMins.setText("");
+					etSecs.setText("");
+					
+					Log.e("Visus", "etMins now: " + etMins.getText().toString() );
+					Log.e("Visus", "etSecs now: " + etSecs.getText().toString() );
 					
 					// display a message
 					Toast toast = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_LONG);
@@ -505,7 +521,7 @@ public class NewSession extends Activity {
 				timer.setVisibility(View.VISIBLE);
 				
 				// initialise a new session
-				initSession(iMins, iSecs);			
+				initSession(iMins, iSecs);
 			}
 			// if minutes is less than 60 and less than 59 seconds
 			else if( (Integer.parseInt(etMins.getText().toString() ) < MINS_LIMIT) && (Integer.parseInt(etSecs.getText().toString() ) < SECS_LIMIT) ) {
@@ -697,6 +713,8 @@ public class NewSession extends Activity {
 	 * @param iSecs seconds set
 	 */
 	private void initSession(int iMins, int iSecs) {
+		Log.e("Visus", "initSession()");
+		
 		// convert inputted session duration into milliseconds
 		setDuration(iMins, iSecs);
 				
@@ -763,6 +781,7 @@ public class NewSession extends Activity {
 	 * @param view
 	 */
 	public void onEnd(View view) {
+		sessionTimer.cancel();
 		timerHandler.removeCallbacks(runUpdateTimer);
 		
 		int sessionMins = 0;
@@ -908,6 +927,7 @@ public class NewSession extends Activity {
 	};
 			
 	private void setTimeRemainingMinutes(int minutes) {
+		Log.e("Visus", "setTimeRemainingMinutes() " + minutes);
 		this.minutesRemaining = minutes;
 	}
 	
@@ -916,6 +936,7 @@ public class NewSession extends Activity {
 	}
 	
 	private void setTimeRemainingSeconds(int seconds) {
+		Log.e("Visus", "setTimeRemainingSeconds() " + seconds);
 		this.secondsRemaining = seconds;
 	}
 	
@@ -949,8 +970,10 @@ public class NewSession extends Activity {
 				Log.e("Visus", "Seconds: " + seconds);
 				
 				// if the timer has ended
-				if((Integer.parseInt(minutes) == 00) &&
-				   (Integer.parseInt(seconds) == 00)) {
+				if(minutes.equals("0") &&
+				   seconds.equals("0") ) {
+					
+					Log.e("Visus", "Timer Has Ended");
 					
 					// go to the user's previous sessions
 					Intent intent = new Intent(NewSession.this, Sessions.class);
@@ -964,20 +987,49 @@ public class NewSession extends Activity {
 						seconds = "0" + seconds;
 				}										
 				// display the updated timer
-			    timer.setText(minutes + ":" + seconds);			    
+			    timer.setText(minutes + ":" + seconds);
 			    
 				// update in case the user stops the clock
 				setTimeRemainingMinutes( Integer.parseInt(minutes) );
 				setTimeRemainingSeconds( Integer.parseInt(seconds) );
 		    }
 
+			/**
+			 * When the timer has finished...
+			 */
 		    public void onFinish() {
-		    	// when the timer has finished...
 		        timer.setText("00:00");
+		        displayNotification();
 		    }
 		};
 		
 		// starts the timer
 		sessionTimer.start();		
-	}		
+	}	
+	
+	/**
+	 * Display's an Android notification in the notification bar to inform
+	 * the user their session has finished, should they be doing something else
+	 */
+	private void displayNotification() {
+		Log.e("Visus", "displayNotification()");
+		
+		NotificationCompat.Builder notBuilder = new NotificationCompat.Builder(this);
+		notBuilder.setSmallIcon(com.visus.R.drawable.ic_launcher_4);
+		notBuilder.setContentTitle("Session Ended");
+		notBuilder.setContentText("You're session has finished");
+		
+		Intent intent = new Intent(this, Sessions.class);
+		intent.putExtra("ActiveUserId", activeUserId);
+		
+		TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+		stackBuilder.addNextIntent(intent);
+		PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+		
+		notBuilder.setContentIntent(pendingIntent);
+		NotificationManager notManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+		
+		// display it!
+		notManager.notify(0, notBuilder.build() );
+	}
 }
