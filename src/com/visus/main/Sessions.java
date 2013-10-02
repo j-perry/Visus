@@ -74,6 +74,10 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 				
 		noItems = 0;
 		
+		// clear the notification
+		NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+		notificationManager.cancel(0);
+		
 		Log.e("Visus", "Session onCreate()");
 		
 		// get user id
