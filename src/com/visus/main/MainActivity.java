@@ -200,6 +200,15 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 				
 				// output the first five results
 				for(Session session : sessions) {
+					String timeMinutes = null;
+					
+					if(session.getTimeMinutes() < 10) {
+						timeMinutes = "0" + String.valueOf(session.getTimeMinutes() );
+					}
+					else {
+						timeMinutes = String.valueOf(session.getTimeMinutes() );
+					}
+					
 					if(noItems != 5) {				
 						HashMap<String, String> map = new HashMap<String, String>();
 						map.put(MainMenuListView.SESSION, session.getDay() + " " +
@@ -208,7 +217,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 								    					  session.getDate() + ", " +
 								    					  session.getYear() + " - " +
 										                  session.getTimeHour() + ":" +
-										                  session.getTimeMinutes() + " " +
+										                  timeMinutes + " " +
 										                  session.getDayPeriod() + " - " +
 										                  session.getDurationMinutes() + ":" +
 										                  session.getDurationSeconds() + " - " +
@@ -399,6 +408,16 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 					durationSeconds = String.valueOf(session.getDurationSeconds() );
 				}
 				
+				
+				String timeMinutes = null;
+				
+				if(session.getTimeMinutes() < 10) {
+					timeMinutes = "0" + String.valueOf(session.getTimeMinutes() );
+				}
+				else {
+					timeMinutes = String.valueOf(session.getTimeMinutes() );
+				}
+				
 				if(noItems != 5) {
 						HashMap<String, String> map = new HashMap<String, String>();
 						map.put(MainMenuListView.SESSION, session.getDay() + " " +
@@ -406,7 +425,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 								    					  session.getMonth() + ", " +
 								    					  session.getYear() + " - " +
 										                  session.getTimeHour() + ":" +
-										                  session.getTimeMinutes() + " " +
+										                  timeMinutes + " " +
 										                  session.getDayPeriod() + " - " +
 										                  session.getDurationMinutes() + ":" +
 										                  durationSeconds + " - " +
