@@ -66,6 +66,15 @@ public class FragmentThisMonth extends Fragment {
 		else {
 			// retrieve sessions
 			for(Session session : sessions) {
+				String durationSeconds = null;
+				
+				if(session.getDurationSeconds() < 10) {
+					durationSeconds = "0" + String.valueOf(session.getDurationSeconds() );
+				}
+				else {
+					durationSeconds = String.valueOf(session.getDurationSeconds() );
+				}
+				
 				HashMap<String, String> map = new HashMap<String, String>();
 				
 				map.put(MainMenuListView.SESSION, session.getDay() + " " +
@@ -76,7 +85,7 @@ public class FragmentThisMonth extends Fragment {
 								                  session.getTimeMinutes() + " " +
 								                  session.getDayPeriod() + " - " +
 								                  session.getDurationMinutes() + ":" +
-								                  session.getDurationSeconds() + " - " +
+								                  durationSeconds + " - " +
 								                  session.getType()
 						);
 

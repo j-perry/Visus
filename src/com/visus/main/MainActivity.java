@@ -390,6 +390,15 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			
 			// output the first five results
 			for(Session session : sessions) {
+				String durationSeconds = null;
+								
+				if(session.getDurationSeconds() < 10) {
+					durationSeconds = "0" + String.valueOf(session.getDurationSeconds() );
+				}
+				else {
+					durationSeconds = String.valueOf(session.getDurationSeconds() );
+				}
+				
 				if(noItems != 5) {
 						HashMap<String, String> map = new HashMap<String, String>();
 						map.put(MainMenuListView.SESSION, session.getDay() + " " +
@@ -400,7 +409,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 										                  session.getTimeMinutes() + " " +
 										                  session.getDayPeriod() + " - " +
 										                  session.getDurationMinutes() + ":" +
-										                  session.getDurationSeconds() + " - " +
+										                  durationSeconds + " - " +
 										                  session.getType()
 						       );
 						

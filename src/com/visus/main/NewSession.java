@@ -82,6 +82,7 @@ public class NewSession extends Activity {
 	private Button startTimerBtn, stopTimerBtn;
 	
 	private CountDownTimer sessionTimer;
+	private NotificationCompat.Builder notBuilder;
 	
 	private AutoCompleteTextView sessionTypes;
 	
@@ -784,6 +785,9 @@ public class NewSession extends Activity {
 		finishSession();
 	}	
 	
+	/**
+	 * Finishes the session and saves it
+	 */
 	private void finishSession() {
 		sessionTimer.cancel();
 		timerHandler.removeCallbacks(runUpdateTimer);
@@ -1018,7 +1022,7 @@ public class NewSession extends Activity {
 	private void displayNotification() {
 		Log.e("Visus", "displayNotification()");
 		
-		NotificationCompat.Builder notBuilder = new NotificationCompat.Builder(this);
+		notBuilder = new NotificationCompat.Builder(this);
 		notBuilder.setSmallIcon(com.visus.R.drawable.ic_launcher_4);
 		notBuilder.setContentTitle("Session Ended");
 		notBuilder.setContentText("You're session has finished");
