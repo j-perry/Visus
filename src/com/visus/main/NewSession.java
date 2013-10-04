@@ -822,6 +822,10 @@ public class NewSession extends Activity {
 		else {
 			sessionSecs = durationSeconds - remainingSecs;
 		}
+		
+		// TODO
+		// add one more second - need to locate bug
+		sessionSecs += 1;
 				
 		session.setUserId(activeUserId);
 		session.setDurationMinutes(sessionMins);
