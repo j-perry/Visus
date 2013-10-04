@@ -420,16 +420,20 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 				
 				if(noItems != 5) {
 						HashMap<String, String> map = new HashMap<String, String>();
+
+						/**
+						 * Format:	EEE dd MMM, HH:mm, Duration
+						 * 
+						 */
 						map.put(MainMenuListView.SESSION, session.getDay() + " " +
 								    					  session.getDayNo() + " " +  
 								    					  session.getMonth() + ", " +
-								    					  session.getYear() + " - " +
 										                  session.getTimeHour() + ":" +
-										                  timeMinutes + " " +
-										                  session.getDayPeriod() + " - " +
+										                  timeMinutes + 
+										                  session.getDayPeriod() + ", " +
+										                  session.getType() + ", " +
 										                  session.getDurationMinutes() + ":" +
-										                  durationSeconds + " - " +
-										                  session.getType()
+										                  durationSeconds
 						       );
 						
 						latestSessions.add(map);
