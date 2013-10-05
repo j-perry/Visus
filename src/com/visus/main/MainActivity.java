@@ -449,6 +449,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		
 		if(activitiesResult.isEmpty()) {
 			HashMap<String, String> map = new HashMap<String, String>();
+			map.put(MainMenuListView.SESSION_NO, "#");
 			map.put(MainMenuListView.SESSION, "None Created");			
 			
 			activities.add(map);

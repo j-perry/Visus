@@ -93,14 +93,9 @@ public class ActivitiesFragment extends Fragment {
 				
 		// display
 		txtVwFirstSession.setText(strFirstSessionActivity.toString() );
-
-//		TODO TEST
-//		HashMap<String, String> map = new HashMap<String, String>();
-//		map.put(MainMenuListView.SESSION, "None Created");
 		
 		ArrayList<HashMap<String, String>> activityResults = new ArrayList<HashMap<String, String>>();		
 		activityResults = activities;
-//		activities.add(map);
 		
 		// display activity categories
 		list = (ListView) rootView.findViewById(com.visus.R.id.main_activity_activity_types);
