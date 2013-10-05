@@ -125,9 +125,6 @@ public class LatestActivityFragment extends Fragment {
 			// display message (not just a Log file message!)
 			Log.e("Visus", "Daily target met");
 			dailyTargetLayout.setVisibility(View.VISIBLE);
-			
-//			TextView dailyTargetTxt = (TextView) rootView.findViewById(com.visus.R.id.main_menu_latest_activities_daily_target_met_message);
-//			dailyTargetTxt.
 		}
 		else {
 			// don't do anything additional - just display what is seen normally
@@ -160,13 +157,7 @@ public class LatestActivityFragment extends Fragment {
 		adapter = new MainMenuAdapter(getActivity(), latestSessions);
 		
 		list.setAdapter(adapter);
-		
-			
-		// TODO - Custom Adapter
-//		sessionsAdapter = new SessionsAdapter(getActivity(), latestSessions);
-//		list.setAdapter(adapter);
-		
-				
+					
 		return rootView;
 	}
 	
@@ -268,6 +259,5 @@ public class LatestActivityFragment extends Fragment {
 		}
 		
 		return targetMet;
-	}
-	
+	}	
 }
