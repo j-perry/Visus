@@ -532,17 +532,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		intent.putExtra("ActiveUserId", user.getUserId());
 		startActivity(intent);
 	}
-		
-	/**
-	 * view latest user activity (across all categories)
-	 * @param view
-	 */
-	public void viewUserActivities(View view) {
-		Intent intent = new Intent(MainActivity.this, ActivityCategories.class);
-		intent.putExtra("ActiveUserId", user.getUserId());
-		startActivity(intent);
-	}
-	
+			
 	/**
 	 * view latest user activity (across all categories)
 	 * @param view
