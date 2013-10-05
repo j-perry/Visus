@@ -41,7 +41,6 @@ public final class R {
         public static final int new_user_white=0x7f040013;
         public static final int nice_blue=0x7f040003;
         public static final int pink_red=0x7f04000b;
-        public static final int pressed_example=0x7f040014;
         public static final int red=0x7f04000c;
         public static final int title_background=0x7f04000f;
         /**  app 
@@ -72,14 +71,13 @@ public final class R {
         public static final int new_session_controls_txt=0x7f020010;
         public static final int new_user_submit_bg=0x7f020011;
         public static final int new_user_submit_txt=0x7f020012;
-        public static final int pressed_background_example=0x7f020013;
-        public static final int settings_cancel_btn_bg=0x7f020014;
-        public static final int settings_history_btn_bg=0x7f020015;
-        public static final int settings_save_all_btn_bg=0x7f020016;
-        public static final int sign_up_gender_bg=0x7f020017;
-        public static final int sign_up_gender_txt=0x7f020018;
-        public static final int tab_indicator=0x7f020019;
-        public static final int test_bg=0x7f02001a;
+        public static final int settings_cancel_btn_bg=0x7f020013;
+        public static final int settings_history_btn_bg=0x7f020014;
+        public static final int settings_save_all_btn_bg=0x7f020015;
+        public static final int sign_up_gender_bg=0x7f020016;
+        public static final int sign_up_gender_txt=0x7f020017;
+        public static final int tab_indicator=0x7f020018;
+        public static final int test_bg=0x7f020019;
     }
     public static final class id {
         public static final int TextView01=0x7f09003f;
