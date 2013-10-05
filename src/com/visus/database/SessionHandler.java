@@ -15,6 +15,7 @@ import android.database.*;
 import android.database.sqlite.*;
 import android.util.Log;
 
+//public class SessionHandler implements IDatabaseTable {
 public class SessionHandler implements IDatabaseTable {
 		
 	private DatabaseHandler dbHandler;

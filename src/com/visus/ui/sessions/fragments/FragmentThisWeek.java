@@ -75,6 +75,8 @@ public class FragmentThisWeek extends Fragment {
 		}
 		else {
 			// retrieve sessions
+			int id = 1;
+			
 			for(Session session : sessions) {
 				String durationSeconds = null;
 				
@@ -97,6 +99,7 @@ public class FragmentThisWeek extends Fragment {
 				
 				HashMap<String, String> map = new HashMap<String, String>();
 				
+				map.put(MainMenuListView.SESSION_NO, String.valueOf(id) );
 				map.put(MainMenuListView.SESSION, session.getDay() + " " +
 												  session.getDayNo() + " " +  
 												  session.getMonth() + ", " +
@@ -110,6 +113,7 @@ public class FragmentThisWeek extends Fragment {
 						);
 
 				sessionsThisWeek.add(map);
+				id++;
 			}
 		}
 		

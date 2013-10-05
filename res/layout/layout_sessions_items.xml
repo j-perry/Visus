@@ -19,6 +19,7 @@
 	<!-- session entry -->
 	<RelativeLayout 
 		android:id="@+id/entry"
+		android:background="@color/light_grey"
     	android:layout_width="match_parent"
     	android:layout_height="wrap_content"
 	    >
@@ -37,6 +38,7 @@
 	    		android:textColor="@color/dark_grey"
 	    		android:textAllCaps="true"
 	    		android:textSize="32sp"
+				android:background="#EEE"
 			    />
 			
 		</LinearLayout>

@@ -23,7 +23,6 @@ import com.visus.entities.*;
  */
 public class SignUp extends Activity {
 	
-	private Context context = null;
 	private EditText firstname;
 	private EditText age;
 	private Spinner genderSpinner;
@@ -114,7 +113,7 @@ public class SignUp extends Activity {
 		}
 		
 		// default targets
-		user.setTargetDay(1);
+		user.setTargetDay(0);
 		user.setTargetMonth(0);
 		
 		
@@ -157,7 +156,7 @@ public class SignUp extends Activity {
 				Log.e("Visus", "SQL Error", e);
 			}
 			finally {
-				dbHandler.addUser(user);
+				dbHandler.add(user);
 				dbHandler.close();		
 				Intent intent = new Intent(SignUp.this, MainActivity.class);
 				startActivity(intent);	

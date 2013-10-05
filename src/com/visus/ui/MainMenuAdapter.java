@@ -51,10 +51,17 @@ public class MainMenuAdapter extends BaseAdapter {
 		// 
 		TextView header = (TextView) v.findViewById(com.visus.R.id.main_header);
 		TextView entry = (TextView) v.findViewById(com.visus.R.id.entry);
+		// new
+		TextView entryNo = (TextView) v.findViewById(com.visus.R.id.entry_no);
+		
 		
 		HashMap<String, String> item = new HashMap<String, String>();
 		item = data.get(position);
 		
+
+		// new
+		entryNo.setText(item.get(MainMenuListView.SESSION_NO));
+		// bind our data using the required key values
 		entry.setText(item.get(MainMenuListView.SESSION));
 					
 		return v;

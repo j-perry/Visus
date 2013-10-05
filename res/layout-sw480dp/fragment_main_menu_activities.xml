@@ -76,7 +76,8 @@
 	        android:layout_width="fill_parent"
 	        android:paddingLeft="25dp"
 	        android:paddingRight="25dp"
-	        android:divider="@color/white"
+	        android:divider="@color/light_grey"
+	        android:dividerHeight="4sp"
 	        />
 	    
 </LinearLayout>

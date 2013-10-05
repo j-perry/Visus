@@ -33,6 +33,7 @@ import com.visus.entities.*;
 import com.visus.entities.sessions.Session;
 import com.visus.ui.MainMenuAdapter;
 import com.visus.ui.MainMenuListView;
+import com.visus.ui.SessionsListView;
 import com.visus.ui.main.fragments.ActivitiesFragment;
 import com.visus.ui.main.fragments.LatestActivityFragment;
 
@@ -110,7 +111,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 				alertDialogBuilder.setTitle("User Targets");
 				
-				alertDialogBuilder.setMessage("No usage targets have been created. They help you stay fresh and productive. Do you wish to create a target or two now?"); 
+				alertDialogBuilder.setMessage("No user targets have been created. They help you stay fresh and productive. Do you wish to create them now?"); 
 				alertDialogBuilder.setCancelable(false);
 				alertDialogBuilder.setPositiveButton("Yes Please!", new OkOnClickListener());
 				alertDialogBuilder.setNegativeButton("Nope. Go Away!", new CancelOnClickListener());
@@ -190,53 +191,75 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 					// on the latest activities fragment
 				}
 							
-				ArrayList<HashMap<String, String>> latestSessions = new ArrayList<HashMap<String, String>>();
-				
-				Log.e("Visus", "onCreate() - User ID is: " + userId);
-
-				String [] data = { "Hello", "Jon", "Today", "Sunday" };
-				
-				int noItems = 0;
-				
-				// output the first five results
-				for(Session session : sessions) {
-					String timeMinutes = null;
-					
-					if(session.getTimeMinutes() < 10) {
-						timeMinutes = "0" + String.valueOf(session.getTimeMinutes() );
-					}
-					else {
-						timeMinutes = String.valueOf(session.getTimeMinutes() );
-					}
-					
-					if(noItems != 5) {				
-						HashMap<String, String> map = new HashMap<String, String>();
-						map.put(MainMenuListView.SESSION, session.getDay() + " " +
-								    					  session.getDayNo() + " " +  
-								    					  session.getMonth() + ", " +
-								    					  session.getDate() + ", " +
-								    					  session.getYear() + " - " +
-										                  session.getTimeHour() + ":" +
-										                  timeMinutes + " " +
-										                  session.getDayPeriod() + " - " +
-										                  session.getDurationMinutes() + ":" +
-										                  session.getDurationSeconds() + " - " +
-										                  session.getType()
-						       );
-						
-						latestSessions.add(map);
-						
-						noItems++;
-					}
-					else {
-						break;
-					}
-				}
-						
-//				list = (ListView) findViewById(com.visus.R.id.overview_sessions_adapter);
-//				adapter = new MainMenuAdapter(this, latestSessions);
+//				ArrayList<HashMap<String, String>> latestSessions = new ArrayList<HashMap<String, String>>();
 //				
-//				list.setAdapter(adapter);
+//				Log.e("Visus", "onCreate() - User ID is: " + userId);
+//
+//				String [] data = { "Hello", "Jon", "Today", "Sunday" };
+//				
+//				int noItems = 0;
+//				int id = 1;
+//				
+//				// output the first five results
+//				for(Session session : sessions) {
+//					String timeMinutes = null;
+//					
+//					if(session.getTimeMinutes() < 10) {
+//						timeMinutes = "0" + String.valueOf(session.getTimeMinutes() );
+//					}
+//					else {
+//						timeMinutes = String.valueOf(session.getTimeMinutes() );
+//					}
+//					
+//					if(noItems != 5) {				
+//						HashMap<String, String> map = new HashMap<String, String>();
+//						/*
+//						 * bind the data
+//						 * NB: the first parameter is our ID which is used to retrieve values in our
+//						 *     adapter
+//						 */												
+////						map.put(MainMenuListView.SESSION, session.getDay() + " " +
+////								    					  session.getDayNo() + " " +  
+////								    					  session.getMonth() + ", " +
+////								    					  session.getDate() + ", " +
+////								    					  session.getYear() + " - " +
+////										                  session.getTimeHour() + ":" +
+////										                  timeMinutes + " " +
+////										                  session.getDayPeriod() + " - " +
+////										                  session.getDurationMinutes() + ":" +
+////										                  session.getDurationSeconds() + " - " +
+////										                  session.getType()
+////						       );
+//						
+//						// TODO
+////						map.put(SessionsListView.SESSION_ID, String.valueOf(id) );
+////						map.put(SessionsListView.SESSION, session.getDay() + " " +
+////								    					  session.getDayNo() + " " +  
+////								    					  session.getMonth() + ", " +
+////								    					  session.getDate() + ", " +
+////								    					  session.getYear() + " - " +
+////										                  session.getTimeHour() + ":" +
+////										                  timeMinutes + " " +
+////										                  session.getDayPeriod() + " - " +
+////										                  session.getDurationMinutes() + ":" +
+////										                  session.getDurationSeconds() + " - " +
+////										                  session.getType()
+////						     	);
+//						
+//						latestSessions.add(map);
+//						
+//						noItems++;
+//						id++;
+//					}
+//					else {
+//						break;
+//					}
+//				}
+//						
+////				list = (ListView) findViewById(com.visus.R.id.overview_sessions_adapter);
+////				adapter = new MainMenuAdapter(this, latestSessions);
+////				
+////				list.setAdapter(adapter);
 			}
 		}
 	}
@@ -379,6 +402,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		if(sessions.isEmpty()) {
 			HashMap<String, String> emptyMsg = new HashMap<String, String>();
 			String msg = "None Created";
+			emptyMsg.put(MainMenuListView.SESSION_NO, "#");
 			emptyMsg.put(MainMenuListView.SESSION, msg);
 			
 			latestSessions.add(emptyMsg);			
@@ -396,6 +420,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			
 			// get the first session
 			setFirstSession(sessions.get(0) );
+			
+			int id = 0;
 			
 			// output the first five results
 			for(Session session : sessions) {
@@ -417,23 +443,22 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 				else {
 					timeMinutes = String.valueOf(session.getTimeMinutes() );
 				}
-				
+												
 				if(noItems != 5) {
 						HashMap<String, String> map = new HashMap<String, String>();
-
+						id++;
+						
 						/**
-						 * Format:	EEE dd MMM, HH:mm, Duration
-						 * 
-						 */
-						map.put(MainMenuListView.SESSION, session.getDay() + " " +
-								    					  session.getDayNo() + " " +  
-								    					  session.getMonth() + ", " +
-										                  session.getTimeHour() + ":" +
-										                  timeMinutes + 
-										                  session.getDayPeriod() + ", " +
-										                  session.getType() + ", " +
-										                  session.getDurationMinutes() + ":" +
-										                  durationSeconds
+						 * Format: type, duration, HH:mm
+						 * 						 
+						 */					
+						map.put(MainMenuListView.SESSION_NO, String.valueOf(id) );
+						map.put(MainMenuListView.SESSION, session.getType() + ", " +
+														  session.getDurationMinutes() + ":" +
+								                          session.getDurationSeconds() + ", " +
+														  session.getTimeHour() + ":" +
+								                          session.getTimeMinutes() +
+														  session.getDayPeriod()							    					  
 						       );
 						
 						latestSessions.add(map);
@@ -547,9 +572,14 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			activities.add(map);
 		}
 		else {
+			int id = 1;
+			
 			for(String activity : activitiesResult) {
 				HashMap<String, String> map = new HashMap<String, String>();
-				map.put(MainMenuListView.SESSION, activity);			
+				map.put(MainMenuListView.SESSION_NO, String.valueOf(id) );
+				map.put(MainMenuListView.SESSION, activity);
+				
+				id++;
 				
 				activities.add(map);
 			}
@@ -621,16 +651,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	 */
 	public void viewLatestUserActivities(View view) {
 		Intent intent = new Intent(MainActivity.this, LatestActivity.class);
-		intent.putExtra("ActiveUserId", user.getUserId());
-		startActivity(intent);
-	}
-
-	/**
-	 * view activity category selected
-	 * @param view
-	 */
-	public void viewUserActivityCategory(View view) {
-		Intent intent = new Intent(MainActivity.this, ActivityCategory.class);
 		intent.putExtra("ActiveUserId", user.getUserId());
 		startActivity(intent);
 	}

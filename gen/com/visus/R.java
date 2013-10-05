@@ -139,21 +139,22 @@ public final class R {
         public static final int test_bg=0x7f020053;
     }
     public static final class id {
-        public static final int TextView01=0x7f09003d;
-        public static final int TextView02=0x7f09003e;
+        public static final int TextView01=0x7f090040;
+        public static final int TextView02=0x7f090041;
         public static final int actionBarList=0x7f090000;
         public static final int activities_overview=0x7f090036;
         public static final int activity=0x7f09003b;
         public static final int age=0x7f09001e;
         public static final int date=0x7f090039;
         public static final int entry=0x7f090038;
+        public static final int entry_no=0x7f09003c;
         public static final int first_name=0x7f09001c;
         public static final int fragment_main_menu_layout_target_met_daily=0x7f090023;
         public static final int fragment_main_menu_layout_target_met_monthly=0x7f090025;
         public static final int gender=0x7f09001d;
         public static final int header=0x7f090033;
         public static final int header_events=0x7f090037;
-        public static final int header_overview=0x7f09003c;
+        public static final int header_overview=0x7f09003d;
         public static final int hours_overview=0x7f090035;
         public static final int linear_layout_settings_history=0x7f090014;
         public static final int linear_layout_settings_personal=0x7f09000f;
@@ -172,15 +173,17 @@ public final class R {
         public static final int main_menu_latest_activities_no_sessions_total=0x7f090027;
         public static final int main_menu_no_activities=0x7f090021;
         public static final int main_menu_pager=0x7f090003;
-        public static final int menu_about=0x7f090042;
-        public static final int menu_sessions=0x7f090040;
-        public static final int menu_settings=0x7f090041;
-        public static final int new_session_menu=0x7f09003f;
+        public static final int menu_about=0x7f090045;
+        public static final int menu_sessions=0x7f090043;
+        public static final int menu_settings=0x7f090044;
+        public static final int new_session_menu=0x7f090042;
         public static final int overview=0x7f090032;
         public static final int overview_sessions_adapter=0x7f090005;
         public static final int period=0x7f090031;
         public static final int register=0x7f09001f;
+        public static final int session_activity=0x7f09003f;
         public static final int session_auto_complete_type=0x7f090009;
+        public static final int session_id=0x7f09003e;
         public static final int sessions_overview=0x7f090034;
         public static final int sessions_pager=0x7f09000d;
         public static final int set_session_duration=0x7f090006;

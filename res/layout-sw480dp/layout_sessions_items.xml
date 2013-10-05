@@ -1,4 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/light_grey"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+	android:padding="25dp"
+	android:orientation="horizontal"
+	android:weightSum="4"
+	>
+			            
+	<!-- session_id -->
+	<TextView 
+		android:id="@+id/session_id"
+		android:background="@color/dark_grey"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:textColor="@color/white"
+		android:textSize="18sp"
+		android:layout_weight="1"
+		/>
+			            
+	<!-- session -->
+	<TextView
+		android:id="@+id/session_activity"
+		android:background="@color/white"
+		android:layout_height="wrap_content"
+		android:layout_width="0dp"
+		android:textColorHint="@color/dark_grey"
+		android:textSize="18sp"
+		android:textColor="@color/dark_grey"
+		android:singleLine="true"
+		android:layout_weight="3"
+		/>
+			            
+</LinearLayout>
+
+
+<!-- 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/white"
     android:layout_width="match_parent"
@@ -6,17 +44,8 @@
     android:padding="25dp"
     android:orientation="vertical" >
     
-    <!-- header -->
-    <!-- i.e., This Week 
-	<TextView
-		android:id="@+id/header_events"
-    	android:layout_width="match_parent"
-    	android:layout_height="wrap_content"
-    	android:textColor="@color/dark_grey"
-	    />
-	    -->
-	    
-	<!-- session entry -->
+    	    
+	 session entry 
 	<RelativeLayout 
 		android:id="@+id/entry"
     	android:layout_width="match_parent"
@@ -29,7 +58,7 @@
         	android:layout_alignParentLeft="true"
 	    	>
 	        
-			<!-- date -->
+			 date 
 			<TextView 
 				android:id="@+id/date"
 	    		android:layout_width="wrap_content"
@@ -48,7 +77,7 @@
 	    	>
 	    	
 	            
-		    	<!-- time (mm:ss) -->
+		    	 time (mm:ss) 
 		        <TextView
 		        	android:id="@+id/time"
 	    			android:layout_width="wrap_content"
@@ -57,7 +86,7 @@
 	    			android:textSize="24sp"
 		        	/> 
 		        	
-		        <!-- category(ies) -->
+		         category(ies)
 	        	<TextView
 		        	android:id="@+id/activity"
 		        	android:layout_below="@id/time"
@@ -73,3 +102,4 @@
 	</RelativeLayout> 
 
 </LinearLayout>
+ -->

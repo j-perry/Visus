@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+//public class UserHandler implements IDatabaseTable {
 public class UserHandler implements IDatabaseTable {
 			
 	private SQLiteDatabase db;
@@ -37,7 +38,7 @@ public class UserHandler implements IDatabaseTable {
 		db.close();
 	}
 		
-	public void addUser(User user) throws SQLiteException {
+	public void add(User user) throws SQLiteException {
 		ContentValues userValues = new ContentValues();
 		
 		Log.e("Visus", "---------------------------");
@@ -288,5 +289,5 @@ public class UserHandler implements IDatabaseTable {
 		cursor.close();
 		
 		return duration;
-	}	
+	}
 }

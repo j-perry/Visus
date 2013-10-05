@@ -9,6 +9,7 @@ import com.visus.entities.User;
 import com.visus.entities.sessions.Session;
 import com.visus.ui.MainMenuAdapter;
 import com.visus.ui.MainMenuListView;
+import com.visus.ui.SessionsAdapter;
 
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -32,6 +33,9 @@ public class LatestActivityFragment extends Fragment {
 	
 	private ListView list;
 	private MainMenuAdapter adapter;
+	
+	// TODO
+	private SessionsAdapter sessionsAdapter;
 	
 	public LatestActivityFragment() {
 		super();
@@ -156,6 +160,12 @@ public class LatestActivityFragment extends Fragment {
 		adapter = new MainMenuAdapter(getActivity(), latestSessions);
 		
 		list.setAdapter(adapter);
+		
+			
+		// TODO - Custom Adapter
+//		sessionsAdapter = new SessionsAdapter(getActivity(), latestSessions);
+//		list.setAdapter(adapter);
+		
 				
 		return rootView;
 	}
