@@ -507,27 +507,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		startActivity(intent);
 	}
 	
-	/**
-	 * view latest user activity (date-filtered)
-	 * @param view
-	 */
-	public void viewUserActivity(View view) {
-		Intent intent = new Intent(MainActivity.this, LatestActivity.class);
-		intent.putExtra("ActiveUserId", user.getUserId());
-		startActivity(intent);
-	}
-			
-	/**
-	 * view latest user activity (across all categories)
-	 * @param view
-	 */
-	public void viewLatestUserActivities(View view) {
-		Intent intent = new Intent(MainActivity.this, LatestActivity.class);
-		intent.putExtra("ActiveUserId", user.getUserId());
-		startActivity(intent);
-	}
-	
-	
 	/*************************************************************************
 	 * 
 	 * 						Main Menu Pager Adapter
