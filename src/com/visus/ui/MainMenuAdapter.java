@@ -48,17 +48,15 @@ public class MainMenuAdapter extends BaseAdapter {
 		if(convertView == null)
 			v = inflater.inflate(com.visus.R.layout.layout_main_menu_item, null);
 		
-		// 
+		// TODO header - future implementation?
 		TextView header = (TextView) v.findViewById(com.visus.R.id.main_header);
 		TextView entry = (TextView) v.findViewById(com.visus.R.id.entry);
-		// new
 		TextView entryNo = (TextView) v.findViewById(com.visus.R.id.entry_no);
 		
 		
 		HashMap<String, String> item = new HashMap<String, String>();
 		item = data.get(position);
 		
-
 		// new
 		entryNo.setText(item.get(MainMenuListView.SESSION_NO));
 		// bind our data using the required key values
