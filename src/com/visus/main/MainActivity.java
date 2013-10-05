@@ -23,17 +23,13 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.*;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 
 // core program packages
 import com.visus.R;
 import com.visus.database.*;
 import com.visus.entities.*;
 import com.visus.entities.sessions.Session;
-import com.visus.ui.MainMenuAdapter;
 import com.visus.ui.MainMenuListView;
-import com.visus.ui.SessionsListView;
 import com.visus.ui.main.fragments.ActivitiesFragment;
 import com.visus.ui.main.fragments.LatestActivityFragment;
 
@@ -50,10 +46,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	private static int userId;
 	
 	private Session firstSession;
-		
-	private ListView list;
-	private MainMenuAdapter adapter;
-	
+			
 	private Context context = this;
 	private AlertDialog alertDialog;
 	
@@ -157,7 +150,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			startActivity(intent);
 		}
 		else {
-			this.userId = user.getUserId();
+			userId = user.getUserId();
 			Log.e("Visus", "USER ID: " + userId);
 		}
 	}
@@ -282,7 +275,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	 */
 	private ArrayList<HashMap<String, String>> getLatestSessions(int userId) throws SQLiteException {
 		ArrayList<Session> sessions = new ArrayList<Session>();
-		ArrayList<String> sessionTypes = new ArrayList<String>();
 		ArrayList<HashMap<String, String>> latestSessions = new ArrayList<HashMap<String, String>>();
 		
 		Log.e("Visus", "USER ID: " + userId);
@@ -308,11 +300,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		else {
 			Log.e("Visus", "Sessions is not empty");
 			
-			Log.e("Visus", "onCreate() - User ID is: " + userId);
-
-			String [] data = { "Hello", "Jon", "Today", "Sunday" };
-			
 			int noItems = 0;
+			String durationSeconds = null;
+			String timeMinutes = null;
 			
 			// get the first session
 			setFirstSession(sessions.get(0) );
@@ -321,7 +311,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			
 			// output the first five results
 			for(Session session : sessions) {
-				String durationSeconds = null;
 								
 				if(session.getDurationSeconds() < 10) {
 					durationSeconds = "0" + String.valueOf(session.getDurationSeconds() );
@@ -329,10 +318,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 				else {
 					durationSeconds = String.valueOf(session.getDurationSeconds() );
 				}
-				
-				
-				String timeMinutes = null;
-				
+								
 				if(session.getTimeMinutes() < 10) {
 					timeMinutes = "0" + String.valueOf(session.getTimeMinutes() );
 				}
