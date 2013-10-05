@@ -136,116 +136,9 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		});
 			
 		// create our tabs
-		initTabs(ab);
-		
-		
-		
-		
-				
-		// assign adapter items
-		//List<HashMap<String, String>> adapterList = new ArrayList<HashMap<String, String>>();
-		
-		ArrayList<HashMap<String, String>> adapterList = new ArrayList<HashMap<String, String>>();
-		
-		
-		
-		// createList(key, name)
-		// NB: param 'key' must co-ordinate with SimpleAdapters 'from' String array parameter (4th parameter) 
-//		adapterList.add( createList("overview", "Overview (hours): " + String.valueOf(sessionOverview.getOverviewHours() ) ));
-//		adapterList.add( createList("overview", "Overview (sessions): " + String.valueOf(sessionOverview.getOverviewNoSessions() ) ));
-//		adapterList.add( createList("overview", "Overview (activities): " + String.valueOf(sessionOverview.getOverviewNoActivities() ) ));
-		
-		
-		// TODO
-		// add each session to the adapter list
-//		for(Session session : allSessions) {
-//			adapterList.add( createList("overview",	session.getDay() + " " +
-//		                    						session.getDayNo() + " " +  
-//		                    						session.getMonth() + ", " +
-//		                    						session.getYear() + " - " +
-//								                    session.getTimeHour() + ":" +
-//								                    session.getTimeMinutes() + " " +
-//								                    session.getDayPeriod() + " - " +
-//								                    session.getDurationMinutes() + ":" +
-//								                    session.getDurationSeconds() + " - " +
-//								                    session.getType()
-//						               ));
-//		}
-		
-		
-		// retrieve each returned Session entry and format them as required...
-		for(Session session : allSessions) {
-			// maps each session entry to HashMap for insertion into adapter
-			HashMap<String, String> map = new HashMap<String, String>();
-			
-			// DATE
-			String timeHours = null;
-			String timeMins = null;
-			String dayPeriod = null;
-			
-			// TIME
-			String durationMins = null;
-			String durationSecs = null;
-			
-			
-			// Get the time (DATE)...			
-			// ... hour
-			timeHours = String.valueOf(session.getTimeHour());
-			
-			// ... minutes
-			if(session.getTimeMinutes() < 10) {
-				timeMins = String.valueOf(0) + String.valueOf(session.getTimeMinutes());
-			}
-			else {
-				timeMins = String.valueOf(session.getTimeMinutes());
-			}
-			
-			dayPeriod = session.getDayPeriod();
-			
-			
-			// Get the time (TIME)
-			durationMins = String.valueOf(session.getDurationMinutes());
-			
-			if(session.getDurationSeconds() < 10) {
-				durationSecs = String.valueOf(0) + String.valueOf(session.getDurationSeconds());
-			}
-			else {
-				durationSecs = String.valueOf(session.getDurationSeconds());
-			}
-			
-			// map data to ListView
-			map.put(SessionsListView.DATE, new StringBuilder(timeHours + ":" + timeMins + dayPeriod + "\n" + session.getDayNo() + "\n" + session.getMonth()).toString());
-			map.put(SessionsListView.TIME, new StringBuilder(durationMins + ":" + durationSecs).toString());
-			map.put(SessionsListView.ACTIVITY, session.getType());
-			
-//			adapterList.add(map);
-		}
-		
-		
-		
-		// binds our data together before being sent to the 
-		// ListView's adapter component for presentation
-//		SimpleAdapter adapter = new SimpleAdapter(this, 
-//												  adapterList,
-//				                                  android.R.layout.simple_list_item_1,	// this is where out custom ListView layout goes. I think...
-//				                                  new String[] { "overview" },
-//				                                  new int[] { android.R.id.text1 });
-		
-		
-		
-		
-		
-//		TODO
-//
-//		ListView sessionsList = (ListView) findViewById(R.id.list_previous_sessions);
-//		SessionsAdapter adapter = new SessionsAdapter(this, adapterList);
-//		
-//		// display the contents
-//		sessionsList.setAdapter(adapter);				
+		initTabs(ab);	
 	}
-	
-	
-	
+		
 	/**
 	 * AlertDialog event handler that displays a new session view
 	 * @author Jonathan Perry
@@ -276,10 +169,15 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 	 * @param ab
 	 */
 	private void initTabs(ActionBar ab) {
-		ab.addTab(ab.newTab().setText("TODAY").setTabListener(this));
-        ab.addTab(ab.newTab().setText("THIS WEEK").setTabListener(this));
-        ab.addTab(ab.newTab().setText("THIS MONTH").setTabListener(this));
-        ab.addTab(ab.newTab().setText("THIS YEAR").setTabListener(this));
+		String tabToday = "TODAY";
+		String tabThisWeek = "THIS WEEK";
+		String tabThisMonth = "THIS MONTH";
+		String tabThisYear = "THIS YEAR";
+		
+		ab.addTab(ab.newTab().setText(tabToday).setTabListener(this));
+        ab.addTab(ab.newTab().setText(tabThisWeek).setTabListener(this));
+        ab.addTab(ab.newTab().setText(tabThisMonth).setTabListener(this));
+        ab.addTab(ab.newTab().setText(tabThisYear).setTabListener(this));
 	}
 			
 	
