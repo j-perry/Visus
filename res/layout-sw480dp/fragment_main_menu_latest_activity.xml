@@ -129,15 +129,7 @@
 	        android:textAllCaps="true"
 	        android:textSize="24sp"
 	        />
-	    
-	    <!--
-	    <View 
-	        android:layout_height="4sp"
-	        android:layout_width="fill_parent"
-	        android:background="@color/light_grey"
-	        />
-	    -->
-	     
+	    	     
 	    <!-- latest sessions (first 5) --> 
 	    <ListView 
 	        android:id="@+id/overview_sessions_adapter"

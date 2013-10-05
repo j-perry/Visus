@@ -275,7 +275,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 	 * Initialises new tabs
 	 * @param ab
 	 */
-	private void initTabs(ActionBar ab) {		
+	private void initTabs(ActionBar ab) {
 		ab.addTab(ab.newTab().setText("TODAY").setTabListener(this));
         ab.addTab(ab.newTab().setText("THIS WEEK").setTabListener(this));
         ab.addTab(ab.newTab().setText("THIS MONTH").setTabListener(this));
