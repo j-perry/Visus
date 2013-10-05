@@ -1,48 +1,31 @@
 package com.visus.main;
 
 // core apis
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 
 // android apis
 import android.os.Bundle;
 import android.app.ActionBar;
-import android.app.ActionBar.*;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.NavUtils;
-import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 // core program packages
 import com.visus.R;
 import com.visus.database.*;
-import com.visus.entities.Week;
-import com.visus.entities.User;
 import com.visus.entities.sessions.*;
-import com.visus.ui.*;
 import com.visus.ui.sessions.fragments.*;
 
 /**
@@ -51,12 +34,8 @@ import com.visus.ui.sessions.fragments.*;
  *
  */
 public class Sessions extends FragmentActivity implements ActionBar.TabListener {
-	
-	private List<HashMap<String, String>> adapterItems;
-	private Session sessionOverview;
+
 	private int activeUserId;
-	
-	private int noItems;
 	
 	private ViewPager sessionsPager;
 	private SessionsPagerAdapter sessionsPagerAdapter;
@@ -72,8 +51,6 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sessions);
 				
-		noItems = 0;
-		
 		// clear the notification
 		NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 		notificationManager.cancel(0);
@@ -190,20 +167,6 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		startActivity(intent);
 	}
 	
-	/**
-	 * Creates a new item in the HashMap for insertion into an ArrayList 
-	 * initialised by a Session object
-	 * @param key
-	 * @param name
-	 * @return
-	 */
-	private HashMap<String, String> createList(String key, String name) {
-		HashMap<String, String> items = new HashMap<String, String>();
-		items.put(key, name);
-		
-		return items;
-	}
-
 	/**
 	 * Inflates the options menu
 	 */
