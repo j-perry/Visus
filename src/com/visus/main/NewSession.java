@@ -721,7 +721,7 @@ public class NewSession extends Activity {
 				
 		// assign session duration to global variable
 		this.durationMinutes = iMins;
-		this.durationSeconds = iSecs;
+		this.durationSeconds = iSecs + 1; // TODO
 				
 		// get the session date
 		int dayNo = Integer.parseInt(new SimpleDateFormat(strFormatDayCalNo).format(new Date()) );
@@ -797,6 +797,10 @@ public class NewSession extends Activity {
 		
 		int remainingMins = getTimeRemainingMinutes();
 		int remainingSecs = getTimeRemainingSeconds();
+		
+		// TODO
+		// add one more second - need to locate bug
+//		remainingSecs += 1;
 				
 		if((remainingMins == 0) && (remainingSecs == 0)) {
 			Log.e("Visus", "Empty time remaining fields");
@@ -822,11 +826,7 @@ public class NewSession extends Activity {
 		else {
 			sessionSecs = durationSeconds - remainingSecs;
 		}
-		
-		// TODO
-		// add one more second - need to locate bug
-		sessionSecs += 1;
-				
+						
 		session.setUserId(activeUserId);
 		session.setDurationMinutes(sessionMins);
 		session.setDurationSeconds(sessionSecs);
