@@ -89,16 +89,16 @@ public class FragmentThisYear extends Fragment {
 				
 				HashMap<String, String> map = new HashMap<String, String>();
 				
-				map.put(MainMenuListView.SESSION_NO, String.valueOf(id) );
+				map.put(MainMenuListView.SESSION_NO, session.getDurationMinutes() + ":" + 
+						 							 durationSeconds );
+
 				map.put(MainMenuListView.SESSION, session.getDay() + " " +
 												  session.getDayNo() + " " +  
 												  session.getMonth() + ", " +
 												  session.getYear() + " (" +
 								                  session.getTimeHour() + ":" +
 								                  timeMinutes + " " +
-								                  session.getDayPeriod() + ") - " +
-								                  session.getDurationMinutes() + ":" +
-								                  durationSeconds + " - " +
+								                  session.getDayPeriod() + "), " +
 								                  session.getType()
 						);
 
