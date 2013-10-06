@@ -93,10 +93,10 @@ public class FragmentThisYear extends Fragment {
 				map.put(MainMenuListView.SESSION, session.getDay() + " " +
 												  session.getDayNo() + " " +  
 												  session.getMonth() + ", " +
-												  session.getYear() + " - " +
+												  session.getYear() + " (" +
 								                  session.getTimeHour() + ":" +
 								                  timeMinutes + " " +
-								                  session.getDayPeriod() + " - " +
+								                  session.getDayPeriod() + ") - " +
 								                  session.getDurationMinutes() + ":" +
 								                  durationSeconds + " - " +
 								                  session.getType()

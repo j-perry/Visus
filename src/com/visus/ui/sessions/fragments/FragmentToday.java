@@ -69,9 +69,10 @@ public class FragmentToday extends Fragment {
 		else {
 			// retrieve sessions
 			int id = 1;
+			String durationSeconds = null;
+			String timeMinutes = null;
 			
 			for(Session session : sessions) {
-				String durationSeconds = null;
 				
 				if(session.getDurationSeconds() < 10) {
 					durationSeconds = "0" + String.valueOf(session.getDurationSeconds() );
@@ -79,10 +80,7 @@ public class FragmentToday extends Fragment {
 				else {
 					durationSeconds = String.valueOf(session.getDurationSeconds() );
 				}
-				
-				
-				String timeMinutes = null;
-				
+							
 				if(session.getTimeMinutes() < 10) {
 					timeMinutes = "0" + String.valueOf(session.getTimeMinutes() );
 				}
@@ -92,17 +90,25 @@ public class FragmentToday extends Fragment {
 				
 				HashMap<String, String> map = new HashMap<String, String>();
 				map.put(MainMenuListView.SESSION_NO, String.valueOf(id) );
-				map.put(MainMenuListView.SESSION, session.getDay() + " " +
-								    					  session.getDayNo() + " " +  
-								    					  session.getMonth() + ", " +
-								    					  session.getYear() + " - " +
-										                  session.getTimeHour() + ":" +
-										                  timeMinutes + " " +
-										                  session.getDayPeriod() + " - " +
-										                  session.getDurationMinutes() + ":" +
-										                  durationSeconds + " - " +
-										                  session.getType()
-						       );
+				map.put(MainMenuListView.SESSION, session.getType() + ", " +
+						  						  session.getDurationMinutes() + ":" +
+						  						  durationSeconds + ", " +
+						  						  session.getTimeHour() + ":" +
+						  						  timeMinutes +
+						  						  session.getDayPeriod()							    					  
+					   );
+				
+//				map.put(MainMenuListView.SESSION, session.getDay() + " " +
+//								    					  session.getDayNo() + " " +  
+//								    					  session.getMonth() + ", " +
+//								    					  session.getYear() + " - " +
+//										                  session.getTimeHour() + ":" +
+//										                  timeMinutes + " " +
+//										                  session.getDayPeriod() + " - " +
+//										                  session.getDurationMinutes() + ":" +
+//										                  durationSeconds + " - " +
+//										                  session.getType()
+//						       );
 				
 				sessionsToday.add(map);
 				id++;
