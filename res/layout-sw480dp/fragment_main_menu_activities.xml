@@ -33,7 +33,7 @@
 	        	android:textColor="@color/dark_grey"
 	        	android:textSize="24sp"
 	            />
-	        
+	        	        
 	        <TextView 
 	            android:id="@+id/main_menu_activities_date_account_created"
 	        	android:layout_width="fill_parent"
@@ -50,7 +50,7 @@
     	</LinearLayout>
             	   
     	
-	        >
+	        
 	        
 		    <TextView 
 		        android:id="@+id/main_header"
@@ -68,6 +68,11 @@
 		        android:textSize="24sp"
 		        />
 		    
+		    <View 
+		        android:layout_width="fill_parent"
+		        android:layout_height="4sp"
+		        android:background="@color/light_grey"
+		        />
 		    
     <!-- sessions summary --> 
 	    <ListView 
