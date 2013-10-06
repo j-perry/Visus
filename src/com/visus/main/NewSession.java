@@ -892,7 +892,7 @@ public class NewSession extends Activity {
 			}
 			else {
 				// delay for 1 second
-				timeHandler.postDelayed(this, 1000);
+				timeHandler.postDelayed(this, 0); // TODO
 			}			
 		}
 	};
