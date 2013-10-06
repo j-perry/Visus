@@ -223,10 +223,10 @@ public final class R {
  About 
          */
         public static final int settings_about_header=0x7f05002e;
-        public static final int settings_credit_blurb=0x7f050031;
+        public static final int settings_credit_blurb=0x7f050033;
         /**  Credits 
          */
-        public static final int settings_credit_header=0x7f050030;
+        public static final int settings_credit_header=0x7f050032;
         public static final int settings_general_hint_age=0x7f050024;
         public static final int settings_general_hint_name=0x7f050023;
         public static final int settings_general_personal_age_header=0x7f050022;
@@ -248,6 +248,10 @@ public final class R {
         public static final int settings_general_sessions_reset_year=0x7f05002b;
         public static final int settings_general_sessions_target_day=0x7f050028;
         public static final int settings_general_sessions_target_month=0x7f050029;
+        public static final int settings_what_blurb=0x7f050031;
+        /**  What's Visus? 
+         */
+        public static final int settings_what_header=0x7f050030;
         public static final int title_activities=0x7f050011;
         public static final int title_activity=0x7f05000d;
         public static final int title_activity_categories=0x7f050010;

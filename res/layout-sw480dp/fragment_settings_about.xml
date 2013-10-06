@@ -67,7 +67,7 @@
 		        android:layout_width="fill_parent"
 				android:paddingBottom="25sp"
 		        android:textColor="@color/dark_grey"	        
-		        android:text="What's Visus?"
+		        android:text="@string/settings_what_header"
 		        android:textStyle="bold"
 		        android:textSize="42sp"
 		        />    
@@ -78,7 +78,7 @@
 		        android:layout_height="wrap_content"
 		        android:layout_width="fill_parent"
 		        android:textColor="@color/dark_grey"
-		        android:text="Visus is from Latin etymology for 'I See'."
+		        android:text="@string/settings_what_blurb"
 		        android:textSize="24sp"
 		        />
 	    
