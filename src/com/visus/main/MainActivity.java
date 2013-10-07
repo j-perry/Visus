@@ -41,7 +41,7 @@ import com.visus.ui.main.fragments.LatestActivityFragment;
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 	
 	private User user = null;
-	private UserHandler dbHandler;
+	private UserHandler dbUser;
 	private SessionHandler dbSession;
 	private static int userId;
 	
@@ -57,21 +57,21 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		dbHandler = new UserHandler(this);
+		dbUser = new UserHandler(this);
 		dbSession = new SessionHandler(this);
 				
 		setContentView(R.layout.activity_main);
 		
 		// get the current active user
 		try {
-			dbHandler.open();			
-			user = dbHandler.getActiveUser();
+			dbUser.open();			
+			user = dbUser.getActiveUser();
 		}
 		catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);
 		}
 		finally {
-			dbHandler.close();			
+			dbUser.close();			
 		}
 			
 
@@ -89,7 +89,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 					                                        getLatestSessions(user.getUserId() ),	// latest sessions
 					                                        getActivitiesCount(user.getUserId() ),	// no activities
 					                                        getActivities(user.getUserId() ),		// activities
-					                                        getFirstSession() );					// first session
+					                                        getFirstSession() ); 					// first session
 			
 			mainMenuPager.setAdapter(mainMenuPagerAdapter);
 			
@@ -140,9 +140,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		super.onResume();
 		
 		Log.e("Visus", "onResume()");
-		dbHandler.open();
-		user = dbHandler.getActiveUser();
-		dbHandler.close();
+		dbUser.open();
+		user = dbUser.getActiveUser();
+		dbUser.close();
 		
 		if(user == null) {
 			Log.e("Visus", "No user active");
@@ -301,6 +301,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			Log.e("Visus", "Sessions is not empty");
 			
 			int noItems = 0;
+			final int MAX_ITEMS = 5;
 			String durationSeconds = null;
 			String timeMinutes = null;
 			
@@ -326,7 +327,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 					timeMinutes = String.valueOf(session.getTimeMinutes() );
 				}
 												
-				if(noItems != 5) {
+				if(noItems != MAX_ITEMS) {
 						HashMap<String, String> map = new HashMap<String, String>();
 						id++;
 						
@@ -343,8 +344,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 														  session.getDayPeriod()							    					  
 						       );
 						
-						latestSessions.add(map);
-						
+						latestSessions.add(map);						
 						noItems++;
 				}
 				else {
@@ -401,7 +401,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	private Session getFirstSession() {
 		return firstSession;
 	}
-		
+			
 	/**
 	 * 
 	 * @param userId
@@ -522,6 +522,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		private int noActivities;
 		private ArrayList<HashMap<String, String>> activities;
 		private Session firstSession;
+		
+		private boolean dailyTarget;
+		private boolean monthlyTarget;
 		
 		public MainMenuPagerAdapter(FragmentManager fm,
 									int userId,

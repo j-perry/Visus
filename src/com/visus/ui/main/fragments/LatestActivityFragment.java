@@ -31,6 +31,8 @@ public class LatestActivityFragment extends Fragment {
 	private SessionHandler dbSession;
 	private UserHandler dbUser;
 	
+	private static int noItems = 5;
+	
 	private ListView list;
 	private MainMenuAdapter adapter;
 	
@@ -56,6 +58,7 @@ public class LatestActivityFragment extends Fragment {
 		View rootView = inflater.inflate(com.visus.R.layout.fragment_main_menu_latest_activity, container, false);
 		dbSession = new SessionHandler(getActivity() ); // getActivity() should do the trick!
 		dbUser = new UserHandler(getActivity() );
+		int noItems = 5;
 		
 		// hide by default
 		View dailyTargetLayout = rootView.findViewById(com.visus.R.id.fragment_main_menu_layout_target_met_daily);
@@ -70,9 +73,7 @@ public class LatestActivityFragment extends Fragment {
 		 * No. sessions
 		 */
 		TextView txtVwTotalSessions = (TextView) rootView.findViewById(com.visus.R.id.main_menu_latest_activities_no_sessions_total);
-		
-//		totalSessions = 0; // TODO temp
-		
+				
 		if(totalSessions == 0) {
 			txtVwTotalSessions.setText(String.valueOf(0) + " Sessions");
 		}
@@ -125,12 +126,12 @@ public class LatestActivityFragment extends Fragment {
 			// display message (not just a Log file message!)
 			Log.e("Visus", "Daily target met");
 			dailyTargetLayout.setVisibility(View.VISIBLE);
+			noItems--;
 		}
 		else {
 			// don't do anything additional - just display what is seen normally
 			Log.e("Visus", "Daily target not met");
 		}
-		
 		
 		
 		/*********************************************************************
@@ -141,20 +142,30 @@ public class LatestActivityFragment extends Fragment {
 		if(monthlyTargetMet == true) {
 			// display message (not just a Log file message!)
 			Log.e("Visus", "Monthly target met");
-			monthlyTargetLayout.setVisibility(View.VISIBLE);		
+			monthlyTargetLayout.setVisibility(View.VISIBLE);
 		}
 		else {
 			// don't do anything additional - just display what is seen normally
 			Log.e("Visus", "Monthly target not met");
 		}
 		
+		Log.e("Visus", "noItems: " + noItems);
 		
+		ArrayList<HashMap<String, String>> sessions = new ArrayList<HashMap<String, String>>();
+		int index = 0;
+		
+		for(HashMap<String, String> item : latestSessions) {
+			if(index != noItems) {
+				sessions.add(item);
+				index++;
+			}
+		}
 		
 		/*************************************************
 		 * 		Display the user's latest sessions
 		 */
 		list = (ListView) rootView.findViewById(com.visus.R.id.overview_sessions_adapter);
-		adapter = new MainMenuAdapter(getActivity(), latestSessions);
+		adapter = new MainMenuAdapter(getActivity(), sessions);
 		
 		list.setAdapter(adapter);
 					
@@ -163,8 +174,8 @@ public class LatestActivityFragment extends Fragment {
 	
 	public void onDestoryView() {
 		super.onDestroyView();
-	}
-			
+	}	
+	
 	/**
 	 * Method checks whether the user has met their monthly target
 	 * @return Whether the user's target has been met
