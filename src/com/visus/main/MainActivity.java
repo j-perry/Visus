@@ -334,23 +334,27 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 						/**
 						 * Format: type, duration, HH:mm
 						 * 						 
-						 */					
-						map.put(MainMenuListView.SESSION_NO, String.valueOf(id) );
-						map.put(MainMenuListView.SESSION, session.getType() + ", " +
-														  session.getDurationMinutes() + ":" +
-								                          durationSeconds + ", " +
-														  session.getTimeHour() + ":" +
-								                          timeMinutes +
-														  session.getDayPeriod()							    					  
-						       );
-						
+						 */		
+						map.put(MainMenuListView.SESSION_NO, session.getDurationMinutes() + ":" + 
+	 							 durationSeconds );
+
+						map.put(MainMenuListView.SESSION, session.getDay() + " " +
+													  	  session.getDayNo() + " " +  
+													  	  session.getMonth() + ", " +
+													  	  session.getYear() + " (" +
+													  	  session.getTimeHour() + ":" +
+													  	  timeMinutes + " " +
+													  	  session.getDayPeriod() + "), " +
+													  	  session.getType()
+								);
+												
 						latestSessions.add(map);						
 						noItems++;
 				}
 				else {
 					break;
 				}
-			}		
+			}
 		}
 		
 		return latestSessions;
