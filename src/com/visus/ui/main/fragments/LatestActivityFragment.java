@@ -126,7 +126,6 @@ public class LatestActivityFragment extends Fragment {
 			// display message (not just a Log file message!)
 			Log.e("Visus", "Daily target met");
 			dailyTargetLayout.setVisibility(View.VISIBLE);
-			noItems--;
 		}
 		else {
 			// don't do anything additional - just display what is seen normally
@@ -147,6 +146,10 @@ public class LatestActivityFragment extends Fragment {
 		else {
 			// don't do anything additional - just display what is seen normally
 			Log.e("Visus", "Monthly target not met");
+		}
+		
+		if(dailyTargetMet == true && monthlyTargetMet == true) {
+			noItems--;
 		}
 		
 		Log.e("Visus", "noItems: " + noItems);
