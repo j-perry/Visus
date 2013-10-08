@@ -234,16 +234,18 @@ public class NewSession extends Activity {
 		// used to store user input for setting session duration 
 		int iMins = 0;
 		int iSecs = 0;
-		
+				
 		int MINS_LIMIT = 60;
 		int SECS_LIMIT = 59;
 		
+		String minInput = etMins.getText().toString();
+		String secsInput = etSecs.getText().toString();
+		
 		
 		/******************************************************************
-		 * 			If both minutes and seconds fields are empty
+		 * 			Check whether both fields are empty
 		 */
-		if( (etMins.getText().toString().isEmpty() ) && 
-			(etSecs.getText().toString().isEmpty() )) {
+		if(minInput.isEmpty() && secsInput.isEmpty() ) {
 			String toastMsg = "Enter at least one value in either of the number fields";
 			
 			// inform the user they are both empty ...
@@ -253,15 +255,14 @@ public class NewSession extends Activity {
 			
 			// ... and delay the start time
 			timerHandler.removeCallbacks(runUpdateTimer);			
-		}
-		/**********************************************************************
-		 * 		If minutes field is empty and seconds field is NOT empty
+		}		
+		/*******************************************************************************
+		 * 		Check whether minutes field is empty and seconds field is NOT empty
 		 */
-		else if( (etMins.getText().toString().isEmpty()) &&
-				 (!etSecs.getText().toString().isEmpty() )) {
+		else if(minInput.isEmpty() && !secsInput.isEmpty() ) {
 			
 			// if seconds set are above 59
-			if(Integer.parseInt(etSecs.getText().toString() ) > SECS_LIMIT) {
+			if(Integer.parseInt(secsInput) > SECS_LIMIT) {
 				// inform the user it must be between 0 - 59
 				String toastMsg = "Invalid range. Please enter seconds between 0 - 59";
 				
@@ -275,7 +276,7 @@ public class NewSession extends Activity {
 			else {
 				// append two noughts
 				iMins = 00;
-				iSecs = Integer.parseInt( etSecs.getText().toString() );
+				iSecs = Integer.parseInt(secsInput);
 				
 				// if session type is empty
 				if(sessionTypes.getText().toString().length() == 0) {
@@ -309,13 +310,13 @@ public class NewSession extends Activity {
 			}		
 		}
 		// TODO
-		/******************************************************************************
-		 * 		If the minutes field is NOT empty and the seconds field is empty
+		/****************************************************************************************
+		 * 		Check whether the minutes field is NOT empty and the seconds field is empty
 		 */
-		else if( (!etMins.getText().toString().isEmpty() ) && (etSecs.getText().toString().isEmpty()) ) {
+		else if( !minInput.isEmpty() && secsInput.isEmpty() ) {
 			
 			// if minutes set are above 60
-			if(Integer.parseInt(etMins.getText().toString() ) > MINS_LIMIT) {
+			if(Integer.parseInt(minInput) > MINS_LIMIT) {
 				// inform the user it must be between 0 - 59
 				String toastMsg = "Invalid range. Please enter minutes between 0 - 60";
 				
@@ -327,8 +328,8 @@ public class NewSession extends Activity {
 				toast.show();
 			}
 			// else, if minutes equals 60
-			else if( Integer.parseInt(etMins.getText().toString() ) == MINS_LIMIT) {				
-				iMins = Integer.parseInt( etMins.getText().toString() );
+			else if( Integer.parseInt(minInput) == MINS_LIMIT) {				
+				iMins = Integer.parseInt(minInput);
 				
 				// append two noughts
 				iSecs = 0;
@@ -364,11 +365,11 @@ public class NewSession extends Activity {
 				initSession(iMins, iSecs);
 			}
 			// else, if minutes is less than 60
-			else if ( Integer.parseInt(etMins.getText().toString() ) < MINS_LIMIT ) {
+			else if ( Integer.parseInt(minInput) < MINS_LIMIT ) {
 //				iMins = 59;
 				iSecs = 59;
 				
-				iMins = Integer.parseInt( etMins.getText().toString() );
+				iMins = Integer.parseInt(minInput);
 			
 				// append two noughts
 				iSecs = 0;
@@ -408,12 +409,13 @@ public class NewSession extends Activity {
 				initSession(iMins, iSecs);
 			}		
 		}
-		// if both fields are NOT empty...
-		else if( (!etMins.getText().toString().isEmpty() ) &&
-				 (!etSecs.getText().toString().isEmpty()) ) {
+		/***************************************************
+		 * 		Check whether both fields are not empty
+		 */
+		else if( !minInput.isEmpty() && !secsInput.isEmpty() ) {
 			
 			// if greater than 60 minutes
-			if( (Integer.parseInt(etMins.getText().toString() ) > MINS_LIMIT) ) {
+			if( (Integer.parseInt(minInput) > MINS_LIMIT) ) {
 				// inform the user it must be between 0 - 59
 				String toastMsg = "Invalid range. Please enter minutes between 0 - 59";
 				
@@ -423,10 +425,10 @@ public class NewSession extends Activity {
 				toast.show();
 			}
 			// else if minutes equals 60 minutes
-			else if( (Integer.parseInt(etMins.getText().toString() ) == MINS_LIMIT) ) {
+			else if( (Integer.parseInt(minInput) == MINS_LIMIT) ) {
 				
 				// and if seconds is greater than zero
-				if( !(Integer.parseInt(etSecs.getText().toString() ) == 0 )) {
+				if( !(Integer.parseInt(secsInput) == 0 )) {
 					// inform the user it must be up to 60:00 minutes (1 hour)
 					String toastMsg = "Invalid range. Please enter a duration up to 60:00 minutes";
 					
@@ -443,14 +445,14 @@ public class NewSession extends Activity {
 				}
 				else {
 					// if set to 60:00
-					if( (Integer.parseInt(etMins.getText().toString() ) == MINS_LIMIT ) && (Integer.parseInt(etSecs.getText().toString() ) == 00 ) ) {
+					if( (Integer.parseInt(minInput) == MINS_LIMIT ) && (Integer.parseInt(secsInput) == 00 ) ) {
 						// set to 59:59 on start
 						iMins = 59;
 						iSecs = 59;
 					}
 					else {
 						iMins = 59;
-						iSecs = Integer.parseInt( etSecs.getText().toString() );
+						iSecs = Integer.parseInt(secsInput);
 					}				
 					
 					// if session type is empty
@@ -486,9 +488,9 @@ public class NewSession extends Activity {
 				}
 			}
 			// else, if minutes equals 60 minutes AND seconds is empty
-			else if( Integer.parseInt(etMins.getText().toString() ) == MINS_LIMIT && etSecs.getText().toString().isEmpty() ) {
+			else if(Integer.parseInt(minInput) == MINS_LIMIT && secsInput.isEmpty() ) {
 				
-				iMins = Integer.parseInt(etMins.getText().toString());
+				iMins = Integer.parseInt(minInput);
 				iSecs = 00;
 				
 				// if session type is empty
@@ -523,13 +525,13 @@ public class NewSession extends Activity {
 				initSession(iMins, iSecs);
 			}
 			// if minutes is less than 60 and less than 59 seconds
-			else if( (Integer.parseInt(etMins.getText().toString() ) < MINS_LIMIT) && (Integer.parseInt(etSecs.getText().toString() ) < SECS_LIMIT) ) {
+			else if(Integer.parseInt(minInput) < MINS_LIMIT && Integer.parseInt(secsInput) < SECS_LIMIT ) {
 				
 				// get minutes
-				iMins = Integer.parseInt(etMins.getText().toString() );
+				iMins = Integer.parseInt(minInput);
 				
 				// get seconds
-				iSecs = Integer.parseInt(etSecs.getText().toString() );
+				iSecs = Integer.parseInt(secsInput);
 				
 				// if session type is empty
 				if(sessionTypes.getText().toString().length() == 0) {
@@ -563,9 +565,10 @@ public class NewSession extends Activity {
 				initSession(iMins, iSecs);				
 			}
 			// else, if minutes is less than 60 AND seconds is not less than or equal to 59
-			else if( (Integer.parseInt(etMins.getText().toString() ) < MINS_LIMIT) && !(Integer.parseInt(etSecs.getText().toString() ) < 60) ) {
-				Log.e("Visus", "Timer (mins): " + etMins.getText().toString() );
-				Log.e("Visus", "Timer (secs): " + etSecs.getText().toString() );
+			else if( Integer.parseInt(minInput) < MINS_LIMIT && !(Integer.parseInt(secsInput) < 60) ) {
+				
+				Log.e("Visus", "Timer (mins): " + minInput);
+				Log.e("Visus", "Timer (secs): " + secsInput);
 				
 				etMins.setText("");
 				etSecs.setText("");
@@ -581,10 +584,10 @@ public class NewSession extends Activity {
 			else {
 				
 				// get minutes
-				iMins = Integer.parseInt(etMins.getText().toString() );
+				iMins = Integer.parseInt(minInput);
 				
 				// get seconds
-				iSecs = Integer.parseInt(etSecs.getText().toString() );
+				iSecs = Integer.parseInt(secsInput);
 				
 				// if session type is empty
 				if(sessionTypes.getText().toString().length() == 0) {
