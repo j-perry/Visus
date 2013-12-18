@@ -19,7 +19,7 @@
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:padding="25sp"
-		    android:text="Set Activity"
+		    android:text="@string/dialog_new_session_header"
 		    android:textSize="16sp"
 		    android:textColor="@color/white"
 		    android:textStyle="bold"
@@ -40,7 +40,7 @@
 		    android:layout_margin="25sp"
 		    android:textSize="24sp"
 		    android:textColor="@color/dark_grey"
-		    android:hint="#Activity"
+		    android:hint="@string/dialog_new_session_input"
 		    android:textColorHint="@color/light_grey"
 		    android:inputType="textCapWords"
 		    />
@@ -48,6 +48,7 @@
 	</LinearLayout>
 	
 	<LinearLayout
+	    style="?android:attr/buttonBarStyle"
     	android:layout_width="match_parent"
     	android:layout_height="match_parent"
     	android:orientation="horizontal"
@@ -55,25 +56,27 @@
     	>
     	
 	    <Button
+	        style="?android:attr/buttonBarButtonStyle" 
 		    android:id="@+id/alert_dialog_new_session_btn_cancel"
 		    android:layout_weight="1"
 		    android:layout_width="0sp"
 		    android:layout_height="wrap_content"
 		    android:background="@drawable/main_menu_profile_bg"
 	    	android:padding="25sp"
-		    android:text="Cancel"
+		    android:text="@string/dialog_new_session_btn_cancel"
 		    android:textColor="@drawable/main_menu_profile_txt"
 		    android:textSize="16sp"
 		    />
 	    
 	    <Button
+	        style="?android:attr/buttonBarButtonStyle" 
 		    android:id="@+id/alert_dialog_new_session_btn_ok"
 		    android:layout_weight="1"
 		    android:layout_width="0sp"
 		    android:layout_height="wrap_content"
 		    android:background="@drawable/main_menu_profile_bg"
 	    	android:padding="25sp"
-		    android:text="OK"
+		    android:text="@string/dialog_new_session_btn_ok"
 		    android:textColor="@drawable/main_menu_profile_txt"
 		    android:textSize="16sp"
 		    />
