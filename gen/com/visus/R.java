@@ -14,8 +14,7 @@ public final class R {
         /**  Main Menu 
          */
         public static final int menu=0x7f060002;
-        /**  End of Main Menu 
- Settings 
+        /**  Settings 
          */
         public static final int settings_list=0x7f060003;
     }
@@ -80,71 +79,82 @@ public final class R {
         public static final int test_bg=0x7f020019;
     }
     public static final class id {
-        public static final int TextView01=0x7f090040;
-        public static final int TextView02=0x7f090041;
+        public static final int TextView01=0x7f09004b;
+        public static final int TextView02=0x7f09004c;
         public static final int actionBarList=0x7f090000;
-        public static final int activities_overview=0x7f090036;
-        public static final int activity=0x7f09003b;
+        public static final int activities_overview=0x7f090041;
+        public static final int activity=0x7f090046;
         public static final int age=0x7f09000e;
-        public static final int date=0x7f090039;
-        public static final int entry=0x7f090038;
-        public static final int entry_no=0x7f09003c;
+        public static final int alert_dialog_new_session_btn_cancel=0x7f090012;
+        public static final int alert_dialog_new_session_btn_ok=0x7f090013;
+        public static final int alert_dialog_new_session_header=0x7f090010;
+        public static final int alert_dialog_new_session_input=0x7f090011;
+        public static final int alert_dialog_previous_sessions_btn_cancel=0x7f090016;
+        public static final int alert_dialog_previous_sessions_btn_ok=0x7f090017;
+        public static final int alert_dialog_previous_sessions_heading=0x7f090014;
+        public static final int alert_dialog_previous_sessions_txt=0x7f090015;
+        public static final int alert_dialog_user_targets_btn_cancel=0x7f090019;
+        public static final int alert_dialog_user_targets_btn_ok=0x7f09001a;
+        public static final int alert_dialog_user_targets_header=0x7f09001b;
+        public static final int alert_dialog_user_targets_txt=0x7f090018;
+        public static final int date=0x7f090044;
+        public static final int entry=0x7f090043;
+        public static final int entry_no=0x7f090047;
         public static final int first_name=0x7f09000c;
-        public static final int fragment_main_menu_layout_target_met_daily=0x7f090015;
-        public static final int fragment_main_menu_layout_target_met_monthly=0x7f090017;
+        public static final int fragment_main_menu_layout_target_met_daily=0x7f090021;
+        public static final int fragment_main_menu_layout_target_met_monthly=0x7f090023;
         public static final int gender=0x7f09000d;
-        public static final int header=0x7f090033;
-        public static final int header_events=0x7f090037;
-        public static final int header_overview=0x7f09003d;
-        public static final int hmmm=0x7f090023;
-        public static final int hours_overview=0x7f090035;
-        public static final int linear_layout_settings_history=0x7f090029;
-        public static final int linear_layout_settings_personal=0x7f090024;
+        public static final int header=0x7f09003e;
+        public static final int header_events=0x7f090042;
+        public static final int header_overview=0x7f090048;
+        public static final int hmmm=0x7f090031;
+        public static final int hours_overview=0x7f090040;
+        public static final int linear_layout_settings_activities=0x7f090039;
+        public static final int linear_layout_settings_history=0x7f090032;
         public static final int list_latest_activity=0x7f090001;
-        public static final int listview_sessions_this_month=0x7f09001b;
-        public static final int listview_sessions_this_week=0x7f09001c;
-        public static final int listview_sessions_this_year=0x7f09001d;
-        public static final int listview_sessions_today=0x7f09001e;
-        public static final int main_activity_activity_types=0x7f090011;
-        public static final int main_header=0x7f090010;
-        public static final int main_menu_activities_date_account_created=0x7f090013;
-        public static final int main_menu_latest_activities_daily_target_met_message=0x7f090016;
-        public static final int main_menu_latest_activities_monthly_target_met_message=0x7f090018;
-        public static final int main_menu_latest_activities_no_sessions_date=0x7f09001a;
-        public static final int main_menu_latest_activities_no_sessions_total=0x7f090019;
-        public static final int main_menu_no_activities=0x7f090012;
+        public static final int listview_sessions_this_month=0x7f090027;
+        public static final int listview_sessions_this_week=0x7f090028;
+        public static final int listview_sessions_this_year=0x7f090029;
+        public static final int listview_sessions_today=0x7f09002a;
+        public static final int main_activity_activity_types=0x7f09001d;
+        public static final int main_header=0x7f09001c;
+        public static final int main_menu_activities_date_account_created=0x7f09001f;
+        public static final int main_menu_latest_activities_daily_target_met_message=0x7f090022;
+        public static final int main_menu_latest_activities_monthly_target_met_message=0x7f090024;
+        public static final int main_menu_latest_activities_no_sessions_date=0x7f090026;
+        public static final int main_menu_latest_activities_no_sessions_total=0x7f090025;
+        public static final int main_menu_no_activities=0x7f09001e;
         public static final int main_menu_pager=0x7f090002;
-        public static final int menu_about=0x7f090045;
-        public static final int menu_sessions=0x7f090043;
-        public static final int menu_settings=0x7f090044;
-        public static final int new_session_menu=0x7f090042;
-        public static final int overview=0x7f090032;
-        public static final int overview_sessions_adapter=0x7f090014;
-        public static final int period=0x7f090031;
+        public static final int menu_about=0x7f090050;
+        public static final int menu_sessions=0x7f09004e;
+        public static final int menu_settings=0x7f09004f;
+        public static final int new_session_menu=0x7f09004d;
+        public static final int overview=0x7f09003d;
+        public static final int overview_sessions_adapter=0x7f090020;
+        public static final int period=0x7f09003c;
         public static final int register=0x7f09000f;
-        public static final int session_activity=0x7f09003f;
-        public static final int session_auto_complete_type=0x7f090006;
-        public static final int session_id=0x7f09003e;
-        public static final int sessions_overview=0x7f090034;
+        public static final int session_activity=0x7f09004a;
+        public static final int session_id=0x7f090049;
+        public static final int session_type=0x7f090006;
+        public static final int sessions_overview=0x7f09003f;
         public static final int sessions_pager=0x7f09000a;
         public static final int set_session_duration=0x7f090003;
-        public static final int settings_about_blurb=0x7f090020;
-        public static final int settings_about_header=0x7f09001f;
-        public static final int settings_credit_blurb=0x7f090022;
-        public static final int settings_credit_header=0x7f090021;
-        public static final int settings_history_header=0x7f09002a;
-        public static final int settings_history_reset_all=0x7f09002f;
-        public static final int settings_history_reset_month=0x7f09002d;
-        public static final int settings_history_reset_year=0x7f09002e;
-        public static final int settings_history_target_day=0x7f09002b;
-        public static final int settings_history_target_month=0x7f09002c;
+        public static final int settings_about_blurb=0x7f09002c;
+        public static final int settings_about_header=0x7f09002b;
+        public static final int settings_activities_header=0x7f09003a;
+        public static final int settings_credit_blurb=0x7f090030;
+        public static final int settings_credit_header=0x7f09002f;
+        public static final int settings_history_header=0x7f090033;
+        public static final int settings_history_reset_all=0x7f090038;
+        public static final int settings_history_reset_month=0x7f090036;
+        public static final int settings_history_reset_year=0x7f090037;
+        public static final int settings_history_target_day=0x7f090034;
+        public static final int settings_history_target_month=0x7f090035;
         public static final int settings_pager=0x7f09000b;
-        public static final int settings_personal_age=0x7f090028;
-        public static final int settings_personal_gender=0x7f090027;
-        public static final int settings_personal_header=0x7f090025;
-        public static final int settings_personal_name=0x7f090026;
-        public static final int settings_save_all=0x7f090030;
-        public static final int time=0x7f09003a;
+        public static final int settings_save_all=0x7f09003b;
+        public static final int settings_what_blurb=0x7f09002e;
+        public static final int settings_what_header=0x7f09002d;
+        public static final int time=0x7f090045;
         public static final int timer=0x7f090007;
         public static final int timer_btn=0x7f090008;
         public static final int timer_set_minutes=0x7f090004;
@@ -159,27 +169,30 @@ public final class R {
         public static final int activity_sessions=0x7f030004;
         public static final int activity_settings=0x7f030005;
         public static final int activity_sign_up=0x7f030006;
-        public static final int fragment_collection_object=0x7f030007;
-        public static final int fragment_main_menu_activities=0x7f030008;
-        public static final int fragment_main_menu_latest_activity=0x7f030009;
-        public static final int fragment_sessions_this_month=0x7f03000a;
-        public static final int fragment_sessions_this_week=0x7f03000b;
-        public static final int fragment_sessions_this_year=0x7f03000c;
-        public static final int fragment_sessions_today=0x7f03000d;
-        public static final int fragment_settings_about=0x7f03000e;
-        public static final int fragment_settings_general=0x7f03000f;
-        public static final int layout_events_view=0x7f030010;
-        public static final int layout_main_menu_header=0x7f030011;
-        public static final int layout_main_menu_item=0x7f030012;
-        public static final int layout_overview_view=0x7f030013;
-        public static final int layout_sessions_header=0x7f030014;
-        public static final int layout_sessions_item=0x7f030015;
-        public static final int layout_sessions_items=0x7f030016;
-        public static final int layout_settings_group_item=0x7f030017;
-        public static final int settings_spinner_gender_layout=0x7f030018;
-        public static final int settings_spinner_gender_list_layout=0x7f030019;
-        public static final int sign_up_spinner_gender_layout=0x7f03001a;
-        public static final int sign_up_spinner_gender_list_layout=0x7f03001b;
+        public static final int alert_dialog_new_session=0x7f030007;
+        public static final int alert_dialog_previous_sessions=0x7f030008;
+        public static final int alert_dialog_set_targets=0x7f030009;
+        public static final int fragment_collection_object=0x7f03000a;
+        public static final int fragment_main_menu_activities=0x7f03000b;
+        public static final int fragment_main_menu_latest_activity=0x7f03000c;
+        public static final int fragment_sessions_this_month=0x7f03000d;
+        public static final int fragment_sessions_this_week=0x7f03000e;
+        public static final int fragment_sessions_this_year=0x7f03000f;
+        public static final int fragment_sessions_today=0x7f030010;
+        public static final int fragment_settings_about=0x7f030011;
+        public static final int fragment_settings_general=0x7f030012;
+        public static final int layout_events_view=0x7f030013;
+        public static final int layout_main_menu_header=0x7f030014;
+        public static final int layout_main_menu_item=0x7f030015;
+        public static final int layout_overview_view=0x7f030016;
+        public static final int layout_sessions_header=0x7f030017;
+        public static final int layout_sessions_item=0x7f030018;
+        public static final int layout_sessions_items=0x7f030019;
+        public static final int layout_settings_group_item=0x7f03001a;
+        public static final int settings_spinner_gender_layout=0x7f03001b;
+        public static final int settings_spinner_gender_list_layout=0x7f03001c;
+        public static final int sign_up_spinner_gender_layout=0x7f03001d;
+        public static final int sign_up_spinner_gender_list_layout=0x7f03001e;
     }
     public static final class menu {
         public static final int activity_main=0x7f080000;
@@ -197,7 +210,18 @@ public final class R {
         public static final int activity_settings=0x7f050005;
         public static final int activity_sign_up=0x7f050003;
         public static final int app_name=0x7f050000;
-        public static final int default_sessions_no=0x7f05001f;
+        public static final int default_sessions_no=0x7f05002b;
+        public static final int dialog_new_session_btn_cancel=0x7f050028;
+        public static final int dialog_new_session_btn_ok=0x7f050029;
+        public static final int dialog_new_session_header=0x7f050026;
+        public static final int dialog_new_session_input=0x7f050027;
+        public static final int dialog_previous_sessions_btn_cancel=0x7f050021;
+        public static final int dialog_previous_sessions_btn_ok=0x7f050022;
+        /**  End of Main Menu 
+ Previous Sessions 
+         */
+        public static final int dialog_previous_sessions_heading=0x7f05001f;
+        public static final int dialog_previous_sessions_txt=0x7f050020;
         public static final int gender_prompt=0x7f050016;
         public static final int hint_age=0x7f050017;
         /**  Sign-up 
@@ -206,6 +230,10 @@ public final class R {
         public static final int latest_activity_daily_target_met=0x7f050019;
         public static final int latest_activity_monthly_target_met=0x7f05001a;
         public static final int main_menu_activities=0x7f050013;
+        public static final int main_menu_dialog_user_targets_btn_cancel=0x7f05001d;
+        public static final int main_menu_dialog_user_targets_btn_ok=0x7f05001e;
+        public static final int main_menu_dialog_user_targets_header=0x7f05001c;
+        public static final int main_menu_dialog_user_targets_txt=0x7f05001b;
         /**  Main menu scrollview 
          */
         public static final int main_menu_latest_activity=0x7f050012;
@@ -216,42 +244,46 @@ public final class R {
         public static final int menu_sessions=0x7f050008;
         /**  Settings 
          */
-        public static final int menu_settings=0x7f05001e;
+        public static final int menu_settings=0x7f05002a;
         public static final int register=0x7f050018;
-        public static final int settings_about_blurb=0x7f05002f;
+        public static final int settings_about_blurb=0x7f05003d;
         /**  End of 'General' tab 
  About 
          */
-        public static final int settings_about_header=0x7f05002e;
-        public static final int settings_credit_blurb=0x7f050033;
+        public static final int settings_about_header=0x7f05003c;
+        public static final int settings_credit_blurb=0x7f050041;
         /**  Credits 
          */
-        public static final int settings_credit_header=0x7f050032;
-        public static final int settings_general_hint_age=0x7f050024;
-        public static final int settings_general_hint_name=0x7f050023;
-        public static final int settings_general_personal_age_header=0x7f050022;
+        public static final int settings_credit_header=0x7f050040;
+        public static final int settings_general_activities_blurb=0x7f050035;
+        /**  'Activities' 
+         */
+        public static final int settings_general_activities_header=0x7f050034;
+        public static final int settings_general_hint_age=0x7f050030;
+        public static final int settings_general_hint_name=0x7f05002f;
+        public static final int settings_general_personal_age_header=0x7f05002e;
         /**  'General' tab 
  'Personal' 
          */
-        public static final int settings_general_personal_header=0x7f050020;
-        public static final int settings_general_personal_name_header=0x7f050021;
+        public static final int settings_general_personal_header=0x7f05002c;
+        public static final int settings_general_personal_name_header=0x7f05002d;
         /**  Save (all) 
          */
-        public static final int settings_general_save_all=0x7f05002d;
-        public static final int settings_general_sessions_daily_target_header=0x7f050026;
+        public static final int settings_general_save_all=0x7f05003b;
+        public static final int settings_general_sessions_daily_target_header=0x7f050032;
         /**  'Sessions' 
          */
-        public static final int settings_general_sessions_header=0x7f050025;
-        public static final int settings_general_sessions_monthly_target_header=0x7f050027;
-        public static final int settings_general_sessions_reset_all=0x7f05002c;
-        public static final int settings_general_sessions_reset_month=0x7f05002a;
-        public static final int settings_general_sessions_reset_year=0x7f05002b;
-        public static final int settings_general_sessions_target_day=0x7f050028;
-        public static final int settings_general_sessions_target_month=0x7f050029;
-        public static final int settings_what_blurb=0x7f050031;
+        public static final int settings_general_sessions_header=0x7f050031;
+        public static final int settings_general_sessions_monthly_target_header=0x7f050033;
+        public static final int settings_general_sessions_reset_all=0x7f05003a;
+        public static final int settings_general_sessions_reset_month=0x7f050038;
+        public static final int settings_general_sessions_reset_year=0x7f050039;
+        public static final int settings_general_sessions_target_day=0x7f050036;
+        public static final int settings_general_sessions_target_month=0x7f050037;
+        public static final int settings_what_blurb=0x7f05003f;
         /**  What's Visus? 
          */
-        public static final int settings_what_header=0x7f050030;
+        public static final int settings_what_header=0x7f05003e;
         public static final int title_activities=0x7f050011;
         public static final int title_activity=0x7f05000d;
         public static final int title_activity_categories=0x7f050010;
@@ -262,13 +294,13 @@ public final class R {
         public static final int title_activity_new_user=0x7f050009;
         public static final int title_activity_prev_sessions=0x7f05000b;
         public static final int title_activity_view_settings=0x7f05000c;
-        public static final int title_end_session=0x7f05001d;
+        public static final int title_end_session=0x7f050025;
         public static final int title_latest_activity=0x7f05000e;
         /**  End of settings 
  New Session 
          */
-        public static final int title_new_session=0x7f05001b;
-        public static final int title_start_session=0x7f05001c;
+        public static final int title_new_session=0x7f050023;
+        public static final int title_start_session=0x7f050024;
         public static final int visus_welcome=0x7f050001;
     }
     public static final class style {

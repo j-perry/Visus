@@ -24,6 +24,8 @@ public class SessionHandler implements IDatabaseTable {
 	private Long result;
 	private Session session;
 	
+	private enum Days { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday };
+	
 	private static final String QRY_SPACING = " ";
 		
 	public SessionHandler(Context context) {
@@ -401,7 +403,7 @@ public class SessionHandler implements IDatabaseTable {
 			session = new Session();
 				
 			session.setDayNo(cursor.getInt(dayNoIndex));
-			session.setDay(cursor.getString(dayIndex));
+			session.setDay(parseDay(cursor.getString(dayIndex)) );
 			session.setMonth(cursor.getString(monthIndex));
 			session.setYear(cursor.getInt(yearIndex));
 			session.setTimeHour(cursor.getInt(timeHourIndex));
@@ -574,7 +576,9 @@ public class SessionHandler implements IDatabaseTable {
 			session = new Session();
 	
 			session.setDayNo(cursor.getInt(dayNoIndex));
-			session.setDay(cursor.getString(dayIndex));
+			
+			// format the day			
+			session.setDay(parseDay(cursor.getString(dayIndex)) );
 			session.setMonth(cursor.getString(monthIndex));
 			session.setYear(cursor.getInt(yearIndex));
 			session.setTimeHour(cursor.getInt(timeHourIndex));
@@ -771,7 +775,7 @@ public class SessionHandler implements IDatabaseTable {
 			session = new Session();
 		
 			session.setDayNo(cursor.getInt(dayNoIndex));
-			session.setDay(cursor.getString(dayIndex));
+			session.setDay(parseDay(cursor.getString(dayIndex)) );
 			session.setMonth(cursor.getString(monthIndex));
 			session.setYear(cursor.getInt(yearIndex));
 			session.setTimeHour(cursor.getInt(timeHourIndex));
@@ -1229,8 +1233,14 @@ public class SessionHandler implements IDatabaseTable {
 		
 		Cursor cursor = db.rawQuery(qryCount, null);
 		
-		// return no. of items
-		return cursor.getCount();
+		if(cursor.getCount() == 0) {
+			Log.e("Visus", "getSessionsCountThisMonth() is empty");
+			return 0;
+		}
+		else {
+			// return no. of items
+			return cursor.getCount();
+		}		
 	}
 	
 	/**
@@ -1259,9 +1269,15 @@ public class SessionHandler implements IDatabaseTable {
 		Log.e("Visus", qryCount);
 
 		Cursor cursor = db.rawQuery(qryCount, null);
-				
-		// return no. of items
-		return cursor.getCount();
+		
+		if(cursor.getCount() == 0) {
+			Log.e("Visus", "getSessionsCountThisYear() is empty");
+			return 0;
+		}
+		else {
+			// return no. of items
+			return cursor.getCount();
+		}
 	}
 	
 	/**
@@ -1282,7 +1298,13 @@ public class SessionHandler implements IDatabaseTable {
 		
 		noItems = cursor.getCount();
 		
-		return noItems;
+		if(noItems == 0) {
+			Log.e("Visus", "getSessionsCountAll() is empty");
+			return noItems;
+		}
+		else {
+			return noItems;
+		}
 	}
 	
 	/**
@@ -1355,4 +1377,31 @@ public class SessionHandler implements IDatabaseTable {
 		
 		return noActivities;
 	}	
+	
+	/**
+	 * Converts the day set from EEE to EEEE
+	 * @param day
+	 * @return
+	 */
+	private String parseDay(String day) {
+		
+		Log.e("Visus", "parseDay() " + day);
+		
+		if(day.contains("Mon"))
+			day = "Monday";
+		if(day.contains("Tue"))
+			day = "Tuesday";
+		else if(day.contains("Wed"))
+			day = "Wednesday";
+		else if(day.contains("Thur"))
+			day = "Thursday";
+		else if(day.contains("Fri"))
+			day = "Friday";
+		else if(day.contains("Sat"))
+			day = "Saturday";
+		else if(day.contains("Sun"))
+			day = "Sunday";
+
+		return day;
+	}
 }

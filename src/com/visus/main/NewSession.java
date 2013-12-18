@@ -13,15 +13,19 @@ import android.os.*;
 import android.annotation.SuppressLint;
 import android.app.*;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteException;
 import android.support.v4.app.NavUtils;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.text.InputType;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 // core program packages
 import com.visus.R;
@@ -84,6 +88,11 @@ public class NewSession extends Activity {
 	
 	private AutoCompleteTextView sessionTypes;
 	
+	private Context context = this;
+	private AlertDialog alertDialog;
+	
+	private TextView sessionType;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -95,6 +104,9 @@ public class NewSession extends Activity {
 		ab.setDisplayHomeAsUpEnabled(true);
 				
 		initUIComponents();
+		
+
+        sessionType = (TextView) findViewById(R.id.session_type);
 		
 		// hide the stop button
 		stopTimerBtn = (Button) findViewById(R.id.timer_stop_btn);
@@ -128,7 +140,7 @@ public class NewSession extends Activity {
 			Log.e("Visus", "SQL Error", e);
 		}
 		finally {
-			sessionTypes = (AutoCompleteTextView) findViewById(com.visus.R.id.session_auto_complete_type);
+//			sessionTypes = (AutoCompleteTextView) findViewById(com.visus.R.id.session_auto_complete_type);
 			types = dbHandler.getAllSessionTypes(activeUserId);
 			dbHandler.close();
 		}	
@@ -144,8 +156,50 @@ public class NewSession extends Activity {
 			}
 		}
 				
+		/**
+		 * 	Alert Dialog
+		 */
 		ArrayAdapter<String> adapterTypes = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, types); 
-		sessionTypes.setAdapter(adapterTypes);
+//		sessionTypes.setAdapter(adapterTypes);
+		
+		final Dialog dialog = new Dialog(context);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.setCanceledOnTouchOutside(false);
+		dialog.setContentView(R.layout.alert_dialog_new_session);
+		final EditText input = (EditText) dialog.findViewById(R.id.alert_dialog_new_session_input);
+				// buttons
+		Button cancel = (Button) dialog.findViewById(R.id.alert_dialog_new_session_btn_cancel);
+		Button ok = (Button) dialog.findViewById(R.id.alert_dialog_new_session_btn_ok);
+		
+		ok.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				type = input.getText().toString().trim();
+				
+				if(!type.isEmpty()) {
+					sessionType.setText("#" + type);
+					sessionType.setVisibility(View.VISIBLE);
+		            dialog.dismiss();
+				}
+				else {
+					String tstMsg = "Enter an activity type";
+					Toast tstInput = Toast.makeText(getApplicationContext(), tstMsg, Toast.LENGTH_LONG);					
+					tstInput.setGravity(Gravity.CENTER, 0, 0);
+					tstInput.show();
+				}
+			}
+		});
+		
+		cancel.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				type = "#None";
+	            sessionType.setText(type);
+	            dialog.dismiss();
+			}
+		});
+		
+		dialog.show();
 		
 		
 		// create a new instance of handler to manage the timer thread
@@ -226,402 +280,410 @@ public class NewSession extends Activity {
 		LinearLayout sessionDuration = (LinearLayout) findViewById(R.id.set_session_duration);
 		
 		// find EditText fields for value retrieval
-		EditText etMins = (EditText) findViewById(R.id.timer_set_minutes);
-		EditText etSecs = (EditText) findViewById(R.id.timer_set_seconds);
+//		EditText etMins = (EditText) findViewById(R.id.timer_set_minutes);
+//		EditText etSecs = (EditText) findViewById(R.id.timer_set_seconds);
 		
 		TextView timer = (TextView) findViewById(R.id.timer);
 		
 		// used to store user input for setting session duration 
-		int iMins = 0;
+		int iMins = 25;
 		int iSecs = 0;
 				
 		int MINS_LIMIT = 60;
 		int SECS_LIMIT = 59;
 		
-		String minInput = etMins.getText().toString();
-		String secsInput = etSecs.getText().toString();
+//		String minInput = etMins.getText().toString();
+//		String secsInput = etSecs.getText().toString();
 		
 		
-		/******************************************************************
-		 * 			Check whether both fields are empty
-		 */
-		if(minInput.isEmpty() && secsInput.isEmpty() ) {
-			String toastMsg = "Enter at least one value in either of the number fields";
-			
-			// inform the user they are both empty ...
-			Toast toast = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_LONG);
-			toast.setGravity(Gravity.CENTER, 0, 250);
-			toast.show();
-			
-			// ... and delay the start time
-			timerHandler.removeCallbacks(runUpdateTimer);			
-		}		
-		/*******************************************************************************
-		 * 		Check whether minutes field is empty and seconds field is NOT empty
-		 */
-		else if(minInput.isEmpty() && !secsInput.isEmpty() ) {
-			
-			// if seconds set are above 59
-			if(Integer.parseInt(secsInput) > SECS_LIMIT) {
-				// inform the user it must be between 0 - 59
-				String toastMsg = "Invalid range. Please enter seconds between 0 - 59";
-				
-				etSecs.setText("");
-				
-				// display a message
-				Toast toast = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_LONG);
-				toast.setGravity(Gravity.CENTER, 0, 250);
-				toast.show();
-			}
-			else {
-				// append two noughts
-				iMins = 00;
-				iSecs = Integer.parseInt(secsInput);
-				
-				// if session type is empty
-				if(sessionTypes.getText().toString().length() == 0) {
-					this.type = "Uncategorised";
-					// output session type
-					Log.e("Visus", "Type: " + "Uncategorised");
-				}
-				else {
-					this.type = sessionTypes.getText().toString();
-					// output session type
-					Log.e("Visus", "Type: " + this.type);
-				}
-					
-				// hide the session view
-				sessionTypes.setVisibility(View.GONE);
-				
-				// hide the start button
-				startTimerBtn.setVisibility(View.GONE);
-				
-				// display the stop button
-				stopTimerBtn.setVisibility(View.VISIBLE);
-								
-				// hide the session duration setter layout
-				sessionDuration.setVisibility(View.GONE);
-						
-				// display the timer
-				timer.setVisibility(View.VISIBLE);
-				
-				// initialise a new session
-				initSession(iMins, iSecs);
-			}		
-		}
-		// TODO
-		/****************************************************************************************
-		 * 		Check whether the minutes field is NOT empty and the seconds field is empty
-		 */
-		else if( !minInput.isEmpty() && secsInput.isEmpty() ) {
-			
-			// if minutes set are above 60
-			if(Integer.parseInt(minInput) > MINS_LIMIT) {
-				// inform the user it must be between 0 - 59
-				String toastMsg = "Invalid range. Please enter minutes between 0 - 60";
-				
-				etMins.setText("");
-				
-				// display a message
-				Toast toast = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_LONG);
-				toast.setGravity(Gravity.CENTER, 0, 250);
-				toast.show();
-			}
-			// else, if minutes equals 60
-			else if( Integer.parseInt(minInput) == MINS_LIMIT) {				
-				iMins = Integer.parseInt(minInput);
-				
-				// append two noughts
-				iSecs = 0;
-				
-				// if session type is empty
-				if(sessionTypes.getText().toString().length() == 0) {
-					this.type = "Uncategorised";
-					// output session type
-					Log.e("Visus", "Type: " + "Uncategorised");
-				}
-				else {
-					this.type = sessionTypes.getText().toString();
-					// output session type
-					Log.e("Visus", "Type: " + this.type);
-				}
-								
-				// hide the session view
-				sessionTypes.setVisibility(View.GONE);
-							
-				// hide the start button
-				startTimerBtn.setVisibility(View.GONE);
-				
-				// display the stop button
-				stopTimerBtn.setVisibility(View.VISIBLE);
-								
-				// hide the session duration setter layout
-				sessionDuration.setVisibility(View.GONE);
-						
-				// display the timer
-				timer.setVisibility(View.VISIBLE);
-				
-				// initialise a new session
-				initSession(iMins, iSecs);
-			}
-			// else, if minutes is less than 60
-			else if ( Integer.parseInt(minInput) < MINS_LIMIT ) {
-//				iMins = 59;
-				iSecs = 59;
-				
-				iMins = Integer.parseInt(minInput);
-			
-				// append two noughts
-				iSecs = 0;
-				
-				Log.e("Visus", "iMins = " + iMins);
-				Log.e("Visus", "iSecs = " + iSecs);
-				
-				
-				// if session type is empty
-				if(sessionTypes.getText().toString().length() == 0) {
-					this.type = "Uncategorised";
-					// output session type
-					Log.e("Visus", "Type: " + "Uncategorised");
-				}
-				else {
-					this.type = sessionTypes.getText().toString();
-					// output session type
-					Log.e("Visus", "Type: " + this.type);
-				}
-								
-				// hide the session view
-				sessionTypes.setVisibility(View.GONE);
-							
-				// hide the start button
-				startTimerBtn.setVisibility(View.GONE);
-				
-				// display the stop button
-				stopTimerBtn.setVisibility(View.VISIBLE);
-								
-				// hide the session duration setter layout
-				sessionDuration.setVisibility(View.GONE);
-						
-				// display the timer
-				timer.setVisibility(View.VISIBLE);
-				
-				// initialise a new session
-				initSession(iMins, iSecs);
-			}		
-		}
-		/***************************************************
-		 * 		Check whether both fields are not empty
-		 */
-		else if( !minInput.isEmpty() && !secsInput.isEmpty() ) {
-			
-			// if greater than 60 minutes
-			if( (Integer.parseInt(minInput) > MINS_LIMIT) ) {
-				// inform the user it must be between 0 - 59
-				String toastMsg = "Invalid range. Please enter minutes between 0 - 59";
-				
-				// display a message
-				Toast toast = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_LONG);
-				toast.setGravity(Gravity.CENTER, 0, 250);
-				toast.show();
-			}
-			// else if minutes equals 60 minutes
-			else if( (Integer.parseInt(minInput) == MINS_LIMIT) ) {
-				
-				// and if seconds is greater than zero
-				if( !(Integer.parseInt(secsInput) == 0 )) {
-					// inform the user it must be up to 60:00 minutes (1 hour)
-					String toastMsg = "Invalid range. Please enter a duration up to 60:00 minutes";
-					
-					etMins.setText("");
-					etSecs.setText("");
-					
-					Log.e("Visus", "etMins now: " + etMins.getText().toString() );
-					Log.e("Visus", "etSecs now: " + etSecs.getText().toString() );
-					
-					// display a message
-					Toast toast = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_LONG);
-					toast.setGravity(Gravity.CENTER, 0, 250);
-					toast.show();
-				}
-				else {
-					// if set to 60:00
-					if( (Integer.parseInt(minInput) == MINS_LIMIT ) && (Integer.parseInt(secsInput) == 00 ) ) {
-						// set to 59:59 on start
-						iMins = 59;
-						iSecs = 59;
-					}
-					else {
-						iMins = 59;
-						iSecs = Integer.parseInt(secsInput);
-					}				
-					
-					// if session type is empty
-					if(sessionTypes.getText().toString().length() == 0) {
-						this.type = "Uncategorised";
-						// output session type
-						Log.e("Visus", "Type: " + "Uncategorised");
-					}
-					else {
-						this.type = sessionTypes.getText().toString();
-						// output session type
-						Log.e("Visus", "Type: " + this.type);
-					}
-					
-					
-					// hide the session view
-					sessionTypes.setVisibility(View.GONE);
-									
-					// hide the start button
-					startTimerBtn.setVisibility(View.GONE);
-					
-					// display the stop button
-					stopTimerBtn.setVisibility(View.VISIBLE);
-									
-					// hide the session duration setter layout
-					sessionDuration.setVisibility(View.GONE);
-							
-					// display the timer
-					timer.setVisibility(View.VISIBLE);
-					
-					// initialise a new session
-					initSession(iMins, iSecs);
-				}
-			}
-			// else, if minutes equals 60 minutes AND seconds is empty
-			else if(Integer.parseInt(minInput) == MINS_LIMIT && secsInput.isEmpty() ) {
-				
-				iMins = Integer.parseInt(minInput);
-				iSecs = 00;
-				
-				// if session type is empty
-				if(sessionTypes.getText().toString().length() == 0) {
-					this.type = "Uncategorised";
-					// output session type
-					Log.e("Visus", "Type: " + "Uncategorised");
-				}
-				else {
-					this.type = sessionTypes.getText().toString();
-					// output session type
-					Log.e("Visus", "Type: " + this.type);
-				}
-				
-				
-				// hide the session view
-				sessionTypes.setVisibility(View.GONE);
-								
-				// hide the start button
-				startTimerBtn.setVisibility(View.GONE);
-				
-				// display the stop button
-				stopTimerBtn.setVisibility(View.VISIBLE);
-								
-				// hide the session duration setter layout
-				sessionDuration.setVisibility(View.GONE);
-						
-				// display the timer
-				timer.setVisibility(View.VISIBLE);
-				
-				// initialise a new session
-				initSession(iMins, iSecs);
-			}
-			// if minutes is less than 60 and less than 59 seconds
-			else if(Integer.parseInt(minInput) < MINS_LIMIT && Integer.parseInt(secsInput) < SECS_LIMIT ) {
-				
-				// get minutes
-				iMins = Integer.parseInt(minInput);
-				
-				// get seconds
-				iSecs = Integer.parseInt(secsInput);
-				
-				// if session type is empty
-				if(sessionTypes.getText().toString().length() == 0) {
-					this.type = "Uncategorised";
-					// output session type
-					Log.e("Visus", "Type: " + "Uncategorised");
-				}
-				else {
-					this.type = sessionTypes.getText().toString();
-					// output session type
-					Log.e("Visus", "Type: " + this.type);
-				}
-				
-				
-				// hide the session view
-				sessionTypes.setVisibility(View.GONE);
-								
-				// hide the start button
-				startTimerBtn.setVisibility(View.GONE);
-				
-				// display the stop button
-				stopTimerBtn.setVisibility(View.VISIBLE);
-								
-				// hide the session duration setter layout
-				sessionDuration.setVisibility(View.GONE);
-						
-				// display the timer
-				timer.setVisibility(View.VISIBLE);
-				
-				// initialise a new session
-				initSession(iMins, iSecs);				
-			}
-			// else, if minutes is less than 60 AND seconds is not less than or equal to 59
-			else if( Integer.parseInt(minInput) < MINS_LIMIT && !(Integer.parseInt(secsInput) < 60) ) {
-				
-				Log.e("Visus", "Timer (mins): " + minInput);
-				Log.e("Visus", "Timer (secs): " + secsInput);
-				
-				etMins.setText("");
-				etSecs.setText("");
-				
-				// inform the user it must be between 0 - 59
-				String toastMsg = "Invalid range. Please enter seconds between 0 - 59";
-				
-				// display a message
-				Toast toast = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_LONG);
-				toast.setGravity(Gravity.CENTER, 0, 250);
-				toast.show();
-			}
-			else {
-				
-				// get minutes
-				iMins = Integer.parseInt(minInput);
-				
-				// get seconds
-				iSecs = Integer.parseInt(secsInput);
-				
-				// if session type is empty
-				if(sessionTypes.getText().toString().length() == 0) {
-					this.type = "Uncategorised";
-					// output session type
-					Log.e("Visus", "Type: " + "Uncategorised");
-				}
-				else {
-					this.type = sessionTypes.getText().toString();
-					// output session type
-					Log.e("Visus", "Type: " + this.type);
-				}
-				
-				
-				// hide the session view
-				sessionTypes.setVisibility(View.GONE);
-								
-				// hide the start button
-				startTimerBtn.setVisibility(View.GONE);
-				
-				// display the stop button
-				stopTimerBtn.setVisibility(View.VISIBLE);
-								
-				// hide the session duration setter layout
-				sessionDuration.setVisibility(View.GONE);
-						
-				// display the timer
-				timer.setVisibility(View.VISIBLE);
-				
-				// initialise a new session
-				initSession(iMins, iSecs);				
-			}
-		}
+//		/******************************************************************
+//		 * 			Check whether both fields are empty
+//		 */
+//		if(minInput.isEmpty() && secsInput.isEmpty() ) {
+//			String toastMsg = "Enter at least one value in either of the number fields";
+//			
+//			// inform the user they are both empty ...
+//			Toast toast = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_LONG);
+//			toast.setGravity(Gravity.CENTER, 0, 250);
+//			toast.show();
+//			
+//			// ... and delay the start time
+//			timerHandler.removeCallbacks(runUpdateTimer);			
+//		}		
+//		
+//		/*******************************************************************************
+//		 * 		Check whether minutes field is empty and seconds field is NOT empty
+//		 */
+//		else if(minInput.isEmpty() && !secsInput.isEmpty() ) {
+//			
+//			// if seconds set are above 59
+//			if(Integer.parseInt(secsInput) > SECS_LIMIT) {
+//				// inform the user it must be between 0 - 59
+//				String toastMsg = "Invalid range. Please enter seconds between 0 - 59";
+//				
+//				etSecs.setText("");
+//				
+//				// display a message
+//				Toast toast = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_LONG);
+//				toast.setGravity(Gravity.CENTER, 0, 250);
+//				toast.show();
+//			}
+//			else {
+//				// append two noughts
+//				iMins = 00;
+//				iSecs = Integer.parseInt(secsInput);
+//				
+//				// if session type is empty
+//				if(sessionTypes.getText().toString().length() == 0) {
+//					this.type = "Uncategorised";
+//					// output session type
+//					Log.e("Visus", "Type: " + "Uncategorised");
+//				}
+//				else {
+//					this.type = sessionTypes.getText().toString();
+//					// output session type
+//					Log.e("Visus", "Type: " + this.type);
+//				}
+//					
+//				// hide the session view
+//				sessionTypes.setVisibility(View.GONE);
+//				
+//				// hide the start button
+//				startTimerBtn.setVisibility(View.GONE);
+//				
+//				// display the stop button
+//				stopTimerBtn.setVisibility(View.VISIBLE);
+//								
+//				// hide the session duration setter layout
+//				sessionDuration.setVisibility(View.GONE);
+//						
+//				// display the timer
+//				timer.setVisibility(View.VISIBLE);
+//				
+//				// initialise a new session
+//				initSession(iMins, iSecs);
+//			}		
+//		}
+//		// TODO
+//		/****************************************************************************************
+//		 * 		Check whether the minutes field is NOT empty and the seconds field is empty
+//		 */
+//		else if( !minInput.isEmpty() && secsInput.isEmpty() ) {
+//			
+//			// if minutes set are above 60
+//			if(Integer.parseInt(minInput) > MINS_LIMIT) {
+//				// inform the user it must be between 0 - 59
+//				String toastMsg = "Invalid range. Please enter minutes between 0 - 60";
+//				
+//				etMins.setText("");
+//				
+//				// display a message
+//				Toast toast = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_LONG);
+//				toast.setGravity(Gravity.CENTER, 0, 250);
+//				toast.show();
+//			}
+//			// else, if minutes equals 60
+//			else if( Integer.parseInt(minInput) == MINS_LIMIT) {		
+//				iMins = Integer.parseInt(minInput);
+//				
+//				// append two noughts
+//				iSecs = 0;
+//				
+//				Log.e("Visus", "If minutes equals 60: " + iMins);
+//				Log.e("Visus", "If minutes equals 60: " + iSecs);
+//				
+//				// if session type is empty
+//				if(sessionTypes.getText().toString().length() == 0) {
+//					this.type = "Uncategorised";
+//					// output session type
+//					Log.e("Visus", "Type: " + "Uncategorised");
+//				}
+//				else {
+//					this.type = sessionTypes.getText().toString();
+//					// output session type
+//					Log.e("Visus", "Type: " + this.type);
+//				}
+//								
+//				// hide the session view
+//				sessionTypes.setVisibility(View.GONE);
+//							
+//				// hide the start button
+//				startTimerBtn.setVisibility(View.GONE);
+//				
+//				// display the stop button
+//				stopTimerBtn.setVisibility(View.VISIBLE);
+//								
+//				// hide the session duration setter layout
+//				sessionDuration.setVisibility(View.GONE);
+//						
+//				// display the timer
+//				timer.setVisibility(View.VISIBLE);
+//				
+//				// initialise a new session
+//				initSession(iMins, iSecs);
+//			}
+//			// else, if minutes is less than 60
+//			else if ( Integer.parseInt(minInput) < MINS_LIMIT ) {
+////				iMins = 59;
+//				iSecs = 59;
+//				
+//				iMins = Integer.parseInt(minInput);
+//			
+//				// append two noughts
+//				iSecs = 0;
+//				
+//				Log.e("Visus", "iMins = " + iMins);
+//				Log.e("Visus", "iSecs = " + iSecs);
+//				
+//				
+//				// if session type is empty
+//				if(sessionTypes.getText().toString().length() == 0) {
+//					this.type = "Uncategorised";
+//					// output session type
+//					Log.e("Visus", "Type: " + "Uncategorised");
+//				}
+//				else {
+//					this.type = sessionTypes.getText().toString();
+//					// output session type
+//					Log.e("Visus", "Type: " + this.type);
+//				}
+//								
+//				// hide the session view
+//				sessionTypes.setVisibility(View.GONE);
+//							
+//				// hide the start button
+//				startTimerBtn.setVisibility(View.GONE);
+//				
+//				// display the stop button
+//				stopTimerBtn.setVisibility(View.VISIBLE);
+//								
+//				// hide the session duration setter layout
+//				sessionDuration.setVisibility(View.GONE);
+//						
+//				// display the timer
+//				timer.setVisibility(View.VISIBLE);
+//				
+//				// initialise a new session
+//				initSession(iMins, iSecs);
+//			}		
+//		}
 		
+//		/***************************************************
+//		 * 		Check whether both fields are not empty
+//		 */
+//		else if( !minInput.isEmpty() && !secsInput.isEmpty() ) {
+//			
+//			// if greater than 60 minutes
+//			if( (Integer.parseInt(minInput) > MINS_LIMIT) ) {
+//				// inform the user it must be between 0 - 59
+//				String toastMsg = "Invalid range. Please enter minutes between 0 - 59";
+//				
+//				// display a message
+//				Toast toast = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_LONG);
+//				toast.setGravity(Gravity.CENTER, 0, 250);
+//				toast.show();
+//			}
+//			// else if minutes equals 60 minutes
+//			else if( (Integer.parseInt(minInput) == MINS_LIMIT) ) {
+//				
+//				// and if seconds is greater than zero
+//				if( !(Integer.parseInt(secsInput) == 0 )) {
+//					// inform the user it must be up to 60:00 minutes (1 hour)
+//					String toastMsg = "Invalid range. Please enter a duration up to 60:00 minutes";
+//					
+//					etMins.setText("");
+//					etSecs.setText("");
+//					
+//					iMins = 0;
+//					iSecs = 0;
+//					
+//					Log.e("Visus", "etMins now: " + iMins);
+//					Log.e("Visus", "etSecs now: " + iSecs);
+//					
+//					// display a message
+//					Toast toast = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_LONG);
+//					toast.setGravity(Gravity.CENTER, 0, 250);
+//					toast.show();
+//				}
+//				else {
+//					// if set to 60:00
+//					if( (Integer.parseInt(minInput) == MINS_LIMIT ) && (Integer.parseInt(secsInput) == 00 ) ) {
+//						// set to 59:59 on start
+//						iMins = 59;
+//						iSecs = 59;
+//					}
+//					else {
+//						iMins = 59;
+//						iSecs = Integer.parseInt(secsInput);
+//					}				
+//					
+//					// if session type is empty
+//					if(sessionTypes.getText().toString().length() == 0) {
+//						this.type = "Uncategorised";
+//						// output session type
+//						Log.e("Visus", "Type: " + "Uncategorised");
+//					}
+//					else {
+//						this.type = sessionTypes.getText().toString();
+//						// output session type
+//						Log.e("Visus", "Type: " + this.type);
+//					}
+//					
+//					
+//					// hide the session view
+//					sessionTypes.setVisibility(View.GONE);
+//									
+//					// hide the start button
+//					startTimerBtn.setVisibility(View.GONE);
+//					
+//					// display the stop button
+//					stopTimerBtn.setVisibility(View.VISIBLE);
+//									
+//					// hide the session duration setter layout
+//					sessionDuration.setVisibility(View.GONE);
+//							
+//					// display the timer
+//					timer.setVisibility(View.VISIBLE);
+//					
+//					// initialise a new session
+//					initSession(iMins, iSecs);
+//				}
+//			}
+//			// else, if minutes equals 60 minutes AND seconds is empty
+//			else if(Integer.parseInt(minInput) == MINS_LIMIT && secsInput.isEmpty() ) {
+//				
+//				iMins = Integer.parseInt(minInput);
+//				iSecs = 00;
+//				
+//				// if session type is empty
+//				if(sessionTypes.getText().toString().length() == 0) {
+//					this.type = "Uncategorised";
+//					// output session type
+//					Log.e("Visus", "Type: " + "Uncategorised");
+//				}
+//				else {
+//					this.type = sessionTypes.getText().toString();
+//					// output session type
+//					Log.e("Visus", "Type: " + this.type);
+//				}
+//				
+//				
+//				// hide the session view
+//				sessionTypes.setVisibility(View.GONE);
+//								
+//				// hide the start button
+//				startTimerBtn.setVisibility(View.GONE);
+//				
+//				// display the stop button
+//				stopTimerBtn.setVisibility(View.VISIBLE);
+//								
+//				// hide the session duration setter layout
+//				sessionDuration.setVisibility(View.GONE);
+//						
+//				// display the timer
+//				timer.setVisibility(View.VISIBLE);
+//				
+//				// initialise a new session
+//				initSession(iMins, iSecs);
+//			}
+//			// if minutes is less than 60 and less than 59 seconds
+//			else if(Integer.parseInt(minInput) < MINS_LIMIT && Integer.parseInt(secsInput) < SECS_LIMIT ) {
+//				
+//				// get minutes
+//				iMins = Integer.parseInt(minInput);
+//				
+//				// get seconds
+//				iSecs = Integer.parseInt(secsInput);
+//				
+//				// if session type is empty
+//				if(sessionTypes.getText().toString().length() == 0) {
+//					this.type = "Uncategorised";
+//					// output session type
+//					Log.e("Visus", "Type: " + "Uncategorised");
+//				}
+//				else {
+//					this.type = sessionTypes.getText().toString();
+//					// output session type
+//					Log.e("Visus", "Type: " + this.type);
+//				}
+//				
+//				
+//				// hide the session view
+//				sessionTypes.setVisibility(View.GONE);
+//								
+//				// hide the start button
+//				startTimerBtn.setVisibility(View.GONE);
+//				
+//				// display the stop button
+//				stopTimerBtn.setVisibility(View.VISIBLE);
+//								
+//				// hide the session duration setter layout
+//				sessionDuration.setVisibility(View.GONE);
+//						
+//				// display the timer
+//				timer.setVisibility(View.VISIBLE);
+//				
+//				// initialise a new session
+//				initSession(iMins, iSecs);				
+//			}
+//			// else, if minutes is less than 60 AND seconds is not less than or equal to 59
+//			else if( Integer.parseInt(minInput) < MINS_LIMIT && !(Integer.parseInt(secsInput) < 60) ) {
+//				
+//				Log.e("Visus", "Timer (mins): " + minInput);
+//				Log.e("Visus", "Timer (secs): " + secsInput);
+//				
+//				etMins.setText("");
+//				etSecs.setText("");
+//				
+//				// inform the user it must be between 0 - 59
+//				String toastMsg = "Invalid range. Please enter seconds between 0 - 59";
+//				
+//				// display a message
+//				Toast toast = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_LONG);
+//				toast.setGravity(Gravity.CENTER, 0, 250);
+//				toast.show();
+//			}
+//			else {
+//				
+//				// get minutes
+//				iMins = Integer.parseInt(minInput);
+//				
+//				// get seconds
+//				iSecs = Integer.parseInt(secsInput);
+//				
+//				// if session type is empty
+//				if(sessionTypes.getText().toString().length() == 0) {
+//					this.type = "Uncategorised";
+//					// output session type
+//					Log.e("Visus", "Type: " + "Uncategorised");
+//				}
+//				else {
+//					this.type = sessionTypes.getText().toString();
+//					// output session type
+//					Log.e("Visus", "Type: " + this.type);
+//				}
+//				
+//				
+//				// hide the session view
+//				sessionTypes.setVisibility(View.GONE);
+//								
+//				// hide the start button
+//				startTimerBtn.setVisibility(View.GONE);
+//				
+//				// display the stop button
+//				stopTimerBtn.setVisibility(View.VISIBLE);
+//								
+//				// hide the session duration setter layout
+//				sessionDuration.setVisibility(View.GONE);
+//						
+//				// display the timer
+//				timer.setVisibility(View.VISIBLE);
+//				
+//				// initialise a new session
+//				initSession(iMins, iSecs);				
+//			}
+//		}
+//		
 //		/****************************************************************
 //		 * 		If both fields are NOT empty, do some formatting...
 //		 */
@@ -706,7 +768,24 @@ public class NewSession extends Activity {
 //				// initialise a new session
 //				initSession(iMins, iSecs);			
 //			}			
-//		}				
+//		}
+		
+		// hide the start button
+		startTimerBtn.setVisibility(View.GONE);
+		
+		// display the stop button
+		stopTimerBtn.setVisibility(View.VISIBLE);
+						
+		// hide the session duration setter layout
+		sessionDuration.setVisibility(View.GONE);
+				
+		// display the timer
+		timer.setVisibility(View.VISIBLE);
+		
+		sessionType.setVisibility(View.GONE);
+		
+		// initialise a new session
+		initSession(iMins, iSecs);	
 	}
 	
 	/**

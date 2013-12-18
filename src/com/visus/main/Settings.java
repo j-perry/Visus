@@ -133,6 +133,7 @@ public class Settings extends FragmentActivity implements ActionBar.TabListener 
 	public static final class SettingsPagerAdapter extends FragmentPagerAdapter {
 
 		private int userId;
+		private Bundle bundle;
 		private int NO_FRAGMENTS = 2;
 		
 		public SettingsPagerAdapter(FragmentManager fm, int userId) {
@@ -144,7 +145,9 @@ public class Settings extends FragmentActivity implements ActionBar.TabListener 
 		public Fragment getItem(int item) {
 			switch(item) {
 				case 0:
-					return new GeneralFragment(activeUserId);
+					bundle = new Bundle();
+					bundle.putInt("userId", userId);
+					return new GeneralFragment();
 				case 1:
 					return new AboutFragment();
 				default:

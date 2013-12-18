@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -21,6 +22,10 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 // core program packages
 import com.visus.R;
@@ -81,21 +86,38 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 			dbSessions.close();
 		}
 		
+		final Dialog dialog = new Dialog(context);
+		Button cancel = new Button(context);
+		Button ok = new Button(context);		
 		
 		// determine whether any sessions exist, if not display an AlertDialog asking the user if they wish
 		// to create a new session. Improves UX.
 		if(allSessions.isEmpty()) {
-			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-			alertDialogBuilder.setTitle("Create Session");
+			dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+			dialog.setCanceledOnTouchOutside(false);
+			dialog.setContentView(R.layout.alert_dialog_previous_sessions);
 			
-			alertDialogBuilder.setMessage("No sessions exist. Do you wish to create a new session now?"); 
-			alertDialogBuilder.setCancelable(false);
-			alertDialogBuilder.setPositiveButton("Yes Please!", new OkOnClickListener());
-			alertDialogBuilder.setNegativeButton("No Thanks", new CancelOnClickListener());
-			alertDialog = alertDialogBuilder.create();
+			// buttons
+			cancel = (Button) dialog.findViewById(R.id.alert_dialog_previous_sessions_btn_cancel);
+			ok = (Button) dialog.findViewById(R.id.alert_dialog_previous_sessions_btn_ok);
 			
-			// show it
-			alertDialog.show();
+			ok.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(getApplicationContext(), NewSession.class);
+					intent.putExtra("ActiveUserId", activeUserId);
+					context.startActivity(intent);
+				}
+			});
+			
+			cancel.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+		            dialog.dismiss();
+				}
+			});
+			
+			dialog.show();
 		}
 		
 		sessionsPager = (ViewPager) findViewById(com.visus.R.id.sessions_pager);
@@ -115,31 +137,6 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		// create our tabs
 		initTabs(ab);	
 	}
-		
-	/**
-	 * AlertDialog event handler that displays a new session view
-	 * @author Jonathan Perry
-	 *
-	 */
-	private final class OkOnClickListener implements DialogInterface.OnClickListener {
-		public void onClick(DialogInterface dialog, int which) {
-			Intent intent = new Intent(getApplicationContext(), NewSession.class);
-			intent.putExtra("ActiveUserId", activeUserId);
-			context.startActivity(intent);
-		}
-	}
-		
-	/**
-	 * AlertDialog event handler that dismisses itself
-	 * @author Jonathan Perry
-	 *
-	 */
-	private final class CancelOnClickListener implements DialogInterface.OnClickListener {
-		public void onClick(DialogInterface dialog, int which) {
-			alertDialog.dismiss();
-		}
-	}
-	
 	
 	/**
 	 * Initialises new tabs
@@ -250,6 +247,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		
 		// no of pages!!
 		private static final int NO_FRAGMENTS = 4; 
+		private Bundle bundle;
 		private int userId;
 		
 		public SessionsPagerAdapter(FragmentManager fm, int userId) {
@@ -265,16 +263,32 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 			switch(item) {
 				case 0:
 					// displays sessions from today ... if there are any!
-					return new FragmentToday(userId);
+					FragmentToday fragmentToday = new FragmentToday();
+					bundle = new Bundle();
+					bundle.putInt("ActiveUserId", userId);
+					fragmentToday.setArguments(bundle);		
+					return fragmentToday;
 				case 1:
 					// ... from this week
-					return new FragmentThisWeek(userId);
+					FragmentThisWeek fragmentThisWeek = new FragmentThisWeek();
+					bundle = new Bundle();
+					bundle.putInt("ActiveUserId", userId);
+					fragmentThisWeek.setArguments(bundle);
+					return fragmentThisWeek;
 				case 2:
 					// ... from this month
-					return new FragmentThisMonth(userId);
+					FragmentThisMonth fragmentThisMonth = new FragmentThisMonth();
+					bundle = new Bundle();
+					bundle.putInt("ActiveUserId", userId);
+					fragmentThisMonth.setArguments(bundle);
+					return fragmentThisMonth;
 				case 3: 
 					// ... from this year
-					return new FragmentThisYear(userId);
+					FragmentThisYear fragmentThisYear = new FragmentThisYear();
+					bundle = new Bundle();
+					bundle.putInt("ActiveUserId", userId);
+					fragmentThisYear.setArguments(bundle);
+					return fragmentThisYear;
 				default:
 					Fragment fragment = new Fragment();
 					return fragment;

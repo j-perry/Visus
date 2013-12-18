@@ -5,6 +5,8 @@ import java.util.HashMap;
 
 import com.visus.R;
 import com.visus.database.SessionHandler;
+import com.visus.database.UserHandler;
+import com.visus.entities.User;
 import com.visus.entities.sessions.Session;
 import com.visus.ui.MainMenuAdapter;
 import com.visus.ui.MainMenuListView;
@@ -24,18 +26,20 @@ import android.widget.ListView;
  */
 public class FragmentToday extends Fragment {
 	
-	private int userId;
+	private int activeUserId;
+	private UserHandler userHandler;
+	private User user;
 	
 	public FragmentToday() {
 		super();
 	}
-	
-	public FragmentToday(int userId) {
-		this.userId = userId;
-	}
-	
+		
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		// get user id
+		Bundle bundle = this.getArguments();
+		activeUserId = bundle.getInt("ActiveUserId");
+		
 		SessionHandler dbSession = new SessionHandler(getActivity() ); // getActivity() should do the trick!
 		ArrayList<Session> sessions = new ArrayList<Session>();
 		ArrayList<HashMap<String, String>> sessionsToday = new ArrayList<HashMap<String, String>>();
@@ -55,20 +59,20 @@ public class FragmentToday extends Fragment {
 			Log.e("Visus", "SQLite Exception Error", e);
 		}
 		finally {
-			sessions = dbSession.getSessionsToday(userId);
+			sessions = dbSession.getSessionsToday(activeUserId);
 			dbSession.close();
 		}
 		
 		if(sessions.isEmpty()) {
 			HashMap<String, String> map = new HashMap<String, String>();
-			String msg = "None Created";
+			String msg = "None created";
 			map.put(MainMenuListView.SESSION_NO, "#");
 			map.put(MainMenuListView.SESSION, msg);
 			sessionsToday.add(map);
 		}
 		else {
 			// retrieve sessions
-			int id = 1;
+//			int id = 1;
 			String durationSeconds = null;
 			String timeMinutes = null;
 			
@@ -98,7 +102,6 @@ public class FragmentToday extends Fragment {
 					   );
 				
 				sessionsToday.add(map);
-				id++;
 			}
 		}
 			

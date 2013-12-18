@@ -32,16 +32,6 @@ public class Session {
 	private int overviewHours;
 	private int overviewSessions;
 	private int overviewActivities;
-		
-	private final static String [] days = {
-		"Sat", 
-	    "Sun", 
-	    "Mon", 
-		"Tue", 
-		"Wed", 
-		"Thu", 
-		"Fri" 
-	};
 	
 	private final static String [] months = {
 		"Jan",
@@ -158,10 +148,7 @@ public class Session {
 	}
 	
 	public void setDay(String day) {
-		// day - e.g., Mon (EEE format)
-		for(String d : days)
-			if(d.equals(day))
-				this.day = day;
+		this.day = day;
 	}
 	
 	public String getDay() {

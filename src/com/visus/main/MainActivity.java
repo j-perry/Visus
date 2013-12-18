@@ -22,7 +22,10 @@ import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.*;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 
 // core program packages
 import com.visus.R;
@@ -96,22 +99,40 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			
 			ArrayAdapter<CharSequence> arAdapter = ArrayAdapter.createFromResource(this, R.array.menu, R.layout.action_bar_list);
 				
+
+			final Dialog dialog = new Dialog(context);
+			Button cancel = new Button(context);
+			Button ok = new Button(context);
 			
 			/*************************************************************************************
 			 * 		If no user target have been created, ask the user if they would like to
 			 */
 			if(user.getTargetDay() == 0 && user.getTargetMonth() == 0) {
-				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-				alertDialogBuilder.setTitle("User Targets");
+				dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+				dialog.setCanceledOnTouchOutside(false);
+				dialog.setContentView(R.layout.alert_dialog_set_targets);
 				
-				alertDialogBuilder.setMessage("No user targets have been created. They help you stay fresh and productive. Do you wish to create them now?"); 
-				alertDialogBuilder.setCancelable(false);
-				alertDialogBuilder.setPositiveButton("Yes Please!", new OkOnClickListener());
-				alertDialogBuilder.setNegativeButton("Nope. Go Away!", new CancelOnClickListener());
-				alertDialog = alertDialogBuilder.create();
+				// buttons
+				cancel = (Button) dialog.findViewById(R.id.alert_dialog_user_targets_btn_cancel);
+				ok = (Button) dialog.findViewById(R.id.alert_dialog_user_targets_btn_ok);
 				
-				// show it
-				alertDialog.show();
+				ok.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						Intent intent = new Intent(getApplicationContext(), Settings.class);
+						intent.putExtra("ActiveUserId", user.getUserId());
+						context.startActivity(intent);
+					}
+				});
+				
+				cancel.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+			            dialog.dismiss();
+					}
+				});
+				
+				dialog.show();
 			}
 			
 			
@@ -341,10 +362,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 						map.put(MainMenuListView.SESSION, session.getDay() + " " +
 													  	  session.getDayNo() + " " +  
 													  	  session.getMonth() + ", " +
-													  	  session.getYear() + " (" +
-													  	  session.getTimeHour() + ":" +
-													  	  timeMinutes + " " +
-													  	  session.getDayPeriod() + "), " +
+													  	  session.getYear() + ", " +
 													  	  session.getType()
 								);
 												
@@ -358,30 +376,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		}
 		
 		return latestSessions;
-	}
-	
-	/**
-	 * AlertDialog event handler that displays a new session view
-	 * @author Jonathan Perry
-	 *
-	 */
-	private final class OkOnClickListener implements DialogInterface.OnClickListener {
-		public void onClick(DialogInterface dialog, int which) {
-			Intent intent = new Intent(getApplicationContext(), Settings.class);
-			intent.putExtra("ActiveUserId", user.getUserId());
-			context.startActivity(intent);
-		}
-	}
-		
-	/**
-	 * AlertDialog event handler that dismisses itself
-	 * @author Jonathan Perry
-	 *
-	 */
-	private final class CancelOnClickListener implements DialogInterface.OnClickListener {
-		public void onClick(DialogInterface dialog, int which) {
-			alertDialog.dismiss();
-		}
 	}
 	
 	/**
@@ -554,16 +548,22 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			switch(item) {
 				case 0:
 					// display latest sessions made
-					return new LatestActivityFragment(userId,
+					LatestActivityFragment latestActivityFragment = new LatestActivityFragment();
+					latestActivityFragment.addContext(userId, 
 													  totalSessions, 
 													  latestSessions, 
 													  firstSession);
+					return latestActivityFragment;
+					
+//					return new LatestActivityFragment();
 				case 1:
 					// display session activity types (no. of for each type)
-					return new ActivitiesFragment(userId,
+					ActivitiesFragment activitiesFragment = new ActivitiesFragment();
+					activitiesFragment.addContext(userId,
 												  noActivities, 
 												  activities, 
 												  firstSession);
+					return activitiesFragment;
 				default:
 					Fragment f = new Fragment();
 					return f;

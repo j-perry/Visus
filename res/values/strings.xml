@@ -64,8 +64,19 @@
     <string name="latest_activity_daily_target_met">Update: Daily target met!</string>
     <string name="latest_activity_monthly_target_met">Update: Monthly target met!</string>
     
+    <string name="main_menu_dialog_user_targets_txt">User Targets</string>
+    <string name="main_menu_dialog_user_targets_header">No user targets have been created. They help you stay fresh and productive. Do you wish to create them now?</string>
+    <string name="main_menu_dialog_user_targets_btn_cancel">Nope. Go Away!</string>
+    <string name="main_menu_dialog_user_targets_btn_ok">Yes Please!</string>
+       
     <!-- End of Main Menu -->
     
+    
+    <!-- Previous Sessions -->
+    <string name="dialog_previous_sessions_heading">Create Session</string>
+    <string name="dialog_previous_sessions_txt">No sessions exist. Do you wish to create a new session now?</string>
+    <string name="dialog_previous_sessions_btn_cancel">No Thanks</string>
+    <string name="dialog_previous_sessions_btn_ok">Yes Please!</string>
     
     <!-- Settings -->
     <string-array name="settings_list">
@@ -79,7 +90,12 @@
     <string name="title_new_session">New Session</string>
     <string name="title_start_session">Start</string>
     <string name="title_end_session">End</string>
-
+    
+    <string name="dialog_new_session_header">Set Activity</string>
+    <string name="dialog_new_session_input">#Activity</string>
+    <string name="dialog_new_session_btn_cancel">Cancel</string>
+	<string name="dialog_new_session_btn_ok">OK</string>
+	
     
     <!-- Settings -->
     <string name="menu_settings">Settings</string>    
@@ -99,6 +115,11 @@
 	    	<string name="settings_general_sessions_header">Sessions</string>
 	    	<string name="settings_general_sessions_daily_target_header">Daily Target (mins)</string>
 	    	<string name="settings_general_sessions_monthly_target_header">Monthly Target (mins)</string>
+	    	
+	    	<!-- 'Activities' -->
+	    	<string name="settings_general_activities_header">Activities</string>
+	    	<string name="settings_general_activities_blurb">To delete an activity category, swipe each category to the left.</string>
+	    	
 	    	
 	    	<string name="settings_general_sessions_target_day">[Set daily target]</string>
 	    	<string name="settings_general_sessions_target_month">[Set monthly target]</string>

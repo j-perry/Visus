@@ -28,7 +28,7 @@
             >
             
             <!-- minutes -->
-            <EditText 
+            <TextView
                 android:id="@+id/timer_set_minutes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             	android:maxLength="2"
             	android:singleLine="true"
               	android:inputType="numberDecimal"
-                android:hint="00"
+                android:text="25"
                 android:textColorHint="@color/light_green"
                 android:textSize="120sp"
                 android:textColor="@color/light_green"
@@ -55,13 +55,13 @@
 	        />
             
             <!-- minutes -->
-            <EditText 
+            <TextView 
                 android:id="@+id/timer_set_seconds"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
             	android:layout_gravity="center_horizontal"
             	android:gravity="center"
-                android:hint="00"
+                android:text="00"
             	android:maxLength="2"
             	android:singleLine="true"
               	android:inputType="numberDecimal"
@@ -72,7 +72,7 @@
                                    
         </LinearLayout>    
         
-        <!-- Session type - e.g., Email, Gaming, etc. -->
+        <!-- Session type - e.g., Email, Gaming, etc.
         <AutoCompleteTextView 
             android:id="@+id/session_auto_complete_type"
             android:layout_width="wrap_content"
@@ -88,6 +88,23 @@
             android:textSize="30sp"
             android:textColor="@color/light_green"
             />
+        -->
+        
+        <TextView
+            android:id="@+id/session_type"
+            android:visibility="visible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:maxLength="15"
+            android:completionThreshold="1"
+            android:singleLine="true"
+            android:text="#Activity"
+            android:textColorHint="@color/light_green"
+            android:textSize="36sp"
+            android:textColor="@color/light_green"
+        />
         
         <!-- timer 180sp
         
@@ -111,6 +128,7 @@
     <!-- component buttons -->
     <LinearLayout
         android:background="@color/light_grey"
+        android:orientation="horizontal"
         android:layout_weight="15"
         android:layout_width="fill_parent"
         android:layout_height="0dp"

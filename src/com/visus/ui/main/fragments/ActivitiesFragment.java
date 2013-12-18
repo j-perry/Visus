@@ -31,18 +31,7 @@ public class ActivitiesFragment extends Fragment {
 	public ActivitiesFragment() {
 		super();
 	}
-	
-	public ActivitiesFragment(int userId, 
-							  int noActivities, 
-							  ArrayList<HashMap<String, String>> activities,
-							  Session firstSession) {
-		super();
-		this.userId = userId;
-		this.noActivities = noActivities;
-		this.activities = activities;
-		this.firstSession = firstSession;
-	}
-	
+		
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(com.visus.R.layout.fragment_main_menu_activities, container, false);
@@ -68,6 +57,7 @@ public class ActivitiesFragment extends Fragment {
 		 * Get the date of the first session (activity)
 		 */
 		TextView txtVwFirstSession = (TextView) rootView.findViewById(com.visus.R.id.main_menu_activities_date_account_created);
+		txtVwFirstSession.setVisibility(View.GONE); // TODO
 		StringBuilder strFirstSessionActivity = new StringBuilder();
 		
 		if(firstSession == null) {
@@ -109,4 +99,14 @@ public class ActivitiesFragment extends Fragment {
 	public void onDestoryView() {
 		super.onDestroyView();
 	}	
+	
+	public void addContext(int userId, 
+			  			   int noActivities, 
+			  			   ArrayList<HashMap<String, String>> activities,
+			  			   Session firstSession) {
+		this.userId = userId;
+		this.noActivities = noActivities;
+		this.activities = activities;
+		this.firstSession = firstSession;
+	}
 }

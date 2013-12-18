@@ -32,18 +32,18 @@ import android.widget.ListView;
  */
 public class FragmentThisWeek extends Fragment {
 	
-	private int userId;
+	private int activeUserId;
 		
 	public FragmentThisWeek() {
 		super();
 	}
-	
-	public FragmentThisWeek(int userId) {
-		this.userId = userId;
-	}
-	
+		
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		// get user id
+		Bundle bundle = this.getArguments();
+		activeUserId = bundle.getInt("ActiveUserId");
+		
 		View rootView = inflater.inflate(com.visus.R.layout.fragment_sessions_this_week, container, false);
 		SessionHandler dbSession = new SessionHandler(getActivity() ); // getActivity() should do the trick!
 		ArrayList<Session> sessions = new ArrayList<Session>();
@@ -63,13 +63,14 @@ public class FragmentThisWeek extends Fragment {
 		}
 		finally {
 			// return session results based on this week (between Saturday and Friday)		
-			sessions = dbSession.getSessionsThisWeek(userId);
+			sessions = dbSession.getSessionsThisWeek(activeUserId);
 			dbSession.close();
 		}
 		
 		if(sessions.isEmpty()) {
 			HashMap<String, String> map = new HashMap<String, String>();
-			String msg = "None Created";
+			String msg = "None created";
+			map.put(MainMenuListView.SESSION_NO, "#");
 			map.put(MainMenuListView.SESSION, msg);
 			sessionsThisWeek.add(map);
 		}
@@ -102,10 +103,8 @@ public class FragmentThisWeek extends Fragment {
 				map.put(MainMenuListView.SESSION_NO, session.getDurationMinutes() + ":" + 
                         							 durationSeconds );				
 				
-				map.put(MainMenuListView.SESSION, session.getDay() + " (" +
-								                  session.getTimeHour() + ":" +
-								                  timeMinutes + " " +
-								                  session.getDayPeriod() + "), " +
+				map.put(MainMenuListView.SESSION, session.getDay() 
+												  + ", " +
 								                  session.getType()
 						);
 

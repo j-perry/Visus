@@ -88,6 +88,7 @@ public class UserHandler implements IDatabaseTable {
 	public void updateUser(User user) throws SQLiteException {
 		ContentValues updatedUserValues = new ContentValues();
 		
+		updatedUserValues.put(IUserTable.KEY_ID, user.getUserId() );
 		updatedUserValues.put(IUserTable.KEY_NAME, user.getFirstname() );
 		updatedUserValues.put(IUserTable.KEY_GENDER, user.getGender() );
 		updatedUserValues.put(IUserTable.KEY_AGE, user.getAge() );
@@ -96,7 +97,7 @@ public class UserHandler implements IDatabaseTable {
 		
 		Log.e("Visus", "updateUser()");
 		Log.e("Visus", "Firstname: " + user.getFirstname() );
-		Log.e("Visus", "Gender: " + user.getFirstname() );
+		Log.e("Visus", "Gender: " + user.getGender() );
 		Log.e("Visus", "Age: " + user.getAge() );
 		Log.e("Visus", "Target (Day): " + user.getTargetDay() );
 		Log.e("Visus", "Target (Month): " + user.getTargetMonth() );

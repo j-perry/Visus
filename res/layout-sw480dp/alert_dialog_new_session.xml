@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minWidth="475sp"
+    >
+    
+    <LinearLayout 
+	    android:orientation="vertical"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content" 
+	    >
+	    
+        <TextView
+		    android:id="@+id/alert_dialog_new_session_header"
+		    android:background="@color/light_green"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:padding="25sp"
+		    android:text="@string/dialog_new_session_header"
+		    android:textSize="16sp"
+		    android:textColor="@color/white"
+		    android:textStyle="bold"
+		    />
+	    
+    </LinearLayout>
+    
+    <LinearLayout 
+	    android:orientation="vertical"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content" 
+	    >
+    		
+		<EditText
+		    android:id="@+id/alert_dialog_new_session_input"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_margin="25sp"
+		    android:textSize="24sp"
+		    android:textColor="@color/dark_grey"
+		    android:hint="@string/dialog_new_session_input"
+		    android:textColorHint="@color/light_grey"
+		    android:inputType="textCapWords"
+		    />
+		
+	</LinearLayout>
+	
+	<LinearLayout
+	    style="?android:attr/buttonBarStyle"
+    	android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+    	android:orientation="horizontal"
+    	android:weightSum="2"
+    	>
+    	
+	    <Button
+	        style="?android:attr/buttonBarButtonStyle" 
+		    android:id="@+id/alert_dialog_new_session_btn_cancel"
+		    android:layout_weight="1"
+		    android:layout_width="0sp"
+		    android:layout_height="wrap_content"
+		    android:background="@drawable/main_menu_profile_bg"
+	    	android:padding="25sp"
+		    android:text="@string/dialog_new_session_btn_cancel"
+		    android:textColor="@drawable/main_menu_profile_txt"
+		    android:textSize="16sp"
+		    />
+	    
+	    <Button
+	        style="?android:attr/buttonBarButtonStyle" 
+		    android:id="@+id/alert_dialog_new_session_btn_ok"
+		    android:layout_weight="1"
+		    android:layout_width="0sp"
+		    android:layout_height="wrap_content"
+		    android:background="@drawable/main_menu_profile_bg"
+	    	android:padding="25sp"
+		    android:text="@string/dialog_new_session_btn_ok"
+		    android:textColor="@drawable/main_menu_profile_txt"
+		    android:textSize="16sp"
+		    />
+	    
+	</LinearLayout>
+    
+</LinearLayout>

@@ -23,18 +23,18 @@ import android.widget.ListView;
  */
 public class FragmentThisYear extends Fragment {
 	
-	private int userId;
+	private int activeUserId;
 	
 	public FragmentThisYear() {
 		super();
 	}
 	
-	public FragmentThisYear(int userId) {
-		this.userId = userId;
-	}
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		// get user id
+		Bundle bundle = this.getArguments();
+		activeUserId = bundle.getInt("ActiveUserId");
+		
 		View rootView = inflater.inflate(com.visus.R.layout.fragment_sessions_this_year, container, false);
 		SessionHandler dbSession = new SessionHandler(getActivity() ); // getActivity() should do the trick!
 		ArrayList<Session> sessions = new ArrayList<Session>();
@@ -53,13 +53,14 @@ public class FragmentThisYear extends Fragment {
 			Log.e("Visus", "SQLite Exception Error", e);
 		}
 		finally {
-			sessions = dbSession.getSessionsThisYear(userId);
+			sessions = dbSession.getSessionsThisYear(activeUserId);
 			dbSession.close();
 		}
 		
 		if(sessions.isEmpty()) {
 			HashMap<String, String> map = new HashMap<String, String>();
-			String msg = "None Created";
+			String msg = "None created";
+			map.put(MainMenuListView.SESSION_NO, "#");
 			map.put(MainMenuListView.SESSION, msg);
 			sessionsThisYear.add(map);
 		}
@@ -95,10 +96,6 @@ public class FragmentThisYear extends Fragment {
 				map.put(MainMenuListView.SESSION, session.getDay() + " " +
 												  session.getDayNo() + " " +  
 												  session.getMonth() + ", " +
-												  session.getYear() + " (" +
-								                  session.getTimeHour() + ":" +
-								                  timeMinutes + " " +
-								                  session.getDayPeriod() + "), " +
 								                  session.getType()
 						);
 

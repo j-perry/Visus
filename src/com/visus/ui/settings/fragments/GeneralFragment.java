@@ -7,6 +7,7 @@ import com.visus.main.MainActivity;
 import com.visus.main.Settings;
 
 import android.R;
+import android.app.FragmentManager;
 import android.app.NotificationManager;
 import android.content.Intent;
 import android.database.sqlite.SQLiteException;
@@ -29,7 +30,7 @@ import android.widget.Toast;
  */
 public class GeneralFragment extends Fragment implements OnClickListener {
 
-	private int userId;
+	private Integer userId;
 	private SessionHandler dbSession;
 	private UserHandler dbUser;
 	private User user;
@@ -49,13 +50,10 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 	
 	// 'save'
 	private Button	 save;
-			
+	private static FragmentManager fragmentManagerSupport; 
+		
 	public GeneralFragment() {
 		super();
-	}
-	
-	public GeneralFragment(int userId) {
-		this.userId = userId;
 	}
 	
 	@Override
@@ -63,11 +61,14 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		View rootView = inflater.inflate(com.visus.R.layout.fragment_settings_general, container, false);
 		dbSession = new SessionHandler(getActivity() ); // getActivity() should do the trick!
 		dbUser = new UserHandler(getActivity() );
-				
+								
 		// user
 		try {
 			dbUser.open();
 			user = dbUser.getActiveUser();
+			this.userId = user.getUserId();
+			Log.e("Visus", "GeneralFragment " + userId);
+			Log.e("Visus", "GeneralFragment (Target Day): " + user.getTargetDay() );
 		}
 		catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);
@@ -77,9 +78,9 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		}
 				
 		// populate the setting components
-		personalName = (EditText) rootView.findViewById(com.visus.R.id.settings_personal_name);
-		personalGender = (Spinner) rootView.findViewById(com.visus.R.id.settings_personal_gender);
-		personalAge = (EditText) rootView.findViewById(com.visus.R.id.settings_personal_age);
+//		personalName = (EditText) rootView.findViewById(com.visus.R.id.settings_personal_name);
+//		personalGender = (Spinner) rootView.findViewById(com.visus.R.id.settings_personal_gender);
+//		personalAge = (EditText) rootView.findViewById(com.visus.R.id.settings_personal_age);
 				
 		historyTargetDay = (EditText) rootView.findViewById(com.visus.R.id.settings_history_target_day);
 		historyTargetMonth = (EditText) rootView.findViewById(com.visus.R.id.settings_history_target_month);
@@ -107,13 +108,13 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 			dbSession.open();
 					
 			// month btn
-			itemsMonth = dbSession.getSessionsCountThisMonth(userId);
+			itemsMonth = dbSession.getSessionsCountThisMonth(user.getUserId() );
 					
 			// year btn
-			itemsYear = dbSession.getSessionsCountThisMonth(userId);
+			itemsYear = dbSession.getSessionsCountThisYear(user.getUserId() );
 					
 			// all sessions btn
-			itemsAll = dbSession.getSessionsCountAll(userId);
+			itemsAll = dbSession.getSessionsCountAll(user.getUserId() );
 		}
 		catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);
@@ -146,29 +147,28 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 			resetAll.setVisibility(View.VISIBLE);			
 		}
 		
-		final String male = "Male";
-		final String female = "Female";
+//		final String male = "Male";
+//		final String female = "Female";
 		
-		String [] genders = { male, female };
-				
-				
+//		String [] genders = { male, female };
+						
 		// spinner value
-		ArrayAdapter<String>  genderAdapter = new ArrayAdapter<String>(getActivity(),
-																	   com.visus.R.layout.settings_spinner_gender_layout, 
-																	   genders);
+//		ArrayAdapter<String> genderAdapter = new ArrayAdapter<String>(getActivity(),
+//							         							      com.visus.R.layout.settings_spinner_gender_layout, 
+//																	  genders);
 		
-		genderAdapter.setDropDownViewResource(com.visus.R.layout.settings_spinner_gender_list_layout );
-		personalGender.setAdapter(genderAdapter);	
+//		genderAdapter.setDropDownViewResource(com.visus.R.layout.settings_spinner_gender_list_layout );
+//		personalGender.setAdapter(genderAdapter);	
 		
-		genderAdapter = (ArrayAdapter) personalGender.getAdapter();
+//		genderAdapter = (ArrayAdapter) personalGender.getAdapter();
 				  		
 		// NB: If they are null, it will simply display whatever is initialised in the hint property
-		personalName.setText(user.getFirstname() );
+//		personalName.setText(user.getFirstname() );
 				
-		int valuePosition = genderAdapter.getPosition(user.getGender());
-		personalGender.setSelection(valuePosition);
+//		int valuePosition = genderAdapter.getPosition(user.getGender());
+//		personalGender.setSelection(valuePosition);
 				
-		personalAge.setText(String.valueOf(user.getAge()) );
+//		personalAge.setText(String.valueOf(user.getAge()) );
 						
 		// target day
 		if(user.getTargetDay() == 0) {
@@ -215,7 +215,7 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 	public void onResetMonth(View view) {
 		try {
 			dbSession.open();
-			dbSession.deleteSessionsThisMonth(userId);
+			dbSession.deleteSessionsThisMonth(user.getUserId() );
 			
 			// hide the reset buttons
 			resetMonth.setVisibility(View.GONE);
@@ -293,15 +293,8 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 	public void onSave(View view) {
 		user = new User();
 		
-		/*
-		 * 'Personal'
-		 */
-		user.setUserId(userId);
-		user.setFirstname(personalName.getText().toString() );				// first name
-		user.setGender(personalGender.getSelectedItem().toString() ) ;		// gender
-		user.setAge(Integer.parseInt(personalAge.getText().toString()) );	// age
+		user.setUserId(this.userId);
 				
-		
 		/*
 		 * 'Sessions'
 		 */
@@ -323,8 +316,11 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 
 		
 		/*
-		 * update (save) user details
+		 * 	Update (save) user details
 		 */
+		Log.e("Visus", "Update Profile (Daily Target):" + user.getTargetDay() );
+		Log.e("Visus", "Update Profile (Monthly Target):" + user.getTargetMonth() );
+		
 		try {
 			dbUser.open();
 			dbUser.updateUser(user);

@@ -42,16 +42,6 @@ public class LatestActivityFragment extends Fragment {
 	public LatestActivityFragment() {
 		super();
 	}
-		
-	public LatestActivityFragment(int userId, 
-								  int totalSessions, 
-								  ArrayList<HashMap<String, String>> latestSessions,
-								  Session firstSession) {
-		this.userId = userId;
-		this.totalSessions = totalSessions;
-		this.latestSessions = latestSessions;
-		this.firstSession = firstSession;
-	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,7 +49,7 @@ public class LatestActivityFragment extends Fragment {
 		dbSession = new SessionHandler(getActivity() ); // getActivity() should do the trick!
 		dbUser = new UserHandler(getActivity() );
 		int noItems = 5;
-		
+				
 		// hide by default
 		View dailyTargetLayout = rootView.findViewById(com.visus.R.id.fragment_main_menu_layout_target_met_daily);
 		dailyTargetLayout.setVisibility(View.GONE);
@@ -89,6 +79,7 @@ public class LatestActivityFragment extends Fragment {
 		 * Get the date of the first session
 		 */
 		TextView txtVwFirstSession = (TextView) rootView.findViewById(com.visus.R.id.main_menu_latest_activities_no_sessions_date);
+		txtVwFirstSession.setVisibility(View.GONE); // TODO
 		StringBuilder strFirstSession = new StringBuilder();
 				
 		if(firstSession == null) {
@@ -178,6 +169,16 @@ public class LatestActivityFragment extends Fragment {
 	public void onDestoryView() {
 		super.onDestroyView();
 	}	
+	
+	public void addContext(int userId, 
+						   int totalSessions, 
+						   ArrayList<HashMap<String, String>> latestSessions,
+						   Session firstSession) {
+		this.userId = userId;
+		this.totalSessions = totalSessions;
+		this.latestSessions = latestSessions;
+		this.firstSession = firstSession;
+	}
 	
 	/**
 	 * Method checks whether the user has met their monthly target
