@@ -31,13 +31,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				                  " ( " +
 				                  	 IUserTable.KEY_ID + " INTEGER PRIMARY KEY, " +		// act's as our USER_ID
 				                  	 IUserTable.KEY_ACTIVE + " INTEGER, " +
-				                  	 IUserTable.KEY_NAME + " TEXT, " +
-				                  	 IUserTable.KEY_AGE + " INTEGER, " +
-				                  	 IUserTable.KEY_GENDER + " TEXT, " +
-				                  	 IUserTable.KEY_TARGET_DAY + " INTEGER, " +			// new!
-				                  	 IUserTable.KEY_TARGET_MONTH + " INTEGER, " +			// new!
-				                  	 IUserTable.KEY_DURATION_TODAY + " INTEGER, " +		// new!
-				                  	 IUserTable.KEY_DURATION_MONTH + " INTEGER" +			// new!
+				                  	 IUserTable.KEY_TARGET_DAY + " INTEGER, " +			
+				                  	 IUserTable.KEY_TARGET_MONTH + " INTEGER, " +		
+				                  	 IUserTable.KEY_DURATION_TODAY + " INTEGER, " +		
+				                  	 IUserTable.KEY_DURATION_MONTH + " INTEGER" +		
 				                  ");";
 		
 		String createSessionsTable = "CREATE TABLE " + ISessionTable.TABLE_NAME + 

@@ -48,6 +48,7 @@
 	</LinearLayout>
 	
 	<LinearLayout
+	    style="?android:attr/buttonBarStyle"
     	android:layout_width="match_parent"
     	android:layout_height="match_parent"
     	android:orientation="horizontal"
@@ -55,6 +56,7 @@
     	>
     	
 	    <Button
+	        style="?android:attr/buttonBarButtonStyle" 
 		    android:id="@+id/alert_dialog_user_targets_btn_cancel"
 		    android:layout_weight="1"
 		    android:layout_width="0sp"
@@ -67,6 +69,7 @@
 		    />
 	    
 	    <Button
+	        style="?android:attr/buttonBarButtonStyle" 
 		    android:id="@+id/alert_dialog_user_targets_btn_ok"
 		    android:layout_weight="1"
 		    android:layout_width="0sp"

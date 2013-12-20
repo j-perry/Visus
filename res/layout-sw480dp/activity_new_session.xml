@@ -43,7 +43,7 @@
                 android:textColor="@color/light_green"
                 />
             
-            <!-- seperator -->
+            <!-- separator -->
             <TextView
 	            android:layout_width="15dp"
 	            android:layout_height="wrap_content"

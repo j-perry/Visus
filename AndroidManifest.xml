@@ -37,16 +37,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        
-        <!-- 'Sign up' -->
-        <activity 
-            android:name="com.visus.main.SignUp"
-            android:label="@string/activity_sign_up"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait" 
-            />
-               
+                
         
         <!-- 'New Session' -->
         <activity
@@ -68,7 +59,7 @@
         <!-- 'Sessions' -->
         <activity
             android:name="com.visus.main.Sessions"
-            android:label="@string/activity_sessions" 
+            android:label="@string/activity_sessions"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:parentActivityName="com.visus.main.MainActivity"

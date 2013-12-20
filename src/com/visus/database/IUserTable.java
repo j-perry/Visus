@@ -10,9 +10,6 @@ public interface IUserTable {
 	public final static String KEY_ID       	  = "Id"; 	// All DB tables will share this property!
 	
 	public static final String KEY_ACTIVE   	  = "Active";
-	public static final String KEY_NAME     	  = "Name";
-	public static final String KEY_AGE      	  = "Age";
-	public static final String KEY_GENDER   	  = "Gender";
 	
 	public static final String KEY_TARGET_DAY 	  = "TargetDay";
 	public static final String KEY_TARGET_MONTH   = "TargetMonth";
