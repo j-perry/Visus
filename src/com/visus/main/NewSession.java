@@ -86,7 +86,7 @@ public class NewSession extends Activity {
 	private CountDownTimer sessionTimer;
 	private NotificationCompat.Builder notBuilder;
 	
-	private AutoCompleteTextView sessionTypes;
+//	private AutoCompleteTextView sessionTypes;
 	
 	private Context context = this;
 	private AlertDialog alertDialog;
@@ -105,7 +105,6 @@ public class NewSession extends Activity {
 				
 		initUIComponents();
 		
-
         sessionType = (TextView) findViewById(R.id.session_type);
 		
 		// hide the stop button
@@ -119,6 +118,13 @@ public class NewSession extends Activity {
 		
 		// get the active user id
 		Bundle userId = getIntent().getExtras();
+		final Dialog dialog = new Dialog(context);
+		
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.setCanceledOnTouchOutside(false);
+		dialog.setContentView(R.layout.alert_dialog_new_session);
+		
+		final AutoCompleteTextView sessionTypes = (AutoCompleteTextView) dialog.findViewById(com.visus.R.id.dialog_new_session_auto_complete_type);
 		
 		// if userId is not null
 		if(userId != null) {
@@ -140,10 +146,9 @@ public class NewSession extends Activity {
 			Log.e("Visus", "SQL Error", e);
 		}
 		finally {
-//			sessionTypes = (AutoCompleteTextView) findViewById(com.visus.R.id.session_auto_complete_type);
 			types = dbHandler.getAllSessionTypes(activeUserId);
 			dbHandler.close();
-		}	
+		}
 		
 		if(types.size() == 0) {
 			Log.e("Visus", "NULL");
@@ -154,27 +159,23 @@ public class NewSession extends Activity {
 			for(String type : types) {
 				Log.e("Visus", type);
 			}
+						
+			/**
+			 * 	Alert Dialog
+			 */
+			ArrayAdapter<String> adapterTypes = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, types); 
+			
+			sessionTypes.setAdapter(adapterTypes); // TODO
 		}
-				
-		/**
-		 * 	Alert Dialog
-		 */
-		ArrayAdapter<String> adapterTypes = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, types); 
-//		sessionTypes.setAdapter(adapterTypes);
 		
-		final Dialog dialog = new Dialog(context);
-		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		dialog.setCanceledOnTouchOutside(false);
-		dialog.setContentView(R.layout.alert_dialog_new_session);
-		final EditText input = (EditText) dialog.findViewById(R.id.alert_dialog_new_session_input);
-				// buttons
+		// buttons
 		Button cancel = (Button) dialog.findViewById(R.id.alert_dialog_new_session_btn_cancel);
 		Button ok = (Button) dialog.findViewById(R.id.alert_dialog_new_session_btn_ok);
 		
 		ok.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				type = input.getText().toString().trim();
+				type = sessionTypes.getText().toString().trim();
 				
 				if(!type.isEmpty()) {
 					sessionType.setText("#" + type);

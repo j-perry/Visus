@@ -10,6 +10,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.app.NotificationManager;
+import android.app.ActionBar.OnNavigationListener;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,6 +26,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 // core program packages
@@ -68,12 +70,6 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 
 		Log.e("Visus", "USER ID: " + activeUserId);
 		
-		
-		final ActionBar ab = getActionBar();
-		ab.setDisplayHomeAsUpEnabled(true);
-		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		
-		
 		try {
 			dbSessions.open();
 			allSessions = dbSessions.getSessionsThisYear(activeUserId);
@@ -85,6 +81,10 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		finally {
 			dbSessions.close();
 		}
+		
+		final ActionBar ab = getActionBar();
+		ab.setDisplayHomeAsUpEnabled(true);
+		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 		
 		final Dialog dialog = new Dialog(context);
 		Button cancel = new Button(context);
@@ -125,34 +125,49 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 			
 		// initialise the page view adapter
 		sessionsPager.setAdapter(sessionsPagerAdapter);
-		sessionsPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+		
+		// TODO - added 19/12/2013
+		ArrayAdapter<CharSequence> arAdapter = ArrayAdapter.createFromResource(this, R.array.sessions_menu, R.layout.action_bar_list);
 				
+		/**
+		 * TODO - added 19/12/2013
+		 * The following two methods are crucial. Do not delete them.
+		 */
+		ab.setListNavigationCallbacks(arAdapter, new OnNavigationListener() {
+			public boolean onNavigationItemSelected(int itemPosition, long itemId) {
+				sessionsPager.setCurrentItem(itemPosition);
+				return true;
+			}
+		});
+		
+		sessionsPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {				
 			@Override
 			public void onPageSelected(int position) {
 				ab.setSelectedNavigationItem(position);
-			}
-				
+			}				
 		});
 			
 		// create our tabs
-		initTabs(ab);	
+		// TODO
+//		initTabs(ab);	
 	}
 	
 	/**
+	 * TODO
 	 * Initialises new tabs
 	 * @param ab
 	 */
-	private void initTabs(ActionBar ab) {
-		String tabToday = "TODAY";
-		String tabThisWeek = "THIS WEEK";
-		String tabThisMonth = "THIS MONTH";
-		String tabThisYear = "THIS YEAR";
-		
-		ab.addTab(ab.newTab().setText(tabToday).setTabListener(this));
-        ab.addTab(ab.newTab().setText(tabThisWeek).setTabListener(this));
-        ab.addTab(ab.newTab().setText(tabThisMonth).setTabListener(this));
-        ab.addTab(ab.newTab().setText(tabThisYear).setTabListener(this));
-	}
+//	private void initTabs(ActionBar ab) {
+//		String tabToday = "TODAY";
+//		String tabThisWeek = "THIS WEEK";
+//		String tabThisMonth = "THIS MONTH";
+//		String tabThisYear = "THIS YEAR";
+//		
+//		ab.addTab(ab.newTab().setText(tabToday).setTabListener(this));
+//        ab.addTab(ab.newTab().setText(tabThisWeek).setTabListener(this));
+//        ab.addTab(ab.newTab().setText(tabThisMonth).setTabListener(this));
+//        ab.addTab(ab.newTab().setText(tabThisYear).setTabListener(this));
+//	}
 			
 	
 	/**
@@ -225,11 +240,13 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 	public void onTabReselected(ActionBar.Tab tab, FragmentTransaction arg1) {
 		
 	}
-
-
+	
+	/**
+	 * TODO - body commented out 19/12/2013
+	 */
 	@Override
 	public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-		sessionsPager.setCurrentItem(tab.getPosition());		
+//		sessionsPager.setCurrentItem(tab.getPosition());		
 	}
 
 

@@ -43,7 +43,7 @@ import com.visus.ui.main.fragments.LatestActivityFragment;
  */
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 	
-	private User user = null;
+	private User user; // = null;
 	private UserHandler dbUser;
 	private SessionHandler dbSession;
 	private static int userId;
@@ -60,30 +60,42 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		Log.e("Visus", "MainActivity - onCreate()");
+						
 		dbUser = new UserHandler(this);
 		dbSession = new SessionHandler(this);
-				
-		setContentView(R.layout.activity_main);
 		
-		// get the current active user
+		user = new User();
+		
 		try {
-			dbUser.open();			
-			user = dbUser.getActiveUser();
+			dbUser.open();
+			
+			if(dbUser.getActiveUser() == null ) {
+				dbUser.open();
+				user.setTargetDay(0);
+				user.setTargetMonth(0);
+				dbUser.add(user);
+			}
+			else {
+				dbUser.open();
+				user = dbUser.getActiveUser();
+			}
 		}
 		catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);
 		}
 		finally {
-			dbUser.close();			
+			dbUser.close();
 		}
-			
-
+		
+		setContentView(R.layout.activity_main);
+		
 		// action bar
 		final ActionBar ab = getActionBar();
 		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 			
-		if(user != null) {						
-			Log.e("Visus", "USER ID: " + userId);
+		if(user != null) {				
+			Log.e("Visus", "USER ID: " + user);
 						
 			mainMenuPager = (ViewPager) findViewById(com.visus.R.id.main_menu_pager);
 			mainMenuPagerAdapter = new MainMenuPagerAdapter(getSupportFragmentManager(), 
@@ -151,8 +163,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 				public void onPageSelected(int position) {
 					ab.setSelectedNavigationItem(position);
 				}			
-			});
-			
+			});			
 		}
 	}
 	
@@ -161,14 +172,20 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		super.onResume();
 		
 		Log.e("Visus", "onResume()");
-		dbUser.open();
-		user = dbUser.getActiveUser();
-		dbUser.close();
+		
+		try {
+			dbUser.open();
+			user = dbUser.getActiveUser();
+		}
+		catch(SQLiteException e) {
+			Log.e("Visus", "SQL Error", e);
+		}
+		finally {
+			dbUser.close();
+		}	
 		
 		if(user == null) {
 			Log.e("Visus", "No user active");
-			Intent intent = new Intent(MainActivity.this, SignUp.class);
-			startActivity(intent);
 		}
 		else {
 			userId = user.getUserId();

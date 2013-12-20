@@ -32,18 +32,22 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content" 
 	    >
-    		
-		<EditText
-		    android:id="@+id/alert_dialog_new_session_input"
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
+        
+        <!-- Session type - e.g., Email, Gaming, etc. -->
+        <AutoCompleteTextView 
+            android:id="@+id/dialog_new_session_auto_complete_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 		    android:layout_margin="25sp"
+            android:hint="@string/dialog_new_session_input"
+            android:inputType="textCapSentences"
+            android:maxLength="15"
+            android:completionThreshold="1"
+            android:singleLine="true"
 		    android:textSize="24sp"
-		    android:textColor="@color/dark_grey"
-		    android:hint="@string/dialog_new_session_input"
 		    android:textColorHint="@color/light_grey"
-		    android:inputType="textCapWords"
-		    />
+            android:textColor="@color/light_green"
+            />
 		
 	</LinearLayout>
 	

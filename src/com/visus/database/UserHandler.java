@@ -43,17 +43,17 @@ public class UserHandler implements IDatabaseTable {
 		
 		Log.e("Visus", "---------------------------");
 		Log.e("Visus", "New User\n");
-		Log.e("Visus", "Firstname: " + user.getFirstname() );
-		Log.e("Visus", "Gender: " + user.getGender() );
-		Log.e("Visus", "Age: " + String.valueOf(user.getAge() ));
+//		Log.e("Visus", "Firstname: " + user.getFirstname() );
+//		Log.e("Visus", "Gender: " + user.getGender() );
+//		Log.e("Visus", "Age: " + String.valueOf(user.getAge() ));
 		Log.e("Visus", "Target (Day): " + String.valueOf(user.getTargetDay() ));
 		Log.e("Visus", "Target (Month): " + String.valueOf(user.getTargetMonth() ));
 		Log.e("Visus", "---------------------------");
 		
 		userValues.put(IUserTable.KEY_ACTIVE, IUserTable.ACTIVE_USER );
-		userValues.put(IUserTable.KEY_NAME, user.getFirstname() );
-		userValues.put(IUserTable.KEY_GENDER, user.getGender() );
-		userValues.put(IUserTable.KEY_AGE, user.getAge() );
+//		userValues.put(IUserTable.KEY_NAME, user.getFirstname() );
+//		userValues.put(IUserTable.KEY_GENDER, user.getGender() );
+//		userValues.put(IUserTable.KEY_AGE, user.getAge() );
 		userValues.put(IUserTable.KEY_TARGET_DAY, user.getTargetDay() );
 		userValues.put(IUserTable.KEY_TARGET_MONTH, user.getTargetMonth() );
 		
@@ -65,7 +65,7 @@ public class UserHandler implements IDatabaseTable {
 		User user = null;
 		user = getActiveUser();
 		
-		Log.e("Visus", "User ID = " + String.valueOf(user.getFirstname() ) );
+//		Log.e("Visus", "User ID = " + String.valueOf(user.getFirstname() ) );
 		
 		int id = db.delete(IUserTable.TABLE_NAME, 					
 				           ISessionTable.KEY_ID + " = ?", 			
@@ -89,16 +89,16 @@ public class UserHandler implements IDatabaseTable {
 		ContentValues updatedUserValues = new ContentValues();
 		
 		updatedUserValues.put(IUserTable.KEY_ID, user.getUserId() );
-		updatedUserValues.put(IUserTable.KEY_NAME, user.getFirstname() );
-		updatedUserValues.put(IUserTable.KEY_GENDER, user.getGender() );
-		updatedUserValues.put(IUserTable.KEY_AGE, user.getAge() );
+//		updatedUserValues.put(IUserTable.KEY_NAME, user.getFirstname() );
+//		updatedUserValues.put(IUserTable.KEY_GENDER, user.getGender() );
+//		updatedUserValues.put(IUserTable.KEY_AGE, user.getAge() );
 		updatedUserValues.put(IUserTable.KEY_TARGET_DAY, user.getTargetDay() );
 		updatedUserValues.put(IUserTable.KEY_TARGET_MONTH, user.getTargetMonth() );
 		
 		Log.e("Visus", "updateUser()");
-		Log.e("Visus", "Firstname: " + user.getFirstname() );
-		Log.e("Visus", "Gender: " + user.getGender() );
-		Log.e("Visus", "Age: " + user.getAge() );
+//		Log.e("Visus", "Firstname: " + user.getFirstname() );
+//		Log.e("Visus", "Gender: " + user.getGender() );
+//		Log.e("Visus", "Age: " + user.getAge() );
 		Log.e("Visus", "Target (Day): " + user.getTargetDay() );
 		Log.e("Visus", "Target (Month): " + user.getTargetMonth() );
 		
@@ -118,9 +118,9 @@ public class UserHandler implements IDatabaseTable {
 		Cursor cursor;
 		String [] columns = { ISessionTable.KEY_ID, 
 							  IUserTable.KEY_ACTIVE, 
-							  IUserTable.KEY_NAME, 
-							  IUserTable.KEY_GENDER, 
-							  IUserTable.KEY_AGE,
+//							  IUserTable.KEY_NAME, 
+//							  IUserTable.KEY_GENDER, 
+//							  IUserTable.KEY_AGE,
 							  IUserTable.KEY_TARGET_DAY,
 							  IUserTable.KEY_TARGET_MONTH
 				            };
@@ -138,11 +138,11 @@ public class UserHandler implements IDatabaseTable {
 		
 		User user = new User(Integer.parseInt(cursor.getString(0)),		// ID
 			                 Integer.parseInt(cursor.getString(1)),  	// Active?
-				             cursor.getString(2),						// First name
-		                     cursor.getString(3),                		// Gender
-		                     cursor.getInt(4),							// Age
-		                     cursor.getInt(5),							// Target (Day)
-		                     cursor.getInt(6));							// Target (Month)
+//				             cursor.getString(2),						// First name
+//		                     cursor.getString(3),                		// Gender
+//		                     cursor.getInt(4),							// Age
+		                     cursor.getInt(2),							// Target (Day)
+		                     cursor.getInt(3));							// Target (Month)
 		db.close();
 		
 		return user;		
@@ -187,11 +187,11 @@ public class UserHandler implements IDatabaseTable {
 		
 		user = new User(Integer.parseInt(cursor.getString(0)),		// ID
                         Integer.parseInt(cursor.getString(1)),  	// Active?
-                        cursor.getString(2),						// First name
-                        cursor.getString(3),                		// Gender
-                        cursor.getInt(4),							// Age
-                        cursor.getInt(5),							// Target (Day)
-                        cursor.getInt(6));							// Target (Month)
+//                        cursor.getString(2),						// First name
+//                        cursor.getString(3),                		// Gender
+//                        cursor.getInt(4),							// Age
+                        cursor.getInt(2),							// Target (Day)
+                        cursor.getInt(3));							// Target (Month)
 		
 		db.close();
 		return user;

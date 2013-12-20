@@ -78,6 +78,16 @@
     <string name="dialog_previous_sessions_btn_cancel">No Thanks</string>
     <string name="dialog_previous_sessions_btn_ok">Yes Please!</string>
     
+    <!-- Main Menu -->
+    <string-array name="sessions_menu">
+        <item>TODAY</item>
+        <item>THIS WEEK</item>
+        <item>THIS MONTH</item>
+        <item>THIS YEAR</item>
+    </string-array>
+    
+    <!-- End of Sessions -->
+    
     <!-- Settings -->
     <string-array name="settings_list">
         <item>General</item>

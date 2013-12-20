@@ -14,9 +14,13 @@ public final class R {
         /**  Main Menu 
          */
         public static final int menu=0x7f060002;
-        /**  Settings 
+        /**  Main Menu 
          */
-        public static final int settings_list=0x7f060003;
+        public static final int sessions_menu=0x7f060003;
+        /**  End of Sessions 
+ Settings 
+         */
+        public static final int settings_list=0x7f060004;
     }
     public static final class attr {
     }
@@ -88,16 +92,16 @@ public final class R {
         public static final int alert_dialog_new_session_btn_cancel=0x7f090012;
         public static final int alert_dialog_new_session_btn_ok=0x7f090013;
         public static final int alert_dialog_new_session_header=0x7f090010;
-        public static final int alert_dialog_new_session_input=0x7f090011;
         public static final int alert_dialog_previous_sessions_btn_cancel=0x7f090016;
         public static final int alert_dialog_previous_sessions_btn_ok=0x7f090017;
         public static final int alert_dialog_previous_sessions_heading=0x7f090014;
         public static final int alert_dialog_previous_sessions_txt=0x7f090015;
-        public static final int alert_dialog_user_targets_btn_cancel=0x7f090019;
-        public static final int alert_dialog_user_targets_btn_ok=0x7f09001a;
-        public static final int alert_dialog_user_targets_header=0x7f09001b;
-        public static final int alert_dialog_user_targets_txt=0x7f090018;
+        public static final int alert_dialog_user_targets_btn_cancel=0x7f09001a;
+        public static final int alert_dialog_user_targets_btn_ok=0x7f09001b;
+        public static final int alert_dialog_user_targets_header=0x7f090018;
+        public static final int alert_dialog_user_targets_txt=0x7f090019;
         public static final int date=0x7f090044;
+        public static final int dialog_new_session_auto_complete_type=0x7f090011;
         public static final int entry=0x7f090043;
         public static final int entry_no=0x7f090047;
         public static final int first_name=0x7f09000c;
