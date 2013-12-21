@@ -70,7 +70,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		try {
 			dbUser.open();
 			
-			if(dbUser.getActiveUser() == null ) {
+			if(dbUser.getActiveUser() == null) {
 				dbUser.open();
 				user.setTargetDay(0);
 				user.setTargetMonth(0);
@@ -95,20 +95,39 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 			
 		if(user != null) {				
-			Log.e("Visus", "USER ID: " + user);
-						
+			Log.e("Visus", "USER ID: " + user.getUserId() );		
+			int totalSessions = 0;
+			int noActivities = 0;	
+			ArrayList<HashMap<String, String>> latestSessions = new ArrayList<HashMap<String, String>>();	
+			ArrayList<HashMap<String, String>> activities = new ArrayList<HashMap<String, String>>();	
+			Session firstSession = new Session();
+			
+			try {
+				dbSession.open();
+				totalSessions = dbSession.getSessionsCountAll(user.getUserId() );
+				latestSessions = dbSession.getLatestSessions(user);
+				activities = dbSession.getActivities(user);
+				noActivities = dbSession.getActivitiesCount(user.getUserId() );
+				firstSession = dbSession.getFirstSession();
+			}
+			catch(SQLiteException e) {
+				Log.e("Visus", "SQL Error");
+			}
+			finally {
+				dbSession.close();
+			}
+			
 			mainMenuPager = (ViewPager) findViewById(com.visus.R.id.main_menu_pager);
 			mainMenuPagerAdapter = new MainMenuPagerAdapter(getSupportFragmentManager(), 
 					                                        user.getUserId(),						// user 
-					                                        getSessionsCount(),						// total no. sessions
-					                                        getLatestSessions(user.getUserId() ),	// latest sessions
-					                                        getActivitiesCount(user.getUserId() ),	// no activities
-					                                        getActivities(user.getUserId() ),		// activities
-					                                        getFirstSession() ); 					// first session
-			
+					                                        totalSessions,							// total no. sessions
+					                                        latestSessions,							// latest sessions
+					                                        noActivities,							// no activities
+					                                        activities,								// activities
+					                                        firstSession); 							// first session
+						
 			mainMenuPager.setAdapter(mainMenuPagerAdapter);
-			
-			
+						
 			ArrayAdapter<CharSequence> arAdapter = ArrayAdapter.createFromResource(this, R.array.menu, R.layout.action_bar_list);
 				
 
@@ -274,227 +293,13 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		// TODO Auto-generated method stub	
 	}
 	
-	/**
-	 * 
-	 * @param userId
-	 * @return
-	 * @throws SQLiteException
-	 */
-	private int getSessionsCount() throws SQLiteException {
-		// return no. of sessions - total
-		int totalSessions = 0;
-		
-		try {
-			dbSession.open();
-			totalSessions = dbSession.getSessionsCountAll(user.getUserId() );
-		}
-		catch(SQLiteException e) {
-			Log.e("Visus", "SQL Error", e);
-		}
-		finally {
-			dbSession.close();
-		}
-		
-		if(totalSessions == 0) {
-			totalSessions = 0;
-			
-			return totalSessions;
-		}
-		else {
-			return totalSessions;			
-		}		
-	}
-	
-	/**
-	 * 
-	 * @param userId
-	 * @return
-	 * @throws SQLiteException
-	 */
-	private ArrayList<HashMap<String, String>> getLatestSessions(int userId) throws SQLiteException {
-		ArrayList<Session> sessions = new ArrayList<Session>();
-		ArrayList<HashMap<String, String>> latestSessions = new ArrayList<HashMap<String, String>>();
-		
-		Log.e("Visus", "USER ID: " + userId);
-		
-		try {
-			dbSession.open();
-			sessions = dbSession.getLatestSessions(userId);
-		}
-		finally {
-			dbSession.close();				
-		}
-					
-		if(sessions.isEmpty()) {
-			HashMap<String, String> emptyMsg = new HashMap<String, String>();
-			String msg = "None Created";
-			emptyMsg.put(MainMenuListView.SESSION_NO, "#");
-			emptyMsg.put(MainMenuListView.SESSION, msg);
-			
-			latestSessions.add(emptyMsg);			
-			
-			Log.e("Visus", "Sessions is empty");
-		}
-		else {
-			Log.e("Visus", "Sessions is not empty");
-			
-			int noItems = 0;
-			final int MAX_ITEMS = 5;
-			String durationSeconds = null;
-			String timeMinutes = null;
-			
-			// get the first session
-			setFirstSession(sessions.get(0) );
-			
-			int id = 0;
-			
-			// output the first five results
-			for(Session session : sessions) {
-								
-				if(session.getDurationSeconds() < 10) {
-					durationSeconds = "0" + String.valueOf(session.getDurationSeconds() );
-				}
-				else {
-					durationSeconds = String.valueOf(session.getDurationSeconds() );
-				}
-								
-				if(session.getTimeMinutes() < 10) {
-					timeMinutes = "0" + String.valueOf(session.getTimeMinutes() );
-				}
-				else {
-					timeMinutes = String.valueOf(session.getTimeMinutes() );
-				}
-												
-				if(noItems != MAX_ITEMS) {
-						HashMap<String, String> map = new HashMap<String, String>();
-						id++;
-						
-						/**
-						 * Format: type, duration, HH:mm
-						 * 						 
-						 */		
-						map.put(MainMenuListView.SESSION_NO, session.getDurationMinutes() + ":" + 
-	 							 durationSeconds );
-
-						map.put(MainMenuListView.SESSION, session.getDay() + " " +
-													  	  session.getDayNo() + " " +  
-													  	  session.getMonth() + ", " +
-													  	  session.getYear() + ", " +
-													  	  session.getType()
-								);
-												
-						latestSessions.add(map);						
-						noItems++;
-				}
-				else {
-					break;
-				}
-			}
-		}
-		
-		return latestSessions;
-	}
-	
-	/**
-	 * 
-	 * @param firstSession
-	 */
-	private void setFirstSession(Session firstSession) {
-		Log.e("Visus", "First session: " + firstSession.getDay() + " "
-										 + firstSession.getDayNo() + " "
-										 + firstSession.getMonth() + ", "
-										 + firstSession.getYear()
-		     );
-		
-		this.firstSession = firstSession;
-	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-	private Session getFirstSession() {
-		return firstSession;
-	}
-			
-	/**
-	 * 
-	 * @param userId
-	 * @return
-	 * @throws SQLiteException
-	 */
-	private int getActivitiesCount(int userId) throws SQLiteException {
-		// no activities
-		int noActivities = 0;		
-						
-		try {
-			dbSession.open();
-			noActivities = dbSession.getActivitiesCount(user.getUserId() );
-		}
-		catch(SQLiteException e) {
-			Log.e("Visus", "SQL Error", e);
-		}
-		finally {
-			dbSession.close();
-		}
-		
-		return noActivities;
-	}
-	
-	/**
-	 * 
-	 * @param userId
-	 * @return
-	 * @throws SQLiteException
-	 */
-	private ArrayList<HashMap<String, String>> getActivities(int userId) throws SQLiteException {
-		ArrayList<String> activitiesResult = new ArrayList<String>();
-		SessionHandler dbSession = new SessionHandler(this); // getActivity() should do the trick!
-		ArrayList<HashMap<String, String>> activities = new ArrayList<HashMap<String, String>>();
-		
-		Log.e("Visus", "ActivitiesFragment: " + userId);
-		
-		try {
-			dbSession.open();
-			activitiesResult = dbSession.getActivities(userId);
-		}
-		finally {
-			dbSession.close();
-		}
-		
-		if(activitiesResult.isEmpty()) {
-			HashMap<String, String> map = new HashMap<String, String>();
-			map.put(MainMenuListView.SESSION_NO, "#");
-			map.put(MainMenuListView.SESSION, "None Created");			
-			
-			activities.add(map);
-		}
-		else {
-			int id = 1;
-			
-			for(String activity : activitiesResult) {
-				HashMap<String, String> map = new HashMap<String, String>();
-				map.put(MainMenuListView.SESSION_NO, String.valueOf(id) );
-				map.put(MainMenuListView.SESSION, activity);
-				
-				id++;
-				
-				activities.add(map);
-			}
-		}
-		
-		return activities;
-	}
-	
-	
 	/*************************************************************************
 	 * 
 	 * 								Event Handlers
-	 * 
 	 */
 			
 	/**
-	 * creates a new session
+	 * Creates a new session
 	 * @param view
 	 */
 	public void newSession(View view) {
@@ -504,7 +309,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	}
 	
 	/**
-	 * view previous sessions
+	 * View previous sessions
 	 * @param view
 	 */
 	public void prevSessions(View view) {

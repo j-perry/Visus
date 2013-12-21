@@ -50,8 +50,8 @@ public class MainMenuAdapter extends BaseAdapter {
 		
 		// TODO header - future implementation?
 		TextView header = (TextView) v.findViewById(com.visus.R.id.main_header);
-		TextView entry = (TextView) v.findViewById(com.visus.R.id.entry);
-		TextView entryNo = (TextView) v.findViewById(com.visus.R.id.entry_no);
+		TextView entry = (TextView) v.findViewById(com.visus.R.id.session);
+		TextView entryNo = (TextView) v.findViewById(com.visus.R.id.session_no);
 		
 		
 		HashMap<String, String> item = new HashMap<String, String>();

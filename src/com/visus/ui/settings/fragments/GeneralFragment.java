@@ -1,10 +1,14 @@
 package com.visus.ui.settings.fragments;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import com.visus.database.SessionHandler;
 import com.visus.database.UserHandler;
 import com.visus.entities.User;
 import com.visus.main.MainActivity;
 import com.visus.main.Settings;
+import com.visus.ui.MainMenuAdapter;
 
 import android.R;
 import android.app.FragmentManager;
@@ -21,6 +25,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -185,6 +190,29 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		else {
 			historyTargetMonth.setText("");
 		}
+		
+		
+		/*
+		 * Activities listview
+		 */
+		ListView lvActivities = (ListView) rootView.findViewById(com.visus.R.id.settings_activities_adapter);
+		ArrayList<HashMap<String, String>> activities = new ArrayList<HashMap<String, String>>();
+		
+		try {
+			dbSession.open();
+			user.setUserId(this.userId);
+			activities = dbSession.getActivities(user);
+		}
+		catch(SQLiteException e) {
+			Log.e("Visus", "SQL Error", e);
+		}
+		finally {
+			dbSession.close();
+		}
+		
+		MainMenuAdapter adapter = new MainMenuAdapter(getActivity(), activities);
+//		lvActivities.setScrollContainer(false);
+//		lvActivities.setAdapter(adapter);
 		
 		return rootView;
 	}

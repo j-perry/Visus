@@ -9,6 +9,7 @@ import java.util.*;
 import com.visus.entities.User;
 import com.visus.entities.Week;
 import com.visus.entities.sessions.*;
+import com.visus.ui.MainMenuListView;
 
 import android.content.*;
 import android.database.*;
@@ -23,6 +24,7 @@ public class SessionHandler implements IDatabaseTable {
 	private SQLiteDatabase db;
 	private Long result;
 	private Session session;
+	private Session firstSession;
 	
 	private enum Days { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday };
 	
@@ -155,7 +157,6 @@ public class SessionHandler implements IDatabaseTable {
 		}
 		
 		cursor.close();
-		db.close();		
 		
 		return sessionTypes;
 	}
@@ -239,7 +240,6 @@ public class SessionHandler implements IDatabaseTable {
 		}
 				
 		cursor.close();
-		db.close();
 		
 		// return no. of activity categories
 		noActivities = activities.size();
@@ -251,6 +251,28 @@ public class SessionHandler implements IDatabaseTable {
 		session.setOverviewNoActivities(noActivities);
 		
 		return session;
+	}
+	
+	/**
+	 * Sets the first session
+	 * @param firstSession
+	 */
+	public void setFirstSession(Session firstSession) {
+		Log.e("Visus", "First session: " + firstSession.getDay() + " "
+										 + firstSession.getDayNo() + " "
+										 + firstSession.getMonth() + ", "
+										 + firstSession.getYear()
+		     );
+		
+		this.firstSession = firstSession;
+	}
+	
+	/**
+	 * Gets the first session created
+	 * @return
+	 */
+	public Session getFirstSession() {
+		return firstSession;
 	}
 	
 	/**
@@ -324,8 +346,7 @@ public class SessionHandler implements IDatabaseTable {
 				session.setDurationMinutes(0);
 			
 			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
-							
-			// TODO
+			
 			session.setType(cursor.getString(typeIndex));
 			
 			
@@ -334,7 +355,6 @@ public class SessionHandler implements IDatabaseTable {
 		}
 		
 		cursor.close();
-		db.close();
 		
 		return sessionsAll;
 	}
@@ -427,9 +447,172 @@ public class SessionHandler implements IDatabaseTable {
 		Collections.reverse(sessionsThisYear);
 				
 		cursor.close();
-		db.close();
 				
 		return sessionsThisYear;		
+	}
+	
+	/**
+	 * Gets all the latest sessions. Used to display them in the first main menu fragment.
+	 * @param userId
+	 * @return
+	 * @throws SQLiteException
+	 */
+	public ArrayList<HashMap<String, String>> getLatestSessions(User user) throws SQLiteException {
+		ArrayList<Session> sessions = new ArrayList<Session>();
+		ArrayList<HashMap<String, String>> latestSessions = new ArrayList<HashMap<String, String>>();
+		int userId = user.getUserId();
+		
+		Log.e("Visus", "USER ID: " + userId);
+		
+
+		// get the current year
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+						
+		String dateBeginning = String.valueOf(year) + "-01-01";
+		String dateEnding = String.valueOf(year) + "-12-31";
+						
+		Log.e("Visus", "Year beginning: " + dateBeginning);
+		Log.e("Visus", "Year ending: " + dateEnding);
+						
+		String qryThisYear = "SELECT *" + QRY_SPACING +
+						     "FROM" + QRY_SPACING + ISessionTable.TABLE_NAME + QRY_SPACING +
+						     "WHERE" + QRY_SPACING + 
+		                    	ISessionTable.KEY_USER_ID + " = '" + userId + "'" + QRY_SPACING + 
+		                     "AND" + QRY_SPACING +
+		                        ISessionTable.KEY_DATE + QRY_SPACING +       
+							 "BETWEEN" + QRY_SPACING +                       	
+								"date('" + dateBeginning + "')" + QRY_SPACING +
+							 "AND" + QRY_SPACING +
+							 	"date('" + dateEnding + "')";
+						
+		Log.e("Visus", "---------------");
+		Log.e("Visus", "qryThisYear: ");
+		Log.e("Visus", qryThisYear);
+		Log.e("Visus", "---------------");
+					
+		Cursor cursor = db.rawQuery(qryThisYear, null);
+						
+		int dayNoIndex,
+			dayIndex,
+			monthIndex,
+			yearIndex,
+			timeHourIndex,
+			timeMinutesIndex,
+			timezoneIndex,
+			durationMinutesIndex,
+			durationSecondsIndex,
+			typeIndex = 0;
+
+		dayNoIndex 			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DAY_NO);
+		dayIndex   			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DAY);
+		monthIndex 			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_MONTH);
+		yearIndex  			 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_YEAR);
+		timeHourIndex 		 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIME_HOUR);
+		timeMinutesIndex 	 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIME_MINS);
+		timezoneIndex 		 = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TIMEZONE);
+		durationMinutesIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_MINS);
+		durationSecondsIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_SECS);
+		typeIndex            = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TYPE);
+						
+		while(cursor.moveToNext()) {
+							
+			session = new Session();
+						
+			session.setDayNo(cursor.getInt(dayNoIndex));
+			session.setDay(parseDay(cursor.getString(dayIndex)) );
+			session.setMonth(cursor.getString(monthIndex));
+			session.setYear(cursor.getInt(yearIndex));
+			session.setTimeHour(cursor.getInt(timeHourIndex));
+			session.setTimeMinutes(cursor.getInt(timeMinutesIndex));
+			session.setDayPeriod(cursor.getString(timezoneIndex));
+			session.setDurationMinutes(cursor.getInt(durationMinutesIndex));
+			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
+								
+			if(!cursor.getString(typeIndex).isEmpty()) {
+				session.setType(cursor.getString(typeIndex));
+			}
+			else {
+				session.setType("Undefined");
+			}
+											
+			sessions.add(session);							
+		}
+						
+		// reverse the results (this is a substitute solution to the ORDER BY clause)
+		Collections.reverse(sessions);
+						
+		cursor.close();
+				
+		// added code			
+		if(sessions.isEmpty()) {
+			HashMap<String, String> emptyMsg = new HashMap<String, String>();
+			String msg = "None Created";
+			emptyMsg.put(MainMenuListView.SESSION_NO, "#");
+			emptyMsg.put(MainMenuListView.SESSION, msg);
+			
+			latestSessions.add(emptyMsg);			
+			
+			Log.e("Visus", "Sessions is empty");
+		}
+		else {
+			Log.e("Visus", "Sessions is not empty");
+			
+			int noItems = 0;
+			final int MAX_ITEMS = 5;
+			String durationSeconds = null;
+			String timeMinutes = null;
+			
+			// get the first session
+			setFirstSession(sessions.get(0) );
+			
+			int id = 0;
+			
+			// output the first five results
+			for(Session session : sessions) {
+								
+				if(session.getDurationSeconds() < 10) {
+					durationSeconds = "0" + String.valueOf(session.getDurationSeconds() );
+				}
+				else {
+					durationSeconds = String.valueOf(session.getDurationSeconds() );
+				}
+								
+				if(session.getTimeMinutes() < 10) {
+					timeMinutes = "0" + String.valueOf(session.getTimeMinutes() );
+				}
+				else {
+					timeMinutes = String.valueOf(session.getTimeMinutes() );
+				}
+												
+				if(noItems != MAX_ITEMS) {
+						HashMap<String, String> map = new HashMap<String, String>();
+						id++;
+						
+						/**
+						 * Format: type, duration, HH:mm
+						 * 						 
+						 */		
+						map.put(MainMenuListView.SESSION_NO, session.getDurationMinutes() + ":" + 
+	 							 durationSeconds );
+
+						map.put(MainMenuListView.SESSION, session.getDay() + " " +
+													  	  session.getDayNo() + " " +  
+													  	  session.getMonth() + ", " +
+													  	  session.getYear() + ", " +
+													  	  session.getType()
+								);
+												
+						latestSessions.add(map);						
+						noItems++;
+				}
+				else {
+					break;
+				}
+			}
+		}
+		
+		return latestSessions;
 	}
 	
 	/**
@@ -496,7 +679,6 @@ public class SessionHandler implements IDatabaseTable {
 		Collections.reverse(sessionsToday);
 		
 		cursor.close();
-		db.close();		
 		
 		return sessionsToday;
 	}
@@ -601,7 +783,6 @@ public class SessionHandler implements IDatabaseTable {
 		Collections.reverse(sessionsThisWeek);
 		
 		cursor.close();
-		db.close();
 		
 		return sessionsThisWeek;
 	}
@@ -707,7 +888,6 @@ public class SessionHandler implements IDatabaseTable {
 		Collections.reverse(sessionsThisMonth);
 		
 		cursor.close();
-		db.close();
 		
 		return sessionsThisMonth;
 	}
@@ -798,7 +978,6 @@ public class SessionHandler implements IDatabaseTable {
 		Collections.reverse(sessionsThisYear);
 			
 		cursor.close();
-		db.close();
 		
 		return sessionsThisYear;	
 	}
@@ -832,7 +1011,6 @@ public class SessionHandler implements IDatabaseTable {
 		}
 		
 		cursor.close();
-		db.close();
 		
 		return types;
 	}
@@ -1335,11 +1513,72 @@ public class SessionHandler implements IDatabaseTable {
 			}
 		}
 		
-		db.close();
 		cursor.close();
 		
 		return activities;
 	}	
+	
+	/**
+	 * 
+	 * @param userId
+	 * @return
+	 * @throws SQLiteException
+	 */
+	public ArrayList<HashMap<String, String>> getActivities(User userId) throws SQLiteException {
+		User user = userId;
+		ArrayList<String> activitiesResult = new ArrayList<String>();
+		ArrayList<HashMap<String, String>> activities = new ArrayList<HashMap<String, String>>();
+		
+		Log.e("Visus", "getActivities(User userId): " + user.getUserId() );
+
+		String qryActivities = null;
+
+		qryActivities = "SELECT *" + QRY_SPACING +
+						"FROM" + QRY_SPACING +
+				        	ISessionTable.TABLE_NAME + QRY_SPACING +
+				        "WHERE" + QRY_SPACING +
+				        	ISessionTable.KEY_USER_ID + " = " + user.getUserId();
+		
+		Log.e("Visus", "qryActivities: " + qryActivities);
+		
+		Cursor cursor = db.rawQuery(qryActivities, null);
+		
+		int typeIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TYPE);
+		
+		while(cursor.moveToNext()) {
+			if(!activitiesResult.contains(cursor.getString(typeIndex)) ) {
+				activitiesResult.add(cursor.getString(typeIndex) );
+			}
+		}
+		
+		cursor.close();
+			
+		Log.e("Visus", "ActivitiesFragment: " + userId);
+						
+		if(activitiesResult.isEmpty()) {
+			HashMap<String, String> map = new HashMap<String, String>();
+			map.put(MainMenuListView.SESSION_NO, "#");
+			map.put(MainMenuListView.SESSION, "None Created");	
+			Log.e("Visus", "activitiesResult is empty");
+			
+			activities.add(map);
+		}
+		else {
+			int tmp_id = 1;
+			
+			for(String activity : activitiesResult) {
+				HashMap<String, String> map = new HashMap<String, String>();
+				map.put(MainMenuListView.SESSION_NO, String.valueOf(tmp_id) );
+				map.put(MainMenuListView.SESSION, activity);
+				
+				tmp_id++;
+				
+				activities.add(map);
+			}
+		}
+		
+		return activities;
+	}
 	
 	/**
 	 * 
@@ -1370,7 +1609,6 @@ public class SessionHandler implements IDatabaseTable {
 			}
 		}
 		
-		db.close();
 		cursor.close();
 		
 		noActivities = activities.size();
