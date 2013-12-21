@@ -3,6 +3,9 @@ package com.visus.main;
 // core apis
 import java.util.ArrayList;
 
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 // android apis
 import android.os.Bundle;
 import android.app.ActionBar;
@@ -63,6 +66,11 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		notificationManager.cancel(0);
 		
 		Log.e("Visus", "Session onCreate()");
+		
+//		Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+//		Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+//		r.play();
+		
 		
 		// get user id
 		Bundle bundle = getIntent().getExtras();

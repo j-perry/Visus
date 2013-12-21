@@ -1,6 +1,7 @@
 package com.visus.main;
 
 // core apis
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -8,6 +9,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 // android apis
 import android.os.*;
 import android.annotation.SuppressLint;
@@ -1092,7 +1099,39 @@ public class NewSession extends Activity {
 			 */
 		    public void onFinish() {
 		        timer.setText("00:00");
-		        displayNotification();
+		        
+		        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+		        		        
+		        try {
+		        	MediaPlayer mediaPlayer = new MediaPlayer();
+		        	mediaPlayer.setDataSource(getApplicationContext(), notification);
+		        	mediaPlayer.setAudioStreamType(AudioManager.STREAM_NOTIFICATION);
+		            mediaPlayer.prepare();
+		            
+		            mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
+		            	
+		            	@Override
+		            	public void onCompletion(MediaPlayer mp) {
+		            		mp.release();
+		            		finishSession();
+		            	}
+		            			        	
+		            });
+		            			        
+		            mediaPlayer.start();	  
+		        }
+		        catch (IllegalArgumentException e) {
+		        	e.printStackTrace();
+		        } 
+		        catch (SecurityException e) {
+		        	e.printStackTrace();
+		        } 
+		        catch (IllegalStateException e) {
+		        	e.printStackTrace();
+		        } 
+		        catch (IOException e) {
+		        	e.printStackTrace();
+		        }       
 		    }
 		};
 		
