@@ -4,13 +4,15 @@ package com.visus.main;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 // android apis
 import android.os.Bundle;
 import android.app.*;
 import android.app.ActionBar.OnNavigationListener;
 import android.app.ActionBar.Tab;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteException;
 import android.support.v4.app.Fragment;
@@ -25,7 +27,6 @@ import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 
 // core program packages
 import com.visus.R;
@@ -59,7 +60,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+				
 		Log.e("Visus", "MainActivity - onCreate()");
 						
 		dbUser = new UserHandler(this);
@@ -165,6 +166,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 				}			
 			});			
 		}
+		
+//		Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+//		Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+//		r.play();
 	}
 	
 	@Override
