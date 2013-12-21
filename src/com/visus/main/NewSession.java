@@ -287,10 +287,6 @@ public class NewSession extends Activity {
 		// session duration setter layout 
 		LinearLayout sessionDuration = (LinearLayout) findViewById(R.id.set_session_duration);
 		
-		// find EditText fields for value retrieval
-//		EditText etMins = (EditText) findViewById(R.id.timer_set_minutes);
-//		EditText etSecs = (EditText) findViewById(R.id.timer_set_seconds);
-		
 		TextView timer = (TextView) findViewById(R.id.timer);
 		
 		// used to store user input for setting session duration 
