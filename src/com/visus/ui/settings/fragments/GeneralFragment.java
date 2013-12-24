@@ -5,6 +5,11 @@ import com.visus.database.UserHandler;
 import com.visus.entities.User;
 import com.visus.main.MainActivity;
 import com.visus.main.Settings;
+<<<<<<< HEAD
+=======
+import com.visus.main.SettingsActivities;
+import com.visus.ui.MainMenuAdapter;
+>>>>>>> final_refinements_v1
 
 import android.R;
 import android.app.FragmentManager;
@@ -34,12 +39,7 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 	private SessionHandler dbSession;
 	private UserHandler dbUser;
 	private User user;
-	
-	// 'personal'
-	private EditText personalName;
-	private Spinner  personalGender;
-	private EditText personalAge;
-		
+			
 	// 'sessions'
 	private EditText historyTargetDay;
 	private EditText historyTargetMonth;
@@ -77,11 +77,6 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 			dbUser.close();
 		}
 				
-		// populate the setting components
-//		personalName = (EditText) rootView.findViewById(com.visus.R.id.settings_personal_name);
-//		personalGender = (Spinner) rootView.findViewById(com.visus.R.id.settings_personal_gender);
-//		personalAge = (EditText) rootView.findViewById(com.visus.R.id.settings_personal_age);
-				
 		historyTargetDay = (EditText) rootView.findViewById(com.visus.R.id.settings_history_target_day);
 		historyTargetMonth = (EditText) rootView.findViewById(com.visus.R.id.settings_history_target_month);
 				
@@ -97,9 +92,7 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		resetAll.setOnClickListener(this);
 		save.setOnClickListener(this);
 				
-		/*
-		* determine whether to display either of the reset buttons, based on existing Sessions data
-		*/
+		// determine whether to display either of the reset buttons, based on existing Sessions data
 		int itemsMonth = 0;
 		int itemsYear = 0;
 		int itemsAll = 0;
@@ -186,6 +179,32 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 			historyTargetMonth.setText("");
 		}
 		
+<<<<<<< HEAD
+=======
+		
+		/*
+		 * Activities listview
+		 */
+//		ListView lvActivities = (ListView) rootView.findViewById(com.visus.R.id.settings_activities_adapter);
+		ArrayList<HashMap<String, String>> activities = new ArrayList<HashMap<String, String>>();
+		
+		try {
+			dbSession.open();
+			user.setUserId(this.userId);
+			activities = dbSession.getActivities(user);
+		}
+		catch(SQLiteException e) {
+			Log.e("Visus", "SQL Error", e);
+		}
+		finally {
+			dbSession.close();
+		}
+		
+		MainMenuAdapter adapter = new MainMenuAdapter(getActivity(), activities);
+//		lvActivities.setScrollContainer(false);
+//		lvActivities.setAdapter(adapter);
+		
+>>>>>>> final_refinements_v1
 		return rootView;
 	}
 	

@@ -89,6 +89,22 @@
         </activity>
         
         
+        <!-- 'Setting Activities' -->
+        <activity
+            android:name="com.visus.main.SettingsActivities"
+            android:label="@string/activity_settings_activities"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" 
+            android:parentActivityName="com.visus.ui.settings.fragments.GeneralFragment"
+            >
+            
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.visus.ui.settings.fragments.GeneralFragment"
+                />
+        </activity>
+        
+        
         <!--///////////////////////////
         
         		End of Activities        

@@ -166,10 +166,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 				}			
 			});			
 		}
-		
-//		Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-//		Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
-//		r.play();
 	}
 	
 	@Override
@@ -576,8 +572,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 													  latestSessions, 
 													  firstSession);
 					return latestActivityFragment;
-					
-//					return new LatestActivityFragment();
 				case 1:
 					// display session activity types (no. of for each type)
 					ActivitiesFragment activitiesFragment = new ActivitiesFragment();

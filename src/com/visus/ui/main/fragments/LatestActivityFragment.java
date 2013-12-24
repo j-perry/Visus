@@ -148,12 +148,15 @@ public class LatestActivityFragment extends Fragment {
 		ArrayList<HashMap<String, String>> sessions = new ArrayList<HashMap<String, String>>();
 		int index = 0;
 		
-		for(HashMap<String, String> item : latestSessions) {
-			if(index != noItems) {
-				sessions.add(item);
-				index++;
+		if(!latestSessions.isEmpty()) {
+			for(HashMap<String, String> item : latestSessions) {
+				if(index != noItems) {
+					sessions.add(item);
+					index++;
+				}
 			}
 		}
+		
 		
 		/*************************************************
 		 * 		Display the user's latest sessions

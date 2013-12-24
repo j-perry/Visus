@@ -65,12 +65,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 		notificationManager.cancel(0);
 		
-		Log.e("Visus", "Session onCreate()");
-		
-//		Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-//		Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
-//		r.play();
-		
+		Log.e("Visus", "Session onCreate()");		
 		
 		// get user id
 		Bundle bundle = getIntent().getExtras();
@@ -99,7 +94,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		Button ok = new Button(context);		
 		
 		// determine whether any sessions exist, if not display an AlertDialog asking the user if they wish
-		// to create a new session. Improves UX.
+		// to create a new session. Improves the user experience.
 		if(allSessions.isEmpty()) {
 			dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 			dialog.setCanceledOnTouchOutside(false);
@@ -154,29 +149,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 				ab.setSelectedNavigationItem(position);
 			}				
 		});
-			
-		// create our tabs
-		// TODO
-//		initTabs(ab);	
-	}
-	
-	/**
-	 * TODO
-	 * Initialises new tabs
-	 * @param ab
-	 */
-//	private void initTabs(ActionBar ab) {
-//		String tabToday = "TODAY";
-//		String tabThisWeek = "THIS WEEK";
-//		String tabThisMonth = "THIS MONTH";
-//		String tabThisYear = "THIS YEAR";
-//		
-//		ab.addTab(ab.newTab().setText(tabToday).setTabListener(this));
-//        ab.addTab(ab.newTab().setText(tabThisWeek).setTabListener(this));
-//        ab.addTab(ab.newTab().setText(tabThisMonth).setTabListener(this));
-//        ab.addTab(ab.newTab().setText(tabThisYear).setTabListener(this));
-//	}
-			
+	}			
 	
 	/**
 	 * Returns to the root menu

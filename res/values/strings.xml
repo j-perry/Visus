@@ -10,6 +10,7 @@
     <string name="activity_sign_up">Sign Up</string>
     <string name="activity_sessions">Sessions</string>
     <string name="activity_settings">Settings</string>
+    <string name="activity_settings_activities">Activities</string>
     
     <!-- Main Activity Menu -->
     <string name="menu_about">About Visus</string>
