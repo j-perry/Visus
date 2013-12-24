@@ -92,9 +92,7 @@ public class NewSession extends Activity {
 	
 	private CountDownTimer sessionTimer;
 	private NotificationCompat.Builder notBuilder;
-	
-//	private AutoCompleteTextView sessionTypes;
-	
+		
 	private Context context = this;
 	private AlertDialog alertDialog;
 	
@@ -327,7 +325,7 @@ public class NewSession extends Activity {
 				
 		// assign session duration to global variable
 		this.durationMinutes = iMins;
-		this.durationSeconds = iSecs + 1; // TODO
+		this.durationSeconds = iSecs; // + 1; // TODO
 				
 		// get the session date
 		int dayNo = Integer.parseInt(new SimpleDateFormat(strFormatDayCalNo).format(new Date()) );
@@ -403,11 +401,7 @@ public class NewSession extends Activity {
 		
 		int remainingMins = getTimeRemainingMinutes();
 		int remainingSecs = getTimeRemainingSeconds();
-		
-		// TODO
-		// add one more second - need to locate bug
-//		remainingSecs += 1;
-				
+						
 		if((remainingMins == 0) && (remainingSecs == 0)) {
 			Log.e("Visus", "Empty time remaining fields");
 		}
@@ -416,22 +410,9 @@ public class NewSession extends Activity {
 			Log.e("Visus", "Time left: " + remainingMins + ":" + remainingSecs);
 		}
 		
-		sessionMins = durationMinutes - remainingMins;
+		sessionMins = (durationMinutes - remainingMins) - 1;
 		
-		// TODO
-		// 30 secs is less than 50 secs
-		if(durationSeconds < remainingSecs) {
-			// store whatever's left over in seconds
-			int tempSecs = durationSeconds - remainingSecs;
-			remainingSecs = 0;
-			
-			// reduce no. of minutes
-			remainingMins -= -1;
-			sessionSecs = (60 - tempSecs);			
-		}
-		else {
-			sessionSecs = durationSeconds - remainingSecs;
-		}
+		sessionSecs = (60 - remainingSecs);
 						
 		session.setUserId(activeUserId);
 		session.setDurationMinutes(sessionMins);

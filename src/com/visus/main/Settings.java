@@ -129,6 +129,16 @@ public class Settings extends FragmentActivity implements ActionBar.TabListener 
 		// TODO Auto-generated method stub
 		
 	}
+		
+	/**
+	 * Displays user activities in the settings menu
+	 * @param view
+	 */
+	public void viewActivities(View view) {
+		Intent intent = new Intent(this, SettingsActivities.class);
+		intent.putExtra("ActiveUserId", activeUserId);
+		startActivity(intent);
+	}
 	
 	public static final class SettingsPagerAdapter extends FragmentPagerAdapter {
 

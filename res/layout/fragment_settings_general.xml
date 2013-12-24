@@ -20,8 +20,8 @@
 		        android:layout_height="wrap_content"
 		        android:layout_width="match_parent"
 		        android:orientation="vertical"
-		        >
-	        	
+		        >	
+
 			    <!-- sessions -->
 			    <LinearLayout
 			        android:id="@+id/linear_layout_settings_history"
@@ -72,7 +72,7 @@
 				            android:layout_height="wrap_content"
 				            android:layout_width="0dp"
 				            android:hint="@string/settings_general_sessions_target_day"
-				            android:textColorHint="@color/dark_grey"
+				            android:textColorHint="@color/light_grey"
 				            android:textSize="18sp"
 				            android:textColor="@color/dark_grey"
 				            android:singleLine="true"
@@ -108,7 +108,7 @@
 				            android:layout_height="wrap_content"
 				            android:layout_width="0dp"
 				            android:hint="@string/settings_general_sessions_target_month"
-				            android:textColorHint="@color/dark_grey"
+				            android:textColorHint="@color/light_grey"
 				            android:textSize="18sp"
 				            android:textColor="@color/dark_grey"
 				            android:singleLine="true"
@@ -180,12 +180,14 @@
 			        >
 			        
 			        <!-- header -->
-			        <TextView 
+			        <Button
 			            android:id="@+id/settings_activities_header"
+			            android:onClick="viewActivities"
 			            android:background="@color/white"
 			            android:layout_height="wrap_content"
 			            android:layout_width="match_parent"
 			            android:padding="25dp"
+			            android:gravity="left"
 			            android:text="@string/settings_general_activities_header"
 			            android:textSize="24sp"
 			            android:textColor="@color/dark_grey"
@@ -210,7 +212,7 @@
 			            />
 			            
 			        </LinearLayout>
-			        
+			        		        
 			    </LinearLayout><!-- end of activities -->
 
 				<!-- save (all) -->
