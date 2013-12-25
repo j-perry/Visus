@@ -247,7 +247,6 @@ public class SessionHandler implements IDatabaseTable {
 		
 		
 		// assign overview
-//		TODO	session.setOverviewHours(noHoursTotal);
 		session.setOverviewNoSessions(noSessions);
 		session.setOverviewNoActivities(noActivities);
 		
@@ -325,11 +324,8 @@ public class SessionHandler implements IDatabaseTable {
 				session.setDurationMinutes(0);
 			
 			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
-							
-			// TODO
 			session.setType(cursor.getString(typeIndex));
-			
-			
+						
 			// add the session
 			sessionsAll.add(session);
 		}
