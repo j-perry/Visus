@@ -423,9 +423,10 @@ public class SessionHandler implements IDatabaseTable {
 		while(cursor.moveToNext()) {
 					
 			session = new Session();
+			SessionFormatter sf = new SessionFormatter();
 				
 			session.setDayNo(cursor.getInt(dayNoIndex));
-			session.setDay(parseDay(cursor.getString(dayIndex)) );
+			session.setDay(sf.parseDay(cursor.getString(dayIndex)) );
 			session.setMonth(cursor.getString(monthIndex));
 			session.setYear(cursor.getInt(yearIndex));
 			session.setTimeHour(cursor.getInt(timeHourIndex));
@@ -474,7 +475,8 @@ public class SessionHandler implements IDatabaseTable {
 		Log.e("Visus", "Year ending: " + dateEnding);
 				
 		ArrayList<Session> sessions = new ArrayList<Session>();
-					
+		SessionFormatter sf = new SessionFormatter();
+		
 		String qryThisYear = "SELECT *" + QRY_SPACING +
 						     "FROM" + QRY_SPACING + ISessionTable.TABLE_NAME + QRY_SPACING +
 						     "WHERE" + QRY_SPACING + 
@@ -518,7 +520,7 @@ public class SessionHandler implements IDatabaseTable {
 		while(cursor.moveToNext()) {
 			session = new Session();
 			session.setDayNo(cursor.getInt(dayNoIndex));
-			session.setDay(parseDay(cursor.getString(dayIndex)) );
+			session.setDay(sf.parseDay(cursor.getString(dayIndex)) );
 			session.setMonth(cursor.getString(monthIndex));
 			session.setYear(cursor.getInt(yearIndex));
 			session.setTimeHour(cursor.getInt(timeHourIndex));
@@ -753,11 +755,12 @@ public class SessionHandler implements IDatabaseTable {
 		
 		while(cursor.moveToNext()) {
 			session = new Session();
+			SessionFormatter sf = new SessionFormatter();
 	
 			session.setDayNo(cursor.getInt(dayNoIndex));
 			
-			// format the day			
-			session.setDay(parseDay(cursor.getString(dayIndex)) );
+			// format the day	
+			session.setDay(sf.parseDay(cursor.getString(dayIndex)) );
 			session.setMonth(cursor.getString(monthIndex));
 			session.setYear(cursor.getInt(yearIndex));
 			session.setTimeHour(cursor.getInt(timeHourIndex));
@@ -950,9 +953,10 @@ public class SessionHandler implements IDatabaseTable {
 		
 		while(cursor.moveToNext()) {
 			session = new Session();
+			SessionFormatter sf = new SessionFormatter();
 		
 			session.setDayNo(cursor.getInt(dayNoIndex));
-			session.setDay(parseDay(cursor.getString(dayIndex)) );
+			session.setDay(sf.parseDay(cursor.getString(dayIndex)) );
 			session.setMonth(cursor.getString(monthIndex));
 			session.setYear(cursor.getInt(yearIndex));
 			session.setTimeHour(cursor.getInt(timeHourIndex));
@@ -1607,31 +1611,43 @@ public class SessionHandler implements IDatabaseTable {
 		
 		return noActivities;
 	}
-		
+	
 	/**
-	 * Converts the day set from EEE to EEEE
-	 * @param day
-	 * @return
+	 * Inner class used to format sessions collected from the internal DB
+	 * @author Jonathan Perry
+	 *
 	 */
-	private String parseDay(String day) {
+	private static final class SessionFormatter {
 		
-		Log.e("Visus", "parseDay() " + day);
+		public SessionFormatter() {
+			super();
+		}
 		
-		if(day.contains("Mon"))
-			day = "Monday";
-		if(day.contains("Tue"))
-			day = "Tuesday";
-		else if(day.contains("Wed"))
-			day = "Wednesday";
-		else if(day.contains("Thur"))
-			day = "Thursday";
-		else if(day.contains("Fri"))
-			day = "Friday";
-		else if(day.contains("Sat"))
-			day = "Saturday";
-		else if(day.contains("Sun"))
-			day = "Sunday";
+		/**
+		 * Converts the day set from EEE to EEEE
+		 * @param day
+		 * @return
+		 */
+		public String parseDay(String day) {
+			
+			Log.e("Visus", "parseDay() " + day);
+			
+			if(day.contains("Mon"))
+				day = "Monday";
+			if(day.contains("Tue"))
+				day = "Tuesday";
+			else if(day.contains("Wed"))
+				day = "Wednesday";
+			else if(day.contains("Thur"))
+				day = "Thursday";
+			else if(day.contains("Fri"))
+				day = "Friday";
+			else if(day.contains("Sat"))
+				day = "Saturday";
+			else if(day.contains("Sun"))
+				day = "Sunday";
 
-		return day;
+			return day;
+		}
 	}
 }
