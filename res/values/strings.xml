@@ -125,7 +125,7 @@
     		<!-- 'Sessions' -->
 	    	<string name="settings_general_sessions_header">Sessions</string>
 	    	<string name="settings_general_sessions_daily_target_header">Daily Target (mins)</string>
-	    	<string name="settings_general_sessions_monthly_target_header">Monthly Target (mins)</string>
+	    	<string name="settings_general_sessions_monthly_target_header">Monthly Target (hours)</string>
 	    	
 	    	<!-- 'Activities' -->
 	    	<string name="settings_general_activities_header">Activities</string>

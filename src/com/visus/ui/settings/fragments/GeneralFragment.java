@@ -1,15 +1,15 @@
 package com.visus.ui.settings.fragments;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import com.visus.database.SessionHandler;
 import com.visus.database.UserHandler;
 import com.visus.entities.User;
 import com.visus.main.MainActivity;
 import com.visus.main.Settings;
-<<<<<<< HEAD
-=======
 import com.visus.main.SettingsActivities;
 import com.visus.ui.MainMenuAdapter;
->>>>>>> final_refinements_v1
 
 import android.R;
 import android.app.FragmentManager;
@@ -179,32 +179,28 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 			historyTargetMonth.setText("");
 		}
 		
-<<<<<<< HEAD
-=======
-		
 		/*
 		 * Activities listview
 		 */
 //		ListView lvActivities = (ListView) rootView.findViewById(com.visus.R.id.settings_activities_adapter);
 		ArrayList<HashMap<String, String>> activities = new ArrayList<HashMap<String, String>>();
 		
-		try {
-			dbSession.open();
-			user.setUserId(this.userId);
-			activities = dbSession.getActivities(user);
-		}
-		catch(SQLiteException e) {
-			Log.e("Visus", "SQL Error", e);
-		}
-		finally {
-			dbSession.close();
-		}
+//		try {
+//			dbSession.open();
+//			user.setUserId(this.userId);
+//			activities = dbSession.getActivities(user);
+//		}
+//		catch(SQLiteException e) {
+//			Log.e("Visus", "SQL Error", e);
+//		}
+//		finally {
+//			dbSession.close();
+//		}
 		
 		MainMenuAdapter adapter = new MainMenuAdapter(getActivity(), activities);
 //		lvActivities.setScrollContainer(false);
 //		lvActivities.setAdapter(adapter);
 		
->>>>>>> final_refinements_v1
 		return rootView;
 	}
 	

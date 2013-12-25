@@ -148,14 +148,14 @@ public class LatestActivityFragment extends Fragment {
 		ArrayList<HashMap<String, String>> sessions = new ArrayList<HashMap<String, String>>();
 		int index = 0;
 		
-		if(!latestSessions.isEmpty()) {
+//		if(!latestSessions.isEmpty()) {
 			for(HashMap<String, String> item : latestSessions) {
 				if(index != noItems) {
 					sessions.add(item);
 					index++;
 				}
 			}
-		}
+//		}
 		
 		
 		/*************************************************
@@ -264,6 +264,11 @@ public class LatestActivityFragment extends Fragment {
 		// if daily target is empty
 		if(monthlyTarget != 0.0f) {
 			Log.e("Visus", "monthlyTarget is not empty");
+			
+			final int TARGET_MINUTES_FACTOR = 60;
+			float tmpMonthlyTarget = monthlyTarget;
+			monthlyTarget = (tmpMonthlyTarget * TARGET_MINUTES_FACTOR);
+			Log.e("Visus", "monthlyTarget: " + monthlyTarget);
 					
 			if(accumulatedDurationMonth >= monthlyTarget) {
 				targetMet = true;
