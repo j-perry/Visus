@@ -23,6 +23,103 @@ public final class R {
         public static final int settings_list=0x7f060004;
     }
     public static final class attr {
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>reveal</code></td><td>0</td><td></td></tr>
+<tr><td><code>dismiss</code></td><td>1</td><td></td></tr>
+<tr><td><code>choice</code></td><td>2</td><td></td></tr>
+</table>
+         */
+        public static final int swipeActionLeft=0x7f010008;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>reveal</code></td><td>0</td><td></td></tr>
+<tr><td><code>dismiss</code></td><td>1</td><td></td></tr>
+<tr><td><code>choice</code></td><td>2</td><td></td></tr>
+</table>
+         */
+        public static final int swipeActionRight=0x7f010009;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int swipeAnimationTime=0x7f010001;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int swipeBackView=0x7f010006;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int swipeCloseAllItemsWhenMoveList=0x7f010004;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int swipeDrawableChecked=0x7f01000a;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int swipeDrawableUnchecked=0x7f01000b;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int swipeFrontView=0x7f010005;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>0</td><td></td></tr>
+<tr><td><code>both</code></td><td>1</td><td></td></tr>
+<tr><td><code>right</code></td><td>2</td><td></td></tr>
+<tr><td><code>left</code></td><td>3</td><td></td></tr>
+</table>
+         */
+        public static final int swipeMode=0x7f010007;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int swipeOffsetLeft=0x7f010002;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int swipeOffsetRight=0x7f010003;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int swipeOpenOnLongPress=0x7f010000;
     }
     public static final class color {
         public static final int black=0x7f040009;
@@ -85,88 +182,98 @@ public final class R {
         public static final int test_bg=0x7f02001b;
     }
     public static final class id {
-        public static final int TextView01=0x7f09004c;
-        public static final int TextView02=0x7f09004d;
-        public static final int actionBarList=0x7f090000;
-        public static final int activities_overview=0x7f090041;
-        public static final int activity=0x7f090046;
-        public static final int age=0x7f09000e;
-        public static final int alert_dialog_new_session_btn_cancel=0x7f090012;
-        public static final int alert_dialog_new_session_btn_ok=0x7f090013;
-        public static final int alert_dialog_new_session_header=0x7f090010;
-        public static final int alert_dialog_previous_sessions_btn_cancel=0x7f090016;
-        public static final int alert_dialog_previous_sessions_btn_ok=0x7f090017;
-        public static final int alert_dialog_previous_sessions_heading=0x7f090014;
-        public static final int alert_dialog_previous_sessions_txt=0x7f090015;
-        public static final int alert_dialog_user_targets_btn_cancel=0x7f09001a;
-        public static final int alert_dialog_user_targets_btn_ok=0x7f09001b;
-        public static final int alert_dialog_user_targets_header=0x7f090018;
-        public static final int alert_dialog_user_targets_txt=0x7f090019;
-        public static final int date=0x7f090044;
-        public static final int dialog_new_session_auto_complete_type=0x7f090011;
-        public static final int drawer=0x7f09004b;
-        public static final int entry=0x7f090043;
-        public static final int entry_no=0x7f090047;
-        public static final int first_name=0x7f09000c;
-        public static final int fragment_main_menu_layout_target_met_daily=0x7f090021;
-        public static final int fragment_main_menu_layout_target_met_monthly=0x7f090023;
-        public static final int gender=0x7f09000d;
-        public static final int header=0x7f09003e;
-        public static final int header_events=0x7f090042;
-        public static final int header_overview=0x7f090048;
-        public static final int hmmm=0x7f090031;
-        public static final int hours_overview=0x7f090040;
-        public static final int linear_layout_settings_activities=0x7f090039;
-        public static final int linear_layout_settings_history=0x7f090032;
-        public static final int list_latest_activity=0x7f090001;
-        public static final int listview_sessions_this_month=0x7f090027;
-        public static final int listview_sessions_this_week=0x7f090028;
-        public static final int listview_sessions_this_year=0x7f090029;
-        public static final int listview_sessions_today=0x7f09002a;
-        public static final int main_activity_activity_types=0x7f09001d;
-        public static final int main_header=0x7f09001c;
-        public static final int main_menu_activities_date_account_created=0x7f09001f;
-        public static final int main_menu_latest_activities_daily_target_met_message=0x7f090022;
-        public static final int main_menu_latest_activities_monthly_target_met_message=0x7f090024;
-        public static final int main_menu_latest_activities_no_sessions_date=0x7f090026;
-        public static final int main_menu_latest_activities_no_sessions_total=0x7f090025;
-        public static final int main_menu_no_activities=0x7f09001e;
-        public static final int main_menu_pager=0x7f090002;
-        public static final int menu_about=0x7f090051;
-        public static final int menu_sessions=0x7f09004f;
-        public static final int menu_settings=0x7f090050;
-        public static final int new_session_menu=0x7f09004e;
-        public static final int overview=0x7f09003d;
-        public static final int overview_sessions_adapter=0x7f090020;
-        public static final int period=0x7f09003c;
-        public static final int register=0x7f09000f;
-        public static final int session_activity=0x7f09004a;
-        public static final int session_id=0x7f090049;
-        public static final int session_type=0x7f090006;
-        public static final int sessions_overview=0x7f09003f;
-        public static final int sessions_pager=0x7f09000a;
-        public static final int set_session_duration=0x7f090003;
-        public static final int settings_about_blurb=0x7f09002c;
-        public static final int settings_about_header=0x7f09002b;
-        public static final int settings_activities_header=0x7f09003a;
-        public static final int settings_credit_blurb=0x7f090030;
-        public static final int settings_credit_header=0x7f09002f;
-        public static final int settings_history_header=0x7f090033;
-        public static final int settings_history_reset_all=0x7f090038;
-        public static final int settings_history_reset_month=0x7f090036;
-        public static final int settings_history_reset_year=0x7f090037;
-        public static final int settings_history_target_day=0x7f090034;
-        public static final int settings_history_target_month=0x7f090035;
-        public static final int settings_pager=0x7f09000b;
-        public static final int settings_save_all=0x7f09003b;
-        public static final int settings_what_blurb=0x7f09002e;
-        public static final int settings_what_header=0x7f09002d;
-        public static final int time=0x7f090045;
-        public static final int timer=0x7f090007;
-        public static final int timer_btn=0x7f090008;
-        public static final int timer_set_minutes=0x7f090004;
-        public static final int timer_set_seconds=0x7f090005;
-        public static final int timer_stop_btn=0x7f090009;
+        public static final int TextView01=0x7f080056;
+        public static final int TextView02=0x7f080057;
+        public static final int actionBarList=0x7f080007;
+        public static final int activities_overview=0x7f080048;
+        public static final int activity=0x7f08004d;
+        public static final int age=0x7f080015;
+        public static final int alert_dialog_new_session_btn_cancel=0x7f080019;
+        public static final int alert_dialog_new_session_btn_ok=0x7f08001a;
+        public static final int alert_dialog_new_session_header=0x7f080017;
+        public static final int alert_dialog_previous_sessions_btn_cancel=0x7f08001d;
+        public static final int alert_dialog_previous_sessions_btn_ok=0x7f08001e;
+        public static final int alert_dialog_previous_sessions_heading=0x7f08001b;
+        public static final int alert_dialog_previous_sessions_txt=0x7f08001c;
+        public static final int alert_dialog_user_targets_btn_cancel=0x7f080021;
+        public static final int alert_dialog_user_targets_btn_ok=0x7f080022;
+        public static final int alert_dialog_user_targets_header=0x7f08001f;
+        public static final int alert_dialog_user_targets_txt=0x7f080020;
+        public static final int back=0x7f080055;
+        public static final int both=0x7f080001;
+        public static final int choice=0x7f080006;
+        public static final int date=0x7f08004b;
+        public static final int dialog_new_session_auto_complete_type=0x7f080018;
+        public static final int dismiss=0x7f080005;
+        public static final int drawer=0x7f080052;
+        public static final int entry=0x7f08004a;
+        public static final int entry_no=0x7f08004e;
+        public static final int example_lv_list=0x7f080053;
+        public static final int first_name=0x7f080013;
+        public static final int fragment_main_menu_layout_target_met_daily=0x7f080028;
+        public static final int fragment_main_menu_layout_target_met_monthly=0x7f08002a;
+        public static final int front=0x7f080054;
+        public static final int gender=0x7f080014;
+        public static final int header=0x7f080045;
+        public static final int header_events=0x7f080049;
+        public static final int header_overview=0x7f08004f;
+        public static final int hmmm=0x7f080038;
+        public static final int hours_overview=0x7f080047;
+        public static final int left=0x7f080003;
+        public static final int linear_layout_settings_activities=0x7f080040;
+        public static final int linear_layout_settings_history=0x7f080039;
+        public static final int list_latest_activity=0x7f080008;
+        public static final int listview_sessions_this_month=0x7f08002e;
+        public static final int listview_sessions_this_week=0x7f08002f;
+        public static final int listview_sessions_this_year=0x7f080030;
+        public static final int listview_sessions_today=0x7f080031;
+        public static final int main_activity_activity_types=0x7f080024;
+        public static final int main_header=0x7f080023;
+        public static final int main_menu_activities_date_account_created=0x7f080026;
+        public static final int main_menu_latest_activities_daily_target_met_message=0x7f080029;
+        public static final int main_menu_latest_activities_monthly_target_met_message=0x7f08002b;
+        public static final int main_menu_latest_activities_no_sessions_date=0x7f08002d;
+        public static final int main_menu_latest_activities_no_sessions_total=0x7f08002c;
+        public static final int main_menu_no_activities=0x7f080025;
+        public static final int main_menu_pager=0x7f080009;
+        public static final int menu_about=0x7f08005b;
+        public static final int menu_sessions=0x7f080059;
+        public static final int menu_settings=0x7f08005a;
+        public static final int new_session_menu=0x7f080058;
+        public static final int none=0x7f080000;
+        public static final int overview=0x7f080044;
+        public static final int overview_sessions_adapter=0x7f080027;
+        public static final int period=0x7f080043;
+        public static final int register=0x7f080016;
+        public static final int reveal=0x7f080004;
+        public static final int right=0x7f080002;
+        public static final int session_activity=0x7f080051;
+        public static final int session_id=0x7f080050;
+        public static final int session_type=0x7f08000d;
+        public static final int sessions_overview=0x7f080046;
+        public static final int sessions_pager=0x7f080011;
+        public static final int set_session_duration=0x7f08000a;
+        public static final int settings_about_blurb=0x7f080033;
+        public static final int settings_about_header=0x7f080032;
+        public static final int settings_activities_header=0x7f080041;
+        public static final int settings_credit_blurb=0x7f080037;
+        public static final int settings_credit_header=0x7f080036;
+        public static final int settings_history_header=0x7f08003a;
+        public static final int settings_history_reset_all=0x7f08003f;
+        public static final int settings_history_reset_month=0x7f08003d;
+        public static final int settings_history_reset_year=0x7f08003e;
+        public static final int settings_history_target_day=0x7f08003b;
+        public static final int settings_history_target_month=0x7f08003c;
+        public static final int settings_pager=0x7f080012;
+        public static final int settings_save_all=0x7f080042;
+        public static final int settings_what_blurb=0x7f080035;
+        public static final int settings_what_header=0x7f080034;
+        public static final int time=0x7f08004c;
+        public static final int timer=0x7f08000e;
+        public static final int timer_btn=0x7f08000f;
+        public static final int timer_set_minutes=0x7f08000b;
+        public static final int timer_set_seconds=0x7f08000c;
+        public static final int timer_stop_btn=0x7f080010;
     }
     public static final class layout {
         public static final int action_bar_list=0x7f030000;
@@ -204,11 +311,11 @@ public final class R {
         public static final int sign_up_spinner_gender_list_layout=0x7f030020;
     }
     public static final class menu {
-        public static final int activity_main=0x7f080000;
-        public static final int activity_new_user=0x7f080001;
-        public static final int activity_new_view=0x7f080002;
-        public static final int activity_prev_sessions=0x7f080003;
-        public static final int activity_view_settings=0x7f080004;
+        public static final int activity_main=0x7f090000;
+        public static final int activity_new_user=0x7f090001;
+        public static final int activity_new_view=0x7f090002;
+        public static final int activity_prev_sessions=0x7f090003;
+        public static final int activity_view_settings=0x7f090004;
     }
     public static final class string {
         public static final int activities=0x7f050015;
@@ -350,4 +457,212 @@ public final class R {
         public static final int TabStyle=0x7f070005;
         public static final int Widget_Holo_ActionBar_TabView=0x7f070006;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a SwipeListView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #SwipeListView_swipeActionLeft com.visus:swipeActionLeft}</code></td><td></td></tr>
+           <tr><td><code>{@link #SwipeListView_swipeActionRight com.visus:swipeActionRight}</code></td><td></td></tr>
+           <tr><td><code>{@link #SwipeListView_swipeAnimationTime com.visus:swipeAnimationTime}</code></td><td></td></tr>
+           <tr><td><code>{@link #SwipeListView_swipeBackView com.visus:swipeBackView}</code></td><td></td></tr>
+           <tr><td><code>{@link #SwipeListView_swipeCloseAllItemsWhenMoveList com.visus:swipeCloseAllItemsWhenMoveList}</code></td><td></td></tr>
+           <tr><td><code>{@link #SwipeListView_swipeDrawableChecked com.visus:swipeDrawableChecked}</code></td><td></td></tr>
+           <tr><td><code>{@link #SwipeListView_swipeDrawableUnchecked com.visus:swipeDrawableUnchecked}</code></td><td></td></tr>
+           <tr><td><code>{@link #SwipeListView_swipeFrontView com.visus:swipeFrontView}</code></td><td></td></tr>
+           <tr><td><code>{@link #SwipeListView_swipeMode com.visus:swipeMode}</code></td><td></td></tr>
+           <tr><td><code>{@link #SwipeListView_swipeOffsetLeft com.visus:swipeOffsetLeft}</code></td><td></td></tr>
+           <tr><td><code>{@link #SwipeListView_swipeOffsetRight com.visus:swipeOffsetRight}</code></td><td></td></tr>
+           <tr><td><code>{@link #SwipeListView_swipeOpenOnLongPress com.visus:swipeOpenOnLongPress}</code></td><td></td></tr>
+           </table>
+           @see #SwipeListView_swipeActionLeft
+           @see #SwipeListView_swipeActionRight
+           @see #SwipeListView_swipeAnimationTime
+           @see #SwipeListView_swipeBackView
+           @see #SwipeListView_swipeCloseAllItemsWhenMoveList
+           @see #SwipeListView_swipeDrawableChecked
+           @see #SwipeListView_swipeDrawableUnchecked
+           @see #SwipeListView_swipeFrontView
+           @see #SwipeListView_swipeMode
+           @see #SwipeListView_swipeOffsetLeft
+           @see #SwipeListView_swipeOffsetRight
+           @see #SwipeListView_swipeOpenOnLongPress
+         */
+        public static final int[] SwipeListView = {
+            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
+            0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007,
+            0x7f010008, 0x7f010009, 0x7f01000a, 0x7f01000b
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.visus.R.attr#swipeActionLeft}
+          attribute's value can be found in the {@link #SwipeListView} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>reveal</code></td><td>0</td><td></td></tr>
+<tr><td><code>dismiss</code></td><td>1</td><td></td></tr>
+<tr><td><code>choice</code></td><td>2</td><td></td></tr>
+</table>
+          @attr name com.visus:swipeActionLeft
+        */
+        public static final int SwipeListView_swipeActionLeft = 8;
+        /**
+          <p>This symbol is the offset where the {@link com.visus.R.attr#swipeActionRight}
+          attribute's value can be found in the {@link #SwipeListView} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>reveal</code></td><td>0</td><td></td></tr>
+<tr><td><code>dismiss</code></td><td>1</td><td></td></tr>
+<tr><td><code>choice</code></td><td>2</td><td></td></tr>
+</table>
+          @attr name com.visus:swipeActionRight
+        */
+        public static final int SwipeListView_swipeActionRight = 9;
+        /**
+          <p>This symbol is the offset where the {@link com.visus.R.attr#swipeAnimationTime}
+          attribute's value can be found in the {@link #SwipeListView} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.visus:swipeAnimationTime
+        */
+        public static final int SwipeListView_swipeAnimationTime = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.visus.R.attr#swipeBackView}
+          attribute's value can be found in the {@link #SwipeListView} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.visus:swipeBackView
+        */
+        public static final int SwipeListView_swipeBackView = 6;
+        /**
+          <p>This symbol is the offset where the {@link com.visus.R.attr#swipeCloseAllItemsWhenMoveList}
+          attribute's value can be found in the {@link #SwipeListView} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.visus:swipeCloseAllItemsWhenMoveList
+        */
+        public static final int SwipeListView_swipeCloseAllItemsWhenMoveList = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.visus.R.attr#swipeDrawableChecked}
+          attribute's value can be found in the {@link #SwipeListView} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.visus:swipeDrawableChecked
+        */
+        public static final int SwipeListView_swipeDrawableChecked = 10;
+        /**
+          <p>This symbol is the offset where the {@link com.visus.R.attr#swipeDrawableUnchecked}
+          attribute's value can be found in the {@link #SwipeListView} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.visus:swipeDrawableUnchecked
+        */
+        public static final int SwipeListView_swipeDrawableUnchecked = 11;
+        /**
+          <p>This symbol is the offset where the {@link com.visus.R.attr#swipeFrontView}
+          attribute's value can be found in the {@link #SwipeListView} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.visus:swipeFrontView
+        */
+        public static final int SwipeListView_swipeFrontView = 5;
+        /**
+          <p>This symbol is the offset where the {@link com.visus.R.attr#swipeMode}
+          attribute's value can be found in the {@link #SwipeListView} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>0</td><td></td></tr>
+<tr><td><code>both</code></td><td>1</td><td></td></tr>
+<tr><td><code>right</code></td><td>2</td><td></td></tr>
+<tr><td><code>left</code></td><td>3</td><td></td></tr>
+</table>
+          @attr name com.visus:swipeMode
+        */
+        public static final int SwipeListView_swipeMode = 7;
+        /**
+          <p>This symbol is the offset where the {@link com.visus.R.attr#swipeOffsetLeft}
+          attribute's value can be found in the {@link #SwipeListView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.visus:swipeOffsetLeft
+        */
+        public static final int SwipeListView_swipeOffsetLeft = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.visus.R.attr#swipeOffsetRight}
+          attribute's value can be found in the {@link #SwipeListView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.visus:swipeOffsetRight
+        */
+        public static final int SwipeListView_swipeOffsetRight = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.visus.R.attr#swipeOpenOnLongPress}
+          attribute's value can be found in the {@link #SwipeListView} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.visus:swipeOpenOnLongPress
+        */
+        public static final int SwipeListView_swipeOpenOnLongPress = 0;
+    };
 }

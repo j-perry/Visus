@@ -7,8 +7,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
-import org.joda.time.DateTime;
-
 import com.visus.database.SessionHandler;
 import com.visus.entities.Week;
 import com.visus.entities.sessions.Session;
