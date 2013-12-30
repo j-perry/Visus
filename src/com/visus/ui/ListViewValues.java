@@ -1,6 +1,6 @@
 package com.visus.ui;
 
-public class MainMenuListView {
+public class ListViewValues {
 
 	public static final String HEADER_LATEST_ACTIVITY = "latest";
 	public static final String SESSION = "session";

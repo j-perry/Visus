@@ -12,13 +12,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class MainMenuAdapter extends BaseAdapter {
+public class ListViewAdapter extends BaseAdapter {
 
 	private Activity activity;
 	private ArrayList<HashMap<String, String>> data;
 	private static LayoutInflater inflater = null;
 	
-	public MainMenuAdapter(Activity activity, ArrayList<HashMap<String, String>> data) {
+	public ListViewAdapter(Activity activity, ArrayList<HashMap<String, String>> data) {
 		this.activity = activity;
 		this.data = data;
 		inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -58,9 +58,9 @@ public class MainMenuAdapter extends BaseAdapter {
 		item = data.get(position);
 		
 		// new
-		entryNo.setText(item.get(MainMenuListView.SESSION_NO));
+		entryNo.setText(item.get(ListViewValues.SESSION_NO));
 		// bind our data using the required key values
-		entry.setText(item.get(MainMenuListView.SESSION));
+		entry.setText(item.get(ListViewValues.SESSION));
 					
 		return v;
 	}

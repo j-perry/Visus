@@ -10,8 +10,8 @@ import java.util.HashMap;
 import com.visus.database.SessionHandler;
 import com.visus.entities.Week;
 import com.visus.entities.sessions.Session;
-import com.visus.ui.MainMenuAdapter;
-import com.visus.ui.MainMenuListView;
+import com.visus.ui.ListViewAdapter;
+import com.visus.ui.ListViewValues;
 
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -46,7 +46,7 @@ public class FragmentThisWeek extends Fragment {
 		SessionHandler dbSession = new SessionHandler(getActivity() ); // getActivity() should do the trick!
 		ArrayList<Session> sessions = new ArrayList<Session>();
 		ArrayList<HashMap<String, String>> sessionsThisWeek = new ArrayList<HashMap<String, String>>();
-		MainMenuAdapter adapter;
+		ListViewAdapter adapter;
 		
 		ListView lvWeek = (ListView) rootView.findViewById(com.visus.R.id.listview_sessions_this_week);
 		
@@ -68,8 +68,8 @@ public class FragmentThisWeek extends Fragment {
 		if(sessions.isEmpty()) {
 			HashMap<String, String> map = new HashMap<String, String>();
 			String msg = "None created";
-			map.put(MainMenuListView.SESSION_NO, "#");
-			map.put(MainMenuListView.SESSION, msg);
+			map.put(ListViewValues.SESSION_NO, "#");
+			map.put(ListViewValues.SESSION, msg);
 			sessionsThisWeek.add(map);
 		}
 		else {
@@ -98,10 +98,10 @@ public class FragmentThisWeek extends Fragment {
 				
 				HashMap<String, String> map = new HashMap<String, String>();
 				
-				map.put(MainMenuListView.SESSION_NO, session.getDurationMinutes() + ":" + 
+				map.put(ListViewValues.SESSION_NO, session.getDurationMinutes() + ":" + 
                         							 durationSeconds );				
 				
-				map.put(MainMenuListView.SESSION, session.getDay() 
+				map.put(ListViewValues.SESSION, session.getDay() 
 												  + ", " +
 								                  session.getType()
 						);
@@ -111,7 +111,7 @@ public class FragmentThisWeek extends Fragment {
 			}
 		}
 		
-		adapter = new MainMenuAdapter(getActivity(), sessionsThisWeek);
+		adapter = new ListViewAdapter(getActivity(), sessionsThisWeek);
 		
 		lvWeek.setAdapter(adapter);
 				

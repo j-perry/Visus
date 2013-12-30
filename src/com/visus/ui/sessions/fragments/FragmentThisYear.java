@@ -5,8 +5,8 @@ import java.util.HashMap;
 
 import com.visus.database.SessionHandler;
 import com.visus.entities.sessions.Session;
-import com.visus.ui.MainMenuAdapter;
-import com.visus.ui.MainMenuListView;
+import com.visus.ui.ListViewAdapter;
+import com.visus.ui.ListViewValues;
 
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -39,7 +39,7 @@ public class FragmentThisYear extends Fragment {
 		SessionHandler dbSession = new SessionHandler(getActivity() ); // getActivity() should do the trick!
 		ArrayList<Session> sessions = new ArrayList<Session>();
 		ArrayList<HashMap<String, String>> sessionsThisYear = new ArrayList<HashMap<String, String>>();
-		MainMenuAdapter adapter;
+		ListViewAdapter adapter;
 		
 		ListView lvYear = (ListView) rootView.findViewById(com.visus.R.id.listview_sessions_this_year);
 		
@@ -60,8 +60,8 @@ public class FragmentThisYear extends Fragment {
 		if(sessions.isEmpty()) {
 			HashMap<String, String> map = new HashMap<String, String>();
 			String msg = "None created";
-			map.put(MainMenuListView.SESSION_NO, "#");
-			map.put(MainMenuListView.SESSION, msg);
+			map.put(ListViewValues.SESSION_NO, "#");
+			map.put(ListViewValues.SESSION, msg);
 			sessionsThisYear.add(map);
 		}
 		else {
@@ -90,10 +90,10 @@ public class FragmentThisYear extends Fragment {
 				
 				HashMap<String, String> map = new HashMap<String, String>();
 				
-				map.put(MainMenuListView.SESSION_NO, session.getDurationMinutes() + ":" + 
+				map.put(ListViewValues.SESSION_NO, session.getDurationMinutes() + ":" + 
 						 							 durationSeconds );
 
-				map.put(MainMenuListView.SESSION, session.getDay() + " " +
+				map.put(ListViewValues.SESSION, session.getDay() + " " +
 												  session.getDayNo() + " " +  
 												  session.getMonth() + ", " +
 								                  session.getType()
@@ -104,7 +104,7 @@ public class FragmentThisYear extends Fragment {
 			}
 		}
 				
-		adapter = new MainMenuAdapter(getActivity(), sessionsThisYear);
+		adapter = new ListViewAdapter(getActivity(), sessionsThisYear);
 		
 		lvYear.setAdapter(adapter);		
 		

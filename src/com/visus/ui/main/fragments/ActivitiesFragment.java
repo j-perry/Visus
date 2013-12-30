@@ -5,8 +5,8 @@ import java.util.HashMap;
 
 import com.visus.database.SessionHandler;
 import com.visus.entities.sessions.Session;
-import com.visus.ui.MainMenuAdapter;
-import com.visus.ui.MainMenuListView;
+import com.visus.ui.ListViewAdapter;
+import com.visus.ui.ListViewValues;
 
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -26,7 +26,7 @@ public class ActivitiesFragment extends Fragment {
 	private ArrayList<HashMap<String, String>> activities;
 	
 	private ListView list;
-	private MainMenuAdapter adapter;
+	private ListViewAdapter adapter;
 	
 	public ActivitiesFragment() {
 		super();
@@ -89,7 +89,7 @@ public class ActivitiesFragment extends Fragment {
 		
 		// display activity categories
 		list = (ListView) rootView.findViewById(com.visus.R.id.main_activity_activity_types);
-		adapter = new MainMenuAdapter(getActivity(), activityResults);
+		adapter = new ListViewAdapter(getActivity(), activityResults);
 						
 		list.setAdapter(adapter);
 						

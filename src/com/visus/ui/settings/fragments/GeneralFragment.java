@@ -9,7 +9,7 @@ import com.visus.entities.User;
 import com.visus.main.MainActivity;
 import com.visus.main.Settings;
 import com.visus.main.SettingsActivities;
-import com.visus.ui.MainMenuAdapter;
+import com.visus.ui.ListViewAdapter;
 
 import android.R;
 import android.app.FragmentManager;
@@ -197,7 +197,7 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 //			dbSession.close();
 //		}
 		
-		MainMenuAdapter adapter = new MainMenuAdapter(getActivity(), activities);
+		ListViewAdapter adapter = new ListViewAdapter(getActivity(), activities);
 //		lvActivities.setScrollContainer(false);
 //		lvActivities.setAdapter(adapter);
 		

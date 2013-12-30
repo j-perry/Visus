@@ -8,8 +8,8 @@ import com.visus.database.SessionHandler;
 import com.visus.database.UserHandler;
 import com.visus.entities.User;
 import com.visus.entities.sessions.Session;
-import com.visus.ui.MainMenuAdapter;
-import com.visus.ui.MainMenuListView;
+import com.visus.ui.ListViewAdapter;
+import com.visus.ui.ListViewValues;
 
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -43,7 +43,7 @@ public class FragmentToday extends Fragment {
 		SessionHandler dbSession = new SessionHandler(getActivity() ); // getActivity() should do the trick!
 		ArrayList<Session> sessions = new ArrayList<Session>();
 		ArrayList<HashMap<String, String>> sessionsToday = new ArrayList<HashMap<String, String>>();
-		MainMenuAdapter adapter;
+		ListViewAdapter adapter;
 		
 		View rootView = inflater.inflate(com.visus.R.layout.fragment_sessions_today, container, false);
 
@@ -66,8 +66,8 @@ public class FragmentToday extends Fragment {
 		if(sessions.isEmpty()) {
 			HashMap<String, String> map = new HashMap<String, String>();
 			String msg = "None created";
-			map.put(MainMenuListView.SESSION_NO, "#");
-			map.put(MainMenuListView.SESSION, msg);
+			map.put(ListViewValues.SESSION_NO, "#");
+			map.put(ListViewValues.SESSION, msg);
 			sessionsToday.add(map);
 		}
 		else {
@@ -93,9 +93,9 @@ public class FragmentToday extends Fragment {
 				}
 				
 				HashMap<String, String> map = new HashMap<String, String>();
-				map.put(MainMenuListView.SESSION_NO, session.getDurationMinutes() + ":" + 
+				map.put(ListViewValues.SESSION_NO, session.getDurationMinutes() + ":" + 
 				                                     durationSeconds );
-				map.put(MainMenuListView.SESSION, session.getTimeHour() + ":" +
+				map.put(ListViewValues.SESSION, session.getTimeHour() + ":" +
 						  						  timeMinutes +
 						  						  session.getDayPeriod() + ", " +
 						  						  session.getType()
@@ -105,7 +105,7 @@ public class FragmentToday extends Fragment {
 			}
 		}
 			
-		adapter = new MainMenuAdapter(getActivity(), sessionsToday);
+		adapter = new ListViewAdapter(getActivity(), sessionsToday);
 		
 		lvToday.setAdapter(adapter);
 				

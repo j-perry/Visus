@@ -33,7 +33,7 @@ import com.visus.R;
 import com.visus.database.*;
 import com.visus.entities.*;
 import com.visus.entities.sessions.Session;
-import com.visus.ui.MainMenuListView;
+import com.visus.ui.ListViewValues;
 import com.visus.ui.main.fragments.ActivitiesFragment;
 import com.visus.ui.main.fragments.LatestActivityFragment;
 

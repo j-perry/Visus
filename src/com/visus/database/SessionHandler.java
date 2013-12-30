@@ -9,7 +9,7 @@ import java.util.*;
 import com.visus.entities.User;
 import com.visus.entities.Week;
 import com.visus.entities.sessions.*;
-import com.visus.ui.MainMenuListView;
+import com.visus.ui.ListViewValues;
 
 import android.content.*;
 import android.database.*;
@@ -543,8 +543,8 @@ public class SessionHandler implements IDatabaseTable {
 		if(sessions.isEmpty()) {
 			HashMap<String, String> emptyMsg = new HashMap<String, String>();
 			String msg = "None Created";
-			emptyMsg.put(MainMenuListView.SESSION_NO, "#");
-			emptyMsg.put(MainMenuListView.SESSION, msg);
+			emptyMsg.put(ListViewValues.SESSION_NO, "#");
+			emptyMsg.put(ListViewValues.SESSION, msg);
 			
 			latestSessions.add(emptyMsg);			
 			
@@ -588,10 +588,10 @@ public class SessionHandler implements IDatabaseTable {
 						 * Format: type, duration, HH:mm
 						 * 						 
 						 */		
-						map.put(MainMenuListView.SESSION_NO, session.getDurationMinutes() + ":" + 
+						map.put(ListViewValues.SESSION_NO, session.getDurationMinutes() + ":" + 
 	 							 durationSeconds );
 
-						map.put(MainMenuListView.SESSION, session.getDay() + " " +
+						map.put(ListViewValues.SESSION, session.getDay() + " " +
 													  	  session.getDayNo() + " " +  
 													  	  session.getMonth() + ", " +
 													  	  session.getYear() + ", " +
@@ -1550,8 +1550,8 @@ public class SessionHandler implements IDatabaseTable {
 		// OK, lets do some filtering and prepare our structure for insertion
 		if(activitiesResult.isEmpty()) {
 			HashMap<String, String> map = new HashMap<String, String>();
-			map.put(MainMenuListView.SESSION_NO, "#");
-			map.put(MainMenuListView.SESSION, "None Created");			
+			map.put(ListViewValues.SESSION_NO, "#");
+			map.put(ListViewValues.SESSION, "None Created");			
 			
 			activities.add(map);
 		}
@@ -1560,8 +1560,8 @@ public class SessionHandler implements IDatabaseTable {
 			
 			for(String activity : activitiesResult) {
 				HashMap<String, String> map = new HashMap<String, String>();
-				map.put(MainMenuListView.SESSION_NO, String.valueOf(id) );
-				map.put(MainMenuListView.SESSION, activity);
+				map.put(ListViewValues.SESSION_NO, String.valueOf(id) );
+				map.put(ListViewValues.SESSION, activity);
 				
 				id++;
 				
