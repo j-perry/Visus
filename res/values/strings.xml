@@ -158,4 +158,7 @@
 	    
 	<!-- End of Settings -->
 	
+	<!-- Settings (Activities) -->
+	<string name="settings_activities_delete">Delete</string>
+	
 </resources>
