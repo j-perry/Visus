@@ -4,9 +4,6 @@ package com.visus.main;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
 // android apis
 import android.os.Bundle;
 import android.app.*;
@@ -33,7 +30,6 @@ import com.visus.R;
 import com.visus.database.*;
 import com.visus.entities.*;
 import com.visus.entities.sessions.Session;
-import com.visus.ui.ListViewValues;
 import com.visus.ui.main.fragments.ActivitiesFragment;
 import com.visus.ui.main.fragments.LatestActivityFragment;
 
@@ -220,6 +216,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	/**
 	 * Action bar events
 	 */
+	@SuppressWarnings({ "deprecation" })
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Intent intent;
@@ -343,9 +340,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		private int noActivities;
 		private ArrayList<HashMap<String, String>> activities;
 		private Session firstSession;
-		
-		private boolean dailyTarget;
-		private boolean monthlyTarget;
 		
 		public MainMenuPagerAdapter(FragmentManager fm,
 									int userId,

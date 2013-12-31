@@ -8,8 +8,6 @@ import com.visus.database.UserHandler;
 import com.visus.entities.User;
 import com.visus.entities.sessions.Session;
 import com.visus.ui.ListViewAdapter;
-import com.visus.ui.ListViewValues;
-import com.visus.ui.SessionsAdapter;
 
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -18,7 +16,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,14 +27,9 @@ public class LatestActivityFragment extends Fragment {
 	private Session firstSession;
 	private SessionHandler dbSession;
 	private UserHandler dbUser;
-	
-	private static int noItems = 5;
-	
+		
 	private ListView list;
-	private ListViewAdapter adapter;
-	
-	// TODO
-	private SessionsAdapter sessionsAdapter;
+	private ListViewAdapter adapter;	
 	
 	public LatestActivityFragment() {
 		super();

@@ -1,9 +1,5 @@
 package com.visus.entities.sessions;
 
-import java.util.Date;
-
-import android.util.Log;
-
 public class Session {
 
 	private StringBuilder duration;

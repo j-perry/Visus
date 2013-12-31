@@ -1,15 +1,7 @@
 package com.visus.database;
 
-import java.util.Stack;
-
-import com.visus.entities.User;
-import com.visus.entities.sessions.*;
-
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 

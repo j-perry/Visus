@@ -3,10 +3,7 @@ package com.visus.ui.sessions.fragments;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.visus.R;
 import com.visus.database.SessionHandler;
-import com.visus.database.UserHandler;
-import com.visus.entities.User;
 import com.visus.entities.sessions.Session;
 import com.visus.ui.ListViewAdapter;
 import com.visus.ui.ListViewValues;
@@ -27,8 +24,6 @@ import android.widget.ListView;
 public class FragmentToday extends Fragment {
 	
 	private int activeUserId;
-	private UserHandler userHandler;
-	private User user;
 	
 	public FragmentToday() {
 		super();

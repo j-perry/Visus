@@ -21,6 +21,7 @@ public class SettingsActivities extends Activity {
 	/**
 	 * Action bar events
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()) {

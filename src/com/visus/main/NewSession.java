@@ -2,9 +2,6 @@ package com.visus.main;
 
 // core apis
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,7 +9,6 @@ import java.util.Date;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
-import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 // android apis
@@ -20,13 +16,11 @@ import android.os.*;
 import android.annotation.SuppressLint;
 import android.app.*;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteException;
 import android.support.v4.app.NavUtils;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
-import android.text.InputType;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.*;
@@ -75,6 +69,7 @@ public class NewSession extends Activity {
 	// used to store and manipulate the session duration
 	private int durationMilliseconds;			
 	private int durationMinutes;
+	@SuppressWarnings("unused")
 	private int durationSeconds;
 	
 	private int minutesRemaining;
@@ -94,7 +89,6 @@ public class NewSession extends Activity {
 	private NotificationCompat.Builder notBuilder;
 		
 	private Context context = this;
-	private AlertDialog alertDialog;
 	
 	private TextView sessionType;
 	
@@ -244,6 +238,7 @@ public class NewSession extends Activity {
 	/**
 	 * Action bar events
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()) {
@@ -290,9 +285,6 @@ public class NewSession extends Activity {
 		// used to store user input for setting session duration 
 		int iMins = 25;
 		int iSecs = 0;
-				
-		int MINS_LIMIT = 60;
-		int SECS_LIMIT = 59;
 				
 		// hide the start button
 		startTimerBtn.setVisibility(View.GONE);
@@ -464,6 +456,7 @@ public class NewSession extends Activity {
 	/**
 	 * Executes update time thread on UI
 	 */
+	@SuppressWarnings("unused")
 	private Runnable runUpdateTime = new Runnable() {
 		// NB: run() executes the thread
 		public void run() {
@@ -642,6 +635,7 @@ public class NewSession extends Activity {
 	 * Display's an Android notification in the notification bar to inform
 	 * the user their session has finished, should they be doing something else
 	 */
+	@SuppressWarnings("unused")
 	private void displayNotification() {
 		Log.e("Visus", "displayNotification()");
 		

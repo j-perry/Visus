@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 
 public class Week {
@@ -55,11 +56,13 @@ public class Week {
 	 * Finds the beginning date of the present week
 	 * @return The beginning of the week formatted as yyyy-mm-dd
 	 */
+	@SuppressLint("SimpleDateFormat")
 	public String beginning() {
 		String day = null;
 		int dayNoResult = 0;
 		int monthResult = 0;
 		int yearResult = 0;
+		@SuppressWarnings("unused")
 		String monthResultStr = null;
 		boolean firstDayFound = false;
 				
@@ -158,11 +161,13 @@ public class Week {
 	 * Finds the ending date of the present week
 	 * @return The end of the week formatted as yyyy-mm-dd
 	 */
+	@SuppressLint("SimpleDateFormat")
 	public String ending() {
 		String day = null;
 		int dayNoResult = 0;
 		int monthResult = 0;
 		int yearResult = 0;
+		@SuppressWarnings("unused")
 		String monthResultStr = null;
 		boolean lastDayFound = false;
 		

@@ -1,9 +1,7 @@
 package com.visus.database;
 
 import java.math.BigDecimal;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 import com.visus.entities.User;
@@ -20,15 +18,12 @@ import android.util.Log;
 public class SessionHandler implements IDatabaseTable {
 		
 	private DatabaseHandler dbHandler;
-	private UserHandler dbUser;
 	private SQLiteDatabase db;
 	private Long result;
 	private Session session;
 	
 	private Session firstSession;
-	
-	private enum Days { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday };
-	
+		
 	private static final String QRY_SPACING = " ";
 		
 	public SessionHandler(Context context) {
@@ -176,7 +171,6 @@ public class SessionHandler implements IDatabaseTable {
 		int noActivities = 0;
 		int noHoursTotal = 0;
 		int noMins = 0;
-		int noSecs = 0;
 		
 				
 		// hours query
@@ -556,11 +550,13 @@ public class SessionHandler implements IDatabaseTable {
 			int noItems = 0;
 			final int MAX_ITEMS = 5;
 			String durationSeconds = null;
+			@SuppressWarnings("unused")
 			String timeMinutes = null;
 			
 			// get the first session
 			setFirstSession(sessions.get(0) );
 			
+			@SuppressWarnings("unused")
 			int id = 0;
 			
 			// output the first five results
@@ -688,14 +684,6 @@ public class SessionHandler implements IDatabaseTable {
 	public ArrayList<Session> getSessionsThisWeek(int userId) throws SQLiteException {		
 		ArrayList<Session> sessionsThisWeek = new ArrayList<Session>();		
 		Week thisWeek = new Week();
-				
-		String dBeginning = null;
-		String mBeginning = null;
-		String dEnd = null;
-		String mEnd = null;
-		
-		String strBeginning = null;
-		String strEnd = null;
 		
 		// Log the beginning and end of this week (dates)
 		Log.e("Visus", "getSessionsThisWeek() - Beginning: " + thisWeek.beginning() );

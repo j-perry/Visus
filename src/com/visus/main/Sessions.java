@@ -3,19 +3,14 @@ package com.visus.main;
 // core apis
 import java.util.ArrayList;
 
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
 // android apis
 import android.os.Bundle;
 import android.app.ActionBar;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.app.NotificationManager;
 import android.app.ActionBar.OnNavigationListener;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteException;
 import android.support.v4.app.Fragment;
@@ -48,9 +43,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 	private int activeUserId;
 	
 	private ViewPager sessionsPager;
-	private SessionsPagerAdapter sessionsPagerAdapter;
-		
-	private AlertDialog alertDialog;
+	private SessionsPagerAdapter sessionsPagerAdapter;		
 	private Context context = this;
 	
 	@Override

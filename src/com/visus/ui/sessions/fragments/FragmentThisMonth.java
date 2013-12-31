@@ -66,6 +66,7 @@ public class FragmentThisMonth extends Fragment {
 		}
 		else {
 			// retrieve sessions
+			@SuppressWarnings("unused")
 			int id = 1;
 			
 			for(Session session : sessions) {
@@ -78,7 +79,8 @@ public class FragmentThisMonth extends Fragment {
 					durationSeconds = String.valueOf(session.getDurationSeconds() );
 				}
 				
-				
+
+				@SuppressWarnings("unused")
 				String timeMinutes = null;
 				
 				if(session.getTimeMinutes() < 10) {

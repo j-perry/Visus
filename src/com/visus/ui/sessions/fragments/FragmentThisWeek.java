@@ -1,14 +1,9 @@
 package com.visus.ui.sessions.fragments;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 
 import com.visus.database.SessionHandler;
-import com.visus.entities.Week;
 import com.visus.entities.sessions.Session;
 import com.visus.ui.ListViewAdapter;
 import com.visus.ui.ListViewValues;
@@ -16,8 +11,6 @@ import com.visus.ui.ListViewValues;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,6 +67,7 @@ public class FragmentThisWeek extends Fragment {
 		}
 		else {
 			// retrieve sessions
+			@SuppressWarnings("unused")
 			int id = 1;
 			
 			for(Session session : sessions) {
@@ -86,7 +80,8 @@ public class FragmentThisWeek extends Fragment {
 					durationSeconds = String.valueOf(session.getDurationSeconds() );
 				}
 				
-				
+
+				@SuppressWarnings("unused")
 				String timeMinutes = null;
 				
 				if(session.getTimeMinutes() < 10) {

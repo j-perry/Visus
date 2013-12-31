@@ -3,15 +3,11 @@ package com.visus.ui.main.fragments;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.visus.database.SessionHandler;
 import com.visus.entities.sessions.Session;
 import com.visus.ui.ListViewAdapter;
-import com.visus.ui.ListViewValues;
 
-import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +16,7 @@ import android.widget.TextView;
 
 public class ActivitiesFragment extends Fragment {
 	
+	@SuppressWarnings("unused")
 	private int userId;
 	private int noActivities;
 	private Session firstSession;

@@ -80,6 +80,7 @@ public class Settings extends FragmentActivity implements ActionBar.TabListener 
 		super.onDestroy();
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {		
 		switch(item.getItemId()) {
