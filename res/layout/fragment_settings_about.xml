@@ -50,7 +50,7 @@
 	        
 	    </LinearLayout>
 	    
-	    <!-- what's visus -->
+	    <!-- credits -->
 	    <LinearLayout 
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
 	        
 	    	<!-- header -->
 		    <TextView 
-		        android:id="@+id/settings_what_header"
+		        android:id="@+id/hmmm"
 		        android:layout_height="wrap_content"
 		        android:layout_width="fill_parent"
 				android:paddingBottom="25sp"
@@ -74,7 +74,7 @@
 		        
 		    <!-- welcome -->
 		    <TextView 
-		        android:id="@+id/settings_what_blurb"
+		        android:id="@+id/settings_credit_blurb"
 		        android:layout_height="wrap_content"
 		        android:layout_width="fill_parent"
 		        android:textColor="@color/dark_grey"

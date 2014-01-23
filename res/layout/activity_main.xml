@@ -9,67 +9,6 @@
     tools:context=".MainActivity" 
     >
     
-    
-    <LinearLayout
-        android:background="@color/white"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        >
-    
-        <!-- new session  -->
-	    <Button
-	        android:onClick="newSession"
-	        android:background="@drawable/main_menu_profile_bg"
-            android:layout_width="fill_parent" 
-	        android:layout_height="fill_parent"
-	        android:layout_weight="1"
-            android:layout_gravity="center_horizontal"
-        	android:gravity="center"
-        	android:paddingTop="5dp"
-        	android:paddingBottom="5dp"
-			android:text="@string/title_activity_new_session"
-	        android:textAllCaps="false"
-	        android:textStyle="normal"
-	        android:textColor="@drawable/main_menu_profile_txt"
-	        android:textSize="12sp"
-	        />
-	    
-	    <!-- sessions --> 
-	    <Button     
-	        android:onClick="prevSessions"
-	        android:background="@drawable/main_menu_profile_bg"
-            android:layout_width="fill_parent" 
-	        android:layout_height="fill_parent"
-	        android:layout_weight="1"
-            android:layout_gravity="center_horizontal"
-        	android:gravity="center"
-        	android:paddingTop="5dp"
-        	android:paddingBottom="5dp"
-			android:text="@string/title_activity_prev_sessions"
-	        android:textAllCaps="false"
-	        android:textColor="@drawable/main_menu_profile_txt"
-	        android:textSize="12sp"
-	        />
-	    
-	    <!-- settings -->
-	    <Button
-	        android:onClick="viewSettings"
-	        android:background="@drawable/main_menu_profile_bg"
-            android:layout_width="fill_parent" 
-	        android:layout_height="wrap_content"
-	        android:layout_weight="1"
-            android:layout_gravity="center_horizontal"  
-        	android:gravity="center"
-        	android:paddingTop="5dp" 
-        	android:paddingBottom="5dp"
-	        android:text="@string/title_activity_view_settings"
-	        android:textAllCaps="false"
-	        android:textColor="@drawable/main_menu_profile_txt"
-	        android:textSize="12sp"
-	        />
-	
-	</LinearLayout>
-	
 	
     <!-- 
     
@@ -88,37 +27,5 @@
         
     </android.support.v4.view.ViewPager>
     
-    
-    
-    
-    
-    
-    
-    <!-- 
-    <TextView 
-        android:id="@+id/main_header"
-		android:onClick="viewLatestUserActivities"
-		android:background="@drawable/main_menu_header_bg"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:layout_marginTop="25dp"        
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-		android:padding="25sp"
-        android:textColor="@color/white"
-        android:text="Latest Activity"
-        android:textSize="18sp"
-        />
-    
-     sessions summary 
-    <ListView 
-        android:id="@+id/overview_sessions_adapter"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp"
-        android:divider="@color/white"
-        />
-    -->
     
 </LinearLayout>

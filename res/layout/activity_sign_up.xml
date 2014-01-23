@@ -4,8 +4,8 @@
     android:background="#E2E2E2"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:paddingLeft="25sp"
-    android:paddingRight="25sp"
+    android:paddingLeft="50sp"
+    android:paddingRight="50sp"
     android:orientation="vertical"
     tools:context=".SignUp">
     
@@ -15,12 +15,12 @@
 	    	android:layout_height="wrap_content"
 	    	android:gravity="center_horizontal"
 	    	android:layout_gravity="center"
-	    	android:layout_marginTop="75dp"
-	    	android:layout_marginBottom="25dp"
+	    	android:layout_marginTop="175dp"
+	    	android:layout_marginBottom="50dp"
             android:text="@string/visus_welcome"
             android:textColor="@color/dark_grey"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="42sp"
             />
         
 	    <!-- first name -->
@@ -30,11 +30,11 @@
 	        android:padding="15sp"
 	        android:layout_height="wrap_content"
 	        android:layout_width="fill_parent"
-	        android:layout_marginBottom="15dp"
+	        android:layout_marginBottom="25dp"
 	        android:hint="@string/hint_firstname"
 	        android:inputType="textCapSentences"
 	        android:textColor="@color/dark_grey"
-	        android:textSize="12sp"
+	        android:textSize="24sp"
 	        android:textColorHint="@color/dark_grey"
 	        />
 	    
@@ -44,7 +44,7 @@
 	        android:background="@color/white"
 	        android:layout_height="wrap_content"
 	        android:layout_width="match_parent"
-	        android:layout_marginBottom="15dp"
+	        android:layout_marginBottom="25dp"
 	        android:textColor="@color/dark_grey"
 	        />
 	    
@@ -56,10 +56,10 @@
 	        android:inputType="number"
 	        android:layout_height="wrap_content"
 	        android:layout_width="fill_parent"
-	        android:layout_marginBottom="15dp"
+	        android:layout_marginBottom="25dp"
 	        android:hint="@string/hint_age"
 	        android:textColor="@color/dark_grey"
-	        android:textSize="12sp"
+	        android:textSize="24sp"
 	        android:textColorHint="@color/dark_grey"
 	        />
 	    
@@ -73,7 +73,7 @@
 	        android:paddingBottom="15sp"
 	        android:background="@drawable/new_user_submit_bg"
 	        android:textColor="@drawable/new_user_submit_txt"
-	        android:textSize="12sp"
+	        android:textSize="24sp"
 	        android:text="@string/register"
 	        android:gravity="center"
 	        />

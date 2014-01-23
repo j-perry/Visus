@@ -77,6 +77,7 @@
 				            android:textColor="@color/dark_grey"
 				            android:singleLine="true"
 				            android:layout_weight="1"
+				            android:focusable="true"
 				            />
 				        
 				    </LinearLayout>
@@ -113,6 +114,7 @@
 				            android:textColor="@color/dark_grey"
 				            android:singleLine="true"
 				            android:layout_weight="1"
+				            android:focusable="true"
 				            />
 				        
 				    </LinearLayout>
@@ -183,36 +185,17 @@
 			        <Button
 			            android:id="@+id/settings_activities_header"
 			            android:onClick="viewActivities"
-			            android:background="@color/white"
+			            android:background="@drawable/settings_activity_bg"
 			            android:layout_height="wrap_content"
 			            android:layout_width="match_parent"
 			            android:padding="25dp"
 			            android:gravity="left"
 			            android:text="@string/settings_general_activities_header"
 			            android:textSize="24sp"
-			            android:textColor="@color/dark_grey"
+			            android:textColor="@drawable/settings_activity_txt"
 			            android:textAllCaps="true"
-			            />
+			            />  
 			        
-			        <!-- blurb --> 
-			        <LinearLayout
-			            android:layout_width="fill_parent"
-    					android:layout_height="wrap_content"
-				        android:padding="25dp"
-				        android:orientation="horizontal"
-				        android:weightSum="1"
-			            >
-				        			            
-			            <TextView
-				        	android:layout_height="wrap_content"
-				            android:layout_width="match_parent"
-				            android:text="@string/settings_general_activities_blurb"
-				            android:textSize="18sp"
-				            android:textColor="@color/dark_grey"
-			            />
-			            
-			        </LinearLayout>
-			        		        
 			    </LinearLayout><!-- end of activities -->
 
 				<!-- save (all) -->

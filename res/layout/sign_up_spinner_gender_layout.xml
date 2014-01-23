@@ -8,7 +8,7 @@
 	    android:id="@+id/TextView01"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:textSize="12sp"
+	    android:textSize="24sp"
 	    android:textColor="@color/dark_grey"
 	    android:gravity="center_vertical"
 	    android:padding="15sp"

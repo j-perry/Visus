@@ -22,13 +22,13 @@
             android:id="@+id/set_session_duration"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="125dp"
+            android:layout_marginTop="230dp"
             android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal"
             >
             
             <!-- minutes -->
-            <TextView 
+            <TextView
                 android:id="@+id/timer_set_minutes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
               	android:inputType="numberDecimal"
                 android:text="25"
                 android:textColorHint="@color/light_green"
-                android:textSize="72sp"
+                android:textSize="120sp"
                 android:textColor="@color/light_green"
                 />
             
@@ -48,14 +48,14 @@
 	            android:layout_width="15dp"
 	            android:layout_height="wrap_content"
 	            android:text=":"
-	            android:textSize="72sp"
+	            android:textSize="120sp"
 	            android:textColor="@color/light_green"
 	            android:layout_gravity="center_horizontal"
 	            android:gravity="center"
 	        />
             
             <!-- minutes -->
-            <EditText 
+            <TextView 
                 android:id="@+id/timer_set_seconds"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
             	android:singleLine="true"
               	android:inputType="numberDecimal"
                 android:textColorHint="@color/light_green"
-                android:textSize="72sp"
+                android:textSize="120sp"
                 android:textColor="@color/light_green"
                 />
                                    
@@ -75,7 +75,6 @@
         <!-- Session type - e.g., Email, Gaming, etc.
         <AutoCompleteTextView 
             android:id="@+id/session_auto_complete_type"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -86,7 +85,7 @@
             android:completionThreshold="1"
             android:singleLine="true"
             android:textColorHint="@color/light_green"
-            android:textSize="24sp"
+            android:textSize="30sp"
             android:textColor="@color/light_green"
             />
         -->
@@ -107,19 +106,22 @@
             android:textColor="@color/light_green"
         />
         
+        <!-- timer 180sp
+        
+        	 margin-top: 5dp
+         -->
         <TextView
             android:id="@+id/timer"
             android:visibility="invisible"
             android:layout_width="fill_parent" 
             android:layout_height="wrap_content"
-            android:text="30:00"
-            android:textSize="60sp"
+            android:textSize="160sp"
             android:textColor="@color/light_green"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="250dp"
             android:gravity="center"
         />
-                            
+            
     </LinearLayout>
     
     
@@ -142,7 +144,7 @@
             android:background="@drawable/new_session_controls_btn"
             android:text="@string/title_start_session"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="36sp"
             android:textAllCaps="true"
             android:textColor="@drawable/new_session_controls_txt"
         />
@@ -156,7 +158,7 @@
             android:background="@drawable/new_session_controls_btn"
             android:text="@string/title_end_session"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="36sp"
             android:textColor="@drawable/new_session_controls_txt"
             android:textAllCaps="true"
             android:onClick="onEnd"

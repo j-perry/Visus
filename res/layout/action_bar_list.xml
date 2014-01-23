@@ -5,7 +5,7 @@
     android:id="@+id/actionBarList"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:textSize="9sp"
+    android:textSize="12sp"
     android:textStyle="bold"
     android:textAllCaps="true"
     android:padding="10sp"
