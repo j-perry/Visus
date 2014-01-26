@@ -66,9 +66,9 @@
     <string name="latest_activity_monthly_target_met">Update: Monthly target met!</string>
     
     <string name="main_menu_dialog_user_targets_txt">User Targets</string>
-    <string name="main_menu_dialog_user_targets_header">No user targets have been created. They help you stay fresh and productive. Do you wish to create them now?</string>
-    <string name="main_menu_dialog_user_targets_btn_cancel">Nope. Go Away!</string>
-    <string name="main_menu_dialog_user_targets_btn_ok">Yes Please!</string>
+    <string name="main_menu_dialog_user_targets_header">No user targets have been created. They help you stay fresh and productive.\n\nDo you wish to create them now?</string>
+    <string name="main_menu_dialog_user_targets_btn_cancel">No</string>
+    <string name="main_menu_dialog_user_targets_btn_ok">Yes!</string>
        
     <!-- End of Main Menu -->
     
@@ -76,8 +76,8 @@
     <!-- Previous Sessions -->
     <string name="dialog_previous_sessions_heading">Create Session</string>
     <string name="dialog_previous_sessions_txt">No sessions exist. Do you wish to create a new session now?</string>
-    <string name="dialog_previous_sessions_btn_cancel">No Thanks</string>
-    <string name="dialog_previous_sessions_btn_ok">Yes Please!</string>
+    <string name="dialog_previous_sessions_btn_cancel">No</string>
+    <string name="dialog_previous_sessions_btn_ok">Yes!</string>
     
     <!-- Main Menu -->
     <string-array name="sessions_menu">
@@ -132,8 +132,8 @@
 	    	<string name="settings_general_activities_blurb">To delete an activity category, swipe each category to the left.</string>
 	    	
 	    	
-	    	<string name="settings_general_sessions_target_day">[Set daily target]</string>
-	    	<string name="settings_general_sessions_target_month">[Set monthly target]</string>
+	    	<string name="settings_general_sessions_target_day">Set daily target</string>
+	    	<string name="settings_general_sessions_target_month">Set monthly target</string>
     		<string name="settings_general_sessions_reset_month">Reset (Month)</string>
     		<string name="settings_general_sessions_reset_year">Reset (Year)</string>
     		<string name="settings_general_sessions_reset_all">Reset (All)</string>
@@ -154,7 +154,7 @@
 	    
 	    <!-- Credits -->
 	    <string name="settings_credit_header">Credits</string>
-	    <string name="settings_credit_blurb">Designed and produced by Jon Perry.\nMade in Britain.</string>
+	    <string name="settings_credit_blurb">Designed and produced by Jon Perry. Made in Britain.</string>
 	    
 	<!-- End of Settings -->
 	

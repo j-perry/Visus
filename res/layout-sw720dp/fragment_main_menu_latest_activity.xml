@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    
+    <LinearLayout
+	    xmlns:android="http://schemas.android.com/apk/res/android"
+	    xmlns:tools="http://schemas.android.com/tools"
+	    android:padding="0dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        >
+        
+        <!-- target met (daily) -->
+        <LinearLayout 
+            android:id="@+id/fragment_main_menu_layout_target_met_daily"
+            android:background="@color/white"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="25sp"
+	        android:layout_marginBottom="0sp"
+	        android:layout_marginLeft="25sp"
+	        android:layout_marginRight="25sp"
+	        android:orientation="vertical"
+            >
+                        
+            <!-- message -->
+            <TextView 
+	            android:id="@+id/main_menu_latest_activities_daily_target_met_message"
+	        	android:layout_width="fill_parent"
+	        	android:layout_height="wrap_content"
+		        android:paddingLeft="25sp"
+		        android:paddingRight="25sp"
+		        android:paddingTop="25sp"
+		        android:paddingBottom="25sp"
+	        	android:textColor="@color/dark_grey"
+	        	android:textSize="18sp"
+	        	android:text="@string/latest_activity_daily_target_met"
+	            />
+            
+        </LinearLayout>
+        
+        
+        <!-- target met (monthly) -->
+        <LinearLayout 
+            android:id="@+id/fragment_main_menu_layout_target_met_monthly"
+            android:background="@color/white"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="25sp"
+	        android:layout_marginBottom="0sp"
+	        android:layout_marginLeft="25sp"
+	        android:layout_marginRight="25sp"
+	        android:orientation="vertical"
+            >
+                        
+            <!-- message -->
+            <TextView 
+	            android:id="@+id/main_menu_latest_activities_monthly_target_met_message"
+	        	android:layout_width="fill_parent"
+	        	android:layout_height="wrap_content"
+		        android:paddingLeft="25sp"
+		        android:paddingRight="25sp"
+		        android:paddingTop="25sp"
+		        android:paddingBottom="25sp"
+	        	android:textColor="@color/dark_grey"
+	        	android:textSize="18sp"
+	        	android:text="@string/latest_activity_monthly_target_met"
+	            />
+            
+        </LinearLayout>
+           
+        
+        
+        <!-- no. of sessions -->
+        <LinearLayout
+	        android:background="@color/white"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="25sp"
+	        android:layout_marginBottom="0sp"
+	        android:layout_marginLeft="25sp"
+	        android:layout_marginRight="25sp"
+	        android:orientation="vertical"
+	        >
+        
+            <!-- no. of sessions -->
+	        <TextView 
+	            android:id="@+id/main_menu_latest_activities_no_sessions_total"
+	        	android:layout_width="fill_parent"
+	        	android:layout_height="wrap_content"
+				android:background="@color/white"
+		        android:paddingLeft="25sp"
+		        android:paddingRight="25sp"
+		        android:paddingTop="25sp"
+		        android:paddingBottom="25sp"
+	        	android:textAllCaps="true"
+	        	android:textColor="@color/dark_grey"
+	        	android:textSize="24sp"
+	            />
+	                
+	        <!-- no. of sessions date -->
+	        <TextView 
+	            android:id="@+id/main_menu_latest_activities_no_sessions_date"
+	        	android:layout_width="fill_parent"
+	        	android:layout_height="wrap_content"
+		        android:paddingLeft="25sp"
+		        android:paddingRight="25sp"
+		        android:paddingTop="25sp"
+		        android:paddingBottom="25sp"
+	        	android:textColor="@color/dark_grey"
+	        	android:textSize="18sp"
+	            />
+    
+    	</LinearLayout>
+                
+        <!-- latest activity header -->
+	    <TextView 
+	        android:id="@+id/main_header"
+			android:onClick="viewLatestUserActivities"
+			android:background="@drawable/main_menu_header_bg"
+	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:layout_marginTop="25dp"        
+	        android:layout_marginLeft="25dp"
+	        android:layout_marginRight="25dp"
+			android:padding="25sp"
+	        android:textColor="@color/dark_grey"
+	        android:text="@string/main_menu_latest_activity"
+	        android:textAllCaps="true"
+	        android:textSize="24sp"
+	        />
+	    
+	    <View 
+	        android:layout_width="fill_parent"
+	        android:layout_height="4sp"
+	        android:background="@color/light_grey"
+	        />
+	    	     
+	    <!-- latest sessions (first 5) --> 
+	    <ListView 
+	        android:id="@+id/overview_sessions_adapter"
+	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:paddingLeft="25dp"
+	        android:paddingRight="25dp"
+	        android:divider="@color/light_grey"
+   			android:dividerHeight="4sp"
+	        />
+	    
+	</LinearLayout>	    

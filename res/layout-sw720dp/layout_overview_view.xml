@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+
+	Layout used to render an overview stored in the 
+	Sessions database table, using a ListView component
+	
+-->
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+	<TextView 
+	    android:id="@+id/header_overview"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="Overview"
+	    />
+	
+	<TextView 
+	    android:id="@+id/sessions_overview"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="Sessions"
+	    />
+	
+	<TextView 
+	    android:id="@+id/hours_overview"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="Hours"
+	    />
+	
+	<TextView 
+	    android:id="@+id/activities_overview"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="Activities"
+	    />
+    
+</LinearLayout>

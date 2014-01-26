@@ -1,0 +1,169 @@
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="0dp"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".NewView" 
+    >
+
+    <!-- components -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="85"        
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        >
+                   
+        <!-- set session duration -->
+        <LinearLayout
+            android:id="@+id/set_session_duration"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="230dp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            >
+            
+            <!-- minutes -->
+            <TextView
+                android:id="@+id/timer_set_minutes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+            	android:layout_gravity="center_horizontal"
+            	android:gravity="center"
+            	android:maxLength="2"
+            	android:singleLine="true"
+              	android:inputType="numberDecimal"
+                android:text="25"
+                android:textColorHint="@color/light_green"
+                android:textSize="120sp"
+                android:textColor="@color/light_green"
+                />
+            
+            <!-- separator -->
+            <TextView
+	            android:layout_width="15dp"
+	            android:layout_height="wrap_content"
+	            android:text=":"
+	            android:textSize="120sp"
+	            android:textColor="@color/light_green"
+	            android:layout_gravity="center_horizontal"
+	            android:gravity="center"
+	        />
+            
+            <!-- minutes -->
+            <TextView 
+                android:id="@+id/timer_set_seconds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+            	android:layout_gravity="center_horizontal"
+            	android:gravity="center"
+                android:text="00"
+            	android:maxLength="2"
+            	android:singleLine="true"
+              	android:inputType="numberDecimal"
+                android:textColorHint="@color/light_green"
+                android:textSize="120sp"
+                android:textColor="@color/light_green"
+                />
+                                   
+        </LinearLayout>    
+        
+        <!-- Session type - e.g., Email, Gaming, etc.
+        <AutoCompleteTextView 
+            android:id="@+id/session_auto_complete_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:hint="#activity"
+            android:inputType="textCapSentences"
+            android:maxLength="15"
+            android:completionThreshold="1"
+            android:singleLine="true"
+            android:textColorHint="@color/light_green"
+            android:textSize="30sp"
+            android:textColor="@color/light_green"
+            />
+        -->
+        
+        <TextView
+            android:id="@+id/session_type"
+            android:visibility="visible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:maxLength="15"
+            android:completionThreshold="1"
+            android:singleLine="true"
+            android:text="#Activity"
+            android:textColorHint="@color/light_green"
+            android:textSize="36sp"
+            android:textColor="@color/light_green"
+        />
+        
+        <!-- timer 180sp
+        
+        	 margin-top: 5dp
+         -->
+        <TextView
+            android:id="@+id/timer"
+            android:visibility="invisible"
+            android:layout_width="fill_parent" 
+            android:layout_height="wrap_content"
+            android:textSize="160sp"
+            android:textColor="@color/light_green"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="250dp"
+            android:gravity="center"
+        />
+            
+    </LinearLayout>
+    
+    
+    <!-- component buttons -->
+    <LinearLayout
+        android:background="@color/light_grey"
+        android:orientation="horizontal"
+        android:layout_weight="15"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        >
+        
+        <!-- Timer Button -->
+        <Button
+            android:id="@+id/timer_btn"
+            android:onClick="onStart"
+            android:layout_width="fill_parent" 
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/new_session_controls_btn"
+            android:text="@string/title_start_session"
+            android:textStyle="bold"
+            android:textSize="36sp"
+            android:textAllCaps="true"
+            android:textColor="@drawable/new_session_controls_txt"
+        />
+        
+        <!-- Timer Button Stop -->
+        <Button
+            android:id="@+id/timer_stop_btn"
+            android:layout_width="fill_parent" 
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/new_session_controls_btn"
+            android:text="@string/title_end_session"
+            android:textStyle="bold"
+            android:textSize="36sp"
+            android:textColor="@drawable/new_session_controls_txt"
+            android:textAllCaps="true"
+            android:onClick="onEnd"
+        />
+        
+    </LinearLayout>
+
+</LinearLayout>

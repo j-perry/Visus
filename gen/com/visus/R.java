@@ -251,10 +251,10 @@ containing a value of this type.
         public static final int right=0x7f080002;
         public static final int session_activity=0x7f08004f;
         public static final int session_id=0x7f08004e;
-        public static final int session_type=0x7f08000d;
+        public static final int session_type=0x7f08000b;
         public static final int sessions_overview=0x7f080044;
         public static final int sessions_pager=0x7f080011;
-        public static final int set_session_duration=0x7f08000a;
+        public static final int set_session_duration=0x7f08000f;
         public static final int settings_about_blurb=0x7f080033;
         public static final int settings_about_header=0x7f080032;
         public static final int settings_activities_header=0x7f08003f;
@@ -269,11 +269,11 @@ containing a value of this type.
         public static final int settings_pager=0x7f080012;
         public static final int settings_save_all=0x7f080040;
         public static final int time=0x7f08004a;
-        public static final int timer=0x7f08000e;
-        public static final int timer_btn=0x7f08000f;
-        public static final int timer_set_minutes=0x7f08000b;
-        public static final int timer_set_seconds=0x7f08000c;
-        public static final int timer_stop_btn=0x7f080010;
+        public static final int timer=0x7f08000c;
+        public static final int timer_btn=0x7f08000d;
+        public static final int timer_set_minutes=0x7f08000a;
+        public static final int timer_set_seconds=0x7f080010;
+        public static final int timer_stop_btn=0x7f08000e;
     }
     public static final class layout {
         public static final int action_bar_list=0x7f030000;

@@ -27,6 +27,7 @@ import android.view.*;
 import android.widget.*;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager.LayoutParams;
 
 // core program packages
 import com.visus.R;

@@ -12,14 +12,14 @@
     <item
         android:id="@+id/menu_sessions"
         android:orderInCategory="100"
-        android:showAsAction="never"
+        android:showAsAction="always"
         android:title="Sessions"
         />
     
     <item
         android:id="@+id/menu_settings"
         android:orderInCategory="100"
-        android:showAsAction="never"
+        android:showAsAction="always"
         android:title="Settings"
         />
           

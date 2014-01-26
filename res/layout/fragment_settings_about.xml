@@ -7,13 +7,12 @@
     >
 
 	<LinearLayout
-	    xmlns:android="http://schemas.android.com/apk/res/android"
 	    android:background="@color/white"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:paddingTop="50sp"
-	    android:paddingLeft="25sp"
-	    android:paddingRight="25sp" 
+	    android:paddingTop="15sp"
+	    android:paddingLeft="15sp"
+	    android:paddingRight="15sp" 
 	    android:orientation="vertical"
 	    >
 	    
@@ -21,8 +20,8 @@
 	    <LinearLayout 
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:paddingLeft="25sp"
-	        android:paddingRight="25sp"
+	        android:paddingLeft="0sp"
+	        android:paddingRight="0sp"
 	        android:orientation="vertical"
 	        >
 	                
@@ -31,11 +30,11 @@
 		        android:id="@+id/settings_about_header"
 		        android:layout_height="wrap_content"
 		        android:layout_width="fill_parent"   
-				android:paddingBottom="25sp"
+				android:paddingBottom="15sp"
 		        android:textColor="@color/dark_grey"
 		        android:text="@string/settings_about_header"
 		        android:textStyle="bold"
-		        android:textSize="42sp"
+		        android:textSize="28sp"
 		        />
 		    
 		    <!-- blurb -->
@@ -45,7 +44,7 @@
 		        android:layout_width="fill_parent"
 		        android:textColor="@color/dark_grey"
 		        android:text="@string/settings_about_blurb"
-		        android:textSize="24sp"
+		        android:textSize="18sp"
 		        />
 	        
 	    </LinearLayout>
@@ -54,9 +53,9 @@
 	    <LinearLayout 
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	    	android:paddingTop="50sp"
-	        android:paddingLeft="25sp"
-	        android:paddingRight="25sp"
+	    	android:paddingTop="15sp"
+	        android:paddingLeft="0sp"
+	        android:paddingRight="0sp"
 	        android:orientation="vertical"
 	        >        
 	        
@@ -65,11 +64,11 @@
 		        android:id="@+id/hmmm"
 		        android:layout_height="wrap_content"
 		        android:layout_width="fill_parent"
-				android:paddingBottom="25sp"
+				android:paddingBottom="15sp"
 		        android:textColor="@color/dark_grey"	        
 		        android:text="@string/settings_what_header"
 		        android:textStyle="bold"
-		        android:textSize="42sp"
+		        android:textSize="28sp"
 		        />    
 		        
 		    <!-- welcome -->
@@ -79,7 +78,7 @@
 		        android:layout_width="fill_parent"
 		        android:textColor="@color/dark_grey"
 		        android:text="@string/settings_what_blurb"
-		        android:textSize="24sp"
+		        android:textSize="18sp"
 		        />
 	    
 	    </LinearLayout>
@@ -88,10 +87,10 @@
 	    <LinearLayout 
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	    	android:paddingTop="50sp"
-	        android:paddingBottom="50sp"
-	        android:paddingLeft="25sp"
-	        android:paddingRight="25sp"
+	    	android:paddingTop="15sp"
+	        android:paddingBottom="15sp"
+	        android:paddingLeft="0sp"
+	        android:paddingRight="0sp"
 	        android:orientation="vertical"
 	        >        
 	        
@@ -100,11 +99,11 @@
 		        android:id="@+id/settings_credit_header"
 		        android:layout_height="wrap_content"
 		        android:layout_width="fill_parent"
-				android:paddingBottom="25sp"
+				android:paddingBottom="15sp"
 		        android:textColor="@color/dark_grey"	        
 		        android:text="@string/settings_credit_header"
 		        android:textStyle="bold"
-		        android:textSize="42sp"
+		        android:textSize="28sp"
 		        />
 		    
 		    <!-- credits blurb -->
@@ -114,7 +113,7 @@
 		        android:layout_width="fill_parent"
 		        android:textColor="@color/dark_grey"
 		        android:text="@string/settings_credit_blurb"
-		        android:textSize="24sp"
+		        android:textSize="18sp"
 		        />
 	        
 	    </LinearLayout>

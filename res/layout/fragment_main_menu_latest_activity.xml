@@ -16,10 +16,7 @@
             android:background="@color/white"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_marginTop="25sp"
-	        android:layout_marginBottom="0sp"
-	        android:layout_marginLeft="25sp"
-	        android:layout_marginRight="25sp"
+	        android:layout_margin="10sp"
 	        android:orientation="vertical"
             >
                         
@@ -28,12 +25,9 @@
 	            android:id="@+id/main_menu_latest_activities_daily_target_met_message"
 	        	android:layout_width="fill_parent"
 	        	android:layout_height="wrap_content"
-		        android:paddingLeft="25sp"
-		        android:paddingRight="25sp"
-		        android:paddingTop="25sp"
-		        android:paddingBottom="25sp"
+		        android:padding="15sp"
 	        	android:textColor="@color/dark_grey"
-	        	android:textSize="18sp"
+	        	android:textSize="20sp"
 	        	android:text="@string/latest_activity_daily_target_met"
 	            />
             
@@ -46,10 +40,10 @@
             android:background="@color/white"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_marginTop="25sp"
+	        android:layout_marginLeft="10sp"
+	        android:layout_marginRight="10sp"	        
+	        android:layout_marginTop="10sp"
 	        android:layout_marginBottom="0sp"
-	        android:layout_marginLeft="25sp"
-	        android:layout_marginRight="25sp"
 	        android:orientation="vertical"
             >
                         
@@ -58,12 +52,9 @@
 	            android:id="@+id/main_menu_latest_activities_monthly_target_met_message"
 	        	android:layout_width="fill_parent"
 	        	android:layout_height="wrap_content"
-		        android:paddingLeft="25sp"
-		        android:paddingRight="25sp"
-		        android:paddingTop="25sp"
-		        android:paddingBottom="25sp"
+		        android:padding="15sp"
 	        	android:textColor="@color/dark_grey"
-	        	android:textSize="18sp"
+	        	android:textSize="20sp"
 	        	android:text="@string/latest_activity_monthly_target_met"
 	            />
             
@@ -76,10 +67,7 @@
 	        android:background="@color/white"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_marginTop="25sp"
-	        android:layout_marginBottom="0sp"
-	        android:layout_marginLeft="25sp"
-	        android:layout_marginRight="25sp"
+	        android:layout_margin="10sp"
 	        android:orientation="vertical"
 	        >
         
@@ -89,13 +77,10 @@
 	        	android:layout_width="fill_parent"
 	        	android:layout_height="wrap_content"
 				android:background="@color/white"
-		        android:paddingLeft="25sp"
-		        android:paddingRight="25sp"
-		        android:paddingTop="25sp"
-		        android:paddingBottom="25sp"
+		        android:padding="15sp"
 	        	android:textAllCaps="true"
 	        	android:textColor="@color/dark_grey"
-	        	android:textSize="24sp"
+	        	android:textSize="20sp"
 	            />
 	                
 	        <!-- no. of sessions date -->
@@ -103,12 +88,9 @@
 	            android:id="@+id/main_menu_latest_activities_no_sessions_date"
 	        	android:layout_width="fill_parent"
 	        	android:layout_height="wrap_content"
-		        android:paddingLeft="25sp"
-		        android:paddingRight="25sp"
-		        android:paddingTop="25sp"
-		        android:paddingBottom="25sp"
+		        android:padding="15sp"
 	        	android:textColor="@color/dark_grey"
-	        	android:textSize="18sp"
+	        	android:textSize="16sp"
 	            />
     
     	</LinearLayout>
@@ -120,14 +102,14 @@
 			android:background="@drawable/main_menu_header_bg"
 	        android:layout_height="wrap_content"
 	        android:layout_width="fill_parent"
-	        android:layout_marginTop="25dp"        
-	        android:layout_marginLeft="25dp"
-	        android:layout_marginRight="25dp"
-			android:padding="25sp"
+	        android:layout_marginTop="0dp"        
+	        android:layout_marginLeft="10dp"
+	        android:layout_marginRight="10dp"
+			android:padding="15sp"
 	        android:textColor="@color/dark_grey"
 	        android:text="@string/main_menu_latest_activity"
 	        android:textAllCaps="true"
-	        android:textSize="24sp"
+	        android:textSize="20sp"
 	        />
 	    
 	    <View 
@@ -141,10 +123,10 @@
 	        android:id="@+id/overview_sessions_adapter"
 	        android:layout_height="wrap_content"
 	        android:layout_width="fill_parent"
-	        android:paddingLeft="25dp"
-	        android:paddingRight="25dp"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp"
 	        android:divider="@color/light_grey"
    			android:dividerHeight="4sp"
 	        />
 	    
-	</LinearLayout>	    
+</LinearLayout>	    
