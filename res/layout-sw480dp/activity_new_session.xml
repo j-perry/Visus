@@ -106,10 +106,7 @@
             android:textColor="@color/light_green"
         />
         
-        <!-- timer 180sp
-        
-        	 margin-top: 5dp
-         -->
+        <!-- timer -->
         <TextView
             android:id="@+id/timer"
             android:visibility="invisible"

@@ -18,62 +18,46 @@
 	    android:layout_gravity="center_horizontal"
 	    android:gravity="center"
         >
-                   
-        <!-- set session duration -->
-        <!--  LinearLayout
-            android:id="@+id/set_session_duration"
+            
+        <!-- minutes -->
+        <TextView
+        	android:id="@+id/timer_set_minutes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-    		android:layout_gravity="center_horizontal"
-    		android:gravity="center_horizontal"
-            -->
-            
-            <!-- minutes -->
-            <TextView
-                android:id="@+id/timer_set_minutes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-            	android:singleLine="true"
-                android:text="@string/timer_predefined_minutes"
-                android:textColorHint="@color/light_green"
-                android:textSize="64sp"
-                android:textColor="@color/light_green"
+            android:singleLine="true"
+            android:text="@string/timer_predefined_minutes"
+            android:textColorHint="@color/light_green"
+            android:textSize="64sp"
+            android:textColor="@color/light_green"
             />
             
-            <TextView
-	            android:id="@+id/session_type"
-	            android:visibility="visible"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:layout_gravity="center_horizontal"
-	            android:gravity="center"
-	            android:maxLength="15"
-	            android:completionThreshold="1"
-	            android:singleLine="true"
-	            android:text="@string/timer_activity_type_placeholder"
-	            android:textColorHint="@color/light_green"
-	            android:textSize="32sp"
-	            android:textColor="@color/light_green"
+        <TextView
+	    	android:id="@+id/session_type"
+	        android:visibility="visible"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal"
+	        android:gravity="center"
+	        android:maxLength="15"
+	        android:completionThreshold="1"
+	        android:singleLine="true"
+	        android:text="@string/timer_activity_type_placeholder"
+	        android:textColorHint="@color/light_green"
+	        android:textSize="32sp"
+	        android:textColor="@color/light_green"
 	        />
         
-	        <!-- timer 180sp
-	        
-	        	 margin-top: 5dp
-	         -->
-	        <TextView
-	            android:id="@+id/timer"
-	            android:visibility="gone"
-	            android:layout_width="wrap_content" 
-	            android:layout_height="wrap_content"
-	            android:textSize="64sp"
-	            android:textColor="@color/light_green"
-	            android:layout_gravity="center_horizontal"
-	            android:gravity="center"
+	    <!-- timer -->
+	    <TextView
+	    	android:id="@+id/timer"
+	        android:visibility="gone"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content"
+	        android:textSize="64sp"
+	        android:textColor="@color/light_green"
+	        android:layout_gravity="center_horizontal"
+	        android:gravity="center"
 	        />
-            
-                                   
-        <!--  LinearLayout -->    
                             
     </LinearLayout>
     
