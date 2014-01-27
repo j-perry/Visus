@@ -176,10 +176,11 @@ containing a value of this type.
         public static final int settings_cancel_btn_bg=0x7f020015;
         public static final int settings_history_btn_bg=0x7f020016;
         public static final int settings_save_all_btn_bg=0x7f020017;
-        public static final int sign_up_gender_bg=0x7f020018;
-        public static final int sign_up_gender_txt=0x7f020019;
-        public static final int tab_indicator=0x7f02001a;
-        public static final int test_bg=0x7f02001b;
+        public static final int settings_save_btn_txt=0x7f020018;
+        public static final int sign_up_gender_bg=0x7f020019;
+        public static final int sign_up_gender_txt=0x7f02001a;
+        public static final int tab_indicator=0x7f02001b;
+        public static final int test_bg=0x7f02001c;
     }
     public static final class id {
         public static final int TextView01=0x7f080058;

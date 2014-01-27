@@ -135,8 +135,8 @@
 	    	<string name="settings_general_activities_blurb">To delete an activity category, swipe each category to the left.</string>
 	    	
 	    	
-	    	<string name="settings_general_sessions_target_day">Set daily target</string>
-	    	<string name="settings_general_sessions_target_month">Set monthly target</string>
+	    	<string name="settings_general_sessions_target_day">(Set daily target)</string>
+	    	<string name="settings_general_sessions_target_month">(Set monthly target)</string>
     		<string name="settings_general_sessions_reset_month">Reset (Month)</string>
     		<string name="settings_general_sessions_reset_year">Reset (Year)</string>
     		<string name="settings_general_sessions_reset_all">Reset (All)</string>
