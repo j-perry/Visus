@@ -30,18 +30,18 @@ public class Session {
 	private int overviewActivities;
 	
 	private final static String [] months = {
-		"Jan",
-		"Feb",
-		"Mar",
-		"Apr",
+		"January",
+		"February",
+		"March",
+		"April",
 		"May",
-		"Jun",
-		"Jul",
-		"Aug",
-		"Sep",
-		"Oct",
-		"Nov",
-		"Dec"
+		"June",
+		"July",
+		"August",
+		"September",
+		"October",
+		"November",
+		"December"
 	};
 		
 	public Session() {
@@ -152,7 +152,7 @@ public class Session {
 	}
 	
 	public void setMonth(String month) {
-		// month - e.g., January (MMM format)
+		// month - e.g., January (MMMM format)
 		for(String m : months)
 			if(m.equals(month))
 				this.month = month;

@@ -79,7 +79,7 @@ public class NewSession extends Activity {
 	// date formats
 	private static final String strFormatDayCalNo = "dd";
 	private static final String strFormatDay = "EEE";
-	private static final String strFormatMonth = "MMM";
+	private static final String strFormatMonth = "MMMM";
 	private static final String strFormatYear = "yyyy";
 	
 	// UI components
@@ -165,7 +165,7 @@ public class NewSession extends Activity {
 			 */
 			ArrayAdapter<String> adapterTypes = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, types); 
 			
-			sessionTypes.setAdapter(adapterTypes); // TODO
+			sessionTypes.setAdapter(adapterTypes);
 		}
 		
 		// buttons
@@ -318,7 +318,7 @@ public class NewSession extends Activity {
 				
 		// assign session duration to global variable
 		this.durationMinutes = iMins;
-		this.durationSeconds = iSecs; // + 1; // TODO
+		this.durationSeconds = iSecs;
 				
 		// get the session date
 		int dayNo = Integer.parseInt(new SimpleDateFormat(strFormatDayCalNo).format(new Date()) );
@@ -473,7 +473,7 @@ public class NewSession extends Activity {
 			}
 			else {
 				// delay for 1 second
-				timeHandler.postDelayed(this, 0); // TODO
+				timeHandler.postDelayed(this, 0);
 			}			
 		}
 	};

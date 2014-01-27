@@ -560,8 +560,7 @@ public class SessionHandler implements IDatabaseTable {
 			int id = 0;
 			
 			// output the first five results
-			for(Session session : sessions) {
-								
+			for(Session session : sessions) {								
 				if(session.getDurationSeconds() < 10) {
 					durationSeconds = "0" + String.valueOf(session.getDurationSeconds() );
 				}
@@ -587,11 +586,9 @@ public class SessionHandler implements IDatabaseTable {
 						map.put(ListViewValues.SESSION_NO, session.getDurationMinutes() + ":" + 
 	 							 durationSeconds );
 
-						map.put(ListViewValues.SESSION, session.getDay() + " " +
-													  	  session.getDayNo() + " " +  
-													  	  session.getMonth() + ", " +
-													  	  session.getYear() + ", " +
-													  	  session.getType()
+						map.put(ListViewValues.SESSION, session.getDayNo() + " " +  
+													  	session.getMonth() + ", " +
+													  	session.getType()
 								);
 												
 						latestSessions.add(map);						
