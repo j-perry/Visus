@@ -4,7 +4,7 @@
     <item
         android:id="@+id/new_session_menu"
         android:orderInCategory="100"
-        android:showAsAction="never"
+        android:showAsAction="always"
         android:icon="@drawable/ic_new_session"
         android:title="New Session"
         />
