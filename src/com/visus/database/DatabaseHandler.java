@@ -46,8 +46,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	                                     ISessionTable.KEY_TYPE + " TEXT " +
                 	                 ");";
 		
+		String createSessionsRecordTable = "CREATE TABLE " + ISessionsRecordTable.TABLE_NAME +
+				                           " ( " +
+				                           		ISessionsRecordTable.KEY_ID + " INTEGER PRIMARY KEY, " +
+				                           		ISessionsRecordTable.KEY_USER_ID + " INTEGER, " +
+				                           		ISessionsRecordTable.KEY_ACTIVITY + " TEXT, " +
+				                           		ISessionsRecordTable.KEY_ACTIVITY_DURATION + " REAL " +
+				                           ");";
+		
 		db.execSQL(createUsersTable);
 		Log.e("Visus", "Users table created");
+		
+		db.execSQL(createSessionsRecordTable);
+		Log.e("Visus", "Session Records table created");
 		
 		db.execSQL(createSessionsTable);
 		Log.e("Visus", "Sessions table created");

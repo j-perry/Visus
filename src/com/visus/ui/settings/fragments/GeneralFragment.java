@@ -1,6 +1,7 @@
 package com.visus.ui.settings.fragments;
 
 import com.visus.database.SessionHandler;
+import com.visus.database.SessionRecordsHandler;
 import com.visus.database.UserHandler;
 import com.visus.entities.User;
 import com.visus.main.MainActivity;
@@ -26,6 +27,7 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 
 	private Integer userId;
 	private SessionHandler dbSession;
+	private SessionRecordsHandler srHandler;
 	private UserHandler dbUser;
 	private User user;
 			
@@ -49,6 +51,7 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		View rootView = inflater.inflate(com.visus.R.layout.fragment_settings_general, container, false);
 		dbSession = new SessionHandler(getActivity() ); // getActivity() should do the trick!
 		dbUser = new UserHandler(getActivity() );
+		srHandler = new SessionRecordsHandler(getActivity() );
 								
 		// user
 		try {
@@ -220,6 +223,9 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 			dbSession.open();
 			dbSession.deleteSessionsThisMonth(user.getUserId() );
 			
+			srHandler.open();
+			srHandler.deleteAllActivities(userId);
+			
 			// hide the reset buttons
 			resetMonth.setVisibility(View.GONE);
 			resetYear.setVisibility(View.GONE);
@@ -234,6 +240,7 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 			Toast.makeText(getActivity(), msg, LENGTH).show();
 			
 			dbSession.close();
+			srHandler.close();
 		}
 	}
 	
@@ -245,6 +252,9 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		try {
 			dbSession.open();
 			dbSession.deleteSessionsThisYear(userId);
+			
+			srHandler.open();
+			srHandler.deleteAllActivities(userId);
 			
 			// hide the reset buttons
 			resetMonth.setVisibility(View.GONE);
@@ -260,6 +270,7 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 			Toast.makeText(getActivity(), msg, LENGTH).show();
 			
 			dbSession.close();
+			srHandler.close();
 		}
 	}
 	
@@ -270,7 +281,10 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 	public void onResetAll(View view) {
 		try {
 			dbSession.open();
-			dbSession.deleteAllSessions(userId);
+			dbSession.deleteAllSessions(userId);	
+			
+			srHandler.open();
+			srHandler.deleteAllActivities(userId);
 			
 			// hide the reset buttons
 			resetMonth.setVisibility(View.GONE);
@@ -286,6 +300,7 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 			Toast.makeText(getActivity(), msg, LENGTH).show();
 			
 			dbSession.close();
+			srHandler.close();
 		}
 	}
 	

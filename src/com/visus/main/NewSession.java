@@ -2,9 +2,14 @@ package com.visus.main;
 
 // core apis
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -388,6 +393,7 @@ public class NewSession extends Activity {
 	private void finishSession() {
 		sessionTimer.cancel();
 		timerHandler.removeCallbacks(runUpdateTimer);
+		SessionRecordsHandler srHandler = new SessionRecordsHandler(context);
 		
 		int sessionMins = 0;
 		int sessionSecs = 0;
@@ -406,6 +412,15 @@ public class NewSession extends Activity {
 		sessionMins = (durationMinutes - remainingMins) - 1;
 		
 		sessionSecs = (60 - remainingSecs);
+		
+		int secsLeft = 0;
+		
+		// if seconds is 60 or greater
+		if(sessionSecs >= 60) {
+			sessionMins += 1;
+			secsLeft = (sessionSecs - 60);
+			sessionSecs = secsLeft;
+		}
 						
 		session.setUserId(activeUserId);
 		session.setDurationMinutes(sessionMins);
@@ -422,12 +437,144 @@ public class NewSession extends Activity {
 		try {
 			dbHandler.open();
 			dbHandler.add(session);
+			
+			Log.e("Visus", "Whoooo");
+			
+			// write log to records table
+			srHandler.open();
+			HashMap<String, Double> existingRecord = srHandler.getActivityRecordByName(type);
+			
+			// get the existing duration for the activity type
+			double recordDuration = 0.0;
+			double recordDurationMins = 0.0;
+			double recordDurationSecs = 0.0;
+			
+	        double tmpRecord = 0.0;
+	        String strRecord;
+			
+			//double tmpDur = recordDuration;
+			DecimalFormat df = new DecimalFormat("0.00");
+			
+			// if existing records do exist...
+			if(!existingRecord.isEmpty() ) {
+				Log.e("Visus", "!existingRecord.isEmpty() ");
+				
+				double exRecordDuration = 0.0;
+				Iterator<Entry<String, Double>> it = existingRecord.entrySet().iterator();
+				
+				Map.Entry<String, Double> entry = (Entry<String, Double>) it.next();
+				exRecordDuration = entry.getValue();
+				Log.e("Visus", "exRecordDuration: " + exRecordDuration);
+				
+				/**
+				 * Format durations (both past and present) to .6 seconds
+				 */
+				
+				/*
+				 * 	First pass - previous session/s
+				 */
+				if((exRecordDuration % 1) > 0.6) {
+					tmpRecord = exRecordDuration;
+					exRecordDuration = 1.0;
+					exRecordDuration += tmpRecord - 0.6;				
+
+					// convert to .2 decimal places for precision
+					strRecord = df.format(exRecordDuration);
+					exRecordDuration = Double.valueOf(exRecordDuration);
+					
+					Log.e("Visus", "Exrecord: " + df.format(exRecordDuration));
+				}
+				else {
+					recordDuration = exRecordDuration;
+				}
+				
+				
+				/* 
+				 * 	Second pass - session just passed
+				 */
+				// if any minutes have been accumulated
+				if(sessionMins != 0) {
+					strRecord = df.format(sessionMins);
+					recordDurationMins = Double.valueOf(strRecord); // format minutes as m.00
+				}
+				
+				recordDurationSecs = ((double) sessionSecs / 100);
+				recordDuration += (recordDurationMins + recordDurationSecs);
+				Log.e("Visus", "recordDuration: " + recordDuration);
+								
+				if((recordDuration % 1) > 0.6) {
+					Log.e("Visus", "wohoo: " + recordDuration);
+					tmpRecord = recordDuration; // 1.0
+					recordDuration = 1.0;
+					recordDuration += tmpRecord - 0.6;
+					
+					// convert to .2 decimal places for precision
+					strRecord = df.format(recordDuration);
+					recordDuration = Double.valueOf(strRecord);
+					
+					Log.e("Visus", "Session: " + df.format(recordDuration));
+				}
+				else {
+					Log.e("Visus", "NOT TRUE: " + recordDuration); // 0.4 - 0.2 (x2)
+				}
+				
+				Log.e("Visus", "(((recordDuration) % 1) > 0.6): " + 
+						        (((recordDuration) % 1) > 0.6) );
+				
+				// third pass
+				if((recordDuration % 1) > 0.6) {
+					tmpRecord = (recordDuration + exRecordDuration);
+					recordDuration = 1.0 + (tmpRecord - 0.6);
+
+					// convert to .2 decimal places for precision
+					strRecord = df.format(recordDuration);
+					recordDuration = Double.valueOf(strRecord);
+					
+					Log.e("Visus", "Final result: " + df.format(recordDuration));
+				}
+				else {
+					Log.e("Visus", "Final result: " + recordDuration);
+				}
+							
+				// write the local database
+				srHandler.updateActivityRecordByName(type, recordDuration, activeUserId);
+			}
+			else {				
+				// if any minutes have been accumulated
+				if(sessionMins != 0) {
+					strRecord = df.format(sessionMins);
+					recordDurationMins = Double.valueOf(strRecord);
+				}
+				else {
+					recordDurationMins = 0.0;
+				}
+				
+				Log.e("Visus", "recordDurationMins: " + recordDurationMins);
+				
+				// convert to .2 decimal places
+				recordDurationSecs = ((double) sessionSecs / 100);
+				Log.e("Visus", "recordDurationSecs: " + recordDurationSecs);
+												
+				// session duration
+				recordDuration = recordDurationMins + recordDurationSecs;
+				Log.e("Visus", "recordDuration: " + recordDuration);
+				
+				
+				// format session to 0.00
+				strRecord = df.format(recordDuration);
+				recordDuration = Double.valueOf(recordDuration);
+												
+				Log.e("Visus", "Session Secs (After): " + recordDuration);
+				
+				srHandler.insertActivityRecord(type, recordDuration, activeUserId);
+			}			
 		}
 		catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);
 		}
 		finally {
 			dbHandler.close();
+			srHandler.close();
 		}
 						
 		// go to previously made sessions
