@@ -229,5 +229,33 @@ public class Session {
 	public int getOverviewNoActivities() {
 		return overviewActivities;
 	}
-
+	
+	public static class SessionFormatter {
+		
+		public SessionFormatter() {
+			super();
+		}
+		
+		/**
+		 * Formats the session duration just passed
+		 * @return the session duration that's been formatted
+		 */
+		public double formatSessionDuration() {
+			double duration = 0.0;
+			
+			return duration;
+		}
+		
+		/**
+		 * Updates the total duration for both past and present sessions
+		 * @param past session duration
+		 * @param present session duration that's just been passed
+		 * @return the formatted duration of both products
+		 */
+		public double formatSessionDurations(double past, double present) {
+			double duration = 0.0;
+			
+			return duration;
+		}		
+	}
 }
