@@ -4,11 +4,7 @@ package com.visus.main;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 
 import android.media.AudioManager;
@@ -16,6 +12,7 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.RingtoneManager;
 import android.net.Uri;
+
 // android apis
 import android.os.*;
 import android.annotation.SuppressLint;
