@@ -442,15 +442,9 @@ public class NewSession extends Activity {
 			HashMap<String, Double> existingRecord = srHandler.getActivityRecordByName(type);
 			
 			// get the existing duration for the activity type
-			double recordDuration = 0.0;
-			double recordDurationMins = 0.0;
-			double recordDurationSecs = 0.0;
+			double recordDuration = 0.0;			
 			
-	        double tmpRecord = 0.0;
-	        String strRecord;
-			
-			//double tmpDur = recordDuration;
-			DecimalFormat df = new DecimalFormat("0.00");
+			Session.SessionFormatter sf = new Session.SessionFormatter();
 			
 			// if existing records do exist...
 			if(!existingRecord.isEmpty() ) {
@@ -461,108 +455,15 @@ public class NewSession extends Activity {
 				
 				Map.Entry<String, Double> entry = (Entry<String, Double>) it.next();
 				exRecordDuration = entry.getValue();
-				Log.e("Visus", "exRecordDuration: " + exRecordDuration);
 				
-				/**
-				 * Format durations (both past and present) to .6 seconds
-				 */
-				
-				/*
-				 * 	First pass - previous session/s
-				 */
-				if((exRecordDuration % 1) > 0.6) {
-					tmpRecord = exRecordDuration;
-					exRecordDuration = 1.0;
-					exRecordDuration += tmpRecord - 0.6;				
-
-					// convert to .2 decimal places for precision
-					strRecord = df.format(exRecordDuration);
-					exRecordDuration = Double.valueOf(exRecordDuration);
-					
-					Log.e("Visus", "Exrecord: " + df.format(exRecordDuration));
-				}
-				else {
-					recordDuration = exRecordDuration;
-				}
-				
-				
-				/* 
-				 * 	Second pass - session just passed
-				 */
-				// if any minutes have been accumulated
-				if(sessionMins != 0) {
-					strRecord = df.format(sessionMins);
-					recordDurationMins = Double.valueOf(strRecord); // format minutes as m.00
-				}
-				
-				recordDurationSecs = ((double) sessionSecs / 100);
-				recordDuration += (recordDurationMins + recordDurationSecs);
-				Log.e("Visus", "recordDuration: " + recordDuration);
-								
-				if((recordDuration % 1) > 0.6) {
-					Log.e("Visus", "wohoo: " + recordDuration);
-					tmpRecord = recordDuration; // 1.0
-					recordDuration = 1.0;
-					recordDuration += tmpRecord - 0.6;
-					
-					// convert to .2 decimal places for precision
-					strRecord = df.format(recordDuration);
-					recordDuration = Double.valueOf(strRecord);
-					
-					Log.e("Visus", "Session: " + df.format(recordDuration));
-				}
-				else {
-					Log.e("Visus", "NOT TRUE: " + recordDuration); // 0.4 - 0.2 (x2)
-				}
-				
-				Log.e("Visus", "(((recordDuration) % 1) > 0.6): " + 
-						        (((recordDuration) % 1) > 0.6) );
-				
-				// third pass
-				if((recordDuration % 1) > 0.6) {
-					tmpRecord = (recordDuration + exRecordDuration);
-					recordDuration = 1.0 + (tmpRecord - 0.6);
-
-					// convert to .2 decimal places for precision
-					strRecord = df.format(recordDuration);
-					recordDuration = Double.valueOf(strRecord);
-					
-					Log.e("Visus", "Final result: " + df.format(recordDuration));
-				}
-				else {
-					Log.e("Visus", "Final result: " + recordDuration);
-				}
-							
-				// write the local database
+				// return both products correctly time formatted
+				recordDuration = sf.formatSessionDurations(exRecordDuration, sessionMins, sessionSecs);
+										
+				// write to the local database
 				srHandler.updateActivityRecordByName(type, recordDuration, activeUserId);
 			}
 			else {				
-				// if any minutes have been accumulated
-				if(sessionMins != 0) {
-					strRecord = df.format(sessionMins);
-					recordDurationMins = Double.valueOf(strRecord);
-				}
-				else {
-					recordDurationMins = 0.0;
-				}
-				
-				Log.e("Visus", "recordDurationMins: " + recordDurationMins);
-				
-				// convert to .2 decimal places
-				recordDurationSecs = ((double) sessionSecs / 100);
-				Log.e("Visus", "recordDurationSecs: " + recordDurationSecs);
-												
-				// session duration
-				recordDuration = recordDurationMins + recordDurationSecs;
-				Log.e("Visus", "recordDuration: " + recordDuration);
-				
-				
-				// format session to 0.00
-				strRecord = df.format(recordDuration);
-				recordDuration = Double.valueOf(recordDuration);
-												
-				Log.e("Visus", "Session Secs (After): " + recordDuration);
-				
+				recordDuration = sf.formatSessionDuration(sessionMins, sessionSecs);					
 				srHandler.insertActivityRecord(type, recordDuration, activeUserId);
 			}			
 		}

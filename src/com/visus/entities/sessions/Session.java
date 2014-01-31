@@ -1,5 +1,9 @@
 package com.visus.entities.sessions;
 
+import java.text.DecimalFormat;
+
+import android.util.Log;
+
 public class Session {
 
 	private StringBuilder duration;
@@ -240,8 +244,43 @@ public class Session {
 		 * Formats the session duration just passed
 		 * @return the session duration that's been formatted
 		 */
-		public double formatSessionDuration() {
-			double duration = 0.0;
+		public double formatSessionDuration(int sessionMins, int sessionSecs) {
+			DecimalFormat df = new DecimalFormat("0.00");
+			double duration = 0.0;			
+									
+			double recordDuration = 0.0,
+				   recordDurationMins = 0.0,
+				   recordDurationSecs = 0.0;
+			
+			double tmpRecord = 0.0;			
+			String strRecord = null;
+			
+			if(sessionMins != 0) {
+				strRecord = df.format(sessionMins);
+				recordDurationMins = Double.valueOf(strRecord); // format minutes as m.00
+			}		
+			
+			recordDurationSecs = ((double) sessionSecs / 100);
+			recordDuration += (recordDurationMins + recordDurationSecs);
+			Log.e("Visus", "recordDuration: " + recordDuration);
+							
+			if((recordDuration % 1) > 0.6) {
+				Log.e("Visus", "wohoo: " + recordDuration);
+				tmpRecord = recordDuration; // 1.0
+				recordDuration = 1.0;
+				recordDuration += tmpRecord - 0.6;
+				
+				// convert to .2 decimal places for precision
+				strRecord = df.format(recordDuration);
+				recordDuration = Double.valueOf(strRecord);
+				
+				Log.e("Visus", "Session: " + df.format(recordDuration));
+			}
+			else {
+				Log.e("Visus", "Session: " + recordDuration); // 0.4 - 0.2 (x2)
+			}
+			
+			duration = recordDuration;
 			
 			return duration;
 		}
@@ -252,8 +291,85 @@ public class Session {
 		 * @param present session duration that's just been passed
 		 * @return the formatted duration of both products
 		 */
-		public double formatSessionDurations(double past, double present) {
+		public double formatSessionDurations(double past, int sessionMins, int sessionSecs) {
+			DecimalFormat df = new DecimalFormat("0.00");
+			
 			double duration = 0.0;
+			
+			double recordDuration = 0.0,
+				   recordDurationMins = 0.0,
+				   recordDurationSecs = 0.0;
+						
+			double tmpRecord = 0.0;
+			
+			String strRecord = null;
+			
+			/*
+			 * 	First pass - previous session/s
+			 */
+			if((past % 1) > 0.6) {
+				tmpRecord = past;
+				past = 1.0;
+				past += tmpRecord - 0.6;				
+
+				// convert to .2 decimal places for precision
+				strRecord = df.format(past);
+				past = Double.valueOf(past);
+				
+				Log.e("Visus", "Exrecord: " + df.format(past));
+			}
+			else {
+				recordDuration = past;
+			}
+			
+			
+			/* 
+			 * 	Second pass - session just passed
+			 */
+			// if any minutes have been accumulated
+			if(sessionMins != 0) {
+				strRecord = df.format(sessionMins);
+				recordDurationMins = Double.valueOf(strRecord); // format minutes as m.00
+			}
+			
+			recordDurationSecs = ((double) sessionSecs / 100);
+			recordDuration += (recordDurationMins + recordDurationSecs);
+			Log.e("Visus", "recordDuration: " + recordDuration);
+							
+			if((recordDuration % 1) > 0.6) {
+				Log.e("Visus", "wohoo: " + recordDuration);
+				tmpRecord = recordDuration; // 1.0
+				recordDuration = 1.0;
+				recordDuration += tmpRecord - 0.6;
+				
+				// convert to .2 decimal places for precision
+				strRecord = df.format(recordDuration);
+				recordDuration = Double.valueOf(strRecord);
+				
+				Log.e("Visus", "Session: " + df.format(recordDuration));
+			}
+			else {
+				Log.e("Visus", "Session: " + recordDuration); // 0.4 - 0.2 (x2)
+			}
+						
+			/**
+			 * 	Third pass
+			 */
+			if((recordDuration % 1) > 0.6) {
+				tmpRecord = (recordDuration + past);
+				recordDuration = 1.0 + (tmpRecord - 0.6);
+
+				// convert to .2 decimal places for precision
+				strRecord = df.format(recordDuration);
+				recordDuration = Double.valueOf(strRecord);
+				
+				Log.e("Visus", "Final result: " + df.format(recordDuration));
+			}
+			else {
+				Log.e("Visus", "Final result: " + recordDuration);
+			}
+			
+			duration = recordDuration;
 			
 			return duration;
 		}		
