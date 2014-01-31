@@ -61,7 +61,7 @@
 	
 				        <!-- target (day) -->
 				        <EditText
-			            	android:visibility="visible"
+			            	android:visibility="gone"
 				            android:id="@+id/settings_history_target_day"
 			        		android:inputType="number"
 				            android:background="@color/white"
@@ -78,7 +78,7 @@
 				        
 				        <!-- target (month) -->
 				        <EditText
-			            	android:visibility="visible"
+			            	android:visibility="gone"
 				            android:id="@+id/settings_history_target_month"
 			        		android:inputType="number"
 				            android:background="@color/white"

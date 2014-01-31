@@ -58,6 +58,7 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 			dbUser.open();
 			user = dbUser.getActiveUser();
 			this.userId = user.getUserId();
+			
 			Log.e("Visus", "GeneralFragment " + userId);
 			Log.e("Visus", "GeneralFragment (Target Day): " + user.getTargetDay() );
 		}
@@ -71,15 +72,15 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		historyTargetDay = (EditText) rootView.findViewById(com.visus.R.id.settings_history_target_day);
 		historyTargetMonth = (EditText) rootView.findViewById(com.visus.R.id.settings_history_target_month);
 				
-		resetMonth = (Button) rootView.findViewById(com.visus.R.id.settings_history_reset_month);
-		resetYear = (Button) rootView.findViewById(com.visus.R.id.settings_history_reset_year);
+//		resetMonth = (Button) rootView.findViewById(com.visus.R.id.settings_history_reset_month);
+//		resetYear = (Button) rootView.findViewById(com.visus.R.id.settings_history_reset_year);
 		resetAll = (Button) rootView.findViewById(com.visus.R.id.settings_history_reset_all);
 				
 		save = (Button) rootView.findViewById(com.visus.R.id.settings_save_all);
 				
 		// set event handlers for the reset and save all buttons
-		resetMonth.setOnClickListener(this);
-		resetYear.setOnClickListener(this);
+//		resetMonth.setOnClickListener(this);
+//		resetYear.setOnClickListener(this);
 		resetAll.setOnClickListener(this);
 		save.setOnClickListener(this);
 				
@@ -91,11 +92,11 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		try {
 			dbSession.open();
 					
-			// month btn
-			itemsMonth = dbSession.getSessionsCountThisMonth(user.getUserId() );
-					
-			// year btn
-			itemsYear = dbSession.getSessionsCountThisYear(user.getUserId() );
+//			// month btn
+//			itemsMonth = dbSession.getSessionsCountThisMonth(user.getUserId() );
+//					
+//			// year btn
+//			itemsYear = dbSession.getSessionsCountThisYear(user.getUserId() );
 					
 			// all sessions btn
 			itemsAll = dbSession.getSessionsCountAll(user.getUserId() );
@@ -107,23 +108,23 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 			dbSession.close();
 		}
 				
-		// month
-		if(itemsMonth == 0) {
-			resetMonth.setVisibility(View.GONE);
-		}
-		else {
-			resetMonth.setVisibility(View.VISIBLE);			
-		}
+//		// month
+//		if(itemsMonth == 0) {
+//			resetMonth.setVisibility(View.GONE);
+//		}
+//		else {
+//			resetMonth.setVisibility(View.VISIBLE);			
+//		}
+//				
+//		// year
+//		if(itemsYear == 0) {
+//			resetYear.setVisibility(View.GONE);
+//		}
+//		else {
+//			resetYear.setVisibility(View.VISIBLE);			
+//		}
 				
-		// year
-		if(itemsYear == 0) {
-			resetYear.setVisibility(View.GONE);
-		}
-		else {
-			resetYear.setVisibility(View.VISIBLE);			
-		}
-				
-		// year
+		// all
 		if(itemsAll == 0) {
 			resetAll.setVisibility(View.GONE);
 		}
@@ -287,8 +288,8 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 			srHandler.deleteAllActivities(userId);
 			
 			// hide the reset buttons
-			resetMonth.setVisibility(View.GONE);
-			resetYear.setVisibility(View.GONE);
+//			resetMonth.setVisibility(View.GONE);
+//			resetYear.setVisibility(View.GONE);
 			resetAll.setVisibility(View.GONE);
 		}
 		catch(SQLiteException e) {
@@ -296,7 +297,7 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		}
 		finally {
 			final int LENGTH = 600; // ms
-			String msg = "Deleted";
+			String msg = "Sessions Deleted";
 			Toast.makeText(getActivity(), msg, LENGTH).show();
 			
 			dbSession.close();

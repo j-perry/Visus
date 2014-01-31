@@ -139,7 +139,9 @@
 	    	<string name="settings_general_sessions_target_month">(Set monthly target)</string>
     		<string name="settings_general_sessions_reset_month">Reset (Month)</string>
     		<string name="settings_general_sessions_reset_year">Reset (Year)</string>
-    		<string name="settings_general_sessions_reset_all">Reset (All)</string>
+    		
+    		<!-- used to be 'Reset (All)' -->
+    		<string name="settings_general_sessions_reset_all">Reset</string>
     		
     		<!-- Save (all) -->
     		<string name="settings_general_save_all">Save</string>
