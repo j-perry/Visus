@@ -9,6 +9,7 @@
     tools:context=".SettingsActivities"
     >
         
+    <!-- 
     <com.fortysevendeg.swipelistview.SwipeListView
         android:id="@+id/example_lv_list"
         android:listSelector="@color/light_grey"
@@ -19,5 +20,6 @@
         swipe:swipeCloseAllItemsWhenMoveList="true"
         swipe:swipeMode="both"
         />
+     -->
     
 </android.support.v4.widget.DrawerLayout>

@@ -400,6 +400,8 @@ containing a value of this type.
          */
         public static final int settings_general_sessions_header=0x7f050034;
         public static final int settings_general_sessions_monthly_target_header=0x7f050036;
+        /**  used to be 'Reset (All)' 
+         */
         public static final int settings_general_sessions_reset_all=0x7f05003d;
         public static final int settings_general_sessions_reset_month=0x7f05003b;
         public static final int settings_general_sessions_reset_year=0x7f05003c;

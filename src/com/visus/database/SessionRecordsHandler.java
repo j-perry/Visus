@@ -23,7 +23,8 @@ public class SessionRecordsHandler implements IDatabaseTable {
 	
 	private String select,
 				   from,
-				   where;
+				   where,
+				   orderBy;
 	
 	public SessionRecordsHandler(Context context) {
 		dbHandler = new DatabaseHandler(context);
@@ -79,29 +80,35 @@ public class SessionRecordsHandler implements IDatabaseTable {
 	 * @param userId
 	 * @return records
 	 */
-	public ArrayList<HashMap<String, Double>> getRecordsDesc(int userId) throws SQLiteException {
-		ArrayList<HashMap<String, Double>> records = new ArrayList<HashMap<String, Double>>();
+	public HashMap<String, Double> getRecordsDesc(int userId) throws SQLiteException {
 		HashMap<String, Double> cursorResults = new HashMap<String, Double>();
 		
 		select = "SELECT * ";
 		from   = "FROM " + ISessionsRecordTable.TABLE_NAME + " ";
-		where  = "WHERE " + ISessionsRecordTable.KEY_ACTIVITY_DURATION + " DESC";
-		query = new StringBuilder(select + from + where);
+//		where  = "WHERE " + ISessionsRecordTable.KEY_USER_ID + " = '" + userId + "' ";
+		orderBy = "ORDER BY " + ISessionsRecordTable.KEY_ACTIVITY_DURATION + " DESC";
+		query = new StringBuilder(select + from + orderBy);
+		
+		Log.e("Visus", query.toString() );
 		
 		cursor = db.rawQuery(query.toString(), null);
 		
 		int activityIndex = cursor.getColumnIndexOrThrow(ISessionsRecordTable.KEY_ACTIVITY);
 		int activityDurIndex = cursor.getColumnIndexOrThrow(ISessionsRecordTable.KEY_ACTIVITY_DURATION);
 		
-		while(cursor.moveToNext()) {
-			cursorResults.put(cursor.getString(activityIndex), 		// activity
-					          cursor.getDouble(activityDurIndex));  // activity duration
+		if(cursor.getCount() != 0) {
+			while(cursor.moveToNext()) {
+				cursorResults.put(cursor.getString(activityIndex), 		// activity
+						          cursor.getDouble(activityDurIndex));  // activity duration
+			}
+		}
+		else {
+			cursorResults = null;
 		}
 		
-		records.add(cursorResults);
 		cursor.close();
 		
-		return records;
+		return cursorResults;
 	}
 	
 	/**

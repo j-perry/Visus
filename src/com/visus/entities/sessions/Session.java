@@ -234,6 +234,11 @@ public class Session {
 		return overviewActivities;
 	}
 	
+	/**
+	 * Inner class formats session durations
+	 * @author Jonathan Perry
+	 *
+	 */
 	public static class SessionFormatter {
 		
 		public SessionFormatter() {

@@ -51,7 +51,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				                           		ISessionsRecordTable.KEY_ID + " INTEGER PRIMARY KEY, " +
 				                           		ISessionsRecordTable.KEY_USER_ID + " INTEGER, " +
 				                           		ISessionsRecordTable.KEY_ACTIVITY + " TEXT, " +
-				                           		ISessionsRecordTable.KEY_ACTIVITY_DURATION + " REAL " +
+				                           		ISessionsRecordTable.KEY_ACTIVITY_DURATION + " TEXT " +
 				                           ");";
 		
 		db.execSQL(createUsersTable);
