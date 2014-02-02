@@ -281,7 +281,7 @@ public class NewSession extends Activity {
 		stopTimerBtn = (Button) findViewById(R.id.timer_stop_btn);
 		
 		// session duration setter layout 
-		LinearLayout sessionDuration = (LinearLayout) findViewById(R.id.set_session_duration);
+		TextView sessionDuration = (TextView) findViewById(R.id.timer_set_minutes);
 		
 		TextView timer = (TextView) findViewById(R.id.timer);
 		
