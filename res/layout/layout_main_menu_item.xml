@@ -21,7 +21,7 @@
 		android:padding="15sp"
 		android:gravity="center"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="14sp"
 		android:layout_weight="4"
         />
        
@@ -33,7 +33,7 @@
         android:layout_width="0dp"
 		android:padding="15sp"
         android:textColor="@color/dark_grey"
-        android:textSize="18sp"
+        android:textSize="14sp"
 		android:layout_weight="16"
         />    
 

@@ -27,7 +27,7 @@
 	        	android:layout_height="wrap_content"
 		        android:padding="15sp"
 	        	android:textColor="@color/dark_grey"
-	        	android:textSize="20sp"
+	        	android:textSize="14sp"
 	        	android:text="@string/latest_activity_daily_target_met"
 	            />
             
@@ -54,7 +54,7 @@
 	        	android:layout_height="wrap_content"
 		        android:padding="15sp"
 	        	android:textColor="@color/dark_grey"
-	        	android:textSize="20sp"
+	        	android:textSize="14sp"
 	        	android:text="@string/latest_activity_monthly_target_met"
 	            />
             
@@ -80,7 +80,7 @@
 		        android:padding="15sp"
 	        	android:textAllCaps="true"
 	        	android:textColor="@color/dark_grey"
-	        	android:textSize="20sp"
+	        	android:textSize="14sp"
 	            />
 	                
 	        <!-- no. of sessions date -->
@@ -90,7 +90,7 @@
 	        	android:layout_height="wrap_content"
 		        android:padding="15sp"
 	        	android:textColor="@color/dark_grey"
-	        	android:textSize="16sp"
+	        	android:textSize="14sp"
 	            />
     
     	</LinearLayout>
@@ -109,7 +109,7 @@
 	        android:textColor="@color/dark_grey"
 	        android:text="@string/main_menu_latest_activity"
 	        android:textAllCaps="true"
-	        android:textSize="20sp"
+	        android:textSize="14sp"
 	        />
 	    
 	    <View 

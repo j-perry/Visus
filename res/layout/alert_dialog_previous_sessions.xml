@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minWidth="475sp"
+    android:minWidth="400sp"
     >
     
     <LinearLayout 
@@ -20,7 +20,7 @@
 		    android:layout_height="wrap_content"
 		    android:padding="15sp"
 		    android:text="@string/dialog_previous_sessions_heading"
-		    android:textSize="14sp"
+		    android:textSize="12sp"
 		    android:textColor="@color/white"
 		    android:textStyle="bold"
 		    />
@@ -39,7 +39,7 @@
 		    android:layout_height="wrap_content"
 		    android:layout_margin="15sp"
 		    android:text="@string/dialog_previous_sessions_txt"
-		    android:textSize="14sp"
+		    android:textSize="12sp"
 		    android:singleLine="false"
 		    android:textColor="@color/dark_grey"
 		    android:textColorHint="@color/light_grey"
@@ -65,7 +65,7 @@
 	    	android:padding="15sp"
 		    android:text="@string/dialog_previous_sessions_btn_cancel"
 		    android:textColor="@drawable/main_menu_profile_txt"
-		    android:textSize="14sp"
+		    android:textSize="12sp"
 		    />
 	    
 	    <Button
@@ -78,7 +78,7 @@
 	    	android:padding="15sp"
 		    android:text="@string/dialog_previous_sessions_btn_ok"
 		    android:textColor="@drawable/main_menu_profile_txt"
-		    android:textSize="14sp"
+		    android:textSize="12sp"
 		    />
 	    
 	</LinearLayout>
