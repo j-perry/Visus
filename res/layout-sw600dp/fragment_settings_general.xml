@@ -146,33 +146,6 @@
 	
 			    </LinearLayout><!-- end of sessions -->
 			    
-			    <!-- activities -->
-			    <LinearLayout
-			        android:id="@+id/linear_layout_settings_activities"
-			        android:background="@color/white"
-			        android:layout_height="wrap_content"
-			        android:layout_width="match_parent"
-			        android:layout_marginBottom="20dp"
-			    	android:orientation="vertical"
-			        >
-			        
-			        <!-- header -->
-			        <Button
-			            android:id="@+id/settings_activities_header"
-			            android:onClick="viewActivities"
-			            android:background="@drawable/settings_activity_bg"
-			            android:layout_height="wrap_content"
-			            android:layout_width="match_parent"
-			            android:padding="25dp"
-			            android:gravity="left"
-			            android:text="@string/settings_general_activities_header"
-			            android:textSize="24sp"
-			            android:textColor="@drawable/settings_activity_txt"
-			            android:textAllCaps="true"
-			            />  
-			        
-			    </LinearLayout><!-- end of activities -->
-
 				<!-- save (all) -->
 			    <LinearLayout
 			        android:background="@color/white"

@@ -82,42 +82,7 @@
 		        />
 	    
 	    </LinearLayout>
-	    
-	    <!-- credits -->
-	    <LinearLayout 
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	    	android:paddingTop="15sp"
-	        android:paddingBottom="15sp"
-	        android:paddingLeft="0sp"
-	        android:paddingRight="0sp"
-	        android:orientation="vertical"
-	        >        
 	        
-	        <!-- header -->
-		    <TextView 
-		        android:id="@+id/settings_credit_header"
-		        android:layout_height="wrap_content"
-		        android:layout_width="fill_parent"
-				android:paddingBottom="15sp"
-		        android:textColor="@color/dark_grey"	        
-		        android:text="@string/settings_credit_header"
-		        android:textStyle="bold"
-		        android:textSize="18sp"
-		        />
-		    
-		    <!-- credits blurb -->
-		    <TextView 
-		        android:id="@+id/settings_credit_blurb"
-		        android:layout_height="wrap_content"
-		        android:layout_width="fill_parent"
-		        android:textColor="@color/dark_grey"
-		        android:text="@string/settings_credit_blurb"
-		        android:textSize="18sp"
-		        />
-	        
-	    </LinearLayout>
-	    
 	</LinearLayout>
 
 </ScrollView>
