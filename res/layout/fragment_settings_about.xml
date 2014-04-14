@@ -53,7 +53,8 @@
 	    <LinearLayout 
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	    	android:paddingTop="15sp"
+	    	android:paddingTop="15sp"	    	
+	    	android:paddingBottom="15sp"
 	        android:paddingLeft="0sp"
 	        android:paddingRight="0sp"
 	        android:orientation="vertical"
