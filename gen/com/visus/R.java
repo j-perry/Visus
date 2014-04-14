@@ -183,12 +183,11 @@ containing a value of this type.
         public static final int test_bg=0x7f02001c;
     }
     public static final class id {
-        public static final int TextView01=0x7f080056;
-        public static final int TextView02=0x7f080057;
+        public static final int TextView01=0x7f080050;
+        public static final int TextView02=0x7f080051;
         public static final int actionBarList=0x7f080007;
         public static final int activities_overview=0x7f080046;
         public static final int activity=0x7f08004b;
-        public static final int activity_id=0x7f080054;
         public static final int age=0x7f080013;
         public static final int alert_dialog_new_session_btn_cancel=0x7f080017;
         public static final int alert_dialog_new_session_btn_ok=0x7f080018;
@@ -201,21 +200,16 @@ containing a value of this type.
         public static final int alert_dialog_user_targets_btn_ok=0x7f080020;
         public static final int alert_dialog_user_targets_header=0x7f08001d;
         public static final int alert_dialog_user_targets_txt=0x7f08001e;
-        public static final int back=0x7f080053;
         public static final int both=0x7f080001;
         public static final int choice=0x7f080006;
         public static final int date=0x7f080049;
-        public static final int delete=0x7f080055;
         public static final int dialog_new_session_auto_complete_type=0x7f080016;
         public static final int dismiss=0x7f080005;
-        public static final int drawer=0x7f080050;
         public static final int entry=0x7f080048;
         public static final int entry_no=0x7f08004c;
-        public static final int example_lv_list=0x7f080051;
         public static final int first_name=0x7f080011;
         public static final int fragment_main_menu_layout_target_met_daily=0x7f080025;
         public static final int fragment_main_menu_layout_target_met_monthly=0x7f080027;
-        public static final int front=0x7f080052;
         public static final int gender=0x7f080012;
         public static final int header=0x7f080043;
         public static final int header_events=0x7f080047;
@@ -239,10 +233,10 @@ containing a value of this type.
         public static final int main_menu_latest_activities_no_sessions_total=0x7f080029;
         public static final int main_menu_no_activities=0x7f080021;
         public static final int main_menu_pager=0x7f080009;
-        public static final int menu_about=0x7f08005b;
-        public static final int menu_sessions=0x7f080059;
-        public static final int menu_settings=0x7f08005a;
-        public static final int new_session_menu=0x7f080058;
+        public static final int menu_about=0x7f080055;
+        public static final int menu_sessions=0x7f080053;
+        public static final int menu_settings=0x7f080054;
+        public static final int new_session_menu=0x7f080052;
         public static final int none=0x7f080000;
         public static final int overview=0x7f080042;
         public static final int overview_sessions_adapter=0x7f08002b;
@@ -303,14 +297,12 @@ containing a value of this type.
         public static final int layout_sessions_header=0x7f030017;
         public static final int layout_sessions_item=0x7f030018;
         public static final int layout_sessions_items=0x7f030019;
-        public static final int layout_settings_activities=0x7f03001a;
-        public static final int layout_settings_group_item=0x7f03001b;
-        public static final int package_row_activities_settings=0x7f03001c;
-        public static final int settings_activities_layout_item=0x7f03001d;
-        public static final int settings_spinner_gender_layout=0x7f03001e;
-        public static final int settings_spinner_gender_list_layout=0x7f03001f;
-        public static final int sign_up_spinner_gender_layout=0x7f030020;
-        public static final int sign_up_spinner_gender_list_layout=0x7f030021;
+        public static final int layout_settings_group_item=0x7f03001a;
+        public static final int settings_activities_layout_item=0x7f03001b;
+        public static final int settings_spinner_gender_layout=0x7f03001c;
+        public static final int settings_spinner_gender_list_layout=0x7f03001d;
+        public static final int sign_up_spinner_gender_layout=0x7f03001e;
+        public static final int sign_up_spinner_gender_list_layout=0x7f03001f;
     }
     public static final class menu {
         public static final int activity_main=0x7f090000;
