@@ -1,18 +1,26 @@
 package com.visus.ui.settings.fragments;
 
+import com.visus.R;
 import com.visus.database.SessionHandler;
 import com.visus.database.SessionRecordsHandler;
 import com.visus.database.UserHandler;
 import com.visus.entities.User;
 import com.visus.main.MainActivity;
+import com.visus.main.Settings;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NavUtils;
+import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -41,6 +49,9 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 	
 	// 'save'
 	private Button	 save;
+	
+	private int prevTargetDay,
+				prevTargetMonth;
 		
 	public GeneralFragment() {
 		super();
@@ -72,32 +83,20 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		historyTargetDay = (EditText) rootView.findViewById(com.visus.R.id.settings_history_target_day);
 		historyTargetMonth = (EditText) rootView.findViewById(com.visus.R.id.settings_history_target_month);
 				
-//		resetMonth = (Button) rootView.findViewById(com.visus.R.id.settings_history_reset_month);
-//		resetYear = (Button) rootView.findViewById(com.visus.R.id.settings_history_reset_year);
 		resetAll = (Button) rootView.findViewById(com.visus.R.id.settings_history_reset_all);
 				
 		save = (Button) rootView.findViewById(com.visus.R.id.settings_save_all);
 				
 		// set event handlers for the reset and save all buttons
-//		resetMonth.setOnClickListener(this);
-//		resetYear.setOnClickListener(this);
 		resetAll.setOnClickListener(this);
 		save.setOnClickListener(this);
 				
 		// determine whether to display either of the reset buttons, based on existing Sessions data
-		int itemsMonth = 0;
-		int itemsYear = 0;
 		int itemsAll = 0;
 				
 		try {
-			dbSession.open();
-					
-//			// month btn
-//			itemsMonth = dbSession.getSessionsCountThisMonth(user.getUserId() );
-//					
-//			// year btn
-//			itemsYear = dbSession.getSessionsCountThisYear(user.getUserId() );
-					
+			dbSession.open();					
+			
 			// all sessions btn
 			itemsAll = dbSession.getSessionsCountAll(user.getUserId() );
 		}
@@ -107,22 +106,6 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		finally {
 			dbSession.close();
 		}
-				
-//		// month
-//		if(itemsMonth == 0) {
-//			resetMonth.setVisibility(View.GONE);
-//		}
-//		else {
-//			resetMonth.setVisibility(View.VISIBLE);			
-//		}
-//				
-//		// year
-//		if(itemsYear == 0) {
-//			resetYear.setVisibility(View.GONE);
-//		}
-//		else {
-//			resetYear.setVisibility(View.VISIBLE);			
-//		}
 				
 		// all
 		if(itemsAll == 0) {
@@ -161,50 +144,24 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		}
 		else {
 			historyTargetDay.setText(String.valueOf(user.getTargetDay()) );
+			this.prevTargetDay = user.getTargetDay();
 		}
 				
 		// target month
-		if(user.getTargetMonth() != 0) {
-			historyTargetMonth.setText(String.valueOf(user.getTargetMonth()) );
-		}
-		else {
+		if(user.getTargetMonth() == 0) {
 			historyTargetMonth.setText("");
 		}
-		
-		/*
-		 * Activities listview
-		 */
-//		ListView lvActivities = (ListView) rootView.findViewById(com.visus.R.id.settings_activities_adapter);
-//		ArrayList<HashMap<String, String>> activities = new ArrayList<HashMap<String, String>>();
-//		
-//		try {
-//			dbSession.open();
-//			user.setUserId(this.userId);
-//			activities = dbSession.getActivities(user);
-//		}
-//		catch(SQLiteException e) {
-//			Log.e("Visus", "SQL Error", e);
-//		}
-//		finally {
-//			dbSession.close();
-//		}
-		
-//		ListViewAdapter adapter = new ListViewAdapter(getActivity(), activities);
-//		lvActivities.setScrollContainer(false);
-//		lvActivities.setAdapter(adapter);
-		
+		else {
+			historyTargetMonth.setText(String.valueOf(user.getTargetMonth()) );
+			this.prevTargetMonth = user.getTargetMonth();
+		}
+				
 		return rootView;
 	}
 	
 	@Override
 	public void onClick(View view) {
 		switch(view.getId()) {
-			case com.visus.R.id.settings_history_reset_month:
-				onResetMonth(view);
-				break;
-			case com.visus.R.id.settings_history_reset_year:
-				onResetYear(view);
-				break;
 			case com.visus.R.id.settings_history_reset_all:
 				onResetAll(view);
 				break;
@@ -212,66 +169,6 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 				onSave(view);
 			default:
 				break;
-		}
-	}
-	
-	/**
-	 * Reset all sessions made this month
-	 * @param view
-	 */
-	public void onResetMonth(View view) {
-		try {
-			dbSession.open();
-			dbSession.deleteSessionsThisMonth(user.getUserId() );
-			
-			srHandler.open();
-			srHandler.deleteAllActivities(userId);
-			
-			// hide the reset buttons
-			resetMonth.setVisibility(View.GONE);
-			resetYear.setVisibility(View.GONE);
-			resetAll.setVisibility(View.GONE);
-		}
-		catch(SQLiteException e) {
-			Log.e("Visus", "SQL Error", e);
-		}
-		finally {
-			final int LENGTH = 600; // ms
-			String msg = "Deleted";
-			Toast.makeText(getActivity(), msg, LENGTH).show();
-			
-			dbSession.close();
-			srHandler.close();
-		}
-	}
-	
-	/**
-	 * Reset all sessions made this year
-	 * @param view
-	 */
-	public void onResetYear(View view) {
-		try {
-			dbSession.open();
-			dbSession.deleteSessionsThisYear(userId);
-			
-			srHandler.open();
-			srHandler.deleteAllActivities(userId);
-			
-			// hide the reset buttons
-			resetMonth.setVisibility(View.GONE);
-			resetYear.setVisibility(View.GONE);
-			resetAll.setVisibility(View.GONE);
-		}
-		catch(SQLiteException e) {
-			Log.e("Visus", "SQL Error", e);			
-		}
-		finally {
-			final int LENGTH = 600; // ms
-			String msg = "Deleted";
-			Toast.makeText(getActivity(), msg, LENGTH).show();
-			
-			dbSession.close();
-			srHandler.close();
 		}
 	}
 	
@@ -288,8 +185,6 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 			srHandler.deleteAllActivities(userId);
 			
 			// hide the reset buttons
-//			resetMonth.setVisibility(View.GONE);
-//			resetYear.setVisibility(View.GONE);
 			resetAll.setVisibility(View.GONE);
 		}
 		catch(SQLiteException e) {
@@ -348,6 +243,7 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 			Log.e("Visus", "SQL Error", e);
 		}
 		finally {
+			
 			// inform the user their profile has been saved (updated)
 			final int LENGTH = 600; // ms
 			String msg = "Profile Updated";
@@ -361,4 +257,98 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 			startActivity(intent);
 		}
 	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		super.onOptionsItemSelected(item);
+		
+		Log.e("Visus", "back home");
+		
+		switch(item.getItemId()) {
+			// app logo
+			case android.R.id.home:
+				Log.e("Visus", "back home");
+				
+				final Dialog dialog = new Dialog(getActivity() );
+				Button ok = new Button(getActivity() );
+				Button cancel = new Button(getActivity() );
+				final Context context = getActivity();
+				
+				// if the new value is different from the previous, ask the user whether they want to
+				// save the previous target for each weekday
+				if(this.prevTargetDay < Integer.parseInt(historyTargetDay.getText().toString() )) {
+					dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+					dialog.setCanceledOnTouchOutside(false);
+					dialog.setContentView(R.layout.alert_dialog_save_targets_day);
+					
+					// buttons
+					ok = (Button) dialog.findViewById(R.id.alert_dialog_save_targets_btn_ok);
+					cancel = (Button) dialog.findViewById(R.id.alert_dialog_save_targets_btn_cancel);
+					
+					// ok
+					ok.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							// TODO
+							onSave(getView() );
+							
+							Intent back = new Intent(getActivity(), MainActivity.class);
+							back.putExtra("ActiveUserId", user.getUserId());
+							context.startActivity(back);
+						}
+					});
+					
+					// cancel
+					cancel.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+				            dialog.dismiss();
+						}
+					});
+					
+					dialog.show();
+					
+				}
+				// do so likewise for the monthly target
+				else if(this.prevTargetMonth != Integer.parseInt(historyTargetMonth.getText().toString() )) {
+					dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+					dialog.setCanceledOnTouchOutside(false);
+					dialog.setContentView(R.layout.alert_dialog_save_targets_month);
+					
+					// buttons
+					ok = (Button) dialog.findViewById(R.id.alert_dialog_save_targets_btn_ok);
+					cancel = (Button) dialog.findViewById(R.id.alert_dialog_save_targets_btn_cancel);
+					
+					// ok
+					ok.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							// TODO
+							onSave(getView() );
+							
+							Intent back = new Intent(getActivity(), MainActivity.class);
+							back.putExtra("ActiveUserId", user.getUserId());
+							context.startActivity(back);
+						}
+					});
+					
+					// cancel
+					cancel.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+				            dialog.dismiss();
+						}
+					});
+					
+					dialog.show();
+				}			
+				
+	            
+	            break;
+	        default:
+	        	break;
+		}
+		return true;
+	}	
+	
 }

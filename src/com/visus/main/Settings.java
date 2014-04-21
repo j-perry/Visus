@@ -9,6 +9,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.v4.app.*;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.*;
 import android.widget.*;
 
@@ -80,14 +81,17 @@ public class Settings extends FragmentActivity implements ActionBar.TabListener 
 		super.onDestroy();
 	}
 	
+	
 	@SuppressWarnings("deprecation")
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {		
+	public boolean onOptionsItemSelected(MenuItem item) {	
+		//Log.e("Visus", "back home");
+		
 		switch(item.getItemId()) {
 			// app logo
 			case android.R.id.home:
 				Intent upIntent = new Intent(this, MainActivity.class);
-	            if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
+	            if(NavUtils.shouldUpRecreateTask(this, upIntent) ) {
 	                // This activity is not part of the application's task, so create a new task
 	                // with a synthesized back stack.
 	                TaskStackBuilder.from(this)

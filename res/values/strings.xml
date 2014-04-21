@@ -94,6 +94,9 @@
         <item>General</item>
         <item>About</item>
     </string-array>
+    
+    <string name="dialog_user_targets_day">You have entered a new daily target.\n\nDo you wish to save it?</string>
+    <string name="dialog_user_targets_monthly">You have entered a new monthly target.\n\nDo you wish to save it?</string>
     <!-- End of settings -->
         
 	
@@ -151,7 +154,7 @@
     
     	<!-- About -->
 	    <string name="settings_about_header">About</string>
-	    <string name="settings_about_blurb">Visus is a simple healthcare and productivity app, designed to optimise you’re experience using you’re PC, tablet or smartphone.\n\nAfter excessive hours staring at displays, whether in the office, at home, or on the bus, it’s hard to think constructively, whilst developing dry eyes, impacting productivity on day-to-day tasks.\n\nVisus aims to address these issues, and enable users to overcome these constraints.</string>
+	    <string name="settings_about_blurb">Visus is a simple productivity app, designed to optimise you’re experience using you’re PC, tablet or smartphone.\n\nAfter excessive hours staring at displays, whether in the office, at home, or on the bus, it’s hard to think constructively, whilst developing dry eyes, impacting productivity on day-to-day tasks.\n\nVisus aims to address these issues.</string>
 	    
 	    <!-- What's Visus? -->
 	    <string name="settings_what_header">What\'s Visus?</string>

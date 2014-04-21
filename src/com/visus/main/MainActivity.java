@@ -137,7 +137,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			if(user.getTargetDay() == 0 && user.getTargetMonth() == 0) {
 				dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 				dialog.setCanceledOnTouchOutside(false);
-				dialog.setContentView(R.layout.alert_dialog_set_targets);
+				dialog.setContentView(R.layout.alert_dialog_set_targets_day);
 				
 				// buttons
 				cancel = (Button) dialog.findViewById(R.id.alert_dialog_user_targets_btn_cancel);

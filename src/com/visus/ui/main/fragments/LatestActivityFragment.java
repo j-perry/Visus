@@ -9,6 +9,10 @@ import com.visus.entities.User;
 import com.visus.entities.sessions.Session;
 import com.visus.ui.ListViewAdapter;
 
+import android.R;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -41,15 +45,7 @@ public class LatestActivityFragment extends Fragment {
 		dbSession = new SessionHandler(getActivity() ); // getActivity() should do the trick!
 		dbUser = new UserHandler(getActivity() );
 		int noItems = 5;
-				
-		// hide by default
-		View dailyTargetLayout = rootView.findViewById(com.visus.R.id.fragment_main_menu_layout_target_met_daily);
-		dailyTargetLayout.setVisibility(View.GONE);
-		
-		// hide by default
-		View monthlyTargetLayout = rootView.findViewById(com.visus.R.id.fragment_main_menu_layout_target_met_monthly);
-		monthlyTargetLayout.setVisibility(View.GONE);
-		
+					
 		
 		/*
 		 * No. sessions
@@ -104,15 +100,19 @@ public class LatestActivityFragment extends Fragment {
 		 * 		Check whether the user has met their daily usage target
 		 */
 		boolean dailyTargetMet = checkUserTargetToday();
-		
+						
+		// TODO
 		if(dailyTargetMet == true) {
-			// display message (not just a Log file message!)
-			Log.e("Visus", "Daily target met");
-			dailyTargetLayout.setVisibility(View.VISIBLE);
-		}
-		else {
-			// don't do anything additional - just display what is seen normally
-			Log.e("Visus", "Daily target not met");
+			Notification.Builder notBuilder = new Notification.Builder(getActivity());
+			Context context = getActivity();
+			NotificationManager notManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+			
+			notBuilder.setSmallIcon(com.visus.R.drawable.ic_launcher_4);
+			notBuilder.setContentTitle(getResources().getString(com.visus.R.string.app_name) );
+			notBuilder.setContentText(getResources().getString(com.visus.R.string.latest_activity_daily_target_met) );
+			
+			notBuilder.setAutoCancel(true);
+			notManager.notify(0, notBuilder.build() );
 		}
 		
 		
@@ -121,16 +121,20 @@ public class LatestActivityFragment extends Fragment {
 		 */
 		boolean monthlyTargetMet = checkUserTargetMonth();
 		
+		// TODO
 		if(monthlyTargetMet == true) {
-			// display message (not just a Log file message!)
-			Log.e("Visus", "Monthly target met");
-			monthlyTargetLayout.setVisibility(View.VISIBLE);
+			Notification.Builder notBuilder = new Notification.Builder(getActivity());
+			Context context = getActivity();
+			NotificationManager notManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+			
+			notBuilder.setSmallIcon(com.visus.R.drawable.ic_launcher_4);
+			notBuilder.setContentTitle(getResources().getString(com.visus.R.string.app_name) );
+			notBuilder.setContentText(getResources().getString(com.visus.R.string.latest_activity_monthly_target_met) );
+			
+			notBuilder.setAutoCancel(true);
+			notManager.notify(0, notBuilder.build() );
 		}
-		else {
-			// don't do anything additional - just display what is seen normally
-			Log.e("Visus", "Monthly target not met");
-		}
-		
+				
 		if(dailyTargetMet == true && monthlyTargetMet == true) {
 			noItems--;
 		}
@@ -140,14 +144,12 @@ public class LatestActivityFragment extends Fragment {
 		ArrayList<HashMap<String, String>> sessions = new ArrayList<HashMap<String, String>>();
 		int index = 0;
 		
-//		if(!latestSessions.isEmpty()) {
-			for(HashMap<String, String> item : latestSessions) {
-				if(index != noItems) {
-					sessions.add(item);
-					index++;
-				}
+		for(HashMap<String, String> item : latestSessions) {
+			if(index != noItems) {
+				sessions.add(item);
+				index++;
 			}
-//		}
+		}
 		
 		
 		/*************************************************

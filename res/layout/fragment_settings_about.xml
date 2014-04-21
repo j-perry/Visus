@@ -34,7 +34,7 @@
 		        android:textColor="@color/dark_grey"
 		        android:text="@string/settings_about_header"
 		        android:textStyle="bold"
-		        android:textSize="18sp"
+		        android:textSize="14sp"
 		        />
 		    
 		    <!-- blurb -->
@@ -44,7 +44,7 @@
 		        android:layout_width="fill_parent"
 		        android:textColor="@color/dark_grey"
 		        android:text="@string/settings_about_blurb"
-		        android:textSize="18sp"
+		        android:textSize="14sp"
 		        />
 	        
 	    </LinearLayout>
@@ -69,8 +69,8 @@
 		        android:textColor="@color/dark_grey"	        
 		        android:text="@string/settings_what_header"
 		        android:textStyle="bold"
-		        android:textSize="18sp"
-		        />    
+		        android:textSize="14sp"
+		        />
 		        
 		    <!-- welcome -->
 		    <TextView 
@@ -79,7 +79,7 @@
 		        android:layout_width="fill_parent"
 		        android:textColor="@color/dark_grey"
 		        android:text="@string/settings_what_blurb"
-		        android:textSize="18sp"
+		        android:textSize="14sp"
 		        />
 	    
 	    </LinearLayout>
