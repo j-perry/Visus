@@ -114,7 +114,7 @@ public class NewSession extends Activity {
 		stopTimerBtn = (Button) findViewById(R.id.timer_stop_btn);
 		stopTimerBtn.setVisibility(View.GONE);
 		
-												
+		
 		session = new Session();
 		dbHandler = new SessionHandler(this);
 		dbUser = new UserHandler(this);
