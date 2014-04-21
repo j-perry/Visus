@@ -121,12 +121,6 @@ public class LatestActivityFragment extends Fragment {
 			notManager.notify(0, notBuilder.build() );
 		}
 				
-		if(dailyTargetMet == true && monthlyTargetMet == true) {
-			noItems--;
-		}
-		
-		Log.e("Visus", "noItems: " + noItems);
-		
 		displaySessions(noItems, rootView);
 									
 		return rootView;
