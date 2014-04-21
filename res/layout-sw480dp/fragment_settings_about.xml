@@ -83,6 +83,41 @@
 		        />
 	
 		</LinearLayout>
+		
+	    <!-- support -->
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	    	android:paddingTop="15sp"	    	
+	    	android:paddingBottom="15sp"
+	        android:paddingLeft="0sp"
+	        android:paddingRight="0sp"
+	        android:orientation="vertical"
+	        >       
+	        
+	        <!-- header -->
+		    <TextView 
+		        android:id="@+id/settings_credit_support_header"
+		        android:layout_height="wrap_content"
+		        android:layout_width="fill_parent"
+				android:paddingBottom="15sp"
+		        android:textColor="@color/dark_grey"	        
+		        android:text="@string/settings_support_header"
+		        android:textStyle="bold"
+		        android:textSize="42sp"
+		        />    
+		        
+		    <!-- welcome -->
+		    <TextView 
+		        android:id="@+id/settings_credit_support"
+		        android:layout_height="wrap_content"
+		        android:layout_width="fill_parent"
+		        android:textColor="@color/dark_grey"
+		        android:text="@string/settings_support_blurb"
+		        android:textSize="24sp"
+		        />
+	        
+		</LinearLayout>
 	    
 	</LinearLayout>
 

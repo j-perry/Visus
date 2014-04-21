@@ -54,7 +54,6 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	    	android:paddingTop="50sp"
-	    	android:paddingBottom="50sp"
 	        android:paddingLeft="25sp"
 	        android:paddingRight="25sp"
 	        android:orientation="vertical"
@@ -83,7 +82,41 @@
 		        />
 	    
 	    </LinearLayout>
-	    	    
+	    
+	    <!-- support -->
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	    	android:paddingTop="50sp"
+	    	android:paddingBottom="50sp"
+	        android:paddingLeft="25sp"
+	        android:paddingRight="25sp"
+	        android:orientation="vertical"
+	        >         
+	        
+	        <!-- header -->
+		    <TextView 
+		        android:id="@+id/settings_credit_support_header"
+		        android:layout_height="wrap_content"
+		        android:layout_width="fill_parent"
+				android:paddingBottom="15sp"
+		        android:textColor="@color/dark_grey"	        
+		        android:text="@string/settings_support_header"
+		        android:textStyle="bold"
+		        android:textSize="42sp"
+		        />    
+		        
+		    <!-- text -->
+		    <TextView 
+		        android:id="@+id/settings_credit_support"
+		        android:layout_height="wrap_content"
+		        android:layout_width="fill_parent"
+		        android:textColor="@color/dark_grey"
+		        android:text="@string/settings_support_blurb"
+		        android:textSize="24sp"
+		        />
+	        
+		</LinearLayout>	    	    
 	    
 	</LinearLayout>
 
