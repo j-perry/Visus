@@ -96,9 +96,8 @@ public class FragmentThisWeek extends Fragment {
 				map.put(ListViewValues.SESSION_NO, session.getDurationMinutes() + ":" + 
                         							 durationSeconds );				
 				
-				map.put(ListViewValues.SESSION, session.getDay() 
-												  + ", " +
-								                  session.getType()
+				map.put(ListViewValues.SESSION, session.getDay() + " " +
+								                session.getType()
 						);
 
 				sessionsThisWeek.add(map);

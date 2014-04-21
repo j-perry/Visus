@@ -96,7 +96,7 @@ public class FragmentThisMonth extends Fragment {
 						 							 durationSeconds );
 				
 				map.put(ListViewValues.SESSION, session.getDayNo() + " " +  
-												  session.getMonth() + ", " +
+												  session.getMonth() + " " +
 								                  session.getType()
 						);
 

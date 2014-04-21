@@ -92,7 +92,7 @@ public class FragmentToday extends Fragment {
 				                                     durationSeconds );
 				map.put(ListViewValues.SESSION, session.getTimeHour() + ":" +
 						  						  timeMinutes +
-						  						  session.getDayPeriod() + ", " +
+						  						  session.getDayPeriod() + " " +
 						  						  session.getType()
 					   );
 				
