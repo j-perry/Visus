@@ -46,22 +46,9 @@ public class LatestActivityFragment extends Fragment {
 		dbUser = new UserHandler(getActivity() );
 		int noItems = 5;
 					
-		
-		/*
-		 * No. sessions
-		 */
-		TextView txtVwTotalSessions = (TextView) rootView.findViewById(com.visus.R.id.main_menu_latest_activities_no_sessions_total);
-				
-		if(totalSessions == 0) {
-			txtVwTotalSessions.setText(String.valueOf(0) + " Sessions");
-		}
-		else if(totalSessions == 1) {
-			txtVwTotalSessions.setText(String.valueOf(totalSessions) + " Session");			
-		}
-		else {
-			txtVwTotalSessions.setText(String.valueOf(totalSessions) + " Sessions");
-		}	
-		
+		checkUserTargets();
+		displayNoSessions(rootView);
+						
 		
 		/*
 		 * Get the date of the first session
@@ -141,6 +128,46 @@ public class LatestActivityFragment extends Fragment {
 		
 		Log.e("Visus", "noItems: " + noItems);
 		
+		displaySessions(noItems, rootView);
+									
+		return rootView;
+	}
+	
+	public void onDestoryView() {
+		super.onDestroyView();
+	}	
+	
+	/**
+	 * 
+	 */
+	private void checkUserTargets() {
+		
+	}
+
+	/**
+	 * 
+	 */
+	private void displayNoSessions(View rootView) {
+		/*
+		 * No. sessions
+		 */
+		TextView txtVwTotalSessions = (TextView) rootView.findViewById(com.visus.R.id.main_menu_latest_activities_no_sessions_total);
+				
+		if(totalSessions == 0) {
+			txtVwTotalSessions.setText(String.valueOf(0) + " Sessions");
+		}
+		else if(totalSessions == 1) {
+			txtVwTotalSessions.setText(String.valueOf(totalSessions) + " Session");			
+		}
+		else {
+			txtVwTotalSessions.setText(String.valueOf(totalSessions) + " Sessions");
+		}	
+	}
+	
+	/**
+	 * 
+	 */
+	private void displaySessions(int noItems, View rootView) {
 		ArrayList<HashMap<String, String>> sessions = new ArrayList<HashMap<String, String>>();
 		int index = 0;
 		
@@ -151,7 +178,6 @@ public class LatestActivityFragment extends Fragment {
 			}
 		}
 		
-		
 		/*************************************************
 		 * 		Display the user's latest sessions
 		 */
@@ -159,13 +185,7 @@ public class LatestActivityFragment extends Fragment {
 		adapter = new ListViewAdapter(getActivity(), sessions);
 		
 		list.setAdapter(adapter);
-					
-		return rootView;
 	}
-	
-	public void onDestoryView() {
-		super.onDestroyView();
-	}	
 	
 	public void addContext(int userId, 
 						   int totalSessions, 
