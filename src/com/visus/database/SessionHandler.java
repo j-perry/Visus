@@ -414,8 +414,8 @@ public class SessionHandler implements IDatabaseTable {
 					
 			session = new Session();
 			SessionFormatter sf = new SessionFormatter();
-				
-			session.setDayNo(cursor.getInt(dayNoIndex));
+			
+			session.setDayNo(cursor.getInt(dayNoIndex));						
 			session.setDay(sf.parseDay(cursor.getString(dayIndex)) );
 			session.setMonth(cursor.getString(monthIndex));
 			session.setYear(cursor.getInt(yearIndex));
@@ -560,7 +560,7 @@ public class SessionHandler implements IDatabaseTable {
 			int id = 0;
 			
 			// output the first five results
-			for(Session session : sessions) {								
+			for(Session session : sessions) {	
 				if(session.getDurationSeconds() < 10) {
 					durationSeconds = "0" + String.valueOf(session.getDurationSeconds() );
 				}
@@ -583,14 +583,26 @@ public class SessionHandler implements IDatabaseTable {
 						 * Format: type, duration, HH:mm
 						 * 						 
 						 */		
-						map.put(ListViewValues.SESSION_NO, session.getDurationMinutes() + ":" + 
-	 							 durationSeconds );
+						map.put(ListViewValues.SESSION_NO, session.getDurationMinutes() + ":" + durationSeconds );
 
-						map.put(ListViewValues.SESSION, session.getDayNo() + " " +  
-													  	session.getMonth() + ", " +
-													  	session.getType()
-								);
-												
+						Date date = new Date();
+						cal.setTime(date);
+						
+						// if it is today, display the time (HH:mm:a)
+						if(session.getDayNo() == cal.get(Calendar.DAY_OF_MONTH)) {
+							map.put(ListViewValues.SESSION, session.getTimeHour() + ":" +
+															session.getTimeMinutes() +
+															session.getDayPeriod() + ", " +
+															session.getType()
+								   );
+						}
+						else {
+							map.put(ListViewValues.SESSION, session.getDayNo() + " " +  
+													  	    session.getMonth() + ", " +
+													  	    session.getType()
+								   );
+						}
+																		
 						latestSessions.add(map);						
 						noItems++;
 				}

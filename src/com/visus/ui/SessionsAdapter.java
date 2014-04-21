@@ -46,17 +46,11 @@ public class SessionsAdapter extends BaseAdapter {
 		}
 			
 		TextView sessionId = (TextView) v.findViewById(com.visus.R.id.session_id);
-//		TextView date = (TextView) v.findViewById(com.visus.R.id.date);
-//		TextView time = (TextView) v.findViewById(com.visus.R.id.time);
 		TextView activity = (TextView) v.findViewById(com.visus.R.id.session_activity);
 		
 		HashMap<String, String> item = new HashMap<String, String>();
 		item = data.get(position);
 		
-//		date.setText( item.get(SessionsListView.DATE));
-//		time.setText( item.get(SessionsListView.TIME));
-//		activity.setText( item.get(SessionsListView.ACTIVITY));
-
 		sessionId.setText( item.get(SessionsListView.SESSION_ID) );
 		activity.setText( item.get(SessionsListView.SESSION) );
 		

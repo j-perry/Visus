@@ -46,9 +46,8 @@ public class LatestActivityFragment extends Fragment {
 		dbUser = new UserHandler(getActivity() );
 		int noItems = 5;
 					
-		checkUserTargets();
 		displayNoSessions(rootView);
-						
+		
 		
 		/*
 		 * Get the date of the first session
@@ -138,14 +137,7 @@ public class LatestActivityFragment extends Fragment {
 	}	
 	
 	/**
-	 * 
-	 */
-	private void checkUserTargets() {
-		
-	}
-
-	/**
-	 * 
+	 * Displays the number of sessions
 	 */
 	private void displayNoSessions(View rootView) {
 		/*
@@ -165,7 +157,7 @@ public class LatestActivityFragment extends Fragment {
 	}
 	
 	/**
-	 * 
+	 * Displays our sessions
 	 */
 	private void displaySessions(int noItems, View rootView) {
 		ArrayList<HashMap<String, String>> sessions = new ArrayList<HashMap<String, String>>();
