@@ -154,7 +154,7 @@
     
     	<!-- About -->
 	    <string name="settings_about_header">About</string>
-	    <string name="settings_about_blurb">Visus is a simple productivity app, designed to optimise you’re experience using you’re PC, tablet or smartphone, based on the Pomodoro Technique.\n\nAfter excessive hours staring at displays, whether in the office, at home, or on the bus, it’s hard to think constructively, whilst developing dry eyes, impacting productivity on day-to-day tasks.\n\nVisus aims to address these issues.</string>
+	    <string name="settings_about_blurb">Visus is a simple productivity app, designed to optimise you’re experience using you’re PC, smartphone or tablet, based on the Pomodoro Technique.\n\nAfter excessive hours staring at displays, whether in the office, at home, or on the bus, it’s hard to think constructively, whilst developing dry eyes, impacting productivity on day-to-day tasks.\n\nVisus aims to address these issues.</string>
 	    
 	    <!-- What's Visus? -->
 	    <string name="settings_what_header">What\'s Visus?</string>
@@ -166,7 +166,7 @@
 	    
 	    <!-- Credits -->
 	    <string name="settings_support_header">Support</string>
-	    <string name="settings_support_blurb">For recommendations in changes and support email: support@jon-perry.co.uk</string>
+	    <string name="settings_support_blurb">For feature recommendations and support email: support@jon-perry.co.uk</string>
 	    
 	<!-- End of Settings -->
 	

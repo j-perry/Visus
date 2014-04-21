@@ -639,6 +639,8 @@ public class NewSession extends Activity {
 		    public void onFinish() {
 		        timer.setText("00:00");
 		        
+		        Toast.makeText(getApplicationContext(), "Take a break!", Toast.LENGTH_LONG).show();
+		        
 		        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 		        		        
 		        try {
