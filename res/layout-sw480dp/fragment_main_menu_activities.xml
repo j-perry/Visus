@@ -75,14 +75,14 @@
 		        />
 		    
     <!-- sessions summary --> 
-	    <ListView 
-	        android:id="@+id/main_activity_activity_types"
-	        android:layout_height="wrap_content"
-	        android:layout_width="fill_parent"
-	        android:paddingLeft="25dp"
-	        android:paddingRight="25dp"
-	        android:divider="@color/light_grey"
-	        android:dividerHeight="4sp"
-	        />
+	<ListView 
+		android:id="@+id/main_activity_activity_types"
+	    android:layout_height="390dp"
+	    android:layout_width="fill_parent"
+	    android:paddingLeft="25dp"
+	    android:paddingRight="25dp"
+	    android:divider="@color/light_grey"
+	    android:dividerHeight="4sp"
+	    />
 	    
 </LinearLayout>
