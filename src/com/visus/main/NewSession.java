@@ -197,8 +197,8 @@ public class NewSession extends Activity {
 		cancel.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				type = "#None";
-	            sessionType.setText(type);
+				type = "None";
+	            sessionType.setText("#" + type);
 	            dialog.dismiss();
 			}
 		});

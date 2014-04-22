@@ -426,10 +426,10 @@ public class SessionHandler implements IDatabaseTable {
 			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
 						
 			if(!cursor.getString(typeIndex).isEmpty()) {
-				session.setType(cursor.getString(typeIndex));
+				session.setType("#" + cursor.getString(typeIndex));
 			}
 			else {
-				session.setType("Undefined");
+				session.setType("#Undefined");
 			}
 									
 			sessionsThisYear.add(session);
@@ -592,14 +592,14 @@ public class SessionHandler implements IDatabaseTable {
 						if(session.getDayNo() == cal.get(Calendar.DAY_OF_MONTH)) {
 							map.put(ListViewValues.SESSION, session.getTimeHour() + ":" +
 															session.getTimeMinutes() +
-															session.getDayPeriod() + " #" +
-															session.getType()
+															session.getDayPeriod().toLowerCase() + " " +
+															"#" + session.getType()
 								   );
 						}
 						else {
 							map.put(ListViewValues.SESSION, session.getDayNo() + " " +  
-													  	    session.getMonth() + " #" +
-													  	    session.getType()
+													  	    session.getMonth() + " " +
+													  	    "#" + session.getType()
 								   );
 						}
 																		

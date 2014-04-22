@@ -48,10 +48,7 @@
 	            />
     
     	</LinearLayout>
-            	   
-    	
-	        
-	        
+        		        
 		    <TextView 
 		        android:id="@+id/main_header"
 				android:onClick="viewLatestUserActivities"

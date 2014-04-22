@@ -120,7 +120,7 @@ public class LatestActivityFragment extends Fragment {
 			notBuilder.setAutoCancel(true);
 			notManager.notify(0, notBuilder.build() );
 		}
-				
+		
 		displaySessions(noItems, rootView);
 									
 		return rootView;

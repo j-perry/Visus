@@ -38,6 +38,6 @@
         android:textColor="@color/dark_grey"
         android:textSize="18sp"
 		android:layout_weight="10"
-        />    
+        />
 
 </LinearLayout>
