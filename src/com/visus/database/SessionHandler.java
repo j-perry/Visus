@@ -661,7 +661,7 @@ public class SessionHandler implements IDatabaseTable {
 			session.setYear(cursor.getInt(yearIndex));
 			session.setTimeHour(cursor.getInt(timeHourIndex));
 			session.setTimeMinutes(cursor.getInt(timeMinutesIndex));
-			session.setDayPeriod(cursor.getString(timezoneIndex));
+			session.setDayPeriod(cursor.getString(timezoneIndex).toLowerCase(Locale.getDefault()));
 			session.setDurationMinutes(cursor.getInt(durationMinutesIndex));
 			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
 			
@@ -758,7 +758,7 @@ public class SessionHandler implements IDatabaseTable {
 			session.setYear(cursor.getInt(yearIndex));
 			session.setTimeHour(cursor.getInt(timeHourIndex));
 			session.setTimeMinutes(cursor.getInt(timeMinutesIndex));
-			session.setDayPeriod(cursor.getString(timezoneIndex));
+			session.setDayPeriod(cursor.getString(timezoneIndex).toLowerCase(Locale.getDefault()));
 			session.setDurationMinutes(cursor.getInt(durationMinutesIndex));
 			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
 			
@@ -863,7 +863,7 @@ public class SessionHandler implements IDatabaseTable {
 			session.setYear(cursor.getInt(yearIndex));
 			session.setTimeHour(cursor.getInt(timeHourIndex));
 			session.setTimeMinutes(cursor.getInt(timeMinutesIndex));
-			session.setDayPeriod(cursor.getString(timezoneIndex));
+			session.setDayPeriod(cursor.getString(timezoneIndex).toLowerCase(Locale.ENGLISH));
 			session.setDurationMinutes(cursor.getInt(durationMinutesIndex));
 			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
 			
@@ -954,7 +954,7 @@ public class SessionHandler implements IDatabaseTable {
 			session.setYear(cursor.getInt(yearIndex));
 			session.setTimeHour(cursor.getInt(timeHourIndex));
 			session.setTimeMinutes(cursor.getInt(timeMinutesIndex));
-			session.setDayPeriod(cursor.getString(timezoneIndex));
+			session.setDayPeriod(cursor.getString(timezoneIndex).toLowerCase(Locale.ENGLISH));
 			session.setDurationMinutes(cursor.getInt(durationMinutesIndex));
 			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
 				
