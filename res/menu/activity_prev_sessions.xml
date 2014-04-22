@@ -9,7 +9,7 @@
     <item
         android:id="@+id/new_session_menu"
         android:orderInCategory="100"
-        android:showAsAction="always"
+        android:showAsAction="collapseActionView"
         android:icon="@drawable/ic_new_session"
         android:title="New Session"
         />
