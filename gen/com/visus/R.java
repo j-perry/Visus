@@ -280,13 +280,12 @@ containing a value of this type.
         public static final int layout_main_menu_header=0x7f030016;
         public static final int layout_main_menu_item=0x7f030017;
         public static final int layout_sessions_header=0x7f030018;
-        public static final int layout_sessions_item=0x7f030019;
-        public static final int layout_sessions_items=0x7f03001a;
-        public static final int settings_activities_layout_item=0x7f03001b;
-        public static final int settings_spinner_gender_layout=0x7f03001c;
-        public static final int settings_spinner_gender_list_layout=0x7f03001d;
-        public static final int sign_up_spinner_gender_layout=0x7f03001e;
-        public static final int sign_up_spinner_gender_list_layout=0x7f03001f;
+        public static final int layout_sessions_items=0x7f030019;
+        public static final int settings_activities_layout_item=0x7f03001a;
+        public static final int settings_spinner_gender_layout=0x7f03001b;
+        public static final int settings_spinner_gender_list_layout=0x7f03001c;
+        public static final int sign_up_spinner_gender_layout=0x7f03001d;
+        public static final int sign_up_spinner_gender_list_layout=0x7f03001e;
     }
     public static final class menu {
         public static final int activity_main=0x7f090000;
