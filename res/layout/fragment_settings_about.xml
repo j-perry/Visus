@@ -34,7 +34,7 @@
 		        android:textColor="@color/dark_grey"
 		        android:text="@string/settings_about_header"
 		        android:textStyle="bold"
-		        android:textSize="14sp"
+		        android:textSize="18sp"
 		        />
 		    
 		    <!-- blurb -->
@@ -44,7 +44,7 @@
 		        android:layout_width="fill_parent"
 		        android:textColor="@color/dark_grey"
 		        android:text="@string/settings_about_blurb"
-		        android:textSize="14sp"
+		        android:textSize="18sp"
 		        />
 	        
 	    </LinearLayout>
@@ -53,8 +53,7 @@
 	    <LinearLayout 
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	    	android:paddingTop="15sp"	    	
-	    	android:paddingBottom="15sp"
+	    	android:paddingTop="15sp"
 	        android:paddingLeft="0sp"
 	        android:paddingRight="0sp"
 	        android:orientation="vertical"
@@ -69,7 +68,7 @@
 		        android:textColor="@color/dark_grey"	        
 		        android:text="@string/settings_what_header"
 		        android:textStyle="bold"
-		        android:textSize="14sp"
+		        android:textSize="18sp"
 		        />
 		        
 		    <!-- welcome -->
@@ -79,7 +78,7 @@
 		        android:layout_width="fill_parent"
 		        android:textColor="@color/dark_grey"
 		        android:text="@string/settings_what_blurb"
-		        android:textSize="14sp"
+		        android:textSize="18sp"
 		        />
 	    
 	    </LinearLayout>
@@ -104,7 +103,7 @@
 		        android:textColor="@color/dark_grey"	        
 		        android:text="@string/settings_support_header"
 		        android:textStyle="bold"
-		        android:textSize="42sp"
+		        android:textSize="18sp"
 		        />    
 		        
 		    <!-- text -->
@@ -114,7 +113,7 @@
 		        android:layout_width="fill_parent"
 		        android:textColor="@color/dark_grey"
 		        android:text="@string/settings_support_blurb"
-		        android:textSize="24sp"
+		        android:textSize="18sp"
 		        />
 	        
 		</LinearLayout>
