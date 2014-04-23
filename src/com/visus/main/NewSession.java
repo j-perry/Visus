@@ -2,7 +2,6 @@ package com.visus.main;
 
 // core apis
 import java.io.IOException;
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Map.Entry;
@@ -29,7 +28,6 @@ import android.view.*;
 import android.widget.*;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.WindowManager.LayoutParams;
 
 // core program packages
 import com.visus.R;
@@ -204,19 +202,8 @@ public class NewSession extends Activity {
 		});
 		
 		dialog.show();
-		
-		
-		// create a new instance of handler to manage the timer thread
-		//timeHandler = new Handler();
-		
-		// default - ensures the timer doesn't start
-		//timeHandler.removeCallbacks(runUpdateTime);
-		
-		// delay the timer runnable for 1 second
-		//timeHandler.postDelayed(runUpdateTime, 0);
-		
-		timerHandler = new Handler();
-		
+						
+		timerHandler = new Handler();		
 		timerHandler.removeCallbacks(runUpdateTimer);
 	}
 	
@@ -430,7 +417,7 @@ public class NewSession extends Activity {
 		
 		
 		/**
-		 * write session to db
+		 * write session to database
 		 */		
 		try {
 			dbHandler.open();
@@ -565,20 +552,36 @@ public class NewSession extends Activity {
 		}
 	};
 			
+	/**
+	 * Sets the number of minutes remaining
+	 * @param minutes
+	 */
 	private void setTimeRemainingMinutes(int minutes) {
 		Log.e("Visus", "setTimeRemainingMinutes() " + minutes);
 		this.minutesRemaining = minutes;
 	}
 	
+	/**
+	 * Gets the number of minutes remaining
+	 * @param minutes
+	 */
 	private int getTimeRemainingMinutes() {
 		return minutesRemaining;
 	}
 	
+	/**
+	 * Sets the number of seconds remaining
+	 * @param minutes
+	 */
 	private void setTimeRemainingSeconds(int seconds) {
 		Log.e("Visus", "setTimeRemainingSeconds() " + seconds);
 		this.secondsRemaining = seconds;
 	}
 	
+	/**
+	 * Gets the number of minutes remaining
+	 * @param minutes
+	 */
 	private int getTimeRemainingSeconds() {
 		return secondsRemaining;
 	}

@@ -9,7 +9,6 @@ import com.visus.entities.User;
 import com.visus.entities.sessions.Session;
 import com.visus.ui.ListViewAdapter;
 
-import android.R;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -28,6 +27,7 @@ public class LatestActivityFragment extends Fragment {
 	private int userId;
 	private int totalSessions;
 	private ArrayList<HashMap<String, String>> latestSessions;
+	@SuppressWarnings("unused")
 	private Session firstSession;
 	private SessionHandler dbSession;
 	private UserHandler dbUser;
@@ -49,45 +49,11 @@ public class LatestActivityFragment extends Fragment {
 		displayNoSessions(rootView);
 		
 		
-		/*
-		 * Get the date of the first session
-		 */
-		//TextView txtVwFirstSession = (TextView) rootView.findViewById(com.visus.R.id.main_menu_latest_activities_no_sessions_date);
-		//txtVwFirstSession.setVisibility(View.GONE); // TODO
-		StringBuilder strFirstSession = new StringBuilder();
-				
-		if(firstSession == null) {
-			strFirstSession.append("Created");
-		}
-		else {
-			strFirstSession.append("Created since ");
-
-			// day
-			strFirstSession.append(firstSession.getDay() + " ");
-			
-			// day no (dd)
-			strFirstSession.append(String.valueOf(firstSession.getDayNo()) );
-			strFirstSession.append(" ");
-			
-			// month (MMM)
-			strFirstSession.append(firstSession.getMonth() );
-			strFirstSession.append(", ");
-			
-			// year (YYYY)
-			strFirstSession.append(firstSession.getYear() );
-		}
-	
-		// display
-		//txtVwFirstSession.setText(strFirstSession.toString() );
-		
-		
-		
 		/*********************************************************************
 		 * 		Check whether the user has met their daily usage target
 		 */
 		boolean dailyTargetMet = checkUserTargetToday();
 						
-		// TODO
 		if(dailyTargetMet == true) {
 			Notification.Builder notBuilder = new Notification.Builder(getActivity());
 			Context context = getActivity();
@@ -107,7 +73,6 @@ public class LatestActivityFragment extends Fragment {
 		 */
 		boolean monthlyTargetMet = checkUserTargetMonth();
 		
-		// TODO
 		if(monthlyTargetMet == true) {
 			Notification.Builder notBuilder = new Notification.Builder(getActivity());
 			Context context = getActivity();

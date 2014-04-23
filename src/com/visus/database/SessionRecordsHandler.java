@@ -16,7 +16,6 @@ import android.util.Log;
 public class SessionRecordsHandler implements IDatabaseTable {
 
 	private DatabaseHandler dbHandler;
-	@SuppressWarnings("unused")
 	private SQLiteDatabase db;
 	private StringBuilder query;
 	private Cursor cursor;
@@ -85,7 +84,6 @@ public class SessionRecordsHandler implements IDatabaseTable {
 		
 		select = "SELECT * ";
 		from   = "FROM " + ISessionsRecordTable.TABLE_NAME + " ";
-//		where  = "WHERE " + ISessionsRecordTable.KEY_USER_ID + " = '" + userId + "' ";
 		orderBy = "ORDER BY " + ISessionsRecordTable.KEY_ACTIVITY_DURATION + " DESC";
 		query = new StringBuilder(select + from + orderBy);
 		
@@ -156,7 +154,7 @@ public class SessionRecordsHandler implements IDatabaseTable {
 	 * @param activity
 	 * @param duration
 	 * @param userId
-	 * @return
+	 * @return database result
 	 * @throws SQLiteException
 	 */
 	public int insertActivityRecord(String activity, Double duration, int userId) throws SQLiteException {
@@ -218,7 +216,7 @@ public class SessionRecordsHandler implements IDatabaseTable {
 	 * Deletes an activity by name
 	 * @param userId
 	 * @param activity
-	 * @return
+	 * @return database result
 	 */
 	public int deleteActivityByName(int userId, String activity) throws SQLiteException {
 		where = ISessionsRecordTable.KEY_ID + " = " + userId +

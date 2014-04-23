@@ -212,6 +212,7 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		/*
 		 * 'Sessions'
 		 */
+		
 		// target year
 		if(historyTargetDay.getText().toString().isEmpty() ) {
 			user.setTargetDay(0);
@@ -229,9 +230,7 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		}
 
 		
-		/*
-		 * 	Update (save) user details
-		 */
+		// 	Update (save) user details
 		Log.e("Visus", "Update Profile (Daily Target):" + user.getTargetDay() );
 		Log.e("Visus", "Update Profile (Monthly Target):" + user.getTargetMonth() );
 		

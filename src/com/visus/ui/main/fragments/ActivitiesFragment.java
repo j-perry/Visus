@@ -19,6 +19,7 @@ public class ActivitiesFragment extends Fragment {
 	@SuppressWarnings("unused")
 	private int userId;
 	private int noActivities;
+	@SuppressWarnings("unused")
 	private Session firstSession;
 	private ArrayList<HashMap<String, String>> activities;
 	
@@ -36,9 +37,7 @@ public class ActivitiesFragment extends Fragment {
 		// display no. of sessions - total
 		TextView txtVwTotalSessions = (TextView) rootView.findViewById(com.visus.R.id.main_menu_no_activities);
 		String tmpTotalActivities = " Activities";
-		
-//		noActivities = 0; // TODO temp 
-		
+				
 		if(noActivities == 0) {
 			txtVwTotalSessions.setText(String.valueOf(0) + tmpTotalActivities);			
 		}
@@ -48,39 +47,7 @@ public class ActivitiesFragment extends Fragment {
 		else {
 			txtVwTotalSessions.setText(String.valueOf(noActivities) + tmpTotalActivities );
 		}		
-		
-		
-		/*
-		 * Get the date of the first session (activity)
-		 */
-		//TextView txtVwFirstSession = (TextView) rootView.findViewById(com.visus.R.id.main_menu_activities_date_account_created);
-		//txtVwFirstSession.setVisibility(View.GONE); // TODO
-		StringBuilder strFirstSessionActivity = new StringBuilder();
-		
-		if(firstSession == null) {
-			strFirstSessionActivity.append("Created");
-		}
-		else {
-			strFirstSessionActivity.append("Created since ");
-
-			// day
-			strFirstSessionActivity.append(firstSession.getDay() + " ");
-			
-			// day no (dd)
-			strFirstSessionActivity.append(String.valueOf(firstSession.getDayNo()) );
-			strFirstSessionActivity.append(" ");
-			
-			// month (MMM)
-			strFirstSessionActivity.append(firstSession.getMonth() );
-			strFirstSessionActivity.append(", ");
-			
-			// year (YYYY)
-			strFirstSessionActivity.append(firstSession.getYear() );
-		}
-				
-		// display
-		//txtVwFirstSession.setText(strFirstSessionActivity.toString() );
-		
+					
 		ArrayList<HashMap<String, String>> activityResults = new ArrayList<HashMap<String, String>>();		
 		activityResults = activities;
 		

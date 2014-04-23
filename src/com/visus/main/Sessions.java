@@ -126,7 +126,6 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		ArrayAdapter<CharSequence> arAdapter = ArrayAdapter.createFromResource(this, R.array.sessions_menu, R.layout.action_bar_list);
 				
 		/**
-		 * TODO - added 19/12/2013
 		 * The following two methods are crucial. Do not delete them.
 		 */
 		ab.setListNavigationCallbacks(arAdapter, new OnNavigationListener() {
@@ -212,7 +211,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 
 	@Override
 	public void onTabReselected(ActionBar.Tab tab, FragmentTransaction arg1) {
-		
+		// TODO Auto-generated method stub
 	}
 	
 	/**
@@ -220,19 +219,18 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 	 */
 	@Override
 	public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-//		sessionsPager.setCurrentItem(tab.getPosition());		
+		// TODO Auto-generated method stub
 	}
 
 
 	@Override
 	public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub		
+		// TODO Auto-generated method stub
 	}
 	
 	/**
 	 * Pager adapter launches and displays new fragments according to the tab selected
 	 * @author Jonathan Perry
-	 *
 	 */
 	public static class SessionsPagerAdapter extends FragmentPagerAdapter {
 		

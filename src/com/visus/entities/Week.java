@@ -126,10 +126,8 @@ public class Week {
 		Log.e("Visus", "Loop terminated");
 		
 		
-		/***********************
-		 * 
+		/*********************** 
 		 * 	initialise results
-		 * 
 		 */
 		
 		// year
@@ -173,8 +171,7 @@ public class Week {
 		
 		
 		// convert dayNo to day (String) rep
-		// first get the current month
-		
+		// first get the current month		
 		Log.e("Visus", "---------------------");
 		Log.e("Visus", "findEndOfWeek()");
 		Log.e("Visus", "---------------------");
@@ -233,10 +230,9 @@ public class Week {
 		
 		
 		/***********************
-		 * 
 		 * 	initialise results
-		 * 
 		 */
+		
 		// year
 		ending = String.valueOf(year) + DASH;
 		

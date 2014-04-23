@@ -2,8 +2,6 @@ package com.visus.ui;
 
 import java.util.*;
 
-import com.visus.R;
-
 import android.app.Activity;
 import android.content.Context;
 import android.view.*;
@@ -13,6 +11,7 @@ import android.widget.TextView;
 public class SessionsAdapter extends BaseAdapter {
 	
 	private ArrayList<HashMap<String, String>> data;
+	@SuppressWarnings("unused")
 	private Activity activity;
 	private static LayoutInflater inflater = null;
 	

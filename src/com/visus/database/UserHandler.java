@@ -40,9 +40,6 @@ public class UserHandler implements IDatabaseTable {
 		
 		Log.e("Visus", "---------------------------");
 		Log.e("Visus", "New User\n");
-//		Log.e("Visus", "Firstname: " + user.getFirstname() );
-//		Log.e("Visus", "Gender: " + user.getGender() );
-//		Log.e("Visus", "Age: " + String.valueOf(user.getAge() ));
 		Log.e("Visus", "Target (Day): " + String.valueOf(user.getTargetDay() ));
 		Log.e("Visus", "Target (Month): " + String.valueOf(user.getTargetMonth() ));
 		Log.e("Visus", "---------------------------");
@@ -55,6 +52,9 @@ public class UserHandler implements IDatabaseTable {
 		Log.e("Visus", "New user added");
 	}
 	
+	/**
+	 * Deletes the selected user
+	 */
 	public void deleteUser() {
 		User user = null;
 		user = getActiveUser();
@@ -73,7 +73,7 @@ public class UserHandler implements IDatabaseTable {
 	}
 	
 	/**
-	 * 
+	 * Updates the user's details
 	 * @param user
 	 * @throws SQLiteException
 	 */
@@ -97,7 +97,7 @@ public class UserHandler implements IDatabaseTable {
 	}
 	
 	/**
-	 * 
+	 * Gets the active user (i.e, 1)
 	 * @return
 	 */
 	public User getActiveUser() {
@@ -128,6 +128,10 @@ public class UserHandler implements IDatabaseTable {
 		return user;		
 	}
 	
+	/**
+	 * Sets the active user
+	 * @param id
+	 */
 	public void setUserActive(int id) {
 		// get the active user
 		User user = getActiveUser();
@@ -148,6 +152,12 @@ public class UserHandler implements IDatabaseTable {
 		updateUser(user);
 	}
 	
+	/**
+	 * Gets the user's details
+	 * @param id
+	 * @return the user
+	 * @throws SQLiteException
+	 */
 	public User getUser(int id) throws SQLiteException {
 		Cursor cursor = null;
 		User user = new User();
@@ -175,7 +185,7 @@ public class UserHandler implements IDatabaseTable {
 	}
 	
 	/**
-	 * 
+	 * Sets the user's accumulated duration today
 	 * @param userId
 	 * @param duration
 	 * @throws SQLiteException
@@ -197,9 +207,9 @@ public class UserHandler implements IDatabaseTable {
 	}
 	
 	/**
-	 * 
+	 * Gets the user's accumulated duration today
 	 * @param userId
-	 * @return
+	 * @return the duration
 	 * @throws SQLiteException
 	 */
 	public float getDurationToday(int userId) throws SQLiteException {
@@ -228,7 +238,7 @@ public class UserHandler implements IDatabaseTable {
 	}
 	
 	/**
-	 * 
+	 * Sets the duration accumulated this month
 	 * @param userId
 	 * @param duration
 	 * @throws SQLiteException
@@ -239,9 +249,9 @@ public class UserHandler implements IDatabaseTable {
 	}
 	
 	/**
-	 * 
+	 * Gets the duration accumulated this month
 	 * @param userId
-	 * @return
+	 * @return duration this month
 	 * @throws SQLiteException
 	 */
 	public float getDurationMonth(int userId) throws SQLiteException {

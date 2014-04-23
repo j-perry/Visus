@@ -1,7 +1,7 @@
 package com.visus.entities;
 
 /**
- * 
+ * Converts minutes to milliseconds, and vice-versa
  * @author Jonathan Perry
  *
  */
@@ -40,10 +40,5 @@ public class TimerConvert {
 	
 	public int getMillisecondsFromSeconds() {
 		return milliseconds;
-	}
-	
-//	public int getMillisecondsFromMinutesAndSeconds() {
-//		return milliseconds;
-//	}
-	
+	}	
 }

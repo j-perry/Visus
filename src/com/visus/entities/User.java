@@ -18,16 +18,10 @@ public class User {
 	
 	public User(int id, 
 			    int active, 
-//			    String firstname, 
-//			    String gender,
-//			    int age, 
 			    int targetDay, 
 			    int targetMonth) {
 		this.id = id;
 		this.active = active;
-//		this.firstname = firstname;
-//		this.gender = gender;
-//		this.age = age;
 		this.targetDay = targetDay;
 		this.targetMonth = targetMonth;
 	}
@@ -47,39 +41,7 @@ public class User {
 	public int getActive() {
 		return active;
 	}
-	
-//	public void setFirstname(String firstname) {
-//		this.firstname = firstname;
-//	}
-//	
-//	public String getFirstname() {
-//		return firstname;
-//	}
-//	
-//	public void setSurname(String firstname) {
-//		this.firstname = firstname;
-//	}
-//	
-//	public String getSurname() {
-//		return firstname;
-//	}
-//	
-//	public void setGender(String gender) {
-//		this.gender = gender;
-//	}
-//	
-//	public String getGender() {
-//		return gender;
-//	}
-//	
-//	public void setAge(int age) {
-//		this.age = age;
-//	}
-//	
-//	public int getAge() {
-//		return age;
-//	}
-	
+		
 	public void setTargetDay(int targetDay) {
 		this.targetDay = targetDay;
 	}

@@ -8,8 +8,6 @@ public class ListViewValues {
 	public static final String HEADER_ACTIVITIES = "activities";
 	public static final String ACTIVITY = "activity";
 	
-	// new
 	public static final String SESSION_NO = "session_no";
-	
 	
 }

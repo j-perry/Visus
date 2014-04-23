@@ -3,7 +3,6 @@ package com.visus.ui;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import android.R;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,6 +13,7 @@ import android.widget.TextView;
 
 public class ListViewAdapter extends BaseAdapter {
 
+	@SuppressWarnings("unused")
 	private Activity activity;
 	private ArrayList<HashMap<String, String>> data;
 	private static LayoutInflater inflater = null;
@@ -42,14 +42,10 @@ public class ListViewAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View v = convertView;
-		
-		int noHeaders = 0;
-		
+				
 		if(convertView == null)
 			v = inflater.inflate(com.visus.R.layout.layout_main_menu_item, null);
 		
-		// TODO header - future implementation?
-		TextView header = (TextView) v.findViewById(com.visus.R.id.main_header);
 		TextView entry = (TextView) v.findViewById(com.visus.R.id.entry);
 		TextView entryNo = (TextView) v.findViewById(com.visus.R.id.entry_no);
 		

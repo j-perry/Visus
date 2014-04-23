@@ -67,7 +67,6 @@ public class FragmentToday extends Fragment {
 		}
 		else {
 			// retrieve sessions
-//			int id = 1;
 			String durationSeconds = null;
 			String timeMinutes = null;
 			

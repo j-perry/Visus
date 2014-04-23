@@ -14,7 +14,6 @@ import android.database.*;
 import android.database.sqlite.*;
 import android.util.Log;
 
-//public class SessionHandler implements IDatabaseTable {
 public class SessionHandler implements IDatabaseTable {
 		
 	private DatabaseHandler dbHandler;
@@ -76,7 +75,7 @@ public class SessionHandler implements IDatabaseTable {
 		sessionValues.put(ISessionTable.KEY_MONTH, session.getMonth());
 		sessionValues.put(ISessionTable.KEY_YEAR, session.getYear());
 		
-		sessionValues.put(ISessionTable.KEY_DATE, session.getDate());			// NEW!
+		sessionValues.put(ISessionTable.KEY_DATE, session.getDate());
 		
 		// time
 		sessionValues.put(ISessionTable.KEY_TIME_HOUR, session.getTimeHour());
@@ -344,8 +343,8 @@ public class SessionHandler implements IDatabaseTable {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Gets the first session
+	 * @return returns the first session
 	 */
 	public Session getFirstSession() {
 		return firstSession;
@@ -445,9 +444,9 @@ public class SessionHandler implements IDatabaseTable {
 	}
 	
 	/**
-	 * 
+	 * Gets the latest sessions
 	 * @param user
-	 * @return
+	 * @return latest sessions
 	 * @throws SQLiteException
 	 */
 	public ArrayList<HashMap<String, String>> getLatestSessions(User user) throws SQLiteException {
@@ -581,7 +580,6 @@ public class SessionHandler implements IDatabaseTable {
 						
 						/**
 						 * Format: type, duration, HH:mm
-						 * 						 
 						 */		
 						map.put(ListViewValues.SESSION_NO, session.getDurationMinutes() + ":" + durationSeconds );
 
@@ -592,7 +590,7 @@ public class SessionHandler implements IDatabaseTable {
 						if(session.getDayNo() == cal.get(Calendar.DAY_OF_MONTH)) {
 							map.put(ListViewValues.SESSION, session.getTimeHour() + ":" +
 															session.getTimeMinutes() +
-															session.getDayPeriod().toLowerCase() + " " +
+															session.getDayPeriod().toLowerCase(Locale.ENGLISH) + " " +
 															"#" + session.getType()
 								   );
 						}
@@ -688,7 +686,6 @@ public class SessionHandler implements IDatabaseTable {
 	 * @param userId The present user's ID
 	 * @return Sessions made this week
 	 * @throws SQLiteException
-	 * @throws ParseException 
 	 */	
 	public ArrayList<Session> getSessionsThisWeek(int userId) throws SQLiteException {		
 		ArrayList<Session> sessionsThisWeek = new ArrayList<Session>();		
@@ -706,7 +703,7 @@ public class SessionHandler implements IDatabaseTable {
 					  "AND "
 					      	   + ISessionTable.KEY_DATE + QRY_SPACING +
 					  "BETWEEN date('" + thisWeek.beginning() + "') " +
-					 "AND date('" + thisWeek.ending() + "')";
+					  "AND date('" + thisWeek.ending() + "')";
 			
 		Log.e("Visus", "---------------");
 		Log.e("Visus", "qryThisWeek: ");
@@ -1146,11 +1143,11 @@ public class SessionHandler implements IDatabaseTable {
               "FROM" + QRY_SPACING + ISessionTable.TABLE_NAME + QRY_SPACING +
               "WHERE" + QRY_SPACING +
               	ISessionTable.KEY_USER_ID + " = '" + userId + "'" + QRY_SPACING + 
-               "AND" + QRY_SPACING + 
+              "AND" + QRY_SPACING + 
                	ISessionTable.KEY_DATE + QRY_SPACING +
-               "BETWEEN" + QRY_SPACING +                              	
+              "BETWEEN" + QRY_SPACING +                              	
                	"date('" + year + "-" + strMonth + "-" + "01')" + QRY_SPACING +
-               "AND" + QRY_SPACING +
+              "AND" + QRY_SPACING +
                	"date('" + year + "-" + strMonth + "-" + maxDays + "')";
 			
 		Log.e("Visus", "------------------------------");
@@ -1237,7 +1234,7 @@ public class SessionHandler implements IDatabaseTable {
 	/**
 	 * Delete's sessions made this month
 	 * @param userId
-	 * @return
+	 * @return the result (ie., whether it has deleted the sessions this month
 	 * @throws SQLiteException
 	 */
 	public int deleteSessionsThisMonth(int userId) throws SQLiteException {
@@ -1348,7 +1345,7 @@ public class SessionHandler implements IDatabaseTable {
 				  		   qryDeleteSessions, 
 				           null);
 		
-		/* reset targets set */
+		// reset targets set 
 		ContentValues targetDay = new ContentValues();
 		float resetTarget = 0.0f;
 		targetDay.put(IUserTable.KEY_DURATION_TODAY, resetTarget);
@@ -1362,9 +1359,9 @@ public class SessionHandler implements IDatabaseTable {
 	}
 	
 	/**
-	 * 
+	 * Returns the number of sessions accumulated this month
 	 * @param activeUserId
-	 * @return
+	 * @return session count
 	 */
 	public int getSessionsCountThisMonth(int activeUserId) {
 		int maxDays = 0;
@@ -1416,7 +1413,7 @@ public class SessionHandler implements IDatabaseTable {
 	}
 	
 	/**
-	 * 
+	 * Returns the number of sessions accumulated this year
 	 * @param activeUserId
 	 * @return
 	 */
@@ -1453,9 +1450,9 @@ public class SessionHandler implements IDatabaseTable {
 	}
 	
 	/**
-	 * 
+	 * Returns the number of sessions accumulated throughout the lifetime of the app installed on the user's device
 	 * @param activeUserId
-	 * @return
+	 * @return the number of sessions
 	 */
 	public int getSessionsCountAll(int activeUserId) {
 		int noItems = 0;
@@ -1480,9 +1477,9 @@ public class SessionHandler implements IDatabaseTable {
 	}
 	
 	/**
-	 * 
+	 * Gets all the activities created by the user (String)
 	 * @param userId
-	 * @return
+	 * @return activities
 	 * @throws SQLiteException
 	 */
 	public ArrayList<String> getActivities(int userId) throws SQLiteException {
@@ -1513,9 +1510,9 @@ public class SessionHandler implements IDatabaseTable {
 	}	
 	
 	/**
-	 * 
+	 * Gets all the activities created by the user
 	 * @param user
-	 * @return
+	 * @return activities
 	 * @throws SQLiteException
 	 */
 	public ArrayList<HashMap<String, String>> getActivities(User user) throws SQLiteException {
@@ -1544,7 +1541,7 @@ public class SessionHandler implements IDatabaseTable {
 		
 		cursor.close();
 		
-		// OK, lets do some filtering and prepare our structure for insertion
+		// ok, lets do some filtering and prepare our structure for insertion
 		if(activitiesResult.isEmpty()) {
 			HashMap<String, String> map = new HashMap<String, String>();
 			map.put(ListViewValues.SESSION_NO, "#");
@@ -1570,9 +1567,9 @@ public class SessionHandler implements IDatabaseTable {
 	}
 	
 	/**
-	 * 
+	 * Gets the number of activity types created
 	 * @param userId
-	 * @return
+	 * @return number of activity types
 	 * @throws SQLiteException
 	 */
 	public int getActivitiesCount(int userId) throws SQLiteException {
