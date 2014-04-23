@@ -37,20 +37,7 @@
 	        	android:textColor="@color/dark_grey"
 	        	android:textSize="24sp"
 	            />
-	                
-	        <!-- no. of sessions date -->
-	        <TextView 
-	            android:id="@+id/main_menu_latest_activities_no_sessions_date"
-	        	android:layout_width="fill_parent"
-	        	android:layout_height="wrap_content"
-		        android:paddingLeft="25sp"
-		        android:paddingRight="25sp"
-		        android:paddingTop="25sp"
-		        android:paddingBottom="25sp"
-	        	android:textColor="@color/dark_grey"
-	        	android:textSize="18sp"
-	            />
-    
+	                    
     	</LinearLayout>
                 
         <!-- latest activity header -->

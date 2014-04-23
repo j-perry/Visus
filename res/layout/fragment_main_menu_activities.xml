@@ -29,16 +29,7 @@
 	        	android:textColor="@color/dark_grey"
 	        	android:textSize="14sp"
 	            />
-	        	        
-	        <TextView 
-	            android:id="@+id/main_menu_activities_date_account_created"
-	        	android:layout_width="fill_parent"
-	        	android:layout_height="wrap_content"
-		        android:padding="15sp"
-	        	android:textColor="@color/dark_grey"
-	        	android:textSize="14sp"
-	            />
-    
+	        	            
     	</LinearLayout>
             	   
     	<TextView 

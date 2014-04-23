@@ -53,8 +53,8 @@ public class ActivitiesFragment extends Fragment {
 		/*
 		 * Get the date of the first session (activity)
 		 */
-		TextView txtVwFirstSession = (TextView) rootView.findViewById(com.visus.R.id.main_menu_activities_date_account_created);
-		txtVwFirstSession.setVisibility(View.GONE); // TODO
+		//TextView txtVwFirstSession = (TextView) rootView.findViewById(com.visus.R.id.main_menu_activities_date_account_created);
+		//txtVwFirstSession.setVisibility(View.GONE); // TODO
 		StringBuilder strFirstSessionActivity = new StringBuilder();
 		
 		if(firstSession == null) {
@@ -79,7 +79,7 @@ public class ActivitiesFragment extends Fragment {
 		}
 				
 		// display
-		txtVwFirstSession.setText(strFirstSessionActivity.toString() );
+		//txtVwFirstSession.setText(strFirstSessionActivity.toString() );
 		
 		ArrayList<HashMap<String, String>> activityResults = new ArrayList<HashMap<String, String>>();		
 		activityResults = activities;

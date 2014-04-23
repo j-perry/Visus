@@ -52,8 +52,8 @@ public class LatestActivityFragment extends Fragment {
 		/*
 		 * Get the date of the first session
 		 */
-		TextView txtVwFirstSession = (TextView) rootView.findViewById(com.visus.R.id.main_menu_latest_activities_no_sessions_date);
-		txtVwFirstSession.setVisibility(View.GONE); // TODO
+		//TextView txtVwFirstSession = (TextView) rootView.findViewById(com.visus.R.id.main_menu_latest_activities_no_sessions_date);
+		//txtVwFirstSession.setVisibility(View.GONE); // TODO
 		StringBuilder strFirstSession = new StringBuilder();
 				
 		if(firstSession == null) {
@@ -78,7 +78,7 @@ public class LatestActivityFragment extends Fragment {
 		}
 	
 		// display
-		txtVwFirstSession.setText(strFirstSession.toString() );
+		//txtVwFirstSession.setText(strFirstSession.toString() );
 		
 		
 		
