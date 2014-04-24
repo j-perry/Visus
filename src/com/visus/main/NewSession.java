@@ -400,16 +400,27 @@ public class NewSession extends Activity {
 		
 		int secsLeft = 0;
 		
-		// if seconds is 60 or greater
+		if(sessionMins == 24 && sessionSecs == 59) {
+			sessionSecs += 1; // bug fix			
+			session.setDurationMinutes(sessionMins);
+		}
+		else {
+			session.setDurationMinutes(sessionMins);
+		}
+		
 		if(sessionSecs >= 60) {
 			sessionMins += 1;
 			secsLeft = (sessionSecs - 60);
 			sessionSecs = secsLeft;
+			
+			session.setDurationMinutes(sessionMins);
+			session.setDurationSeconds(sessionSecs);
 		}
-						
-		session.setUserId(activeUserId);
-		session.setDurationMinutes(sessionMins);
-		session.setDurationSeconds(sessionSecs);
+		else {
+			session.setDurationSeconds(sessionSecs);
+		}
+		
+		session.setUserId(activeUserId);	
 		session.setType(type);
 		
 		Log.e("Visus", "SessionMins: " + sessionMins);
