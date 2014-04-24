@@ -78,7 +78,7 @@ public class NewSession extends Activity {
 		
 	// date formats
 	private static final String strFormatDayCalNo = "dd";
-	private static final String strFormatDay = "EEE";
+	private static final String strFormatDay = "EEEE";
 	private static final String strFormatMonth = "MMMM";
 	private static final String strFormatYear = "yyyy";
 	
