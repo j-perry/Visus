@@ -350,11 +350,7 @@ containing a value of this type.
         /**  End of Settings 
  Settings (Activities) 
          */
-        public static final int settings_activities_delete=0x7f050049;
-        public static final int settings_credit_blurb=0x7f050046;
-        /**  Credits 
-         */
-        public static final int settings_credit_header=0x7f050045;
+        public static final int settings_activities_delete=0x7f050047;
         public static final int settings_general_activities_blurb=0x7f05003a;
         /**  'Activities' 
          */
@@ -382,10 +378,10 @@ containing a value of this type.
         public static final int settings_general_sessions_reset_year=0x7f05003e;
         public static final int settings_general_sessions_target_day=0x7f05003b;
         public static final int settings_general_sessions_target_month=0x7f05003c;
-        public static final int settings_support_blurb=0x7f050048;
+        public static final int settings_support_blurb=0x7f050046;
         /**  Credits 
          */
-        public static final int settings_support_header=0x7f050047;
+        public static final int settings_support_header=0x7f050045;
         public static final int settings_what_blurb=0x7f050044;
         /**  What's Visus? 
          */

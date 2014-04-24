@@ -161,10 +161,6 @@
 	    <string name="settings_what_blurb">Visus is from Latin etymology for \'I See\'.</string>
 	    
 	    <!-- Credits -->
-	    <string name="settings_credit_header">Credits</string>
-	    <string name="settings_credit_blurb">Designed by Jon Perry, UK.</string>
-	    
-	    <!-- Credits -->
 	    <string name="settings_support_header">Support</string>
 	    <string name="settings_support_blurb">For feature recommendations and support email: help@jon-perry.co.uk</string>
 	    
