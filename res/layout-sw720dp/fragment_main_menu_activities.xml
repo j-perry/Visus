@@ -36,29 +36,29 @@
     
     	</LinearLayout>
 	        
-		    <TextView 
-		        android:id="@+id/main_header"
-				android:onClick="viewLatestUserActivities"
-				android:background="@drawable/main_menu_header_bg"
-		        android:layout_height="wrap_content"
-		        android:layout_width="fill_parent"
-		    	android:layout_marginTop="25dp"
-		    	android:layout_marginLeft="25dp"
-		    	android:layout_marginRight="25dp"
-				android:padding="25sp"
-		        android:textColor="@color/dark_grey"
-		        android:text="@string/main_menu_activities"
-			    android:textAllCaps="true"
-		        android:textSize="24sp"
-		        />
+		<TextView 
+			android:id="@+id/main_header"
+			android:onClick="viewLatestUserActivities"
+			android:background="@drawable/main_menu_header_bg"
+		    android:layout_height="wrap_content"
+		    android:layout_width="fill_parent"
+		    android:layout_marginTop="25dp"
+		    android:layout_marginLeft="25dp"
+		    android:layout_marginRight="25dp"
+			android:padding="25sp"
+		    android:textColor="@color/dark_grey"
+		    android:text="@string/main_menu_activities"
+			android:textAllCaps="true"
+		    android:textSize="24sp"
+		    />
 		    
-		    <View 
-		        android:layout_width="fill_parent"
-		        android:layout_height="4sp"
-		        android:background="@color/light_grey"
-		        />
+		<View 
+			android:layout_width="fill_parent"
+		    android:layout_height="4sp"
+		    android:background="@color/light_grey"
+		    />
 		    
-    <!-- sessions summary --> 
+    	<!-- sessions summary --> 
 	    <ListView 
 	        android:id="@+id/main_activity_activity_types"
 	        android:layout_height="390dp"
