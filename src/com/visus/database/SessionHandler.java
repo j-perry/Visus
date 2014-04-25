@@ -1,7 +1,6 @@
 package com.visus.database;
 
 import java.math.BigDecimal;
-import java.text.ParseException;
 import java.util.*;
 
 import com.visus.entities.User;
