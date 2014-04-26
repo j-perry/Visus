@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import com.visus.database.SessionHandler;
 import com.visus.database.UserHandler;
+import com.visus.entities.TimerConvert;
 import com.visus.entities.User;
 import com.visus.entities.sessions.Session;
 import com.visus.ui.ListViewAdapter;
@@ -154,7 +155,7 @@ public class LatestActivityFragment extends Fragment {
 	 */
 	private boolean checkUserTargetToday() {
 		boolean targetMet = false;
-		float dailyTarget = 0.0f;
+		int dailyTarget = 0; // needs to be an integer
 		float accumulatedDurationToday = 0.0f;
 		
 		try {
@@ -165,7 +166,7 @@ public class LatestActivityFragment extends Fragment {
 									
 			// get accumulated time made today
 			dbSession.open();
-			accumulatedDurationToday = dbSession.getTimeAccumulatedToday(userId);
+			accumulatedDurationToday = dbSession.getMinutesAccumulatedToday(userId);
 		}
 		catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);
@@ -175,19 +176,23 @@ public class LatestActivityFragment extends Fragment {
 			dbSession.close();
 		}
 		
-		Log.e("Visus", "accumulatedDurationToday = " + accumulatedDurationToday);
 		Log.e("Visus", "dailyTarget = " + dailyTarget);
 		
 		// if daily target is empty
 		if(dailyTarget != 0.0f) {
 			Log.e("Visus", "dailyTarget is not empty");
 			
-			if(accumulatedDurationToday >= dailyTarget) {
+			float tmpDailyTarget = accumulatedDurationToday;	
+			
+			// need to represent this in hourly form
+			float hoursToday = new TimerConvert().minutesAccumulatedToHoursAccumulated((int) tmpDailyTarget);
+			Log.e("Visus", "dailyTarget (hours): " + hoursToday);
+			
+			if(hoursToday >= dailyTarget) {
 				targetMet = true;
-			}
-			else {
+			} else {
 				targetMet = false;
-			}
+			}			
 		}
 		else {
 			targetMet = false;
@@ -204,7 +209,7 @@ public class LatestActivityFragment extends Fragment {
 		boolean targetMet = false;
 		float monthlyTarget = 0.0f;
 		float accumulatedDurationMonth = 0.0f;
-		
+				
 		try {
 			// get user's daily target
 			dbUser.open();
@@ -213,7 +218,7 @@ public class LatestActivityFragment extends Fragment {
 			
 			// get accumulated time made today
 			dbSession.open();
-			accumulatedDurationMonth = dbSession.getTimeAccumulatedThisMonth(userId);
+			accumulatedDurationMonth = (int) dbSession.getMinutesAccumulatedThisMonth(userId);
 		}
 		catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);
@@ -223,18 +228,14 @@ public class LatestActivityFragment extends Fragment {
 			dbSession.close();
 		}
 		
-		Log.e("Visus", "accumulatedDurationMonth = " + accumulatedDurationMonth);
-		Log.e("Visus", "monthlyTarget = " + monthlyTarget);
+		// from minutes to hours
+		accumulatedDurationMonth = new TimerConvert().minutesAccumulatedToHoursAccumulated((int) accumulatedDurationMonth);
+		
+		Log.e("Visus", "accumulatedDurationMonth = " + accumulatedDurationMonth); // hours accumulated
+		Log.e("Visus", "monthlyTarget = " + monthlyTarget);	
 		
 		// if daily target is empty
-		if(monthlyTarget != 0.0f) {
-			Log.e("Visus", "monthlyTarget is not empty");
-			
-			final int TARGET_MINUTES_FACTOR = 60;
-			float tmpMonthlyTarget = monthlyTarget;
-			monthlyTarget = (tmpMonthlyTarget * TARGET_MINUTES_FACTOR);
-			Log.e("Visus", "monthlyTarget: " + monthlyTarget);
-					
+		if(monthlyTarget != 0.0f) {					
 			if(accumulatedDurationMonth >= monthlyTarget) {
 				targetMet = true;
 			}

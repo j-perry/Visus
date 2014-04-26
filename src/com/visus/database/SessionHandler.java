@@ -1010,7 +1010,7 @@ public class SessionHandler implements IDatabaseTable {
 	 * @param userId the user's id
 	 * @return Return's the duration in mm:ss
 	 */
-	public float getTimeAccumulatedToday(int userId) throws SQLiteException {
+	public float getMinutesAccumulatedToday(int userId) throws SQLiteException {
 		float duration = 0.0f;
 		String qry = "SELECT *" + QRY_SPACING +
 					 "FROM" + QRY_SPACING + ISessionTable.TABLE_NAME + QRY_SPACING +
@@ -1090,14 +1090,14 @@ public class SessionHandler implements IDatabaseTable {
 				BigDecimal durationTodayReformatted = new BigDecimal(duration).setScale(2, BigDecimal.ROUND_HALF_UP);
 				duration = durationTodayReformatted.floatValue();
 				
-				Log.e("Visus", "getTimeAccumulatedToday(): " + duration);
+				Log.e("Visus", "getMinutesAccumulatedToday(): " + duration);
 			}
 			else {				
 				// format the duration to 2 decimal places - e.g., X.XX
 				BigDecimal durationTodayReformatted = new BigDecimal(duration).setScale(2, BigDecimal.ROUND_HALF_UP);
 				duration = durationTodayReformatted.floatValue();
 				
-				Log.e("Visus", "getTimeAccumulatedToday(): " + duration);
+				Log.e("Visus", "getMinutesAccumulatedToday(): " + duration);
 			}
 		}
 							
@@ -1109,7 +1109,7 @@ public class SessionHandler implements IDatabaseTable {
 	 * @param userId the user's id
 	 * @return Return's the duration in mm:ss
 	 */
-	public float getTimeAccumulatedThisMonth(int userId) throws SQLiteException {
+	public float getMinutesAccumulatedThisMonth(int userId) throws SQLiteException {
 		float duration = 0.0f;
 		String qry = "";
 		
@@ -1150,7 +1150,7 @@ public class SessionHandler implements IDatabaseTable {
                	"date('" + year + "-" + strMonth + "-" + maxDays + "')";
 			
 		Log.e("Visus", "------------------------------");
-		Log.e("Visus", "getTimeAccumulatedThisMonth()" );
+		Log.e("Visus", "getMinutesAccumulatedThisMonth()" );
 		Log.e("Visus", qry);
 						
 		Cursor cursor = db.rawQuery(qry, null);
@@ -1177,7 +1177,7 @@ public class SessionHandler implements IDatabaseTable {
 			}			
 			
 			// convert seconds to decimal places
-			float tmpElapsedSeconds = (float) elapsedSeconds / 100.0f;		
+			float tmpElapsedSeconds = (float) elapsedSeconds / 100.0f;
 			
 			float product = elapsedMinutes + tmpElapsedSeconds;
 			
@@ -1216,14 +1216,14 @@ public class SessionHandler implements IDatabaseTable {
 				BigDecimal durationTodayReformatted = new BigDecimal(duration).setScale(2, BigDecimal.ROUND_HALF_UP);
 				duration = durationTodayReformatted.floatValue();
 				
-				Log.e("Visus", "getTimeAccumulatedThisMonth(): " + duration);
+				Log.e("Visus", "getMinutesAccumulatedThisMonth(): " + duration);
 			}
 			else {				
 				// format the duration to 2 decimal places - e.g., X.XX
 				BigDecimal durationTodayReformatted = new BigDecimal(duration).setScale(2, BigDecimal.ROUND_HALF_UP);
 				duration = durationTodayReformatted.floatValue();
 				
-				Log.e("Visus", "getTimeAccumulatedThisMonth(): " + duration);
+				Log.e("Visus", "getMinutesAccumulatedThisMonth(): " + duration);
 			}
 		}
 							
