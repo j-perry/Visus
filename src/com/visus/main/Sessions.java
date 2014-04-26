@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Dialog;
 import android.app.FragmentTransaction;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.ActionBar.OnNavigationListener;
 import android.content.Context;
@@ -63,6 +64,21 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 		// get user id
 		Bundle bundle = getIntent().getExtras();
 		activeUserId = bundle.getInt("ActiveUserId");
+		
+		boolean displayNotification = bundle.getBoolean("DisplayNotification");
+		
+		if(displayNotification == true) {
+	        // display a notification to the user to take a break (3 - 5 minutes approx)
+	        Notification.Builder notBuilder = new Notification.Builder(context);
+			NotificationManager notManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+			
+			notBuilder.setSmallIcon(com.visus.R.drawable.ic_launcher_4);
+			notBuilder.setContentTitle(getResources().getString(com.visus.R.string.app_name) );
+			notBuilder.setContentText(getResources().getString(com.visus.R.string.notification_new_session_finished) );
+			
+			notBuilder.setAutoCancel(true);
+			notManager.notify(0, notBuilder.build() );
+		}
 
 		Log.e("Visus", "USER ID: " + activeUserId);
 		

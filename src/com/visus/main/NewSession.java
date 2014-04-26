@@ -477,6 +477,7 @@ public class NewSession extends Activity {
 		// go to previously made sessions
 		Intent intent = new Intent(NewSession.this, Sessions.class);
 		intent.putExtra("ActiveUserId", activeUserId);
+		intent.putExtra("DisplayNotification", true);
 		startActivity(intent);
 	}
 	
@@ -652,8 +653,6 @@ public class NewSession extends Activity {
 			 */
 		    public void onFinish() {
 		        timer.setText("00:00");
-		        
-		        Toast.makeText(getApplicationContext(), "Take a break!", Toast.LENGTH_LONG).show();
 		        
 		        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 		        		        

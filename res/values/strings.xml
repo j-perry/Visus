@@ -107,12 +107,13 @@
     
     <string name="timer_predefined_minutes">25:00</string>
     <string name="timer_activity_type_placeholder">#None</string>
-    
+            
     <string name="dialog_new_session_header">Set Activity</string>
     <string name="dialog_new_session_input">#Activity</string>
     <string name="dialog_new_session_btn_cancel">Cancel</string>
 	<string name="dialog_new_session_btn_ok">OK</string>
 	
+	<string name="notification_new_session_finished">Session finished. Take a few minutes rest!</string>
     
     <!-- Settings -->
     <string name="menu_settings">Settings</string>    

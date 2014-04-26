@@ -304,7 +304,7 @@ containing a value of this type.
         public static final int activity_settings_activities=0x7f050006;
         public static final int activity_sign_up=0x7f050003;
         public static final int app_name=0x7f050000;
-        public static final int default_sessions_no=0x7f050030;
+        public static final int default_sessions_no=0x7f050031;
         public static final int dialog_new_session_btn_cancel=0x7f05002d;
         public static final int dialog_new_session_btn_ok=0x7f05002e;
         public static final int dialog_new_session_header=0x7f05002b;
@@ -340,52 +340,53 @@ containing a value of this type.
         public static final int menu_sessions=0x7f050009;
         /**  Settings 
          */
-        public static final int menu_settings=0x7f05002f;
+        public static final int menu_settings=0x7f050030;
+        public static final int notification_new_session_finished=0x7f05002f;
         public static final int register=0x7f050019;
-        public static final int settings_about_blurb=0x7f050042;
+        public static final int settings_about_blurb=0x7f050043;
         /**  End of 'General' tab 
  About 
          */
-        public static final int settings_about_header=0x7f050041;
+        public static final int settings_about_header=0x7f050042;
         /**  End of Settings 
  Settings (Activities) 
          */
-        public static final int settings_activities_delete=0x7f050047;
-        public static final int settings_general_activities_blurb=0x7f05003a;
+        public static final int settings_activities_delete=0x7f050048;
+        public static final int settings_general_activities_blurb=0x7f05003b;
         /**  'Activities' 
          */
-        public static final int settings_general_activities_header=0x7f050039;
-        public static final int settings_general_hint_age=0x7f050035;
-        public static final int settings_general_hint_name=0x7f050034;
-        public static final int settings_general_personal_age_header=0x7f050033;
+        public static final int settings_general_activities_header=0x7f05003a;
+        public static final int settings_general_hint_age=0x7f050036;
+        public static final int settings_general_hint_name=0x7f050035;
+        public static final int settings_general_personal_age_header=0x7f050034;
         /**  'General' tab 
  'Personal' 
          */
-        public static final int settings_general_personal_header=0x7f050031;
-        public static final int settings_general_personal_name_header=0x7f050032;
+        public static final int settings_general_personal_header=0x7f050032;
+        public static final int settings_general_personal_name_header=0x7f050033;
         /**  Save (all) 
          */
-        public static final int settings_general_save_all=0x7f050040;
-        public static final int settings_general_sessions_daily_target_header=0x7f050037;
+        public static final int settings_general_save_all=0x7f050041;
+        public static final int settings_general_sessions_daily_target_header=0x7f050038;
         /**  'Sessions' 
          */
-        public static final int settings_general_sessions_header=0x7f050036;
-        public static final int settings_general_sessions_monthly_target_header=0x7f050038;
+        public static final int settings_general_sessions_header=0x7f050037;
+        public static final int settings_general_sessions_monthly_target_header=0x7f050039;
         /**  used to be 'Reset (All)' 
          */
-        public static final int settings_general_sessions_reset_all=0x7f05003f;
-        public static final int settings_general_sessions_reset_month=0x7f05003d;
-        public static final int settings_general_sessions_reset_year=0x7f05003e;
-        public static final int settings_general_sessions_target_day=0x7f05003b;
-        public static final int settings_general_sessions_target_month=0x7f05003c;
-        public static final int settings_support_blurb=0x7f050046;
+        public static final int settings_general_sessions_reset_all=0x7f050040;
+        public static final int settings_general_sessions_reset_month=0x7f05003e;
+        public static final int settings_general_sessions_reset_year=0x7f05003f;
+        public static final int settings_general_sessions_target_day=0x7f05003c;
+        public static final int settings_general_sessions_target_month=0x7f05003d;
+        public static final int settings_support_blurb=0x7f050047;
         /**  Credits 
          */
-        public static final int settings_support_header=0x7f050045;
-        public static final int settings_what_blurb=0x7f050044;
+        public static final int settings_support_header=0x7f050046;
+        public static final int settings_what_blurb=0x7f050045;
         /**  What's Visus? 
          */
-        public static final int settings_what_header=0x7f050043;
+        public static final int settings_what_header=0x7f050044;
         public static final int timer_activity_type_placeholder=0x7f05002a;
         public static final int timer_predefined_minutes=0x7f050029;
         public static final int title_activities=0x7f050012;
