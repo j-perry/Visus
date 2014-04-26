@@ -510,7 +510,7 @@ public class SessionHandler implements IDatabaseTable {
 			session.setDayNo(cursor.getInt(dayNoIndex));
 			session.setDay(sf.parseDay(cursor.getString(dayIndex)) );
 			session.setMonth(cursor.getString(monthIndex));
-			session.setYear(cursor.getInt(yearIndex));
+			session.setYear(cursor.getInt(yearIndex));						
 			session.setTimeHour(cursor.getInt(timeHourIndex));
 			session.setTimeMinutes(cursor.getInt(timeMinutesIndex));
 			session.setDayPeriod(cursor.getString(timezoneIndex));
@@ -559,6 +559,7 @@ public class SessionHandler implements IDatabaseTable {
 			
 			// output the first five results
 			for(Session session : sessions) {	
+				// format seconds
 				if(session.getDurationSeconds() < 10) {
 					durationSeconds = "0" + String.valueOf(session.getDurationSeconds() );
 				}
@@ -566,13 +567,14 @@ public class SessionHandler implements IDatabaseTable {
 					durationSeconds = String.valueOf(session.getDurationSeconds() );
 				}
 								
+				// format minutes in the hour
 				if(session.getTimeMinutes() < 10) {
 					timeMinutes = "0" + String.valueOf(session.getTimeMinutes() );
 				}
 				else {
 					timeMinutes = String.valueOf(session.getTimeMinutes() );
 				}
-												
+							
 				if(noItems != MAX_ITEMS) {
 						HashMap<String, String> map = new HashMap<String, String>();
 						id++;
@@ -588,7 +590,7 @@ public class SessionHandler implements IDatabaseTable {
 						// if it is today, display the time (HH:mm:a)
 						if(session.getDayNo() == cal.get(Calendar.DAY_OF_MONTH)) {
 							map.put(ListViewValues.SESSION, session.getTimeHour() + ":" +
-															session.getTimeMinutes() +
+															timeMinutes +
 															session.getDayPeriod().toLowerCase(Locale.ENGLISH) + " " +
 															"#" + session.getType()
 								   );
