@@ -4,22 +4,13 @@
     <!-- our palette of colours :o) -->
     <color name="faint_green">#61e69d</color>
     <color name="light_green">#2ecc71</color>
-    <color name="dark_green">#27ae60</color>
-    
-    <color name="nice_blue">#3ea9f5</color>
-    <color name="dark_blue">#333399</color>
-    
-    <color name="yellow">#FFCC00</color>
-    
+        
     <color name="light_grey">#D2D2D2</color>
     <color name="mid_grey">#E2E2E2</color>
     <color name="dark_grey">#333</color>
     
     <color name="black">#000</color>
     <color name="white">#FFF</color>
-    
-    <color name="pink_red">#F66</color>
-    <color name="red">#E84C3D</color>
     
     <!-- app -->
     <color name="title_bar">@color/light_grey</color>

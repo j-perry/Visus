@@ -122,34 +122,28 @@ containing a value of this type.
         public static final int swipeOpenOnLongPress=0x7f010000;
     }
     public static final class color {
-        public static final int black=0x7f040009;
-        public static final int dark_blue=0x7f040004;
-        public static final int dark_green=0x7f040002;
-        public static final int dark_grey=0x7f040008;
+        public static final int black=0x7f040005;
+        public static final int dark_grey=0x7f040004;
         /**  our palette of colours :o) 
          */
         public static final int faint_green=0x7f040000;
         public static final int light_green=0x7f040001;
-        public static final int light_grey=0x7f040006;
-        public static final int menu_grey=0x7f040012;
+        public static final int light_grey=0x7f040002;
+        public static final int menu_grey=0x7f04000c;
         /**  menu 
          */
-        public static final int menu_white=0x7f040011;
-        public static final int mid_grey=0x7f040007;
+        public static final int menu_white=0x7f04000b;
+        public static final int mid_grey=0x7f040003;
         /**  new user 
          */
-        public static final int new_user_white=0x7f040013;
-        public static final int nice_blue=0x7f040003;
-        public static final int pink_red=0x7f04000b;
-        public static final int red=0x7f04000c;
-        public static final int title_background=0x7f04000f;
+        public static final int new_user_white=0x7f04000d;
+        public static final int title_background=0x7f040009;
         /**  app 
          */
-        public static final int title_bar=0x7f04000d;
-        public static final int title_color=0x7f040010;
-        public static final int titletextcolor=0x7f04000e;
-        public static final int white=0x7f04000a;
-        public static final int yellow=0x7f040005;
+        public static final int title_bar=0x7f040007;
+        public static final int title_color=0x7f04000a;
+        public static final int titletextcolor=0x7f040008;
+        public static final int white=0x7f040006;
     }
     public static final class drawable {
         public static final int action_bar_bg=0x7f020000;
