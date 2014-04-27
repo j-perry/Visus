@@ -2,8 +2,7 @@
 <resources>
 
     <string name="app_name">Visus</string>
-    <string name="visus_welcome">Welcome to Visus</string>
-    
+    <string name="visus_welcome">Welcome to Visus</string>    
     
     <!-- Activities -->    
     <string name="activity_new_session">New Session</string>
@@ -14,38 +13,14 @@
     
     <!-- Main Activity Menu -->
     <string name="menu_about">About Visus</string>
-    <string name="menu_account">Account</string>
-    <string name="menu_sessions">Sessions</string>
-           
-    <string-array name="account_options">
-        <item>New Session</item>
-        <item>Sessions</item>
-        <item>Settings</item>
-    </string-array>
-
-    <!-- Menu options -->
-    <string name="title_activity_new_user">Sign Up</string>
-    <string name="title_activity_new_session">New</string>
-    <string name="title_activity_prev_sessions">Sessions</string>
-    <string name="title_activity_view_settings">Settings</string>
-    <string name="title_activity">Latest activity</string>
-    <string name="title_latest_activity">Latest activity</string>
-    <string name="title_activity_category">Activity category</string>
-    <string name="title_activity_categories">Activities</string>
-    <string name="title_activities">Activities</string>
-    
-    
+        
     <!-- Main menu scrollview -->
     <string name="main_menu_latest_activity">Latest Activity</string>    
     <string name="main_menu_activities">Activities</string>
-    
-    
-    <string name="activities">Activities</string>
-	
-    
+        
     <!-- Sign-up -->
-    <string name="hint_firstname">Firstname</string>    
-    <string name="gender_prompt">Gender</string>	
+    <string name="hint_firstname">Firstname</string>
+    <string name="gender_prompt">Gender</string>
 	<string name="hint_age">Age</string>
 	<string name="register">Sign Up</string>
 	
@@ -68,8 +43,7 @@
     <string name="main_menu_dialog_user_targets_txt">User Targets</string>
     <string name="main_menu_dialog_user_targets_header">No user targets have been created. They help you stay fresh and productive.\n\nDo you wish to create them now?</string>
     <string name="main_menu_dialog_user_targets_btn_cancel">No</string>
-    <string name="main_menu_dialog_user_targets_btn_ok">Yes!</string>
-       
+    <string name="main_menu_dialog_user_targets_btn_ok">Yes!</string>       
     <!-- End of Main Menu -->
     
     
@@ -85,9 +59,8 @@
         <item>THIS WEEK</item>
         <item>THIS MONTH</item>
         <item>THIS YEAR</item>
-    </string-array>
-    
-    <!-- End of Sessions -->
+    </string-array>    
+    <!-- End of Previous Sessions -->
     
     <!-- Settings -->
     <string-array name="settings_list">
@@ -148,10 +121,8 @@
     		<string name="settings_general_sessions_reset_all">Reset</string>
     		
     		<!-- Save (all) -->
-    		<string name="settings_general_save_all">Save</string>
-	    	
-    	<!-- End of 'General' tab -->
-    	
+    		<string name="settings_general_save_all">Save</string> 	
+    	<!-- End of 'General' tab -->  	
     
     	<!-- About -->
 	    <string name="settings_about_header">About</string>
@@ -163,11 +134,7 @@
 	    
 	    <!-- Credits -->
 	    <string name="settings_support_header">Support</string>
-	    <string name="settings_support_blurb">For feature recommendations and support email: help@jon-perry.co.uk</string>
-	    
+	    <string name="settings_support_blurb">For feature recommendations and support email: help@jon-perry.co.uk</string>	    
 	<!-- End of Settings -->
-	
-	<!-- Settings (Activities) -->
-	<string name="settings_activities_delete">Delete</string>
-	
+		
 </resources>
