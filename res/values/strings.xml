@@ -126,7 +126,7 @@
     
     	<!-- About -->
 	    <string name="settings_about_header">About</string>
-	    <string name="settings_about_blurb">Based on the Pomodoro Technique, Visus is a simple productivity app, designed to optimise you’re productivity using your PC, smartphone or tablet.\n\nAfter excessive hours staring at displays, whether in the office, at home, or on the bus, it’s hard to think constructively, whilst developing dry eyes, impacting productivity on day-to-day tasks.\n\nCreate a 25 minute session and take a short break afterwards to keep things fresh in perspective and productivity!</string>
+	    <string name="settings_about_blurb">Based on the Pomodoro Technique, Visus is a simple productivity app, designed to optimise you’re productivity using your PC, smartphone or tablet.\n\nAfter excessive hours staring at displays, whether in the office or at home, it’s hard to think constructively, whilst developing dry eyes, impacting productivity on day-to-day tasks.\n\nCreate a 25 minute session and ensure you take a short break afterwards to stay fresh.</string>
 	    
 	    <!-- What's Visus? -->
 	    <string name="settings_what_header">What\'s Visus?</string>

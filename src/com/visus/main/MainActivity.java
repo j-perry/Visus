@@ -298,7 +298,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	 */
 			
 	/**
-	 * creates a new session
+	 * Creates a new session
 	 * @param view
 	 */
 	public void newSession(View view) {
@@ -308,7 +308,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	}
 	
 	/**
-	 * view previous sessions
+	 * View previous sessions
 	 * @param view
 	 */
 	public void prevSessions(View view) {
@@ -318,7 +318,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	}
 	
 	/**
-	 * view app settings
+	 * View app settings
 	 * @param view
 	 */
 	public void viewSettings(View view) {

@@ -6,7 +6,6 @@ import com.visus.database.SessionRecordsHandler;
 import com.visus.database.UserHandler;
 import com.visus.entities.User;
 import com.visus.main.MainActivity;
-import com.visus.main.Settings;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -14,8 +13,6 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.NavUtils;
-import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
