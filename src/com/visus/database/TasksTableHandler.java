@@ -6,6 +6,7 @@ package com.visus.database;
 import java.util.*;
 
 import android.content.*;
+import android.database.Cursor;
 import android.database.sqlite.*;
 import android.util.Log;
 
@@ -53,14 +54,36 @@ public class TasksTableHandler implements ITasksTable {
 		catch(SQLiteException ex) {
 			Log.e("Visus", "Error writing to database Sessions", ex);
 		}
-		finally {
-			db.close();
-		}	
 	}
 	
 	public ArrayList<Task> get() {
 		ArrayList<Task> tasks = new ArrayList<Task>();
+		Task task = new Task();
+		Cursor cursor = null;
+		String queryTasks = "SELECT * " +
+							"FROM " + ITasksTable.TABLE_NAME;
 		
+		cursor = db.rawQuery(queryTasks, null);
+		
+		int dayIndex = cursor.getColumnIndex(ITasksTable.KEY_DAY);
+		int monthIndex = cursor.getColumnIndex(ITasksTable.KEY_MONTH);
+		int yearIndex = cursor.getColumnIndex(ITasksTable.KEY_YEAR);
+		
+		int taskIndex = cursor.getColumnIndex(ITasksTable.KEY_TASK);
+		int taskDescIndex = cursor.getColumnIndex(ITasksTable.KEY_TASK_DESCRIPTION);
+		
+		while(cursor.moveToNext() ) {
+			task.setDay(cursor.getInt(dayIndex));
+			task.setMonth(cursor.getInt(monthIndex));
+			task.setYear(cursor.getInt(yearIndex));
+			
+			task.setTask(cursor.getString(taskIndex));
+			task.setDescription(cursor.getString(taskDescIndex));
+			
+			tasks.add(task);
+		}
+		
+		cursor.close();
 		
 		return tasks;
 	}
