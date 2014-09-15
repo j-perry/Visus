@@ -38,6 +38,11 @@ public class TasksTableHandler implements ITasksTable {
 		dbHandler.close();
 	}
 	
+	/**
+	 * Add's a new task to the ToDo list
+	 * @param task
+	 * @throws SQLiteException
+	 */
 	public void add(Task task) throws SQLiteException {
 		ContentValues values = new ContentValues();
 		
@@ -56,12 +61,18 @@ public class TasksTableHandler implements ITasksTable {
 		}
 	}
 	
-	public ArrayList<Task> get() {
+	/**
+	 * Return's all tasks to be completed
+	 * @param userId
+	 * @return
+	 */
+	public ArrayList<Task> get(int userId) {
 		ArrayList<Task> tasks = new ArrayList<Task>();
 		Task task = new Task();
 		Cursor cursor = null;
 		String queryTasks = "SELECT * " +
-							"FROM " + ITasksTable.TABLE_NAME;
+							"FROM " + ITasksTable.TABLE_NAME + 
+							" WHERE " + ITasksTable.KEY_USER_ID + " = " + userId; 
 		
 		cursor = db.rawQuery(queryTasks, null);
 		
@@ -86,6 +97,10 @@ public class TasksTableHandler implements ITasksTable {
 		cursor.close();
 		
 		return tasks;
+	}
+	
+	public void remove(int id, int userId) {
+		
 	}
 
 }
