@@ -54,6 +54,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				                           		ISessionsRecordTable.KEY_ACTIVITY_DURATION + " TEXT " +
 				                           ");";
 		
+		String createTasksRecordTable = "CREATE TABLE " + ITasksTable.TABLE_NAME +
+										" ( " +
+				                        	ITasksTable.KEY_ID + " INTEGER PRIMARY KEY, " +
+										    ITasksTable.KEY_USER_ID + " INTEGER, " +
+				                        	ITasksTable.KEY_TASK + " TEXT, " +
+										    ITasksTable.KEY_TASK_DESCRIPTION + " TEXT " +
+										");";
+		
 		db.execSQL(createUsersTable);
 		Log.e("Visus", "Users table created");
 		
@@ -62,13 +70,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		
 		db.execSQL(createSessionsTable);
 		Log.e("Visus", "Sessions table created");
+		
+		db.execSQL(createTasksRecordTable);
+		Log.e("Visus", "Tasks table created");
 	}
-
+	
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + IUserTable.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + ISessionTable.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + ITasksTable.TABLE_NAME);
  
         // Create tables again
         onCreate(db);		
