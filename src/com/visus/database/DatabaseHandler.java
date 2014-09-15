@@ -59,7 +59,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				                        	ITasksTable.KEY_ID + " INTEGER PRIMARY KEY, " +
 										    ITasksTable.KEY_USER_ID + " INTEGER, " +
 				                        	ITasksTable.KEY_TASK + " TEXT, " +
-										    ITasksTable.KEY_TASK_DESCRIPTION + " TEXT " +
+										    ITasksTable.KEY_TASK_DESCRIPTION + " TEXT, " +
+				                        	ITasksTable.KEY_DAY + " INTEGER, " + 
+										    ITasksTable.KEY_MONTH + " INTEGER, " +
+				                        	ITasksTable.KEY_YEAR + " INTEGER" +
 										");";
 		
 		db.execSQL(createUsersTable);
