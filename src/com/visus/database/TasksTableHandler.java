@@ -99,8 +99,19 @@ public class TasksTableHandler implements ITasksTable {
 		return tasks;
 	}
 	
-	public void remove(int id, int userId) {
+	/**
+	 * Removes a ToDo task from the database
+	 * @param id
+	 * @return
+	 */
+	public int remove(int userId, int id) {
+		String whereClause = ITasksTable.KEY_ID + " = " + id + " AND " +
+				             ITasksTable.KEY_USER_ID + " = " + userId;
+		int result = 0;
 		
+		result = db.delete(ITasksTable.TABLE_NAME, whereClause, null);
+		
+		return result;
 	}
-
+	
 }
