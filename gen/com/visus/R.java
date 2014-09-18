@@ -213,11 +213,11 @@ containing a value of this type.
         public static final int main_menu_latest_activities_no_sessions_total=0x7f080026;
         public static final int main_menu_no_activities=0x7f080023;
         public static final int main_menu_pager=0x7f080009;
-        public static final int menu__new_task=0x7f080046;
+        public static final int menu__new_task=0x7f080045;
         public static final int menu_about=0x7f080048;
         public static final int menu_sessions=0x7f080044;
         public static final int menu_settings=0x7f080047;
-        public static final int menu_tasks=0x7f080045;
+        public static final int menu_tasks=0x7f080046;
         public static final int new_session_menu=0x7f080043;
         public static final int none=0x7f080000;
         public static final int overview_sessions_adapter=0x7f080027;
