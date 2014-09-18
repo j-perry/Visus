@@ -1,6 +1,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    
+	
     <item
         android:id="@+id/new_session_menu"
         android:orderInCategory="100"
@@ -8,15 +7,7 @@
         android:icon="@drawable/ic_new_session"
         android:title="@string/activity_new_session"
         />
-    
-    <!-- NB: option 'collapseActionView' displays our menu items in a action bar view -->
-    <item
-        android:id="@+id/menu_sessions"
-        android:orderInCategory="100"
-        android:showAsAction="collapseActionView"
-        android:title="@string/activity_sessions"
-        />
-    
+	    
     <item
         android:id="@+id/menu__new_task"
         android:orderInCategory="100"
@@ -30,7 +21,15 @@
         android:showAsAction="collapseActionView"
         android:title="@string/activity_tasks"
         />
-        
+    
+    <!-- NB: option 'collapseActionView' displays our menu items in a action bar view -->
+    <item
+        android:id="@+id/menu_sessions"
+        android:orderInCategory="100"
+        android:showAsAction="collapseActionView"
+        android:title="@string/activity_sessions"
+        />
+            
     <item
         android:id="@+id/menu_settings"
         android:orderInCategory="100"
