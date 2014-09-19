@@ -21,8 +21,7 @@ public class TasksTableHandler implements ITasksTable {
 
 	private DatabaseHandler dbHandler;
 	private SQLiteDatabase db;
-	private Long result;
-	private Session session;
+	private Cursor cursor;
 			
 	private static final String QRY_SPACING = " ";
 		
@@ -69,7 +68,6 @@ public class TasksTableHandler implements ITasksTable {
 	public ArrayList<Task> get(int userId) {
 		ArrayList<Task> tasks = new ArrayList<Task>();
 		Task task = new Task();
-		Cursor cursor = null;
 		String queryTasks = "SELECT * " +
 							"FROM " + ITasksTable.TABLE_NAME + 
 							" WHERE " + ITasksTable.KEY_USER_ID + " = " + userId; 
@@ -119,8 +117,7 @@ public class TasksTableHandler implements ITasksTable {
 		String qry = "SELECT count(*) " +
 					 "FROM " + ITasksTable.TABLE_NAME;
 				
-		Cursor cursor = db.rawQuery(qry, null); 
-		
+		cursor = db.rawQuery(qry, null); 		
 		cursor.getCount();
 		cursor.close();
 		
