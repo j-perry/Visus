@@ -53,7 +53,38 @@
                 />
             
         </activity>
+        
+        <!-- 'New Task' -->
+        <activity
+            android:name="com.visus.main.NewTask"
+            android:label="@string/activity_new_task"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.visus.main.MainActivity"
+            >
+            
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.visus.main.MainActivity"
+                />
+            
+        </activity>
                 
+        <!-- 'Tasks' -->
+        <activity
+            android:name="com.visus.main.Tasks"
+            android:label="@string/activity_tasks"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.visus.main.MainActivity"
+            >
+            
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.visus.main.MainActivity"
+                />
+            
+        </activity>        
         
         <!-- 'Sessions' -->
         <activity
