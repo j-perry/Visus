@@ -114,4 +114,17 @@ public class TasksTableHandler implements ITasksTable {
 		return result;
 	}
 	
+	public int getCount() {
+		int noTasks = 0;
+		String qry = "SELECT count(*) " +
+					 "FROM " + ITasksTable.TABLE_NAME;
+				
+		Cursor cursor = db.rawQuery(qry, null); 
+		
+		cursor.getCount();
+		cursor.close();
+		
+		return noTasks;
+	}
+	
 }
