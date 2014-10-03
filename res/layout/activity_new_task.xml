@@ -26,12 +26,14 @@
 	    android:textColorHint="@color/dark_grey"
 	    />
 	    	    
-	<!-- Description --> 
+	<!-- Description -->
 	<EditText
 	    android:id="@+id/age"
 	    android:background="@color/white"
 	    android:padding="15sp"
-	    android:inputType="number"
+	    android:inputType="textMultiLine|textCapSentences"
+	    android:lines="4"
+	    android:gravity="top|left"
 	    android:layout_height="wrap_content"
 	    android:layout_width="fill_parent"
 	    android:layout_marginBottom="25dp"
