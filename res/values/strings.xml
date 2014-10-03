@@ -55,6 +55,7 @@
     <string name="dialog_previous_sessions_btn_cancel">No</string>
     <string name="dialog_previous_sessions_btn_ok">Yes!</string>
     
+    
     <!-- Main Menu -->
     <string-array name="sessions_menu">
         <item>TODAY</item>
@@ -63,6 +64,7 @@
         <item>THIS YEAR</item>
     </string-array>    
     <!-- End of Previous Sessions -->
+    
     
     <!-- Settings -->
     <string-array name="settings_list">
@@ -73,7 +75,12 @@
     <string name="dialog_user_targets_day">You have entered a new daily target.\n\nDo you wish to save it?</string>
     <string name="dialog_user_targets_monthly">You have entered a new monthly target.\n\nDo you wish to save it?</string>
     <!-- End of settings -->
-        
+    
+    
+    <!-- New Task -->
+    <string name="hint_new_task">Task</string>
+    <string name="hint_new_description">Description</string>
+       
 	
     <!-- New Session -->
     <string name="title_new_session">New Session</string>
