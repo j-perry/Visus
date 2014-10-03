@@ -177,7 +177,7 @@ containing a value of this type.
         public static final int TextView01=0x7f080042;
         public static final int TextView02=0x7f080043;
         public static final int actionBarList=0x7f080007;
-        public static final int age=0x7f080013;
+        public static final int age=0x7f080010;
         public static final int alert_dialog_new_session_btn_cancel=0x7f080018;
         public static final int alert_dialog_new_session_btn_ok=0x7f080019;
         public static final int alert_dialog_new_session_header=0x7f080016;
@@ -197,8 +197,8 @@ containing a value of this type.
         public static final int dismiss=0x7f080005;
         public static final int entry=0x7f08003f;
         public static final int entry_no=0x7f08003e;
-        public static final int first_name=0x7f080011;
-        public static final int gender=0x7f080012;
+        public static final int first_name=0x7f08000f;
+        public static final int gender=0x7f080014;
         public static final int header=0x7f08003d;
         public static final int hmmm=0x7f080033;
         public static final int left=0x7f080003;
@@ -221,13 +221,13 @@ containing a value of this type.
         public static final int new_session_menu=0x7f080044;
         public static final int none=0x7f080000;
         public static final int overview_sessions_adapter=0x7f080028;
-        public static final int register=0x7f080014;
+        public static final int register=0x7f080011;
         public static final int reveal=0x7f080004;
         public static final int right=0x7f080002;
         public static final int session_activity=0x7f080041;
         public static final int session_id=0x7f080040;
         public static final int session_type=0x7f08000b;
-        public static final int sessions_pager=0x7f08000f;
+        public static final int sessions_pager=0x7f080012;
         public static final int settings_about_blurb=0x7f08002e;
         public static final int settings_about_header=0x7f08002d;
         public static final int settings_credit_about=0x7f080030;
@@ -241,7 +241,7 @@ containing a value of this type.
         public static final int settings_history_reset_year=0x7f08003a;
         public static final int settings_history_target_day=0x7f080037;
         public static final int settings_history_target_month=0x7f080038;
-        public static final int settings_pager=0x7f080010;
+        public static final int settings_pager=0x7f080013;
         public static final int settings_save_all=0x7f08003c;
         public static final int tasks_no_tasks=0x7f080015;
         public static final int timer=0x7f08000c;

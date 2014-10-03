@@ -23,6 +23,7 @@ public class Tasks extends Activity {
 	 */
 	private void displayNoTasks() {
 		TasksTableHandler tasksHandler = new TasksTableHandler(this);
+		tasksHandler.open();
 		int count = tasksHandler.getCount();
 		tasksHandler.close();
 		
