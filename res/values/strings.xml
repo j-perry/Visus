@@ -80,6 +80,7 @@
     <!-- New Task -->
     <string name="hint_new_task">Task</string>
     <string name="hint_new_description">Description</string>
+    <string name="btn_new_task">Create</string>
        
 	
     <!-- New Session -->

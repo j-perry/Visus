@@ -42,7 +42,7 @@
 	    android:textSize="24sp"
 	    android:textColorHint="@color/dark_grey"
 	    />
-	    
+	
 	<!-- submit -->
 	<Button
 	    android:id="@+id/register"
@@ -54,7 +54,7 @@
 	    android:background="@drawable/new_user_submit_bg"
 	    android:textColor="@drawable/new_user_submit_txt"
 	    android:textSize="24sp"
-	    android:text="Create"
+	    android:text="@string/btn_new_task"
 	    android:gravity="center"
 	    />
 
