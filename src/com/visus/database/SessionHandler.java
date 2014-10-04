@@ -94,7 +94,7 @@ public class SessionHandler implements IDatabaseTable {
 		catch(SQLiteException e) {
 			Log.e("Visus", "Error writing to database Sessions", e);
 		}
-		finally {			
+		finally {
 			// -1 denotes, unsuccessful. 0 and higher denotes no. of written items
 			if(result == -1) {
 				Log.e("Visus", "----------------");

@@ -12,6 +12,5 @@ public interface ITasksTable {
 	public final static String KEY_DAY					= "Day";
 	public final static String KEY_MONTH				= "Month";
 	public final static String KEY_YEAR					= "Year";
-	
-	
+		
 }

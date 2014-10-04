@@ -250,7 +250,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 				intent.putExtra("ActiveUserId", userId);
 				startActivity(intent);
 				break;
-			case com.visus.R.id.menu__new_task:
+			case com.visus.R.id.menu_new_task:
 				intent = new Intent(this, NewTask.class);
 				intent.putExtra("ActiveUserId", userId);
 				startActivity(intent);

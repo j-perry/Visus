@@ -46,15 +46,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	                                     ISessionTable.KEY_TYPE + " TEXT " +
                 	                 ");";
 		
-		String createSessionsRecordTable = "CREATE TABLE " + ISessionsRecordTable.TABLE_NAME +
-				                           " ( " +
-				                           		ISessionsRecordTable.KEY_ID + " INTEGER PRIMARY KEY, " +
-				                           		ISessionsRecordTable.KEY_USER_ID + " INTEGER, " +
-				                           		ISessionsRecordTable.KEY_ACTIVITY + " TEXT, " +
-				                           		ISessionsRecordTable.KEY_ACTIVITY_DURATION + " TEXT " +
-				                           ");";
+//		String createSessionsRecordTable = "CREATE TABLE " + ISessionsRecordTable.TABLE_NAME +
+//				                           " ( " +
+//				                           		ISessionsRecordTable.KEY_ID + " INTEGER PRIMARY KEY, " +
+//				                           		ISessionsRecordTable.KEY_USER_ID + " INTEGER, " +
+//				                           		ISessionsRecordTable.KEY_ACTIVITY + " TEXT, " +
+//				                           		ISessionsRecordTable.KEY_ACTIVITY_DURATION + " TEXT " +
+//				                           ");";
 		
-		String createTasksRecordTable = "CREATE TABLE " + ITasksTable.TABLE_NAME +
+		String createTasksTable = "CREATE TABLE " + ITasksTable.TABLE_NAME +
 										" ( " +
 				                        	ITasksTable.KEY_ID + " INTEGER PRIMARY KEY, " +
 										    ITasksTable.KEY_USER_ID + " INTEGER, " +
@@ -68,13 +68,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL(createUsersTable);
 		Log.e("Visus", "Users table created");
 		
-		db.execSQL(createSessionsRecordTable);
-		Log.e("Visus", "Session Records table created");
+//		db.execSQL(createSessionsRecordTable);
+//		Log.e("Visus", "Session Records table created");
 		
 		db.execSQL(createSessionsTable);
 		Log.e("Visus", "Sessions table created");
 		
-		db.execSQL(createTasksRecordTable);
+		db.execSQL(createTasksTable);
 		Log.e("Visus", "Tasks table created");
 	}
 	

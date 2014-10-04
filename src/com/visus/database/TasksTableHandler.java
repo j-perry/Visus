@@ -21,15 +21,16 @@ public class TasksTableHandler implements ITasksTable {
 
 	private DatabaseHandler dbHandler;
 	private SQLiteDatabase db;
+	private Long result;
 			
 	private static final String QRY_SPACING = " ";
-		
+	
 	public TasksTableHandler(Context context) {
 		dbHandler = new DatabaseHandler(context);
 	}
 	
 	public void open() {
-		dbHandler.getWritableDatabase();
+		db = dbHandler.getWritableDatabase();
 	}
 	
 	public void close() {
@@ -41,21 +42,31 @@ public class TasksTableHandler implements ITasksTable {
 	 * @param task
 	 * @throws SQLiteException
 	 */
-	public void add(Task task) throws SQLiteException {
+	public void add(Task task, int userId) throws SQLiteException {
 		ContentValues values = new ContentValues();
 		
-		values.put(KEY_USER_ID, task.getUserId() );
-		values.put(KEY_TASK, task.getTask() );
-		values.put(KEY_TASK_DESCRIPTION, task.getDescription() );
-		values.put(KEY_DAY, task.getDay() );
-		values.put(KEY_MONTH, task.getMonth() );
-		values.put(KEY_YEAR, task.getYear() );
+		values.put(ITasksTable.KEY_USER_ID, userId);
+		values.put(ITasksTable.KEY_TASK, task.getTask() );
+		values.put(ITasksTable.KEY_TASK_DESCRIPTION, task.getDescription() );
+		values.put(ITasksTable.KEY_DAY, 3 );
+		values.put(ITasksTable.KEY_MONTH, 10 );
+		values.put(ITasksTable.KEY_YEAR, 2014 );
 		
 		try {
-			db.insert(TABLE_NAME, null, values);
+			result = db.insert(ITasksTable.TABLE_NAME, null, values);
 		} 
 		catch(SQLiteException ex) {
 			Log.e("Visus", "Error writing to database Sessions", ex);
+		} finally {
+			// -1 denotes, unsuccessful. 0 and higher denotes no. of written items
+			if(result == -1) {
+				Log.e("Visus", "----------------");
+				Log.e("Visus", String.valueOf(result) + " | Failed to write to db");
+				Log.e("Visus", "----------------");
+			} else {
+				Log.e("Visus", "----------------");
+				Log.e("Visus", "ID: " + String.valueOf(result) + " | Written to db");
+			}
 		}
 	}
 	
@@ -68,8 +79,8 @@ public class TasksTableHandler implements ITasksTable {
 		ArrayList<Task> tasks = new ArrayList<Task>();
 		Task task = new Task();
 		String queryTasks = "SELECT * " +
-							"FROM " + ITasksTable.TABLE_NAME + 
-							" WHERE " + ITasksTable.KEY_USER_ID + " = " + userId; 
+							"FROM " + ITasksTable.TABLE_NAME + " " +
+							"WHERE " + ITasksTable.KEY_USER_ID + " = " + userId; 
 		Cursor cursor = null;		
 		
 		cursor = db.rawQuery(queryTasks, null);

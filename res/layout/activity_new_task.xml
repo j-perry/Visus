@@ -13,7 +13,7 @@
             
 	<!-- task header -->
 	<EditText
-	    android:id="@+id/first_name"
+	    android:id="@+id/new_task_header"
 	    android:background="@color/white"
 	    android:padding="15sp"
 	    android:layout_height="wrap_content"
@@ -25,10 +25,10 @@
 	    android:textSize="24sp"
 	    android:textColorHint="@color/dark_grey"
 	    />
-	    	    
-	<!-- Description -->
+	
+	<!-- description -->
 	<EditText
-	    android:id="@+id/age"
+	    android:id="@+id/new_task_description"
 	    android:background="@color/white"
 	    android:padding="15sp"
 	    android:inputType="textMultiLine|textCapSentences"
@@ -46,7 +46,7 @@
 	<!-- submit -->
 	<Button
 	    android:id="@+id/register"
-	    android:onClick="registerUser"
+	    android:onClick="addTask"
 	    android:layout_height="wrap_content"
 	    android:layout_width="fill_parent"
 	    android:paddingTop="15sp"
