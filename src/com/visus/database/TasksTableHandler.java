@@ -48,9 +48,9 @@ public class TasksTableHandler implements ITasksTable {
 		values.put(ITasksTable.KEY_USER_ID, userId);
 		values.put(ITasksTable.KEY_TASK, task.getTask() );
 		values.put(ITasksTable.KEY_TASK_DESCRIPTION, task.getDescription() );
-		values.put(ITasksTable.KEY_DAY, 3 );
-		values.put(ITasksTable.KEY_MONTH, 10 );
-		values.put(ITasksTable.KEY_YEAR, 2014 );
+		values.put(ITasksTable.KEY_DAY, task.getDay() );
+		values.put(ITasksTable.KEY_MONTH, task.getMonth() );
+		values.put(ITasksTable.KEY_YEAR, task.getYear() );
 		
 		try {
 			result = db.insert(ITasksTable.TABLE_NAME, null, values);
