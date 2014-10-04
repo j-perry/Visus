@@ -5,9 +5,9 @@
     android:background="#E2E2E2"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:paddingTop="50sp"
-    android:paddingLeft="50sp"
-    android:paddingRight="50sp"
+    android:paddingTop="25sp"
+    android:paddingLeft="25sp"
+    android:paddingRight="25sp"
     android:orientation="vertical"
     >
             

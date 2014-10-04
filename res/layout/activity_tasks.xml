@@ -8,6 +8,7 @@
     android:orientation="vertical"
     >
     
+    <!--
 	<LinearLayout
 	        android:background="@color/white"
 	        android:layout_width="fill_parent"
@@ -31,7 +32,7 @@
 	            />
 	
 	</LinearLayout>
-	
+	 -->
 	
     
 </LinearLayout>

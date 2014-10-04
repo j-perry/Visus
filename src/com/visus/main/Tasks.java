@@ -27,12 +27,12 @@ public class Tasks extends Activity {
 		int count = tasksHandler.getCount();
 		tasksHandler.close();
 		
-		TextView txtNoTasks = (TextView) findViewById(R.id.tasks_no_tasks);
+//		TextView txtNoTasks = (TextView) findViewById(R.id.tasks_no_tasks);
 		
 		if(count == 0) {
-			txtNoTasks.setText(0);
+//			txtNoTasks.setText(0);
 		} else {
-			txtNoTasks.setText(count);
+//			txtNoTasks.setText(count);
 		}	
 	}
 	
