@@ -59,10 +59,15 @@ public class NewTask extends Activity {
 	public void addTask(View view) {
 		Task task = new Task();
 		EditText etTask = (EditText) findViewById(R.id.new_task_header);
-		EditText etDescription = (EditText) findViewById(R.id.new_task_description);
+		EditText etDescription = (EditText) findViewById(R.id.new_task_description);		
+		tvDate = (TextView) findViewById(com.visus.R.id.new_task_show_date_picker);
 		
 		task.setTask(etTask.getText().toString() );
 		task.setDescription(etDescription.getText().toString() );
+		task.setDay(day);
+		task.setMonth(month);
+		task.setYear(year);
+		
 		Bundle bundle = getIntent().getExtras();
 		int userId = bundle.getInt("ActiveUserId");
 		
