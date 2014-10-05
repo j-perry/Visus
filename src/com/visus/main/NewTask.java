@@ -32,7 +32,7 @@ public class NewTask extends Activity {
 		setContentView(R.layout.activity_new_task);
 		
 		tvDate = (TextView) findViewById(com.visus.R.id.new_task_show_date_picker);
-		tvDate.setText("Set date");
+		tvDate.setText("Date");
 		
 		Calendar cal = Calendar.getInstance();
 		day = cal.get(Calendar.DAY_OF_MONTH);

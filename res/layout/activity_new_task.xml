@@ -54,7 +54,6 @@
 	    android:gravity="left"
 	    android:background="@color/white"
 	    android:textColor="@color/dark_grey"
-	    android:text="Set date"
 	    android:textSize="24sp"
 	    android:textColorHint="@color/dark_grey"
 	    />
