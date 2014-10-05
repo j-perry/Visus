@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 public class NewTask extends Activity {
 	
+	private TextView tvDate;
 	private int day;
 	private int month;
 	private int year;
@@ -29,6 +30,9 @@ public class NewTask extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.activity_new_task);
+		
+		tvDate = (TextView) findViewById(com.visus.R.id.new_task_show_date_picker);
+		tvDate.setText("Set date");
 		
 		Calendar cal = Calendar.getInstance();
 		day = cal.get(Calendar.DAY_OF_MONTH);
@@ -77,12 +81,13 @@ public class NewTask extends Activity {
 	 * Create an event listener that displays a date picker
 	 */
 	private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
-		
+
 		@Override
-		public void onDateSet(DatePicker view, int day, int month, int year) {
-			setDatePicker(day, month+1, year);
+		public void onDateSet(DatePicker view, int year, int monthOfYear,
+				int dayOfMonth) {
+			setDatePicker(day, month+1, year);			
 		}
-	   
+		
 	};
 	
 	/**
@@ -92,8 +97,8 @@ public class NewTask extends Activity {
 	 * @param year
 	 */
 	private void setDatePicker(int day, int month, int year) {
-		TextView tvDate = (TextView) findViewById(com.visus.R.id.new_task_date);
-		tvDate.setText(day + "-" + month + "-" + year);
+		tvDate = (TextView) findViewById(com.visus.R.id.new_task_show_date_picker);
+		tvDate.setText(day + "/" + month + "/" + year);
 	}
 	
 }
