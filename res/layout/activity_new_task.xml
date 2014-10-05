@@ -58,7 +58,7 @@
 	    android:textSize="24sp"
 	    android:textColorHint="@color/dark_grey"
 	    />
-		
+	
 	<!-- submit -->
 	<Button
 	    android:id="@+id/register"

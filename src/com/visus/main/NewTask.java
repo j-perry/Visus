@@ -90,7 +90,9 @@ public class NewTask extends Activity {
 		@Override
 		public void onDateSet(DatePicker view, int year, int monthOfYear,
 				int dayOfMonth) {
-			setDatePicker(day, month+1, year);			
+			tvDate = (TextView) findViewById(com.visus.R.id.new_task_show_date_picker);
+			tvDate.setText("");
+			setDatePicker(dayOfMonth, monthOfYear+1, year);
 		}
 		
 	};
