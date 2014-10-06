@@ -21,7 +21,7 @@
 	        	android:layout_width="fill_parent"
 	        	android:layout_height="wrap_content"
 				android:background="@color/white"
-		        android:padding="15sp"
+		        android:padding="25sp"
 	        	android:textAllCaps="true"
 	        	android:textColor="@color/dark_grey"
 	        	android:textSize="14sp"
