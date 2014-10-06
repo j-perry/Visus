@@ -29,11 +29,16 @@ public class Tasks extends Activity {
 		int count = tasksHandler.getCount();
 		tasksHandler.close();
 		txtNoTasks = (TextView) findViewById(R.id.tasks_no_tasks_02);
+		txtNoTasks.setTextSize(24);
 		
 		if(count == 0) {
-			txtNoTasks.setText("0");
+			txtNoTasks.setText("0 Tasks");
 		} else {
-			txtNoTasks.setText(String.valueOf(count) );
+			if(count == 1) {
+				txtNoTasks.setText(String.valueOf(count) + " Task");
+			} else {
+				txtNoTasks.setText(String.valueOf(count) + " Tasks");				
+			}
 		}	
 	}
 	
