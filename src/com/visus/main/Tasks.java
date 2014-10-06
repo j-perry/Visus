@@ -42,6 +42,11 @@ public class Tasks extends Activity {
 		}
 	}
 	
-	
+	/**
+	 * Displays a list of all tasks created
+	 */
+	private void displayTasks() {
+		
+	}
 	
 }
