@@ -39,7 +39,9 @@ public class Tasks extends Activity {
 			} else {
 				txtNoTasks.setText(String.valueOf(count) + " Tasks");				
 			}
-		}	
+		}
 	}
+	
+	
 	
 }
