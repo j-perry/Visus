@@ -92,13 +92,14 @@ public class TasksTableHandler implements ITasksTable {
 		int taskIndex = cursor.getColumnIndex(ITasksTable.KEY_TASK);
 		int taskDescIndex = cursor.getColumnIndex(ITasksTable.KEY_TASK_DESCRIPTION);
 		
-		while(cursor.moveToNext() ) {
+		// store each item
+		while(cursor.moveToNext() ) {			
+			task.setTask(cursor.getString(taskIndex));
+			task.setDescription(cursor.getString(taskDescIndex));
+			
 			task.setDay(cursor.getInt(dayIndex));
 			task.setMonth(cursor.getInt(monthIndex));
 			task.setYear(cursor.getInt(yearIndex));
-			
-			task.setTask(cursor.getString(taskIndex));
-			task.setDescription(cursor.getString(taskDescIndex));
 			
 			tasks.add(task);
 		}

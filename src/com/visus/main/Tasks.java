@@ -9,13 +9,15 @@ import android.widget.TextView;
 
 public class Tasks extends Activity {
 
+	private TextView txtNoTasks;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.activity_tasks);
 		
-//		displayNoTasks();
+		displayNoTasks();
 	}
 	
 	/**
@@ -26,13 +28,12 @@ public class Tasks extends Activity {
 		tasksHandler.open();
 		int count = tasksHandler.getCount();
 		tasksHandler.close();
-		
-//		TextView txtNoTasks = (TextView) findViewById(R.id.tasks_no_tasks);
+		txtNoTasks = (TextView) findViewById(R.id.tasks_no_tasks_02);
 		
 		if(count == 0) {
-//			txtNoTasks.setText(0);
+			txtNoTasks.setText("0");
 		} else {
-//			txtNoTasks.setText(count);
+			txtNoTasks.setText(String.valueOf(count) );
 		}	
 	}
 	

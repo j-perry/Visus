@@ -8,7 +8,6 @@
     android:orientation="vertical"
     >
     
-    <!--
 	<LinearLayout
 	        android:background="@color/white"
 	        android:layout_width="fill_parent"
@@ -21,7 +20,7 @@
 	        >
         	
 	        <TextView 
-	            android:id="@+id/tasks_no_tasks"
+	            android:id="@+id/tasks_no_tasks_02"
 	        	android:layout_width="fill_parent"
 	        	android:layout_height="wrap_content"
 				android:background="@color/white"
@@ -31,8 +30,6 @@
 	        	android:textSize="14sp"
 	            />
 	
-	</LinearLayout>
-	 -->
-	
+	</LinearLayout>	
     
 </LinearLayout>
