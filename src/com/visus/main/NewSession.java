@@ -133,8 +133,7 @@ public class NewSession extends Activity {
 			activeUserId = userId.getInt("ActiveUserId");
 			Log.e("Visus", "----------------------------------------");
 			Log.e("Visus", "New Session - User id is " + activeUserId);
-		}
-		else {
+		} else {
 			// find the active user
 			User user = dbUser.getActiveUser();
 			activeUserId = user.getUserId();
@@ -142,19 +141,17 @@ public class NewSession extends Activity {
 		
 		try {
 			dbHandler.open();			
-		}
-		catch(SQLiteException e) {
+		} catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);
-		}
-		finally {
+		} finally {
 			types = dbHandler.getAllSessionTypes(activeUserId);
 			dbHandler.close();
 		}
 		
+		
 		if(types.size() == 0) {
 			Log.e("Visus", "NULL");
-		}
-		else {
+		} else {
 			Log.e("Visus", "Session Types Available");
 			
 			for(String type : types) {
@@ -176,14 +173,14 @@ public class NewSession extends Activity {
 		ok.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				
 				type = sessionTypes.getText().toString().trim();
 				
 				if(!type.isEmpty()) {
 					sessionType.setText("#" + type);
 					sessionType.setVisibility(View.VISIBLE);
 		            dialog.dismiss();
-				}
-				else {
+				} else {
 					String tstMsg = "Enter an activity type";
 					Toast tstInput = Toast.makeText(getApplicationContext(), tstMsg, Toast.LENGTH_LONG);					
 					tstInput.setGravity(Gravity.CENTER, 0, 0);
@@ -236,7 +233,7 @@ public class NewSession extends Activity {
 			// app logo
 			case android.R.id.home:
 				Intent upIntent = new Intent(this, MainActivity.class);
-	            if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
+	            if(NavUtils.shouldUpRecreateTask(this, upIntent)) {
 	                // This activity is not part of the application's task, so create a new task
 	                // with a synthesized back stack.
 	                TaskStackBuilder.from(this)
@@ -388,8 +385,7 @@ public class NewSession extends Activity {
 						
 		if((remainingMins == 0) && (remainingSecs == 0)) {
 			Log.e("Visus", "Empty time remaining fields");
-		}
-		else {
+		} else {
 			Log.e("Visus", "----------------------------");
 			Log.e("Visus", "Time left: " + remainingMins + ":" + remainingSecs);
 		}
@@ -403,8 +399,7 @@ public class NewSession extends Activity {
 		if(sessionMins == 24 && sessionSecs == 59) {
 			sessionSecs += 1; // bug fix			
 			session.setDurationMinutes(sessionMins);
-		}
-		else {
+		} else {
 			session.setDurationMinutes(sessionMins);
 		}
 		
@@ -415,8 +410,7 @@ public class NewSession extends Activity {
 			
 			session.setDurationMinutes(sessionMins);
 			session.setDurationSeconds(sessionSecs);
-		}
-		else {
+		} else {
 			session.setDurationSeconds(sessionSecs);
 		}
 		
@@ -460,16 +454,13 @@ public class NewSession extends Activity {
 										
 				// write to the local database
 				srHandler.updateActivityRecordByName(type, recordDuration, activeUserId);
-			}
-			else {				
+			} else {				
 				recordDuration = sf.formatSessionDuration(sessionMins, sessionSecs);					
 				srHandler.insertActivityRecord(type, recordDuration, activeUserId);
 			}			
-		}
-		catch(SQLiteException e) {
+		} catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);
-		}
-		finally {
+		} finally {
 			dbHandler.close();
 			srHandler.close();
 		}
@@ -515,8 +506,7 @@ public class NewSession extends Activity {
 			
 			if(timerCount > 25) {
 				timeHandler.removeCallbacksAndMessages(runUpdateTime);
-			}
-			else {
+			} else {
 				// delay for 1 second
 				timeHandler.postDelayed(this, 0);
 			}			
@@ -632,13 +622,14 @@ public class NewSession extends Activity {
 					// go to the user's previous sessions
 					Intent intent = new Intent(NewSession.this, Sessions.class);
 					startActivity(intent);
-				}
-				else {
-					if(Integer.parseInt(minutes) < 10)
+				} else {
+					if(Integer.parseInt(minutes) < 10) {
 						minutes = "0" + minutes;
+					}
 					
-					if(Integer.parseInt(seconds) < 10)
+					if(Integer.parseInt(seconds) < 10) {
 						seconds = "0" + seconds;
+					}
 				}										
 				// display the updated timer
 			    timer.setText(minutes + ":" + seconds);
@@ -673,17 +664,13 @@ public class NewSession extends Activity {
 		            });
 		            			        
 		            mediaPlayer.start();	  
-		        }
-		        catch (IllegalArgumentException e) {
+		        } catch (IllegalArgumentException e) {
 		        	e.printStackTrace();
-		        } 
-		        catch (SecurityException e) {
+		        } catch (SecurityException e) {
 		        	e.printStackTrace();
-		        } 
-		        catch (IllegalStateException e) {
+		        } catch (IllegalStateException e) {
 		        	e.printStackTrace();
-		        } 
-		        catch (IOException e) {
+		        } catch (IOException e) {
 		        	e.printStackTrace();
 		        }       
 		    }

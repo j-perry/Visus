@@ -54,8 +54,7 @@ public class TasksTableHandler implements ITasksTable {
 		
 		try {
 			result = db.insert(ITasksTable.TABLE_NAME, null, values);
-		} 
-		catch(SQLiteException ex) {
+		} catch(SQLiteException ex) {
 			Log.e("Visus", "Error writing to database Sessions", ex);
 		} finally {
 			// -1 denotes, unsuccessful. 0 and higher denotes no. of written items
@@ -75,9 +74,8 @@ public class TasksTableHandler implements ITasksTable {
 	 * @param userId
 	 * @return
 	 */
-	public ArrayList<Task> get(int userId) {
-		ArrayList<Task> tasks = new ArrayList<Task>();
-		Task task = new Task();
+	public ArrayList<HashMap<String, Object>> get(int userId) {
+		ArrayList<HashMap<String, Object>> tasks = new ArrayList<HashMap<String, Object>>();
 		String queryTasks = "SELECT * " +
 							"FROM " + ITasksTable.TABLE_NAME + " " +
 							"WHERE " + ITasksTable.KEY_USER_ID + " = " + userId; 
@@ -93,13 +91,14 @@ public class TasksTableHandler implements ITasksTable {
 		int taskDescIndex = cursor.getColumnIndex(ITasksTable.KEY_TASK_DESCRIPTION);
 		
 		// store each item
-		while(cursor.moveToNext() ) {			
-			task.setTask(cursor.getString(taskIndex));
-			task.setDescription(cursor.getString(taskDescIndex));
+		while(cursor.moveToNext() ) {
+			HashMap<String, Object> task = null;
 			
-			task.setDay(cursor.getInt(dayIndex));
-			task.setMonth(cursor.getInt(monthIndex));
-			task.setYear(cursor.getInt(yearIndex));
+			task.put(ITasksTable.KEY_TASK, cursor.getString(taskIndex) );
+			task.put(ITasksTable.KEY_TASK_DESCRIPTION, cursor.getString(taskDescIndex) );
+			task.put(ITasksTable.KEY_DAY, cursor.getInt(dayIndex) );
+			task.put(ITasksTable.KEY_MONTH, cursor.getInt(monthIndex) );
+			task.put(ITasksTable.KEY_YEAR, cursor.getInt(yearIndex) );
 			
 			tasks.add(task);
 		}

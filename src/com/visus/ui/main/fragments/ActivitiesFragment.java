@@ -21,10 +21,10 @@ public class ActivitiesFragment extends Fragment {
 	private int noActivities;
 	@SuppressWarnings("unused")
 	private Session firstSession;
-	private ArrayList<HashMap<String, String>> activities;
+	private ArrayList<HashMap<String, Object>> activities;
 	
 	private ListView list;
-	private ListViewAdapter adapter;
+	private ListViewAdapter.Sessions adapter;
 	
 	public ActivitiesFragment() {
 		super();
@@ -40,20 +40,18 @@ public class ActivitiesFragment extends Fragment {
 				
 		if(noActivities == 0) {
 			txtVwTotalSessions.setText(String.valueOf(0) + tmpTotalActivities);			
-		}
-		else if(noActivities == 1) {
+		} else if(noActivities == 1) {
 			txtVwTotalSessions.setText(String.valueOf(noActivities) + " Activity" );			
-		}
-		else {
+		} else {
 			txtVwTotalSessions.setText(String.valueOf(noActivities) + tmpTotalActivities );
 		}		
 					
-		ArrayList<HashMap<String, String>> activityResults = new ArrayList<HashMap<String, String>>();		
+		ArrayList<HashMap<String, Object>> activityResults = new ArrayList<HashMap<String, Object>>();		
 		activityResults = activities;
 		
 		// display activity categories
 		list = (ListView) rootView.findViewById(com.visus.R.id.main_activity_activity_types);
-		adapter = new ListViewAdapter(getActivity(), activityResults);
+		adapter = new ListViewAdapter.Sessions(getActivity(), activityResults);
 						
 		list.setAdapter(adapter);
 						
@@ -66,7 +64,7 @@ public class ActivitiesFragment extends Fragment {
 	
 	public void addContext(int userId, 
 			  			   int noActivities, 
-			  			   ArrayList<HashMap<String, String>> activities,
+			  			   ArrayList<HashMap<String, Object>> activities,
 			  			   Session firstSession) {
 		this.userId = userId;
 		this.noActivities = noActivities;

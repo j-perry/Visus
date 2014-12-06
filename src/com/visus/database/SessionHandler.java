@@ -90,18 +90,15 @@ public class SessionHandler implements IDatabaseTable {
 		
 		try {
 			result = db.insert(ISessionTable.TABLE_NAME, null, sessionValues);
-		}
-		catch(SQLiteException e) {
+		} catch(SQLiteException e) {
 			Log.e("Visus", "Error writing to database Sessions", e);
-		}
-		finally {
+		} finally {
 			// -1 denotes, unsuccessful. 0 and higher denotes no. of written items
 			if(result == -1) {
 				Log.e("Visus", "----------------");
 				Log.e("Visus", String.valueOf(result) + " | Failed to write to db");
 				Log.e("Visus", "----------------");
-			}
-			else {
+			} else {
 				Log.e("Visus", "----------------");
 				Log.e("Visus", "ID: " + String.valueOf(result) + " | Written to db");
 				Log.e("Visus", "Written: \n"
@@ -189,11 +186,11 @@ public class SessionHandler implements IDatabaseTable {
 		cursor = db.rawQuery(qryNoHours, null);
 				
 		// validation
-		if(cursor == null)
+		if(cursor == null) {
 			Log.e("Visus", "SQL Query Failed");
-		else
+		} else {
 			Log.e("Visus", "SQL Query Successful");
-		
+		}
 		
 		int minutesIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_MINS);
 		
@@ -203,16 +200,16 @@ public class SessionHandler implements IDatabaseTable {
 		}
 
 		// convert minutes to no. of hours
-		if(noMins > MINS_PER_HOUR )
+		if(noMins > MINS_PER_HOUR ) {
 			noHoursTotal = (int) noMins / MINS_PER_HOUR ; // i.e., 156mins / 60 mins in an hour = 2.6 hours ~ 2 hours
-		else
+		} else {
 			noMins += cursor.getInt(minutesIndex);
+		}
 		
 		if(noHoursTotal >= 1) {
 			// display no. of hours
 			session.setOverviewHours(noHoursTotal);
-		}
-		else {
+		} else {
 			// display no. of minutes
 			session.setOverviewHours(noMins);
 		}
@@ -308,12 +305,13 @@ public class SessionHandler implements IDatabaseTable {
 			 ********************/
 			
 			// if no. of minutes is a minute or longer
-			if(cursor.getInt(durationMinutesIndex) >= 1)
+			if(cursor.getInt(durationMinutesIndex) >= 1) {
 				// assign no. of minutes
 				session.setDurationMinutes(cursor.getInt(durationMinutesIndex));
-			else
+			} else {
 				// else, assign zero to indicate this
 				session.setDurationMinutes(0);
+			}
 			
 			session.setDurationSeconds(cursor.getInt(durationSecondsIndex));
 			session.setType(cursor.getString(typeIndex));
@@ -425,8 +423,7 @@ public class SessionHandler implements IDatabaseTable {
 						
 			if(!cursor.getString(typeIndex).isEmpty()) {
 				session.setType("#" + cursor.getString(typeIndex));
-			}
-			else {
+			} else {
 				session.setType("#Undefined");
 			}
 									
@@ -448,9 +445,9 @@ public class SessionHandler implements IDatabaseTable {
 	 * @return latest sessions
 	 * @throws SQLiteException
 	 */
-	public ArrayList<HashMap<String, String>> getLatestSessions(User user) throws SQLiteException {
+	public ArrayList<HashMap<String, Object>> getLatestSessions(User user) throws SQLiteException {
 		int userId = user.getUserId();
-		ArrayList<HashMap<String, String>> latestSessions = new ArrayList<HashMap<String, String>>();
+		ArrayList<HashMap<String, Object>> latestSessions = new ArrayList<HashMap<String, Object>>();
 		
 		// get the current year
 		Calendar cal = Calendar.getInstance();
@@ -519,8 +516,7 @@ public class SessionHandler implements IDatabaseTable {
 							
 			if(!cursor.getString(typeIndex).isEmpty()) {
 				session.setType(cursor.getString(typeIndex));
-			}
-			else {
+			} else {
 				session.setType("Undefined");
 			}
 											
@@ -533,16 +529,15 @@ public class SessionHandler implements IDatabaseTable {
 		Collections.reverse(sessions);
 				
 		if(sessions.isEmpty()) {
-			HashMap<String, String> emptyMsg = new HashMap<String, String>();
+			HashMap<String, Object> emptyMsg = new HashMap<String, Object>();
 			String msg = "None Created";
-			emptyMsg.put(ListViewValues.SESSION_NO, "#");
-			emptyMsg.put(ListViewValues.SESSION, msg);
+			emptyMsg.put(ListViewValues.Session.NO, "#");
+			emptyMsg.put(ListViewValues.Session.HEADER, msg);
 			
 			latestSessions.add(emptyMsg);			
 			
 			Log.e("Visus", "Sessions is empty");
-		}
-		else {
+		} else {
 			Log.e("Visus", "Sessions is not empty");
 			
 			int noItems = 0;
@@ -562,41 +557,38 @@ public class SessionHandler implements IDatabaseTable {
 				// format seconds
 				if(session.getDurationSeconds() < 10) {
 					durationSeconds = "0" + String.valueOf(session.getDurationSeconds() );
-				}
-				else {
+				} else {
 					durationSeconds = String.valueOf(session.getDurationSeconds() );
 				}
-								
+				
 				// format minutes in the hour
 				if(session.getTimeMinutes() < 10) {
 					timeMinutes = "0" + String.valueOf(session.getTimeMinutes() );
-				}
-				else {
+				} else {
 					timeMinutes = String.valueOf(session.getTimeMinutes() );
 				}
 							
 				if(noItems != MAX_ITEMS) {
-						HashMap<String, String> map = new HashMap<String, String>();
+						HashMap<String, Object> map = new HashMap<String, Object>();
 						id++;
 						
 						/**
 						 * Format: type, duration, HH:mm
 						 */		
-						map.put(ListViewValues.SESSION_NO, session.getDurationMinutes() + ":" + durationSeconds );
-
+						map.put(ListViewValues.Session.NO, session.getDurationMinutes() + ":" + durationSeconds );
+						
 						Date date = new Date();
 						cal.setTime(date);
 						
 						// if it is today, display the time (HH:mm:a)
 						if(session.getDayNo() == cal.get(Calendar.DAY_OF_MONTH)) {
-							map.put(ListViewValues.SESSION, session.getTimeHour() + ":" +
+							map.put(ListViewValues.Session.HEADER, session.getTimeHour() + ":" +
 															timeMinutes +
 															session.getDayPeriod().toLowerCase(Locale.ENGLISH) + " " +
 															"#" + session.getType()
 								   );
-						}
-						else {
-							map.put(ListViewValues.SESSION, session.getDayNo() + " " +  
+						} else {
+							map.put(ListViewValues.Session.HEADER, session.getDayNo() + " " +  
 													  	    session.getMonth() + " " +
 													  	    "#" + session.getType()
 								   );
@@ -604,8 +596,7 @@ public class SessionHandler implements IDatabaseTable {
 																		
 						latestSessions.add(map);						
 						noItems++;
-				}
-				else {
+				} else {
 					break;
 				}
 			}
@@ -666,8 +657,7 @@ public class SessionHandler implements IDatabaseTable {
 			
 			if(!cursor.getString(typeIndex).isEmpty()) {
 				session.setType("#" + cursor.getString(typeIndex));
-			}
-			else {
+			} else {
 				session.setType("#Undefined");
 			}
 						
@@ -737,12 +727,6 @@ public class SessionHandler implements IDatabaseTable {
 		durationSecondsIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_SECS);
 		typeIndex            = cursor.getColumnIndexOrThrow(ISessionTable.KEY_TYPE);
 		
-		if(cursor.getCount() == 0) {
-			Log.e("Visus", "No results :'(");
-		}
-		else {
-			Log.e("Visus", "There are results...");
-		}
 		
 		while(cursor.moveToNext()) {
 			session = new Session();
@@ -762,8 +746,7 @@ public class SessionHandler implements IDatabaseTable {
 			
 			if(!cursor.getString(typeIndex).isEmpty()) {
 				session.setType("#" + cursor.getString(typeIndex));
-			}
-			else {
+			} else {
 				session.setType("#Undefined");
 			}
 						
@@ -801,8 +784,7 @@ public class SessionHandler implements IDatabaseTable {
 		
 		if(month < 10) {
 			strMonth = "0" + String.valueOf(month);
-		}
-		else {
+		} else {
 			strMonth = String.valueOf(month);
 		}
 		
@@ -867,9 +849,8 @@ public class SessionHandler implements IDatabaseTable {
 			
 			if(!cursor.getString(typeIndex).isEmpty()) {
 				session.setType("#" + cursor.getString(typeIndex));
-			}
-			else {
-				session.setType("#Undefined");
+			} else {
+				session.setType(new String("#Undefined"));
 			}
 						
 			sessionsThisMonth.add(session);
@@ -890,6 +871,7 @@ public class SessionHandler implements IDatabaseTable {
 	 * @throws SQLiteException
 	 */
 	public ArrayList<Session> getSessionsThisYear(int userId) throws SQLiteException {
+		
 		// get the current year
 		Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
@@ -958,8 +940,7 @@ public class SessionHandler implements IDatabaseTable {
 				
 			if(!cursor.getString(typeIndex).isEmpty()) {
 				session.setType("#" + cursor.getString(typeIndex));
-			}
-			else {
+			} else {
 				session.setType("#Undefined");
 			}
 							
@@ -1036,8 +1017,7 @@ public class SessionHandler implements IDatabaseTable {
 			Log.e("Visus", "Cursor is empty");
 			cursor.close();
 			duration = 0.0f;
-		}
-		else {
+		} else {
 			durationMinutesIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_MINS);
 			durationSecondsIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_SECS);
 			
@@ -1093,8 +1073,7 @@ public class SessionHandler implements IDatabaseTable {
 				duration = durationTodayReformatted.floatValue();
 				
 				Log.e("Visus", "getMinutesAccumulatedToday(): " + duration);
-			}
-			else {				
+			} else {				
 				// format the duration to 2 decimal places - e.g., X.XX
 				BigDecimal durationTodayReformatted = new BigDecimal(duration).setScale(2, BigDecimal.ROUND_HALF_UP);
 				duration = durationTodayReformatted.floatValue();
@@ -1131,8 +1110,7 @@ public class SessionHandler implements IDatabaseTable {
 		
 		if(month < 10) {
 			strMonth = "0" + String.valueOf(month);
-		}
-		else {
+		} else {
 			strMonth = String.valueOf(month);
 		}		
 		
@@ -1162,8 +1140,7 @@ public class SessionHandler implements IDatabaseTable {
 			Log.e("Visus", "Cursor is empty");
 			cursor.close();
 			duration = 0.0f;
-		}
-		else {		
+		} else {		
 			int durationMinutesIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_MINS);
 			int durationSecondsIndex = cursor.getColumnIndexOrThrow(ISessionTable.KEY_DURATION_SECS);
 			
@@ -1219,8 +1196,7 @@ public class SessionHandler implements IDatabaseTable {
 				duration = durationTodayReformatted.floatValue();
 				
 				Log.e("Visus", "getMinutesAccumulatedThisMonth(): " + duration);
-			}
-			else {				
+			} else {				
 				// format the duration to 2 decimal places - e.g., X.XX
 				BigDecimal durationTodayReformatted = new BigDecimal(duration).setScale(2, BigDecimal.ROUND_HALF_UP);
 				duration = durationTodayReformatted.floatValue();
@@ -1256,8 +1232,7 @@ public class SessionHandler implements IDatabaseTable {
 		
 		if(month < 10) {
 			strMonth = "0" + String.valueOf(month);
-		}
-		else {
+		} else {
 			strMonth = String.valueOf(month);
 		}
 		
@@ -1381,8 +1356,7 @@ public class SessionHandler implements IDatabaseTable {
 		
 		if(month < 10) {
 			strMonth = "0" + String.valueOf(month);
-		}
-		else {
+		} else {
 			strMonth = String.valueOf(month);
 		}
 		
@@ -1406,8 +1380,7 @@ public class SessionHandler implements IDatabaseTable {
 		if(cursor.getCount() == 0) {
 			Log.e("Visus", "getSessionsCountThisMonth() is empty");
 			return 0;
-		}
-		else {
+		} else {
 			// return no. of items
 			return cursor.getCount();
 		}		
@@ -1443,8 +1416,7 @@ public class SessionHandler implements IDatabaseTable {
 		if(cursor.getCount() == 0) {
 			Log.e("Visus", "getSessionsCountThisYear() is empty");
 			return 0;
-		}
-		else {
+		} else {
 			// return no. of items
 			return cursor.getCount();
 		}
@@ -1470,11 +1442,9 @@ public class SessionHandler implements IDatabaseTable {
 		
 		if(noItems == 0) {
 			Log.e("Visus", "getSessionsCountAll() is empty");
-			return noItems;
 		}
-		else {
-			return noItems;
-		}
+		
+		return noItems;
 	}
 	
 	/**
@@ -1483,8 +1453,8 @@ public class SessionHandler implements IDatabaseTable {
 	 * @return activities
 	 * @throws SQLiteException
 	 */
-	public ArrayList<String> getActivities(int userId) throws SQLiteException {
-		ArrayList<String> activities = new ArrayList<String>();
+	public ArrayList<Object> getActivities(int userId) throws SQLiteException {
+		ArrayList<Object> activities = new ArrayList<Object>();
 		String qryActivities = null;
 
 		qryActivities = "SELECT *" + QRY_SPACING +
@@ -1516,9 +1486,9 @@ public class SessionHandler implements IDatabaseTable {
 	 * @return activities
 	 * @throws SQLiteException
 	 */
-	public ArrayList<HashMap<String, String>> getActivities(User user) throws SQLiteException {
+	public ArrayList<HashMap<String, Object>> getActivities(User user) throws SQLiteException {
 		int userId = user.getUserId();
-		ArrayList<HashMap<String, String>> activities = new ArrayList<HashMap<String, String>>();
+		ArrayList<HashMap<String, Object>> activities = new ArrayList<HashMap<String, Object>>();
 		ArrayList<String> activitiesResult = new ArrayList<String>();
 		String qryActivities = null;
 
@@ -1544,19 +1514,18 @@ public class SessionHandler implements IDatabaseTable {
 		
 		// ok, lets do some filtering and prepare our structure for insertion
 		if(activitiesResult.isEmpty()) {
-			HashMap<String, String> map = new HashMap<String, String>();
-			map.put(ListViewValues.SESSION_NO, "#");
-			map.put(ListViewValues.SESSION, "None Created");			
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put(ListViewValues.Session.NO, "#");
+			map.put(ListViewValues.Session.HEADER, "None Created");			
 			
 			activities.add(map);
-		}
-		else {
+		} else {
 			int id = 1;
 			
 			for(String activity : activitiesResult) {
-				HashMap<String, String> map = new HashMap<String, String>();
-				map.put(ListViewValues.SESSION_NO, String.valueOf(id) );
-				map.put(ListViewValues.SESSION, activity);
+				HashMap<String, Object> map = new HashMap<String, Object>();
+				map.put(ListViewValues.Session.NO, String.valueOf(id) );
+				map.put(ListViewValues.Session.HEADER, activity);
 				
 				id++;
 				
@@ -1575,7 +1544,7 @@ public class SessionHandler implements IDatabaseTable {
 	 */
 	public int getActivitiesCount(int userId) throws SQLiteException {
 		int noActivities = 0;
-		ArrayList<String> activities = new ArrayList<String>();
+		ArrayList<Object> activities = new ArrayList<Object>();
 		String qryActivities = null;
 
 		qryActivities = "SELECT *" + QRY_SPACING +
@@ -1622,7 +1591,7 @@ public class SessionHandler implements IDatabaseTable {
 		public String parseDay(String day) {
 			
 			Log.e("Visus", "parseDay() " + day);
-			
+						
 			if(day.contains("Mon"))
 				day = "Monday";
 			if(day.contains("Tue"))

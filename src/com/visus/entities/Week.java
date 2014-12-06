@@ -48,9 +48,7 @@ public class Week {
 	
 	public int getYear() {
 		return year;
-	}
-	/* End of delete */
-	
+	}	
 	
 	/**
 	 * Finds the beginning date of the present week
@@ -92,8 +90,7 @@ public class Week {
 			if(!day.contains("Sat")) {
 				// go back a day (or month and/or year)
 				cal.add(Calendar.DATE, -1);		//
-			}
-			else {
+			} else {
 				DateFormat dfMonth = new SimpleDateFormat("MMM");
 				dt = cal.getTime();
 				
@@ -136,16 +133,14 @@ public class Week {
 		// month
 		if(month < 10) {
 			beginning += "0" + String.valueOf(month) + DASH;
-		}
-		else {
+		} else {
 			beginning += String.valueOf(month) + DASH;
 		}
 		
 		// day
 		if(dayNo < 10) {
 			beginning += "0" + String.valueOf(dayNo);
-		}
-		else {
+		} else {
 			beginning += String.valueOf(dayNo);
 		}
 		
@@ -195,8 +190,7 @@ public class Week {
 			if(!day.contains("Fri")) {
 				// go back a day (or month and/or year)
 				cal.add(Calendar.DATE, +1);		//
-			}
-			else {
+			} else {
 				DateFormat dfMonth = new SimpleDateFormat("MMM");
 				dt = cal.getTime();
 				
@@ -239,16 +233,14 @@ public class Week {
 		// month
 		if(month < 10) {
 			ending += "0" + String.valueOf(month) + DASH;
-		}
-		else {
+		} else {
 			ending += String.valueOf(month) + DASH;
 		}
 				
 		// day
 		if(dayNo < 10) {
 			ending += "0" + String.valueOf(dayNo);
-		}
-		else {
+		} else {
 			ending += String.valueOf(dayNo);
 		}
 		

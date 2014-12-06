@@ -280,8 +280,7 @@ public class Session {
 				recordDuration = Double.valueOf(strRecord);
 				
 				Log.e("Visus", "Session: " + df.format(recordDuration));
-			}
-			else {
+			} else {
 				Log.e("Visus", "Session: " + recordDuration); // 0.4 - 0.2 (x2)
 			}
 			
@@ -322,8 +321,7 @@ public class Session {
 				past = Double.valueOf(past);
 				
 				Log.e("Visus", "Exrecord: " + df.format(past));
-			}
-			else {
+			} else {
 				recordDuration = past;
 			}
 			
@@ -352,8 +350,7 @@ public class Session {
 				recordDuration = Double.valueOf(strRecord);
 				
 				Log.e("Visus", "Session: " + df.format(recordDuration));
-			}
-			else {
+			} else {
 				Log.e("Visus", "Session: " + recordDuration); // 0.4 - 0.2 (x2)
 			}
 						
@@ -369,8 +366,7 @@ public class Session {
 				recordDuration = Double.valueOf(strRecord);
 				
 				Log.e("Visus", "Final result: " + df.format(recordDuration));
-			}
-			else {
+			} else {
 				Log.e("Visus", "Final result: " + recordDuration);
 			}
 			

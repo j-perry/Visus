@@ -69,11 +69,9 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 			
 			Log.e("Visus", "GeneralFragment " + userId);
 			Log.e("Visus", "GeneralFragment (Target Day): " + user.getTargetDay() );
-		}
-		catch(SQLiteException e) {
+		} catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);
-		}
-		finally {
+		} finally {
 			dbUser.close();
 		}
 				
@@ -96,22 +94,22 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 			
 			// all sessions btn
 			itemsAll = dbSession.getSessionsCountAll(user.getUserId() );
-		}
-		catch(SQLiteException e) {
+		} catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);
-		}
-		finally {
+		} finally {
 			dbSession.close();
 		}
 				
 		// all
 		if(itemsAll == 0) {
 			resetAll.setVisibility(View.GONE);
-		}
-		else {
+		} else {
 			resetAll.setVisibility(View.VISIBLE);			
 		}
 		
+//
+//		TODO CODE WHICH I COULD INCLUDE IN A LATER BUILD...
+//
 //		final String male = "Male";
 //		final String female = "Female";
 		
@@ -138,8 +136,7 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		// target day
 		if(user.getTargetDay() == 0) {
 			historyTargetDay.setText("");
-		}
-		else {
+		} else {
 			historyTargetDay.setText(String.valueOf(user.getTargetDay()) );
 			this.prevTargetDay = user.getTargetDay();
 		}
@@ -147,8 +144,7 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		// target month
 		if(user.getTargetMonth() == 0) {
 			historyTargetMonth.setText("");
-		}
-		else {
+		} else {
 			historyTargetMonth.setText(String.valueOf(user.getTargetMonth()) );
 			this.prevTargetMonth = user.getTargetMonth();
 		}
@@ -183,11 +179,9 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 			
 			// hide the reset buttons
 			resetAll.setVisibility(View.GONE);
-		}
-		catch(SQLiteException e) {
+		} catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);	
-		}
-		finally {
+		} finally {
 			final int LENGTH = 600; // ms
 			String msg = "Sessions Deleted";
 			Toast.makeText(getActivity(), msg, LENGTH).show();
@@ -213,16 +207,14 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		// target year
 		if(historyTargetDay.getText().toString().isEmpty() ) {
 			user.setTargetDay(0);
-		}
-		else {
+		} else {
 			user.setTargetDay(Integer.parseInt(historyTargetDay.getText().toString() ));			
 		}
 		
 		// target month
 		if(historyTargetMonth.getText().toString().isEmpty() ) {
 			user.setTargetMonth(0);
-		}
-		else {
+		} else {
 			user.setTargetMonth(Integer.parseInt(historyTargetMonth.getText().toString() ));			
 		}
 
@@ -234,11 +226,9 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 		try {
 			dbUser.open();
 			dbUser.updateUser(user);
-		}
-		catch(SQLiteException e) {
+		} catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);
-		}
-		finally {
+		} finally {
 			
 			// inform the user their profile has been saved (updated)
 			final int LENGTH = 600; // ms
@@ -304,9 +294,8 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 					
 					dialog.show();
 					
-				}
 				// do so likewise for the monthly target
-				else if(this.prevTargetMonth != Integer.parseInt(historyTargetMonth.getText().toString() )) {
+				} else if(this.prevTargetMonth != Integer.parseInt(historyTargetMonth.getText().toString() )) {
 					dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 					dialog.setCanceledOnTouchOutside(false);
 					dialog.setContentView(R.layout.alert_dialog_save_targets_month);
@@ -337,9 +326,7 @@ public class GeneralFragment extends Fragment implements OnClickListener {
 					});
 					
 					dialog.show();
-				}			
-				
-	            
+				}
 	            break;
 	        default:
 	        	break;

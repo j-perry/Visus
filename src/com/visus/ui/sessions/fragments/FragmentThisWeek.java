@@ -38,8 +38,8 @@ public class FragmentThisWeek extends Fragment {
 		View rootView = inflater.inflate(com.visus.R.layout.fragment_sessions_this_week, container, false);
 		SessionHandler dbSession = new SessionHandler(getActivity() ); // getActivity() should do the trick!
 		ArrayList<Session> sessions = new ArrayList<Session>();
-		ArrayList<HashMap<String, String>> sessionsThisWeek = new ArrayList<HashMap<String, String>>();
-		ListViewAdapter adapter;
+		ArrayList<HashMap<String, Object>> sessionsThisWeek = new ArrayList<HashMap<String, Object>>();
+		ListViewAdapter.Sessions adapter;
 		
 		ListView lvWeek = (ListView) rootView.findViewById(com.visus.R.id.listview_sessions_this_week);
 		
@@ -48,24 +48,22 @@ public class FragmentThisWeek extends Fragment {
 		 */
 		try {
 			dbSession.open();
-		}
-		catch(SQLiteException e) {
+		} catch(SQLiteException e) {
 			Log.e("Visus", "SQLite Exception Error", e);
-		}
-		finally {
+		} finally {
 			// return session results based on this week (between Saturday and Friday)		
 			sessions = dbSession.getSessionsThisWeek(activeUserId);
 			dbSession.close();
 		}
 		
 		if(sessions.isEmpty()) {
-			HashMap<String, String> map = new HashMap<String, String>();
+			HashMap<String, Object> map = new HashMap<String, Object>();
 			String msg = "None created";
-			map.put(ListViewValues.SESSION_NO, "#");
-			map.put(ListViewValues.SESSION, msg);
+			
+			map.put(ListViewValues.Session.NO, "#");
+			map.put(ListViewValues.Session.HEADER, msg);
 			sessionsThisWeek.add(map);
-		}
-		else {
+		} else {
 			// retrieve sessions
 			@SuppressWarnings("unused")
 			int id = 1;
@@ -75,8 +73,7 @@ public class FragmentThisWeek extends Fragment {
 				
 				if(session.getDurationSeconds() < 10) {
 					durationSeconds = "0" + String.valueOf(session.getDurationSeconds() );
-				}
-				else {
+				} else {
 					durationSeconds = String.valueOf(session.getDurationSeconds() );
 				}
 				
@@ -86,18 +83,17 @@ public class FragmentThisWeek extends Fragment {
 				
 				if(session.getTimeMinutes() < 10) {
 					timeMinutes = "0" + String.valueOf(session.getTimeMinutes() );
-				}
-				else {
+				} else {
 					timeMinutes = String.valueOf(session.getTimeMinutes() );
 				}
 				
-				HashMap<String, String> map = new HashMap<String, String>();
+				HashMap<String, Object> map = new HashMap<String, Object>();
 				
-				map.put(ListViewValues.SESSION_NO, session.getDurationMinutes() + ":" + 
+				map.put(ListViewValues.Session.NO, session.getDurationMinutes() + ":" + 
                         							 durationSeconds );				
 				
-				map.put(ListViewValues.SESSION, session.getDay() + " " +
-								                session.getType()
+				map.put(ListViewValues.Session.HEADER, session.getDay() + " " +
+								                       session.getType()
 						);
 
 				sessionsThisWeek.add(map);
@@ -105,7 +101,7 @@ public class FragmentThisWeek extends Fragment {
 			}
 		}
 		
-		adapter = new ListViewAdapter(getActivity(), sessionsThisWeek);
+		adapter = new ListViewAdapter.Sessions(getActivity(), sessionsThisWeek);
 		
 		lvWeek.setAdapter(adapter);
 				

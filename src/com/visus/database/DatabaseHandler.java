@@ -21,7 +21,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// be very careful to include leave spaces between statements!!
 		String createUsersTable = "CREATE TABLE " + IUserTable.TABLE_NAME +
 				                  " ( " +
-				                  	 IUserTable.KEY_ID + " INTEGER PRIMARY KEY, " +		// act's as our USER_ID
+				                  	 IUserTable.KEY_ID + " INTEGER PRIMARY KEY, " +		// act's as our user ID
 				                  	 IUserTable.KEY_ACTIVE + " INTEGER, " +
 				                  	 IUserTable.KEY_TARGET_DAY + " INTEGER, " +			
 				                  	 IUserTable.KEY_TARGET_MONTH + " INTEGER, " +		
@@ -34,7 +34,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                                      	 ISessionTable.KEY_ID + " INTEGER PRIMARY KEY, " + 
                                      	 ISessionTable.KEY_USER_ID + " INTEGER, " +
 	                                     ISessionTable.KEY_DAY_NO + " INTEGER, " +
-	                                     ISessionTable.KEY_DATE + " DATE DEFAULT CURRENT_TIMESTAMP, " +	// NEW!
+	                                     ISessionTable.KEY_DATE + " DATE DEFAULT CURRENT_TIMESTAMP, " +
 	                                     ISessionTable.KEY_DAY + " TEXT, " +
 	                                     ISessionTable.KEY_MONTH + " TEXT, " +
 	                                     ISessionTable.KEY_YEAR + " INTEGER, " +
@@ -45,15 +45,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	                                     ISessionTable.KEY_DURATION_SECS + " REAL, " +
 	                                     ISessionTable.KEY_TYPE + " TEXT " +
                 	                 ");";
-		
-//		String createSessionsRecordTable = "CREATE TABLE " + ISessionsRecordTable.TABLE_NAME +
-//				                           " ( " +
-//				                           		ISessionsRecordTable.KEY_ID + " INTEGER PRIMARY KEY, " +
-//				                           		ISessionsRecordTable.KEY_USER_ID + " INTEGER, " +
-//				                           		ISessionsRecordTable.KEY_ACTIVITY + " TEXT, " +
-//				                           		ISessionsRecordTable.KEY_ACTIVITY_DURATION + " TEXT " +
-//				                           ");";
-		
+				
 		String createTasksTable = "CREATE TABLE " + ITasksTable.TABLE_NAME +
 										" ( " +
 				                        	ITasksTable.KEY_ID + " INTEGER PRIMARY KEY, " +
@@ -68,8 +60,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL(createUsersTable);
 		Log.e("Visus", "Users table created");
 		
-//		db.execSQL(createSessionsRecordTable);
-//		Log.e("Visus", "Session Records table created");
 		
 		db.execSQL(createSessionsTable);
 		Log.e("Visus", "Sessions table created");

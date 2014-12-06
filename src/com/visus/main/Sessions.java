@@ -86,11 +86,9 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 			dbSessions.open();
 			allSessions = dbSessions.getSessionsThisYear(activeUserId);
 			Log.e("Visus", "No items: " + allSessions.size());
-		}
-		catch(SQLiteException e) {
+		} catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);
-		}
-		finally {
+		} finally {
 			dbSessions.close();
 		}
 		
@@ -191,19 +189,6 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 				Log.e("Visus", "HOME BUTTON PRESSED");
 				intent = new Intent(this, MainActivity.class);
 				startActivity(intent);
-//	            if (NavUtils.shouldUpRecreateTask(this, intent)) {
-//	                // This activity is not part of the application's task, so create a new task
-//	                // with a synthesized back stack.
-//	                TaskStackBuilder.from(this)
-//	                        // If there are ancestor activities, they should be added here.
-//	                        .addNextIntent(intent)
-//	                        .startActivities();
-//	                finish();
-//	            } else {
-//	                // This activity is part of the application's task, so simply
-//	                // navigate up to the hierarchical parent activity.
-//	                NavUtils.navigateUpTo(this, intent);
-//	            }
 	            break;
             // new session
 			case R.id.new_session_menu:
@@ -250,7 +235,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 	 */
 	public static class SessionsPagerAdapter extends FragmentPagerAdapter {
 		
-		// no of pages!!
+		// no of pages
 		private static final int NO_FRAGMENTS = 4; 
 		private Bundle bundle;
 		private int userId;
@@ -271,7 +256,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
 					FragmentToday fragmentToday = new FragmentToday();
 					bundle = new Bundle();
 					bundle.putInt("ActiveUserId", userId);
-					fragmentToday.setArguments(bundle);		
+					fragmentToday.setArguments(bundle);
 					return fragmentToday;
 				case 1:
 					// ... from this week

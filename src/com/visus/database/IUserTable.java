@@ -19,7 +19,5 @@ public interface IUserTable {
 		
 	public static final int ACTIVE_USER 		  = 1;
 	public static final int NON_ACTIVE_USER 	  = 0;
-	
-	
-	
+		
 }

@@ -65,8 +65,7 @@ public class UserHandler implements IDatabaseTable {
 		
 		if(id == 1) {
 			Log.e("Visus", "Success");
-		}
-		else
+		} else
 			Log.e("Visus", "Unsuccessful");
 		
 		Log.e("Visus", "DB closed");
@@ -102,7 +101,8 @@ public class UserHandler implements IDatabaseTable {
 	 */
 	public User getActiveUser() {
 		Cursor cursor;
-		String [] columns = { ISessionTable.KEY_ID, 
+		String [] columns = { 
+							  ISessionTable.KEY_ID, 
 							  IUserTable.KEY_ACTIVE, 
 							  IUserTable.KEY_TARGET_DAY,
 							  IUserTable.KEY_TARGET_MONTH
@@ -164,14 +164,13 @@ public class UserHandler implements IDatabaseTable {
 		
 		cursor = db.query(IUserTable.TABLE_NAME, 								// db table
 				          new String[] { ISessionTable.KEY_ID }, 				// columns
-				          ISessionTable.KEY_ID + " = " + String.valueOf(id),  // query
+				          ISessionTable.KEY_ID + " = " + String.valueOf(id),    // query
 				          new String[] { String.valueOf(id) }, 					// return user id
 				          null, null, null);									// not required...
 		
 		if(cursor != null) {
 			cursor.moveToFirst(); // move cursor to the first column
-		}
-		else {
+		} else {
 			db.close();
 		}
 		

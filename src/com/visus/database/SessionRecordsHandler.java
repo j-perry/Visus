@@ -99,8 +99,7 @@ public class SessionRecordsHandler implements IDatabaseTable {
 				cursorResults.put(cursor.getString(activityIndex), 		// activity
 						          cursor.getDouble(activityDurIndex));  // activity duration
 			}
-		}
-		else {
+		} else {
 			cursorResults = null;
 		}
 		
@@ -134,13 +133,11 @@ public class SessionRecordsHandler implements IDatabaseTable {
 			while(cursor.moveToNext()) {
 				Log.e("Visus", "activityIndex: " + cursor.getString(activityIndex) );
 				Log.e("Visus", "activityDurIndex: " + cursor.getDouble(activityDurIndex) );
-				
-				
+								
 				record.put(cursor.getString(activityIndex), 	// activity
 						   cursor.getDouble(activityDurIndex)); // activity duration
 			}
-		}
-		else {
+		} else {
 			Log.e("Visus", "getActivityRecordByName() is empty");			
 		}
 		
@@ -173,8 +170,7 @@ public class SessionRecordsHandler implements IDatabaseTable {
 		
 		if(result == 1) {
 			Log.e("Visus", "insertActivityRecord(): activity record inserted");			
-		} 
-		else {
+		} else {
 			Log.e("Visus", "insertActivityRecord(): activity record is not inserted");			
 		}
 		
@@ -205,10 +201,10 @@ public class SessionRecordsHandler implements IDatabaseTable {
 		
 		if(result == 1) {
 			Log.e("Visus", "updateActivityRecordByName(): activity record updated");			
-		} 
-		else {
+		} else {
 			Log.e("Visus", "updateActivityRecordByName(): activity record is not updated");			
 		}
+		
 		return result;
 	}
 	

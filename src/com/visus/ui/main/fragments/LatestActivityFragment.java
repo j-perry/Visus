@@ -27,14 +27,14 @@ public class LatestActivityFragment extends Fragment {
 	
 	private int userId;
 	private int totalSessions;
-	private ArrayList<HashMap<String, String>> latestSessions;
+	private ArrayList<HashMap<String, Object>> latestSessions;
 	@SuppressWarnings("unused")
 	private Session firstSession;
 	private SessionHandler dbSession;
 	private UserHandler dbUser;
 		
 	private ListView list;
-	private ListViewAdapter adapter;	
+	private ListViewAdapter.Sessions adapter;	
 	
 	public LatestActivityFragment() {
 		super();
@@ -107,11 +107,9 @@ public class LatestActivityFragment extends Fragment {
 				
 		if(totalSessions == 0) {
 			txtVwTotalSessions.setText(String.valueOf(0) + " Sessions");
-		}
-		else if(totalSessions == 1) {
+		} else if(totalSessions == 1) {
 			txtVwTotalSessions.setText(String.valueOf(totalSessions) + " Session");			
-		}
-		else {
+		} else {
 			txtVwTotalSessions.setText(String.valueOf(totalSessions) + " Sessions");
 		}	
 	}
@@ -120,10 +118,10 @@ public class LatestActivityFragment extends Fragment {
 	 * Displays our sessions
 	 */
 	private void displaySessions(int noItems, View rootView) {
-		ArrayList<HashMap<String, String>> sessions = new ArrayList<HashMap<String, String>>();
+		ArrayList<HashMap<String, Object>> sessions = new ArrayList<HashMap<String, Object>>();
 		int index = 0;
 		
-		for(HashMap<String, String> item : latestSessions) {
+		for(HashMap<String, Object> item : latestSessions) {
 			if(index != noItems) {
 				sessions.add(item);
 				index++;
@@ -134,14 +132,14 @@ public class LatestActivityFragment extends Fragment {
 		 * 		Display the user's latest sessions
 		 */
 		list = (ListView) rootView.findViewById(com.visus.R.id.overview_sessions_adapter);
-		adapter = new ListViewAdapter(getActivity(), sessions);
+		adapter = new ListViewAdapter.Sessions(getActivity(), sessions);
 		
 		list.setAdapter(adapter);
 	}
 	
 	public void addContext(int userId, 
 						   int totalSessions, 
-						   ArrayList<HashMap<String, String>> latestSessions,
+						   ArrayList<HashMap<String, Object>> latestSessions,
 						   Session firstSession) {
 		this.userId = userId;
 		this.totalSessions = totalSessions;
@@ -167,11 +165,9 @@ public class LatestActivityFragment extends Fragment {
 			// get accumulated time made today
 			dbSession.open();
 			accumulatedDurationToday = dbSession.getMinutesAccumulatedToday(userId);
-		}
-		catch(SQLiteException e) {
+		} catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);
-		}
-		finally {
+		} finally {
 			dbUser.close();
 			dbSession.close();
 		}
@@ -193,8 +189,7 @@ public class LatestActivityFragment extends Fragment {
 			} else {
 				targetMet = false;
 			}			
-		}
-		else {
+		} else {
 			targetMet = false;
 		}
 		
@@ -219,11 +214,9 @@ public class LatestActivityFragment extends Fragment {
 			// get accumulated time made today
 			dbSession.open();
 			accumulatedDurationMonth = (int) dbSession.getMinutesAccumulatedThisMonth(userId);
-		}
-		catch(SQLiteException e) {
+		} catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);
-		}
-		finally {
+		} finally {
 			dbUser.close();
 			dbSession.close();
 		}
@@ -238,12 +231,10 @@ public class LatestActivityFragment extends Fragment {
 		if(monthlyTarget != 0.0f) {					
 			if(accumulatedDurationMonth >= monthlyTarget) {
 				targetMet = true;
-			}
-			else {
+			} else {
 				targetMet = false;
 			}
-		}
-		else {
+		} else {
 			targetMet = false;
 		}
 		

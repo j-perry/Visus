@@ -4,6 +4,10 @@ public class User {
 
 	private int id;
 	private int active;
+	
+//
+//  TODO CODE LEFT IN POTENTIALLY FOR FUTURE BUILD...
+//
 //	private String firstname;
 //	private String surname;
 //	private String gender;

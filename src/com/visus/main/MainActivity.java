@@ -69,16 +69,13 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 				user.setTargetDay(0);
 				user.setTargetMonth(0);
 				dbUser.add(user);
-			}
-			else {
+			} else {
 				dbUser.open();
 				user = dbUser.getActiveUser();
 			}
-		}
-		catch(SQLiteException e) {
+		} catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);
-		}
-		finally {
+		} finally {
 			dbUser.close();
 		}
 		
@@ -93,17 +90,15 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			
 			int sessionsCount = 0;
 			int activitiesCount = 0;
-			ArrayList<HashMap<String, String>> latestSessions = new ArrayList<HashMap<String, String>>();
-			ArrayList<HashMap<String, String>> activities = new ArrayList<HashMap<String, String>>();
+			ArrayList<HashMap<String, Object>> latestSessions = new ArrayList<HashMap<String, Object>>();
+			ArrayList<HashMap<String, Object>> activities = new ArrayList<HashMap<String, Object>>();
 			Session firstSession = new Session();
 			
 			try {
 				dbSession.open();
-			}
-			catch(SQLiteException e) {
+			} catch(SQLiteException e) {
 				Log.e("Visus", "SQL Error", e);
-			}
-			finally {
+			} finally {
 				sessionsCount = dbSession.getSessionsCountAll(user.getUserId());
 				activitiesCount = dbSession.getActivitiesCount(user.getUserId());
 				latestSessions = dbSession.getLatestSessions(user);
@@ -191,18 +186,15 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		try {
 			dbUser.open();
 			user = dbUser.getActiveUser();
-		}
-		catch(SQLiteException e) {
+		} catch(SQLiteException e) {
 			Log.e("Visus", "SQL Error", e);
-		}
-		finally {
+		} finally {
 			dbUser.close();
 		}	
 		
 		if(user == null) {
 			Log.e("Visus", "No user active");
-		}
-		else {
+		} else {
 			userId = user.getUserId();
 			Log.e("Visus", "USER ID: " + userId);
 		}
@@ -238,8 +230,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	                // navigate up to the hierarchical parent activity.
 	                NavUtils.navigateUpTo(this, upIntent);
 	            }
-	            break;
-	            
+	            break;	            
 			case com.visus.R.id.new_session_menu:
 				intent = new Intent(this, NewSession.class);
 				intent.putExtra("ActiveUserId", userId);
@@ -344,17 +335,17 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		private static final int NO_FRAGMENTS = 2;
 		private int userId;
 		private int totalSessions;
-		private ArrayList<HashMap<String, String>> latestSessions;
+		private ArrayList<HashMap<String, Object>> latestSessions;
 		private int noActivities;
-		private ArrayList<HashMap<String, String>> activities;
+		private ArrayList<HashMap<String, Object>> activities;
 		private Session firstSession;
 		
 		public MainMenuPagerAdapter(FragmentManager fm,
 									int userId,
 									int totalSessions,
-									ArrayList<HashMap<String, String>> latestSessions,
+									ArrayList<HashMap<String, Object>> latestSessions,
 									int noActivities,
-									ArrayList<HashMap<String, String>> activities,
+									ArrayList<HashMap<String, Object>> activities,
 									Session firstSession) {
 			super(fm);
 			this.userId = userId;

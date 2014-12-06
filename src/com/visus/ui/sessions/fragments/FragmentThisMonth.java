@@ -38,8 +38,8 @@ public class FragmentThisMonth extends Fragment {
 		View rootView = inflater.inflate(com.visus.R.layout.fragment_sessions_this_month, container, false);
 		SessionHandler dbSession = new SessionHandler(getActivity() ); // getActivity() should do the trick!
 		ArrayList<Session> sessions = new ArrayList<Session>();
-		ArrayList<HashMap<String, String>> sessionsThisMonth = new ArrayList<HashMap<String, String>>();
-		ListViewAdapter adapter;
+		ArrayList<HashMap<String, Object>> sessionsThisMonth = new ArrayList<HashMap<String, Object>>();
+		ListViewAdapter.Sessions adapter;
 		
 		ListView lvMonth = (ListView) rootView.findViewById(com.visus.R.id.listview_sessions_this_month);
 		
@@ -48,23 +48,20 @@ public class FragmentThisMonth extends Fragment {
 		 */
 		try {
 			dbSession.open();
-		}
-		catch(SQLiteException e) {
+		} catch(SQLiteException e) {
 			Log.e("Visus", "SQLite Exception Error", e);
-		}
-		finally {
+		} finally {
 			sessions = dbSession.getSessionsThisMonth(activeUserId);
 			dbSession.close();
 		}
 		
 		if(sessions.isEmpty()) {
-			HashMap<String, String> map = new HashMap<String, String>();
+			HashMap<String, Object> map = new HashMap<String, Object>();
 			String msg = "None created";
-			map.put(ListViewValues.SESSION_NO, "#");
-			map.put(ListViewValues.SESSION, msg);
+			map.put(ListViewValues.Session.NO, "#");
+			map.put(ListViewValues.Session.HEADER, msg);
 			sessionsThisMonth.add(map);
-		}
-		else {
+		} else {
 			// retrieve sessions
 			@SuppressWarnings("unused")
 			int id = 1;
@@ -74,8 +71,7 @@ public class FragmentThisMonth extends Fragment {
 				
 				if(session.getDurationSeconds() < 10) {
 					durationSeconds = "0" + String.valueOf(session.getDurationSeconds() );
-				}
-				else {
+				} else {
 					durationSeconds = String.valueOf(session.getDurationSeconds() );
 				}
 				
@@ -85,19 +81,18 @@ public class FragmentThisMonth extends Fragment {
 				
 				if(session.getTimeMinutes() < 10) {
 					timeMinutes = "0" + String.valueOf(session.getTimeMinutes() );
-				}
-				else {
+				} else {
 					timeMinutes = String.valueOf(session.getTimeMinutes() );
 				}
 				
-				HashMap<String, String> map = new HashMap<String, String>();
+				HashMap<String, Object> map = new HashMap<String, Object>();
 				
-				map.put(ListViewValues.SESSION_NO, session.getDurationMinutes() + ":" + 
-						 							 durationSeconds );
+				map.put(ListViewValues.Session.NO, session.getDurationMinutes() + ":" + 
+						 						   durationSeconds );
 				
-				map.put(ListViewValues.SESSION, session.getDayNo() + " " +  
-												  session.getMonth() + " " +
-								                  session.getType()
+				map.put(ListViewValues.Session.HEADER, session.getDayNo() + " " +  
+												       session.getMonth() + " " +
+								                       session.getType()
 						);
 
 				sessionsThisMonth.add(map);
@@ -105,7 +100,7 @@ public class FragmentThisMonth extends Fragment {
 			}
 		}
 				
-		adapter = new ListViewAdapter(getActivity(), sessionsThisMonth);
+		adapter = new ListViewAdapter.Sessions(getActivity(), sessionsThisMonth);
 		
 		lvMonth.setAdapter(adapter);
 				

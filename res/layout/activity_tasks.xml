@@ -26,6 +26,14 @@
 	        	android:textColor="@color/dark_grey"
 	        	android:textSize="14sp"
 	            />
+	        
+	        <ListView 
+		        android:id="@+id/listview_tasks"
+		        android:layout_height="wrap_content"
+		        android:layout_width="match_parent"
+		        android:divider="@color/light_grey"
+		        android:dividerHeight="10dp"
+		        />
 	
 	</LinearLayout>	
     
