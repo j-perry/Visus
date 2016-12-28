@@ -12,7 +12,7 @@
 	    android:layout_height="wrap_content"
 	    android:paddingTop="15sp"
 	    android:paddingLeft="15sp"
-	    android:paddingRight="15sp" 
+	    android:paddingRight="15sp"
 	    android:orientation="vertical"
 	    >
 	    
