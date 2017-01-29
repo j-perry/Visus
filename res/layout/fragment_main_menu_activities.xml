@@ -1,58 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-	    xmlns:android="http://schemas.android.com/apk/res/android"
-	    xmlns:tools="http://schemas.android.com/tools"
-	    android:padding="0dp"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        >
-        
-    	<LinearLayout
-	        android:background="@color/white"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_marginTop="10sp"
-	        android:layout_marginBottom="0sp"
-	        android:layout_marginLeft="10sp"
-	        android:layout_marginRight="10sp"
-	        android:orientation="vertical"
-	        >
-        
-	        <TextView 
-	            android:id="@+id/main_menu_no_activities"
-	        	android:layout_width="fill_parent"
-	        	android:layout_height="wrap_content"
-				android:background="@color/white"
-		        android:padding="15sp"
-	        	android:textAllCaps="true"
-	        	android:textColor="@color/dark_grey"
-	        	android:textSize="14sp"
-	            />
-	        	            
-    	</LinearLayout>
-            	   
-    	<TextView 
-			android:id="@+id/main_header"
-			android:onClick="viewLatestUserActivities"
-			android:background="@drawable/main_menu_header_bg"
-		    android:layout_height="wrap_content"
-		    android:layout_width="fill_parent"
-		    android:layout_marginLeft="10sp"
-		    android:layout_marginRight="10sp"
-		    android:layout_marginTop="10sp"
-			android:padding="15sp"
-		    android:textColor="@color/dark_grey"
-		    android:text="@string/main_menu_activities"
-			android:textAllCaps="true"
-		    android:textSize="14sp"
-        	/>
-		    
-		<View 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:padding="0dp"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	android:orientation="vertical"
+	>
+
+	<LinearLayout
+		android:background="@color/white"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10sp"
+		android:layout_marginBottom="0sp"
+		android:layout_marginLeft="10sp"
+		android:layout_marginRight="10sp"
+		android:orientation="vertical"
+		>
+
+		<TextView
+			android:id="@+id/main_menu_no_activities"
 			android:layout_width="fill_parent"
-		    android:layout_height="4sp"
-		    android:background="@color/light_grey"
+			android:layout_height="wrap_content"
+			android:background="@color/white"
+			android:padding="15sp"
+			android:textAllCaps="true"
+			android:textColor="@color/dark_grey"
+			android:textSize="14sp"
 			/>
+	        	            
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/main_header"
+        android:onClick="viewLatestUserActivities"
+        android:background="@drawable/main_menu_header_bg"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:layout_marginTop="10sp"
+        android:padding="15sp"
+        android:textColor="@color/dark_grey"
+        android:text="@string/main_menu_activities"
+        android:textAllCaps="true"
+        android:textSize="14sp"
+        />
+		    
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="4sp"
+        android:background="@color/light_grey"
+        />
 		    
     <!-- sessions summary --> 
 	<ListView 
