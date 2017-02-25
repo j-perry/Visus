@@ -1,0 +1,110 @@
+[
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/alert_dialog_new_session.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/alert_dialog_new_session.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/alert_dialog_set_targets_day.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/alert_dialog_set_targets_day.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/fragment_sessions_this_month.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/fragment_sessions_this_month.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/fragment_sessions_this_year.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/fragment_sessions_this_year.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/activity_latest_activity.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/activity_latest_activity.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/settings_spinner_gender_layout.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/settings_spinner_gender_layout.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/fragment_main_menu_activities.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/fragment_main_menu_activities.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/activity_sign_up.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/activity_sign_up.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/fragment_settings_about.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/fragment_settings_about.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/layout_main_menu_item.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/layout_main_menu_item.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/alert_dialog_previous_sessions.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/alert_dialog_previous_sessions.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/action_bar_list.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/action_bar_list.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/sign_up_spinner_gender_layout.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/sign_up_spinner_gender_layout.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/activity_new_session.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/activity_new_session.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/fragment_settings_general.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/fragment_settings_general.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/fragment_sessions_this_week.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/fragment_sessions_this_week.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/settings_activities_layout_item.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/settings_activities_layout_item.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/layout_sessions_items.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/layout_sessions_items.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/activity_sessions.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/activity_sessions.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/activity_settings.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/activity_settings.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/settings_spinner_gender_list_layout.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/settings_spinner_gender_list_layout.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/layout_sessions_header.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/layout_sessions_header.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/activity_main.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/activity_main.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/fragment_sessions_today.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/fragment_sessions_today.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/fragment_main_menu_latest_activity.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/fragment_main_menu_latest_activity.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/fragment_collection_object.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/fragment_collection_object.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/sign_up_spinner_gender_list_layout.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/sign_up_spinner_gender_list_layout.xml"
+    }
+]

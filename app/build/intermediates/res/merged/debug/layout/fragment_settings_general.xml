@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+    
+    <LinearLayout
+	    xmlns:android="http://schemas.android.com/apk/res/android"
+	    xmlns:tools="http://schemas.android.com/tools"
+	    android:paddingTop="10sp"
+	    android:paddingLeft="10sp"
+	    android:paddingRight="10sp" 
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        >
+        	    
+		<ScrollView 
+	        android:layout_height="wrap_content"
+	        android:layout_width="match_parent"
+	        >
+        
+			<LinearLayout
+		        android:layout_height="wrap_content"
+		        android:layout_width="match_parent"
+		        android:orientation="vertical"
+		        >	
+
+			    <!-- sessions -->
+			    <LinearLayout
+			        android:id="@+id/linear_layout_settings_history"
+			        android:background="@color/white"
+			        android:layout_height="wrap_content"
+			        android:layout_width="match_parent"
+			        android:layout_marginBottom="10dp"
+			    	android:orientation="vertical"
+			        >
+	
+			        <!-- header -->
+			        <TextView 
+			            android:visibility="visible"
+			            android:id="@+id/settings_history_header"
+			            android:background="@color/white"
+			            android:layout_height="wrap_content"
+			            android:layout_width="match_parent"
+			            android:padding="15dp"
+			            android:text="@string/settings_general_sessions_header"
+			            android:textSize="14sp"
+			            android:textColor="@color/dark_grey"
+			            android:textAllCaps="true"
+			            />
+			        
+			        <View 
+				        android:layout_width="fill_parent"
+				        android:layout_height="4sp"
+				        android:background="@color/light_grey"
+				        />
+			        
+			        <!-- targets -->
+			        <LinearLayout
+			            android:layout_width="fill_parent"
+    					android:layout_height="wrap_content"
+				        android:orientation="vertical"
+			            >
+	
+				        <!-- target (day) -->
+				        <EditText
+				            android:id="@+id/settings_history_target_day"
+			        		android:inputType="number"
+				            android:background="@color/white"
+				            android:layout_height="wrap_content"
+				            android:layout_width="match_parent"
+				        	android:padding="15sp"
+				            android:hint="@string/settings_general_sessions_target_day"
+				            android:textColorHint="@color/dark_grey"
+				            android:textSize="14sp"
+				            android:textColor="@color/dark_grey"
+				            android:singleLine="true"
+				            android:focusable="true"
+				            />
+				        
+				        <!-- target (month) -->
+				        <EditText
+				            android:id="@+id/settings_history_target_month"
+			        		android:inputType="number"
+				            android:background="@color/white"
+				            android:layout_height="wrap_content"
+				            android:layout_width="fill_parent"
+				        	android:padding="15sp"
+				            android:hint="@string/settings_general_sessions_target_month"
+				            android:textColorHint="@color/dark_grey"
+				            android:textSize="14sp"
+				            android:textColor="@color/dark_grey"
+				            android:singleLine="true"
+				            android:focusable="true"
+				            />
+				        
+				    </LinearLayout>
+				    	
+			        <!-- reset (month) -->
+			        <Button
+			            android:visibility="gone"
+			            android:id="@+id/settings_history_reset_month"
+			            android:onClick="onResetMonth"
+				        android:background="@drawable/settings_history_btn_bg"
+			            android:layout_height="wrap_content"
+			            android:layout_width="match_parent"
+			            android:layout_marginTop="2sp"
+			            android:layout_marginLeft="2sp"
+			            android:layout_marginRight="2sp"
+			            android:padding="15dp"
+			            android:text="@string/settings_general_sessions_reset_month"
+			            android:gravity="center"
+			            android:textSize="14sp"
+			            android:textColor="@color/white"
+			            />
+	
+			        <!-- reset (year) -->
+			        <Button
+			            android:visibility="gone"
+			            android:id="@+id/settings_history_reset_year"
+			            android:onClick="onResetYear"
+				        android:background="@drawable/settings_history_btn_bg"
+			            android:layout_height="wrap_content"
+			            android:layout_width="match_parent"
+			            android:layout_marginRight="2sp"
+			            android:layout_marginLeft="2sp"
+			            android:padding="15dp"
+			            android:text="@string/settings_general_sessions_reset_year"
+			            android:gravity="center"
+			            android:textSize="14sp"
+			            android:textColor="@color/white"
+			            />
+	
+			        <!-- reset (all) -->
+			        <Button
+			            android:id="@+id/settings_history_reset_all"
+			            android:onClick="onResetAll"
+				        android:background="@drawable/settings_history_btn_bg"
+			            android:layout_height="wrap_content"
+			            android:layout_width="match_parent"
+			            android:layout_marginLeft="2sp"
+			            android:layout_marginRight="2sp"
+			            android:layout_marginBottom="2sp"
+			            android:padding="15dp"
+			            android:text="@string/settings_general_sessions_reset_all"
+			            android:gravity="center"
+			            android:textSize="14sp"
+			            android:textColor="@color/white"
+			            />
+	
+			    </LinearLayout><!-- end of sessions -->
+			    
+			    <!-- save (all) -->
+			    <LinearLayout
+			        android:background="@color/white"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_marginBottom="20dp"
+			    	android:orientation="vertical"
+			        >
+	
+			        <!-- save -->
+			        <Button
+			            android:id="@+id/settings_save_all"
+			            android:onClick="onSave"
+				        android:background="@drawable/settings_save_all_btn_bg"
+			            android:layout_height="wrap_content"
+			            android:layout_width="match_parent"
+			            android:padding="15dp"
+			            android:gravity="center"
+			            android:text="@string/settings_general_save_all"
+			            android:textSize="14sp"
+			            android:textColor="@drawable/settings_save_btn_txt"
+			            />
+
+		    	</LinearLayout><!-- end of save (all) -->
+
+        	</LinearLayout><!-- end of wrapper -->
+        
+    	</ScrollView>
+        
+	</LinearLayout>	    

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+
+	Layout displays individual ListView entries in MainActivity and Sessions view fragments
+
+-->
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" 
+	android:weightSum="12"
+    >
+    
+    <!-- session number -->
+    <TextView 
+        android:id="@+id/entry_no"
+        android:background="@color/light_green"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+		android:paddingTop="25sp"
+		android:paddingBottom="25sp"
+		android:paddingLeft="20sp"
+		android:paddingRight="20sp"
+		android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+		android:layout_weight="3"
+        />
+       
+    <!-- entry -->
+    <TextView 
+        android:id="@+id/entry"
+        android:background="@color/white"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+		android:padding="25sp"
+        android:textColor="@color/dark_grey"
+        android:textSize="36sp"
+		android:layout_weight="9"
+        />
+
+</LinearLayout>

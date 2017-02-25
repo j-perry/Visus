@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Visus-2-New.iml" filepath="$PROJECT_DIR$/.idea/modules/Visus-2-New.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Visus.iml" filepath="$PROJECT_DIR$/Visus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>

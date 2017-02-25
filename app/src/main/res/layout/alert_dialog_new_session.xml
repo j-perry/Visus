@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minWidth="475sp"
+    >
+    
+    <LinearLayout 
+	    android:orientation="vertical"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content" 
+	    >
+	    
+        <TextView
+		    android:id="@+id/alert_dialog_new_session_header"
+		    android:background="@color/light_green"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:padding="15sp"
+		    android:text="@string/dialog_new_session_header"
+		    android:textSize="12sp"
+		    android:textColor="@color/white"
+		    android:textStyle="bold"
+		    />
+	    
+    </LinearLayout>
+    
+    <LinearLayout 
+	    android:orientation="vertical"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content" 
+	    >
+        
+        <!-- Session type - e.g., Email, Gaming, etc. -->
+        <AutoCompleteTextView 
+            android:id="@+id/dialog_new_session_auto_complete_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+		    android:layout_margin="15sp"
+            android:hint="@string/dialog_new_session_input"
+            android:inputType="textCapSentences"
+            android:maxLength="15"
+            android:completionThreshold="1"
+            android:singleLine="true"
+		    android:textSize="12sp"
+		    android:textColorHint="@color/light_grey"
+            android:textColor="@color/light_green"
+            />
+		
+	</LinearLayout>
+	
+	<LinearLayout
+	    style="?android:attr/buttonBarStyle"
+    	android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+    	android:orientation="horizontal"
+    	android:weightSum="2"
+    	>
+    	
+	    <Button
+	        style="?android:attr/buttonBarButtonStyle" 
+		    android:id="@+id/alert_dialog_new_session_btn_cancel"
+		    android:layout_weight="1"
+		    android:layout_width="0sp"
+		    android:layout_height="wrap_content"
+		    android:background="@drawable/main_menu_profile_bg"
+	    	android:padding="15sp"
+		    android:text="@string/dialog_new_session_btn_cancel"
+		    android:textColor="@drawable/main_menu_profile_txt"
+		    android:textSize="12sp"
+		    />
+	    
+	    <Button
+	        style="?android:attr/buttonBarButtonStyle" 
+		    android:id="@+id/alert_dialog_new_session_btn_ok"
+		    android:layout_weight="1"
+		    android:layout_width="0sp"
+		    android:layout_height="wrap_content"
+		    android:background="@drawable/main_menu_profile_bg"
+	    	android:padding="15sp"
+		    android:text="@string/dialog_new_session_btn_ok"
+		    android:textColor="@drawable/main_menu_profile_txt"
+		    android:textSize="12sp"
+		    />
+	    
+	</LinearLayout>
+    
+</LinearLayout>

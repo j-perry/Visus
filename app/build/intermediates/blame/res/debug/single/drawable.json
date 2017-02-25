@@ -1,0 +1,90 @@
+[
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/main_menu_profile_bg.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/main_menu_profile_bg.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/action_bar_txt.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/action_bar_txt.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/settings_save_btn_txt.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/settings_save_btn_txt.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/sign_up_gender_bg.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/sign_up_gender_bg.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/settings_cancel_btn_bg.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/settings_cancel_btn_bg.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/new_session_controls_txt.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/new_session_controls_txt.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/action_bar_bg.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/action_bar_bg.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/tab_indicator.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/tab_indicator.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/settings_history_btn_bg.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/settings_history_btn_bg.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/new_session_controls_btn.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/new_session_controls_btn.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/test_bg.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/test_bg.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/new_user_submit_txt.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/new_user_submit_txt.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/main_menu_header_txt.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/main_menu_header_txt.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/menu_press_bg.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/menu_press_bg.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/settings_activity_bg.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/settings_activity_bg.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/main_menu_header_bg.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/main_menu_header_bg.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/settings_save_all_btn_bg.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/settings_save_all_btn_bg.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/settings_activity_txt.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/settings_activity_txt.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/sign_up_gender_txt.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/sign_up_gender_txt.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/main_menu_profile_txt.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/main_menu_profile_txt.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/menu_press_txt.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/menu_press_txt.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable/new_user_submit_bg.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable/new_user_submit_bg.xml"
+    }
+]

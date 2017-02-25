@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- our palette of colours :o) -->
+    <color name="faint_green">#61e69d</color>
+    <color name="light_green">#2ecc71</color>
+        
+    <color name="light_grey">#D2D2D2</color>
+    <color name="dark_grey">#333</color>
+    
+    <color name="black">#000</color>
+    <color name="white">#FFF</color>
+    
+    <!-- app -->
+    <color name="title_bar">@color/light_grey</color>
+    <color name="titletextcolor">@color/dark_grey</color>
+    <color name="title_background">@color/black</color>
+    <color name="title_color">@color/dark_grey</color>
+    
+    <!-- menu -->
+    <color name="menu_white">@color/white</color>    
+    <color name="menu_grey">@color/light_grey</color>  
+    
+    <!-- new user -->
+    <color name="new_user_white">@color/white</color>
+    
+</resources>

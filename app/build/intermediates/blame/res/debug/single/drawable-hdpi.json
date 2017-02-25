@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_launcher_large.png",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable-hdpi/ic_launcher_large.png"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_new_session.png",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable-hdpi/ic_new_session.png"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_launcher.png",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable-hdpi/ic_launcher.png"
+    }
+]

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Visus</string>
+    <string name="visus_welcome">Welcome to Visus</string>    
+    
+    <!-- Activities -->    
+    <string name="activity_new_session">New Session</string>
+    <string name="activity_sign_up">Sign Up</string>
+    <string name="activity_sessions">Sessions</string>
+    <string name="activity_settings">Settings</string>
+    <string name="activity_settings_activities">Activities</string>
+    
+    <!-- Main Activity Menu -->
+    <string name="menu_about">About Visus</string>
+        
+    <!-- Main menu scrollview -->
+    <string name="main_menu_latest_activity">Latest Activity</string>    
+    <string name="main_menu_activities">Activities</string>
+        
+    <!-- Sign-up -->
+    <string name="hint_firstname">Firstname</string>
+    <string name="gender_prompt">Gender</string>
+	<string name="hint_age">Age</string>
+	<string name="register">Sign Up</string>
+	
+    <string-array name="genders">
+        <item>Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    
+    
+    <!-- Main Menu -->
+    <string-array name="menu">
+        <item>Latest Activity</item>
+        <item>Activities</item>
+    </string-array>
+    
+    <string name="latest_activity_daily_target_met">Update: Daily target met!</string>
+    <string name="latest_activity_monthly_target_met">Update: Monthly target met!</string>
+    
+    <string name="main_menu_dialog_user_targets_txt">User Targets</string>
+    <string name="main_menu_dialog_user_targets_header">No user targets have been created. They help you stay fresh and productive.\n\nDo you wish to create them now?</string>
+    <string name="main_menu_dialog_user_targets_btn_cancel">No</string>
+    <string name="main_menu_dialog_user_targets_btn_ok">Yes!</string>       
+    <!-- End of Main Menu -->
+    
+    
+    <!-- Previous Sessions -->
+    <string name="dialog_previous_sessions_heading">Create Session</string>
+    <string name="dialog_previous_sessions_txt">No sessions exist. Do you wish to create a new session now?</string>
+    <string name="dialog_previous_sessions_btn_cancel">No</string>
+    <string name="dialog_previous_sessions_btn_ok">Yes!</string>
+    
+    <!-- Main Menu -->
+    <string-array name="sessions_menu">
+        <item>TODAY</item>
+        <item>THIS WEEK</item>
+        <item>THIS MONTH</item>
+        <item>THIS YEAR</item>
+    </string-array>    
+    <!-- End of Previous Sessions -->
+    
+    <!-- Settings -->
+    <string-array name="settings_list">
+        <item>General</item>
+        <item>About</item>
+    </string-array>
+    
+    <string name="dialog_user_targets_day">You have entered a new daily target.\n\nDo you wish to save it?</string>
+    <string name="dialog_user_targets_monthly">You have entered a new monthly target.\n\nDo you wish to save it?</string>
+    <!-- End of settings -->
+        
+	
+    <!-- New Session -->
+    <string name="title_new_session">New Session</string>
+    <string name="title_start_session">Start</string>
+    <string name="title_end_session">End</string>
+    
+    <string name="timer_predefined_minutes">25:00</string>
+    <string name="timer_activity_type_placeholder">#None</string>
+            
+    <string name="dialog_new_session_header">Set Activity</string>
+    <string name="dialog_new_session_input">#Activity</string>
+    <string name="dialog_new_session_btn_cancel">Cancel</string>
+	<string name="dialog_new_session_btn_ok">OK</string>
+	
+	<string name="notification_new_session_finished">Session finished. Take a few minutes rest!</string>
+    
+    <!-- Settings -->
+    <string name="menu_settings">Settings</string>    
+    <string name="default_sessions_no">Sessions</string>
+    
+    	<!-- 'General' tab -->
+    	
+	    	<!-- 'Personal' -->
+	    	<string name="settings_general_personal_header">Personal</string>
+	    	<string name="settings_general_personal_name_header">Firstname</string>
+	    	<string name="settings_general_personal_age_header">Age</string>
+	    	
+	    	<string name="settings_general_hint_name">Firstname</string>
+	    	<string name="settings_general_hint_age">Age</string>
+    	
+    		<!-- 'Sessions' -->
+	    	<string name="settings_general_sessions_header">Sessions</string>
+	    	<string name="settings_general_sessions_daily_target_header">Daily Target (mins)</string>
+	    	<string name="settings_general_sessions_monthly_target_header">Monthly Target (hours)</string>
+	    	
+	    	<!-- 'Activities' -->
+	    	<string name="settings_general_activities_header">Activities</string>
+	    	<string name="settings_general_activities_blurb">To delete an activity category, swipe each category to the left.</string>
+	    	
+	    	
+	    	<string name="settings_general_sessions_target_day">Set daily target (hours)</string>
+	    	<string name="settings_general_sessions_target_month">Set monthly target (hours)</string>
+    		<string name="settings_general_sessions_reset_month">Reset (Month)</string>
+    		<string name="settings_general_sessions_reset_year">Reset (Year)</string>
+    		
+    		<!-- used to be 'Reset (All)' -->
+    		<string name="settings_general_sessions_reset_all">Reset</string>
+    		
+    		<!-- Save (all) -->
+    		<string name="settings_general_save_all">Save</string> 	
+    	<!-- End of 'General' tab -->  	
+    
+    	<!-- About -->
+	    <string name="settings_about_header">About</string>
+	    <string name="settings_about_blurb">Based on the Pomodoro Technique, Visus is a simple productivity app, designed to optimise you’re productivity using your PC, smartphone or tablet.\n\nAfter excessive hours staring at displays, whether in the office or at home, it’s hard to think constructively, whilst developing dry eyes, impacting productivity on day-to-day tasks.\n\nCreate a 25 minute session and ensure you take a short break afterwards to stay fresh.</string>
+	    
+	    <!-- What's Visus? -->
+	    <string name="settings_what_header">What\'s Visus?</string>
+	    <string name="settings_what_blurb">Visus is from Latin etymology for \'I See\'.</string>
+	    
+	    <!-- Credits -->
+	    <string name="settings_support_header">Support</string>
+	    <string name="settings_support_blurb">For feature recommendations and support email: help@jon-perry.co.uk</string>	    
+	<!-- End of Settings -->
+		
+</resources>

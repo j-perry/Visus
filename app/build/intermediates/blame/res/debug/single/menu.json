@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/menu/activity_new_user.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/menu/activity_new_user.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/menu/activity_prev_sessions.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/menu/activity_prev_sessions.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/menu/activity_view_settings.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/menu/activity_view_settings.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/menu/activity_main.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/menu/activity_main.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/menu/activity_new_view.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/menu/activity_new_view.xml"
+    }
+]

@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_launcher_2.png",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable-xhdpi/ic_launcher_2.png"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_launcher_4.png",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable-xhdpi/ic_launcher_4.png"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_launcher.png",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_new_session.png",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/drawable-xhdpi/ic_new_session.png"
+    }
+]

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+	    
+<LnearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:padding="0dp"
+	android:layout_height="wrap_content"
+	android:layout_width="match_parent"
+	android:orientation="vertical"
+	>
+
+	<!-- no. of sessions -->
+	<LinearLayout
+		android:background="@color/white"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="10sp"
+		android:orientation="vertical"
+		>
+        
+		<!-- no. of sessions -->
+		<TextView
+			android:id="@+id/main_menu_latest_activities_no_sessions_total"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/white"
+			android:padding="15sp"
+			android:textAllCaps="true"
+			android:textColor="@color/dark_grey"
+			android:textSize="24sp"
+			/>
+	                    
+	</LinearLayout>
+                
+	<!-- latest activity header -->
+	<TextView
+		android:id="@+id/main_header"
+		android:onClick="viewLatestUserActivities"
+		android:background="@drawable/main_menu_header_bg"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:layout_marginTop="0dp"
+		android:layout_marginLeft="10dp"
+		android:layout_marginRight="10dp"
+		android:padding="15sp"
+		android:textColor="@color/dark_grey"
+		android:text="@string/main_menu_latest_activity"
+		android:textAllCaps="true"
+		android:textSize="24sp"
+		/>
+	    
+	<View
+		android:layout_width="fill_parent"
+		android:layout_height="4sp"
+		android:background="@color/light_grey"
+		/>
+	    	     
+	<!-- latest sessions (first 5) -->
+	<ListView
+		android:id="@+id/overview_sessions_adapter"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:paddingLeft="10dp"
+		android:paddingRight="10dp"
+		android:divider="@color/light_grey"
+		android:dividerHeight="4sp"
+		/>
+
+</LnearLayout>

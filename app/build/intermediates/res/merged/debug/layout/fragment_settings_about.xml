@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+	<LinearLayout
+	    android:background="@color/white"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:paddingTop="15sp"
+	    android:paddingLeft="15sp"
+	    android:paddingRight="15sp" 
+	    android:orientation="vertical"
+	    >
+	    
+	    <!-- about -->
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:paddingLeft="0sp"
+	        android:paddingRight="0sp"
+	        android:orientation="vertical"
+	        >
+	                
+	        <!-- header -->
+		    <TextView 
+		        android:id="@+id/settings_about_header"
+		        android:layout_height="wrap_content"
+		        android:layout_width="fill_parent"   
+				android:paddingBottom="15sp"
+		        android:textColor="@color/dark_grey"
+		        android:text="@string/settings_about_header"
+		        android:textStyle="bold"
+		        android:textSize="18sp"
+		        />
+		    
+		    <!-- blurb -->
+		    <TextView 
+		        android:id="@+id/settings_about_blurb"
+		        android:layout_height="wrap_content"
+		        android:layout_width="fill_parent"
+		        android:textColor="@color/dark_grey"
+		        android:text="@string/settings_about_blurb"
+		        android:textSize="18sp"
+		        />
+	        
+	    </LinearLayout>
+	    
+	    <!-- about visus -->
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	    	android:paddingTop="15sp"
+	        android:paddingLeft="0sp"
+	        android:paddingRight="0sp"
+	        android:orientation="vertical"
+	        >        
+	        
+	    	<!-- header -->
+		    <TextView 
+		        android:id="@+id/settings_credit_about_header"
+		        android:layout_height="wrap_content"
+		        android:layout_width="fill_parent"
+				android:paddingBottom="15sp"
+		        android:textColor="@color/dark_grey"	        
+		        android:text="@string/settings_what_header"
+		        android:textStyle="bold"
+		        android:textSize="18sp"
+		        />
+		        
+		    <!-- welcome -->
+		    <TextView 
+		        android:id="@+id/settings_credit_about"
+		        android:layout_height="wrap_content"
+		        android:layout_width="fill_parent"
+		        android:textColor="@color/dark_grey"
+		        android:text="@string/settings_what_blurb"
+		        android:textSize="18sp"
+		        />
+	    
+	    </LinearLayout>
+	    
+	    <!-- support -->
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	    	android:paddingTop="15sp"	    	
+	    	android:paddingBottom="15sp"
+	        android:paddingLeft="0sp"
+	        android:paddingRight="0sp"
+	        android:orientation="vertical"
+	        >       
+	        
+	        <!-- header -->
+		    <TextView 
+		        android:id="@+id/settings_credit_support_header"
+		        android:layout_height="wrap_content"
+		        android:layout_width="fill_parent"
+				android:paddingBottom="15sp"
+		        android:textColor="@color/dark_grey"	        
+		        android:text="@string/settings_support_header"
+		        android:textStyle="bold"
+		        android:textSize="18sp"
+		        />    
+		        
+		    <!-- text -->
+		    <TextView 
+		        android:id="@+id/settings_credit_support"
+		        android:layout_height="wrap_content"
+		        android:layout_width="fill_parent"
+		        android:textColor="@color/dark_grey"
+		        android:text="@string/settings_support_blurb"
+		        android:textSize="18sp"
+		        />
+	        
+		</LinearLayout>
+	        
+	</LinearLayout>
+
+</ScrollView>
