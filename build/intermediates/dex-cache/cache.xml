@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/jonathanperry/Documents/Visus/app/libs/nineoldandroids-2.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="59f19e43354d32de831379c23ce03bb259a4c2b7">
+        <dex dex="/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/dex/debug/folders/1000/2/nineoldandroids-2.4.0_2c92e021831c3adacec042061c00c9f64f2fe4be/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jonathanperry/Documents/Visus/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7cf18e09906604cb9f84d1e54a019ad75c6c208e">
+        <dex dex="/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_5c562d3c48a5f9a43ade441164ea43bb6d9b5082/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jonathanperry/Library/Android/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-v4-19.1.0_5d43e79ce3c8318e0a53428c77e57664f2653a73/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jonathanperry/Documents/Visus/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0ed9d341dab222a3737baa54f3510c3cbc247017">
+        <dex dex="/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_6d6a2a18ffde89255283d2a2c0cb6e71eeab134d/classes.dex" />
+    </item>
+
+</items>

@@ -2,497 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="abd97c0e-a730-464a-9f6a-779cbaf92ef1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/compileDebugAidl/dependency.store" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/compileDebugAndroidTestAidl/dependency.store" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug-androidTest.ap_" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug.ap_" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_new_session.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_new_session.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_new_session.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_new_session.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/generated/mockable-android-19.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/nineoldandroids_2_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_19_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/swipelistview_1_0_20130701_103547_12_javadoc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Visus.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/generated/source/buildConfig/androidTest/debug/com/visus/test/BuildConfig.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/visus/BuildConfig.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/visus/R.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi/values-v11.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi/values-v14.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi/values.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/drawable-hdpi.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/drawable-ldpi.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/drawable-mdpi.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/drawable-xhdpi.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/drawable.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/layout-sw480dp-v13.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/layout-sw600dp-v13.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/layout-sw720dp-v13.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/layout.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/menu.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v11/values-v11.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v14/values-v14.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-v11/values-v11.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-v14/values-v14.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values/values.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lint.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/action_bar_bg.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/action_bar_txt.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/main_menu_header_bg.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/main_menu_header_txt.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/main_menu_profile_bg.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/main_menu_profile_txt.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/menu_press_bg.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/menu_press_txt.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/new_session_controls_btn.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/new_session_controls_txt.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/new_user_submit_bg.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/new_user_submit_txt.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/settings_activity_bg.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/settings_activity_txt.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/settings_cancel_btn_bg.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/settings_history_btn_bg.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/settings_save_all_btn_bg.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/settings_save_btn_txt.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/sign_up_gender_bg.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/sign_up_gender_txt.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tab_indicator.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/test_bg.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/action_bar_list.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/activity_latest_activity.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/activity_main.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/activity_new_session.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/activity_sessions.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/activity_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/activity_sign_up.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/alert_dialog_new_session.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/alert_dialog_previous_sessions.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/alert_dialog_set_targets_day.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/fragment_collection_object.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/fragment_main_menu_activities.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/fragment_main_menu_latest_activity.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/fragment_sessions_this_month.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/fragment_sessions_this_week.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/fragment_sessions_this_year.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/fragment_sessions_today.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/fragment_settings_about.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/fragment_settings_general.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/layout_main_menu_header.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/layout_main_menu_item.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/layout_sessions_items.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/settings_activities_layout_item.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/settings_spinner_gender_layout.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/settings_spinner_gender_list_layout.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/sign_up_spinner_gender_layout.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw480dp/sign_up_spinner_gender_list_layout.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/action_bar_list.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/activity_latest_activity.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/activity_main.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/activity_new_session.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/activity_sessions.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/activity_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/activity_sign_up.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/alert_dialog_new_session.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/alert_dialog_previous_sessions.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/alert_dialog_set_targets_day.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/fragment_collection_object.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/fragment_main_menu_activities.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/fragment_main_menu_latest_activity.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/fragment_sessions_this_month.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/fragment_sessions_this_week.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/fragment_sessions_this_year.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/fragment_sessions_today.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/fragment_settings_about.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/fragment_settings_general.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/layout_main_menu_item.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/layout_sessions_header.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/layout_sessions_items.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/settings_activities_layout_item.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/settings_spinner_gender_layout.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/settings_spinner_gender_list_layout.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/sign_up_spinner_gender_layout.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/sign_up_spinner_gender_list_layout.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/action_bar_list.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/activity_latest_activity.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/activity_main.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/activity_new_session.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/activity_sessions.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/activity_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/activity_sign_up.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/alert_dialog_new_session.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/alert_dialog_previous_sessions.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/alert_dialog_set_targets_day.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/fragment_collection_object.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/fragment_main_menu_activities.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/fragment_main_menu_latest_activity.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/fragment_sessions_this_month.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/fragment_sessions_this_week.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/fragment_sessions_this_year.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/fragment_sessions_today.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/fragment_settings_about.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/fragment_settings_general.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/layout_main_menu_item.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/layout_sessions_header.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/layout_sessions_items.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/settings_activities_layout_item.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/settings_spinner_gender_layout.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/settings_spinner_gender_list_layout.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/sign_up_spinner_gender_layout.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/sign_up_spinner_gender_list_layout.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/action_bar_list.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_latest_activity.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_new_session.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_sessions.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_sign_up.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/alert_dialog_new_session.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/alert_dialog_previous_sessions.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/alert_dialog_save_targets_day.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/alert_dialog_save_targets_month.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/alert_dialog_set_targets_day.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/alert_dialog_set_targets_month.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_collection_object.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main_menu_activities.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main_menu_latest_activity.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sessions_this_month.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sessions_this_week.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sessions_this_year.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sessions_today.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_settings_about.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_settings_general.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_main_menu_header.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_main_menu_item.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_sessions_items.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/settings_activities_layout_item.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/settings_spinner_gender_layout.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/settings_spinner_gender_list_layout.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/sign_up_spinner_gender_layout.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/sign_up_spinner_gender_list_layout.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_main.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_new_user.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_new_view.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_prev_sessions.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_view_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gradlew" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gradlew.bat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import-summary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/settings.gradle" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.classpath" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules/Visus-2-New.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.project" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Thumbs.db" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/Visus.apk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes.dex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/BuildConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/R$array.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/R$layout.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/R$menu.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/database/DatabaseHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/database/IDatabaseTable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/database/ISessionTable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/database/ISessionsRecordTable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/database/IUserTable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/database/SessionHandler$SessionFormatter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/database/SessionHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/database/SessionRecordsHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/database/UserHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/entities/TimerConvert.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/entities/User.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/entities/Week.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/entities/sessions/Overview.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/entities/sessions/Session$SessionFormatter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/entities/sessions/Session.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/MainActivity$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/MainActivity$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/MainActivity$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/MainActivity$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/MainActivity$MainMenuPagerAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/MainActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/NewSession$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/NewSession$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/NewSession$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/NewSession$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/NewSession$5.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/NewSession$6.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/NewSession$7$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/NewSession$7.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/NewSession.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/Sessions$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/Sessions$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/Sessions$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/Sessions$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/Sessions$SessionsPagerAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/Sessions.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/Settings$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/Settings$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/Settings$SettingsPagerAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/main/Settings.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/ui/ListViewAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/ui/ListViewValues.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/ui/SessionsAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/ui/SessionsListView.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/ui/main/fragments/ActivitiesFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/ui/main/fragments/LatestActivityFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/ui/sessions/fragments/FragmentThisMonth.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/ui/sessions/fragments/FragmentThisWeek.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/ui/sessions/fragments/FragmentThisYear.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/ui/sessions/fragments/FragmentToday.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/ui/settings/fragments/AboutFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/ui/settings/fragments/GeneralFragment$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/ui/settings/fragments/GeneralFragment$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/ui/settings/fragments/GeneralFragment$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/ui/settings/fragments/GeneralFragment$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/classes/com/visus/ui/settings/fragments/GeneralFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/dexedLibs/android-support-v4-2f1d30c22397f115b6147657501ceecb.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/dexedLibs/nineoldandroids-2.4.0-e54fd80a5714e10572b267365abd3e22.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/dexedLibs/swipelistview-1.0-20130701.103547-12-javadoc-fae29ab6f5a726f505e0c08c90bc2052.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/jarlist.cache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/res/crunch/drawable-hdpi/ic_new_session.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/res/crunch/drawable-ldpi/ic_new_session.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/res/crunch/drawable-mdpi/ic_new_session.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/res/crunch/drawable-xhdpi/ic_new_session.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/resources.ap_" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/com/visus/BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/com/visus/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ic_launcher-web.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/android-support-v4.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lint.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/proguard-project.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project.properties" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bin/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bin/res/crunch/drawable-hdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_launcher.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bin/res/crunch/drawable-hdpi/ic_launcher_large.png" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_launcher_large.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bin/res/crunch/drawable-ldpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable-ldpi/ic_launcher.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bin/res/crunch/drawable-mdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable-mdpi/ic_launcher.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bin/res/crunch/drawable-mdpi/ic_launcher_med.png" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable-mdpi/ic_launcher_med.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bin/res/crunch/drawable-xhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_launcher.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bin/res/crunch/drawable-xhdpi/ic_launcher_2.png" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_launcher_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bin/res/crunch/drawable-xhdpi/ic_launcher_4.png" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_launcher_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/libs/nineoldandroids-2.4.0.jar" afterPath="$PROJECT_DIR$/app/libs/nineoldandroids-2.4.0.jar" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/libs/swipelistview-1.0-20130701.103547-12-javadoc.jar" afterPath="$PROJECT_DIR$/app/libs/swipelistview-1.0-20130701.103547-12-javadoc.jar" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_launcher.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/ic_launcher_large.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_launcher_large.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/ic_new_session.png" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_new_session.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-ldpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_launcher.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-ldpi/ic_new_session.png" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable-ldpi/ic_new_session.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_launcher.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/ic_launcher_med.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_launcher_med.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/ic_new_session.png" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_new_session.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_launcher.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/ic_launcher_2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_launcher_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/ic_launcher_4.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_launcher_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/ic_new_session.png" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable-mdpi/ic_new_session.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/action_bar_bg.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/action_bar_bg.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/action_bar_txt.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/action_bar_txt.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/main_menu_header_bg.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/main_menu_header_bg.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/main_menu_header_txt.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/main_menu_header_txt.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/main_menu_profile_bg.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/main_menu_profile_bg.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/main_menu_profile_txt.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/main_menu_profile_txt.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/menu_press_bg.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/menu_press_bg.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/menu_press_txt.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/menu_press_txt.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/new_session_controls_btn.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/new_session_controls_btn.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/new_session_controls_txt.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/new_session_controls_txt.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/new_user_submit_bg.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/new_user_submit_bg.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/new_user_submit_txt.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/new_user_submit_txt.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/settings_activity_bg.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/settings_activity_bg.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/settings_activity_txt.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/settings_activity_txt.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/settings_cancel_btn_bg.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/settings_cancel_btn_bg.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/settings_history_btn_bg.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/settings_history_btn_bg.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/settings_save_all_btn_bg.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/settings_save_all_btn_bg.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/settings_save_btn_txt.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/settings_save_btn_txt.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/sign_up_gender_bg.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/sign_up_gender_bg.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/sign_up_gender_txt.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/sign_up_gender_txt.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/tab_indicator.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/tab_indicator.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/test_bg.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/test_bg.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/action_bar_list.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/action_bar_list.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/activity_latest_activity.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/activity_latest_activity.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/activity_main.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/activity_main.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/activity_new_session.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/activity_new_session.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/activity_sessions.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/activity_sessions.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/activity_settings.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/activity_settings.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/activity_sign_up.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/activity_sign_up.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/alert_dialog_new_session.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/alert_dialog_new_session.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/alert_dialog_previous_sessions.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/alert_dialog_previous_sessions.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/alert_dialog_set_targets_day.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/alert_dialog_set_targets_day.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/fragment_collection_object.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_collection_object.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/fragment_main_menu_activities.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/fragment_main_menu_activities.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/fragment_main_menu_latest_activity.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/fragment_main_menu_latest_activity.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/fragment_sessions_this_month.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_sessions_this_month.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/fragment_sessions_this_week.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_sessions_this_week.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/fragment_sessions_this_year.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/fragment_sessions_this_year.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/fragment_sessions_today.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_sessions_today.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/fragment_settings_about.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/fragment_settings_about.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/fragment_settings_general.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/fragment_settings_general.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/layout_main_menu_header.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/layout_main_menu_header.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/layout_main_menu_item.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/layout_main_menu_item.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/layout_sessions_items.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/layout_sessions_items.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/settings_activities_layout_item.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/settings_activities_layout_item.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/settings_spinner_gender_layout.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/settings_spinner_gender_layout.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/settings_spinner_gender_list_layout.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/settings_spinner_gender_list_layout.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/sign_up_spinner_gender_layout.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/sign_up_spinner_gender_layout.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw480dp/sign_up_spinner_gender_list_layout.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/sign_up_spinner_gender_list_layout.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/action_bar_list.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/action_bar_list.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/activity_latest_activity.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/activity_latest_activity.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/activity_main.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/activity_main.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/activity_new_session.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/activity_new_session.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/activity_sessions.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/activity_sessions.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/activity_settings.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/activity_settings.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/activity_sign_up.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/activity_sign_up.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/alert_dialog_new_session.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/alert_dialog_new_session.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/alert_dialog_previous_sessions.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/alert_dialog_previous_sessions.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/alert_dialog_set_targets_day.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/alert_dialog_set_targets_day.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/fragment_collection_object.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/fragment_collection_object.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/fragment_main_menu_activities.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/fragment_main_menu_activities.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/fragment_main_menu_latest_activity.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/fragment_main_menu_latest_activity.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/fragment_sessions_this_month.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/fragment_sessions_this_month.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/fragment_sessions_this_week.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/fragment_sessions_this_week.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/fragment_sessions_this_year.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/fragment_sessions_this_year.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/fragment_sessions_today.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/fragment_sessions_today.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/fragment_settings_about.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/fragment_settings_about.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/fragment_settings_general.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/fragment_settings_general.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/layout_main_menu_item.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/layout_main_menu_item.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/layout_sessions_header.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/layout_sessions_header.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/layout_sessions_items.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/layout_sessions_items.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/settings_activities_layout_item.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/settings_activities_layout_item.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/settings_spinner_gender_layout.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/settings_spinner_gender_layout.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/settings_spinner_gender_list_layout.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/settings_spinner_gender_list_layout.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/sign_up_spinner_gender_layout.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/sign_up_spinner_gender_layout.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw600dp/sign_up_spinner_gender_list_layout.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/sign_up_spinner_gender_list_layout.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/action_bar_list.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/action_bar_list.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/activity_latest_activity.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/activity_latest_activity.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/activity_main.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/activity_main.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/activity_new_session.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/activity_new_session.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/activity_sessions.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/activity_sessions.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/activity_settings.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/activity_settings.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/activity_sign_up.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/activity_sign_up.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/alert_dialog_new_session.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/alert_dialog_new_session.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/alert_dialog_previous_sessions.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/alert_dialog_previous_sessions.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/alert_dialog_set_targets_day.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/alert_dialog_set_targets_day.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/fragment_collection_object.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/fragment_collection_object.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/fragment_main_menu_activities.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/fragment_main_menu_activities.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/fragment_main_menu_latest_activity.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/fragment_main_menu_latest_activity.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/fragment_sessions_this_month.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/fragment_sessions_this_month.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/fragment_sessions_this_week.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/fragment_sessions_this_week.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/fragment_sessions_this_year.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/fragment_sessions_this_year.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/fragment_sessions_today.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/fragment_sessions_today.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/fragment_settings_about.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/fragment_settings_about.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/fragment_settings_general.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/fragment_settings_general.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/layout_main_menu_item.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/layout_main_menu_item.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/layout_sessions_header.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/layout_sessions_header.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/layout_sessions_items.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/layout_sessions_items.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/settings_activities_layout_item.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/settings_activities_layout_item.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/settings_spinner_gender_layout.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/settings_spinner_gender_layout.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/settings_spinner_gender_list_layout.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/settings_spinner_gender_list_layout.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/sign_up_spinner_gender_layout.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/sign_up_spinner_gender_layout.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout-sw720dp/sign_up_spinner_gender_list_layout.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/sign_up_spinner_gender_list_layout.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/action_bar_list.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/action_bar_list.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/activity_latest_activity.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/activity_latest_activity.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/activity_main.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/activity_new_session.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/activity_new_session.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/activity_sessions.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/activity_sessions.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/activity_settings.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/activity_settings.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/activity_sign_up.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/activity_sign_up.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/alert_dialog_new_session.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/alert_dialog_new_session.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/alert_dialog_previous_sessions.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/alert_dialog_previous_sessions.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/alert_dialog_save_targets_day.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/alert_dialog_save_targets_day.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/alert_dialog_save_targets_month.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/alert_dialog_save_targets_month.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/alert_dialog_set_targets_day.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/alert_dialog_set_targets_day.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/alert_dialog_set_targets_month.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/alert_dialog_set_targets_month.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/fragment_collection_object.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/fragment_collection_object.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/fragment_main_menu_activities.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_main_menu_activities.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/fragment_main_menu_latest_activity.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_main_menu_latest_activity.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/fragment_sessions_this_month.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/fragment_sessions_this_month.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/fragment_sessions_this_week.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/fragment_sessions_this_week.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/fragment_sessions_this_year.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_sessions_this_year.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/fragment_sessions_today.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/fragment_sessions_today.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/fragment_settings_about.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_settings_about.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/fragment_settings_general.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_settings_general.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/layout_main_menu_header.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/layout_main_menu_header.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/layout_main_menu_item.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/layout_main_menu_item.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/layout_sessions_items.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/layout_sessions_items.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/settings_activities_layout_item.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/settings_activities_layout_item.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/settings_spinner_gender_layout.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/settings_spinner_gender_layout.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/settings_spinner_gender_list_layout.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/settings_spinner_gender_list_layout.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/sign_up_spinner_gender_layout.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/sign_up_spinner_gender_layout.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/sign_up_spinner_gender_list_layout.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout-sw480dp-v13/sign_up_spinner_gender_list_layout.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/menu/activity_main.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/menu/activity_main.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/menu/activity_new_user.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/menu/activity_new_user.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/menu/activity_new_view.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/menu/activity_new_view.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/menu/activity_prev_sessions.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/menu/activity_prev_sessions.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/menu/activity_view_settings.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/menu/activity_view_settings.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/values-v11/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-v11/styles.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/values-v14/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-v14/styles.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/values/color.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/color.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/values/swipelistview__attrs.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/swipelistview__attrs.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/database/DatabaseHandler.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/database/DatabaseHandler.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/database/IDatabaseTable.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/database/IDatabaseTable.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/database/ISessionTable.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/database/ISessionTable.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/database/ISessionsRecordTable.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/database/ISessionsRecordTable.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/database/IUserTable.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/database/IUserTable.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/database/SessionHandler.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/database/SessionHandler.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/database/SessionRecordsHandler.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/database/SessionRecordsHandler.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/database/UserHandler.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/database/UserHandler.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/entities/TimerConvert.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/entities/TimerConvert.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/entities/User.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/entities/User.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/entities/Week.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/entities/Week.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/entities/sessions/Overview.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/entities/sessions/Overview.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/entities/sessions/Session.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/entities/sessions/Session.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/main/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/main/MainActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/main/NewSession.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/main/NewSession.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/main/Sessions.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/main/Sessions.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/main/Settings.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/main/Settings.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/ui/ListViewAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/ui/ListViewAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/ui/ListViewValues.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/ui/ListViewValues.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/ui/SessionsAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/ui/SessionsAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/ui/SessionsListView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/ui/SessionsListView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/ui/main/fragments/ActivitiesFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/ui/main/fragments/ActivitiesFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/ui/main/fragments/LatestActivityFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/ui/main/fragments/LatestActivityFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/ui/sessions/fragments/FragmentThisMonth.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/ui/sessions/fragments/FragmentThisMonth.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/ui/sessions/fragments/FragmentThisWeek.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/ui/sessions/fragments/FragmentThisWeek.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/ui/sessions/fragments/FragmentThisYear.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/ui/sessions/fragments/FragmentThisYear.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/ui/sessions/fragments/FragmentToday.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/ui/sessions/fragments/FragmentToday.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/ui/settings/fragments/AboutFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/ui/settings/fragments/AboutFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/visus/ui/settings/fragments/GeneralFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/visus/ui/settings/fragments/GeneralFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
     </list>
     <ignored path="Visus.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -2146,11 +1658,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView">
-        <subPane />
-      </pane>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2207,7 +1714,12 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="AndroidView">
+        <subPane />
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2446,7 +1958,7 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="false" name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+    <configuration default="false" name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="app" />
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
@@ -2536,21 +2048,21 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25407726" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25407726" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
