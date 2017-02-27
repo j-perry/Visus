@@ -62,24 +62,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
         user = getActiveUserOrCreateDefaultUser();
 
-//        try {
-//            dbUser.open();
-//
-//            if (dbUser.getActiveUser() == null) {
-//                dbUser.open();
-//                user.setTargetDay(0);
-//                user.setTargetMonth(0);
-//                dbUser.add(user);
-//            } else {
-//                dbUser.open();
-//                user = dbUser.getActiveUser();
-//            }
-//        } catch (SQLiteException e) {
-//            Log.e("Visus", "SQL Error", e);
-//        } finally {
-//            dbUser.close();
-//        }
-
         setContentView(R.layout.activity_main);
 
         // action bar
@@ -89,12 +71,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         if (user != null) {
             Log.e("Visus", "USER ID: " + user);
 
-//            int sessionsCount = 0;
-//            int activitiesCount = 0;
-//            ArrayList<HashMap<String, String>> latestSessions = new ArrayList<HashMap<String, String>>();
-//            ArrayList<HashMap<String, String>> activities = new ArrayList<HashMap<String, String>>();
-//            Session firstSession = new Session();
-
             mainMenuPager = (ViewPager) findViewById(com.visus.R.id.main_menu_pager);
             mainMenuPagerAdapter = new MainMenuPagerAdapter(getSupportFragmentManager(),
                     user.getUserId(),
@@ -103,28 +79,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                     getActivitiesCount(user),
                     getActivities(user),
                     getFirstSession());
-
-//            try {try
-//                dbSession.open();
-//            } catch (SQLiteException e) {
-//                Log.e("Visus", "SQL Error", e);
-//            } finally {
-//                sessionsCount = dbSession.getSessionsCountAll(user.getUserId());
-//                activitiesCount = dbSession.getActivitiesCount(user.getUserId());
-//                latestSessions = dbSession.getLatestSessions(user);
-//                activities = dbSession.getActivities(user);
-//                firstSession = dbSession.getFirstSession();
-//                dbSession.close();
-//            }
-//
-//            mainMenuPager = (ViewPager) findViewById(com.visus.R.id.main_menu_pager);
-//            mainMenuPagerAdapter = new MainMenuPagerAdapter(getSupportFragmentManager(),
-//                    user.getUserId(),
-//                    sessionsCount,
-//                    latestSessions,
-//                    activitiesCount,
-//                    activities,
-//                    firstSession);
 
             mainMenuPager.setAdapter(mainMenuPagerAdapter);
 
