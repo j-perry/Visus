@@ -9,15 +9,12 @@ import android.util.Log;
  */
 public class Logger {
 
-    private String tag;
-    private Object message;
+    private static String tag;
+    private static String secondTag;
+    private static Object message;
 
     public Logger() {
 
-    }
-
-    public Logger(String tag) {
-        this.tag = tag;
     }
 
     public Logger(String tag, Object message) {
@@ -25,19 +22,25 @@ public class Logger {
         this.message = message;
     }
 
-    public void log() {
+    public Logger(String tag, String secondTag, Object message) {
+        this.tag = tag;
+        this.secondTag = secondTag;
+        this.message = message;
+    }
+
+    public static void log() {
         if (tag != null && message != null)
             Log.e(tag, message.toString());
         else
             throw new IllegalArgumentException("Tag and Message parameters have not been set");
     }
 
-    public void log(String tag, String message) {
+    public static void log(String tag, String message) {
         Log.e(tag, message);
     }
 
-    public void log(String tag, Object message) {
-        Log.e(tag, message.toString());
+    public static void log(String tag, String secondTag, Object message) {
+        Log.e(tag + " | " + secondTag, message.toString());
     }
 
 }

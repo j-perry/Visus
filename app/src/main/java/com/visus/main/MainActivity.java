@@ -31,6 +31,7 @@ import com.visus.R;
 import com.visus.database.*;
 import com.visus.entities.*;
 import com.visus.entities.sessions.Session;
+import com.visus.logging.Logger;
 import com.visus.ui.main.fragments.ActivitiesFragment;
 import com.visus.ui.main.fragments.LatestActivityFragment;
 
@@ -69,6 +70,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         ab.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 
         if (user != null) {
+            // TODO
+            Logger.log("Visus USER ID:", user);
             Log.e("Visus", "USER ID: " + user);
 
             mainMenuPager = (ViewPager) findViewById(com.visus.R.id.main_menu_pager);
