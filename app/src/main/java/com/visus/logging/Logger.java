@@ -10,7 +10,6 @@ import android.util.Log;
 public class Logger {
 
     private static String tag;
-    private static String secondTag;
     private static Object message;
 
     public Logger() {
@@ -22,25 +21,24 @@ public class Logger {
         this.message = message;
     }
 
-    public Logger(String tag, String secondTag, Object message) {
+    public Logger(String tag, String message) {
         this.tag = tag;
-        this.secondTag = secondTag;
         this.message = message;
     }
 
     public static void log() {
         if (tag != null && message != null)
-            Log.e(tag, message.toString());
+            Log.e(tag + " ", message.toString());
         else
             throw new IllegalArgumentException("Tag and Message parameters have not been set");
     }
 
     public static void log(String tag, String message) {
-        Log.e(tag, message);
+        Log.e(tag + " | ", message);
     }
 
-    public static void log(String tag, String secondTag, Object message) {
-        Log.e(tag + " | " + secondTag, message.toString());
+    public static void log(String tag, Object message) {
+        Log.e(tag + " | ", message.toString());
     }
 
 }

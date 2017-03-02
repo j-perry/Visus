@@ -56,8 +56,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Log.e("Visus", "MainActivity - onCreate()");
-
         dbUser = new UserHandler(this);
         dbSession = new SessionHandler(this);
 
@@ -70,9 +68,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         ab.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 
         if (user != null) {
-            // TODO
-            Logger.log("Visus USER ID:", user);
-            Log.e("Visus", "USER ID: " + user);
+            Logger.log("onCreate", "User ID" + user.toString());
 
             mainMenuPager = (ViewPager) findViewById(com.visus.R.id.main_menu_pager);
             mainMenuPagerAdapter = new MainMenuPagerAdapter(getSupportFragmentManager(),
@@ -149,22 +145,20 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     public void onResume() {
         super.onResume();
 
-        Log.e("Visus", "onResume()");
-
         try {
             dbUser.open();
             user = dbUser.getActiveUser();
         } catch (SQLiteException e) {
-            Log.e("Visus", "SQL Error", e);
+            Logger.log("onResume", "SQL Error " + e);
         } finally {
             dbUser.close();
         }
 
         if (user == null) {
-            Log.e("Visus", "No user active");
+            Logger.log("onResume", "No user active");
         } else {
             userId = user.getUserId();
-            Log.e("Visus", "USER ID: " + userId);
+            Logger.log("onResume", "User Id " + userId);
         }
     }
 
@@ -290,7 +284,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             dbSession.open();
             sessionsCount = dbSession.getSessionsCountAll(user.getUserId());
         } catch (SQLiteException e) {
-            Log.e("Visus", "SQL Error", e);
+            Logger.log("getSessionsCountAll", "SQL Error " + e);
         } finally {
             dbSession.close();
         }
@@ -305,7 +299,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             dbSession.open();
             noActivities = dbSession.getActivitiesCount(user.getUserId());
         } catch (SQLiteException e) {
-            Log.e("Visus", "SQL Error", e);
+            Logger.log("getActivitiesCount", "SQL Error " + e);
         } finally {
             dbSession.close();
         }
@@ -320,7 +314,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             dbSession.open();
             latestSessions = dbSession.getLatestSessions(user);
         } catch (SQLiteException e) {
-            Log.e("Visus", "SQL Error", e);
+            Logger.log("getLatestSessions", "SQL Error " + e);
         } finally {
             dbSession.close();
         }
@@ -335,7 +329,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             dbSession.open();
             activities = dbSession.getActivities(user);
         } catch (SQLiteException e) {
-            Log.e("Visus", "SQL Error", e);
+            Logger.log("getActivities", "SQL Error " + e);
         } finally {
             dbSession.close();
         }
@@ -350,7 +344,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             dbSession.open();
             firstSession = dbSession.getFirstSession();
         } catch (SQLiteException e) {
-            Log.e("Visus", "SQL Error", e);
+            Logger.log("getFirstSession", "SQL Error " + e);
         } finally {
             dbSession.close();
         }
@@ -382,7 +376,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 user = dbUser.getActiveUser();
             }
         } catch (SQLiteException e) {
-            Log.e("Visus", "SQL Error", e);
+            Logger.log("getActiveUserOrCreateDefaultUser", "SQL Error " + e);
         } finally {
             dbUser.close();
         }
