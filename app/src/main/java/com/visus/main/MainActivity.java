@@ -56,59 +56,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        dbUser = new UserHandler(this);
-        dbSession = new SessionHandler(this);
-
-        user = getActiveUserOrCreateDefaultUser();
-
-        setContentView(R.layout.activity_main);
-
-        // action bar
-        final ActionBar ab = getActionBar();
-        ab.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-
-        if (user != null) {
-            Logger.log("onCreate", "User ID" + user.toString());
-
-            // TODO - refactor
-            mainMenuPager = (ViewPager) findViewById(com.visus.R.id.main_menu_pager);
-            mainMenuPagerAdapter = new MainMenuPagerAdapter(getSupportFragmentManager(),
-                    user.getUserId(),
-                    getSessionsCountAll(user),
-                    getLatestSessions(user),
-                    getActivitiesCount(user),
-                    getActivities(user),
-                    getFirstSession());
-
-            mainMenuPager.setAdapter(mainMenuPagerAdapter);
-
-            ArrayAdapter<CharSequence> arAdapter = ArrayAdapter.createFromResource(this, R.array.menu, R.layout.action_bar_list);
-
-            //  If no user target have been created, ask the user if they would like to
-            if (user.getTargetDay() == 0 && user.getTargetMonth() == 0) {
-                setupUserTarget();
-            }
-
-            // The following two methods are crucial. Do not delete them.
-            ab.setListNavigationCallbacks(arAdapter, new OnNavigationListener() {
-                public boolean onNavigationItemSelected(int itemPosition, long itemId) {
-                    mainMenuPager.setCurrentItem(itemPosition);
-                    return true;
-                }
-            });
-
-            mainMenuPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-                @Override
-                public void onPageSelected(int position) {
-                    ab.setSelectedNavigationItem(position);
-                }
-            });
-        }
+        setupUserProfile();
     }
 
-    /**
-     *
-     */
     @Override
     public void onResume() {
         super.onResume();
@@ -206,6 +156,56 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     @Override
     public void onTabUnselected(Tab tab, FragmentTransaction ft) {
         // TODO Auto-generated method stub
+    }
+
+    public void setupUserProfile() {
+        dbUser = new UserHandler(this);
+        dbSession = new SessionHandler(this);
+
+        user = getActiveUserOrCreateDefaultUser();
+
+        setContentView(R.layout.activity_main);
+
+        // action bar
+        final ActionBar ab = getActionBar();
+        ab.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+
+        if (user != null) {
+            Logger.log("onCreate", "User ID" + user.toString());
+
+            mainMenuPager = (ViewPager) findViewById(com.visus.R.id.main_menu_pager);
+            mainMenuPagerAdapter = new MainMenuPagerAdapter(getSupportFragmentManager(),
+                    user.getUserId(),
+                    getSessionsCountAll(user),
+                    getLatestSessions(user),
+                    getActivitiesCount(user),
+                    getActivities(user),
+                    getFirstSession());
+
+            mainMenuPager.setAdapter(mainMenuPagerAdapter);
+
+            ArrayAdapter<CharSequence> arAdapter = ArrayAdapter.createFromResource(this, R.array.menu, R.layout.action_bar_list);
+
+            //  If no user target have been created, ask the user if they would like to
+            if (user.getTargetDay() == 0 && user.getTargetMonth() == 0) {
+                setupUserTarget();
+            }
+
+            // The following two methods are crucial. Do not delete them.
+            ab.setListNavigationCallbacks(arAdapter, new OnNavigationListener() {
+                public boolean onNavigationItemSelected(int itemPosition, long itemId) {
+                    mainMenuPager.setCurrentItem(itemPosition);
+                    return true;
+                }
+            });
+
+            mainMenuPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+                @Override
+                public void onPageSelected(int position) {
+                    ab.setSelectedNavigationItem(position);
+                }
+            });
+        }
     }
 
     /**
