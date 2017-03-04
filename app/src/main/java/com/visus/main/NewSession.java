@@ -34,6 +34,7 @@ import com.visus.R;
 import com.visus.database.*;
 import com.visus.entities.*;
 import com.visus.entities.sessions.Session;
+import com.visus.logging.Logger;
 
 
 /**
@@ -212,7 +213,7 @@ public class NewSession extends Activity {
         if (userId != null) {
             // get the user id (int)
             activeUserId = userId.getInt("ActiveUserId");
-            Log.e("Visus", "New Session - User id is " + activeUserId);
+            Logger.log("New Session", "UserID: " + activeUserId);
         } else {
             // find the active user
             User user = dbUser.getActiveUser();
@@ -222,24 +223,21 @@ public class NewSession extends Activity {
         try {
             dbHandler.open();
         } catch (SQLiteException e) {
-            Log.e("Visus", "SQL Error", e);
+            Logger.log("SQL Error", e);
         } finally {
             types = dbHandler.getAllSessionTypes(activeUserId);
             dbHandler.close();
         }
 
         if (types.size() == 0) {
-            Log.e("Visus", "NULL");
+            Logger.log("Types", "NULL");
         } else {
-            Log.e("Visus", "Session Types Available");
-
             for (String type : types) {
-                Log.e("Visus", type);
+                Logger.log("Type", type);
             }
 
             // 	Alert Dialog
             ArrayAdapter<String> adapterTypes = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, types);
-
             sessionTypes.setAdapter(adapterTypes);
         }
 
@@ -292,8 +290,6 @@ public class NewSession extends Activity {
      * @param iSecs seconds set
      */
     private void initSession(int iMins, int iSecs) {
-        Log.e("Visus", "initSession()");
-
         // convert inputted session duration into milliseconds
         setDuration(iMins, iSecs);
 
@@ -307,7 +303,7 @@ public class NewSession extends Activity {
         String month = new SimpleDateFormat(strFormatMonth).format(new Date());
         int year = Integer.parseInt(new SimpleDateFormat(strFormatYear).format(new Date()));
 
-        Log.e("Visus", day + " " + dayNo + " " + month + ", " + year);
+        Logger.log("Session", day + " " + dayNo + " " + month + ", " + year);
 
         // remove callback to timer handler
         timerHandler.removeCallbacks(runUpdateTimer);
@@ -324,7 +320,7 @@ public class NewSession extends Activity {
         String date = sdf.format(new Date());
         session.setDate(date);
 
-        Log.e("Visus", "Date set: " + session.getDate());
+        Logger.log("Date Set", session.getDate());
 
         // get the session time
         int hour = Integer.parseInt(new SimpleDateFormat("hh").format(new Date()));
@@ -340,11 +336,8 @@ public class NewSession extends Activity {
         // day period
         session.setDayPeriod(dayPeriod);
 
-        Log.e("Visus", "Set time: " + session.getTimeHour()
-                + ":"
-                + session.getTimeMinutes());
-
-        Log.e("Visus", "Set day period: " + session.getDayPeriod());
+        Logger.log("Set Time", session.getTimeHour() + ":" + session.getTimeMinutes());
+        Logger.log("Set Day Period", session.getDayPeriod());
     }
 
     /**
@@ -380,14 +373,12 @@ public class NewSession extends Activity {
         int remainingSecs = getTimeRemainingSeconds();
 
         if ((remainingMins == 0) && (remainingSecs == 0)) {
-            Log.e("Visus", "Empty time remaining fields");
+            Logger.log("Time Remaining", "Empty");
         } else {
-            Log.e("Visus", "----------------------------");
-            Log.e("Visus", "Time left: " + remainingMins + ":" + remainingSecs);
+            Logger.log("Time Left", remainingMins + ":" + remainingSecs);
         }
 
         sessionMins = (durationMinutes - remainingMins) - 1;
-
         sessionSecs = (60 - remainingSecs);
 
         int secsLeft = 0;
@@ -413,15 +404,13 @@ public class NewSession extends Activity {
         session.setUserId(activeUserId);
         session.setType(type);
 
-        Log.e("Visus", "SessionMins: " + sessionMins);
-        Log.e("Visus", "SessionSecs: " + sessionSecs);
+        Logger.log("SessionMins", sessionMins);
+        Logger.log("SessionSecs", sessionSecs);
 
         // write session to database
         try {
             dbHandler.open();
             dbHandler.add(session);
-
-            Log.e("Visus", "Whoooo");
 
             // write log to records table
             srHandler.open();
@@ -434,7 +423,7 @@ public class NewSession extends Activity {
 
             // if existing records do exist...
             if (!existingRecord.isEmpty()) {
-                Log.e("Visus", "!existingRecord.isEmpty() ");
+                Logger.log("Existing Records", "Not Empty");
 
                 double exRecordDuration = 0.0;
                 Iterator<Entry<String, Double>> it = existingRecord.entrySet().iterator();
@@ -452,7 +441,7 @@ public class NewSession extends Activity {
                 srHandler.insertActivityRecord(type, recordDuration, activeUserId);
             }
         } catch (SQLiteException e) {
-            Log.e("Visus", "SQL Error", e);
+            Logger.log("SQL Error", e);
         } finally {
             dbHandler.close();
             srHandler.close();
@@ -554,7 +543,7 @@ public class NewSession extends Activity {
      * @param minutes
      */
     private void setTimeRemainingMinutes(int minutes) {
-        Log.e("Visus", "setTimeRemainingMinutes() " + minutes);
+        Logger.log("setTimeRemainingMinutes", minutes);
         this.minutesRemaining = minutes;
     }
 
@@ -569,7 +558,7 @@ public class NewSession extends Activity {
      * Sets the number of seconds remaining
      */
     private void setTimeRemainingSeconds(int seconds) {
-        Log.e("Visus", "setTimeRemainingSeconds() " + seconds);
+        Logger.log("setTimeRemainingSeconds", seconds);
         this.secondsRemaining = seconds;
     }
 
@@ -596,13 +585,12 @@ public class NewSession extends Activity {
                 minutes = String.valueOf(((millisUntilFinished / (1000 * 60)) % 60)); // TODO change % 60 to 61??
                 seconds = String.valueOf((millisUntilFinished / 1000) % 60);
 
-                Log.e("Minutes: ", minutes);
-                Log.e("Seconds: ", seconds);
+                Logger.log("Minutes ", minutes);
+                Logger.log("Seconds ", seconds);
 
                 // if the timer has ended
                 if (minutes.equals("0") && seconds.equals("0")) {
-
-                    Log.e("Visus", "Timer Has Ended");
+                    Logger.log("Timer ", "Ended");
 
                     // go to the user's previous sessions
                     Intent intent = new Intent(NewSession.this, Sessions.class);
@@ -669,8 +657,6 @@ public class NewSession extends Activity {
      */
     @SuppressWarnings("unused")
     private void displayNotification() {
-        Log.e("Visus", "displayNotification()");
-
         notBuilder = new NotificationCompat.Builder(this);
         notBuilder.setSmallIcon(com.visus.R.drawable.ic_launcher_4);
         notBuilder.setContentTitle("Session Ended");

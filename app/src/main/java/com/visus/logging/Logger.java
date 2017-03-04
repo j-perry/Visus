@@ -34,11 +34,11 @@ public class Logger {
     }
 
     public static void log(String tag, String message) {
-        Log.e(tag + " | ", message);
+        Log.e(tag + "/t", message);
     }
 
     public static void log(String tag, Object message) {
-        Log.e(tag + " | ", message.toString());
+        Log.e(tag + "/t", message.toString());
     }
 
 }
