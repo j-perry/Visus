@@ -70,6 +70,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         if (user != null) {
             Logger.log("onCreate", "User ID" + user.toString());
 
+            // TODO - refactor
             mainMenuPager = (ViewPager) findViewById(com.visus.R.id.main_menu_pager);
             mainMenuPagerAdapter = new MainMenuPagerAdapter(getSupportFragmentManager(),
                     user.getUserId(),
@@ -83,45 +84,12 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
             ArrayAdapter<CharSequence> arAdapter = ArrayAdapter.createFromResource(this, R.array.menu, R.layout.action_bar_list);
 
-            final Dialog dialog = new Dialog(context);
-            Button cancel = new Button(context);
-            Button ok = new Button(context);
-
-            /**
-             * If no user target have been created, ask the user if they would like to
-             */
+            //  If no user target have been created, ask the user if they would like to
             if (user.getTargetDay() == 0 && user.getTargetMonth() == 0) {
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setCanceledOnTouchOutside(false);
-                dialog.setContentView(R.layout.alert_dialog_set_targets_day);
-
-                // buttons
-                cancel = (Button) dialog.findViewById(R.id.alert_dialog_user_targets_btn_cancel);
-                ok = (Button) dialog.findViewById(R.id.alert_dialog_user_targets_btn_ok);
-
-                ok.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(getApplicationContext(), Settings.class);
-                        intent.putExtra("ActiveUserId", user.getUserId());
-                        context.startActivity(intent);
-                    }
-                });
-
-                cancel.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-
-                dialog.show();
+                setupUserTarget();
             }
 
-
-            /**
-             * The following two methods are crucial. Do not delete them.
-             */
+            // The following two methods are crucial. Do not delete them.
             ab.setListNavigationCallbacks(arAdapter, new OnNavigationListener() {
                 public boolean onNavigationItemSelected(int itemPosition, long itemId) {
                     mainMenuPager.setCurrentItem(itemPosition);
@@ -238,6 +206,39 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     @Override
     public void onTabUnselected(Tab tab, FragmentTransaction ft) {
         // TODO Auto-generated method stub
+    }
+
+    /**
+     * Displays a dialog allowing the user to set a target
+     */
+    public void setupUserTarget() {
+        final Dialog dialog = new Dialog(context);
+
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setContentView(R.layout.alert_dialog_set_targets_day);
+
+        // buttons
+        Button cancel = (Button) dialog.findViewById(R.id.alert_dialog_user_targets_btn_cancel);
+        Button ok = (Button) dialog.findViewById(R.id.alert_dialog_user_targets_btn_ok);
+
+        ok.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Settings.class);
+                intent.putExtra("ActiveUserId", user.getUserId());
+                context.startActivity(intent);
+            }
+        });
+
+        cancel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 
     /**
@@ -388,7 +389,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
      * Main Menu Pager Adapter
      */
     public static final class MainMenuPagerAdapter extends FragmentPagerAdapter {
-
         private static final int NO_FRAGMENTS = 2;
         private int userId;
         private int totalSessions;
