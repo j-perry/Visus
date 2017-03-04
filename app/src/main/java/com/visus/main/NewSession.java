@@ -1,7 +1,6 @@
 package com.visus.main;
 
 // core apis
-
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -92,107 +91,11 @@ public class NewSession extends Activity {
         setContentView(R.layout.activity_new_session);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        ArrayList<String> types = new ArrayList<String>();
-
         ActionBar ab = getActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
 
         initUIComponents();
-
-        sessionType = (TextView) findViewById(R.id.session_type);
-
-        // hide the stop button
-        stopTimerBtn = (Button) findViewById(R.id.timer_stop_btn);
-        stopTimerBtn.setVisibility(View.GONE);
-
-
-        session = new Session();
-        dbHandler = new SessionHandler(this);
-        dbUser = new UserHandler(this);
-
-        // get the active user id
-        Bundle userId = getIntent().getExtras();
-        final Dialog dialog = new Dialog(context);
-
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.setContentView(R.layout.alert_dialog_new_session);
-
-        final AutoCompleteTextView sessionTypes = (AutoCompleteTextView) dialog.findViewById(com.visus.R.id.dialog_new_session_auto_complete_type);
-
-        // if userId is not null
-        if (userId != null) {
-            // get the user id (int)
-            activeUserId = userId.getInt("ActiveUserId");
-            Log.e("Visus", "----------------------------------------");
-            Log.e("Visus", "New Session - User id is " + activeUserId);
-        } else {
-            // find the active user
-            User user = dbUser.getActiveUser();
-            activeUserId = user.getUserId();
-        }
-
-        try {
-            dbHandler.open();
-        } catch (SQLiteException e) {
-            Log.e("Visus", "SQL Error", e);
-        } finally {
-            types = dbHandler.getAllSessionTypes(activeUserId);
-            dbHandler.close();
-        }
-
-        if (types.size() == 0) {
-            Log.e("Visus", "NULL");
-        } else {
-            Log.e("Visus", "Session Types Available");
-
-            for (String type : types) {
-                Log.e("Visus", type);
-            }
-
-            /**
-             * 	Alert Dialog
-             */
-            ArrayAdapter<String> adapterTypes = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, types);
-
-            sessionTypes.setAdapter(adapterTypes);
-        }
-
-        // buttons
-        Button cancel = (Button) dialog.findViewById(R.id.alert_dialog_new_session_btn_cancel);
-        Button ok = (Button) dialog.findViewById(R.id.alert_dialog_new_session_btn_ok);
-
-        ok.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                type = sessionTypes.getText().toString().trim();
-
-                if (!type.isEmpty()) {
-                    sessionType.setText("#" + type);
-                    sessionType.setVisibility(View.VISIBLE);
-                    dialog.dismiss();
-                } else {
-                    String tstMsg = "Enter an activity type";
-                    Toast tstInput = Toast.makeText(getApplicationContext(), tstMsg, Toast.LENGTH_LONG);
-                    tstInput.setGravity(Gravity.CENTER, 0, 0);
-                    tstInput.show();
-                }
-            }
-        });
-
-        cancel.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                type = "None";
-                sessionType.setText("#" + type);
-                dialog.dismiss();
-            }
-        });
-
-        dialog.show();
-
-        timerHandler = new Handler();
-        timerHandler.removeCallbacks(runUpdateTimer);
+        createNewSession();
     }
 
     /**
@@ -248,6 +151,7 @@ public class NewSession extends Activity {
      * Event handler
      * <p>
      * Starts a new session
+     * </p>
      *
      * @param view
      */
@@ -282,6 +186,103 @@ public class NewSession extends Activity {
 
         // initialise a new session
         initSession(iMins, iSecs);
+    }
+
+    public void createNewSession() {
+        sessionType = (TextView) findViewById(R.id.session_type);
+        ArrayList<String> types = new ArrayList<String>();
+
+        hideStopBtn();
+
+        session = new Session();
+        dbHandler = new SessionHandler(this);
+        dbUser = new UserHandler(this);
+
+        // get the active user id
+        Bundle userId = getIntent().getExtras();
+        final Dialog dialog = new Dialog(context);
+
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setContentView(R.layout.alert_dialog_new_session);
+
+        final AutoCompleteTextView sessionTypes = (AutoCompleteTextView) dialog.findViewById(com.visus.R.id.dialog_new_session_auto_complete_type);
+
+        // if userId is not null
+        if (userId != null) {
+            // get the user id (int)
+            activeUserId = userId.getInt("ActiveUserId");
+            Log.e("Visus", "New Session - User id is " + activeUserId);
+        } else {
+            // find the active user
+            User user = dbUser.getActiveUser();
+            activeUserId = user.getUserId();
+        }
+
+        try {
+            dbHandler.open();
+        } catch (SQLiteException e) {
+            Log.e("Visus", "SQL Error", e);
+        } finally {
+            types = dbHandler.getAllSessionTypes(activeUserId);
+            dbHandler.close();
+        }
+
+        if (types.size() == 0) {
+            Log.e("Visus", "NULL");
+        } else {
+            Log.e("Visus", "Session Types Available");
+
+            for (String type : types) {
+                Log.e("Visus", type);
+            }
+
+            // 	Alert Dialog
+            ArrayAdapter<String> adapterTypes = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, types);
+
+            sessionTypes.setAdapter(adapterTypes);
+        }
+
+        Button cancel = (Button) dialog.findViewById(R.id.alert_dialog_new_session_btn_cancel);
+        Button ok = (Button) dialog.findViewById(R.id.alert_dialog_new_session_btn_ok);
+
+        ok.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                type = sessionTypes.getText().toString().trim();
+
+                if (!type.isEmpty()) {
+                    sessionType.setText("#" + type);
+                    sessionType.setVisibility(View.VISIBLE);
+                    dialog.dismiss();
+                } else {
+                    String tstMsg = "Enter an activity type";
+                    Toast tstInput = Toast.makeText(getApplicationContext(), tstMsg, Toast.LENGTH_LONG);
+                    tstInput.setGravity(Gravity.CENTER, 0, 0);
+                    tstInput.show();
+                }
+            }
+        });
+
+        cancel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                type = "None";
+                sessionType.setText("#" + type);
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+
+        timerHandler = new Handler();
+        timerHandler.removeCallbacks(runUpdateTimer);
+    }
+
+    public void hideStopBtn() {
+        // hide the stop button
+        stopTimerBtn = (Button) findViewById(R.id.timer_stop_btn);
+        stopTimerBtn.setVisibility(View.GONE);
     }
 
     /**
@@ -415,10 +416,7 @@ public class NewSession extends Activity {
         Log.e("Visus", "SessionMins: " + sessionMins);
         Log.e("Visus", "SessionSecs: " + sessionSecs);
 
-
-        /**
-         * write session to database
-         */
+        // write session to database
         try {
             dbHandler.open();
             dbHandler.add(session);
@@ -478,7 +476,7 @@ public class NewSession extends Activity {
     }
 
     /**
-     * Gets the session duration
+     * Gets the session duration in milliseconds
      *
      * @return
      */
@@ -562,8 +560,6 @@ public class NewSession extends Activity {
 
     /**
      * Gets the number of minutes remaining
-     *
-     * @param minutes
      */
     private int getTimeRemainingMinutes() {
         return minutesRemaining;
@@ -571,8 +567,6 @@ public class NewSession extends Activity {
 
     /**
      * Sets the number of seconds remaining
-     *
-     * @param minutes
      */
     private void setTimeRemainingSeconds(int seconds) {
         Log.e("Visus", "setTimeRemainingSeconds() " + seconds);
@@ -581,8 +575,6 @@ public class NewSession extends Activity {
 
     /**
      * Gets the number of minutes remaining
-     *
-     * @param minutes
      */
     private int getTimeRemainingSeconds() {
         return secondsRemaining;
@@ -592,30 +584,23 @@ public class NewSession extends Activity {
      * Updates the timer TextView display from the timer handler
      */
     private void updateTimer() {
-        // get milliseconds
         int millisecs = getDuration();
 
-        // THE countdown timer
         sessionTimer = new CountDownTimer(millisecs, 1000) {
-
             private String minutes;
             private String seconds;
 
             public void onTick(long millisUntilFinished) {
-
-                /*******************************************************************************************
-                 * 		NB: minutes has a limit of 60. If minutes is set to 60, it will just go null.
-                 * 		A potential bug that could be solved in the future.
-                 */
+                // NB: minutes has a limit of 60. If minutes is set to 60, it will just go null.
+                // A potential bug that could be solved in the future.
                 minutes = String.valueOf(((millisUntilFinished / (1000 * 60)) % 60)); // TODO change % 60 to 61??
                 seconds = String.valueOf((millisUntilFinished / 1000) % 60);
 
-                Log.e("Visus", "Minutes: " + minutes);
-                Log.e("Visus", "Seconds: " + seconds);
+                Log.e("Minutes: ", minutes);
+                Log.e("Seconds: ", seconds);
 
                 // if the timer has ended
-                if (minutes.equals("0") &&
-                        seconds.equals("0")) {
+                if (minutes.equals("0") && seconds.equals("0")) {
 
                     Log.e("Visus", "Timer Has Ended");
 
