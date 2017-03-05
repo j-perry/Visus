@@ -5,29 +5,29 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="6185327033940"
+    timestamp="9738281986325"
     token="-3513716702981699155"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="1402" />
+        duration="1670" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="821" />
+        duration="545" />
     <task
         name="verifier"
-        duration="246" />
+        duration="206" />
 
     <artifact
         location="/Users/jonathanperry/Documents/Visus/app/build/outputs/apk/app-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="6185327033940"
+        timestamp="9738281986325"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/jonathanperry/Documents/Visus/app/build/outputs/apk/app-debug.apk"

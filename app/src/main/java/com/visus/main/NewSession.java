@@ -36,7 +36,6 @@ import com.visus.entities.*;
 import com.visus.entities.sessions.Session;
 import com.visus.logging.Logger;
 
-
 /**
  * Creates a new session
  *
@@ -47,7 +46,6 @@ import com.visus.logging.Logger;
 public class NewSession extends Activity {
 
     private Session session;
-
     private SessionHandler dbHandler;
     private UserHandler dbUser;
 
