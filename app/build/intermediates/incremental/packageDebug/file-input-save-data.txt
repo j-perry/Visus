@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Mar 05 15:38:02 GMT 2017
+#Sun Mar 05 18:28:44 GMT 2017
 175.set=ANDROID_RESOURCE
 122.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw720dp-v13/activity_latest_activity.xml
 60.set=ANDROID_RESOURCE
@@ -63,7 +63,7 @@
 28.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw600dp-v13/settings_activities_layout_item.xml
 166.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/drawable-mdpi-v4/ic_launcher_med.png
 176.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar
-75.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/drawable-hdpi-v4/ic_launcher_large.png
+75.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw720dp-v13/layout_main_menu_item.xml
 161.set=ANDROID_RESOURCE
 153.set=ANDROID_RESOURCE
 145.set=ANDROID_RESOURCE
@@ -146,7 +146,7 @@
 27.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar/com/fortysevendeg/android/swipelistview/class-use/BaseSwipeListViewListener.html
 165.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout/layout_main_menu_item.xml
 175.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
-74.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw720dp-v13/layout_main_menu_item.xml
+74.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/drawable-hdpi-v4/ic_launcher_large.png
 151.set=ANDROID_RESOURCE
 143.set=DEX
 6.set=JAVA_RESOURCE
@@ -180,7 +180,7 @@
 134.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw720dp-v13/fragment_sessions_this_week.xml
 11.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
 43.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw720dp-v13/fragment_sessions_this_year.xml
-181.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw720dp-v13/activity_main.xml
+181.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/drawable-xhdpi-v4/ic_launcher_2.png
 90.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw600dp-v13/activity_sign_up.xml
 6.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar/package-list
 97.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/drawable/settings_history_btn_bg.xml
@@ -193,7 +193,7 @@
 50.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/dex/debug/folders/1000/2/nineoldandroids-2.4.0_2c92e021831c3adacec042061c00c9f64f2fe4be/classes.dex
 134.set=ANDROID_RESOURCE
 158.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
-57.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw600dp-v13/settings_spinner_gender_list_layout.xml
+57.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/drawable/action_bar_txt.xml
 126.set=ANDROID_RESOURCE
 67.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
 118.set=ANDROID_RESOURCE
@@ -238,7 +238,7 @@
 109.set=ANDROID_RESOURCE
 43.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
 181.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
-80.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw480dp-v13/layout_sessions_items.xml
+80.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw600dp-v13/layout_sessions_items.xml
 90.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
 6.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar
 87.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar/com/fortysevendeg/android/swipelistview/SwipeListViewTouchListener.html
@@ -258,7 +258,7 @@
 133.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/drawable/new_session_controls_btn.xml
 10.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
 42.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw720dp-v13/settings_spinner_gender_layout.xml
-180.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/drawable-xhdpi-v4/ic_launcher_2.png
+180.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw600dp-v13/fragment_main_menu_activities.xml
 5.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw480dp-v13/activity_main.xml
 49.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout/fragment_main_menu_activities.xml
 96.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw480dp-v13/fragment_settings_general.xml
@@ -271,7 +271,7 @@
 124.set=ANDROID_RESOURCE
 19.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar
 157.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
-56.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/drawable/action_bar_txt.xml
+56.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw480dp-v13/fragment_collection_object.xml
 116.set=DEX
 66.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
 108.set=ANDROID_RESOURCE
@@ -305,7 +305,7 @@
 2.set=ANDROID_RESOURCE
 72.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw720dp-v13/alert_dialog_new_session.xml
 131.set=JAVA_RESOURCE
-79.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw600dp-v13/settings_spinner_gender_layout.xml
+79.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw720dp-v13/settings_spinner_gender_list_layout.xml
 123.set=ANDROID_RESOURCE
 115.set=ANDROID_RESOURCE
 107.set=JAVA_RESOURCE
@@ -326,7 +326,7 @@
 140.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-v4-19.1.0_5d43e79ce3c8318e0a53428c77e57664f2653a73
 90.set=ANDROID_RESOURCE
 82.set=ANDROID_RESOURCE
-179.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw600dp-v13/fragment_main_menu_activities.xml
+179.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw720dp-v13/activity_main.xml
 56.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
 74.set=ANDROID_RESOURCE
 66.set=ANDROID_RESOURCE
@@ -348,7 +348,7 @@
 18.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
 146.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw480dp-v13/sign_up_spinner_gender_list_layout.xml
 156.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
-55.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw480dp-v13/fragment_collection_object.xml
+55.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw600dp-v13/settings_spinner_gender_list_layout.xml
 106.set=ANDROID_RESOURCE
 65.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
 count=183
@@ -384,7 +384,7 @@ count=183
 121.set=ANDROID_RESOURCE
 169.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/drawable/settings_cancel_btn_bg.xml
 179.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
-78.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw600dp-v13/layout_sessions_items.xml
+78.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw600dp-v13/settings_spinner_gender_layout.xml
 113.set=JAVA_RESOURCE
 105.set=ANDROID_RESOURCE
 132.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
@@ -455,13 +455,13 @@ count=183
 114.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/drawable/main_menu_header_bg.xml
 124.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
 23.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex
-161.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/menu/activity_main.xml
+161.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw480dp-v13/alert_dialog_previous_sessions.xml
 171.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
 70.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw600dp-v13/layout_main_menu_item.xml
 111.set=ANDROID_RESOURCE
 168.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_9/classes.dex
 178.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
-77.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw720dp-v13/settings_spinner_gender_list_layout.xml
+77.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw480dp-v13/layout_sessions_items.xml
 103.set=ANDROID_RESOURCE
 165.set=ANDROID_RESOURCE
 131.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar
@@ -531,7 +531,7 @@ count=183
 113.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar/index-all.html
 123.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
 22.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout/alert_dialog_save_targets_day.xml
-160.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout-sw480dp-v13/alert_dialog_previous_sessions.xml
+160.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/menu/activity_main.xml
 170.base=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_
 29.file=/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/resources-debug.ap_/res/layout/layout_main_menu_header.xml
 101.set=ANDROID_RESOURCE
