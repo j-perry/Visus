@@ -16,7 +16,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="a2d66e0894de613efe3e715a24d833161c19d4c2">
+        sha1="6702b765adca1560145360b4c1d0007ab51a7985">
         <dex dex="/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_5c562d3c48a5f9a43ade441164ea43bb6d9b5082/classes.dex" />
     </item>
     <item
@@ -34,7 +34,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="1c279cdf1178598a8834ef93f3df607d03a70a59">
+        sha1="4236abfddbf654f5a647c68e5aadfe3a102ec29e">
         <dex dex="/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_6d6a2a18ffde89255283d2a2c0cb6e71eeab134d/classes.dex" />
     </item>
 

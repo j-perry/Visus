@@ -5,33 +5,40 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="16102060935832"
+    timestamp="14402053939458"
     token="-3513716702981699155"
-    verifier="FULL_BUILD_REQUESTED" >
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="2388" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="1049" />
+        duration="0" />
     <task
         name="verifier"
-        duration="248" />
+        duration="0" />
 
     <artifact
-        location="/Users/jonathanperry/Documents/Visus/app/build/outputs/apk/app-debug.apk"
-        type="MAIN" />
+        location="/Users/jonathanperry/Documents/Visus/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
+        type="RESOURCES" />
 
     <build
-        timestamp="16102060935832"
+        timestamp="13475468720467"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/jonathanperry/Documents/Visus/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
+    </build>
+    <build
+        timestamp="14402053939458"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="/Users/jonathanperry/Documents/Visus/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
+            type="RESOURCES" />
     </build>
 
 </instant-run>

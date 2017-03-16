@@ -219,13 +219,13 @@ containing a value of this type.
         public static final int settings_credit_support=0x7f090031;
         public static final int settings_credit_support_header=0x7f090030;
         public static final int settings_history_header=0x7f090035;
-        public static final int settings_history_reset_all=0x7f09003a;
-        public static final int settings_history_reset_month=0x7f090038;
-        public static final int settings_history_reset_year=0x7f090039;
+        public static final int settings_history_reset_all=0x7f090039;
+        public static final int settings_history_reset_month=0x7f09003b;
+        public static final int settings_history_reset_year=0x7f090038;
         public static final int settings_history_target_day=0x7f090036;
         public static final int settings_history_target_month=0x7f090037;
         public static final int settings_pager=0x7f090010;
-        public static final int settings_save_all=0x7f09003b;
+        public static final int settings_save_all=0x7f09003a;
         public static final int timer=0x7f09000c;
         public static final int timer_btn=0x7f09000d;
         public static final int timer_set_minutes=0x7f09000a;

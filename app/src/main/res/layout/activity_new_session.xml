@@ -24,9 +24,9 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:text="@string/timer_predefined_minutes"
-            android:textColorHint="@color/light_green"
+            android:textColorHint="@color/dark_grey"
             android:textSize="64sp"
-            android:textColor="@color/light_green"
+            android:textColor="@color/dark_grey"
             />
             
         <TextView
@@ -40,9 +40,9 @@
 	        android:completionThreshold="1"
 	        android:maxLines="1"
 	        android:text="@string/timer_activity_type_placeholder"
-	        android:textColorHint="@color/light_green"
+	        android:textColorHint="@color/dark_grey"
 	        android:textSize="32sp"
-	        android:textColor="@color/light_green"
+	        android:textColor="@color/dark_grey"
 	        />
 
 	    <TextView
