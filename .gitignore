@@ -1,1 +1,3 @@
-app/
+app/build/
+build/
+*.gradle
