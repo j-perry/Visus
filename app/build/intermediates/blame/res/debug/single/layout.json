@@ -20,6 +20,10 @@
         "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout/sign_up_spinner_gender_list_layout.xml"
     },
     {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout/activity_new_session_copy.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout/activity_new_session_copy.xml"
+    },
+    {
         "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout/settings_activities_layout_item.xml",
         "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout/settings_activities_layout_item.xml"
     },

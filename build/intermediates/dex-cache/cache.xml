@@ -16,8 +16,8 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="163f6c6283a6291eebd6d0aadb6784291f4d21db">
-        <dex dex="/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_5c562d3c48a5f9a43ade441164ea43bb6d9b5082/classes.dex" />
+        sha1="db15478fba70a6c84417953b2b108f33497b6f6d">
+        <dex dex="/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_5c562d3c48a5f9a43ade441164ea43bb6d9b5082/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -34,8 +34,8 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="55ee1198bc36d84aa3d9d2e5f4e5b938811fd1de">
-        <dex dex="/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_6d6a2a18ffde89255283d2a2c0cb6e71eeab134d/classes.dex" />
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="/Users/jonathanperry/Documents/Visus/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_6d6a2a18ffde89255283d2a2c0cb6e71eeab134d/classes.dex" />
     </item>
 
 </items>

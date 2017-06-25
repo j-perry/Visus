@@ -20,12 +20,12 @@
         "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/activity_latest_activity.xml"
     },
     {
-        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/settings_spinner_gender_layout.xml",
-        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/settings_spinner_gender_layout.xml"
-    },
-    {
         "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/fragment_main_menu_activities.xml",
         "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/fragment_main_menu_activities.xml"
+    },
+    {
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/settings_spinner_gender_layout.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout-sw720dp/settings_spinner_gender_layout.xml"
     },
     {
         "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout-sw720dp-v13/activity_sign_up.xml",

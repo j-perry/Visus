@@ -1,4 +1,4 @@
-<LinearLayout 
+<!--<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
@@ -7,7 +7,77 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context=".main.NewSession"
-    >
+    >-->
+
+	<!-- http://stackoverflow.com/questions/4182486/placing-overlappingz-index-a-view-above-another-view-in-android -->
+	<FrameLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/layout_new_session"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/white">
+
+		<!-- Bottom layer -->
+		<LinearLayout
+			android:id="@+id/new_session_lyr_status"
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="100sp"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentBottom="true"
+			android:background="@color/dark_grey"
+			>
+
+			<!-- Other views -->
+		</LinearLayout>
+
+		<!-- Top layer -->
+		<LinearLayout
+			android:id="@+id/new_session_lyr_timer"
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="150sp"
+			android:layout_gravity="center"
+			android:gravity="center_vertical"
+			>
+
+			<TextView
+				android:id="@+id/new_session_timer"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:text="Hello"
+				android:textColor="@color/white"
+				android:textSize="50sp"
+				/>
+
+			<!-- Other views -->
+		</LinearLayout>
+
+	</FrameLayout>
+
+<!--
+<ImageView
+android:id="@+id/time"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:scaleType="fitCenter"
+	/>
+
+<View
+android:id="@+id/new_session_view"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:alpha="0.5"
+	/>
+-->
+
+	
+	<!--<view
+		android:id="@+id/new_session_view"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -66,8 +136,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         >
-        
-        <!-- Timer Button -->
+
         <Button
             android:id="@+id/timer_btn"
             android:onClick="onStart"
@@ -82,7 +151,7 @@
             android:textColor="@drawable/new_session_controls_txt"
         />
         
-        <!-- Timer Button Stop -->
+
         <Button
             android:id="@+id/timer_stop_btn"
             android:layout_width="fill_parent" 
@@ -97,6 +166,6 @@
             android:onClick="onEnd"
         />
         
-    </LinearLayout>
+    </LinearLayout>-->
 
-</LinearLayout>
+<!--</LinearLayout>-->
