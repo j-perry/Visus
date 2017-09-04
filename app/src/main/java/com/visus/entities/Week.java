@@ -15,14 +15,13 @@ public class Week {
 	
 	private int dayNo;
 	private int month;
-	private int year;	
+	private int year;
 
 	// constant/s
 	final String DASH = "-";
-	
-	
+
 	public Week() {
-		super();
+
 	}
 	
 	/* Delete */
@@ -68,7 +67,7 @@ public class Week {
 				
 		
 		// convert dayNo to day (String) rep
-		// first get the current month		
+		// first get the current month
 		Log.e("Visus", "---------------------");
 		Log.e("Visus", "findBeginningOfWeek()");
 		Log.e("Visus", "---------------------");
@@ -76,9 +75,9 @@ public class Week {
 		// get the current date
 		Calendar cal = Calendar.getInstance();
 		// set the time
-		cal.setTime(new Date() );
+		cal.setTime(new Date());
 				
-		do {				
+		do {
 			// return today's day no. in the present month
 			DateFormat dfDayStr = new SimpleDateFormat("EEE");		// Sun, e.g.
 			Date dt = cal.getTime();								// get the time

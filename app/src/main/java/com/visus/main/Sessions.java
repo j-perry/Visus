@@ -51,13 +51,18 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sessions);
+        boolean displayNotification = false;
 
         clearNotifications();
 
         Bundle bundle = getIntent().getExtras();
-        activeUserId = bundle.getInt("ActiveUserId");
 
-        displayNotification(bundle, activeUserId);
+        if(bundle != null) {
+            activeUserId = bundle.getInt("ActiveUserId");
+            displayNotification = bundle.getBoolean("DisplayNotification");
+        }
+
+        displayNotification(activeUserId, displayNotification);
         displaySessions(activeUserId);
     }
 
@@ -149,9 +154,7 @@ public class Sessions extends FragmentActivity implements ActionBar.TabListener 
         notificationManager.cancel(0);
     }
 
-    public void displayNotification(Bundle bundle, int activeUserId) {
-        boolean displayNotification = bundle.getBoolean("DisplayNotification");
-
+    public void displayNotification(int activeUserId, boolean displayNotification) {
         if (displayNotification) {
             // display a notification to the user to take a break (3 - 5 minutes approx)
             Notification.Builder notBuilder = new Notification.Builder(context);

@@ -17,7 +17,7 @@
     <!-- Main menu scrollview -->
     <string name="main_menu_latest_activity">Latest Activity</string>    
     <string name="main_menu_activities">Activities</string>
-        
+
     <!-- Sign-up -->
     <string name="hint_firstname">Firstname</string>
     <string name="gender_prompt">Gender</string>

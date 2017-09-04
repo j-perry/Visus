@@ -40,8 +40,11 @@ public class Settings extends FragmentActivity implements ActionBar.TabListener 
 		this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		
 		Bundle b = getIntent().getExtras();
-		activeUserId = b.getInt("ActiveUserId");
-				
+
+		if(b != null) {
+			activeUserId = b.getInt("ActiveUserId");
+		}
+
 		final ActionBar ab = getActionBar();
 		ab.setDisplayHomeAsUpEnabled(true);
 		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);

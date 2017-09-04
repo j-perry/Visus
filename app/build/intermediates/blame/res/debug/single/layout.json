@@ -20,24 +20,20 @@
         "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout/sign_up_spinner_gender_list_layout.xml"
     },
     {
-        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout/activity_new_session_copy.xml",
-        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout/activity_new_session_copy.xml"
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout/fragment_main_menu_activities.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout/fragment_main_menu_activities.xml"
     },
     {
         "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout/settings_activities_layout_item.xml",
         "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout/settings_activities_layout_item.xml"
     },
     {
-        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout/fragment_main_menu_activities.xml",
-        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout/fragment_main_menu_activities.xml"
+        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout/layout_main_menu_header.xml",
+        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout/layout_main_menu_header.xml"
     },
     {
         "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout/alert_dialog_new_session.xml",
         "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout/alert_dialog_new_session.xml"
-    },
-    {
-        "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout/layout_main_menu_header.xml",
-        "source": "/Users/jonathanperry/Documents/Visus/app/src/main/res/layout/layout_main_menu_header.xml"
     },
     {
         "merged": "/Users/jonathanperry/Documents/Visus/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
